@@ -1,0 +1,10 @@
+def __cmp__(self, other):
+    if (self.dst_line < other.dst_line):
+        return (-1)
+    if (self.dst_line > other.dst_line):
+        return 1
+    if (self.dst_col < other.dst_col):
+        return (-1)
+    if (self.dst_col > other.dst_col):
+        return 1
+    return 0

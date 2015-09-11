@@ -1,0 +1,14 @@
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
+from __future__ import unicode_literals
+import re
+import unittest
+u'\n#                              _-----=> irqs-off\n#                             / _----=> need-resched\n#                            | / _---=> hardirq/softirq\n#                            || / _--=> preempt-depth\n#                            ||| /     delay\n#           TASK-PID   CPU#  ||||    TIMESTAMP  FUNCTION\n#              | |       |   ||||       |         |\n          <idle>-0     [001] ...2  3269.291072: sched_switch: prev_comm=swapper/1 prev_pid=0 prev_prio=120 prev_state=R ==> next_comm=mmcqd/0 next_pid=120 next_prio=120\n'
+TRACE_LINE_PATTERN = re.compile(u'^\\s*(?P<task>.+)-(?P<pid>\\d+)\\s+(?:\\((?P<tgid>.+)\\)\\s+)?\\[(?P<cpu>\\d+)\\]\\s+(?:(?P<flags>\\S{4})\\s+)?(?P<timestamp>[0-9.]+):\\s+(?P<function>.+)$')
+u'\nExample lines from custom app traces:\n0: B|27295|providerRemove\n0: E\ntracing_mark_write: S|27311|NNFColdStart<D-7744962>|1112249168\n'
+APP_TRACE_LINE_PATTERN = re.compile(u'^(?P<type>.+?): (?P<args>.+)$')
+u'\nExample section names:\nNNFColdStart\nNNFColdStart<0><T7744962>\nNNFColdStart<X>\nNNFColdStart<T7744962>\n'
+DECORATED_SECTION_NAME_PATTERN = re.compile(u'^(?P<section_name>.*?)(?:<0>)?(?:<(?P<command>.)(?P<argument>.*?)>)?$')
+SYSTRACE_LINE_TYPES = set([u'0', u'tracing_mark_write'])
+TRACE_TYPE_MAP = {u'S': AsyncTraceFunction, u'T': AsyncTraceFunction, u'F': AsyncTraceFunction, }

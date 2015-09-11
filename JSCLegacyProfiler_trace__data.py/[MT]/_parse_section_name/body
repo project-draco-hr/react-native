@@ -1,0 +1,8 @@
+def _parse_section_name(section_name):
+    if (section_name is None):
+        return (section_name, None, None)
+    section_name_match = DECORATED_SECTION_NAME_PATTERN.match(section_name)
+    section_name = section_name_match.group(u'section_name')
+    command = section_name_match.group(u'command')
+    argument = section_name_match.group(u'argument')
+    return (section_name, command, argument)

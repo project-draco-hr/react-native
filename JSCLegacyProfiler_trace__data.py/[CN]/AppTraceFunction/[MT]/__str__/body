@@ -1,0 +1,2 @@
+def __str__(self):
+    return u'{type}: {args}'.format(type=self.type, args=u'|'.join(self.args))

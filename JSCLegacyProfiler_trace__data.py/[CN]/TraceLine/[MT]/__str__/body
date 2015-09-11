@@ -1,0 +1,9 @@
+def __str__(self):
+    if self.canceled:
+        return u''
+    elif self.tgid:
+        return u'{task:>16s}-{pid:<5d} ({tgid:5s}) [{cpu:03d}] {flags:4s} {timestamp:12f}: {function}\n'.format(**vars(self))
+    elif self.flags:
+        return u'{task:>16s}-{pid:<5d} [{cpu:03d}] {flags:4s} {timestamp:12f}: {function}\n'.format(**vars(self))
+    else:
+        return u'{task:>16s}-{pid:<5d} [{cpu:03d}] {timestamp:12.6f}: {function}\n'.format(**vars(self))

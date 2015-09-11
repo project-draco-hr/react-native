@@ -1,0 +1,6 @@
+def __init__(self, dst_line, dst_col, src, src_line, src_col):
+    self.dst_line = dst_line
+    self.dst_col = dst_col
+    self.src = src
+    self.src_line = src_line
+    self.src_col = src_col

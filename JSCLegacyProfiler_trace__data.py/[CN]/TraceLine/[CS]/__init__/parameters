@@ -1,0 +1,8 @@
+self
+task
+pid
+tgid
+cpu
+flags
+timestamp
+function

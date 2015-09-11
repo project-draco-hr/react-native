@@ -1,0 +1,3 @@
+@property
+def is_app_trace_line(self):
+    return isinstance(self.function, AppTraceFunction)

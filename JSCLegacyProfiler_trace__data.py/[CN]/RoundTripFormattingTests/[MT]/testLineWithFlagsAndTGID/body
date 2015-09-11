@@ -1,0 +1,3 @@
+def testLineWithFlagsAndTGID(self):
+    line = u'          <idle>-0     (  550) [000] d..2  7953.258473: cpu_idle: state=1 cpu_id=0\n'
+    self.assertEqual(line, str(parse_line(line)))
