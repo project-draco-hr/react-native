@@ -1,0 +1,7 @@
+{
+  jg.writeArrayFieldStart(name);
+  for (  Object item : list) {
+    jg.writeObject(item);
+  }
+  jg.writeEndArray();
+}

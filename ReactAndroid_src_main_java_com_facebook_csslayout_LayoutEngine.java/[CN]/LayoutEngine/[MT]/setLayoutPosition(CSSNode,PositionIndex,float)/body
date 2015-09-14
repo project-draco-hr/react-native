@@ -1,0 +1,18 @@
+{
+switch (position) {
+case TOP:
+    node.layout.top=value;
+  break;
+case LEFT:
+node.layout.left=value;
+break;
+case RIGHT:
+node.layout.right=value;
+break;
+case BOTTOM:
+node.layout.bottom=value;
+break;
+default :
+throw new RuntimeException("Didn't get TOP, LEFT, RIGHT, or BOTTOM!");
+}
+}

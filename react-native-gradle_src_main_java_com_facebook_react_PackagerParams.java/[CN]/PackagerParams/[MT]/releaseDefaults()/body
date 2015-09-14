@@ -1,0 +1,9 @@
+{
+  PackagerParams params=new PackagerParams();
+  params.dev=false;
+  params.inlineSourceMap=false;
+  params.minify=true;
+  params.runModule=true;
+  params.skip=false;
+  return params;
+}

@@ -1,0 +1,5 @@
+{
+  if (mFromSource) {
+    mFromValue=getProperty(view);
+  }
+}

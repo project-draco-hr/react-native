@@ -1,0 +1,6 @@
+{
+  mName=name;
+  mLooper=looper;
+  mHandler=new MessageQueueThreadHandler(looper,exceptionHandler);
+  mAssertionErrorMessage="Expected to be called from the '" + getName() + "' thread!";
+}

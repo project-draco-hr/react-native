@@ -1,0 +1,3 @@
+{
+  return (mBorderWidth != null && !CSSConstants.isUndefined(mBorderWidth.getRaw(Spacing.ALL))) ? mBorderWidth.getRaw(Spacing.ALL) : 0f;
+}

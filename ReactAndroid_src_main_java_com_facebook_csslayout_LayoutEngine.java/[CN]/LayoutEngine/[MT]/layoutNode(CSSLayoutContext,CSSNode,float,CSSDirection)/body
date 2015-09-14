@@ -1,0 +1,13 @@
+{
+  if (needsRelayout(node,parentMaxWidth)) {
+    node.lastLayout.requestedWidth=node.layout.width;
+    node.lastLayout.requestedHeight=node.layout.height;
+    node.lastLayout.parentMaxWidth=parentMaxWidth;
+    layoutNodeImpl(layoutContext,node,parentMaxWidth,parentDirection);
+    node.lastLayout.copy(node.layout);
+  }
+ else {
+    node.layout.copy(node.lastLayout);
+  }
+  node.markHasNewLayout();
+}

@@ -1,0 +1,86 @@
+{
+  Request.Builder requestBuilder=new Request.Builder().url(url);
+  if (requestId != 0) {
+    requestBuilder.tag(requestId);
+  }
+  Headers requestHeaders=extractHeaders(headers,data);
+  if (requestHeaders == null) {
+    callback.invoke(0,null,"Unrecognized headers format");
+    return;
+  }
+  String contentType=requestHeaders.get(CONTENT_TYPE_HEADER_NAME);
+  String contentEncoding=requestHeaders.get(CONTENT_ENCODING_HEADER_NAME);
+  requestBuilder.headers(requestHeaders);
+  if (data == null) {
+    requestBuilder.method(method,null);
+  }
+ else   if (data.hasKey(REQUEST_BODY_KEY_STRING)) {
+    if (contentType == null) {
+      callback.invoke(0,null,"Payload is set but no content-type header specified");
+      return;
+    }
+    String body=data.getString(REQUEST_BODY_KEY_STRING);
+    MediaType contentMediaType=MediaType.parse(contentType);
+    if (RequestBodyUtil.isGzipEncoding(contentEncoding)) {
+      RequestBody requestBody=RequestBodyUtil.createGzip(contentMediaType,body);
+      if (requestBody == null) {
+        callback.invoke(0,null,"Failed to gzip request body");
+        return;
+      }
+      requestBuilder.method(method,requestBody);
+    }
+ else {
+      requestBuilder.method(method,RequestBody.create(contentMediaType,body));
+    }
+  }
+ else   if (data.hasKey(REQUEST_BODY_KEY_URI)) {
+    if (contentType == null) {
+      callback.invoke(0,null,"Payload is set but no content-type header specified");
+      return;
+    }
+    String uri=data.getString(REQUEST_BODY_KEY_URI);
+    InputStream fileInputStream=RequestBodyUtil.getFileInputStream(getReactApplicationContext(),uri);
+    if (fileInputStream == null) {
+      callback.invoke(0,null,"Could not retrieve file for uri " + uri);
+      return;
+    }
+    requestBuilder.method(method,RequestBodyUtil.create(MediaType.parse(contentType),fileInputStream));
+  }
+ else   if (data.hasKey(REQUEST_BODY_KEY_FORMDATA)) {
+    if (contentType == null) {
+      contentType="multipart/form-data";
+    }
+    ReadableArray parts=data.getArray(REQUEST_BODY_KEY_FORMDATA);
+    MultipartBuilder multipartBuilder=constructMultipartBody(parts,contentType,callback);
+    if (multipartBuilder == null) {
+      return;
+    }
+    requestBuilder.method(method,multipartBuilder.build());
+  }
+ else {
+    requestBuilder.method(method,null);
+  }
+  mClient.newCall(requestBuilder.build()).enqueue(new com.squareup.okhttp.Callback(){
+    @Override public void onFailure(    Request request,    IOException e){
+      if (mShuttingDown) {
+        return;
+      }
+      callback.invoke(0,null,e.getMessage());
+    }
+    @Override public void onResponse(    Response response) throws IOException {
+      if (mShuttingDown) {
+        return;
+      }
+      String responseBody;
+      try {
+        responseBody=response.body().string();
+      }
+ catch (      IOException e) {
+        callback.invoke(0,null,e.getMessage());
+        return;
+      }
+      callback.invoke(response.code(),null,responseBody);
+    }
+  }
+);
+}

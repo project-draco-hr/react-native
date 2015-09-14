@@ -1,0 +1,6 @@
+{
+  if (mTextWatcherDelegator == null) {
+    mTextWatcherDelegator=new TextWatcherDelegator();
+  }
+  return mTextWatcherDelegator;
+}

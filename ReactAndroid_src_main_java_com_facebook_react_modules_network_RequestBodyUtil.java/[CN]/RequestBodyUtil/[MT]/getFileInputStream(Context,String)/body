@@ -1,0 +1,10 @@
+{
+  try {
+    Uri fileContentUri=Uri.parse(fileContentUriStr);
+    return context.getContentResolver().openInputStream(fileContentUri);
+  }
+ catch (  Exception e) {
+    FLog.e(ReactConstants.TAG,"Could not retrieve file for contentUri " + fileContentUriStr,e);
+    return null;
+  }
+}

@@ -1,0 +1,4 @@
+{
+  name=name.toLowerCase().replace("-","_");
+  return context.getResources().getIdentifier(name,"drawable",context.getPackageName());
+}

@@ -1,0 +1,7 @@
+{
+  if (!ENABLED) {
+    mUIViewOperationQueue.enqueueUpdateLayout(Assertions.assertNotNull(node.getParent()).getReactTag(),node.getReactTag(),node.getScreenX(),node.getScreenY(),node.getScreenWidth(),node.getScreenHeight());
+    return;
+  }
+  applyLayoutBase(node);
+}

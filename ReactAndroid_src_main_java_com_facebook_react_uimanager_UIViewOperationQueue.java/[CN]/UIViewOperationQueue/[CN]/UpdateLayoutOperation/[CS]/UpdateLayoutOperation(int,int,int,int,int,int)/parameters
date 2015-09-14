@@ -1,0 +1,6 @@
+int parentTag
+int tag
+int x
+int y
+int width
+int height

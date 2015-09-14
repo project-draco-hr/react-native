@@ -1,0 +1,6 @@
+{
+  super(reactContext);
+  mClient=client;
+  mShuttingDown=false;
+  mDefaultUserAgent=defaultUserAgent;
+}

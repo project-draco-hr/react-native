@@ -1,0 +1,10 @@
+{
+  JSExecutorCallbackFuture callback=new JSExecutorCallbackFuture();
+  Assertions.assertNotNull(mWebSocketClient).executeApplicationScript(sourceURL,mInjectedObjects,callback);
+  try {
+    callback.get();
+  }
+ catch (  Throwable cause) {
+    throw new ProxyJavaScriptExecutor.ProxyExecutorException(cause);
+  }
+}

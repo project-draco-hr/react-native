@@ -1,0 +1,11 @@
+{
+  WritableMap eventData=Arguments.createMap();
+  WritableMap range=Arguments.createMap();
+  range.putDouble("start",mRangeStart);
+  range.putDouble("end",mRangeEnd);
+  eventData.putString("text",mText);
+  eventData.putString("previousText",mPreviousText);
+  eventData.putMap("range",range);
+  eventData.putInt("target",getViewTag());
+  return eventData;
+}

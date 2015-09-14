@@ -1,0 +1,13 @@
+{
+  super.updateProperties(styles);
+  if (styles.hasKey(ViewProps.FONT_SIZE)) {
+    float fontSize=styles.getFloat(ViewProps.FONT_SIZE,ViewDefaults.FONT_SIZE_SP);
+    mFontSize=(int)Math.ceil(PixelUtil.toPixelFromSP(fontSize));
+  }
+  if (styles.hasKey(PROP_TEXT_INPUT_MOST_RECENT_EVENT_COUNT)) {
+    mJsEventCount=styles.getInt(PROP_TEXT_INPUT_MOST_RECENT_EVENT_COUNT,0);
+  }
+  if (styles.hasKey(ReactTextInputManager.PROP_TEXT_INPUT_NUMLINES)) {
+    mNumLines=styles.getInt(ReactTextInputManager.PROP_TEXT_INPUT_NUMLINES,UNSET);
+  }
+}

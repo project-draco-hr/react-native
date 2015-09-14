@@ -1,0 +1,6 @@
+{
+  super(tag);
+  mRootViewTagForContext=rootViewTagForContext;
+  mClassName=className;
+  mInitialProps=initialProps;
+}

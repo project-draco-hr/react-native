@@ -1,0 +1,6 @@
+{
+  while (view != null && view.getId() <= 0) {
+    view=(View)view.getParent();
+  }
+  return view;
+}

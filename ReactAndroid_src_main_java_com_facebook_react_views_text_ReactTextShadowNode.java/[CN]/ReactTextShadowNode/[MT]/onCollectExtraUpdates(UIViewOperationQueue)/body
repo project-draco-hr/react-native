@@ -1,0 +1,9 @@
+{
+  if (mIsVirtual) {
+    return;
+  }
+  super.onCollectExtraUpdates(uiViewOperationQueue);
+  if (mPreparedSpannedText != null) {
+    uiViewOperationQueue.enqueueUpdateExtraData(getReactTag(),mPreparedSpannedText);
+  }
+}

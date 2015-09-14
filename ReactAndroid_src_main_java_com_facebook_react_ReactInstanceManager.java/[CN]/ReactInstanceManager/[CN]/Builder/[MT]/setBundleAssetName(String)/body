@@ -1,0 +1,4 @@
+{
+  mBundleAssetName=bundleAssetName;
+  return this;
+}

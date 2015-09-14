@@ -1,0 +1,14 @@
+{
+  final View[] children=Assertions.assertNotNull(mAllChildren);
+  final int count=mAllChildrenCount;
+  if (index == count - 1) {
+    children[--mAllChildrenCount]=null;
+  }
+ else   if (index >= 0 && index < count) {
+    System.arraycopy(children,index + 1,children,index,count - index - 1);
+    children[--mAllChildrenCount]=null;
+  }
+ else {
+    throw new IndexOutOfBoundsException();
+  }
+}

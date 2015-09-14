@@ -1,0 +1,3 @@
+{
+  return (mStyle == ReactTextShadowNode.UNSET ? 0 : mStyle);
+}

@@ -1,0 +1,6 @@
+{
+  if (!valuesEqual(mMeasureFunction,measureFunction)) {
+    mMeasureFunction=measureFunction;
+    dirty();
+  }
+}

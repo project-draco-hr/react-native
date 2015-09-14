@@ -1,0 +1,5 @@
+{
+  int secondType=spacingType == TOP || spacingType == BOTTOM ? VERTICAL : HORIZONTAL;
+  float defaultValue=spacingType == START || spacingType == END ? CSSConstants.UNDEFINED : 0;
+  return !CSSConstants.isUndefined(mSpacing[spacingType]) ? mSpacing[spacingType] : !CSSConstants.isUndefined(mSpacing[secondType]) ? mSpacing[secondType] : !CSSConstants.isUndefined(mSpacing[ALL]) ? mSpacing[ALL] : mDefaultSpacing != null ? mDefaultSpacing[spacingType] : defaultValue;
+}

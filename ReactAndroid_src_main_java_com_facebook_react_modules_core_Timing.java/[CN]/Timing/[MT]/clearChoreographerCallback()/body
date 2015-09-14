@@ -1,0 +1,6 @@
+{
+  if (mFrameCallbackPosted) {
+    mReactChoreographer.removeFrameCallback(ReactChoreographer.CallbackType.TIMERS_EVENTS,mFrameCallback);
+    mFrameCallbackPosted=false;
+  }
+}

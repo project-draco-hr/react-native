@@ -1,0 +1,3 @@
+{
+  return Arrays.asList(DeviceEventManagerModule.RCTDeviceEventEmitter.class,JSTimersExecution.class,RCTEventEmitter.class,AppRegistry.class,ReactNative.class,DebugComponentOwnershipModule.RCTDebugComponentOwnership.class);
+}

@@ -1,0 +1,4 @@
+int reactTag
+int[] indicesToRemove
+ViewAtIndex[] viewsToAdd
+int[] tagsToDelete

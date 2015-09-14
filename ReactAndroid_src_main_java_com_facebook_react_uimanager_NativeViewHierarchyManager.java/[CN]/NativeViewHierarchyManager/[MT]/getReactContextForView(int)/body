@@ -1,0 +1,10 @@
+{
+  if (mRootTags.get(reactTag)) {
+    return Assertions.assertNotNull(mRootViewsContext.get(reactTag));
+  }
+  View view=mTagsToViews.get(reactTag);
+  if (view == null) {
+    throw new JSApplicationIllegalArgumentException("Could not find view with tag " + reactTag);
+  }
+  return (ThemedReactContext)view.getContext();
+}

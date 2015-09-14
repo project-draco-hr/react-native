@@ -1,0 +1,5 @@
+ReactShadowNode nodeToManage
+int[] indicesToRemove
+int[] tagsToRemove
+ViewAtIndex[] viewsToAdd
+int[] tagsToDelete

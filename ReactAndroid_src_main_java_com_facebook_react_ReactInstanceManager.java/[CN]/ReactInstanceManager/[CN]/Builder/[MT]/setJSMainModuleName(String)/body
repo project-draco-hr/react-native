@@ -1,0 +1,4 @@
+{
+  mJSMainModuleName=jsMainModuleName;
+  return this;
+}

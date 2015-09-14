@@ -1,0 +1,4 @@
+float absoluteX
+float absoluteY
+UIViewOperationQueue uiViewOperationQueue
+NativeViewHierarchyOptimizer nativeViewHierarchyOptimizer

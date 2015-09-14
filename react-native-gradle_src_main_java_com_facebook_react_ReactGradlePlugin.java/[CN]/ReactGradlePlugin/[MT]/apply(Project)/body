@@ -1,0 +1,14 @@
+{
+  project.getExtensions().create("react",ReactGradleExtension.class,project);
+  project.afterEvaluate(new Action<Project>(){
+    @Override public void execute(    Project project){
+      PackageDebugJsTask packageDebugJsTask=project.getTasks().create("packageDebugJS",PackageDebugJsTask.class);
+      PackageReleaseJsTask packageReleaseJsTask=project.getTasks().create("packageReleaseJS",PackageReleaseJsTask.class);
+      packageDebugJsTask.dependsOn("mergeDebugAssets");
+      project.getTasks().getByName("processDebugResources").dependsOn(packageDebugJsTask);
+      packageReleaseJsTask.dependsOn("mergeReleaseAssets");
+      project.getTasks().getByName("processReleaseResources").dependsOn(packageReleaseJsTask);
+    }
+  }
+);
+}

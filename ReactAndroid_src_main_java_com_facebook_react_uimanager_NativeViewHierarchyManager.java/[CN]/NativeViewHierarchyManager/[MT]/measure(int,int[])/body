@@ -1,0 +1,10 @@
+{
+  UiThreadUtil.assertOnUiThread();
+  View v=mTagsToViews.get(tag);
+  if (v == null) {
+    throw new NoSuchNativeViewException("No native view for " + tag + " currently exists");
+  }
+  v.getLocationOnScreen(outputBuffer);
+  outputBuffer[2]=v.getWidth();
+  outputBuffer[3]=v.getHeight();
+}

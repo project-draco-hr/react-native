@@ -1,0 +1,12 @@
+{
+  Assertions.assertCondition(!mIsFinished,"Animation must not already be finished!");
+  mIsFinished=true;
+  if (!mCancelled) {
+    if (mAnimatedView != null) {
+      mPropertyUpdater.onFinish(mAnimatedView);
+    }
+    if (mAnimationListener != null) {
+      mAnimationListener.onFinished();
+    }
+  }
+}

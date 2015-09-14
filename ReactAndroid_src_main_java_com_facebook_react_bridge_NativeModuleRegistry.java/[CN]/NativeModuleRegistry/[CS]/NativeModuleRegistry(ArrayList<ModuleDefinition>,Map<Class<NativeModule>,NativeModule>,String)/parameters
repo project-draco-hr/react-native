@@ -1,0 +1,3 @@
+ArrayList<ModuleDefinition> moduleTable
+Map<Class<NativeModule>,NativeModule> moduleInstances
+String moduleDescriptions

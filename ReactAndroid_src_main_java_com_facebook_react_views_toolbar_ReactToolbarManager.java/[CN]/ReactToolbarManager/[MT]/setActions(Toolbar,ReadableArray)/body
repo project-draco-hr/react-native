@@ -1,0 +1,28 @@
+{
+  Menu menu=toolbar.getMenu();
+  menu.clear();
+  if (actions != null) {
+    for (int i=0; i < actions.size(); i++) {
+      ReadableMap action=actions.getMap(i);
+      MenuItem item=menu.add(Menu.NONE,Menu.NONE,i,action.getString(PROP_ACTION_TITLE));
+      String icon=action.hasKey(PROP_ACTION_ICON) ? action.getString(PROP_ACTION_ICON) : null;
+      if (icon != null) {
+        item.setIcon(getDrawableResourceByName(toolbar.getContext(),icon));
+      }
+      String show=action.hasKey(PROP_ACTION_SHOW) ? action.getString(PROP_ACTION_SHOW) : null;
+      if (show != null) {
+        int showAsAction=MenuItem.SHOW_AS_ACTION_NEVER;
+        if ("always".equals(show)) {
+          showAsAction=MenuItem.SHOW_AS_ACTION_ALWAYS;
+        }
+ else         if ("ifRoom".equals(show)) {
+          showAsAction=MenuItem.SHOW_AS_ACTION_IF_ROOM;
+        }
+        if (action.hasKey(PROP_ACTION_SHOW_WITH_TEXT) && action.getBoolean(PROP_ACTION_SHOW_WITH_TEXT)) {
+          showAsAction=showAsAction | MenuItem.SHOW_AS_ACTION_WITH_TEXT;
+        }
+        item.setShowAsAction(showAsAction);
+      }
+    }
+  }
+}

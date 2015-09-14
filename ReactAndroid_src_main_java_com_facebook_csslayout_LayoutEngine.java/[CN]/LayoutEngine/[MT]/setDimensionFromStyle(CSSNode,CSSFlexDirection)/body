@@ -1,0 +1,10 @@
+{
+  if (!CSSConstants.isUndefined(getLayoutDimension(node,getDim(axis)))) {
+    return;
+  }
+  if (!isDimDefined(node,axis)) {
+    return;
+  }
+  float maxLayoutDimension=Math.max(boundAxis(node,axis,getStyleDimension(node,getDim(axis))),getPaddingAndBorderAxis(node,axis));
+  setLayoutDimension(node,getDim(axis),maxLayoutDimension);
+}

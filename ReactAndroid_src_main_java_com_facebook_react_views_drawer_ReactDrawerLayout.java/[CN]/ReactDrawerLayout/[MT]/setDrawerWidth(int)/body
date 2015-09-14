@@ -1,0 +1,4 @@
+{
+  mDrawerWidth=(int)PixelUtil.toPixelFromDIP((float)drawerWidth);
+  setDrawerProperties();
+}

@@ -1,0 +1,4 @@
+FileChannel fc
+ByteBuffer bb
+int sz
+long offset

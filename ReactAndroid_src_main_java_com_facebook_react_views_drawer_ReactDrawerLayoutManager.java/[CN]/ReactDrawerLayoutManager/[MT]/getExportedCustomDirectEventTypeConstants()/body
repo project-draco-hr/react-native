@@ -1,0 +1,3 @@
+{
+  return MapBuilder.of(DrawerSlideEvent.EVENT_NAME,MapBuilder.of("registrationName","onDrawerSlide"),DrawerOpenedEvent.EVENT_NAME,MapBuilder.of("registrationName","onDrawerOpen"),DrawerClosedEvent.EVENT_NAME,MapBuilder.of("registrationName","onDrawerClose"),DrawerStateChangedEvent.EVENT_NAME,MapBuilder.of("registrationName","onDrawerStateChanged"));
+}

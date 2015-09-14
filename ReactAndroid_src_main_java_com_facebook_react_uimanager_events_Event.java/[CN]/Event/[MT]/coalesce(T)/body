@@ -1,0 +1,3 @@
+{
+  return (T)(getTimestampMs() > otherEvent.getTimestampMs() ? this : otherEvent);
+}

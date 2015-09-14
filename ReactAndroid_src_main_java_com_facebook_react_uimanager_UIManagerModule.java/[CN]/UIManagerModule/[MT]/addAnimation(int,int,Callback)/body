@@ -1,0 +1,4 @@
+{
+  assertViewExists(reactTag,"addAnimation");
+  mOperationsQueue.enqueueAddAnimation(reactTag,animationID,onSuccess);
+}

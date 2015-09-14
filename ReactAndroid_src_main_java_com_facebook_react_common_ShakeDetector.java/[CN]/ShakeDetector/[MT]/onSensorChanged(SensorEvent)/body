@@ -1,0 +1,15 @@
+{
+  if (sensorEvent.timestamp - mLastTimestamp < MIN_TIME_BETWEEN_SAMPLES_MS) {
+    return;
+  }
+  Assertions.assertNotNull(mTimestamps);
+  Assertions.assertNotNull(mMagnitudes);
+  float ax=sensorEvent.values[0];
+  float ay=sensorEvent.values[1];
+  float az=sensorEvent.values[2];
+  mLastTimestamp=sensorEvent.timestamp;
+  mTimestamps[mCurrentIndex]=sensorEvent.timestamp;
+  mMagnitudes[mCurrentIndex]=Math.sqrt(ax * ax + ay * ay + az * az);
+  maybeDispatchShake(sensorEvent.timestamp);
+  mCurrentIndex=(mCurrentIndex + 1) % MAX_SAMPLES;
+}

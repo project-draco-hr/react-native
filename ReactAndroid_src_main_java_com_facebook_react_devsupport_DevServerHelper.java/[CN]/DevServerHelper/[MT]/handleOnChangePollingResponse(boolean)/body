@@ -1,0 +1,15 @@
+{
+  if (mOnChangePollingEnabled) {
+    if (didServerContentChanged) {
+      UiThreadUtil.runOnUiThread(new Runnable(){
+        @Override public void run(){
+          if (mOnServerContentChangeListener != null) {
+            mOnServerContentChangeListener.onServerContentChanged();
+          }
+        }
+      }
+);
+    }
+    enqueueOnChangeEndpointLongPolling();
+  }
+}

@@ -1,0 +1,17 @@
+{
+  ReactShadowNode node=mShadowNodeRegistry.getNode(tag);
+  ReactShadowNode ancestor=mShadowNodeRegistry.getNode(ancestorTag);
+  if (node == null || ancestor == null) {
+    throw new IllegalViewOperationException("Tag " + (node == null ? tag : ancestorTag) + " does not exist");
+  }
+  if (node != ancestor) {
+    ReactShadowNode currentParent=node.getParent();
+    while (currentParent != ancestor) {
+      if (currentParent == null) {
+        throw new IllegalViewOperationException("Tag " + ancestorTag + " is not an ancestor of tag "+ tag);
+      }
+      currentParent=currentParent.getParent();
+    }
+  }
+  measureLayoutRelativeToVerifiedAncestor(node,ancestor,outputBuffer);
+}

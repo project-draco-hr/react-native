@@ -1,0 +1,5 @@
+{
+  if (PREFS_FPS_DEBUG_KEY.equals(key) || PREFS_RELOAD_ON_JS_CHANGE_KEY.equals(key)) {
+    mDebugManager.reloadSettings();
+  }
+}

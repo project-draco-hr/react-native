@@ -1,0 +1,10 @@
+{
+  if (getChildCount(parent) >= 2) {
+    throw new JSApplicationIllegalArgumentException("The Drawer cannot have more than two children");
+  }
+  if (index != 0 && index != 1) {
+    throw new JSApplicationIllegalArgumentException("The only valid indices for drawer's child are 0 or 1. Got " + index + " instead.");
+  }
+  parent.addView(child,index);
+  parent.setDrawerProperties();
+}

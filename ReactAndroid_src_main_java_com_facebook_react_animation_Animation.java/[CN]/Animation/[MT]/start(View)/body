@@ -1,0 +1,5 @@
+{
+  mAnimatedView=view;
+  mPropertyUpdater.prepare(view);
+  run();
+}

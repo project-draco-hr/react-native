@@ -1,0 +1,6 @@
+{
+  Assertions.assertCondition(getParent() == null,"Must remove from no opt parent first");
+  Assertions.assertCondition(mNativeParent == null,"Must remove from native parent first");
+  Assertions.assertCondition(getNativeChildCount() == 0,"Must remove all native children first");
+  mIsLayoutOnly=isLayoutOnly;
+}

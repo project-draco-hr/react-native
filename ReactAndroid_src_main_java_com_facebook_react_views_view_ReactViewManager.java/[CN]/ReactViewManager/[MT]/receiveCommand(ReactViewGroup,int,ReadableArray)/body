@@ -1,0 +1,25 @@
+{
+switch (commandId) {
+case CMD_HOTSPOT_UPDATE:
+{
+      if (args == null || args.size() != 2) {
+        throw new JSApplicationIllegalArgumentException("Illegal number of arguments for 'updateHotspot' command");
+      }
+      if (Build.VERSION.SDK_INT >= 21) {
+        root.getLocationOnScreen(sLocationBuf);
+        float x=PixelUtil.toPixelFromDIP(args.getDouble(0)) - sLocationBuf[0];
+        float y=PixelUtil.toPixelFromDIP(args.getDouble(1)) - sLocationBuf[1];
+        root.drawableHotspotChanged(x,y);
+      }
+      break;
+    }
+case CMD_SET_PRESSED:
+{
+    if (args == null || args.size() != 1) {
+      throw new JSApplicationIllegalArgumentException("Illegal number of arguments for 'setPressed' command");
+    }
+    root.setPressed(args.getBoolean(0));
+    break;
+  }
+}
+}

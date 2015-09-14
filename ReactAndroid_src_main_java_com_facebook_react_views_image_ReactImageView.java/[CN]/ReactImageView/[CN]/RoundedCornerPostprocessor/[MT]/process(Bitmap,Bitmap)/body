@@ -1,0 +1,13 @@
+{
+  output.setHasAlpha(true);
+  if (mBorderRadius < 0.01f) {
+    super.process(output,source);
+    return;
+  }
+  Paint paint=new Paint();
+  paint.setAntiAlias(true);
+  paint.setShader(new BitmapShader(source,Shader.TileMode.CLAMP,Shader.TileMode.CLAMP));
+  Canvas canvas=new Canvas(output);
+  float radius=getRadius(source);
+  canvas.drawRoundRect(new RectF(0,0,source.getWidth(),source.getHeight()),radius,radius,paint);
+}

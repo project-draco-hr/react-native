@@ -1,0 +1,25 @@
+{
+  Systrace.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"DispatchEventsRunnable");
+  try {
+    mHasDispatchScheduled=false;
+    Assertions.assertNotNull(mRCTEventEmitter);
+synchronized (mEventsToDispatchLock) {
+      if (mEventsToDispatchSize > 1) {
+        Arrays.sort(mEventsToDispatch,0,mEventsToDispatchSize,EVENT_COMPARATOR);
+      }
+      for (int eventIdx=0; eventIdx < mEventsToDispatchSize; eventIdx++) {
+        Event event=mEventsToDispatch[eventIdx];
+        if (event == null) {
+          continue;
+        }
+        event.dispatch(mRCTEventEmitter);
+        event.dispose();
+      }
+      clearEventsToDispatch();
+      mEventCookieToLastEventIdx.clear();
+    }
+  }
+  finally {
+    Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);
+  }
+}

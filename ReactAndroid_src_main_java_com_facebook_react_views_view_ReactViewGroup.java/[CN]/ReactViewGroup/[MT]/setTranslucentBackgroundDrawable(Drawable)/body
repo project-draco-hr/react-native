@@ -1,0 +1,10 @@
+{
+  super.setBackground(null);
+  if (mReactBackgroundDrawable != null && background != null) {
+    LayerDrawable layerDrawable=new LayerDrawable(new Drawable[]{mReactBackgroundDrawable,background});
+    super.setBackground(layerDrawable);
+  }
+ else   if (background != null) {
+    super.setBackground(background);
+  }
+}

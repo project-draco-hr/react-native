@@ -1,0 +1,7 @@
+{
+  ReactGradleExtension config=project.getExtensions().findByType(ReactGradleExtension.class);
+  if (config == null) {
+    config=new ReactGradleExtension(project);
+  }
+  return config;
+}

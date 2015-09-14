@@ -1,0 +1,11 @@
+{
+  initializeSoLoaderIfNecessary(applicationContext);
+  mApplicationContext=applicationContext;
+  mBundleAssetName=bundleAssetName;
+  mJSMainModuleName=jsMainModuleName;
+  mPackages=packages;
+  mUseDeveloperSupport=useDeveloperSupport;
+  mDevSupportManager=new DevSupportManager(applicationContext,mDevInterface,mJSMainModuleName,useDeveloperSupport);
+  mBridgeIdleDebugListener=bridgeIdleDebugListener;
+  mLifecycleState=initialLifecycleState;
+}

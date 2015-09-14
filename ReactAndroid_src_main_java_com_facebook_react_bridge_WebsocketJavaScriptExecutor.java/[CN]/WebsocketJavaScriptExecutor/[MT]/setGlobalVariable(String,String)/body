@@ -1,0 +1,3 @@
+{
+  mInjectedObjects.put(propertyName,jsonEncodedValue);
+}

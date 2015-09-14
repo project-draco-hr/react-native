@@ -1,0 +1,5 @@
+{
+  if (props.hasKey(PROP_REMOVE_CLIPPED_SUBVIEWS)) {
+    view.setRemoveClippedSubviews(props.getBoolean(PROP_REMOVE_CLIPPED_SUBVIEWS,false));
+  }
+}

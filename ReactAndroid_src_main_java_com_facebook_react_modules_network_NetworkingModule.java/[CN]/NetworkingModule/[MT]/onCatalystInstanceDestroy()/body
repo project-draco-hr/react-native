@@ -1,0 +1,4 @@
+{
+  mShuttingDown=true;
+  mClient.cancel(null);
+}

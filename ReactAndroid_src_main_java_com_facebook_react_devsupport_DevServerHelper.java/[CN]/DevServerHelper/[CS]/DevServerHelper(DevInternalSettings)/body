@@ -1,0 +1,7 @@
+{
+  mSettings=settings;
+  mClient=new OkHttpClient();
+  mClient.setConnectTimeout(HTTP_CONNECT_TIMEOUT_MS,TimeUnit.MILLISECONDS);
+  mClient.setReadTimeout(0,TimeUnit.MILLISECONDS);
+  mClient.setWriteTimeout(0,TimeUnit.MILLISECONDS);
+}

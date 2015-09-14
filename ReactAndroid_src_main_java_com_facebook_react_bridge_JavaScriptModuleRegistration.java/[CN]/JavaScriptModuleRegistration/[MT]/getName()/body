@@ -1,0 +1,8 @@
+{
+  String name=mModuleInterface.getSimpleName();
+  int dollarSignIndex=name.lastIndexOf('$');
+  if (dollarSignIndex != -1) {
+    name=name.substring(dollarSignIndex + 1);
+  }
+  return name;
+}

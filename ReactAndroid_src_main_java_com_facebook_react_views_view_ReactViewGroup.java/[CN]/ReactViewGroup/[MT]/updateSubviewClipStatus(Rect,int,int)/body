@@ -1,0 +1,26 @@
+{
+  View child=Assertions.assertNotNull(mAllChildren)[idx];
+  sHelperRect.set(child.getLeft(),child.getTop(),child.getRight(),child.getBottom());
+  boolean intersects=clippingRect.intersects(sHelperRect.left,sHelperRect.top,sHelperRect.right,sHelperRect.bottom);
+  boolean needUpdateClippingRecursive=false;
+  if (!intersects && child.getParent() != null) {
+    super.removeViewsInLayout(idx - clippedSoFar,1);
+    needUpdateClippingRecursive=true;
+  }
+ else   if (intersects && child.getParent() == null) {
+    super.addViewInLayout(child,idx - clippedSoFar,sDefaultLayoutParam,true);
+    invalidate();
+    needUpdateClippingRecursive=true;
+  }
+ else   if (intersects && !clippingRect.contains(sHelperRect)) {
+    needUpdateClippingRecursive=true;
+  }
+  if (needUpdateClippingRecursive) {
+    if (child instanceof ReactClippingViewGroup) {
+      ReactClippingViewGroup clippingChild=(ReactClippingViewGroup)child;
+      if (clippingChild.getRemoveClippedSubviews()) {
+        clippingChild.updateClippingRect();
+      }
+    }
+  }
+}

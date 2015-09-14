@@ -1,0 +1,3 @@
+{
+  view.setRotation((float)Math.toDegrees(propertyValue));
+}

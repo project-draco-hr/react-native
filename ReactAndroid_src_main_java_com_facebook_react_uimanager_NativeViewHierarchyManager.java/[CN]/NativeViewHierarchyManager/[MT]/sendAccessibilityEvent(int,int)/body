@@ -1,0 +1,7 @@
+{
+  View view=mTagsToViews.get(tag);
+  if (view == null) {
+    throw new JSApplicationIllegalArgumentException("Could not find view with tag " + tag);
+  }
+  AccessibilityHelper.sendAccessibilityEvent(view,eventType);
+}

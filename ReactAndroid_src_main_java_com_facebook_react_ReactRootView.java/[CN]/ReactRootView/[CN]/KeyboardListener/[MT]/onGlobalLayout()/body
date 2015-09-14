@@ -1,0 +1,23 @@
+{
+  if (mReactInstanceManager == null || !mIsAttachedToInstance || mReactInstanceManager.getCurrentReactContext() == null) {
+    FLog.w(ReactConstants.TAG,"Unable to dispatch keyboard events in JS as the react instance has not been attached");
+    return;
+  }
+  getRootView().getWindowVisibleDisplayFrame(mVisibleViewArea);
+  final int heightDiff=DisplayMetricsHolder.getDisplayMetrics().heightPixels - mVisibleViewArea.bottom;
+  if (mKeyboardHeight != heightDiff && heightDiff > 0) {
+    mKeyboardHeight=heightDiff;
+    WritableMap params=Arguments.createMap();
+    WritableMap coordinates=Arguments.createMap();
+    coordinates.putDouble("screenY",PixelUtil.toDIPFromPixel(mVisibleViewArea.bottom));
+    coordinates.putDouble("screenX",PixelUtil.toDIPFromPixel(mVisibleViewArea.left));
+    coordinates.putDouble("width",PixelUtil.toDIPFromPixel(mVisibleViewArea.width()));
+    coordinates.putDouble("height",PixelUtil.toDIPFromPixel(mKeyboardHeight));
+    params.putMap("endCoordinates",coordinates);
+    sendEvent("keyboardDidShow",params);
+  }
+ else   if (mKeyboardHeight != 0 && heightDiff == 0) {
+    mKeyboardHeight=heightDiff;
+    sendEvent("keyboardDidHide",null);
+  }
+}

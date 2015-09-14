@@ -1,0 +1,12 @@
+{
+  int requestID=mRequestID.getAndIncrement();
+  mCallbacks.put(requestID,callback);
+  try {
+    JsonGenerator jg=startMessageObject(requestID);
+    jg.writeStringField("method","prepareJSRuntime");
+    sendMessage(requestID,endMessageObject(jg));
+  }
+ catch (  IOException e) {
+    triggerRequestFailure(requestID,e);
+  }
+}

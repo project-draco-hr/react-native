@@ -1,0 +1,35 @@
+{
+  final String bundleURL=createBundleURL(getDebugServerHost(),jsModulePath);
+  Request request=new Request.Builder().url(bundleURL).build();
+  Call call=mClient.newCall(request);
+  call.enqueue(new Callback(){
+    @Override public void onFailure(    Request request,    IOException e){
+      callback.onFailure(e);
+    }
+    @Override public void onResponse(    Response response) throws IOException {
+      if (!response.isSuccessful()) {
+        String body=response.body().string();
+        DebugServerException debugServerException=DebugServerException.parse(body);
+        if (debugServerException != null) {
+          callback.onFailure(debugServerException);
+        }
+ else {
+          callback.onFailure(new IOException("Unexpected response code: " + response.code()));
+        }
+        return;
+      }
+      Sink output=null;
+      try {
+        output=Okio.sink(outputFile);
+        Okio.buffer(response.body().source()).readAll(output);
+        callback.onSuccess();
+      }
+  finally {
+        if (output != null) {
+          output.close();
+        }
+      }
+    }
+  }
+);
+}

@@ -1,0 +1,9 @@
+{
+  left=layout.left;
+  top=layout.top;
+  right=layout.right;
+  bottom=layout.bottom;
+  width=layout.width;
+  height=layout.height;
+  direction=layout.direction;
+}

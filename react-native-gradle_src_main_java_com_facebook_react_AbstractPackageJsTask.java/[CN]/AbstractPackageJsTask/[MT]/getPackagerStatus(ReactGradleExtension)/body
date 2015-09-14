@@ -1,0 +1,16 @@
+{
+  try {
+    URL statusUrl=new URI("http",config.getPackagerHost(),"/status",null,null).toURL();
+    HttpURLConnection conn=(HttpURLConnection)statusUrl.openConnection();
+    if (conn.getResponseCode() != 200) {
+      return PackagerStatus.UNKNOWN;
+    }
+    InputStream is=conn.getInputStream();
+    String status=IOUtils.toString(is);
+    IOUtils.closeQuietly(is);
+    return status.contains("packager-status:running") ? PackagerStatus.RUNNING : PackagerStatus.UNKNOWN;
+  }
+ catch (  IOException e) {
+    return PackagerStatus.NOT_RUNNING;
+  }
+}

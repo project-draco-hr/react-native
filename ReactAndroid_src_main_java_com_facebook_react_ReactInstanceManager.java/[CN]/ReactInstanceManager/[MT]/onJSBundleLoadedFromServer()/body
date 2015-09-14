@@ -1,0 +1,3 @@
+{
+  recreateReactContext(new JSCJavaScriptExecutor(),JSBundleLoader.createCachedBundleFromNetworkLoader(mDevSupportManager.getSourceUrl(),mDevSupportManager.getDownloadedJSBundleFile()));
+}

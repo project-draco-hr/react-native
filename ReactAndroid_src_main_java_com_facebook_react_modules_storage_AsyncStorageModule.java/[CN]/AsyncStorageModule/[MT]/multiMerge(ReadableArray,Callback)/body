@@ -1,0 +1,41 @@
+{
+  new GuardedAsyncTask<Void,Void>(getReactApplicationContext()){
+    @Override protected void doInBackgroundGuarded(    Void... params){
+      if (!ensureDatabase()) {
+        callback.invoke(AsyncStorageErrorUtil.getDBError(null));
+        return;
+      }
+      Assertions.assertNotNull(mDb).beginTransaction();
+      try {
+        for (int idx=0; idx < keyValueArray.size(); idx++) {
+          if (keyValueArray.getArray(idx).size() != 2) {
+            callback.invoke(AsyncStorageErrorUtil.getInvalidValueError(null));
+            return;
+          }
+          if (keyValueArray.getArray(idx).getString(0) == null) {
+            callback.invoke(AsyncStorageErrorUtil.getInvalidKeyError(null));
+            return;
+          }
+          if (keyValueArray.getArray(idx).getString(1) == null) {
+            callback.invoke(AsyncStorageErrorUtil.getInvalidValueError(null));
+            return;
+          }
+          if (!AsyncLocalStorageUtil.mergeImpl(mDb,keyValueArray.getArray(idx).getString(0),keyValueArray.getArray(idx).getString(1))) {
+            callback.invoke(AsyncStorageErrorUtil.getDBError(null));
+            return;
+          }
+        }
+        mDb.setTransactionSuccessful();
+      }
+ catch (      Exception e) {
+        FLog.w(ReactConstants.TAG,e.getMessage(),e);
+        callback.invoke(AsyncStorageErrorUtil.getError(null,e.getMessage()));
+      }
+ finally {
+        mDb.endTransaction();
+      }
+      callback.invoke();
+    }
+  }
+.execute();
+}

@@ -1,0 +1,14 @@
+{
+  String oldValue=getItemImpl(db,key);
+  String newValue;
+  if (oldValue == null) {
+    newValue=value;
+  }
+ else {
+    JSONObject oldJSON=new JSONObject(oldValue);
+    JSONObject newJSON=new JSONObject(value);
+    deepMergeInto(oldJSON,newJSON);
+    newValue=oldJSON.toString();
+  }
+  return setItemImpl(db,key,newValue);
+}

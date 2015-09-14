@@ -1,0 +1,9 @@
+{
+  if (isRowDirection(axis)) {
+    float leadingBorder=node.style.border.getRaw(Spacing.START);
+    if (!CSSConstants.isUndefined(leadingBorder)) {
+      return leadingBorder;
+    }
+  }
+  return getBorder(node,getLeading(axis));
+}

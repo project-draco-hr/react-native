@@ -1,0 +1,13 @@
+{
+  if (catalystInstance == null) {
+    throw new IllegalArgumentException("CatalystInstance cannot be null.");
+  }
+  if (mCatalystInstance != null) {
+    throw new IllegalStateException("ReactContext has been already initialized");
+  }
+  mCatalystInstance=catalystInstance;
+  CatalystQueueConfiguration queueConfig=catalystInstance.getCatalystQueueConfiguration();
+  mUiMessageQueueThread=queueConfig.getUIQueueThread();
+  mNativeModulesMessageQueueThread=queueConfig.getNativeModulesQueueThread();
+  mJSMessageQueueThread=queueConfig.getJSQueueThread();
+}

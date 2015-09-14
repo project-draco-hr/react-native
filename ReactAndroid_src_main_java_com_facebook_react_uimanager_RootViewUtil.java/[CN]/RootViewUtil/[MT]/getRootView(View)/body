@@ -1,0 +1,12 @@
+{
+  View current=reactView;
+  while (true) {
+    if (current instanceof RootView) {
+      return (RootView)current;
+    }
+    ViewParent next=current.getParent();
+    Assertions.assertNotNull(next);
+    Assertions.assertCondition(next instanceof View);
+    current=(View)next;
+  }
+}

@@ -1,0 +1,12 @@
+{
+  Assertions.assertNotNull(manager);
+  Sensor accelerometer=manager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+  if (accelerometer != null) {
+    mSensorManager=manager;
+    mLastTimestamp=-1;
+    mCurrentIndex=0;
+    mMagnitudes=new double[MAX_SAMPLES];
+    mTimestamps=new long[MAX_SAMPLES];
+    mSensorManager.registerListener(this,accelerometer,SensorManager.SENSOR_DELAY_UI);
+  }
+}

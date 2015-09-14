@@ -1,0 +1,23 @@
+{
+  if (!ENABLED) {
+    mUIViewOperationQueue.enqueueManageChildren(nodeToManage.getReactTag(),indicesToRemove,viewsToAdd,tagsToDelete);
+    return;
+  }
+  for (int i=0; i < tagsToRemove.length; i++) {
+    int tagToRemove=tagsToRemove[i];
+    boolean delete=false;
+    for (int j=0; j < tagsToDelete.length; j++) {
+      if (tagsToDelete[j] == tagToRemove) {
+        delete=true;
+        break;
+      }
+    }
+    ReactShadowNode nodeToRemove=mShadowNodeRegistry.getNode(tagToRemove);
+    removeNodeFromParent(nodeToRemove,delete);
+  }
+  for (int i=0; i < viewsToAdd.length; i++) {
+    ViewAtIndex toAdd=viewsToAdd[i];
+    ReactShadowNode nodeToAdd=mShadowNodeRegistry.getNode(toAdd.mTag);
+    addNodeToNode(nodeToManage,nodeToAdd,toAdd.mIndex);
+  }
+}

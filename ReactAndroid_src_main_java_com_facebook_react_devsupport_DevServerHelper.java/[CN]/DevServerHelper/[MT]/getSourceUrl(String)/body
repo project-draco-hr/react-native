@@ -1,0 +1,3 @@
+{
+  return String.format(Locale.US,BUNDLE_URL_FORMAT,getDebugServerHost(),mainModuleName);
+}

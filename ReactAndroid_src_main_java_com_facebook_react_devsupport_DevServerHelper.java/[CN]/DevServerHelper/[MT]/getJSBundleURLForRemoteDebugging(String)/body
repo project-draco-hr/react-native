@@ -1,0 +1,3 @@
+{
+  return createBundleURL(getHostForJSProxy(),mainModuleName);
+}

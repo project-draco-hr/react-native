@@ -1,0 +1,9 @@
+{
+  if (mIsFinished || mCancelled) {
+    return;
+  }
+  mCancelled=true;
+  if (mAnimationListener != null) {
+    mAnimationListener.onCancel();
+  }
+}

@@ -1,0 +1,48 @@
+{
+  if (mIsDevSupportEnabled) {
+    if (mDebugOverlayController != null) {
+      mDebugOverlayController.setFpsDebugViewVisible(mDevSettings.isFpsDebugEnabled());
+    }
+    if (!mIsShakeDetectorStarted) {
+      mShakeDetector.start((SensorManager)mApplicationContext.getSystemService(Context.SENSOR_SERVICE));
+      mIsShakeDetectorStarted=true;
+    }
+    if (!mIsReceiverRegistered) {
+      IntentFilter filter=new IntentFilter();
+      filter.addAction(DevServerHelper.getReloadAppAction(mApplicationContext));
+      mApplicationContext.registerReceiver(mReloadAppBroadcastReceiver,filter);
+      mIsReceiverRegistered=true;
+    }
+    if (mDevSettings.isReloadOnJSChangeEnabled()) {
+      mDevServerHelper.startPollingOnChangeEndpoint(new DevServerHelper.OnServerContentChangeListener(){
+        @Override public void onServerContentChanged(){
+          handleReloadJS();
+        }
+      }
+);
+    }
+ else {
+      mDevServerHelper.stopPollingOnChangeEndpoint();
+    }
+  }
+ else {
+    if (mDebugOverlayController != null) {
+      mDebugOverlayController.setFpsDebugViewVisible(false);
+    }
+    if (mIsShakeDetectorStarted) {
+      mShakeDetector.stop();
+      mIsShakeDetectorStarted=false;
+    }
+    if (mIsReceiverRegistered) {
+      mApplicationContext.unregisterReceiver(mReloadAppBroadcastReceiver);
+      mIsReceiverRegistered=false;
+    }
+    if (mRedBoxDialog != null) {
+      mRedBoxDialog.dismiss();
+    }
+    if (mDevOptionsDialog != null) {
+      mDevOptionsDialog.dismiss();
+    }
+    mDevServerHelper.stopPollingOnChangeEndpoint();
+  }
+}

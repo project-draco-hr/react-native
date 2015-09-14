@@ -1,0 +1,3 @@
+BundleDownloadCallback callback
+String jsModulePath
+File outputFile

@@ -1,0 +1,3 @@
+{
+  ReactChoreographer.getInstance().removeFrameCallback(ReactChoreographer.CallbackType.DISPATCH_UI,mDispatchUIFrameCallback);
+}

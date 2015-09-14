@@ -1,0 +1,14 @@
+{
+switch (axis) {
+case COLUMN:
+    return PositionIndex.TOP;
+case COLUMN_REVERSE:
+  return PositionIndex.BOTTOM;
+case ROW:
+return PositionIndex.LEFT;
+case ROW_REVERSE:
+return PositionIndex.RIGHT;
+default :
+throw new RuntimeException("Didn't get TOP, LEFT, RIGHT, or BOTTOM!");
+}
+}

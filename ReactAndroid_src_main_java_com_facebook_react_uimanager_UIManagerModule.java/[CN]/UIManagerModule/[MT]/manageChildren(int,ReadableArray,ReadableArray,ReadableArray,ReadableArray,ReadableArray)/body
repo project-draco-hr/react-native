@@ -1,0 +1,71 @@
+{
+  ReactShadowNode cssNodeToManage=mShadowNodeRegistry.getNode(viewTag);
+  int numToMove=moveFrom == null ? 0 : moveFrom.size();
+  int numToAdd=addChildTags == null ? 0 : addChildTags.size();
+  int numToRemove=removeFrom == null ? 0 : removeFrom.size();
+  if (numToMove != 0 && (moveTo == null || numToMove != moveTo.size())) {
+    throw new IllegalViewOperationException("Size of moveFrom != size of moveTo!");
+  }
+  if (numToAdd != 0 && (addAtIndices == null || numToAdd != addAtIndices.size())) {
+    throw new IllegalViewOperationException("Size of addChildTags != size of addAtIndices!");
+  }
+  ViewAtIndex[] viewsToAdd=new ViewAtIndex[numToMove + numToAdd];
+  int[] indicesToRemove=new int[numToMove + numToRemove];
+  int[] tagsToRemove=new int[indicesToRemove.length];
+  int[] tagsToDelete=new int[numToRemove];
+  if (numToMove > 0) {
+    Assertions.assertNotNull(moveFrom);
+    Assertions.assertNotNull(moveTo);
+    for (int i=0; i < numToMove; i++) {
+      int moveFromIndex=moveFrom.getInt(i);
+      int tagToMove=cssNodeToManage.getChildAt(moveFromIndex).getReactTag();
+      viewsToAdd[i]=new ViewAtIndex(tagToMove,moveTo.getInt(i));
+      indicesToRemove[i]=moveFromIndex;
+      tagsToRemove[i]=tagToMove;
+    }
+  }
+  if (numToAdd > 0) {
+    Assertions.assertNotNull(addChildTags);
+    Assertions.assertNotNull(addAtIndices);
+    for (int i=0; i < numToAdd; i++) {
+      int viewTagToAdd=addChildTags.getInt(i);
+      int indexToAddAt=addAtIndices.getInt(i);
+      viewsToAdd[numToMove + i]=new ViewAtIndex(viewTagToAdd,indexToAddAt);
+    }
+  }
+  if (numToRemove > 0) {
+    Assertions.assertNotNull(removeFrom);
+    for (int i=0; i < numToRemove; i++) {
+      int indexToRemove=removeFrom.getInt(i);
+      int tagToRemove=cssNodeToManage.getChildAt(indexToRemove).getReactTag();
+      indicesToRemove[numToMove + i]=indexToRemove;
+      tagsToRemove[numToMove + i]=tagToRemove;
+      tagsToDelete[i]=tagToRemove;
+    }
+  }
+  Arrays.sort(viewsToAdd,ViewAtIndex.COMPARATOR);
+  Arrays.sort(indicesToRemove);
+  int lastIndexRemoved=-1;
+  for (int i=indicesToRemove.length - 1; i >= 0; i--) {
+    int indexToRemove=indicesToRemove[i];
+    if (indexToRemove == lastIndexRemoved) {
+      throw new IllegalViewOperationException("Repeated indices in Removal list for view tag: " + viewTag);
+    }
+    cssNodeToManage.removeChildAt(indicesToRemove[i]);
+    lastIndexRemoved=indicesToRemove[i];
+  }
+  for (int i=0; i < viewsToAdd.length; i++) {
+    ViewAtIndex viewAtIndex=viewsToAdd[i];
+    ReactShadowNode cssNodeToAdd=mShadowNodeRegistry.getNode(viewAtIndex.mTag);
+    if (cssNodeToAdd == null) {
+      throw new IllegalViewOperationException("Trying to add unknown view tag: " + viewAtIndex.mTag);
+    }
+    cssNodeToManage.addChildAt(cssNodeToAdd,viewAtIndex.mIndex);
+  }
+  if (!cssNodeToManage.isVirtual() && !cssNodeToManage.isVirtualAnchor()) {
+    mNativeViewHierarchyOptimizer.handleManageChildren(cssNodeToManage,indicesToRemove,tagsToRemove,viewsToAdd,tagsToDelete);
+  }
+  for (int i=0; i < tagsToDelete.length; i++) {
+    removeCSSNode(tagsToDelete[i]);
+  }
+}

@@ -1,0 +1,7 @@
+{
+  mShuttingDown=true;
+  if (mDb != null && mDb.isOpen()) {
+    mDb.close();
+    mDb=null;
+  }
+}

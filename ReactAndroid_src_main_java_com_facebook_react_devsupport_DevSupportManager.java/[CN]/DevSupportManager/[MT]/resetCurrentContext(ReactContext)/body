@@ -1,0 +1,19 @@
+{
+  if (mCurrentContext == reactContext) {
+    return;
+  }
+  if (mIsCurrentlyProfiling) {
+    mIsCurrentlyProfiling=false;
+    String profileName=(Environment.getExternalStorageDirectory().getPath() + "/profile_" + mProfileIndex+ ".json");
+    mProfileIndex++;
+    mCurrentContext.getCatalystInstance().getBridge().stopProfiler("profile",profileName);
+  }
+  mCurrentContext=reactContext;
+  if (mDebugOverlayController != null) {
+    mDebugOverlayController.setFpsDebugViewVisible(false);
+  }
+  if (reactContext != null) {
+    mDebugOverlayController=new DebugOverlayController(reactContext);
+  }
+  reloadSettings();
+}

@@ -1,0 +1,9 @@
+{
+  Assertions.assertCondition(!mIsLayoutOnly);
+  Assertions.assertCondition(!child.mIsLayoutOnly);
+  if (mNativeChildren == null) {
+    mNativeChildren=new ArrayList<>(4);
+  }
+  mNativeChildren.add(nativeIndex,child);
+  child.mNativeParent=this;
+}

@@ -1,0 +1,3 @@
+{
+  return !CSSConstants.isUndefined(getStylePosition(node,position));
+}

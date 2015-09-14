@@ -1,0 +1,13 @@
+{
+  if (mUseDeveloperSupport) {
+    if (mDevSupportManager.hasUpToDateJSBundleInCache()) {
+      onJSBundleLoadedFromServer();
+      return;
+    }
+ else     if (mBundleAssetName == null || !mDevSupportManager.hasBundleInAssets(mBundleAssetName)) {
+      mDevSupportManager.handleReloadJS();
+      return;
+    }
+  }
+  recreateReactContext(new JSCJavaScriptExecutor(),JSBundleLoader.createAssetLoader(mApplicationContext.getAssets(),mBundleAssetName));
+}

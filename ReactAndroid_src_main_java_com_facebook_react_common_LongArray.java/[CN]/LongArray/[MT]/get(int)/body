@@ -1,0 +1,6 @@
+{
+  if (index >= mLength) {
+    throw new IndexOutOfBoundsException("" + index + " >= "+ mLength);
+  }
+  return mArray[index];
+}

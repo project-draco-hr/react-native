@@ -1,0 +1,3 @@
+{
+  sb.setSpan(what,start,end,Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+}

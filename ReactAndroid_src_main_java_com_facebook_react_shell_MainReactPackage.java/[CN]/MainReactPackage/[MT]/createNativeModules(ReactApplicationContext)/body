@@ -1,0 +1,3 @@
+{
+  return Arrays.<NativeModule>asList(new AsyncStorageModule(reactContext),new FrescoModule(reactContext),new NetworkingModule(reactContext),new ToastModule(reactContext));
+}

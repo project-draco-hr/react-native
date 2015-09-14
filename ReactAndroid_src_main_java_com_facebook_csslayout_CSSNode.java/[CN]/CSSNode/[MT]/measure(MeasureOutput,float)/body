@@ -1,0 +1,9 @@
+{
+  if (!isMeasureDefined()) {
+    throw new RuntimeException("Measure function isn't defined!");
+  }
+  measureOutput.height=CSSConstants.UNDEFINED;
+  measureOutput.width=CSSConstants.UNDEFINED;
+  Assertions.assertNotNull(mMeasureFunction).measure(this,width,measureOutput);
+  return measureOutput;
+}

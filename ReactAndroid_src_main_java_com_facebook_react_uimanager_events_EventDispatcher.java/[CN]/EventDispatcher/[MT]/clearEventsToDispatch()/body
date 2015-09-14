@@ -1,0 +1,4 @@
+{
+  Arrays.fill(mEventsToDispatch,0,mEventsToDispatchSize,null);
+  mEventsToDispatchSize=0;
+}

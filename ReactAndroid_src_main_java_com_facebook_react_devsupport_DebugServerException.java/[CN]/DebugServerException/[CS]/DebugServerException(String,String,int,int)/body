@@ -1,0 +1,6 @@
+{
+  this.description=description;
+  this.fileName=fileName;
+  this.lineNumber=lineNumber;
+  this.column=column;
+}

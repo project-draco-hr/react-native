@@ -1,0 +1,7 @@
+{
+  if (keyCode == KeyEvent.KEYCODE_ENTER) {
+    hideSoftKeyboard();
+    return true;
+  }
+  return super.onKeyUp(keyCode,event);
+}

@@ -1,0 +1,3 @@
+{
+  return node.isDirty() || !FloatUtil.floatsEqual(node.lastLayout.requestedHeight,node.layout.height) || !FloatUtil.floatsEqual(node.lastLayout.requestedWidth,node.layout.width)|| !FloatUtil.floatsEqual(node.lastLayout.parentMaxWidth,parentMaxWidth);
+}

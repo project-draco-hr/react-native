@@ -1,0 +1,20 @@
+{
+  if (mShouldStop) {
+    return;
+  }
+  if (mFirstFrameTime == -1) {
+    mFirstFrameTime=l;
+  }
+  long lastFrameStartTime=mLastFrameTime;
+  mLastFrameTime=l;
+  if (mDidJSUpdateUiDuringFrameDetector.getDidJSHitFrameAndCleanup(lastFrameStartTime,l)) {
+    mNumFrameCallbacksWithBatchDispatches++;
+  }
+  mNumFrameCallbacks++;
+  if (mIsRecordingFpsInfoAtEachFrame) {
+    Assertions.assertNotNull(mTimeToFps);
+    FpsInfo info=new FpsInfo(getNumFrames(),getNumJSFrames(),getExpectedNumFrames(),getFPS(),getJSFPS(),getTotalTimeMS());
+    mTimeToFps.put(System.currentTimeMillis(),info);
+  }
+  mChoreographer.postFrameCallback(this);
+}

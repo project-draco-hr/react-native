@@ -1,0 +1,26 @@
+{
+  final ArrayList<UIOperation> operations=mOperations.isEmpty() ? null : mOperations;
+  if (operations != null) {
+    mOperations=new ArrayList<>();
+  }
+  mUIManagerModule.notifyOnViewHierarchyUpdateEnqueued();
+synchronized (mDispatchRunnablesLock) {
+    mDispatchUIRunnables.add(new Runnable(){
+      @Override public void run(){
+        SystraceMessage.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"DispatchUI").arg("BatchId",batchId).flush();
+        try {
+          if (operations != null) {
+            for (int i=0; i < operations.size(); i++) {
+              operations.get(i).execute();
+            }
+          }
+          mUIManagerModule.notifyOnViewHierarchyUpdateFinished();
+        }
+  finally {
+          Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);
+        }
+      }
+    }
+);
+  }
+}

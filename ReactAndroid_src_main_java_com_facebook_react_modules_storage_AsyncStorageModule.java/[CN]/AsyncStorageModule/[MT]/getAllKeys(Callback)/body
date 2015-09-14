@@ -1,0 +1,30 @@
+{
+  new GuardedAsyncTask<Void,Void>(getReactApplicationContext()){
+    @Override protected void doInBackgroundGuarded(    Void... params){
+      if (!ensureDatabase()) {
+        callback.invoke(AsyncStorageErrorUtil.getDBError(null),null);
+        return;
+      }
+      WritableArray data=Arguments.createArray();
+      String[] columns={KEY_COLUMN};
+      Cursor cursor=Assertions.assertNotNull(mDb).query(TABLE_CATALYST,columns,null,null,null,null,null);
+      try {
+        if (cursor.moveToFirst()) {
+          do {
+            data.pushString(cursor.getString(0));
+          }
+ while (cursor.moveToNext());
+        }
+      }
+ catch (      Exception e) {
+        FLog.w(ReactConstants.TAG,"Exception in database getAllKeys ",e);
+        callback.invoke(AsyncStorageErrorUtil.getError(null,e.getMessage()),null);
+      }
+ finally {
+        cursor.close();
+      }
+      callback.invoke(null,data);
+    }
+  }
+.execute();
+}

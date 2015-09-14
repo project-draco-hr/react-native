@@ -1,0 +1,4 @@
+int rootViewTagForContext
+int tag
+String className
+CatalystStylesDiffMap initialProps

@@ -1,0 +1,18 @@
+{
+  ViewManager viewManager=mViewManagers.get(className);
+  ReactShadowNode cssNode=viewManager.createCSSNodeInstance();
+  ReactShadowNode rootNode=mShadowNodeRegistry.getNode(rootViewTag);
+  cssNode.setReactTag(tag);
+  cssNode.setViewClassName(className);
+  cssNode.setRootNode(rootNode);
+  cssNode.setThemedContext(rootNode.getThemedContext());
+  mShadowNodeRegistry.addNode(cssNode);
+  CatalystStylesDiffMap styles=null;
+  if (props != null) {
+    styles=new CatalystStylesDiffMap(props);
+    cssNode.updateProperties(styles);
+  }
+  if (!cssNode.isVirtual()) {
+    mNativeViewHierarchyOptimizer.handleCreateView(cssNode,rootViewTag,styles);
+  }
+}

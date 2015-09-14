@@ -1,0 +1,4 @@
+{
+  mBridgeIdleDebugListener=bridgeIdleDebugListener;
+  return this;
+}

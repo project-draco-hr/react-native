@@ -1,0 +1,8 @@
+{
+  bb.position(0);
+  bb.limit(sz);
+  if (fc.read(bb,offset) != sz) {
+    throw new ElfError("ELF file truncated");
+  }
+  bb.position(0);
+}

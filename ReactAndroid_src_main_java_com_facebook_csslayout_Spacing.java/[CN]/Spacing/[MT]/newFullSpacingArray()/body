@@ -1,0 +1,3 @@
+{
+  return new float[]{CSSConstants.UNDEFINED,CSSConstants.UNDEFINED,CSSConstants.UNDEFINED,CSSConstants.UNDEFINED,CSSConstants.UNDEFINED,CSSConstants.UNDEFINED,CSSConstants.UNDEFINED,CSSConstants.UNDEFINED,CSSConstants.UNDEFINED};
+}

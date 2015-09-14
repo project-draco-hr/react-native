@@ -1,0 +1,7 @@
+{
+  if (mIsVirtual) {
+    return;
+  }
+  mPreparedSpannedText=fromTextCSSNode(this);
+  markUpdated();
+}

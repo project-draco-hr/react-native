@@ -1,0 +1,7 @@
+{
+  if (!FloatUtil.floatsEqual(mSpacing[spacingType],value)) {
+    mSpacing[spacingType]=value;
+    return true;
+  }
+  return false;
+}

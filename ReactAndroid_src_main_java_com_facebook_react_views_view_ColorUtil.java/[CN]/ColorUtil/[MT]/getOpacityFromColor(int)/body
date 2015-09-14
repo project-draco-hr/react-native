@@ -1,0 +1,12 @@
+{
+  int colorAlpha=color >>> 24;
+  if (colorAlpha == 255) {
+    return PixelFormat.OPAQUE;
+  }
+ else   if (colorAlpha == 0) {
+    return PixelFormat.TRANSPARENT;
+  }
+ else {
+    return PixelFormat.TRANSLUCENT;
+  }
+}

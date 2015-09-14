@@ -1,0 +1,3 @@
+{
+  return (mWeight == ReactTextShadowNode.UNSET ? 0 : mWeight);
+}

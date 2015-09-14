@@ -1,0 +1,3 @@
+{
+  return getLeadingMargin(node,axis) + getTrailingMargin(node,axis);
+}

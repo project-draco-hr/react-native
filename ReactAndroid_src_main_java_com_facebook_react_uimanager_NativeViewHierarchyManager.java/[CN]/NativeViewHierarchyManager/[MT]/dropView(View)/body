@@ -1,0 +1,19 @@
+{
+  UiThreadUtil.assertOnUiThread();
+  if (!mRootTags.get(view.getId())) {
+    Assertions.assertNotNull(mTagsToViewManagers.get(view.getId())).onDropViewInstance((ThemedReactContext)view.getContext(),view);
+  }
+  ViewManager viewManager=mTagsToViewManagers.get(view.getId());
+  if (view instanceof ViewGroup && viewManager instanceof ViewGroupManager) {
+    ViewGroup viewGroup=(ViewGroup)view;
+    ViewGroupManager viewGroupManager=(ViewGroupManager)viewManager;
+    for (int i=0; i < viewGroupManager.getChildCount(viewGroup); i++) {
+      View child=viewGroupManager.getChildAt(viewGroup,i);
+      if (mTagsToViews.get(child.getId()) != null) {
+        dropView(child);
+      }
+    }
+  }
+  mTagsToViews.remove(view.getId());
+  mTagsToViewManagers.remove(view.getId());
+}

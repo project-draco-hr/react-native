@@ -1,0 +1,3 @@
+{
+  startReactApplication(reactInstanceManager,moduleName,null);
+}

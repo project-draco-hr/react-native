@@ -1,0 +1,23 @@
+{
+  ReactShadowNode parent=node.getParent();
+  if (parent == null) {
+    node.setIsLayoutOnly(false);
+    return;
+  }
+  int childIndex=parent.indexOf(node);
+  parent.removeChildAt(childIndex);
+  removeNodeFromParent(node,false);
+  node.setIsLayoutOnly(false);
+  mUIViewOperationQueue.enqueueCreateView(node.getRootNode().getReactTag(),node.getReactTag(),node.getViewClass(),props);
+  parent.addChildAt(node,childIndex);
+  addNodeToNode(parent,node,childIndex);
+  for (int i=0; i < node.getChildCount(); i++) {
+    addNodeToNode(node,node.getChildAt(i),i);
+  }
+  Assertions.assertCondition(mTagsWithLayoutVisited.size() == 0);
+  applyLayoutBase(node);
+  for (int i=0; i < node.getChildCount(); i++) {
+    applyLayoutBase(node.getChildAt(i));
+  }
+  mTagsWithLayoutVisited.clear();
+}

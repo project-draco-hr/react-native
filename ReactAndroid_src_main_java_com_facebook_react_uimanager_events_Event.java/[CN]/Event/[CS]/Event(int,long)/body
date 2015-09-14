@@ -1,0 +1,4 @@
+{
+  mViewTag=viewTag;
+  mTimestampMs=timestampMs;
+}

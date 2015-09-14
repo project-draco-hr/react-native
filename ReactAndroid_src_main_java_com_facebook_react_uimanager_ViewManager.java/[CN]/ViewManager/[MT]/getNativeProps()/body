@@ -1,0 +1,12 @@
+{
+  Map<String,UIProp.Type> nativeProps=new HashMap<>();
+  Class cls=getClass();
+  while (cls.getSuperclass() != null) {
+    Map<String,UIProp.Type> props=getNativePropsForClass(cls);
+    for (    Map.Entry<String,UIProp.Type> entry : props.entrySet()) {
+      nativeProps.put(entry.getKey(),entry.getValue());
+    }
+    cls=cls.getSuperclass();
+  }
+  return nativeProps;
+}

@@ -1,0 +1,8 @@
+{
+  if (debug) {
+    return config.getDevParams() != null ? config.getDevParams() : PackagerParams.devDefaults();
+  }
+ else {
+    return config.getReleaseParams() != null ? config.getReleaseParams() : PackagerParams.releaseDefaults();
+  }
+}

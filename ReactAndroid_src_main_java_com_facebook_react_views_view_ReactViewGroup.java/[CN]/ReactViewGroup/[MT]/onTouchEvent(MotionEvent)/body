@@ -1,0 +1,6 @@
+{
+  if (mPointerEvents == PointerEvents.NONE || mPointerEvents == PointerEvents.BOX_NONE) {
+    return false;
+  }
+  return true;
+}

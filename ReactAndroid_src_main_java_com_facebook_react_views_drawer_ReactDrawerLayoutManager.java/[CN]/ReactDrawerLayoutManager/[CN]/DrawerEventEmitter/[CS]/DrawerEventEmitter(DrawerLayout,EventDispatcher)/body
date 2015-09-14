@@ -1,0 +1,4 @@
+{
+  mDrawerLayout=drawerLayout;
+  mEventDispatcher=eventDispatcher;
+}

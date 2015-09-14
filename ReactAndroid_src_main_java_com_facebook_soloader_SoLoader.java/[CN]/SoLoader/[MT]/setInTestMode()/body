@@ -1,0 +1,3 @@
+{
+  sSoSources=new SoSource[]{new NoopSoSource()};
+}

@@ -1,0 +1,5 @@
+{
+  mDebugManager=debugManager;
+  mPreferences=PreferenceManager.getDefaultSharedPreferences(applicationContext);
+  mPreferences.registerOnSharedPreferenceChangeListener(this);
+}

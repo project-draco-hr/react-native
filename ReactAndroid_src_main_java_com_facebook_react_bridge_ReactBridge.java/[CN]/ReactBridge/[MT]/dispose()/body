@@ -1,0 +1,5 @@
+{
+  mJSExecutor.close();
+  mJSExecutor.dispose();
+  super.dispose();
+}

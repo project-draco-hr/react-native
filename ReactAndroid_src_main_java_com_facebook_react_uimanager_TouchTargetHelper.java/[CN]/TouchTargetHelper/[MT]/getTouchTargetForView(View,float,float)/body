@@ -1,0 +1,7 @@
+{
+  if (targetView instanceof ReactCompoundView) {
+    targetView.getLocationOnScreen(mViewLocationInScreen);
+    return ((ReactCompoundView)targetView).reactTagForTouch(eventX - mViewLocationInScreen[0],eventY - mViewLocationInScreen[1]);
+  }
+  return targetView.getId();
+}

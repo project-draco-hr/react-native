@@ -1,0 +1,8 @@
+{
+  getReactApplicationContext().assertOnNativeModulesQueueThread();
+  rootCSSNode.setStyleWidth(newWidth);
+  rootCSSNode.setStyleHeight(newHeight);
+  if (mOperationsQueue.isEmpty()) {
+    dispatchViewUpdates(-1);
+  }
+}

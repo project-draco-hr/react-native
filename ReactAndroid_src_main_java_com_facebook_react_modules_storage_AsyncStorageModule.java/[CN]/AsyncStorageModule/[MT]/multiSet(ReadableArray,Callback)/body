@@ -1,0 +1,47 @@
+{
+  if (keyValueArray.size() == 0) {
+    callback.invoke(AsyncStorageErrorUtil.getInvalidKeyError(null));
+    return;
+  }
+  new GuardedAsyncTask<Void,Void>(getReactApplicationContext()){
+    @Override protected void doInBackgroundGuarded(    Void... params){
+      if (!ensureDatabase()) {
+        callback.invoke(AsyncStorageErrorUtil.getDBError(null));
+        return;
+      }
+      String sql="INSERT OR REPLACE INTO " + TABLE_CATALYST + " VALUES (?, ?);";
+      SQLiteStatement statement=Assertions.assertNotNull(mDb).compileStatement(sql);
+      mDb.beginTransaction();
+      try {
+        for (int idx=0; idx < keyValueArray.size(); idx++) {
+          if (keyValueArray.getArray(idx).size() != 2) {
+            callback.invoke(AsyncStorageErrorUtil.getInvalidValueError(null));
+            return;
+          }
+          if (keyValueArray.getArray(idx).getString(0) == null) {
+            callback.invoke(AsyncStorageErrorUtil.getInvalidKeyError(null));
+            return;
+          }
+          if (keyValueArray.getArray(idx).getString(1) == null) {
+            callback.invoke(AsyncStorageErrorUtil.getInvalidValueError(null));
+            return;
+          }
+          statement.clearBindings();
+          statement.bindString(1,keyValueArray.getArray(idx).getString(0));
+          statement.bindString(2,keyValueArray.getArray(idx).getString(1));
+          statement.execute();
+        }
+        mDb.setTransactionSuccessful();
+      }
+ catch (      Exception e) {
+        FLog.w(ReactConstants.TAG,"Exception in database multiSet ",e);
+        callback.invoke(AsyncStorageErrorUtil.getError(null,e.getMessage()));
+      }
+ finally {
+        mDb.endTransaction();
+      }
+      callback.invoke();
+    }
+  }
+.execute();
+}

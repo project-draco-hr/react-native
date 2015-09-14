@@ -1,0 +1,6 @@
+int viewId
+long timestampMs
+String text
+int contentSizeWidth
+int contentSizeHeight
+int eventCount

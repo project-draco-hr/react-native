@@ -1,0 +1,3 @@
+{
+  mOperationsQueue.enqueueFindTargetForTouch(reactTag,point.getInt(0),point.getInt(1),callback);
+}

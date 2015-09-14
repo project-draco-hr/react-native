@@ -1,0 +1,17 @@
+{
+  super.addChildAt(child,i);
+  markUpdated();
+  ReactShadowNode node=(ReactShadowNode)child;
+  int increase=node.mIsLayoutOnly ? node.mTotalNativeChildren : 1;
+  mTotalNativeChildren+=increase;
+  if (mIsLayoutOnly) {
+    ReactShadowNode parent=getParent();
+    while (parent != null) {
+      parent.mTotalNativeChildren+=increase;
+      if (!parent.mIsLayoutOnly) {
+        break;
+      }
+      parent=parent.getParent();
+    }
+  }
+}

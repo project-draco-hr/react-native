@@ -1,0 +1,3 @@
+{
+  setLayoutPosition(child,getTrailing(axis),getLayoutDimension(node,getDim(axis)) - getLayoutDimension(child,getDim(axis)) - getLayoutPosition(child,getPos(axis)));
+}

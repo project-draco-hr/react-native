@@ -1,0 +1,37 @@
+{
+  WritableArray catalystArray=createArray();
+  if (array instanceof String[]) {
+    for (    String v : (String[])array) {
+      catalystArray.pushString(v);
+    }
+  }
+ else   if (array instanceof Bundle[]) {
+    for (    Bundle v : (Bundle[])array) {
+      catalystArray.pushMap(fromBundle(v));
+    }
+  }
+ else   if (array instanceof int[]) {
+    for (    int v : (int[])array) {
+      catalystArray.pushInt(v);
+    }
+  }
+ else   if (array instanceof float[]) {
+    for (    float v : (float[])array) {
+      catalystArray.pushDouble(v);
+    }
+  }
+ else   if (array instanceof double[]) {
+    for (    double v : (double[])array) {
+      catalystArray.pushDouble(v);
+    }
+  }
+ else   if (array instanceof boolean[]) {
+    for (    boolean v : (boolean[])array) {
+      catalystArray.pushBoolean(v);
+    }
+  }
+ else {
+    throw new IllegalArgumentException("Unknown array type " + array.getClass());
+  }
+  return catalystArray;
+}

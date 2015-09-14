@@ -1,0 +1,12 @@
+{
+switch (this) {
+case SOLID:
+    return null;
+case DASHED:
+  return new DashPathEffect(new float[]{borderWidth * 3,borderWidth * 3,borderWidth * 3,borderWidth * 3},0);
+case DOTTED:
+return new DashPathEffect(new float[]{borderWidth,borderWidth,borderWidth,borderWidth},0);
+default :
+return null;
+}
+}

@@ -1,0 +1,6 @@
+{
+  if (n > mLength) {
+    throw new IndexOutOfBoundsException("Trying to drop " + n + " items from array of length "+ mLength);
+  }
+  mLength-=n;
+}

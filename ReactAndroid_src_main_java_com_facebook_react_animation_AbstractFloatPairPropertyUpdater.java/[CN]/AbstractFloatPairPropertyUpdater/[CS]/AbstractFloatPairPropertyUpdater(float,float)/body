@@ -1,0 +1,5 @@
+{
+  mToValues[0]=toFirst;
+  mToValues[1]=toSecond;
+  mFromSource=true;
+}

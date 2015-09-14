@@ -1,0 +1,3 @@
+{
+  return mChildren == null ? 0 : mChildren.size();
+}

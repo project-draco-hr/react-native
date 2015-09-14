@@ -1,0 +1,8 @@
+{
+  if (mNativeModulesQueueThread.getLooper() != Looper.getMainLooper()) {
+    mNativeModulesQueueThread.quitSynchronous();
+  }
+  if (mJSQueueThread.getLooper() != Looper.getMainLooper()) {
+    mJSQueueThread.quitSynchronous();
+  }
+}

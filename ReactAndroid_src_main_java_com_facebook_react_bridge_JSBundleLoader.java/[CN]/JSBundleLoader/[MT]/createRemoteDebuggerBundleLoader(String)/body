@@ -1,0 +1,8 @@
+{
+  return new JSBundleLoader(){
+    @Override public void loadScript(    ReactBridge bridge){
+      bridge.loadScriptFromNetworkCached(sourceURL,null);
+    }
+  }
+;
+}

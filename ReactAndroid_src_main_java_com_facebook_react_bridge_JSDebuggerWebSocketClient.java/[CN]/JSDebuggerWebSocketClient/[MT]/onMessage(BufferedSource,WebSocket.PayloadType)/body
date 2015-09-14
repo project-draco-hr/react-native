@@ -1,0 +1,40 @@
+{
+  if (type != WebSocket.PayloadType.TEXT) {
+    FLog.w(TAG,"Websocket received unexpected message with payload of type " + type);
+    return;
+  }
+  String message=null;
+  try {
+    message=payload.readUtf8();
+  }
+  finally {
+    payload.close();
+  }
+  Integer replyID=null;
+  try {
+    JsonParser parser=new JsonFactory().createParser(message);
+    String result=null;
+    while (parser.nextToken() != JsonToken.END_OBJECT) {
+      String field=parser.getCurrentName();
+      if ("replyID".equals(field)) {
+        parser.nextToken();
+        replyID=parser.getIntValue();
+      }
+ else       if ("result".equals(field)) {
+        parser.nextToken();
+        result=parser.getText();
+      }
+    }
+    if (replyID != null) {
+      triggerRequestSuccess(replyID,result);
+    }
+  }
+ catch (  IOException e) {
+    if (replyID != null) {
+      triggerRequestFailure(replyID,e);
+    }
+ else {
+      abort("Parsing response message from websocket failed",e);
+    }
+  }
+}

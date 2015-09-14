@@ -1,0 +1,4 @@
+{
+  mTagsToCSSNodes=new SparseArray<>();
+  mRootTags=new SparseBooleanArray();
+}

@@ -1,0 +1,4 @@
+{
+  releaseParams=new PackagerParams();
+  project.configure(releaseParams,closure);
+}

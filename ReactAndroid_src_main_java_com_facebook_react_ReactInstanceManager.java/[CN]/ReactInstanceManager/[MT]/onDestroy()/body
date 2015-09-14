@@ -1,0 +1,9 @@
+{
+  UiThreadUtil.assertOnUiThread();
+  if (mUseDeveloperSupport) {
+    mDevSupportManager.setDevSupportEnabled(false);
+  }
+  if (mCurrentReactContext != null) {
+    mCurrentReactContext.onDestroy();
+  }
+}

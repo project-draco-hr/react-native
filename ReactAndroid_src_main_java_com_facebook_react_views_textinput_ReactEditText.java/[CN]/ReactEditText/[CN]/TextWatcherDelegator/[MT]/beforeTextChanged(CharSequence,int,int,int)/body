@@ -1,0 +1,7 @@
+{
+  if (!mIsSettingTextFromJS && mListeners != null) {
+    for (    TextWatcher listener : mListeners) {
+      listener.beforeTextChanged(s,start,count,after);
+    }
+  }
+}

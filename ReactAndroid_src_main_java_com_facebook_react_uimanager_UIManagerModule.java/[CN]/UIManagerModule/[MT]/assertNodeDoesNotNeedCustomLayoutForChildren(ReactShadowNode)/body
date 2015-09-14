@@ -1,0 +1,13 @@
+{
+  ViewManager viewManager=Assertions.assertNotNull(mViewManagers.get(node.getViewClass()));
+  ViewGroupManager viewGroupManager;
+  if (viewManager instanceof ViewGroupManager) {
+    viewGroupManager=(ViewGroupManager)viewManager;
+  }
+ else {
+    throw new IllegalViewOperationException("Trying to use view " + node.getViewClass() + " as a parent, but its Manager doesn't extends ViewGroupManager");
+  }
+  if (viewGroupManager != null && viewGroupManager.needsCustomLayoutForChildren()) {
+    throw new IllegalViewOperationException("Trying to measure a view using measureLayout/measureLayoutRelativeToParent relative to" + " an ancestor that requires custom layout for it's children (" + node.getViewClass() + "). Use measure instead.");
+  }
+}

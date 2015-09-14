@@ -1,0 +1,9 @@
+{
+  if (mListeners != null) {
+    mListeners.remove(watcher);
+    if (mListeners.isEmpty()) {
+      mListeners=null;
+      super.removeTextChangedListener(getTextWatcherDelegator());
+    }
+  }
+}

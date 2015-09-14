@@ -1,0 +1,23 @@
+{
+  if (mDestroyed) {
+    FLog.w(ReactConstants.TAG,"Invoking JS callback after bridge has been destroyed.");
+    return;
+  }
+  incrementPendingJSCalls();
+  mCatalystQueueConfiguration.getJSQueueThread().runOnQueue(new Runnable(){
+    @Override public void run(){
+      mCatalystQueueConfiguration.getJSQueueThread().assertIsOnThread();
+      if (mDestroyed) {
+        return;
+      }
+      Systrace.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"<callback>");
+      try {
+        Assertions.assertNotNull(mBridge).invokeCallback(callbackID,arguments);
+      }
+  finally {
+        Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);
+      }
+    }
+  }
+);
+}

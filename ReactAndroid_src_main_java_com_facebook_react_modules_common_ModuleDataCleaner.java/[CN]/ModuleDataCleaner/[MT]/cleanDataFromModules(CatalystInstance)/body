@@ -1,0 +1,8 @@
+{
+  for (  NativeModule nativeModule : catalystInstance.getNativeModules()) {
+    if (nativeModule instanceof Cleanable) {
+      FLog.d(ReactConstants.TAG,"Cleaning data from " + nativeModule.getName());
+      ((Cleanable)nativeModule).clearSensitiveData();
+    }
+  }
+}

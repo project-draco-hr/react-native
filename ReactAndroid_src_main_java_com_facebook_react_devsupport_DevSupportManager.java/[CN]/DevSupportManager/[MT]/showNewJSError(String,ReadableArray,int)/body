@@ -1,0 +1,3 @@
+{
+  showNewError(message,ExceptionFormatterHelper.jsStackTraceToHtml(details),errorCookie);
+}

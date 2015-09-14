@@ -1,0 +1,5 @@
+{
+  if (Build.VERSION.SDK_INT < 16) {
+    throw new JSApplicationCausedNativeException("Animation debugging is not supported in API <16");
+  }
+}

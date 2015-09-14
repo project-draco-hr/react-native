@@ -1,0 +1,5 @@
+{
+  mWebSocket=webSocket;
+  Assertions.assertNotNull(mConnectCallback).onSuccess(null);
+  mConnectCallback=null;
+}

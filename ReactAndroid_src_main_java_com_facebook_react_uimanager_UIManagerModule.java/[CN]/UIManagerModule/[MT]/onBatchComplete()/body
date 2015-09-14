@@ -1,0 +1,11 @@
+{
+  int batchId=mBatchId;
+  mBatchId++;
+  SystraceMessage.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"onBatchCompleteUI").arg("BatchId",batchId).flush();
+  try {
+    dispatchViewUpdates(batchId);
+  }
+  finally {
+    Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);
+  }
+}

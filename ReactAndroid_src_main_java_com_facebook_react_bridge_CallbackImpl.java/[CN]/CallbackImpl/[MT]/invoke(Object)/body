@@ -1,0 +1,3 @@
+{
+  mCatalystInstance.invokeCallback(mCallbackId,Arguments.fromJavaArgs(args));
+}

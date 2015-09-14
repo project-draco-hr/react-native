@@ -1,0 +1,18 @@
+{
+  int requestID=mRequestID.getAndIncrement();
+  mCallbacks.put(requestID,callback);
+  try {
+    JsonGenerator jg=startMessageObject(requestID);
+    jg.writeStringField("method","executeApplicationScript");
+    jg.writeStringField("url",sourceURL);
+    jg.writeObjectFieldStart("inject");
+    for (    String key : injectedObjects.keySet()) {
+      jg.writeObjectField(key,injectedObjects.get(key));
+    }
+    jg.writeEndObject();
+    sendMessage(requestID,endMessageObject(jg));
+  }
+ catch (  IOException e) {
+    triggerRequestFailure(requestID,e);
+  }
+}

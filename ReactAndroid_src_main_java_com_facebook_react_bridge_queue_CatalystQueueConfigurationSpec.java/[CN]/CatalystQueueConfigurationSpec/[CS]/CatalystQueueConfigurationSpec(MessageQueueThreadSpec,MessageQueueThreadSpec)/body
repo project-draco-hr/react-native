@@ -1,0 +1,4 @@
+{
+  mNativeModulesQueueThreadSpec=nativeModulesQueueThreadSpec;
+  mJSQueueThreadSpec=jsQueueThreadSpec;
+}

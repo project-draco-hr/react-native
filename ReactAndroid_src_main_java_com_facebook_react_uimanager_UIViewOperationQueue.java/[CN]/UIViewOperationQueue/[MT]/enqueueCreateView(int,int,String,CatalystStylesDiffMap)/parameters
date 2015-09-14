@@ -1,0 +1,4 @@
+int rootViewTagForContext
+int viewReactTag
+String viewClassName
+CatalystStylesDiffMap initialProps

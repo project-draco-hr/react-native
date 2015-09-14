@@ -1,0 +1,5 @@
+{
+  super();
+  mReactTag=reactTag;
+  mCallback=callback;
+}

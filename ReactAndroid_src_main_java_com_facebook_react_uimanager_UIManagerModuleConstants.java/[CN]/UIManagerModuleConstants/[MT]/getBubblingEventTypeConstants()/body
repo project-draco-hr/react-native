@@ -1,0 +1,3 @@
+{
+  return MapBuilder.builder().put("topChange",MapBuilder.of("phasedRegistrationNames",MapBuilder.of("bubbled","onChange","captured","onChangeCapture"))).put("topSelect",MapBuilder.of("phasedRegistrationNames",MapBuilder.of("bubbled","onSelect","captured","onSelectCapture"))).put(TouchEventType.START.getJSEventName(),MapBuilder.of("phasedRegistrationNames",MapBuilder.of("bubbled","onTouchStart","captured","onTouchStartCapture"))).put(TouchEventType.MOVE.getJSEventName(),MapBuilder.of("phasedRegistrationNames",MapBuilder.of("bubbled","onTouchMove","captured","onTouchMoveCapture"))).put(TouchEventType.END.getJSEventName(),MapBuilder.of("phasedRegistrationNames",MapBuilder.of("bubbled","onTouchEnd","captured","onTouchEndCapture"))).build();
+}

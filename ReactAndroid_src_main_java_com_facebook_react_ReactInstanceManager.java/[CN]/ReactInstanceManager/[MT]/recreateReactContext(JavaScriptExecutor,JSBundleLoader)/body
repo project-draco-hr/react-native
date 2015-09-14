@@ -1,0 +1,10 @@
+{
+  UiThreadUtil.assertOnUiThread();
+  if (mCurrentReactContext != null) {
+    tearDownReactContext(mCurrentReactContext);
+  }
+  mCurrentReactContext=createReactContext(jsExecutor,jsBundleLoader);
+  for (  ReactRootView rootView : mAttachedRootViews) {
+    attachMeasuredRootViewToInstance(rootView,mCurrentReactContext.getCatalystInstance());
+  }
+}

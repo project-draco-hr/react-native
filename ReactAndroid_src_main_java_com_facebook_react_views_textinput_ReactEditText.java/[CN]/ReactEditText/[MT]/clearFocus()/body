@@ -1,0 +1,5 @@
+{
+  setFocusableInTouchMode(false);
+  super.clearFocus();
+  hideSoftKeyboard();
+}

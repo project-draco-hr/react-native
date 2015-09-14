@@ -1,0 +1,49 @@
+{
+  super.updateView(toolbar,props);
+  int[] defaultColors=getDefaultColors(toolbar.getContext());
+  if (props.hasKey(PROP_SUBTITLE)) {
+    toolbar.setSubtitle(props.getString(PROP_SUBTITLE));
+  }
+  if (props.hasKey(PROP_SUBTITLE_COLOR)) {
+    String color=props.getString(PROP_SUBTITLE_COLOR);
+    if (color != null) {
+      toolbar.setSubtitleTextColor(CSSColorUtil.getColor(color));
+    }
+ else {
+      toolbar.setSubtitleTextColor(defaultColors[1]);
+    }
+  }
+  if (props.hasKey(PROP_TITLE)) {
+    toolbar.setTitle(props.getString(PROP_TITLE));
+  }
+  if (props.hasKey(PROP_TITLE_COLOR)) {
+    String color=props.getString(PROP_TITLE_COLOR);
+    if (color != null) {
+      toolbar.setTitleTextColor(CSSColorUtil.getColor(color));
+    }
+ else {
+      toolbar.setTitleTextColor(defaultColors[0]);
+    }
+  }
+  if (props.hasKey(PROP_NAV_ICON)) {
+    String navIcon=props.getString(PROP_NAV_ICON);
+    if (navIcon != null) {
+      toolbar.setNavigationIcon(getDrawableResourceByName(toolbar.getContext(),navIcon));
+    }
+ else {
+      toolbar.setNavigationIcon(null);
+    }
+  }
+  if (props.hasKey(PROP_LOGO)) {
+    String logo=props.getString(PROP_LOGO);
+    if (logo != null) {
+      toolbar.setLogo(getDrawableResourceByName(toolbar.getContext(),logo));
+    }
+ else {
+      toolbar.setLogo(null);
+    }
+  }
+  if (props.hasKey(PROP_ACTIONS)) {
+    setActions(toolbar,props.getArray(PROP_ACTIONS));
+  }
+}

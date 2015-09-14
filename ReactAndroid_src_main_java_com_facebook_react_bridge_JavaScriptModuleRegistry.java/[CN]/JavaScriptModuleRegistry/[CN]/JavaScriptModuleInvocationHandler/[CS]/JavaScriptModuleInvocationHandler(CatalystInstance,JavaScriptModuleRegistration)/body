@@ -1,0 +1,4 @@
+{
+  mCatalystInstance=catalystInstance;
+  mModuleRegistration=moduleRegistration;
+}

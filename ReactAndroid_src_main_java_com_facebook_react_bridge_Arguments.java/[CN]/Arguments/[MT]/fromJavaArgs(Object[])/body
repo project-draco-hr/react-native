@@ -1,0 +1,36 @@
+{
+  WritableNativeArray arguments=new WritableNativeArray();
+  for (int i=0; i < args.length; i++) {
+    Object argument=args[i];
+    if (argument == null) {
+      arguments.pushNull();
+      continue;
+    }
+    Class argumentClass=argument.getClass();
+    if (argumentClass == Boolean.class) {
+      arguments.pushBoolean(((Boolean)argument).booleanValue());
+    }
+ else     if (argumentClass == Integer.class) {
+      arguments.pushDouble(((Integer)argument).doubleValue());
+    }
+ else     if (argumentClass == Double.class) {
+      arguments.pushDouble(((Double)argument).doubleValue());
+    }
+ else     if (argumentClass == Float.class) {
+      arguments.pushDouble(((Float)argument).doubleValue());
+    }
+ else     if (argumentClass == String.class) {
+      arguments.pushString(argument.toString());
+    }
+ else     if (argumentClass == WritableNativeMap.class) {
+      arguments.pushMap((WritableNativeMap)argument);
+    }
+ else     if (argumentClass == WritableNativeArray.class) {
+      arguments.pushArray((WritableNativeArray)argument);
+    }
+ else {
+      throw new RuntimeException("Cannot convert argument of type " + argumentClass);
+    }
+  }
+  return arguments;
+}

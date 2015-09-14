@@ -1,0 +1,3 @@
+{
+  return (int)((double)mLastFrameTime - mFirstFrameTime) / 1000000;
+}

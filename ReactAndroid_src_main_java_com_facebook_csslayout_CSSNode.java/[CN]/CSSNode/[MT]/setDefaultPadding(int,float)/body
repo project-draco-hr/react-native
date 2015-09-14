@@ -1,0 +1,5 @@
+{
+  if (style.padding.setDefault(spacingType,padding)) {
+    dirty();
+  }
+}

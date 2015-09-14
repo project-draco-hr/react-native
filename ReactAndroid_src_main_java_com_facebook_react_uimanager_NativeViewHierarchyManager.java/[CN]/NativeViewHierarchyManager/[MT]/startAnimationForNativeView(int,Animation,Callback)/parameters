@@ -1,0 +1,3 @@
+int reactTag
+Animation animation
+Callback animationCallback

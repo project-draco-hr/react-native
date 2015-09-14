@@ -1,0 +1,16 @@
+{
+  WritableArray pointers=createsPointersArray(reactTarget,androidMotionEvent);
+  WritableArray changedIndices=Arguments.createArray();
+  if (type == TouchEventType.MOVE || type == TouchEventType.CANCEL) {
+    for (int i=0; i < androidMotionEvent.getPointerCount(); i++) {
+      changedIndices.pushInt(i);
+    }
+  }
+ else   if (type == TouchEventType.START || type == TouchEventType.END) {
+    changedIndices.pushInt(androidMotionEvent.getActionIndex());
+  }
+ else {
+    throw new RuntimeException("Unknown touch type: " + type);
+  }
+  rctEventEmitter.receiveTouches(type.getJSEventName(),pointers,changedIndices);
+}

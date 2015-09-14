@@ -1,0 +1,9 @@
+{
+  if (extraData instanceof float[]) {
+    float[] padding=(float[])extraData;
+    view.setPadding((int)Math.ceil(padding[0]),(int)Math.ceil(padding[1]),(int)Math.ceil(padding[2]),(int)Math.ceil(padding[3]));
+  }
+ else   if (extraData instanceof ReactTextUpdate) {
+    view.maybeSetText((ReactTextUpdate)extraData);
+  }
+}

@@ -1,0 +1,11 @@
+{
+  clear(new Callback(){
+    @Override public void invoke(    Object... args){
+      if (args.length > 0) {
+        throw new RuntimeException("Clearing AsyncLocalStorage failed: " + args[0]);
+      }
+      FLog.d(ReactConstants.TAG,"Cleaned AsyncLocalStorage.");
+    }
+  }
+);
+}

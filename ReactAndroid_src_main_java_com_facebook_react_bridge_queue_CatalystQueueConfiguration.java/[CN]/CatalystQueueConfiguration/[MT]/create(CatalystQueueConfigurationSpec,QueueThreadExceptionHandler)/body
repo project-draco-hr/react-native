@@ -1,0 +1,15 @@
+{
+  Map<MessageQueueThreadSpec,MessageQueueThread> specsToThreads=MapBuilder.newHashMap();
+  MessageQueueThreadSpec uiThreadSpec=MessageQueueThreadSpec.mainThreadSpec();
+  MessageQueueThread uiThread=MessageQueueThread.create(uiThreadSpec,exceptionHandler);
+  specsToThreads.put(uiThreadSpec,uiThread);
+  MessageQueueThread jsThread=specsToThreads.get(spec.getJSQueueThreadSpec());
+  if (jsThread == null) {
+    jsThread=MessageQueueThread.create(spec.getJSQueueThreadSpec(),exceptionHandler);
+  }
+  MessageQueueThread nativeModulesThread=specsToThreads.get(spec.getNativeModulesQueueThreadSpec());
+  if (nativeModulesThread == null) {
+    nativeModulesThread=MessageQueueThread.create(spec.getNativeModulesQueueThreadSpec(),exceptionHandler);
+  }
+  return new CatalystQueueConfiguration(uiThread,nativeModulesThread,jsThread);
+}

@@ -1,0 +1,6 @@
+{
+  Animation animation=mAnimationRegistry.getAnimation(mAnimationID);
+  if (animation != null) {
+    animation.cancel();
+  }
+}

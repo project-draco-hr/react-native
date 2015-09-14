@@ -1,0 +1,11 @@
+{
+  ReactShadowNode node=mShadowNodeRegistry.getNode(tag);
+  if (node == null) {
+    throw new IllegalViewOperationException("No native view for tag " + tag + " exists!");
+  }
+  ReactShadowNode parent=node.getParent();
+  if (parent == null) {
+    throw new IllegalViewOperationException("View with tag " + tag + " doesn't have a parent!");
+  }
+  measureLayoutRelativeToVerifiedAncestor(node,parent,outputBuffer);
+}

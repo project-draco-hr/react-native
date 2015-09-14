@@ -1,0 +1,4 @@
+{
+  mDrawerPosition=drawerPosition;
+  setDrawerProperties();
+}

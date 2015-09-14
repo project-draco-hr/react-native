@@ -1,0 +1,6 @@
+{
+  mNodeUpdated=false;
+  if (hasNewLayout()) {
+    markLayoutSeen();
+  }
+}

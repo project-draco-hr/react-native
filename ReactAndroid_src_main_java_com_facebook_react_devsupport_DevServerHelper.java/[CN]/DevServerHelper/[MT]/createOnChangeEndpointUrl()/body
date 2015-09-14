@@ -1,0 +1,3 @@
+{
+  return String.format(Locale.US,ONCHANGE_ENDPOINT_URL_FORMAT,getDebugServerHost());
+}

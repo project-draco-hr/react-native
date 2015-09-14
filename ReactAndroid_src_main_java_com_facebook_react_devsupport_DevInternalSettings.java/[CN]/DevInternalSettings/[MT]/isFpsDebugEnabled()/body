@@ -1,0 +1,3 @@
+{
+  return mPreferences.getBoolean(PREFS_FPS_DEBUG_KEY,false);
+}

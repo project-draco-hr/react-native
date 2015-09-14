@@ -1,0 +1,7 @@
+{
+  int widthMode=View.MeasureSpec.getMode(widthMeasureSpec);
+  int heightMode=View.MeasureSpec.getMode(heightMeasureSpec);
+  if (widthMode == View.MeasureSpec.UNSPECIFIED || heightMode == View.MeasureSpec.UNSPECIFIED) {
+    throw new IllegalStateException("A catalyst view must have an explicit width and height given to it. This should " + "normally happen as part of the standard catalyst UI framework.");
+  }
+}

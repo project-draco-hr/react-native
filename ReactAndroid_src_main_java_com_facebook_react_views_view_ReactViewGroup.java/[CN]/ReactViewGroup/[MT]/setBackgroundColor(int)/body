@@ -1,0 +1,17 @@
+{
+  if (color == Color.TRANSPARENT) {
+    Drawable backgroundDrawble=getBackground();
+    if (mReactBackgroundDrawable != null && (backgroundDrawble instanceof LayerDrawable)) {
+      super.setBackground(null);
+      LayerDrawable layerDrawable=(LayerDrawable)backgroundDrawble;
+      super.setBackground(layerDrawable.getDrawable(1));
+    }
+ else     if (backgroundDrawble instanceof ReactViewBackgroundDrawable) {
+      mReactBackgroundDrawable=null;
+      super.setBackground(null);
+    }
+  }
+ else {
+    getOrCreateReactViewBackground().setColor(color);
+  }
+}

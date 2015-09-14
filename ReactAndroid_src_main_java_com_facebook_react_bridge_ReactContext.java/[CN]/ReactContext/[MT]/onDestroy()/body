@@ -1,0 +1,9 @@
+{
+  UiThreadUtil.assertOnUiThread();
+  for (  LifecycleEventListener listener : mLifecycleEventListeners) {
+    listener.onHostDestroy();
+  }
+  if (mCatalystInstance != null) {
+    mCatalystInstance.destroy();
+  }
+}

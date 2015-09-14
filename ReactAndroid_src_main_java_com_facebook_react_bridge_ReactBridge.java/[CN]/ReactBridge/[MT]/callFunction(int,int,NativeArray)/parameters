@@ -1,0 +1,3 @@
+int moduleId
+int methodId
+NativeArray arguments

@@ -1,0 +1,6 @@
+{
+  if (mSensorManager != null) {
+    mSensorManager.unregisterListener(this);
+    mSensorManager=null;
+  }
+}

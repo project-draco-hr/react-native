@@ -1,0 +1,10 @@
+{
+  UiThreadUtil.assertOnUiThread();
+  if (mCallbackQueues[type.getOrder()].removeFirstOccurrence(frameCallback)) {
+    mTotalCallbacks--;
+    maybeRemoveFrameCallback();
+  }
+ else {
+    FLog.e(ReactConstants.TAG,"Tried to remove non-existent frame callback");
+  }
+}

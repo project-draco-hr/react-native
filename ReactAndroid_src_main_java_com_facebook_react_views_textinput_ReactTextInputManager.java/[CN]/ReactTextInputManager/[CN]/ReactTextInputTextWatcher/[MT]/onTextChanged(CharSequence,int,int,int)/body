@@ -1,0 +1,13 @@
+{
+  if (count > 0 || before > 0) {
+    Assertions.assertNotNull(mPreviousText);
+    int contentWidth=mEditText.getWidth();
+    int contentHeight=mEditText.getHeight();
+    if (mEditText.getLayout() != null) {
+      contentWidth=mEditText.getCompoundPaddingLeft() + mEditText.getLayout().getWidth() + mEditText.getCompoundPaddingRight();
+      contentHeight=mEditText.getCompoundPaddingTop() + mEditText.getLayout().getHeight() + mEditText.getCompoundPaddingTop();
+    }
+    mEventDispatcher.dispatchEvent(new ReactTextChangedEvent(mEditText.getId(),SystemClock.uptimeMillis(),s.toString(),(int)PixelUtil.toDIPFromPixel(contentWidth),(int)PixelUtil.toDIPFromPixel(contentHeight),mEditText.incrementAndGetEventCounter()));
+    mEventDispatcher.dispatchEvent(new ReactTextInputEvent(mEditText.getId(),SystemClock.uptimeMillis(),count > 0 ? s.toString().substring(start,start + count) : "",before > 0 ? mPreviousText.substring(start,start + before) : "",start,count > 0 ? start + count - 1 : start + before));
+  }
+}

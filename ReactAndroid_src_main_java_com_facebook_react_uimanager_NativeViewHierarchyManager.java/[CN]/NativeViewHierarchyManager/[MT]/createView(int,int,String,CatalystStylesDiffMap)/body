@@ -1,0 +1,11 @@
+{
+  UiThreadUtil.assertOnUiThread();
+  ViewManager viewManager=mViewManagers.get(className);
+  View view=viewManager.createView(mRootViewsContext.get(rootViewTagForContext),mJSResponderHandler);
+  mTagsToViews.put(tag,view);
+  mTagsToViewManagers.put(tag,viewManager);
+  view.setId(tag);
+  if (initialProps != null) {
+    viewManager.updateView(view,initialProps);
+  }
+}

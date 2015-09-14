@@ -1,0 +1,3 @@
+{
+  TouchesHelper.sendTouchEvent(rctEventEmitter,mTouchEventType,getViewTag(),mMotionEvent);
+}

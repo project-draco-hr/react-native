@@ -1,0 +1,5 @@
+{
+  int tag=node.getReactTag();
+  mTagsToCSSNodes.put(tag,node);
+  mRootTags.put(tag,true);
+}

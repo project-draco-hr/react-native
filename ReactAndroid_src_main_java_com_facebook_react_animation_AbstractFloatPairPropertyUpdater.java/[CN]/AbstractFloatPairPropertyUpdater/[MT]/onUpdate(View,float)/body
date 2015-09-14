@@ -1,0 +1,5 @@
+{
+  mUpdateValues[0]=mFromValues[0] + (mToValues[0] - mFromValues[0]) * progress;
+  mUpdateValues[1]=mFromValues[1] + (mToValues[1] - mFromValues[1]) * progress;
+  setProperty(view,mUpdateValues);
+}

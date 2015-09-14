@@ -1,0 +1,9 @@
+{
+  if (!mRemoveClippedSubviews) {
+    return;
+  }
+  Assertions.assertNotNull(mClippingRect);
+  Assertions.assertNotNull(mAllChildren);
+  ReactClippingViewGroupHelper.calculateClippingRect(this,mClippingRect);
+  updateClippingToRect(mClippingRect);
+}

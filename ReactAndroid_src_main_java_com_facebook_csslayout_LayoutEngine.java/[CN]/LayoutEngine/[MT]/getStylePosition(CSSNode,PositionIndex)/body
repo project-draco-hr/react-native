@@ -1,0 +1,14 @@
+{
+switch (position) {
+case TOP:
+    return node.style.positionTop;
+case BOTTOM:
+  return node.style.positionBottom;
+case LEFT:
+return node.style.positionLeft;
+case RIGHT:
+return node.style.positionRight;
+default :
+throw new RuntimeException("Someone added a new cardinal direction...");
+}
+}

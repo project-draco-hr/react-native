@@ -1,0 +1,3 @@
+ReactTextShadowNode textCSSNode
+SpannableStringBuilder sb
+List<SetSpanOperation> ops

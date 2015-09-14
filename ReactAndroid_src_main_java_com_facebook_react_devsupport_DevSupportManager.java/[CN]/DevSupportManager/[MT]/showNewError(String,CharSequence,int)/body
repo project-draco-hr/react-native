@@ -1,0 +1,18 @@
+{
+  UiThreadUtil.runOnUiThread(new Runnable(){
+    @Override public void run(){
+      if (mRedBoxDialog == null) {
+        mRedBoxDialog=new RedBoxDialog(mApplicationContext,DevSupportManager.this);
+        mRedBoxDialog.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
+      }
+      if (mRedBoxDialog.isShowing()) {
+        return;
+      }
+      mRedBoxDialog.setTitle(message);
+      mRedBoxDialog.setDetails(details);
+      mRedBoxDialog.setErrorCookie(errorCookie);
+      mRedBoxDialog.show();
+    }
+  }
+);
+}

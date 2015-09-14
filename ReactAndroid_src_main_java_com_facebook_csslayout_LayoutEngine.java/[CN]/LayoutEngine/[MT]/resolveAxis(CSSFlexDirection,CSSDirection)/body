@@ -1,0 +1,11 @@
+{
+  if (direction == CSSDirection.RTL) {
+    if (axis == CSSFlexDirection.ROW) {
+      return CSSFlexDirection.ROW_REVERSE;
+    }
+ else     if (axis == CSSFlexDirection.ROW_REVERSE) {
+      return CSSFlexDirection.ROW;
+    }
+  }
+  return axis;
+}

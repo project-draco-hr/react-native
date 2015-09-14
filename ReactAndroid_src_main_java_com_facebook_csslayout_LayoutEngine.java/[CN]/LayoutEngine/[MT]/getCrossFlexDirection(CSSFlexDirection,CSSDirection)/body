@@ -1,0 +1,8 @@
+{
+  if (isColumnDirection(flexDirection)) {
+    return resolveAxis(CSSFlexDirection.ROW,direction);
+  }
+ else {
+    return CSSFlexDirection.COLUMN;
+  }
+}

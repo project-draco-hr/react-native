@@ -1,0 +1,4 @@
+RCTEventEmitter rctEventEmitter
+TouchEventType type
+int reactTarget
+MotionEvent androidMotionEvent

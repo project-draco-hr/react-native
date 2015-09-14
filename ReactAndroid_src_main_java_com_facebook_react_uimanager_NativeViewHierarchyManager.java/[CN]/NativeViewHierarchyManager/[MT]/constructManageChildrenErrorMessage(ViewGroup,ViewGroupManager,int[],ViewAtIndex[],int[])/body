@@ -1,0 +1,43 @@
+{
+  StringBuilder stringBuilder=new StringBuilder();
+  stringBuilder.append("View tag:" + viewToManage.getId() + "\n");
+  stringBuilder.append("  children(" + viewManager.getChildCount(viewToManage) + "): [\n");
+  for (int index=0; index < viewManager.getChildCount(viewToManage); index+=16) {
+    for (int innerOffset=0; ((index + innerOffset) < viewManager.getChildCount(viewToManage)) && innerOffset < 16; innerOffset++) {
+      stringBuilder.append(viewManager.getChildAt(viewToManage,index + innerOffset).getId() + ",");
+    }
+    stringBuilder.append("\n");
+  }
+  stringBuilder.append(" ],\n");
+  if (indicesToRemove != null) {
+    stringBuilder.append("  indicesToRemove(" + indicesToRemove.length + "): [\n");
+    for (int index=0; index < indicesToRemove.length; index+=16) {
+      for (int innerOffset=0; ((index + innerOffset) < indicesToRemove.length) && innerOffset < 16; innerOffset++) {
+        stringBuilder.append(indicesToRemove[index + innerOffset] + ",");
+      }
+      stringBuilder.append("\n");
+    }
+    stringBuilder.append(" ],\n");
+  }
+  if (viewsToAdd != null) {
+    stringBuilder.append("  viewsToAdd(" + viewsToAdd.length + "): [\n");
+    for (int index=0; index < viewsToAdd.length; index+=16) {
+      for (int innerOffset=0; ((index + innerOffset) < viewsToAdd.length) && innerOffset < 16; innerOffset++) {
+        stringBuilder.append("[" + viewsToAdd[index + innerOffset].mIndex + ","+ viewsToAdd[index + innerOffset].mTag+ "],");
+      }
+      stringBuilder.append("\n");
+    }
+    stringBuilder.append(" ],\n");
+  }
+  if (tagsToDelete != null) {
+    stringBuilder.append("  tagsToDelete(" + tagsToDelete.length + "): [\n");
+    for (int index=0; index < tagsToDelete.length; index+=16) {
+      for (int innerOffset=0; ((index + innerOffset) < tagsToDelete.length) && innerOffset < 16; innerOffset++) {
+        stringBuilder.append(tagsToDelete[index + innerOffset] + ",");
+      }
+      stringBuilder.append("\n");
+    }
+    stringBuilder.append(" ]\n");
+  }
+  return stringBuilder.toString();
+}

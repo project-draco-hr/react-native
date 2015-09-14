@@ -1,0 +1,22 @@
+{
+  Map<String,UIProp.Type> props=CLASS_PROP_CACHE.get(cls);
+  if (props != null) {
+    return props;
+  }
+  props=new HashMap<>();
+  for (  Field f : cls.getDeclaredFields()) {
+    UIProp annotation=f.getAnnotation(UIProp.class);
+    if (annotation != null) {
+      UIProp.Type type=annotation.value();
+      try {
+        String name=(String)f.get(this);
+        props.put(name,type);
+      }
+ catch (      IllegalAccessException e) {
+        throw new RuntimeException("UIProp " + cls.getName() + "."+ f.getName()+ " must be public.");
+      }
+    }
+  }
+  CLASS_PROP_CACHE.put(cls,props);
+  return props;
+}

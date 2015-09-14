@@ -1,0 +1,43 @@
+{
+  if (mReactInstanceManager == null || !mIsAttachedToInstance || mReactInstanceManager.getCurrentReactContext() == null) {
+    FLog.w(ReactConstants.TAG,"Unable to handle touch in JS as the catalyst instance has not been attached");
+    return;
+  }
+  int action=ev.getAction() & MotionEvent.ACTION_MASK;
+  ReactContext reactContext=mReactInstanceManager.getCurrentReactContext();
+  EventDispatcher eventDispatcher=reactContext.getNativeModule(UIManagerModule.class).getEventDispatcher();
+  if (action == MotionEvent.ACTION_DOWN) {
+    if (mTargetTag != -1) {
+      FLog.e(ReactConstants.TAG,"Got DOWN touch before receiving UP or CANCEL from last gesture");
+    }
+    mChildIsHandlingNativeGesture=false;
+    mTargetTag=TouchTargetHelper.findTargetTagForTouch(ev.getRawY(),ev.getRawX(),this);
+    eventDispatcher.dispatchEvent(new TouchEvent(mTargetTag,TouchEventType.START,ev));
+  }
+ else   if (mChildIsHandlingNativeGesture) {
+    return;
+  }
+ else   if (mTargetTag == -1) {
+    FLog.e(ReactConstants.TAG,"Unexpected state: received touch event but didn't get starting ACTION_DOWN for this " + "gesture before");
+  }
+ else   if (action == MotionEvent.ACTION_UP) {
+    eventDispatcher.dispatchEvent(new TouchEvent(mTargetTag,TouchEventType.END,ev));
+    mTargetTag=-1;
+  }
+ else   if (action == MotionEvent.ACTION_MOVE) {
+    eventDispatcher.dispatchEvent(new TouchEvent(mTargetTag,TouchEventType.MOVE,ev));
+  }
+ else   if (action == MotionEvent.ACTION_POINTER_DOWN) {
+    eventDispatcher.dispatchEvent(new TouchEvent(mTargetTag,TouchEventType.START,ev));
+  }
+ else   if (action == MotionEvent.ACTION_POINTER_UP) {
+    eventDispatcher.dispatchEvent(new TouchEvent(mTargetTag,TouchEventType.END,ev));
+  }
+ else   if (action == MotionEvent.ACTION_CANCEL) {
+    dispatchCancelEvent(ev);
+    mTargetTag=-1;
+  }
+ else {
+    FLog.w(ReactConstants.TAG,"Warning : touch event was ignored. Action=" + action + " Target="+ mTargetTag);
+  }
+}

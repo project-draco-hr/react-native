@@ -1,0 +1,7 @@
+{
+  if (!mUnderConstruction) {
+    throw new IllegalStateException("Underlying map has already been built");
+  }
+  mUnderConstruction=false;
+  return mMap;
+}

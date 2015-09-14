@@ -1,0 +1,12 @@
+{
+switch (dimension) {
+case WIDTH:
+    node.layout.width=value;
+  break;
+case HEIGHT:
+node.layout.height=value;
+break;
+default :
+throw new RuntimeException("Someone added a third dimension...");
+}
+}

@@ -1,0 +1,329 @@
+{
+  for (int i=0; i < node.getChildCount(); i++) {
+    node.getChildAt(i).layout.resetResult();
+  }
+  CSSDirection direction=resolveDirection(node,parentDirection);
+  CSSFlexDirection mainAxis=resolveAxis(getFlexDirection(node),direction);
+  CSSFlexDirection crossAxis=getCrossFlexDirection(mainAxis,direction);
+  CSSFlexDirection resolvedRowAxis=resolveAxis(CSSFlexDirection.ROW,direction);
+  setDimensionFromStyle(node,mainAxis);
+  setDimensionFromStyle(node,crossAxis);
+  setLayoutDirection(node,direction);
+  setLayoutPosition(node,getLeading(mainAxis),getLayoutPosition(node,getLeading(mainAxis)) + getLeadingMargin(node,mainAxis) + getRelativePosition(node,mainAxis));
+  setLayoutPosition(node,getTrailing(mainAxis),getLayoutPosition(node,getTrailing(mainAxis)) + getTrailingMargin(node,mainAxis) + getRelativePosition(node,mainAxis));
+  setLayoutPosition(node,getLeading(crossAxis),getLayoutPosition(node,getLeading(crossAxis)) + getLeadingMargin(node,crossAxis) + getRelativePosition(node,crossAxis));
+  setLayoutPosition(node,getTrailing(crossAxis),getLayoutPosition(node,getTrailing(crossAxis)) + getTrailingMargin(node,crossAxis) + getRelativePosition(node,crossAxis));
+  if (isMeasureDefined(node)) {
+    float width=CSSConstants.UNDEFINED;
+    if (isDimDefined(node,resolvedRowAxis)) {
+      width=node.style.width;
+    }
+ else     if (!CSSConstants.isUndefined(getLayoutDimension(node,getDim(resolvedRowAxis)))) {
+      width=getLayoutDimension(node,getDim(resolvedRowAxis));
+    }
+ else {
+      width=parentMaxWidth - getMarginAxis(node,resolvedRowAxis);
+    }
+    width-=getPaddingAndBorderAxis(node,resolvedRowAxis);
+    boolean isRowUndefined=!isDimDefined(node,resolvedRowAxis) && CSSConstants.isUndefined(getLayoutDimension(node,getDim(resolvedRowAxis)));
+    boolean isColumnUndefined=!isDimDefined(node,CSSFlexDirection.COLUMN) && CSSConstants.isUndefined(getLayoutDimension(node,getDim(CSSFlexDirection.COLUMN)));
+    if (isRowUndefined || isColumnUndefined) {
+      MeasureOutput measureDim=node.measure(layoutContext.measureOutput,width);
+      if (isRowUndefined) {
+        node.layout.width=measureDim.width + getPaddingAndBorderAxis(node,resolvedRowAxis);
+      }
+      if (isColumnUndefined) {
+        node.layout.height=measureDim.height + getPaddingAndBorderAxis(node,CSSFlexDirection.COLUMN);
+      }
+    }
+    if (node.getChildCount() == 0) {
+      return;
+    }
+  }
+  int i;
+  int ii;
+  CSSNode child;
+  CSSFlexDirection axis;
+  for (i=0; i < node.getChildCount(); ++i) {
+    child=node.getChildAt(i);
+    if (getAlignItem(node,child) == CSSAlign.STRETCH && getPositionType(child) == CSSPositionType.RELATIVE && !CSSConstants.isUndefined(getLayoutDimension(node,getDim(crossAxis))) && !isDimDefined(child,crossAxis)) {
+      setLayoutDimension(child,getDim(crossAxis),Math.max(boundAxis(child,crossAxis,getLayoutDimension(node,getDim(crossAxis)) - getPaddingAndBorderAxis(node,crossAxis) - getMarginAxis(child,crossAxis)),getPaddingAndBorderAxis(child,crossAxis)));
+    }
+ else     if (getPositionType(child) == CSSPositionType.ABSOLUTE) {
+      for (ii=0; ii < 2; ii++) {
+        axis=(ii != 0) ? CSSFlexDirection.ROW : CSSFlexDirection.COLUMN;
+        if (!CSSConstants.isUndefined(getLayoutDimension(node,getDim(axis))) && !isDimDefined(child,axis) && isPosDefined(child,getLeading(axis))&& isPosDefined(child,getTrailing(axis))) {
+          setLayoutDimension(child,getDim(axis),Math.max(boundAxis(child,axis,getLayoutDimension(node,getDim(axis)) - getPaddingAndBorderAxis(node,axis) - getMarginAxis(child,axis)- getPosition(child,getLeading(axis))- getPosition(child,getTrailing(axis))),getPaddingAndBorderAxis(child,axis)));
+        }
+      }
+    }
+  }
+  float definedMainDim=CSSConstants.UNDEFINED;
+  if (!CSSConstants.isUndefined(getLayoutDimension(node,getDim(mainAxis)))) {
+    definedMainDim=getLayoutDimension(node,getDim(mainAxis)) - getPaddingAndBorderAxis(node,mainAxis);
+  }
+  int startLine=0;
+  int endLine=0;
+  int alreadyComputedNextLayout=0;
+  float linesCrossDim=0;
+  float linesMainDim=0;
+  int linesCount=0;
+  while (endLine < node.getChildCount()) {
+    float mainContentDim=0;
+    int flexibleChildrenCount=0;
+    float totalFlexible=0;
+    int nonFlexibleChildrenCount=0;
+    float maxWidth;
+    for (i=startLine; i < node.getChildCount(); ++i) {
+      child=node.getChildAt(i);
+      float nextContentDim=0;
+      if (!CSSConstants.isUndefined(getLayoutDimension(node,getDim(mainAxis))) && isFlex(child)) {
+        flexibleChildrenCount++;
+        totalFlexible=totalFlexible + getFlex(child);
+        nextContentDim=getPaddingAndBorderAxis(child,mainAxis) + getMarginAxis(child,mainAxis);
+      }
+ else {
+        maxWidth=CSSConstants.UNDEFINED;
+        if (!isRowDirection(mainAxis)) {
+          maxWidth=parentMaxWidth - getMarginAxis(node,resolvedRowAxis) - getPaddingAndBorderAxis(node,resolvedRowAxis);
+          if (isDimDefined(node,resolvedRowAxis)) {
+            maxWidth=getLayoutDimension(node,getDim(resolvedRowAxis)) - getPaddingAndBorderAxis(node,resolvedRowAxis);
+          }
+        }
+        if (alreadyComputedNextLayout == 0) {
+          layoutNode(layoutContext,child,maxWidth,direction);
+        }
+        if (getPositionType(child) == CSSPositionType.RELATIVE) {
+          nonFlexibleChildrenCount++;
+          nextContentDim=getDimWithMargin(child,mainAxis);
+        }
+      }
+      if (isFlexWrap(node) && !CSSConstants.isUndefined(getLayoutDimension(node,getDim(mainAxis))) && mainContentDim + nextContentDim > definedMainDim && i != startLine) {
+        nonFlexibleChildrenCount--;
+        alreadyComputedNextLayout=1;
+        break;
+      }
+      alreadyComputedNextLayout=0;
+      mainContentDim=mainContentDim + nextContentDim;
+      endLine=i + 1;
+    }
+    float leadingMainDim=0;
+    float betweenMainDim=0;
+    float remainingMainDim=0;
+    if (!CSSConstants.isUndefined(getLayoutDimension(node,getDim(mainAxis)))) {
+      remainingMainDim=definedMainDim - mainContentDim;
+    }
+ else {
+      remainingMainDim=Math.max(mainContentDim,0) - mainContentDim;
+    }
+    if (flexibleChildrenCount != 0) {
+      float flexibleMainDim=remainingMainDim / totalFlexible;
+      float baseMainDim;
+      float boundMainDim;
+      for (i=startLine; i < endLine; ++i) {
+        child=node.getChildAt(i);
+        if (isFlex(child)) {
+          baseMainDim=flexibleMainDim * getFlex(child) + getPaddingAndBorderAxis(child,mainAxis);
+          boundMainDim=boundAxis(child,mainAxis,baseMainDim);
+          if (baseMainDim != boundMainDim) {
+            remainingMainDim-=boundMainDim;
+            totalFlexible-=getFlex(child);
+          }
+        }
+      }
+      flexibleMainDim=remainingMainDim / totalFlexible;
+      if (flexibleMainDim < 0) {
+        flexibleMainDim=0;
+      }
+      for (i=startLine; i < endLine; ++i) {
+        child=node.getChildAt(i);
+        if (isFlex(child)) {
+          setLayoutDimension(child,getDim(mainAxis),boundAxis(child,mainAxis,flexibleMainDim * getFlex(child) + getPaddingAndBorderAxis(child,mainAxis)));
+          maxWidth=CSSConstants.UNDEFINED;
+          if (isDimDefined(node,resolvedRowAxis)) {
+            maxWidth=getLayoutDimension(node,getDim(resolvedRowAxis)) - getPaddingAndBorderAxis(node,resolvedRowAxis);
+          }
+ else           if (!isRowDirection(mainAxis)) {
+            maxWidth=parentMaxWidth - getMarginAxis(node,resolvedRowAxis) - getPaddingAndBorderAxis(node,resolvedRowAxis);
+          }
+          layoutNode(layoutContext,child,maxWidth,direction);
+        }
+      }
+    }
+ else {
+      CSSJustify justifyContent=getJustifyContent(node);
+      if (justifyContent == CSSJustify.CENTER) {
+        leadingMainDim=remainingMainDim / 2;
+      }
+ else       if (justifyContent == CSSJustify.FLEX_END) {
+        leadingMainDim=remainingMainDim;
+      }
+ else       if (justifyContent == CSSJustify.SPACE_BETWEEN) {
+        remainingMainDim=Math.max(remainingMainDim,0);
+        if (flexibleChildrenCount + nonFlexibleChildrenCount - 1 != 0) {
+          betweenMainDim=remainingMainDim / (flexibleChildrenCount + nonFlexibleChildrenCount - 1);
+        }
+ else {
+          betweenMainDim=0;
+        }
+      }
+ else       if (justifyContent == CSSJustify.SPACE_AROUND) {
+        betweenMainDim=remainingMainDim / (flexibleChildrenCount + nonFlexibleChildrenCount);
+        leadingMainDim=betweenMainDim / 2;
+      }
+    }
+    float crossDim=0;
+    float mainDim=leadingMainDim + getLeadingPaddingAndBorder(node,mainAxis);
+    for (i=startLine; i < endLine; ++i) {
+      child=node.getChildAt(i);
+      child.lineIndex=linesCount;
+      if (getPositionType(child) == CSSPositionType.ABSOLUTE && isPosDefined(child,getLeading(mainAxis))) {
+        setLayoutPosition(child,getPos(mainAxis),getPosition(child,getLeading(mainAxis)) + getLeadingBorder(node,mainAxis) + getLeadingMargin(child,mainAxis));
+      }
+ else {
+        setLayoutPosition(child,getPos(mainAxis),getLayoutPosition(child,getPos(mainAxis)) + mainDim);
+        if (!CSSConstants.isUndefined(getLayoutDimension(node,getDim(mainAxis)))) {
+          setTrailingPosition(node,child,mainAxis);
+        }
+      }
+      if (getPositionType(child) == CSSPositionType.RELATIVE) {
+        mainDim=mainDim + betweenMainDim + getDimWithMargin(child,mainAxis);
+        crossDim=Math.max(crossDim,boundAxis(child,crossAxis,getDimWithMargin(child,crossAxis)));
+      }
+    }
+    float containerCrossAxis=getLayoutDimension(node,getDim(crossAxis));
+    if (CSSConstants.isUndefined(getLayoutDimension(node,getDim(crossAxis)))) {
+      containerCrossAxis=Math.max(boundAxis(node,crossAxis,crossDim + getPaddingAndBorderAxis(node,crossAxis)),getPaddingAndBorderAxis(node,crossAxis));
+    }
+    for (i=startLine; i < endLine; ++i) {
+      child=node.getChildAt(i);
+      if (getPositionType(child) == CSSPositionType.ABSOLUTE && isPosDefined(child,getLeading(crossAxis))) {
+        setLayoutPosition(child,getPos(crossAxis),getPosition(child,getLeading(crossAxis)) + getLeadingBorder(node,crossAxis) + getLeadingMargin(child,crossAxis));
+      }
+ else {
+        float leadingCrossDim=getLeadingPaddingAndBorder(node,crossAxis);
+        if (getPositionType(child) == CSSPositionType.RELATIVE) {
+          CSSAlign alignItem=getAlignItem(node,child);
+          if (alignItem == CSSAlign.STRETCH) {
+            if (!isDimDefined(child,crossAxis)) {
+              setLayoutDimension(child,getDim(crossAxis),Math.max(boundAxis(child,crossAxis,containerCrossAxis - getPaddingAndBorderAxis(node,crossAxis) - getMarginAxis(child,crossAxis)),getPaddingAndBorderAxis(child,crossAxis)));
+            }
+          }
+ else           if (alignItem != CSSAlign.FLEX_START) {
+            float remainingCrossDim=containerCrossAxis - getPaddingAndBorderAxis(node,crossAxis) - getDimWithMargin(child,crossAxis);
+            if (alignItem == CSSAlign.CENTER) {
+              leadingCrossDim=leadingCrossDim + remainingCrossDim / 2;
+            }
+ else {
+              leadingCrossDim=leadingCrossDim + remainingCrossDim;
+            }
+          }
+        }
+        setLayoutPosition(child,getPos(crossAxis),getLayoutPosition(child,getPos(crossAxis)) + linesCrossDim + leadingCrossDim);
+        if (!CSSConstants.isUndefined(getLayoutDimension(node,getDim(crossAxis)))) {
+          setTrailingPosition(node,child,crossAxis);
+        }
+      }
+    }
+    linesCrossDim=linesCrossDim + crossDim;
+    linesMainDim=Math.max(linesMainDim,mainDim);
+    linesCount=linesCount + 1;
+    startLine=endLine;
+  }
+  if (linesCount > 1 && !CSSConstants.isUndefined(getLayoutDimension(node,getDim(crossAxis)))) {
+    float nodeCrossAxisInnerSize=getLayoutDimension(node,getDim(crossAxis)) - getPaddingAndBorderAxis(node,crossAxis);
+    float remainingAlignContentDim=nodeCrossAxisInnerSize - linesCrossDim;
+    float crossDimLead=0;
+    float currentLead=getLeadingPaddingAndBorder(node,crossAxis);
+    CSSAlign alignContent=getAlignContent(node);
+    if (alignContent == CSSAlign.FLEX_END) {
+      currentLead=currentLead + remainingAlignContentDim;
+    }
+ else     if (alignContent == CSSAlign.CENTER) {
+      currentLead=currentLead + remainingAlignContentDim / 2;
+    }
+ else     if (alignContent == CSSAlign.STRETCH) {
+      if (nodeCrossAxisInnerSize > linesCrossDim) {
+        crossDimLead=(remainingAlignContentDim / linesCount);
+      }
+    }
+    int endIndex=0;
+    for (i=0; i < linesCount; ++i) {
+      int startIndex=endIndex;
+      float lineHeight=0;
+      for (ii=startIndex; ii < node.getChildCount(); ++ii) {
+        child=node.getChildAt(ii);
+        if (getPositionType(child) != CSSPositionType.RELATIVE) {
+          continue;
+        }
+        if (child.lineIndex != i) {
+          break;
+        }
+        if (!CSSConstants.isUndefined(getLayoutDimension(child,getDim(crossAxis)))) {
+          lineHeight=Math.max(lineHeight,getLayoutDimension(child,getDim(crossAxis)) + getMarginAxis(child,crossAxis));
+        }
+      }
+      endIndex=ii;
+      lineHeight=lineHeight + crossDimLead;
+      for (ii=startIndex; ii < endIndex; ++ii) {
+        child=node.getChildAt(ii);
+        if (getPositionType(child) != CSSPositionType.RELATIVE) {
+          continue;
+        }
+        CSSAlign alignContentAlignItem=getAlignItem(node,child);
+        if (alignContentAlignItem == CSSAlign.FLEX_START) {
+          setLayoutPosition(child,getPos(crossAxis),currentLead + getLeadingMargin(child,crossAxis));
+        }
+ else         if (alignContentAlignItem == CSSAlign.FLEX_END) {
+          setLayoutPosition(child,getPos(crossAxis),currentLead + lineHeight - getTrailingMargin(child,crossAxis) - getLayoutDimension(child,getDim(crossAxis)));
+        }
+ else         if (alignContentAlignItem == CSSAlign.CENTER) {
+          float childHeight=getLayoutDimension(child,getDim(crossAxis));
+          setLayoutPosition(child,getPos(crossAxis),currentLead + (lineHeight - childHeight) / 2);
+        }
+ else         if (alignContentAlignItem == CSSAlign.STRETCH) {
+          setLayoutPosition(child,getPos(crossAxis),currentLead + getLeadingMargin(child,crossAxis));
+        }
+      }
+      currentLead=currentLead + lineHeight;
+    }
+  }
+  boolean needsMainTrailingPos=false;
+  boolean needsCrossTrailingPos=false;
+  if (CSSConstants.isUndefined(getLayoutDimension(node,getDim(mainAxis)))) {
+    setLayoutDimension(node,getDim(mainAxis),Math.max(boundAxis(node,mainAxis,linesMainDim + getTrailingPaddingAndBorder(node,mainAxis)),getPaddingAndBorderAxis(node,mainAxis)));
+    needsMainTrailingPos=true;
+  }
+  if (CSSConstants.isUndefined(getLayoutDimension(node,getDim(crossAxis)))) {
+    setLayoutDimension(node,getDim(crossAxis),Math.max(boundAxis(node,crossAxis,linesCrossDim + getPaddingAndBorderAxis(node,crossAxis)),getPaddingAndBorderAxis(node,crossAxis)));
+    needsCrossTrailingPos=true;
+  }
+  if (needsMainTrailingPos || needsCrossTrailingPos) {
+    for (i=0; i < node.getChildCount(); ++i) {
+      child=node.getChildAt(i);
+      if (needsMainTrailingPos) {
+        setTrailingPosition(node,child,mainAxis);
+      }
+      if (needsCrossTrailingPos) {
+        setTrailingPosition(node,child,crossAxis);
+      }
+    }
+  }
+  for (i=0; i < node.getChildCount(); ++i) {
+    child=node.getChildAt(i);
+    if (getPositionType(child) == CSSPositionType.ABSOLUTE) {
+      for (ii=0; ii < 2; ii++) {
+        axis=(ii != 0) ? CSSFlexDirection.ROW : CSSFlexDirection.COLUMN;
+        if (!CSSConstants.isUndefined(getLayoutDimension(node,getDim(axis))) && !isDimDefined(child,axis) && isPosDefined(child,getLeading(axis))&& isPosDefined(child,getTrailing(axis))) {
+          setLayoutDimension(child,getDim(axis),Math.max(boundAxis(child,axis,getLayoutDimension(node,getDim(axis)) - getBorderAxis(node,axis) - getMarginAxis(child,axis)- getPosition(child,getLeading(axis))- getPosition(child,getTrailing(axis))),getPaddingAndBorderAxis(child,axis)));
+        }
+      }
+      for (ii=0; ii < 2; ii++) {
+        axis=(ii != 0) ? CSSFlexDirection.ROW : CSSFlexDirection.COLUMN;
+        if (isPosDefined(child,getTrailing(axis)) && !isPosDefined(child,getLeading(axis))) {
+          setLayoutPosition(child,getLeading(axis),getLayoutDimension(node,getDim(axis)) - getLayoutDimension(child,getDim(axis)) - getPosition(child,getTrailing(axis)));
+        }
+      }
+    }
+  }
+}

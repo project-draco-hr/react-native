@@ -1,0 +1,11 @@
+{
+  UiThreadUtil.assertOnUiThread();
+  mLifecycleState=LifecycleState.BEFORE_RESUME;
+  mDefaultBackButtonImpl=null;
+  if (mUseDeveloperSupport) {
+    mDevSupportManager.setDevSupportEnabled(false);
+  }
+  if (mCurrentReactContext != null) {
+    mCurrentReactContext.onPause();
+  }
+}

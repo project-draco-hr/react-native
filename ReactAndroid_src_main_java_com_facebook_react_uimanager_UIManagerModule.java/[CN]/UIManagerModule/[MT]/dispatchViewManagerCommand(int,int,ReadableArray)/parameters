@@ -1,0 +1,3 @@
+int reactTag
+int commandId
+ReadableArray commandArgs

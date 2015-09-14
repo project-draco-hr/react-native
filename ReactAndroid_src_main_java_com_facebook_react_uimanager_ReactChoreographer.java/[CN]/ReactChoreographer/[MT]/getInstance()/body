@@ -1,0 +1,7 @@
+{
+  UiThreadUtil.assertOnUiThread();
+  if (sInstance == null) {
+    sInstance=new ReactChoreographer();
+  }
+  return sInstance;
+}

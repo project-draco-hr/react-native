@@ -1,0 +1,6 @@
+{
+  mCallbackID=callbackID;
+  mTargetTime=initialTargetTime;
+  mInterval=duration;
+  mRepeat=repeat;
+}

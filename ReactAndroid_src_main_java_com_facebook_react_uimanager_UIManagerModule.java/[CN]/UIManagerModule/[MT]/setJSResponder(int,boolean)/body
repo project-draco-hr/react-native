@@ -1,0 +1,4 @@
+{
+  assertViewExists(reactTag,"setJSResponder");
+  mOperationsQueue.enqueueSetJSResponder(reactTag,blockNativeResponder);
+}

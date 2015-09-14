@@ -1,0 +1,6 @@
+{
+  if (mBorderRadius != radius) {
+    mBorderRadius=radius;
+    invalidateSelf();
+  }
+}

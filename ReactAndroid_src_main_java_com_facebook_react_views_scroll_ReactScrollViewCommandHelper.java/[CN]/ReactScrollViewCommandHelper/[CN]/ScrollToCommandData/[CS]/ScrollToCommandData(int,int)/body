@@ -1,0 +1,4 @@
+{
+  mDestX=destX;
+  mDestY=destY;
+}

@@ -1,0 +1,34 @@
+{
+  if (removeClippedSubviews == mRemoveClippedSubviews) {
+    return;
+  }
+  mRemoveClippedSubviews=removeClippedSubviews;
+  if (removeClippedSubviews) {
+    mClippingRect=new Rect();
+    ReactClippingViewGroupHelper.calculateClippingRect(this,mClippingRect);
+    mAllChildrenCount=getChildCount();
+    int initialSize=Math.max(12,mAllChildrenCount);
+    mAllChildren=new View[initialSize];
+    mChildrenLayoutChangeListener=new ChildrenLayoutChangeListener(this);
+    for (int i=0; i < mAllChildrenCount; i++) {
+      View child=getChildAt(i);
+      mAllChildren[i]=child;
+      child.addOnLayoutChangeListener(mChildrenLayoutChangeListener);
+    }
+    updateClippingRect();
+  }
+ else {
+    Assertions.assertNotNull(mClippingRect);
+    Assertions.assertNotNull(mAllChildren);
+    Assertions.assertNotNull(mChildrenLayoutChangeListener);
+    for (int i=0; i < mAllChildrenCount; i++) {
+      mAllChildren[i].removeOnLayoutChangeListener(mChildrenLayoutChangeListener);
+    }
+    getDrawingRect(mClippingRect);
+    updateClippingToRect(mClippingRect);
+    mAllChildren=null;
+    mClippingRect=null;
+    mAllChildrenCount=0;
+    mChildrenLayoutChangeListener=null;
+  }
+}

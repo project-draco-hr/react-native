@@ -1,0 +1,41 @@
+{
+synchronized (mEventsStagingLock) {
+synchronized (mEventsToDispatchLock) {
+      for (int i=0; i < mEventStaging.size(); i++) {
+        Event event=mEventStaging.get(i);
+        if (!event.canCoalesce()) {
+          addEventToEventsToDispatch(event);
+          continue;
+        }
+        long eventCookie=getEventCookie(event.getViewTag(),event.getEventName(),event.getCoalescingKey());
+        Event eventToAdd=null;
+        Event eventToDispose=null;
+        Integer lastEventIdx=mEventCookieToLastEventIdx.get(eventCookie);
+        if (lastEventIdx == null) {
+          eventToAdd=event;
+          mEventCookieToLastEventIdx.put(eventCookie,mEventsToDispatchSize);
+        }
+ else {
+          Event lastEvent=mEventsToDispatch[lastEventIdx];
+          Event coalescedEvent=event.coalesce(lastEvent);
+          if (coalescedEvent != lastEvent) {
+            eventToAdd=coalescedEvent;
+            mEventCookieToLastEventIdx.put(eventCookie,mEventsToDispatchSize);
+            eventToDispose=lastEvent;
+            mEventsToDispatch[lastEventIdx]=null;
+          }
+ else {
+            eventToDispose=event;
+          }
+        }
+        if (eventToAdd != null) {
+          addEventToEventsToDispatch(eventToAdd);
+        }
+        if (eventToDispose != null) {
+          eventToDispose.dispose();
+        }
+      }
+    }
+    mEventStaging.clear();
+  }
+}

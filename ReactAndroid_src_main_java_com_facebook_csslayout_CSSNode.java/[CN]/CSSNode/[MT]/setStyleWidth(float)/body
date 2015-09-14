@@ -1,0 +1,6 @@
+{
+  if (!valuesEqual(style.width,width)) {
+    style.width=width;
+    dirty();
+  }
+}

@@ -1,0 +1,5 @@
+{
+  mStyle=fontStyle;
+  mWeight=fontWeight;
+  mFontFamily=fontFamily;
+}

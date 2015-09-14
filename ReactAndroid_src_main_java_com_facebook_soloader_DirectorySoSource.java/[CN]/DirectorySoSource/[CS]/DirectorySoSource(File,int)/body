@@ -1,0 +1,4 @@
+{
+  this.soDirectory=soDirectory;
+  this.flags=flags;
+}

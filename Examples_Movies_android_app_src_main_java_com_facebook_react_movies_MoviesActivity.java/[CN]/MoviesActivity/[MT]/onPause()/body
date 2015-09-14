@@ -1,0 +1,6 @@
+{
+  super.onPause();
+  if (mReactInstanceManager != null) {
+    mReactInstanceManager.onPause();
+  }
+}

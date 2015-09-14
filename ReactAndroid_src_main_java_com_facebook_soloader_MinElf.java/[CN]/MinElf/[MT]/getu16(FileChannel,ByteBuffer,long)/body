@@ -1,0 +1,4 @@
+{
+  read(fc,bb,2,offset);
+  return bb.getShort() & (int)0xFFFF;
+}

@@ -1,0 +1,5 @@
+{
+  if (mUiManagerDebugListener != null) {
+    mUiManagerDebugListener.onViewHierarchyUpdateFinished();
+  }
+}

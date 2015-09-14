@@ -1,0 +1,6 @@
+{
+  if (mFrameCallback != null) {
+    mFrameCallback.stop();
+    mFrameCallback=null;
+  }
+}

@@ -1,0 +1,7 @@
+{
+  mCatalystQueueConfiguration.getNativeModulesQueueThread().assertIsOnThread();
+  if (mDestroyed) {
+    return;
+  }
+  mJavaRegistry.call(CatalystInstance.this,moduleId,methodId,parameters);
+}

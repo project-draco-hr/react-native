@@ -1,0 +1,5 @@
+{
+  mModuleDefinitions=new ArrayList<ModuleDefinition>();
+  mModuleInstances=MapBuilder.newHashMap();
+  mSeenModuleNames=SetBuilder.newHashSet();
+}

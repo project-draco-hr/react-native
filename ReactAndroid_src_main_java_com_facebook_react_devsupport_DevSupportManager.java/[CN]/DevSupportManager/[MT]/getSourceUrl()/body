@@ -1,0 +1,3 @@
+{
+  return mDevServerHelper.getSourceUrl(Assertions.assertNotNull(mJSAppBundleName));
+}

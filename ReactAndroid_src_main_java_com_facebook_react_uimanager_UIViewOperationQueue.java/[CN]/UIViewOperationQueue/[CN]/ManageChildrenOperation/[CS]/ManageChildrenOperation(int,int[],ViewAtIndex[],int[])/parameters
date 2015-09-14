@@ -1,0 +1,4 @@
+int tag
+int[] indicesToRemove
+ViewAtIndex[] viewsToAdd
+int[] tagsToDelete

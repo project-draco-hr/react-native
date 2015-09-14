@@ -1,0 +1,13 @@
+{
+  ReactShadowNode parentParent=parent.getParent();
+  if (parentParent == null) {
+    return;
+  }
+  int transformedIndex=index + parentParent.getNativeOffsetForChild(parent);
+  if (parentParent.isLayoutOnly()) {
+    addLayoutOnlyNodeToLayoutOnlyNode(parentParent,child,transformedIndex);
+  }
+ else {
+    addLayoutOnlyNodeToNonLayoutOnlyNode(parentParent,child,transformedIndex);
+  }
+}

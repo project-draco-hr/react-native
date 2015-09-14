@@ -1,0 +1,6 @@
+{
+  if (mLastFrameTime == mFirstFrameTime) {
+    return 0;
+  }
+  return ((double)(getNumJSFrames()) * 1e9) / (mLastFrameTime - mFirstFrameTime);
+}

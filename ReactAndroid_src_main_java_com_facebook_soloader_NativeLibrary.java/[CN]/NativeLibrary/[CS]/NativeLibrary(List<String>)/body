@@ -1,0 +1,7 @@
+{
+  mLock=new Object();
+  mLoadLibraries=true;
+  mLibrariesLoaded=false;
+  mLinkError=null;
+  mLibraryNames=libraryNames;
+}

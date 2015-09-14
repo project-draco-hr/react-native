@@ -1,0 +1,25 @@
+{
+  PointerEvents pointerEvents=view instanceof ReactPointerEventsView ? ((ReactPointerEventsView)view).getPointerEvents() : PointerEvents.AUTO;
+  if (pointerEvents == PointerEvents.NONE) {
+    return null;
+  }
+ else   if (pointerEvents == PointerEvents.BOX_ONLY) {
+    return view;
+  }
+ else   if (pointerEvents == PointerEvents.BOX_NONE) {
+    if (view instanceof ViewGroup) {
+      View targetView=findTouchTargetView(eventX,eventY,(ViewGroup)view);
+      return targetView != view ? targetView : null;
+    }
+    return null;
+  }
+ else   if (pointerEvents == PointerEvents.AUTO) {
+    if (view instanceof ViewGroup) {
+      return findTouchTargetView(eventX,eventY,(ViewGroup)view);
+    }
+    return view;
+  }
+ else {
+    throw new JSApplicationIllegalArgumentException("Unknown pointer event type: " + pointerEvents.toString());
+  }
+}

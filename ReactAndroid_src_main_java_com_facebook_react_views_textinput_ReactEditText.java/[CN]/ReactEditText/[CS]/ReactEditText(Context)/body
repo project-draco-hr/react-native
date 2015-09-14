@@ -1,0 +1,12 @@
+{
+  super(context);
+  setFocusableInTouchMode(false);
+  mInputMethodManager=(InputMethodManager)Assertions.assertNotNull(getContext().getSystemService(Context.INPUT_METHOD_SERVICE));
+  mDefaultGravityHorizontal=getGravity() & (Gravity.HORIZONTAL_GRAVITY_MASK | Gravity.RELATIVE_HORIZONTAL_GRAVITY_MASK);
+  mDefaultGravityVertical=getGravity() & Gravity.VERTICAL_GRAVITY_MASK;
+  mNativeEventCount=0;
+  mIsSettingTextFromJS=false;
+  mIsJSSettingFocus=false;
+  mListeners=null;
+  mTextWatcherDelegator=null;
+}

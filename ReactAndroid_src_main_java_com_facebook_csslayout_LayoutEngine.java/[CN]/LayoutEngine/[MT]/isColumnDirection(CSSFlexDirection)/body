@@ -1,0 +1,3 @@
+{
+  return flexDirection == CSSFlexDirection.COLUMN || flexDirection == CSSFlexDirection.COLUMN_REVERSE;
+}

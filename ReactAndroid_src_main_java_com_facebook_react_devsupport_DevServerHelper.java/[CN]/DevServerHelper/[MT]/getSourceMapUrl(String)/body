@@ -1,0 +1,3 @@
+{
+  return String.format(Locale.US,SOURCE_MAP_URL_FORMAT,getDebugServerHost(),mainModuleName);
+}

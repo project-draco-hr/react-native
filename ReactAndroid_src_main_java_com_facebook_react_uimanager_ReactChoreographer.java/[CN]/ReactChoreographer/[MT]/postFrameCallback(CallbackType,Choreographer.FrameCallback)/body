@@ -1,0 +1,10 @@
+{
+  UiThreadUtil.assertOnUiThread();
+  mCallbackQueues[type.getOrder()].addLast(frameCallback);
+  mTotalCallbacks++;
+  Assertions.assertCondition(mTotalCallbacks > 0);
+  if (!mHasPostedCallback) {
+    mChoreographer.postFrameCallback(mReactChoreographerDispatcher);
+    mHasPostedCallback=true;
+  }
+}

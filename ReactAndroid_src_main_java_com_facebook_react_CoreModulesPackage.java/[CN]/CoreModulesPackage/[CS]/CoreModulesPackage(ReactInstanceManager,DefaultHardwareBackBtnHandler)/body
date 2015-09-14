@@ -1,0 +1,4 @@
+{
+  mReactInstanceManager=reactInstanceManager;
+  mHardwareBackBtnHandler=hardwareBackBtnHandler;
+}

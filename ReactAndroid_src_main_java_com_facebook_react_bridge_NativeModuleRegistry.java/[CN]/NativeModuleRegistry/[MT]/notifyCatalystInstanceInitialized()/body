@@ -1,0 +1,6 @@
+{
+  UiThreadUtil.assertOnUiThread();
+  for (  NativeModule nativeModule : mModuleInstances.values()) {
+    nativeModule.initialize();
+  }
+}

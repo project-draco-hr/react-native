@@ -1,0 +1,3 @@
+{
+  return toPixelFromDIP((float)value);
+}

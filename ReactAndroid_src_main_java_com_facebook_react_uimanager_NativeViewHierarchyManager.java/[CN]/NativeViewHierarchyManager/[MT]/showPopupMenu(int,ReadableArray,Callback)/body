@@ -1,0 +1,16 @@
+{
+  UiThreadUtil.assertOnUiThread();
+  View anchor=mTagsToViews.get(reactTag);
+  if (anchor == null) {
+    throw new JSApplicationIllegalArgumentException("Could not find view with tag " + reactTag);
+  }
+  PopupMenu popupMenu=new PopupMenu(getReactContextForView(reactTag),anchor);
+  Menu menu=popupMenu.getMenu();
+  for (int i=0; i < items.size(); i++) {
+    menu.add(Menu.NONE,Menu.NONE,i,items.getString(i));
+  }
+  PopupMenuCallbackHandler handler=new PopupMenuCallbackHandler(success);
+  popupMenu.setOnMenuItemClickListener(handler);
+  popupMenu.setOnDismissListener(handler);
+  popupMenu.show();
+}

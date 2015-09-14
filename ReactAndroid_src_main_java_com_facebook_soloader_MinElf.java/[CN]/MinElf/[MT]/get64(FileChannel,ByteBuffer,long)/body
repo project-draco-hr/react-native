@@ -1,0 +1,4 @@
+{
+  read(fc,bb,8,offset);
+  return bb.getLong();
+}

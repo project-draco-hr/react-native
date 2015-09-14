@@ -1,0 +1,4 @@
+{
+  devParams=new PackagerParams();
+  project.configure(devParams,closure);
+}

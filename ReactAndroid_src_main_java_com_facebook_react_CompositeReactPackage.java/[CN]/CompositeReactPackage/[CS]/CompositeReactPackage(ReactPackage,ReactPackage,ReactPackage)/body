@@ -1,0 +1,7 @@
+{
+  mChildReactPackages.add(arg1);
+  mChildReactPackages.add(arg2);
+  for (  ReactPackage reactPackage : args) {
+    mChildReactPackages.add(reactPackage);
+  }
+}

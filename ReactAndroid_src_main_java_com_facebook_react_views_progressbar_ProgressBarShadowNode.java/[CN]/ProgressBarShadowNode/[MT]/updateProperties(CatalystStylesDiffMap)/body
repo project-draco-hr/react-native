@@ -1,0 +1,11 @@
+{
+  super.updateProperties(styles);
+  if (styles.hasKey(ReactProgressBarViewManager.PROP_STYLE)) {
+    String style=styles.getString(ReactProgressBarViewManager.PROP_STYLE);
+    Assertions.assertNotNull(style,"style property should always be set for the progress bar component");
+    setStyle(style);
+  }
+ else {
+    setStyle(ReactProgressBarViewManager.DEFAULT_STYLE);
+  }
+}

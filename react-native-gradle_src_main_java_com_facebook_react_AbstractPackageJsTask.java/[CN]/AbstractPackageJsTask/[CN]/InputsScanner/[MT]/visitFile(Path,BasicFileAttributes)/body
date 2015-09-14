@@ -1,0 +1,7 @@
+{
+  if (mMatcher.matches(file.getFileName())) {
+    getInputs().file(file.toString());
+    mCount++;
+  }
+  return FileVisitResult.CONTINUE;
+}

@@ -1,0 +1,13 @@
+{
+  mCatalystQueueConfiguration.getNativeModulesQueueThread().assertIsOnThread();
+  if (!mDestroyed) {
+    Systrace.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"onBatchComplete");
+    try {
+      mJavaRegistry.onBatchComplete();
+    }
+  finally {
+      Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);
+    }
+  }
+  decrementPendingJSCalls();
+}

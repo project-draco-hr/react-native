@@ -1,0 +1,8 @@
+{
+  if (mCatalystInstance != null && !mCatalystInstance.isDestroyed() && mNativeModuleCallExceptionHandler != null) {
+    mNativeModuleCallExceptionHandler.handleException(e);
+  }
+ else {
+    throw e;
+  }
+}

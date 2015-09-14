@@ -1,0 +1,3 @@
+{
+  return Arrays.<NativeModule>asList(new AnimationsDebugModule(catalystApplicationContext,mReactInstanceManager.getDevSupportManager().getDevSettings()),new AndroidInfoModule(),new DeviceEventManagerModule(catalystApplicationContext,mHardwareBackBtnHandler),new ExceptionsManagerModule(mReactInstanceManager.getDevSupportManager()),new Timing(catalystApplicationContext),new SourceCodeModule(mReactInstanceManager.getDevSupportManager().getSourceUrl(),mReactInstanceManager.getDevSupportManager().getSourceMapUrl()),new UIManagerModule(catalystApplicationContext,mReactInstanceManager.createAllViewManagers(catalystApplicationContext)),new DebugComponentOwnershipModule(catalystApplicationContext));
+}

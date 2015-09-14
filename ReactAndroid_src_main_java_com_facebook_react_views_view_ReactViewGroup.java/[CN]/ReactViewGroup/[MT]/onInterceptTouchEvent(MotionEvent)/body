@@ -1,0 +1,9 @@
+{
+  if (mOnInterceptTouchEventListener != null && mOnInterceptTouchEventListener.onInterceptTouchEvent(this,ev)) {
+    return true;
+  }
+  if (mPointerEvents == PointerEvents.NONE || mPointerEvents == PointerEvents.BOX_ONLY) {
+    return true;
+  }
+  return super.onInterceptTouchEvent(ev);
+}

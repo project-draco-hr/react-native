@@ -1,0 +1,3 @@
+int fontStyle
+int fontWeight
+String fontFamily

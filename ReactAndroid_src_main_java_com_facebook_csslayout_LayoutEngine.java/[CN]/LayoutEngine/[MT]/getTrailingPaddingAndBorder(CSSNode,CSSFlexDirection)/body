@@ -1,0 +1,3 @@
+{
+  return getTrailingPadding(node,axis) + getTrailingBorder(node,axis);
+}

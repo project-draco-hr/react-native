@@ -1,0 +1,8 @@
+{
+  if (mShouldStop) {
+    return;
+  }
+  setCurrentFPS(mFrameCallback.getFPS(),mFrameCallback.getJSFPS());
+  mFrameCallback.reset();
+  postDelayed(this,UPDATE_INTERVAL_MS);
+}

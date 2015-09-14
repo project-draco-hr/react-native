@@ -1,0 +1,11 @@
+{
+  if (!mCatalystSettings.isAnimationFpsDebugEnabled()) {
+    return;
+  }
+  if (mFrameCallback != null) {
+    throw new JSApplicationCausedNativeException("Already recording FPS!");
+  }
+  checkAPILevel();
+  mFrameCallback=new FpsDebugFrameCallback(Choreographer.getInstance(),getReactApplicationContext());
+  mFrameCallback.startAndRecordFpsAtEachFrame();
+}

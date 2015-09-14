@@ -1,0 +1,5 @@
+{
+  ReactSwitch view=new ReactSwitch(context);
+  view.setShowText(false);
+  return view;
+}

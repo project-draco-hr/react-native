@@ -1,0 +1,14 @@
+{
+  try {
+    String[] assets=mApplicationContext.getAssets().list("");
+    for (int i=0; i < assets.length; i++) {
+      if (assets[i].equals(bundleAssetName)) {
+        return true;
+      }
+    }
+  }
+ catch (  IOException e) {
+    FLog.e(ReactConstants.TAG,"Error while loading assets list");
+  }
+  return false;
+}

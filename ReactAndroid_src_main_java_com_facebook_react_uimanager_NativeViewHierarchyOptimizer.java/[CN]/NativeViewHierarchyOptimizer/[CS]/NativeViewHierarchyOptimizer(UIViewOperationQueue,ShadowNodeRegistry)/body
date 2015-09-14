@@ -1,0 +1,4 @@
+{
+  mUIViewOperationQueue=uiViewOperationQueue;
+  mShadowNodeRegistry=shadowNodeRegistry;
+}

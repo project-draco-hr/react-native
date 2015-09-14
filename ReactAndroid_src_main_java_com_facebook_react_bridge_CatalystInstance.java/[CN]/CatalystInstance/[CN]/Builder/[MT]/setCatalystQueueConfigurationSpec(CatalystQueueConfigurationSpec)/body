@@ -1,0 +1,4 @@
+{
+  mCatalystQueueConfigurationSpec=catalystQueueConfigurationSpec;
+  return this;
+}

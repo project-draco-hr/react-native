@@ -1,0 +1,7 @@
+{
+  Assertions.assertCondition(mTotalCallbacks >= 0);
+  if (mTotalCallbacks == 0 && mHasPostedCallback) {
+    mChoreographer.removeFrameCallback(mReactChoreographerDispatcher);
+    mHasPostedCallback=false;
+  }
+}

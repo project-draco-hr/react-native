@@ -1,0 +1,12 @@
+{
+  if (mLayoutState == LayoutState.DIRTY) {
+    return;
+  }
+ else   if (mLayoutState == LayoutState.HAS_NEW_LAYOUT) {
+    throw new IllegalStateException("Previous layout was ignored! markLayoutSeen() never called");
+  }
+  mLayoutState=LayoutState.DIRTY;
+  if (mParent != null) {
+    mParent.dirty();
+  }
+}

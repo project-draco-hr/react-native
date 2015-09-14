@@ -1,0 +1,5 @@
+{
+  super.setPadding(spacingType,padding);
+  mComputedPadding=spacingToFloatArray(getStylePadding());
+  markUpdated();
+}

@@ -1,0 +1,7 @@
+{
+  Assertions.assertNotNull(mChildren);
+  CSSNode removed=mChildren.remove(i);
+  removed.mParent=null;
+  dirty();
+  return removed;
+}

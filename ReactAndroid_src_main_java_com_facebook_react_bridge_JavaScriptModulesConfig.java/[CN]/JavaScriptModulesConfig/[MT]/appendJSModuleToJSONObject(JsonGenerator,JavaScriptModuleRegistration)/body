@@ -1,0 +1,10 @@
+{
+  jg.writeObjectField("moduleID",registration.getModuleId());
+  jg.writeObjectFieldStart("methods");
+  for (  Method method : registration.getMethods()) {
+    jg.writeObjectFieldStart(method.getName());
+    jg.writeObjectField("methodID",registration.getMethodId(method));
+    jg.writeEndObject();
+  }
+  jg.writeEndObject();
+}

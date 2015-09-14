@@ -1,0 +1,25 @@
+{
+  Resources.Theme theme=context.getTheme();
+  TypedArray toolbarStyle=null;
+  TypedArray textAppearances=null;
+  TypedArray titleTextAppearance=null;
+  TypedArray subtitleTextAppearance=null;
+  try {
+    toolbarStyle=theme.obtainStyledAttributes(new int[]{R.attr.toolbarStyle});
+    int toolbarStyleResId=toolbarStyle.getResourceId(0,0);
+    textAppearances=theme.obtainStyledAttributes(toolbarStyleResId,new int[]{R.attr.titleTextAppearance,R.attr.subtitleTextAppearance});
+    int titleTextAppearanceResId=textAppearances.getResourceId(0,0);
+    int subtitleTextAppearanceResId=textAppearances.getResourceId(1,0);
+    titleTextAppearance=theme.obtainStyledAttributes(titleTextAppearanceResId,new int[]{android.R.attr.textColor});
+    subtitleTextAppearance=theme.obtainStyledAttributes(subtitleTextAppearanceResId,new int[]{android.R.attr.textColor});
+    int titleTextColor=titleTextAppearance.getColor(0,Color.BLACK);
+    int subtitleTextColor=subtitleTextAppearance.getColor(0,Color.BLACK);
+    return new int[]{titleTextColor,subtitleTextColor};
+  }
+  finally {
+    recycleQuietly(toolbarStyle);
+    recycleQuietly(textAppearances);
+    recycleQuietly(titleTextAppearance);
+    recycleQuietly(subtitleTextAppearance);
+  }
+}

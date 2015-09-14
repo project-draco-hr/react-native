@@ -1,0 +1,5 @@
+{
+  super(tag);
+  mClearResponder=clearResponder;
+  mBlockNativeResponder=blockNativeResponder;
+}

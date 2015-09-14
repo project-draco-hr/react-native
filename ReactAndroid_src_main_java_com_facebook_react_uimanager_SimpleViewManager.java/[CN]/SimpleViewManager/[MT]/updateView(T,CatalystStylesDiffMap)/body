@@ -1,0 +1,3 @@
+{
+  BaseViewPropertyApplicator.applyCommonViewProperties(root,props);
+}

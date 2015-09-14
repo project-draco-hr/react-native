@@ -1,0 +1,7 @@
+{
+  float lead=getStylePosition(node,getLeading(axis));
+  if (!CSSConstants.isUndefined(lead)) {
+    return lead;
+  }
+  return -getPosition(node,getTrailing(axis));
+}

@@ -1,0 +1,8 @@
+{
+  if (mDevSupportManager.getDevSupportEnabled()) {
+    mDevSupportManager.showNewJSError(title,details,exceptionId);
+  }
+ else {
+    throw new JavascriptException(stackTraceToString(details));
+  }
+}

@@ -1,0 +1,3 @@
+{
+  addViewWithSubviewClippingEnabled(child,index,sDefaultLayoutParam);
+}

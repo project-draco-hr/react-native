@@ -1,0 +1,20 @@
+{
+  ViewParent parent=view.getParent();
+  if (parent == null) {
+    outputRect.setEmpty();
+    return;
+  }
+ else   if (parent instanceof ReactClippingViewGroup) {
+    ReactClippingViewGroup clippingViewGroup=(ReactClippingViewGroup)parent;
+    if (clippingViewGroup.getRemoveClippedSubviews()) {
+      clippingViewGroup.getClippingRect(sHelperRect);
+      sHelperRect.offset(-view.getLeft(),-view.getTop());
+      view.getDrawingRect(outputRect);
+      if (!outputRect.intersect(sHelperRect)) {
+        outputRect.setEmpty();
+      }
+      return;
+    }
+  }
+  view.getDrawingRect(outputRect);
+}

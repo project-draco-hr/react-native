@@ -1,0 +1,3 @@
+{
+  return mPreferences.getBoolean(PREFS_RELOAD_ON_JS_CHANGE_KEY,false);
+}

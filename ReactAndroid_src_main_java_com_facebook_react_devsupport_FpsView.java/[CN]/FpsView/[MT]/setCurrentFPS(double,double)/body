@@ -1,0 +1,5 @@
+{
+  String fpsString=String.format(Locale.US,"UI FPS: %.1f\nJS FPS: %.1f",currentFPS,currentJSFPS);
+  mTextView.setText(fpsString);
+  FLog.d(ReactConstants.TAG,fpsString);
+}

@@ -1,0 +1,10 @@
+{
+  JSExecutorCallbackFuture callback=new JSExecutorCallbackFuture();
+  Assertions.assertNotNull(mWebSocketClient).executeJSCall(moduleName,methodName,jsonArgsArray,callback);
+  try {
+    return callback.get();
+  }
+ catch (  Throwable cause) {
+    throw new ProxyJavaScriptExecutor.ProxyExecutorException(cause);
+  }
+}

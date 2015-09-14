@@ -1,0 +1,10 @@
+{
+switch (commandId) {
+case FOCUS_TEXT_INPUT:
+    reactEditText.requestFocusFromJS();
+  break;
+case BLUR_TEXT_INPUT:
+reactEditText.clearFocusFromJS();
+break;
+}
+}

@@ -1,0 +1,3 @@
+{
+  FLog.e(ReactConstants.TAG,title + "\n" + stackTraceToString(details));
+}

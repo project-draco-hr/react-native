@@ -1,0 +1,11 @@
+{
+  HashSet<String> layoutOnlyProps=SetBuilder.newHashSet();
+  layoutOnlyProps.addAll(Arrays.asList(ALIGN_SELF,ALIGN_ITEMS,BOTTOM,COLLAPSABLE,FLEX,FLEX_DIRECTION,FLEX_WRAP,HEIGHT,JUSTIFY_CONTENT,LEFT,POSITION,RIGHT,TOP,WIDTH));
+  for (int i=0; i < MARGINS.length; i++) {
+    layoutOnlyProps.add(MARGINS[i]);
+  }
+  for (int i=0; i < PADDINGS.length; i++) {
+    layoutOnlyProps.add(PADDINGS[i]);
+  }
+  return layoutOnlyProps;
+}

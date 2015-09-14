@@ -1,0 +1,13 @@
+{
+  super.initialize();
+  SoLoaderShim.setHandler(new SoLoaderShim.Handler(){
+    @Override public void loadLibrary(    String libraryName){
+      SoLoader.loadLibrary(libraryName);
+    }
+  }
+);
+  Context context=this.getReactApplicationContext().getApplicationContext();
+  OkHttpClient okHttpClient=OkHttpClientProvider.getOkHttpClient();
+  ImagePipelineConfig config=OkHttpImagePipelineConfigFactory.newBuilder(context,okHttpClient).setDownsampleEnabled(false).build();
+  Fresco.initialize(context,config);
+}

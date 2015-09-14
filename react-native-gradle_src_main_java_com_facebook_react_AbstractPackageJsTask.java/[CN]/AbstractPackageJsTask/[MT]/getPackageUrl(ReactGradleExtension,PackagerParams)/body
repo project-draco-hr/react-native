@@ -1,0 +1,4 @@
+{
+  String query="dev=" + params.isDev() + "&"+ "inlineSourceMap="+ params.isInlineSourceMap()+ "&"+ "minify="+ params.isMinify()+ "&"+ "runModule="+ params.isRunModule();
+  return new URI("http",config.getPackagerHost(),config.getBundlePath(),query,null).toURL();
+}

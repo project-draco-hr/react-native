@@ -1,0 +1,3 @@
+{
+  getOutputs().file(getOutputFile(config));
+}

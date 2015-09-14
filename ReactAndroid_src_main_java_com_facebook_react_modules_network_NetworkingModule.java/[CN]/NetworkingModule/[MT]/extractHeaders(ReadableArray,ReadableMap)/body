@@ -1,0 +1,23 @@
+{
+  if (headersArray == null) {
+    return null;
+  }
+  Headers.Builder headersBuilder=new Headers.Builder();
+  for (int headersIdx=0, size=headersArray.size(); headersIdx < size; headersIdx++) {
+    ReadableArray header=headersArray.getArray(headersIdx);
+    if (header == null || header.size() != 2) {
+      return null;
+    }
+    String headerName=header.getString(0);
+    String headerValue=header.getString(1);
+    headersBuilder.add(headerName,headerValue);
+  }
+  if (headersBuilder.get(USER_AGENT_HEADER_NAME) == null && mDefaultUserAgent != null) {
+    headersBuilder.add(USER_AGENT_HEADER_NAME,mDefaultUserAgent);
+  }
+  boolean isGzipSupported=requestData != null && requestData.hasKey(REQUEST_BODY_KEY_STRING);
+  if (!isGzipSupported) {
+    headersBuilder.removeAll(CONTENT_ENCODING_HEADER_NAME);
+  }
+  return headersBuilder.build();
+}

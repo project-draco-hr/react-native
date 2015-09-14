@@ -1,0 +1,38 @@
+{
+  Map<String,Object> constants=UIManagerModuleConstants.getConstants(displayMetrics);
+  Map bubblingEventTypesConstants=UIManagerModuleConstants.getBubblingEventTypeConstants();
+  Map directEventTypesConstants=UIManagerModuleConstants.getDirectEventTypeConstants();
+  for (  ViewManager viewManager : viewManagers) {
+    Map viewManagerBubblingEvents=viewManager.getExportedCustomBubblingEventTypeConstants();
+    if (viewManagerBubblingEvents != null) {
+      recursiveMerge(bubblingEventTypesConstants,viewManagerBubblingEvents);
+    }
+    Map viewManagerDirectEvents=viewManager.getExportedCustomDirectEventTypeConstants();
+    if (viewManagerDirectEvents != null) {
+      recursiveMerge(directEventTypesConstants,viewManagerDirectEvents);
+    }
+    Map viewManagerConstants=MapBuilder.newHashMap();
+    Map customViewConstants=viewManager.getExportedViewConstants();
+    if (customViewConstants != null) {
+      viewManagerConstants.put("Constants",customViewConstants);
+    }
+    Map viewManagerCommands=viewManager.getCommandsMap();
+    if (viewManagerCommands != null) {
+      viewManagerConstants.put("Commands",viewManagerCommands);
+    }
+    Map<String,UIProp.Type> viewManagerNativeProps=viewManager.getNativeProps();
+    if (!viewManagerNativeProps.isEmpty()) {
+      Map<String,String> nativeProps=new HashMap<>();
+      for (      Map.Entry<String,UIProp.Type> entry : viewManagerNativeProps.entrySet()) {
+        nativeProps.put(entry.getKey(),entry.getValue().toString());
+      }
+      viewManagerConstants.put("NativeProps",nativeProps);
+    }
+    if (!viewManagerConstants.isEmpty()) {
+      constants.put(viewManager.getName(),viewManagerConstants);
+    }
+  }
+  constants.put(CUSTOM_BUBBLING_EVENT_TYPES_KEY,bubblingEventTypesConstants);
+  constants.put(CUSTOM_DIRECT_EVENT_TYPES_KEY,directEventTypesConstants);
+  return constants;
+}

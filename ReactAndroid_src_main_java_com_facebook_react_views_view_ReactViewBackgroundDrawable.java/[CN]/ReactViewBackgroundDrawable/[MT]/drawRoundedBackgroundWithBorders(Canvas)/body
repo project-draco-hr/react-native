@@ -1,0 +1,18 @@
+{
+  updatePath();
+  int useColor=ColorUtil.multiplyColorAlpha(mColor,mAlpha);
+  if ((useColor >>> 24) != 0) {
+    mPaint.setColor(useColor);
+    mPaint.setStyle(Paint.Style.FILL);
+    canvas.drawPath(mPathForBorderRadius,mPaint);
+  }
+  float fullBorderWidth=getFullBorderWidth();
+  if (fullBorderWidth > 0) {
+    int borderColor=getFullBorderColor();
+    mPaint.setColor(ColorUtil.multiplyColorAlpha(borderColor,mAlpha));
+    mPaint.setStyle(Paint.Style.STROKE);
+    mPaint.setStrokeWidth(fullBorderWidth);
+    mPaint.setPathEffect(mPathEffectForBorderStyle);
+    canvas.drawPath(mPathForBorderRadius,mPaint);
+  }
+}

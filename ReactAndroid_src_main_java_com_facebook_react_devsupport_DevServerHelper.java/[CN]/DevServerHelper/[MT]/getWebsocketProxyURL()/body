@@ -1,0 +1,3 @@
+{
+  return String.format(Locale.US,WEBSOCKET_PROXY_URL_FORMAT,getDebugServerHost());
+}

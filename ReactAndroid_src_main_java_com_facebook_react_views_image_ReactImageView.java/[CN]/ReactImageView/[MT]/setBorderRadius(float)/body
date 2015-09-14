@@ -1,0 +1,4 @@
+{
+  mBorderRadius=PixelUtil.toPixelFromDIP(borderRadius);
+  mIsDirty=true;
+}

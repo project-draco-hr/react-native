@@ -1,0 +1,5 @@
+{
+  mShouldStop=true;
+  mReactContext.getCatalystInstance().removeBridgeIdleDebugListener(mDidJSUpdateUiDuringFrameDetector);
+  mUIManagerModule.setUiManagerDebugListener(null);
+}

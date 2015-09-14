@@ -1,0 +1,5 @@
+{
+  super(tag);
+  mCommand=command;
+  mArgs=args;
+}

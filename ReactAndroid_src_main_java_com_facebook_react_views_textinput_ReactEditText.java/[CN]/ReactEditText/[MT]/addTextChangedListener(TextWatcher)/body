@@ -1,0 +1,7 @@
+{
+  if (mListeners == null) {
+    mListeners=new ArrayList<>();
+    super.addTextChangedListener(getTextWatcherDelegator());
+  }
+  mListeners.add(watcher);
+}

@@ -1,0 +1,4 @@
+{
+  parent.addNativeChildAt(child,index);
+  mUIViewOperationQueue.enqueueManageChildren(parent.getReactTag(),null,new ViewAtIndex[]{new ViewAtIndex(child.getReactTag(),index)},null);
+}

@@ -1,0 +1,3 @@
+String message
+CharSequence details
+int errorCookie

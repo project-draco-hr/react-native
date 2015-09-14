@@ -1,0 +1,12 @@
+{
+  mDebug=debug;
+  mConfig=ReactGradleExtension.getConfig(getProject());
+  mPackagerParams=PackagerParams.getPackagerParams(mConfig,mDebug);
+  if (mPackagerParams.isSkip()) {
+    setEnabled(false);
+  }
+ else {
+    setupInputs(mConfig);
+    setupOutputs(mConfig);
+  }
+}

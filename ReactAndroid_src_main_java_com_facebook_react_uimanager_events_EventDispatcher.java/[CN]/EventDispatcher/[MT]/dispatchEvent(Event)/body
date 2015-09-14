@@ -1,0 +1,5 @@
+{
+synchronized (mEventsStagingLock) {
+    mEventStaging.add(event);
+  }
+}

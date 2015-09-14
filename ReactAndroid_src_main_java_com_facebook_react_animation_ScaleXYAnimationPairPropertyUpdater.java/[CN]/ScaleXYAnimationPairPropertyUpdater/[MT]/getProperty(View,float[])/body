@@ -1,0 +1,4 @@
+{
+  returnValues[0]=view.getScaleX();
+  returnValues[1]=view.getScaleY();
+}

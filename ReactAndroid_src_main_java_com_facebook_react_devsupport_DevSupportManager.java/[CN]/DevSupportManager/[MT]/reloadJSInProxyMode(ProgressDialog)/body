@@ -1,0 +1,26 @@
+{
+  mDevServerHelper.launchChromeDevtools();
+  final WebsocketJavaScriptExecutor webSocketJSExecutor=new WebsocketJavaScriptExecutor();
+  webSocketJSExecutor.connect(mDevServerHelper.getWebsocketProxyURL(),new WebsocketJavaScriptExecutor.JSExecutorConnectCallback(){
+    @Override public void onSuccess(){
+      progressDialog.dismiss();
+      UiThreadUtil.runOnUiThread(new Runnable(){
+        @Override public void run(){
+          mReactInstanceCommandsHandler.onReloadWithJSDebugger(new ProxyJavaScriptExecutor(webSocketJSExecutor));
+        }
+      }
+);
+    }
+    @Override public void onFailure(    final Throwable cause){
+      progressDialog.dismiss();
+      FLog.e(ReactConstants.TAG,"Unable to connect to remote debugger",cause);
+      UiThreadUtil.runOnUiThread(new Runnable(){
+        @Override public void run(){
+          showNewError(mApplicationContext.getString(R.string.catalyst_remotedbg_error),ExceptionFormatterHelper.javaStackTraceToHtml(cause.getStackTrace()),JAVA_ERROR_COOKIE);
+        }
+      }
+);
+    }
+  }
+);
+}

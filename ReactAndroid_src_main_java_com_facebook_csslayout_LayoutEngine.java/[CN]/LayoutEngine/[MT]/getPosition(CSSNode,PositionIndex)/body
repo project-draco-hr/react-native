@@ -1,0 +1,4 @@
+{
+  float result=getStylePosition(node,position);
+  return CSSConstants.isUndefined(result) ? 0 : result;
+}

@@ -1,0 +1,24 @@
+{
+  try {
+    mNativeViewHierarchyManager.measure(mReactTag,mMeasureBuffer);
+  }
+ catch (  IllegalViewOperationException e) {
+    mCallback.invoke();
+    return;
+  }
+  final float containerX=(float)mMeasureBuffer[0];
+  final float containerY=(float)mMeasureBuffer[1];
+  final int touchTargetReactTag=mNativeViewHierarchyManager.findTargetTagForTouch(mReactTag,PixelUtil.toPixelFromDIP(mTargetX) + containerX,PixelUtil.toPixelFromDIP(mTargetY) + containerY);
+  try {
+    mNativeViewHierarchyManager.measure(touchTargetReactTag,mMeasureBuffer);
+  }
+ catch (  IllegalViewOperationException e) {
+    mCallback.invoke();
+    return;
+  }
+  float x=PixelUtil.toDIPFromPixel(mMeasureBuffer[0] - containerX);
+  float y=PixelUtil.toDIPFromPixel(mMeasureBuffer[1] - containerY);
+  float width=PixelUtil.toDIPFromPixel(mMeasureBuffer[2]);
+  float height=PixelUtil.toDIPFromPixel(mMeasureBuffer[3]);
+  mCallback.invoke(touchTargetReactTag,x,y,width,height);
+}

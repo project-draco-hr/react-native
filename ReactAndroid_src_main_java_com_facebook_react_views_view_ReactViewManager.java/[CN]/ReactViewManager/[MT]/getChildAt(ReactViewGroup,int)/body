@@ -1,0 +1,9 @@
+{
+  boolean removeClippedSubviews=parent.getRemoveClippedSubviews();
+  if (removeClippedSubviews) {
+    return parent.getChildAtWithSubviewClippingEnabled(index);
+  }
+ else {
+    return parent.getChildAt(index);
+  }
+}

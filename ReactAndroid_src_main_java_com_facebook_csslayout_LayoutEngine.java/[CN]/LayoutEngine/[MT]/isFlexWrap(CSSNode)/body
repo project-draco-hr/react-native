@@ -1,0 +1,3 @@
+{
+  return node.style.flexWrap == CSSWrap.WRAP;
+}

@@ -1,0 +1,4 @@
+{
+  mShadowNodeRegistry.removeRootNode(rootViewTag);
+  mOperationsQueue.enqueueRemoveRootView(rootViewTag);
+}

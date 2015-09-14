@@ -1,0 +1,3 @@
+ReactApplicationContext reactContext
+String defaultUserAgent
+OkHttpClient client

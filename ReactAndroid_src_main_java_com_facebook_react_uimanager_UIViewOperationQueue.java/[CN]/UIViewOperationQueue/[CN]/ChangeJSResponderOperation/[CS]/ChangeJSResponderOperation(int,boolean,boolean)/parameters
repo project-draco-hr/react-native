@@ -1,0 +1,3 @@
+int tag
+boolean clearResponder
+boolean blockNativeResponder

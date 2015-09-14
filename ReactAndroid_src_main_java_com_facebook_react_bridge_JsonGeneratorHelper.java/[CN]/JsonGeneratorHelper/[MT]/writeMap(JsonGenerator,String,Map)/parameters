@@ -1,0 +1,3 @@
+JsonGenerator jg
+String name
+Map map

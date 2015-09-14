@@ -1,0 +1,7 @@
+{
+  mCatalystQueueConfiguration.getJSQueueThread().assertIsOnThread();
+  Assertions.assertCondition(mBridge == null,"initializeBridge should be called once");
+  mBridge=new ReactBridge(jsExecutor,new NativeModulesReactCallback(),mCatalystQueueConfiguration.getNativeModulesQueueThread());
+  mBridge.setGlobalVariable("__fbBatchedBridgeConfig",buildModulesConfigJSONProperty(registry,jsModulesConfig));
+  jsBundleLoader.loadScript(mBridge);
+}

@@ -1,0 +1,4 @@
+String moduleName
+String methodName
+String jsonArgsArray
+JSDebuggerCallback callback

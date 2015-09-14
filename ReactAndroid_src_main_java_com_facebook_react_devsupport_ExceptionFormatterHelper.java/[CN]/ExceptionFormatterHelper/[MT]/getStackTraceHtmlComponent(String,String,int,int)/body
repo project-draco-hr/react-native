@@ -1,0 +1,10 @@
+{
+  StringBuilder stringBuilder=new StringBuilder();
+  methodName=methodName.replace("<","&lt;").replace(">","&gt;");
+  stringBuilder.append("<font color=#FDE5E5>").append(methodName).append("</font><br /><font color=#F9B3B3>").append(filename).append(":").append(lineNumber);
+  if (columnNumber != -1) {
+    stringBuilder.append(":").append(columnNumber);
+  }
+  stringBuilder.append("</font><br /><br />");
+  return stringBuilder.toString();
+}

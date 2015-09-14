@@ -1,0 +1,9 @@
+{
+  if (mTargetTag == -1) {
+    FLog.w(ReactConstants.TAG,"Can't cancel already finished gesture. Is a child View trying to start a gesture from " + "an UP/CANCEL event?");
+    return;
+  }
+  EventDispatcher eventDispatcher=mReactInstanceManager.getCurrentReactContext().getNativeModule(UIManagerModule.class).getEventDispatcher();
+  Assertions.assertCondition(!mChildIsHandlingNativeGesture,"Expected to not have already sent a cancel for this gesture");
+  Assertions.assertNotNull(eventDispatcher).dispatchEvent(new TouchEvent(mTargetTag,TouchEventType.CANCEL,androidEvent));
+}

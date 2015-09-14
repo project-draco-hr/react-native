@@ -1,0 +1,12 @@
+{
+  for (  Object key : source.keySet()) {
+    Object sourceValue=source.get(key);
+    Object destValue=dest.get(key);
+    if (destValue != null && (sourceValue instanceof Map) && (destValue instanceof Map)) {
+      recursiveMerge((Map)destValue,(Map)sourceValue);
+    }
+ else {
+      dest.put(key,sourceValue);
+    }
+  }
+}

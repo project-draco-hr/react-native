@@ -1,0 +1,3 @@
+{
+  super("Invalid React property `" + property + "` with value `"+ value+ "`, expected "+ expectedValues);
+}

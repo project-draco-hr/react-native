@@ -1,0 +1,3 @@
+{
+  return CONTENT_ENCODING_GZIP.equalsIgnoreCase(encodingType);
+}

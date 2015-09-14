@@ -1,0 +1,8 @@
+{
+  super(tag);
+  mParentTag=parentTag;
+  mX=x;
+  mY=y;
+  mWidth=width;
+  mHeight=height;
+}

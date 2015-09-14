@@ -1,0 +1,9 @@
+{
+  final Map<String,NativeModule> moduleMap=new HashMap<>();
+  for (  ReactPackage reactPackage : mChildReactPackages) {
+    for (    NativeModule nativeModule : reactPackage.createNativeModules(reactContext)) {
+      moduleMap.put(nativeModule.getName(),nativeModule);
+    }
+  }
+  return new ArrayList(moduleMap.values());
+}

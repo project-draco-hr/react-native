@@ -1,0 +1,8 @@
+{
+  mCurrentJSResponder=tag;
+  maybeUnblockNativeResponder();
+  if (viewParentBlockingNativeResponder != null) {
+    viewParentBlockingNativeResponder.requestDisallowInterceptTouchEvent(true);
+    mViewParentBlockingNativeResponder=viewParentBlockingNativeResponder;
+  }
+}

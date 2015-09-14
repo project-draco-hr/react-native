@@ -1,0 +1,14 @@
+{
+  Assertions.assertCondition(mReactInstanceManager == null,"This root view has already " + "been attached to a catalyst instance manager");
+  mReactInstanceManager=reactInstanceManager;
+  mJSModuleName=moduleName;
+  mLaunchOptions=launchOptions;
+  if (mWasMeasured && mIsAttachedToWindow) {
+    mReactInstanceManager.attachMeasuredRootView(this);
+    mIsAttachedToInstance=true;
+    getViewTreeObserver().addOnGlobalLayoutListener(mKeyboardListener);
+  }
+ else {
+    mAttachScheduled=true;
+  }
+}

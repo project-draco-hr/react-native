@@ -1,0 +1,18 @@
+{
+  Assertions.assertNotNull(mTimestamps);
+  Assertions.assertNotNull(mMagnitudes);
+  int numOverThreshold=0;
+  int total=0;
+  for (int i=0; i < MAX_SAMPLES; i++) {
+    int index=(mCurrentIndex - i + MAX_SAMPLES) % MAX_SAMPLES;
+    if (currentTimestamp - mTimestamps[index] < VISIBLE_TIME_RANGE_MS) {
+      total++;
+      if (mMagnitudes[index] >= MAGNITUDE_THRESHOLD) {
+        numOverThreshold++;
+      }
+    }
+  }
+  if (((double)numOverThreshold) / total > PERCENT_OVER_THRESHOLD_FOR_SHAKE / 100.0) {
+    mShakeListener.onShake();
+  }
+}

@@ -1,0 +1,8 @@
+{
+  try {
+    doFrameGuarded(frameTimeNanos);
+  }
+ catch (  RuntimeException e) {
+    mReactContext.handleException(e);
+  }
+}

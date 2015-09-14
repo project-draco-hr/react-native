@@ -1,0 +1,7 @@
+{
+  final long startTime=System.currentTimeMillis();
+  InputsScanner scanner=new InputsScanner();
+  Files.walkFileTree(Paths.get(getProject().getProjectDir().getAbsolutePath(),config.getJsRoot()).normalize(),scanner);
+  final long endTime=System.currentTimeMillis();
+  mLogger.info("Added {} .js files in {}ms",scanner.getCount(),endTime - startTime);
+}

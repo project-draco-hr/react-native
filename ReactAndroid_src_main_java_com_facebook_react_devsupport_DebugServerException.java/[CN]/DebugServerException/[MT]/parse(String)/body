@@ -1,0 +1,14 @@
+{
+  if (TextUtils.isEmpty(str)) {
+    return null;
+  }
+  try {
+    JSONObject jsonObject=new JSONObject(str);
+    String fullFileName=jsonObject.getString("filename");
+    return new DebugServerException(jsonObject.getString("description"),shortenFileName(fullFileName),jsonObject.getInt("lineNumber"),jsonObject.getInt("column"));
+  }
+ catch (  JSONException e) {
+    FLog.w(ReactConstants.TAG,"Could not parse DebugServerException from: " + str,e);
+    return null;
+  }
+}

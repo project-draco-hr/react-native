@@ -1,0 +1,4 @@
+{
+  mThreadType=threadType;
+  mName=name;
+}

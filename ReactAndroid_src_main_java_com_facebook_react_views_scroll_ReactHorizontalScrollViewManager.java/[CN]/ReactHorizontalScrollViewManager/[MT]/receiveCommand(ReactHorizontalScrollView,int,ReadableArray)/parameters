@@ -1,0 +1,3 @@
+ReactHorizontalScrollView scrollView
+int commandId
+ReadableArray args

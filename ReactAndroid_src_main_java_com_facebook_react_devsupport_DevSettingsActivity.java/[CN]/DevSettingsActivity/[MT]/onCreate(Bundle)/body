@@ -1,0 +1,5 @@
+{
+  super.onCreate(savedInstanceState);
+  setTitle(R.string.catalyst_settings_title);
+  addPreferencesFromResource(R.xml.preferences);
+}

@@ -1,0 +1,6 @@
+{
+  if (!valuesEqual(style.alignSelf,alignSelf)) {
+    style.alignSelf=alignSelf;
+    dirty();
+  }
+}

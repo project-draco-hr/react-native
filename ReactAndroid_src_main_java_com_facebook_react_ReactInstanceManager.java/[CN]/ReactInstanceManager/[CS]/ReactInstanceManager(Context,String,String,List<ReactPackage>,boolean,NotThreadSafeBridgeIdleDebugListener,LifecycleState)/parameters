@@ -1,0 +1,7 @@
+Context applicationContext
+String bundleAssetName
+String jsMainModuleName
+List<ReactPackage> packages
+boolean useDeveloperSupport
+NotThreadSafeBridgeIdleDebugListener bridgeIdleDebugListener
+LifecycleState initialLifecycleState

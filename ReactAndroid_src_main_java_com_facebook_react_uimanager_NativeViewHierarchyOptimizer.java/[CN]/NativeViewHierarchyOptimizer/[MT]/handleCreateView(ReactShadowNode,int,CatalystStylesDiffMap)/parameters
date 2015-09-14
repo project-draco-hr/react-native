@@ -1,0 +1,3 @@
+ReactShadowNode node
+int rootViewTag
+CatalystStylesDiffMap initialProps

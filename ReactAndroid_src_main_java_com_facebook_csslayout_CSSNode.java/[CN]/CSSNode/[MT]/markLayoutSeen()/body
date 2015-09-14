@@ -1,0 +1,6 @@
+{
+  if (!hasNewLayout()) {
+    throw new IllegalStateException("Expected node to have a new layout to be seen!");
+  }
+  mLayoutState=LayoutState.UP_TO_DATE;
+}

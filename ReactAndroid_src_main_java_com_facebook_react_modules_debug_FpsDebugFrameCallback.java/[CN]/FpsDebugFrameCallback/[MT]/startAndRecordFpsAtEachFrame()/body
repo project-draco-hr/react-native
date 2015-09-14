@@ -1,0 +1,5 @@
+{
+  mTimeToFps=new TreeMap<Long,FpsInfo>();
+  mIsRecordingFpsInfoAtEachFrame=true;
+  start();
+}

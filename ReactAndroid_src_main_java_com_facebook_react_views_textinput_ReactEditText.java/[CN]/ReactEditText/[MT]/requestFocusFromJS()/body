@@ -1,0 +1,5 @@
+{
+  mIsJSSettingFocus=true;
+  requestFocus();
+  mIsJSSettingFocus=false;
+}

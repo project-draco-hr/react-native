@@ -1,0 +1,7 @@
+{
+  Map map=of();
+  map.put(k1,v1);
+  map.put(k2,v2);
+  map.put(k3,v3);
+  return map;
+}

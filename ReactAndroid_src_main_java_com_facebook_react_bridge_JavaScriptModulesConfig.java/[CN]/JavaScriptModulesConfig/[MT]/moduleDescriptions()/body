@@ -1,0 +1,19 @@
+{
+  JsonFactory jsonFactory=new JsonFactory();
+  StringWriter writer=new StringWriter();
+  try {
+    JsonGenerator jg=jsonFactory.createGenerator(writer);
+    jg.writeStartObject();
+    for (    JavaScriptModuleRegistration registration : mModules) {
+      jg.writeObjectFieldStart(registration.getName());
+      appendJSModuleToJSONObject(jg,registration);
+      jg.writeEndObject();
+    }
+    jg.writeEndObject();
+    jg.close();
+  }
+ catch (  IOException ioe) {
+    throw new RuntimeException("Unable to serialize JavaScript module declaration",ioe);
+  }
+  return writer.getBuffer().toString();
+}

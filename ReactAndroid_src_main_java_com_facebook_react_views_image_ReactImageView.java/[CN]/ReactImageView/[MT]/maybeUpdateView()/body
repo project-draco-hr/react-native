@@ -1,0 +1,23 @@
+{
+  if (!mIsDirty) {
+    return;
+  }
+  boolean doResize=shouldResize(mUri);
+  if (doResize && (getWidth() <= 0 || getHeight() <= 0)) {
+    return;
+  }
+  GenericDraweeHierarchy hierarchy=getHierarchy();
+  hierarchy.setActualImageScaleType(mScaleType);
+  boolean usePostprocessorScaling=mScaleType != ScalingUtils.ScaleType.CENTER_CROP && mScaleType != ScalingUtils.ScaleType.FOCUS_CROP;
+  float hierarchyRadius=usePostprocessorScaling ? 0 : mBorderRadius;
+  RoundingParams roundingParams=hierarchy.getRoundingParams();
+  roundingParams.setCornersRadius(hierarchyRadius);
+  hierarchy.setRoundingParams(roundingParams);
+  hierarchy.setFadeDuration(mImageFadeDuration >= 0 ? mImageFadeDuration : mIsLocalImage ? 0 : REMOTE_IMAGE_FADE_DURATION_MS);
+  Postprocessor postprocessor=usePostprocessorScaling ? mRoundedCornerPostprocessor : null;
+  ResizeOptions resizeOptions=doResize ? new ResizeOptions(getWidth(),getHeight()) : null;
+  ImageRequest imageRequest=ImageRequestBuilder.newBuilderWithSource(mUri).setPostprocessor(postprocessor).setResizeOptions(resizeOptions).build();
+  DraweeController draweeController=mDraweeControllerBuilder.reset().setCallerContext(mCallerContext).setOldController(getController()).setImageRequest(imageRequest).setControllerListener(mControllerListener).build();
+  setController(draweeController);
+  mIsDirty=false;
+}

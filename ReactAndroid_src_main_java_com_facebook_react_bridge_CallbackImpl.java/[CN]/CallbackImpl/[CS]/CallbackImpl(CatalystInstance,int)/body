@@ -1,0 +1,4 @@
+{
+  mCatalystInstance=bridge;
+  mCallbackId=callbackId;
+}

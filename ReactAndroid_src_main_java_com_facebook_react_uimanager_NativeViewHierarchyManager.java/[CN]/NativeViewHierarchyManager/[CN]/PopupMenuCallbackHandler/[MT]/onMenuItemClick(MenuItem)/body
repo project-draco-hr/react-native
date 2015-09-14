@@ -1,0 +1,8 @@
+{
+  if (!mConsumed) {
+    mSuccess.invoke(UIManagerModuleConstants.ACTION_ITEM_SELECTED,item.getOrder());
+    mConsumed=true;
+    return true;
+  }
+  return false;
+}

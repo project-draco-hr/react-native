@@ -1,0 +1,13 @@
+{
+  mLockFileOutputStream=new FileOutputStream(lockFile);
+  FileLock lock=null;
+  try {
+    lock=mLockFileOutputStream.getChannel().lock();
+  }
+  finally {
+    if (lock == null) {
+      mLockFileOutputStream.close();
+    }
+  }
+  mLock=lock;
+}

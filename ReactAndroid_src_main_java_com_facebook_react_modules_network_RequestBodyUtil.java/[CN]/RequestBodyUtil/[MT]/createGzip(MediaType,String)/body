@@ -1,0 +1,12 @@
+{
+  ByteArrayOutputStream gzipByteArrayOutputStream=new ByteArrayOutputStream();
+  try {
+    OutputStream gzipOutputStream=new GZIPOutputStream(gzipByteArrayOutputStream);
+    gzipOutputStream.write(body.getBytes());
+    gzipOutputStream.close();
+  }
+ catch (  IOException e) {
+    return null;
+  }
+  return RequestBody.create(mediaType,gzipByteArrayOutputStream.toByteArray());
+}

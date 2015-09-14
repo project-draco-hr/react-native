@@ -1,0 +1,9 @@
+{
+  try {
+    doInBackgroundGuarded(params);
+  }
+ catch (  RuntimeException e) {
+    mReactContext.handleException(e);
+  }
+  return null;
+}

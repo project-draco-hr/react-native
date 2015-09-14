@@ -1,0 +1,6 @@
+{
+  mChoreographer=choreographer;
+  mReactContext=reactContext;
+  mUIManagerModule=reactContext.getNativeModule(UIManagerModule.class);
+  mDidJSUpdateUiDuringFrameDetector=new DidJSUpdateUiDuringFrameDetector();
+}

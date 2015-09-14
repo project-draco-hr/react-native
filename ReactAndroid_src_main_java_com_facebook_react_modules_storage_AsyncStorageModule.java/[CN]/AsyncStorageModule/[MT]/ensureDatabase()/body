@@ -1,0 +1,10 @@
+{
+  if (mShuttingDown) {
+    return false;
+  }
+  if (mDb != null && mDb.isOpen()) {
+    return true;
+  }
+  mDb=initializeDatabase();
+  return true;
+}

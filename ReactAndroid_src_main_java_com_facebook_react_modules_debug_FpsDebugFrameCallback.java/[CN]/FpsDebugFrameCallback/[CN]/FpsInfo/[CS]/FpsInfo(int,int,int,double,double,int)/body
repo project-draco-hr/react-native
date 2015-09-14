@@ -1,0 +1,8 @@
+{
+  this.totalFrames=totalFrames;
+  this.totalJsFrames=totalJsFrames;
+  this.totalExpectedFrames=totalExpectedFrames;
+  this.fps=fps;
+  this.jsFps=jsFps;
+  this.totalTimeMs=totalTimeMs;
+}

@@ -1,0 +1,3 @@
+String sourceURL
+HashMap<String,String> injectedObjects
+JSDebuggerCallback callback
