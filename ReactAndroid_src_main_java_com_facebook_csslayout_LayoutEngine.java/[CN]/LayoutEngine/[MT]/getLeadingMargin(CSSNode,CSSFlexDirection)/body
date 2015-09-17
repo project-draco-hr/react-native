@@ -1,9 +1,0 @@
-{
-  if (isRowDirection(axis)) {
-    float leadingMargin=node.style.margin.getRaw(Spacing.START);
-    if (!CSSConstants.isUndefined(leadingMargin)) {
-      return leadingMargin;
-    }
-  }
-  return getMargin(node,getLeading(axis));
-}

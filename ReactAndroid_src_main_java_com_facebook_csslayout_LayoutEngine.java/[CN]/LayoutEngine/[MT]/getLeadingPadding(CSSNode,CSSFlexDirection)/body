@@ -1,9 +1,0 @@
-{
-  if (isRowDirection(axis)) {
-    float leadingPadding=node.style.padding.getRaw(Spacing.START);
-    if (!CSSConstants.isUndefined(leadingPadding)) {
-      return leadingPadding;
-    }
-  }
-  return getPadding(node,getLeading(axis));
-}

@@ -1,9 +1,0 @@
-{
-  if (isRowDirection(axis)) {
-    float trailingMargin=node.style.margin.getRaw(Spacing.END);
-    if (!CSSConstants.isUndefined(trailingMargin)) {
-      return trailingMargin;
-    }
-  }
-  return getMargin(node,getTrailing(axis));
-}

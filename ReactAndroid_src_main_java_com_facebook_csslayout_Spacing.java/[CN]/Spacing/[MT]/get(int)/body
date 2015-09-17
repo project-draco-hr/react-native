@@ -1,5 +1,19 @@
 {
-  int secondType=spacingType == TOP || spacingType == BOTTOM ? VERTICAL : HORIZONTAL;
-  float defaultValue=spacingType == START || spacingType == END ? CSSConstants.UNDEFINED : 0;
-  return !CSSConstants.isUndefined(mSpacing[spacingType]) ? mSpacing[spacingType] : !CSSConstants.isUndefined(mSpacing[secondType]) ? mSpacing[secondType] : !CSSConstants.isUndefined(mSpacing[ALL]) ? mSpacing[ALL] : mDefaultSpacing != null ? mDefaultSpacing[spacingType] : defaultValue;
+  float defaultValue=(mDefaultSpacing != null) ? mDefaultSpacing[spacingType] : (spacingType == START || spacingType == END ? CSSConstants.UNDEFINED : 0);
+  if (mValueFlags == 0) {
+    return defaultValue;
+  }
+  if ((mValueFlags & sFlagsMap[spacingType]) != 0) {
+    return mSpacing[spacingType];
+  }
+  if (mHasAliasesSet) {
+    int secondType=spacingType == TOP || spacingType == BOTTOM ? VERTICAL : HORIZONTAL;
+    if ((mValueFlags & sFlagsMap[secondType]) != 0) {
+      return mSpacing[secondType];
+    }
+ else     if ((mValueFlags & sFlagsMap[ALL]) != 0) {
+      return mSpacing[ALL];
+    }
+  }
+  return defaultValue;
 }

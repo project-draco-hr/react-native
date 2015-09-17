@@ -5,37 +5,33 @@
     view.setTextSize(TypedValue.COMPLEX_UNIT_PX,(int)Math.ceil(PixelUtil.toPixelFromSP(textSize)));
   }
   if (props.hasKey(ViewProps.COLOR)) {
-    final String colorStr=props.getString(ViewProps.COLOR);
-    if (colorStr != null) {
-      final int color=CSSColorUtil.getColor(colorStr);
-      view.setTextColor(color);
+    if (props.isNull(ViewProps.COLOR)) {
+      view.setTextColor(DefaultStyleValuesUtil.getDefaultTextColor(view.getContext()));
     }
  else {
-      view.setTextColor(DefaultStyleValuesUtil.getDefaultTextColor(view.getContext()));
+      final int textColor=props.getColorInt(ViewProps.COLOR,Color.TRANSPARENT);
+      view.setTextColor(textColor);
     }
   }
   if (props.hasKey(PROP_TEXT_INPUT_HINT)) {
     view.setHint(props.getString(PROP_TEXT_INPUT_HINT));
   }
   if (props.hasKey(PROP_TEXT_INPUT_HINT_COLOR)) {
-    final String colorStr=props.getString(PROP_TEXT_INPUT_HINT_COLOR);
-    if (colorStr != null) {
-      final int color=CSSColorUtil.getColor(colorStr);
-      view.setHintTextColor(color);
+    if (props.isNull(PROP_TEXT_INPUT_HINT_COLOR)) {
+      view.setHintTextColor(DefaultStyleValuesUtil.getDefaultTextColorHint(view.getContext()));
     }
  else {
-      view.setHintTextColor(DefaultStyleValuesUtil.getDefaultTextColorHint(view.getContext()));
-      view.invalidate();
+      final int hintColor=props.getColorInt(PROP_TEXT_INPUT_HINT_COLOR,Color.TRANSPARENT);
+      view.setHintTextColor(hintColor);
     }
   }
   if (props.hasKey(PROP_TEXT_INPUT_UNDERLINE_COLOR)) {
-    String colorStr=props.getString(PROP_TEXT_INPUT_UNDERLINE_COLOR);
-    if (colorStr != null) {
-      int color=CSSColorUtil.getColor(colorStr);
-      view.getBackground().setColorFilter(color,PorterDuff.Mode.SRC_IN);
+    if (props.isNull(PROP_TEXT_INPUT_UNDERLINE_COLOR)) {
+      view.getBackground().clearColorFilter();
     }
  else {
-      view.getBackground().clearColorFilter();
+      final int underlineColor=props.getColorInt(PROP_TEXT_INPUT_UNDERLINE_COLOR,Color.TRANSPARENT);
+      view.getBackground().setColorFilter(underlineColor,PorterDuff.Mode.SRC_IN);
     }
   }
   if (props.hasKey(PROP_TEXT_ALIGN)) {

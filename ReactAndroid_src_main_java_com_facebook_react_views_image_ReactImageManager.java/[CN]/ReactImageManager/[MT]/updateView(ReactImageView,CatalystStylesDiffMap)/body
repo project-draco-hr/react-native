@@ -10,12 +10,12 @@
     view.setBorderRadius(props.getFloat(PROP_BORDER_RADIUS,0.0f));
   }
   if (props.hasKey(PROP_TINT_COLOR)) {
-    String tintColorString=props.getString(PROP_TINT_COLOR);
-    if (tintColorString == null) {
+    if (props.isNull(PROP_TINT_COLOR)) {
       view.clearColorFilter();
     }
  else {
-      view.setColorFilter(CSSColorUtil.getColor(tintColorString));
+      final int tintColor=props.getColorInt(PROP_TINT_COLOR,Color.TRANSPARENT);
+      view.setColorFilter(tintColor);
     }
   }
   view.maybeUpdateView();

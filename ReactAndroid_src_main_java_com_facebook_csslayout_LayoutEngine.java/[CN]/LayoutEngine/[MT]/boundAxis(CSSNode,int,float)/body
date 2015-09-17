@@ -1,0 +1,20 @@
+{
+  float min=CSSConstants.UNDEFINED;
+  float max=CSSConstants.UNDEFINED;
+  if (axis == CSS_FLEX_DIRECTION_COLUMN || axis == CSS_FLEX_DIRECTION_COLUMN_REVERSE) {
+    min=node.style.minHeight;
+    max=node.style.maxHeight;
+  }
+ else   if (axis == CSS_FLEX_DIRECTION_ROW || axis == CSS_FLEX_DIRECTION_ROW_REVERSE) {
+    min=node.style.minWidth;
+    max=node.style.maxWidth;
+  }
+  float boundValue=value;
+  if (!Float.isNaN(max) && max >= 0.0 && boundValue > max) {
+    boundValue=max;
+  }
+  if (!Float.isNaN(min) && min >= 0.0 && boundValue < min) {
+    boundValue=min;
+  }
+  return boundValue;
+}

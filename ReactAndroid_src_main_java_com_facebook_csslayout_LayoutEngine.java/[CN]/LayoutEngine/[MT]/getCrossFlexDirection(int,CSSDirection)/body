@@ -1,0 +1,8 @@
+{
+  if (axis == CSS_FLEX_DIRECTION_COLUMN || axis == CSS_FLEX_DIRECTION_COLUMN_REVERSE) {
+    return resolveAxis(CSS_FLEX_DIRECTION_ROW,direction);
+  }
+ else {
+    return CSS_FLEX_DIRECTION_COLUMN;
+  }
+}

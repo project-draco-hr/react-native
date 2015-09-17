@@ -1,3 +1,0 @@
-{
-  return getPositionType(node) == CSSPositionType.RELATIVE && getFlex(node) > 0;
-}

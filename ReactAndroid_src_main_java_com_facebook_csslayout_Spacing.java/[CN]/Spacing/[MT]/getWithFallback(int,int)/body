@@ -1,0 +1,3 @@
+{
+  return (mValueFlags & sFlagsMap[spacingType]) != 0 ? mSpacing[spacingType] : get(fallbackType);
+}

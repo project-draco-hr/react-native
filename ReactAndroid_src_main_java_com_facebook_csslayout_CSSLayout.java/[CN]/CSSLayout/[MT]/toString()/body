@@ -1,3 +1,3 @@
 {
-  return "layout: {" + "left: " + left + ", "+ "top: "+ top+ ", "+ "width: "+ width+ ", "+ "height: "+ height+ "direction: "+ direction+ "}";
+  return "layout: {" + "left: " + position[POSITION_LEFT] + ", "+ "top: "+ position[POSITION_TOP]+ ", "+ "width: "+ dimensions[DIMENSION_WIDTH]+ ", "+ "height: "+ dimensions[DIMENSION_HEIGHT]+ ", "+ "direction: "+ direction+ "}";
 }
