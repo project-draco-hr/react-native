@@ -1,6 +1,6 @@
 {
-  if (!valuesEqual(style.height,height)) {
-    style.height=height;
+  if (!valuesEqual(style.dimensions[DIMENSION_HEIGHT],height)) {
+    style.dimensions[DIMENSION_HEIGHT]=height;
     dirty();
   }
 }

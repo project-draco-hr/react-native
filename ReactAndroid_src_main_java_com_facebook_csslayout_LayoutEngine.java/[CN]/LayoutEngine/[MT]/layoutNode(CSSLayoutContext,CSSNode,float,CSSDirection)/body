@@ -1,7 +1,7 @@
 {
   if (needsRelayout(node,parentMaxWidth)) {
-    node.lastLayout.requestedWidth=node.layout.width;
-    node.lastLayout.requestedHeight=node.layout.height;
+    node.lastLayout.requestedWidth=node.layout.dimensions[DIMENSION_WIDTH];
+    node.lastLayout.requestedHeight=node.layout.dimensions[DIMENSION_HEIGHT];
     node.lastLayout.parentMaxWidth=parentMaxWidth;
     layoutNodeImpl(layoutContext,node,parentMaxWidth,parentDirection);
     node.lastLayout.copy(node.layout);

@@ -1,9 +1,5 @@
 {
-  left=0;
-  top=0;
-  right=0;
-  bottom=0;
-  width=CSSConstants.UNDEFINED;
-  height=CSSConstants.UNDEFINED;
+  Arrays.fill(position,0);
+  Arrays.fill(dimensions,CSSConstants.UNDEFINED);
   direction=CSSDirection.LTR;
 }

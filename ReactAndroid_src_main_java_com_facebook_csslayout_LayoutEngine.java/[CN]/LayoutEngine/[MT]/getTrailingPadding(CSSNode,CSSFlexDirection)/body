@@ -1,9 +1,0 @@
-{
-  if (isRowDirection(axis)) {
-    float trailingPadding=node.style.padding.getRaw(Spacing.END);
-    if (!CSSConstants.isUndefined(trailingPadding)) {
-      return trailingPadding;
-    }
-  }
-  return getPadding(node,getTrailing(axis));
-}

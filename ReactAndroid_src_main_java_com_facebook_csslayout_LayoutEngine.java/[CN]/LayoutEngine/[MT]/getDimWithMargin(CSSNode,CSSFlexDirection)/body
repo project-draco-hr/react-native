@@ -1,3 +1,0 @@
-{
-  return getLayoutDimension(node,getDim(axis)) + getLeadingMargin(node,axis) + getTrailingMargin(node,axis);
-}

@@ -1,12 +1,7 @@
 {
-  if (props.hasKey(PROP_BACKGROUND_COLOR)) {
-    String backgroundString=props.getString(PROP_BACKGROUND_COLOR);
-    if (backgroundString == null) {
-      view.setBackgroundColor(Color.TRANSPARENT);
-    }
- else {
-      view.setBackgroundColor(CSSColorUtil.getColor(backgroundString));
-    }
+  if (props.hasKey(ViewProps.BACKGROUND_COLOR)) {
+    final int backgroundColor=props.getColorInt(ViewProps.BACKGROUND_COLOR,Color.TRANSPARENT);
+    view.setBackgroundColor(backgroundColor);
   }
   if (props.hasKey(PROP_DECOMPOSED_MATRIX)) {
     ReadableMap decomposedMatrix=props.getMap(PROP_DECOMPOSED_MATRIX);

@@ -1,6 +1,6 @@
 {
-  if (!valuesEqual(style.positionTop,positionTop)) {
-    style.positionTop=positionTop;
+  if (!valuesEqual(style.position[POSITION_TOP],positionTop)) {
+    style.position[POSITION_TOP]=positionTop;
     dirty();
   }
 }

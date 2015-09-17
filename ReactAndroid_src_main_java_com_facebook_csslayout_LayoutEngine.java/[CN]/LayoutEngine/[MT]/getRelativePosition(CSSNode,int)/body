@@ -1,0 +1,8 @@
+{
+  float lead=node.style.position[leading[axis]];
+  if (!Float.isNaN(lead)) {
+    return lead;
+  }
+  float trailingPos=node.style.position[trailing[axis]];
+  return Float.isNaN(trailingPos) ? 0 : -trailingPos;
+}

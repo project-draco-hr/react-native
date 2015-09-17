@@ -5,25 +5,15 @@
     toolbar.setSubtitle(props.getString(PROP_SUBTITLE));
   }
   if (props.hasKey(PROP_SUBTITLE_COLOR)) {
-    String color=props.getString(PROP_SUBTITLE_COLOR);
-    if (color != null) {
-      toolbar.setSubtitleTextColor(CSSColorUtil.getColor(color));
-    }
- else {
-      toolbar.setSubtitleTextColor(defaultColors[1]);
-    }
+    final int subtitleColor=props.getColorInt(PROP_SUBTITLE_COLOR,defaultColors[1]);
+    toolbar.setSubtitleTextColor(subtitleColor);
   }
   if (props.hasKey(PROP_TITLE)) {
     toolbar.setTitle(props.getString(PROP_TITLE));
   }
   if (props.hasKey(PROP_TITLE_COLOR)) {
-    String color=props.getString(PROP_TITLE_COLOR);
-    if (color != null) {
-      toolbar.setTitleTextColor(CSSColorUtil.getColor(color));
-    }
- else {
-      toolbar.setTitleTextColor(defaultColors[0]);
-    }
+    final int titleColor=props.getColorInt(PROP_TITLE_COLOR,defaultColors[0]);
+    toolbar.setTitleTextColor(titleColor);
   }
   if (props.hasKey(PROP_NAV_ICON)) {
     String navIcon=props.getString(PROP_NAV_ICON);

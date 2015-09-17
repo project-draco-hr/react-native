@@ -1,3 +1,0 @@
-{
-  return getLeadingPaddingAndBorder(node,axis) + getTrailingPaddingAndBorder(node,axis);
-}

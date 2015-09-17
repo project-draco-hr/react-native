@@ -1,3 +1,0 @@
-{
-  return getLeadingBorder(node,axis) + getTrailingBorder(node,axis);
-}

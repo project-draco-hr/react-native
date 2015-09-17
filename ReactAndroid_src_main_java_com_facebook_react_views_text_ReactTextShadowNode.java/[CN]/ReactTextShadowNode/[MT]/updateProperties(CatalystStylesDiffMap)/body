@@ -22,23 +22,21 @@
     markUpdated();
   }
   if (styles.hasKey(ViewProps.COLOR)) {
-    String colorString=styles.getString(ViewProps.COLOR);
-    if (colorString == null) {
+    if (styles.isNull(ViewProps.COLOR)) {
       mIsColorSet=false;
     }
  else {
-      mColor=CSSColorUtil.getColor(colorString);
+      mColor=styles.getColorInt(ViewProps.COLOR,Color.TRANSPARENT);
       mIsColorSet=true;
     }
     markUpdated();
   }
   if (styles.hasKey(ViewProps.BACKGROUND_COLOR)) {
-    String colorString=styles.getString(ViewProps.BACKGROUND_COLOR);
-    if (colorString == null) {
+    if (styles.isNull(ViewProps.BACKGROUND_COLOR)) {
       mIsBackgroundColorSet=false;
     }
  else {
-      mBackgroundColor=CSSColorUtil.getColor(colorString);
+      mBackgroundColor=styles.getColorInt(ViewProps.BACKGROUND_COLOR,Color.TRANSPARENT);
       mIsBackgroundColorSet=true;
     }
     markUpdated();

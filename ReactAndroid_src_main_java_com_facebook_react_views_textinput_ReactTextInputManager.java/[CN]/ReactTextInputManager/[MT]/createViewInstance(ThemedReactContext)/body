@@ -2,6 +2,7 @@
   ReactEditText editText=new ReactEditText(context);
   int inputType=editText.getInputType();
   editText.setInputType(inputType & (~InputType.TYPE_TEXT_FLAG_MULTI_LINE));
+  editText.setImeOptions(EditorInfo.IME_ACTION_DONE);
   editText.setTextSize(TypedValue.COMPLEX_UNIT_PX,(int)Math.ceil(PixelUtil.toPixelFromSP(ViewDefaults.FONT_SIZE_SP)));
   return editText;
 }

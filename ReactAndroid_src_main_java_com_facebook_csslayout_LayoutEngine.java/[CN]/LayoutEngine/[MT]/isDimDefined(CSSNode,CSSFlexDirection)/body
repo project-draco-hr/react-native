@@ -1,4 +1,0 @@
-{
-  float value=getStyleDimension(node,getDim(axis));
-  return !CSSConstants.isUndefined(value) && value > 0.0;
-}

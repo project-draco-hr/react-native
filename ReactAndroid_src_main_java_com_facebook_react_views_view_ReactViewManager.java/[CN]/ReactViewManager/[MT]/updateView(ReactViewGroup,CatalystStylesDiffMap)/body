@@ -14,9 +14,12 @@
   for (int i=0; i < SPACING_TYPES.length; i++) {
     String key=PROPS_BORDER_COLOR[i];
     if (props.hasKey(key)) {
-      String color=props.getString(key);
-      float colorFloat=color == null ? CSSConstants.UNDEFINED : CSSColorUtil.getColor(color);
-      view.setBorderColor(SPACING_TYPES[i],colorFloat);
+      float color=CSSConstants.UNDEFINED;
+      if (!props.isNull(PROPS_BORDER_COLOR[i])) {
+        int colorInt=props.getColorInt(PROPS_BORDER_COLOR[i],Color.TRANSPARENT);
+        color=colorInt;
+      }
+      view.setBorderColor(SPACING_TYPES[i],color);
     }
   }
   if (props.hasKey(PROP_BORDER_RADIUS)) {
