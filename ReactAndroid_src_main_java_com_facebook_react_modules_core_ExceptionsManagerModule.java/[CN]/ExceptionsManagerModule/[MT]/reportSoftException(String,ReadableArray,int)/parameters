@@ -1,2 +1,3 @@
 String title
 ReadableArray details
+int exceptionId
