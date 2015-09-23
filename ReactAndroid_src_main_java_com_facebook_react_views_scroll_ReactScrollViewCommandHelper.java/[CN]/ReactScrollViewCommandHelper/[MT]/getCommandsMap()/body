@@ -1,3 +1,3 @@
 {
-  return MapBuilder.of("scrollTo",COMMAND_SCROLL_TO);
+  return MapBuilder.of("scrollTo",COMMAND_SCROLL_TO,"scrollWithoutAnimationTo",COMMAND_SCROLL_WITHOUT_ANIMATION_TO);
 }
