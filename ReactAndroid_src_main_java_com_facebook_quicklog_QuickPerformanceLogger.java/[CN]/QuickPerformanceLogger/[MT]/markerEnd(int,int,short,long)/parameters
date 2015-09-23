@@ -1,0 +1,4 @@
+int markerId
+int instanceKey
+short actionId
+long timestamp
