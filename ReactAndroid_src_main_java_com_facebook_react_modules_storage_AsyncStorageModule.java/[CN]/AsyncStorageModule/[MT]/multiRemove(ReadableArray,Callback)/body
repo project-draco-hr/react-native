@@ -10,7 +10,7 @@
         return;
       }
       try {
-        Assertions.assertNotNull(mDb).delete(TABLE_CATALYST,AsyncLocalStorageUtil.buildKeySelection(keys.size()),AsyncLocalStorageUtil.buildKeySelectionArgs(keys));
+        mReactDatabaseSupplier.get().delete(TABLE_CATALYST,AsyncLocalStorageUtil.buildKeySelection(keys.size()),AsyncLocalStorageUtil.buildKeySelectionArgs(keys));
       }
  catch (      Exception e) {
         FLog.w(ReactConstants.TAG,"Exception in database multiRemove ",e);

@@ -10,8 +10,8 @@
         return;
       }
       String sql="INSERT OR REPLACE INTO " + TABLE_CATALYST + " VALUES (?, ?);";
-      SQLiteStatement statement=Assertions.assertNotNull(mDb).compileStatement(sql);
-      mDb.beginTransaction();
+      SQLiteStatement statement=mReactDatabaseSupplier.get().compileStatement(sql);
+      mReactDatabaseSupplier.get().beginTransaction();
       try {
         for (int idx=0; idx < keyValueArray.size(); idx++) {
           if (keyValueArray.getArray(idx).size() != 2) {
@@ -31,14 +31,14 @@
           statement.bindString(2,keyValueArray.getArray(idx).getString(1));
           statement.execute();
         }
-        mDb.setTransactionSuccessful();
+        mReactDatabaseSupplier.get().setTransactionSuccessful();
       }
  catch (      Exception e) {
         FLog.w(ReactConstants.TAG,"Exception in database multiSet ",e);
         callback.invoke(AsyncStorageErrorUtil.getError(null,e.getMessage()));
       }
  finally {
-        mDb.endTransaction();
+        mReactDatabaseSupplier.get().endTransaction();
       }
       callback.invoke();
     }

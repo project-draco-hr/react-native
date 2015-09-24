@@ -1,6 +1,6 @@
 {
   if (oldVersion != newVersion) {
-    mContext.deleteDatabase(DATABASE_NAME);
+    deleteDatabase();
     onCreate(db);
   }
 }

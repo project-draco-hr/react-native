@@ -1,0 +1,28 @@
+{
+  if (mDb != null && mDb.isOpen()) {
+    return true;
+  }
+  SQLiteException lastSQLiteException=null;
+  for (int tries=0; tries < 2; tries++) {
+    try {
+      if (tries > 0) {
+        deleteDatabase();
+      }
+      mDb=getWritableDatabase();
+      break;
+    }
+ catch (    SQLiteException e) {
+      lastSQLiteException=e;
+    }
+    try {
+      Thread.sleep(SLEEP_TIME_MS);
+    }
+ catch (    InterruptedException ie) {
+      Thread.currentThread().interrupt();
+    }
+  }
+  if (mDb == null) {
+    throw lastSQLiteException;
+  }
+  return true;
+}

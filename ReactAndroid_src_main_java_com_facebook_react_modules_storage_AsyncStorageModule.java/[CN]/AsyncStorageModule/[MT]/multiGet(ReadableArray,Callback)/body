@@ -12,7 +12,7 @@
       String[] columns={KEY_COLUMN,VALUE_COLUMN};
       HashSet<String> keysRemaining=SetBuilder.newHashSet();
       WritableArray data=Arguments.createArray();
-      Cursor cursor=Assertions.assertNotNull(mDb).query(TABLE_CATALYST,columns,AsyncLocalStorageUtil.buildKeySelection(keys.size()),AsyncLocalStorageUtil.buildKeySelectionArgs(keys),null,null,null);
+      Cursor cursor=mReactDatabaseSupplier.get().query(TABLE_CATALYST,columns,AsyncLocalStorageUtil.buildKeySelection(keys.size()),AsyncLocalStorageUtil.buildKeySelectionArgs(keys),null,null,null);
       try {
         if (cursor.getCount() != keys.size()) {
           for (int keyIndex=0; keyIndex < keys.size(); keyIndex++) {

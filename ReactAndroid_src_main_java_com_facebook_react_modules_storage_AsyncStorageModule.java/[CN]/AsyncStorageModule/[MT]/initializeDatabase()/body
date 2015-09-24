@@ -1,4 +1,0 @@
-{
-  CatalystSQLiteOpenHelper helperForDb=new CatalystSQLiteOpenHelper(getReactApplicationContext());
-  return helperForDb.getWritableDatabase();
-}

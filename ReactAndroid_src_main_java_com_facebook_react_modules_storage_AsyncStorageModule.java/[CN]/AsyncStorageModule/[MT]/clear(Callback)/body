@@ -1,12 +1,12 @@
 {
   new GuardedAsyncTask<Void,Void>(getReactApplicationContext()){
     @Override protected void doInBackgroundGuarded(    Void... params){
-      if (!ensureDatabase()) {
+      if (!mReactDatabaseSupplier.ensureDatabase()) {
         callback.invoke(AsyncStorageErrorUtil.getDBError(null));
         return;
       }
       try {
-        Assertions.assertNotNull(mDb).delete(TABLE_CATALYST,null,null);
+        mReactDatabaseSupplier.get().delete(TABLE_CATALYST,null,null);
       }
  catch (      Exception e) {
         FLog.w(ReactConstants.TAG,"Exception in database clear ",e);

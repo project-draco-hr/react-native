@@ -1,0 +1,4 @@
+{
+  ensureDatabase();
+  return mDb;
+}

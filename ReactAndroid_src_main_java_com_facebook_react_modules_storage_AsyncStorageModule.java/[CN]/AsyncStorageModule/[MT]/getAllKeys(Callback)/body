@@ -7,7 +7,7 @@
       }
       WritableArray data=Arguments.createArray();
       String[] columns={KEY_COLUMN};
-      Cursor cursor=Assertions.assertNotNull(mDb).query(TABLE_CATALYST,columns,null,null,null,null,null);
+      Cursor cursor=mReactDatabaseSupplier.get().query(TABLE_CATALYST,columns,null,null,null,null,null);
       try {
         if (cursor.moveToFirst()) {
           do {
