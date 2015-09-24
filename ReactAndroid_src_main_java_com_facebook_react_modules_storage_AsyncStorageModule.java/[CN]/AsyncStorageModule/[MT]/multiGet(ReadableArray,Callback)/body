@@ -12,38 +12,42 @@
       String[] columns={KEY_COLUMN,VALUE_COLUMN};
       HashSet<String> keysRemaining=SetBuilder.newHashSet();
       WritableArray data=Arguments.createArray();
-      Cursor cursor=mReactDatabaseSupplier.get().query(TABLE_CATALYST,columns,AsyncLocalStorageUtil.buildKeySelection(keys.size()),AsyncLocalStorageUtil.buildKeySelectionArgs(keys),null,null,null);
-      try {
-        if (cursor.getCount() != keys.size()) {
-          for (int keyIndex=0; keyIndex < keys.size(); keyIndex++) {
-            keysRemaining.add(keys.getString(keyIndex));
+      for (int keyStart=0; keyStart < keys.size(); keyStart+=MAX_SQL_KEYS) {
+        int keyCount=Math.min(keys.size() - keyStart,MAX_SQL_KEYS);
+        Cursor cursor=mReactDatabaseSupplier.get().query(TABLE_CATALYST,columns,AsyncLocalStorageUtil.buildKeySelection(keyCount),AsyncLocalStorageUtil.buildKeySelectionArgs(keys,keyStart,keyCount),null,null,null);
+        keysRemaining.clear();
+        try {
+          if (cursor.getCount() != keys.size()) {
+            for (int keyIndex=keyStart; keyIndex < keyStart + keyCount; keyIndex++) {
+              keysRemaining.add(keys.getString(keyIndex));
+            }
           }
-        }
-        if (cursor.moveToFirst()) {
-          do {
-            WritableArray row=Arguments.createArray();
-            row.pushString(cursor.getString(0));
-            row.pushString(cursor.getString(1));
-            data.pushArray(row);
-            keysRemaining.remove(cursor.getString(0));
-          }
+          if (cursor.moveToFirst()) {
+            do {
+              WritableArray row=Arguments.createArray();
+              row.pushString(cursor.getString(0));
+              row.pushString(cursor.getString(1));
+              data.pushArray(row);
+              keysRemaining.remove(cursor.getString(0));
+            }
  while (cursor.moveToNext());
+          }
         }
-      }
- catch (      Exception e) {
-        FLog.w(ReactConstants.TAG,"Exception in database multiGet ",e);
-        callback.invoke(AsyncStorageErrorUtil.getError(null,e.getMessage()),null);
-      }
+ catch (        Exception e) {
+          FLog.w(ReactConstants.TAG,"Exception in database multiGet ",e);
+          callback.invoke(AsyncStorageErrorUtil.getError(null,e.getMessage()),null);
+        }
  finally {
-        cursor.close();
+          cursor.close();
+        }
+        for (        String key : keysRemaining) {
+          WritableArray row=Arguments.createArray();
+          row.pushString(key);
+          row.pushNull();
+          data.pushArray(row);
+        }
+        keysRemaining.clear();
       }
-      for (      String key : keysRemaining) {
-        WritableArray row=Arguments.createArray();
-        row.pushString(key);
-        row.pushNull();
-        data.pushArray(row);
-      }
-      keysRemaining.clear();
       callback.invoke(null,data);
     }
   }

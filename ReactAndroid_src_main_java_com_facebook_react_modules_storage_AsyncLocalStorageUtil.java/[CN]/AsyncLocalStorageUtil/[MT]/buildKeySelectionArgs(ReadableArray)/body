@@ -1,7 +1,0 @@
-{
-  String[] selectionArgs=new String[keys.size()];
-  for (int keyIndex=0; keyIndex < keys.size(); keyIndex++) {
-    selectionArgs[keyIndex]=keys.getString(keyIndex);
-  }
-  return selectionArgs;
-}

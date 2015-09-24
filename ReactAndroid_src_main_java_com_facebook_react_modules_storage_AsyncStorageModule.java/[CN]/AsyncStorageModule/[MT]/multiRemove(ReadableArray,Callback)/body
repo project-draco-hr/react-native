@@ -9,12 +9,20 @@
         callback.invoke(AsyncStorageErrorUtil.getDBError(null));
         return;
       }
+      mReactDatabaseSupplier.get().beginTransaction();
       try {
-        mReactDatabaseSupplier.get().delete(TABLE_CATALYST,AsyncLocalStorageUtil.buildKeySelection(keys.size()),AsyncLocalStorageUtil.buildKeySelectionArgs(keys));
+        for (int keyStart=0; keyStart < keys.size(); keyStart+=MAX_SQL_KEYS) {
+          int keyCount=Math.min(keys.size() - keyStart,MAX_SQL_KEYS);
+          mReactDatabaseSupplier.get().delete(TABLE_CATALYST,AsyncLocalStorageUtil.buildKeySelection(keyCount),AsyncLocalStorageUtil.buildKeySelectionArgs(keys,keyStart,keyCount));
+        }
+        mReactDatabaseSupplier.get().setTransactionSuccessful();
       }
  catch (      Exception e) {
         FLog.w(ReactConstants.TAG,"Exception in database multiRemove ",e);
         callback.invoke(AsyncStorageErrorUtil.getError(null,e.getMessage()));
+      }
+ finally {
+        mReactDatabaseSupplier.get().endTransaction();
       }
       callback.invoke();
     }
