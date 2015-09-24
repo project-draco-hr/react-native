@@ -1,0 +1,4 @@
+{
+  super(prop,"boolean",setter);
+  mDefaultValue=defaultValue;
+}

@@ -8,5 +8,5 @@
   if (viewToUpdate == null) {
     throw new IllegalViewOperationException("Trying to update view with tag " + tag + " which doesn't exist");
   }
-  viewManager.updateView(viewToUpdate,props);
+  viewManager.updateProperties(viewToUpdate,props);
 }

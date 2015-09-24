@@ -1,0 +1,20 @@
+{
+  Map<String,ViewManagersPropertyCache.PropSetter> propSetters=ViewManagersPropertyCache.getNativePropSettersForClass(getClass());
+  ReadableMap propMap=props.mBackingMap;
+  ReadableMapKeySeyIterator iterator=propMap.keySetIterator();
+  boolean missingSetters=false;
+  while (iterator.hasNextKey()) {
+    String key=iterator.nextKey();
+    ViewManagersPropertyCache.PropSetter setter=propSetters.get(key);
+    if (setter != null) {
+      setter.updateProp(this,viewToUpdate,props);
+    }
+ else {
+      missingSetters=true;
+    }
+  }
+  if (missingSetters) {
+    updateView(viewToUpdate,props);
+  }
+  onAfterUpdateTransaction(viewToUpdate);
+}

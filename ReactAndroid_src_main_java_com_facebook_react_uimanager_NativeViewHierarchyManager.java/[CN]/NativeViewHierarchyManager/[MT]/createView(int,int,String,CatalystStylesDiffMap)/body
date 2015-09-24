@@ -6,6 +6,6 @@
   mTagsToViewManagers.put(tag,viewManager);
   view.setId(tag);
   if (initialProps != null) {
-    viewManager.updateView(view,initialProps);
+    viewManager.updateProperties(view,initialProps);
   }
 }

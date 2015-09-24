@@ -1,0 +1,4 @@
+{
+  super(prop,"number",setter,index);
+  mDefaultValue=defaultValue;
+}

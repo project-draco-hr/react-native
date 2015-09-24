@@ -1,0 +1,8 @@
+{
+  Map<String,String> nativeProps=new HashMap<>();
+  Map<String,PropSetter> props=getNativePropSettersForClass(topLevelClass);
+  for (  PropSetter setter : props.values()) {
+    nativeProps.put(setter.getPropName(),setter.getPropType());
+  }
+  return nativeProps;
+}

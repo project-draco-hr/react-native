@@ -1,0 +1,3 @@
+{
+  mSetter.invoke(viewManager,viewToUpdate,mIndex,props.getInt(mPropName,mDefaultValue));
+}

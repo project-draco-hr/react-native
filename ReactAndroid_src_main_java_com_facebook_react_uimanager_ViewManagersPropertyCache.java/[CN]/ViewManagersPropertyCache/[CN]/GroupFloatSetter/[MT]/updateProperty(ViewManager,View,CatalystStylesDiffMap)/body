@@ -1,0 +1,3 @@
+{
+  mSetter.invoke(viewManager,viewToUpdate,mIndex,props.getFloat(mPropName,mDefaultValue));
+}
