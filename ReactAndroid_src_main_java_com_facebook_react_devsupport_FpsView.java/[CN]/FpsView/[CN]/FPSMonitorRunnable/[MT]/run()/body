@@ -2,7 +2,9 @@
   if (mShouldStop) {
     return;
   }
-  setCurrentFPS(mFrameCallback.getFPS(),mFrameCallback.getJSFPS());
+  mTotalFramesDropped+=mFrameCallback.getExpectedNumFrames() - mFrameCallback.getNumFrames();
+  mTotal4PlusFrameStutters+=mFrameCallback.get4PlusFrameStutters();
+  setCurrentFPS(mFrameCallback.getFPS(),mFrameCallback.getJSFPS(),mTotalFramesDropped,mTotal4PlusFrameStutters);
   mFrameCallback.reset();
   postDelayed(this,UPDATE_INTERVAL_MS);
 }

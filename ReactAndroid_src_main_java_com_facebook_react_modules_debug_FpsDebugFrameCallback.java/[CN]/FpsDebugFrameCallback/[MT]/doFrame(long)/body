@@ -11,10 +11,16 @@
     mNumFrameCallbacksWithBatchDispatches++;
   }
   mNumFrameCallbacks++;
+  int expectedNumFrames=getExpectedNumFrames();
+  int framesDropped=expectedNumFrames - mExpectedNumFramesPrev - 1;
+  if (framesDropped >= 4) {
+    m4PlusFrameStutters++;
+  }
   if (mIsRecordingFpsInfoAtEachFrame) {
     Assertions.assertNotNull(mTimeToFps);
-    FpsInfo info=new FpsInfo(getNumFrames(),getNumJSFrames(),getExpectedNumFrames(),getFPS(),getJSFPS(),getTotalTimeMS());
+    FpsInfo info=new FpsInfo(getNumFrames(),getNumJSFrames(),expectedNumFrames,m4PlusFrameStutters,getFPS(),getJSFPS(),getTotalTimeMS());
     mTimeToFps.put(System.currentTimeMillis(),info);
   }
+  mExpectedNumFramesPrev=expectedNumFrames;
   mChoreographer.postFrameCallback(this);
 }

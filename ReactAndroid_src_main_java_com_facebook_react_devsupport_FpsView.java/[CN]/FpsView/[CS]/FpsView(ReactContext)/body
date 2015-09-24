@@ -4,5 +4,5 @@
   mTextView=(TextView)findViewById(R.id.fps_text);
   mFrameCallback=new FpsDebugFrameCallback(Choreographer.getInstance(),reactContext);
   mFPSMonitorRunnable=new FPSMonitorRunnable();
-  setCurrentFPS(0,0);
+  setCurrentFPS(0,0,0,0);
 }
