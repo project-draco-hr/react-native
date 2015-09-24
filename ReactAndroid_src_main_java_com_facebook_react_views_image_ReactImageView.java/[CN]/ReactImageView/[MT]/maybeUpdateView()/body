@@ -17,7 +17,7 @@
   Postprocessor postprocessor=usePostprocessorScaling ? mRoundedCornerPostprocessor : null;
   ResizeOptions resizeOptions=doResize ? new ResizeOptions(getWidth(),getHeight()) : null;
   ImageRequest imageRequest=ImageRequestBuilder.newBuilderWithSource(mUri).setPostprocessor(postprocessor).setResizeOptions(resizeOptions).build();
-  DraweeController draweeController=mDraweeControllerBuilder.reset().setCallerContext(mCallerContext).setOldController(getController()).setImageRequest(imageRequest).setControllerListener(mControllerListener).build();
+  DraweeController draweeController=mDraweeControllerBuilder.reset().setAutoPlayAnimations(true).setCallerContext(mCallerContext).setOldController(getController()).setImageRequest(imageRequest).setControllerListener(mControllerListener).build();
   setController(draweeController);
   mIsDirty=false;
 }
