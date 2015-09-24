@@ -1,6 +1,0 @@
-{
-  if (color < 0 || color > 255) {
-    throw new JSApplicationIllegalArgumentException("Invalid color component: " + color);
-  }
-  return color;
-}

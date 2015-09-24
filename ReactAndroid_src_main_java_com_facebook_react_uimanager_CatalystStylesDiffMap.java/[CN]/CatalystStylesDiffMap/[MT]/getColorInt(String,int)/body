@@ -1,3 +1,0 @@
-{
-  return mBackingMap.isNull(name) ? restoreNullToDefaultValue : (int)(long)mBackingMap.getDouble(name);
-}

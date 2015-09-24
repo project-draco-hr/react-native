@@ -26,7 +26,7 @@
       mIsColorSet=false;
     }
  else {
-      mColor=styles.getColorInt(ViewProps.COLOR,Color.TRANSPARENT);
+      mColor=styles.getInt(ViewProps.COLOR,Color.TRANSPARENT);
       mIsColorSet=true;
     }
     markUpdated();
@@ -36,7 +36,7 @@
       mIsBackgroundColorSet=false;
     }
  else {
-      mBackgroundColor=styles.getColorInt(ViewProps.BACKGROUND_COLOR,Color.TRANSPARENT);
+      mBackgroundColor=styles.getInt(ViewProps.BACKGROUND_COLOR,Color.TRANSPARENT);
       mIsBackgroundColorSet=true;
     }
     markUpdated();
