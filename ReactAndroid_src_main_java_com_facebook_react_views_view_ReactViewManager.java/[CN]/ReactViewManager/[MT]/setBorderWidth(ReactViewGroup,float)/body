@@ -1,0 +1,6 @@
+{
+  if (!CSSConstants.isUndefined(width)) {
+    width=PixelUtil.toPixelFromDIP(width);
+  }
+  view.setBorderWidth(Spacing.ALL,width);
+}

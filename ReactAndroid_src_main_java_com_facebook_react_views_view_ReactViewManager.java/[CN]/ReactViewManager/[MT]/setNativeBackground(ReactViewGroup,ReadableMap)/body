@@ -1,0 +1,3 @@
+{
+  view.setTranslucentBackgroundDrawable(bg == null ? null : ReactDrawableHelper.createDrawableFromJSDescription(view.getContext(),bg));
+}

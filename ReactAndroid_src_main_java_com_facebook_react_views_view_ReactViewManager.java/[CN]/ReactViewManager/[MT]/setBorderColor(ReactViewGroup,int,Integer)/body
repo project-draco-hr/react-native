@@ -1,0 +1,3 @@
+{
+  view.setBorderColor(SPACING_TYPES[index],color == null ? CSSConstants.UNDEFINED : (float)color);
+}

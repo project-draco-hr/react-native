@@ -1,0 +1,3 @@
+{
+  AccessibilityHelper.updateAccessibilityComponentType(view,accessibilityComponentType);
+}

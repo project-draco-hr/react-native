@@ -1,0 +1,3 @@
+{
+  view.setBorderRadius(PixelUtil.toPixelFromDIP(borderRadius));
+}
