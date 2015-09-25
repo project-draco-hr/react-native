@@ -1,0 +1,14 @@
+{
+  int flagsToSet=0;
+switch (autoCapitalize) {
+case InputType.TYPE_TEXT_FLAG_CAP_SENTENCES:
+case InputType.TYPE_TEXT_FLAG_CAP_WORDS:
+case InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS:
+case InputType.TYPE_CLASS_TEXT:
+    flagsToSet=autoCapitalize;
+  break;
+default :
+throw new JSApplicationCausedNativeException("Invalid autoCapitalize value: " + autoCapitalize);
+}
+updateStagedInputTypeFlag(view,InputType.TYPE_TEXT_FLAG_CAP_SENTENCES | InputType.TYPE_TEXT_FLAG_CAP_WORDS | InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS,flagsToSet);
+}

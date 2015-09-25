@@ -1,8 +1,0 @@
-{
-  BaseViewPropertyApplicator.applyCommonViewProperties(view,props);
-  if (props.hasKey(PROP_STYLE)) {
-    final int style=getStyleFromString(props.getString(PROP_STYLE));
-    view.removeAllViews();
-    view.addView(new ProgressBar(view.getContext(),null,style),new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT));
-  }
-}

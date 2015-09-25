@@ -1,0 +1,3 @@
+{
+  updateStagedInputTypeFlag(view,password ? 0 : InputType.TYPE_TEXT_VARIATION_PASSWORD,password ? InputType.TYPE_TEXT_VARIATION_PASSWORD : 0);
+}

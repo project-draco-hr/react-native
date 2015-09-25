@@ -1,0 +1,4 @@
+{
+  view.setMaxLines(numberOfLines);
+  view.setEllipsize(TextUtils.TruncateAt.END);
+}

@@ -1,0 +1,4 @@
+{
+  int widthInPx=Float.isNaN(width) ? ReactDrawerLayout.DEFAULT_DRAWER_WIDTH : Math.round(PixelUtil.toPixelFromDIP(width));
+  view.setDrawerWidth(widthInPx);
+}

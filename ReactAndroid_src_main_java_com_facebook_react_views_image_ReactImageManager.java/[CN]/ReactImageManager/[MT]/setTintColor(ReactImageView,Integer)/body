@@ -1,0 +1,8 @@
+{
+  if (tintColor == null) {
+    view.clearColorFilter();
+  }
+ else {
+    view.setColorFilter(tintColor);
+  }
+}

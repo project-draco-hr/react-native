@@ -1,0 +1,9 @@
+{
+  int[] defaultColors=getDefaultColors(view.getContext());
+  if (titleColor != null) {
+    view.setTitleTextColor(titleColor);
+  }
+ else {
+    view.setTitleTextColor(defaultColors[0]);
+  }
+}

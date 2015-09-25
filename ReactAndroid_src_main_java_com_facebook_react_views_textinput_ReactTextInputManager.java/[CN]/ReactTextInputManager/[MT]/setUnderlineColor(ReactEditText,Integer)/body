@@ -1,0 +1,8 @@
+{
+  if (underlineColor == null) {
+    view.getBackground().clearColorFilter();
+  }
+ else {
+    view.getBackground().setColorFilter(underlineColor,PorterDuff.Mode.SRC_IN);
+  }
+}

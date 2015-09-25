@@ -1,0 +1,8 @@
+{
+  if (logo != null) {
+    view.setLogo(getDrawableResourceByName(view.getContext(),logo));
+  }
+ else {
+    view.setLogo(null);
+  }
+}

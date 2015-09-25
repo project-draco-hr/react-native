@@ -9,4 +9,5 @@
   mIsJSSettingFocus=false;
   mListeners=null;
   mTextWatcherDelegator=null;
+  mStagedInputType=getInputType();
 }

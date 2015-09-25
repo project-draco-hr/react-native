@@ -1,0 +1,3 @@
+{
+  view.setStagedInputType((view.getStagedInputType() & ~flagsToUnset) | flagsToSet);
+}

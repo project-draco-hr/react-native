@@ -1,0 +1,8 @@
+{
+  if (color == null) {
+    view.setTextColor(DefaultStyleValuesUtil.getDefaultTextColor(view.getContext()));
+  }
+ else {
+    view.setTextColor(color);
+  }
+}

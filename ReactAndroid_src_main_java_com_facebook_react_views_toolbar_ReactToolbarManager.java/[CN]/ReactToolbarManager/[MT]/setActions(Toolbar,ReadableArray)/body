@@ -1,5 +1,5 @@
 {
-  Menu menu=toolbar.getMenu();
+  Menu menu=view.getMenu();
   menu.clear();
   if (actions != null) {
     for (int i=0; i < actions.size(); i++) {
@@ -7,7 +7,7 @@
       MenuItem item=menu.add(Menu.NONE,Menu.NONE,i,action.getString(PROP_ACTION_TITLE));
       String icon=action.hasKey(PROP_ACTION_ICON) ? action.getString(PROP_ACTION_ICON) : null;
       if (icon != null) {
-        item.setIcon(getDrawableResourceByName(toolbar.getContext(),icon));
+        item.setIcon(getDrawableResourceByName(view.getContext(),icon));
       }
       String show=action.hasKey(PROP_ACTION_SHOW) ? action.getString(PROP_ACTION_SHOW) : null;
       if (show != null) {

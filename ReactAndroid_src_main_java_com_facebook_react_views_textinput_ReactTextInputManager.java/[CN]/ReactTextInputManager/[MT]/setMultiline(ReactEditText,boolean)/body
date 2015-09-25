@@ -1,0 +1,3 @@
+{
+  updateStagedInputTypeFlag(view,multiline ? 0 : InputType.TYPE_TEXT_FLAG_MULTI_LINE,multiline ? InputType.TYPE_TEXT_FLAG_MULTI_LINE : 0);
+}

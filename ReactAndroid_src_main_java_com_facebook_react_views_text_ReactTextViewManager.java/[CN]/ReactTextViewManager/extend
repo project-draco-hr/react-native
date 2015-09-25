@@ -1,1 +1,1 @@
-ViewManager<ReactTextView,ReactTextShadowNode>
+BaseViewManager<ReactTextView,ReactTextShadowNode>

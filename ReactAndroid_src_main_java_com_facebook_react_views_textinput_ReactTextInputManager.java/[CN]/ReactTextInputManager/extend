@@ -1,1 +1,1 @@
-ViewManager<ReactEditText,ReactTextInputShadowNode>
+BaseViewManager<ReactEditText,ReactTextInputShadowNode>
