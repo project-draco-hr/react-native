@@ -1,9 +1,6 @@
 {
   mOnChangePollingEnabled=false;
-  if (mRestartOnChangePollingHandler != null) {
-    mRestartOnChangePollingHandler.removeCallbacksAndMessages(null);
-    mRestartOnChangePollingHandler=null;
-  }
+  mRestartOnChangePollingHandler.removeCallbacksAndMessages(null);
   if (mOnChangePollingClient != null) {
     mOnChangePollingClient.cancel(this);
     mOnChangePollingClient=null;

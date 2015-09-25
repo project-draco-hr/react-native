@@ -1,6 +1,6 @@
 {
   if (!mFrameCallbackPosted) {
-    mReactChoreographer.postFrameCallback(ReactChoreographer.CallbackType.TIMERS_EVENTS,mFrameCallback);
+    Assertions.assertNotNull(mReactChoreographer).postFrameCallback(ReactChoreographer.CallbackType.TIMERS_EVENTS,mFrameCallback);
     mFrameCallbackPosted=true;
   }
 }

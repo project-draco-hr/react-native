@@ -1,0 +1,4 @@
+{
+  Assertions.assertCondition(params != null && params.length > 0 && params[0] != null);
+  return createReactContext(params[0].getJsExecutor(),params[0].getJsBundleLoader());
+}

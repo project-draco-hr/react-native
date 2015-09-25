@@ -9,5 +9,5 @@
       return;
     }
   }
-  recreateReactContext(new JSCJavaScriptExecutor(),JSBundleLoader.createAssetLoader(mApplicationContext.getAssets(),mBundleAssetName));
+  recreateReactContextInBackground(new JSCJavaScriptExecutor(),JSBundleLoader.createAssetLoader(mApplicationContext.getAssets(),mBundleAssetName));
 }

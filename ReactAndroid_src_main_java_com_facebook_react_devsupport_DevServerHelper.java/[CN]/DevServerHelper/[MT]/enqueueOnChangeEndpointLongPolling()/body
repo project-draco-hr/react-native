@@ -4,7 +4,7 @@
     @Override public void onFailure(    Request request,    IOException e){
       if (mOnChangePollingEnabled) {
         FLog.d(ReactConstants.TAG,"Error while requesting /onchange endpoint",e);
-        Assertions.assertNotNull(mRestartOnChangePollingHandler).postDelayed(new Runnable(){
+        mRestartOnChangePollingHandler.postDelayed(new Runnable(){
           @Override public void run(){
             handleOnChangePollingResponse(false);
           }

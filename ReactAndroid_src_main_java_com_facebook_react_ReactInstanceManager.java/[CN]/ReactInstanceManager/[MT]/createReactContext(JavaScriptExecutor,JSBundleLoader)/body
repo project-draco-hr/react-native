@@ -16,8 +16,5 @@
     catalystInstance.addBridgeIdleDebugListener(mBridgeIdleDebugListener);
   }
   reactContext.initializeWithInstance(catalystInstance);
-  catalystInstance.initialize();
-  mDevSupportManager.onNewReactContextCreated(reactContext);
-  moveReactContextToCurrentLifecycleState(reactContext);
   return reactContext;
 }

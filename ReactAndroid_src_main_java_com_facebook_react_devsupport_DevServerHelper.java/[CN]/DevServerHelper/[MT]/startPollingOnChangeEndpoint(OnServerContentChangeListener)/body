@@ -6,6 +6,5 @@
   mOnServerContentChangeListener=onServerContentChangeListener;
   mOnChangePollingClient=new OkHttpClient();
   mOnChangePollingClient.setConnectionPool(new ConnectionPool(1,LONG_POLL_KEEP_ALIVE_DURATION_MS)).setConnectTimeout(HTTP_CONNECT_TIMEOUT_MS,TimeUnit.MILLISECONDS);
-  mRestartOnChangePollingHandler=new Handler();
   enqueueOnChangeEndpointLongPolling();
 }

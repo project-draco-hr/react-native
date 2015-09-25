@@ -1,0 +1,12 @@
+{
+  UiThreadUtil.assertOnUiThread();
+  Assertions.assertCondition(mCurrentReactContext == null);
+  mCurrentReactContext=Assertions.assertNotNull(reactContext);
+  CatalystInstance catalystInstance=Assertions.assertNotNull(reactContext.getCatalystInstance());
+  catalystInstance.initialize();
+  mDevSupportManager.onNewReactContextCreated(reactContext);
+  moveReactContextToCurrentLifecycleState(reactContext);
+  for (  ReactRootView rootView : mAttachedRootViews) {
+    attachMeasuredRootViewToInstance(rootView,catalystInstance);
+  }
+}

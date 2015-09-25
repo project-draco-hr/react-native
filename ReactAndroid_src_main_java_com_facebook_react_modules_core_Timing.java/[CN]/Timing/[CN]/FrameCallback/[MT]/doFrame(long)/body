@@ -23,5 +23,5 @@ synchronized (mTimerGuard) {
   if (timersToCall != null) {
     Assertions.assertNotNull(mJSTimersModule).callTimers(timersToCall);
   }
-  mReactChoreographer.postFrameCallback(ReactChoreographer.CallbackType.TIMERS_EVENTS,this);
+  Assertions.assertNotNull(mReactChoreographer).postFrameCallback(ReactChoreographer.CallbackType.TIMERS_EVENTS,this);
 }
