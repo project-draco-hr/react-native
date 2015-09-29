@@ -2,7 +2,7 @@
   SpannableStringBuilder sb=new SpannableStringBuilder();
   List<SetSpanOperation> ops=new ArrayList<SetSpanOperation>();
   buildSpannedFromTextCSSNode(textCSSNode,sb,ops);
-  if (textCSSNode.mFontSize == -1) {
+  if (textCSSNode.mFontSize == UNSET) {
     sb.setSpan(new AbsoluteSizeSpan((int)Math.ceil(PixelUtil.toPixelFromSP(ViewDefaults.FONT_SIZE_SP))),0,sb.length(),Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
   }
   for (int i=ops.size() - 1; i >= 0; i--) {

@@ -31,7 +31,7 @@
     }
     markUpdated();
   }
-  if (styles.hasKey(ViewProps.BACKGROUND_COLOR)) {
+  if (styles.hasKey(ViewProps.BACKGROUND_COLOR) && this.isVirtualAnchor() == false) {
     if (styles.isNull(ViewProps.BACKGROUND_COLOR)) {
       mIsBackgroundColorSet=false;
     }
