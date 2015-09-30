@@ -1,0 +1,26 @@
+{
+  Menu menu=getMenu();
+  menu.clear();
+  mActionsHolder.clear();
+  if (actions != null) {
+    for (int i=0; i < actions.size(); i++) {
+      ReadableMap action=actions.getMap(i);
+      MenuItem item=menu.add(Menu.NONE,Menu.NONE,i,action.getString(PROP_ACTION_TITLE));
+      ReadableMap icon=action.hasKey(PROP_ACTION_ICON) ? action.getMap(PROP_ACTION_ICON) : null;
+      if (icon != null) {
+        String iconSource=icon.getString("uri");
+        if (iconSource.startsWith("http://") || iconSource.startsWith("https://")) {
+          setMenuItemIcon(item,icon);
+        }
+ else {
+          item.setIcon(getDrawableResourceByName(iconSource));
+        }
+      }
+      int showAsAction=action.hasKey(PROP_ACTION_SHOW) ? action.getInt(PROP_ACTION_SHOW) : MenuItem.SHOW_AS_ACTION_NEVER;
+      if (action.hasKey(PROP_ACTION_SHOW_WITH_TEXT) && action.getBoolean(PROP_ACTION_SHOW_WITH_TEXT)) {
+        showAsAction=showAsAction | MenuItem.SHOW_AS_ACTION_WITH_TEXT;
+      }
+      item.setShowAsAction(showAsAction);
+    }
+  }
+}

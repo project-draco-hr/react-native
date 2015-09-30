@@ -1,0 +1,5 @@
+{
+  mLogoHolder.onDetach();
+  mNavIconHolder.onDetach();
+  mActionsHolder.onDetach();
+}

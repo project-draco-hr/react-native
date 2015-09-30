@@ -1,8 +1,0 @@
-{
-  if (navIcon != null) {
-    view.setNavigationIcon(getDrawableResourceByName(view.getContext(),navIcon));
-  }
- else {
-    view.setNavigationIcon(null);
-  }
-}
