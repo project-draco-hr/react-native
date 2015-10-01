@@ -12,6 +12,7 @@
   float hierarchyRadius=usePostprocessorScaling ? 0 : mBorderRadius;
   RoundingParams roundingParams=hierarchy.getRoundingParams();
   roundingParams.setCornersRadius(hierarchyRadius);
+  roundingParams.setBorder(mBorderColor,mBorderWidth);
   hierarchy.setRoundingParams(roundingParams);
   hierarchy.setFadeDuration(mImageFadeDuration >= 0 ? mImageFadeDuration : mIsLocalImage ? 0 : REMOTE_IMAGE_FADE_DURATION_MS);
   Postprocessor postprocessor=usePostprocessorScaling ? mRoundedCornerPostprocessor : null;
