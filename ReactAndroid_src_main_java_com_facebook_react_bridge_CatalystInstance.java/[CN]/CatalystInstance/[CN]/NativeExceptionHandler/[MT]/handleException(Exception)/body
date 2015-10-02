@@ -1,9 +1,3 @@
 {
   mNativeModuleCallExceptionHandler.handleException(e);
-  mCatalystQueueConfiguration.getUIQueueThread().runOnQueue(new Runnable(){
-    @Override public void run(){
-      destroy();
-    }
-  }
-);
 }
