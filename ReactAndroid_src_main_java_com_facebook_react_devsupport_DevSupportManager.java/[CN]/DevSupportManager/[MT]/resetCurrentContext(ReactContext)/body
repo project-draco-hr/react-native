@@ -6,6 +6,7 @@
     mIsCurrentlyProfiling=false;
     String profileName=(Environment.getExternalStorageDirectory().getPath() + "/profile_" + mProfileIndex+ ".json");
     mProfileIndex++;
+    Debug.stopMethodTracing();
     mCurrentContext.getCatalystInstance().getBridge().stopProfiler("profile",profileName);
   }
   mCurrentContext=reactContext;
