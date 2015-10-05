@@ -1,0 +1,10 @@
+{
+  if (!Systrace.isTracing(Systrace.TRACE_TAG_REACT_FRESCO)) {
+    return;
+  }
+  if (mRequestsID.containsKey(requestId)) {
+    Pair<Integer,String> entry=mRequestsID.get(requestId);
+    Systrace.endAsyncSection(Systrace.TRACE_TAG_REACT_FRESCO,entry.second,entry.first);
+    mRequestsID.remove(requestId);
+  }
+}

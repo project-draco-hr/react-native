@@ -6,8 +6,10 @@
     }
   }
 );
+  HashSet<RequestListener> requestListeners=new HashSet<>();
+  requestListeners.add(new SystraceRequestListener());
   Context context=this.getReactApplicationContext().getApplicationContext();
   OkHttpClient okHttpClient=OkHttpClientProvider.getOkHttpClient();
-  ImagePipelineConfig config=OkHttpImagePipelineConfigFactory.newBuilder(context,okHttpClient).setDownsampleEnabled(false).build();
+  ImagePipelineConfig config=OkHttpImagePipelineConfigFactory.newBuilder(context,okHttpClient).setDownsampleEnabled(false).setRequestListeners(requestListeners).build();
   Fresco.initialize(context,config);
 }

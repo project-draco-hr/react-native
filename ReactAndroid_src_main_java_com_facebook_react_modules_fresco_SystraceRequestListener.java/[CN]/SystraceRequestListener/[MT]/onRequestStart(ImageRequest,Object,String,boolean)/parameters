@@ -1,0 +1,4 @@
+ImageRequest request
+Object callerContext
+String requestId
+boolean isPrefetch
