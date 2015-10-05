@@ -30,7 +30,7 @@
     }
   }
 );
-  if (mCurrentContext != null && mCurrentContext.getCatalystInstance() != null && mCurrentContext.getCatalystInstance().getBridge() != null && mCurrentContext.getCatalystInstance().getBridge().supportsProfiling()) {
+  if (mCurrentContext != null && mCurrentContext.getCatalystInstance() != null && !mCurrentContext.getCatalystInstance().isDestroyed() && mCurrentContext.getCatalystInstance().getBridge() != null && mCurrentContext.getCatalystInstance().getBridge().supportsProfiling()) {
     options.put(mApplicationContext.getString(mIsCurrentlyProfiling ? R.string.catalyst_stop_profile : R.string.catalyst_start_profile),new DevOptionHandler(){
       @Override public void onOptionSelected(){
         if (mCurrentContext != null && mCurrentContext.hasActiveCatalystInstance()) {
