@@ -1,6 +1,12 @@
 {
   UiThreadUtil.assertOnUiThread();
-  for (  NativeModule nativeModule : mModuleInstances.values()) {
-    nativeModule.initialize();
+  Systrace.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"NativeModuleRegistry_notifyCatalystInstanceInitialized");
+  try {
+    for (    NativeModule nativeModule : mModuleInstances.values()) {
+      nativeModule.initialize();
+    }
+  }
+  finally {
+    Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);
   }
 }
