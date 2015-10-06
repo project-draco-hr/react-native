@@ -11,19 +11,20 @@
       }
       String sql="INSERT OR REPLACE INTO " + TABLE_CATALYST + " VALUES (?, ?);";
       SQLiteStatement statement=mReactDatabaseSupplier.get().compileStatement(sql);
-      mReactDatabaseSupplier.get().beginTransaction();
+      WritableMap error=null;
       try {
+        mReactDatabaseSupplier.get().beginTransaction();
         for (int idx=0; idx < keyValueArray.size(); idx++) {
           if (keyValueArray.getArray(idx).size() != 2) {
-            callback.invoke(AsyncStorageErrorUtil.getInvalidValueError(null));
+            error=AsyncStorageErrorUtil.getInvalidValueError(null);
             return;
           }
           if (keyValueArray.getArray(idx).getString(0) == null) {
-            callback.invoke(AsyncStorageErrorUtil.getInvalidKeyError(null));
+            error=AsyncStorageErrorUtil.getInvalidKeyError(null);
             return;
           }
           if (keyValueArray.getArray(idx).getString(1) == null) {
-            callback.invoke(AsyncStorageErrorUtil.getInvalidValueError(null));
+            error=AsyncStorageErrorUtil.getInvalidValueError(null);
             return;
           }
           statement.clearBindings();
@@ -34,13 +35,26 @@
         mReactDatabaseSupplier.get().setTransactionSuccessful();
       }
  catch (      Exception e) {
-        FLog.w(ReactConstants.TAG,"Exception in database multiSet ",e);
-        callback.invoke(AsyncStorageErrorUtil.getError(null,e.getMessage()));
+        FLog.w(ReactConstants.TAG,e.getMessage(),e);
+        error=AsyncStorageErrorUtil.getError(null,e.getMessage());
       }
  finally {
-        mReactDatabaseSupplier.get().endTransaction();
+        try {
+          mReactDatabaseSupplier.get().endTransaction();
+        }
+ catch (        Exception e) {
+          FLog.w(ReactConstants.TAG,e.getMessage(),e);
+          if (error == null) {
+            error=AsyncStorageErrorUtil.getError(null,e.getMessage());
+          }
+        }
       }
-      callback.invoke();
+      if (error != null) {
+        callback.invoke(error);
+      }
+ else {
+        callback.invoke();
+      }
     }
   }
 .execute();

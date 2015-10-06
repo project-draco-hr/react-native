@@ -7,12 +7,12 @@
       }
       try {
         mReactDatabaseSupplier.get().delete(TABLE_CATALYST,null,null);
+        callback.invoke();
       }
  catch (      Exception e) {
-        FLog.w(ReactConstants.TAG,"Exception in database clear ",e);
+        FLog.w(ReactConstants.TAG,e.getMessage(),e);
         callback.invoke(AsyncStorageErrorUtil.getError(null,e.getMessage()));
       }
-      callback.invoke();
     }
   }
 .execute();

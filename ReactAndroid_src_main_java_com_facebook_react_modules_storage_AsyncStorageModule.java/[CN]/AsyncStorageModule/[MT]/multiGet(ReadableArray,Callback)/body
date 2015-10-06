@@ -34,8 +34,9 @@
           }
         }
  catch (        Exception e) {
-          FLog.w(ReactConstants.TAG,"Exception in database multiGet ",e);
+          FLog.w(ReactConstants.TAG,e.getMessage(),e);
           callback.invoke(AsyncStorageErrorUtil.getError(null,e.getMessage()),null);
+          return;
         }
  finally {
           cursor.close();
