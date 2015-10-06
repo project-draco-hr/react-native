@@ -1,4 +1,0 @@
-{
-  String s=getStackTraceHtmlComponent("",e.fileName,e.lineNumber,e.column);
-  return Html.fromHtml(s);
-}

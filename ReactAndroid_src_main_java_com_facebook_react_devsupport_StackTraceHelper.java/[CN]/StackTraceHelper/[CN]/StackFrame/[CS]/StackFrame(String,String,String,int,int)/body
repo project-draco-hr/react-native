@@ -1,0 +1,7 @@
+{
+  mFile=file;
+  mFileName=fileName;
+  mMethod=method;
+  mLine=line;
+  mColumn=column;
+}

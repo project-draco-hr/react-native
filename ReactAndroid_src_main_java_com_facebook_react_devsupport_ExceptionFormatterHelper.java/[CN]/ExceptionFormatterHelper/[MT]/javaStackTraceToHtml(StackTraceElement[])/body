@@ -1,7 +1,0 @@
-{
-  StringBuilder stringBuilder=new StringBuilder();
-  for (int i=0; i < stack.length; i++) {
-    stringBuilder.append(getStackTraceHtmlComponent(stack[i].getMethodName(),stack[i].getFileName(),stack[i].getLineNumber(),-1));
-  }
-  return Html.fromHtml(stringBuilder.toString());
-}

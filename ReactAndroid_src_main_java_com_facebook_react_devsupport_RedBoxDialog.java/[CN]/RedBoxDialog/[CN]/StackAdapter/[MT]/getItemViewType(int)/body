@@ -1,0 +1,3 @@
+{
+  return position == 0 ? VIEW_TYPE_TITLE : VIEW_TYPE_STACKFRAME;
+}

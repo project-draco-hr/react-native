@@ -1,0 +1,15 @@
+{
+  StackFrame[] result=new StackFrame[stack.size()];
+  for (int i=0; i < stack.size(); i++) {
+    ReadableMap frame=stack.getMap(i);
+    String methodName=frame.getString("methodName");
+    String fileName=frame.getString("file");
+    int lineNumber=frame.getInt("lineNumber");
+    int columnNumber=-1;
+    if (frame.hasKey("column") && !frame.isNull("column")) {
+      columnNumber=frame.getInt("column");
+    }
+    result[i]=new StackFrame(fileName,methodName,lineNumber,columnNumber);
+  }
+  return result;
+}

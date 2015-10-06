@@ -16,10 +16,10 @@
         @Override public void run(){
           if (cause instanceof DebugServerException) {
             DebugServerException debugServerException=(DebugServerException)cause;
-            showNewError(debugServerException.description,ExceptionFormatterHelper.debugServerExcStackTraceToHtml((DebugServerException)cause),JAVA_ERROR_COOKIE);
+            showNewError(debugServerException.description,StackTraceHelper.convertJavaStackTrace(cause),JAVA_ERROR_COOKIE);
           }
  else {
-            showNewError(mApplicationContext.getString(R.string.catalyst_jsload_error),ExceptionFormatterHelper.javaStackTraceToHtml(cause.getStackTrace()),JAVA_ERROR_COOKIE);
+            showNewError(mApplicationContext.getString(R.string.catalyst_jsload_error),StackTraceHelper.convertJavaStackTrace(cause),JAVA_ERROR_COOKIE);
           }
         }
       }

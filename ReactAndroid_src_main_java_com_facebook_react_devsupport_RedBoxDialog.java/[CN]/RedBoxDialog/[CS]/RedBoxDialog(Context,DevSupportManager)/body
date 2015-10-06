@@ -3,12 +3,9 @@
   requestWindowFeature(Window.FEATURE_NO_TITLE);
   setContentView(R.layout.redbox_view);
   mDevSupportManager=devSupportManager;
-  mTitle=(TextView)findViewById(R.id.catalyst_redbox_title);
-  mDetails=(TextView)findViewById(R.id.catalyst_redbox_details);
-  mDetails.setTypeface(Typeface.MONOSPACE);
-  mDetails.setHorizontallyScrolling(true);
-  mDetails.setMovementMethod(new ScrollingMovementMethod());
-  mReloadJs=(Button)findViewById(R.id.catalyst_redbox_reloadjs);
+  mStackView=(ListView)findViewById(R.id.rn_redbox_stack);
+  mStackView.setOnItemClickListener(this);
+  mReloadJs=(Button)findViewById(R.id.rn_redbox_reloadjs);
   mReloadJs.setOnClickListener(new View.OnClickListener(){
     @Override public void onClick(    View v){
       mDevSupportManager.handleReloadJS();

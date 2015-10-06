@@ -4,8 +4,7 @@
       if (mRedBoxDialog == null || !mRedBoxDialog.isShowing() || errorCookie != mRedBoxDialog.getErrorCookie()) {
         return;
       }
-      mRedBoxDialog.setTitle(message);
-      mRedBoxDialog.setDetails(ExceptionFormatterHelper.jsStackTraceToHtml(details));
+      mRedBoxDialog.setExceptionDetails(message,StackTraceHelper.convertJsStackTrace(details));
       mRedBoxDialog.show();
     }
   }

@@ -1,0 +1,8 @@
+{
+  StackTraceElement[] stackTrace=exception.getStackTrace();
+  StackFrame[] result=new StackFrame[stackTrace.length];
+  for (int i=0; i < stackTrace.length; i++) {
+    result[i]=new StackFrame(stackTrace[i].getClassName(),stackTrace[i].getFileName(),stackTrace[i].getMethodName(),stackTrace[i].getLineNumber(),0);
+  }
+  return result;
+}

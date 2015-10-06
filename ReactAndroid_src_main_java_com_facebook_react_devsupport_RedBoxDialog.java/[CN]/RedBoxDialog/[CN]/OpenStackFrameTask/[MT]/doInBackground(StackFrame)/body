@@ -1,0 +1,16 @@
+{
+  try {
+    String openStackFrameUrl=Uri.parse(mDevSupportManager.getSourceUrl()).buildUpon().path("/open-stack-frame").query(null).build().toString();
+    OkHttpClient client=new OkHttpClient();
+    for (    StackFrame frame : stackFrames) {
+      String payload=stackFrameToJson(frame).toString();
+      RequestBody body=RequestBody.create(JSON,payload);
+      Request request=new Request.Builder().url(openStackFrameUrl).post(body).build();
+      client.newCall(request).execute();
+    }
+  }
+ catch (  Exception e) {
+    FLog.e(ReactConstants.TAG,"Could not open stack frame",e);
+  }
+  return null;
+}
