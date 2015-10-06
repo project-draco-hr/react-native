@@ -8,7 +8,7 @@
   }
   final float containerX=(float)mMeasureBuffer[0];
   final float containerY=(float)mMeasureBuffer[1];
-  final int touchTargetReactTag=mNativeViewHierarchyManager.findTargetTagForTouch(mReactTag,PixelUtil.toPixelFromDIP(mTargetX) + containerX,PixelUtil.toPixelFromDIP(mTargetY) + containerY);
+  final int touchTargetReactTag=mNativeViewHierarchyManager.findTargetTagForTouch(mReactTag,mTargetX + containerX,mTargetY + containerY);
   try {
     mNativeViewHierarchyManager.measure(touchTargetReactTag,mMeasureBuffer);
   }
