@@ -12,5 +12,8 @@
       listener.onTransitionToBridgeIdle();
     }
   }
+  if (mTraceListener != null) {
+    Systrace.unregisterListener(mTraceListener);
+  }
   Assertions.assertNotNull(mBridge).dispose();
 }
