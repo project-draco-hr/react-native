@@ -1,0 +1,3 @@
+{
+  parent.addViewToAdapter(child,index);
+}

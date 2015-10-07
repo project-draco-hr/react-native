@@ -1,0 +1,4 @@
+{
+  View view=mViews.get(position);
+  container.removeView(view);
+}
