@@ -1,0 +1,5 @@
+{
+  float localX=x + parent.getScrollX() - child.getLeft();
+  float localY=y + parent.getScrollY() - child.getTop();
+  return localX >= 0 && localX < (child.getRight() - child.getLeft()) && localY >= 0 && localY < (child.getBottom() - child.getTop());
+}

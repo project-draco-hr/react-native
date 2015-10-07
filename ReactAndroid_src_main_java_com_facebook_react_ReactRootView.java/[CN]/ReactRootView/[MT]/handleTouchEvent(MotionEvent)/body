@@ -11,7 +11,7 @@
       FLog.e(ReactConstants.TAG,"Got DOWN touch before receiving UP or CANCEL from last gesture");
     }
     mChildIsHandlingNativeGesture=false;
-    mTargetTag=TouchTargetHelper.findTargetTagForTouch(ev.getRawY(),ev.getRawX(),this);
+    mTargetTag=TouchTargetHelper.findTargetTagForTouch(ev.getY(),ev.getX(),this);
     eventDispatcher.dispatchEvent(new TouchEvent(mTargetTag,TouchEventType.START,ev));
   }
  else   if (mChildIsHandlingNativeGesture) {

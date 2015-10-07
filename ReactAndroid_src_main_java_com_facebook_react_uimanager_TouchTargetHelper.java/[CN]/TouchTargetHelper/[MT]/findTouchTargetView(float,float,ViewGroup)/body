@@ -2,12 +2,12 @@
   int childrenCount=viewGroup.getChildCount();
   for (int i=childrenCount - 1; i >= 0; i--) {
     View child=viewGroup.getChildAt(i);
-    if (child.getParent() != null && child.getGlobalVisibleRect(mVisibleRect)) {
-      if (eventX >= mVisibleRect.left && eventX <= mVisibleRect.right && eventY >= mVisibleRect.top && eventY <= mVisibleRect.bottom) {
-        View targetView=findTouchTargetViewWithPointerEvents(eventX,eventY,child);
-        if (targetView != null) {
-          return targetView;
-        }
+    if (child.getParent() != null && isTouchPointInView(eventX,eventY,viewGroup,child)) {
+      eventX+=viewGroup.getScrollX() - child.getLeft();
+      eventY+=viewGroup.getScrollY() - child.getTop();
+      View targetView=findTouchTargetViewWithPointerEvents(eventX,eventY,child);
+      if (targetView != null) {
+        return targetView;
       }
     }
   }
