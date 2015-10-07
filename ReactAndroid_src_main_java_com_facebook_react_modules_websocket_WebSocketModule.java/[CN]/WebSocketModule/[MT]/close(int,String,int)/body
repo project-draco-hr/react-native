@@ -1,0 +1,13 @@
+{
+  WebSocket client=mWebSocketConnections.get(id);
+  if (client == null) {
+    throw new RuntimeException("Cannot close WebSocket. Unknown WebSocket id " + id);
+  }
+  try {
+    client.close(code,reason);
+    mWebSocketConnections.remove(id);
+  }
+ catch (  Exception e) {
+    FLog.e(ReactConstants.TAG,"Could not close WebSocket connection for id " + id,e);
+  }
+}
