@@ -1,3 +1,0 @@
-{
-  return String.format(BUNDLE_URL_FORMAT,host,jsModulePath);
-}

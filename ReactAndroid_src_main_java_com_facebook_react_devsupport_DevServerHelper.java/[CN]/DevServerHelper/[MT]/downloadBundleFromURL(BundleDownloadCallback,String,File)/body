@@ -1,5 +1,5 @@
 {
-  final String bundleURL=createBundleURL(getDebugServerHost(),jsModulePath);
+  final String bundleURL=createBundleURL(getDebugServerHost(),jsModulePath,getDevMode());
   Request request=new Request.Builder().url(bundleURL).build();
   Call call=mClient.newCall(request);
   call.enqueue(new Callback(){

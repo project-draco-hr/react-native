@@ -1,0 +1,3 @@
+{
+  return mPreferences.getBoolean(PREFS_JS_DEV_MODE_DEBUG_KEY,true);
+}
