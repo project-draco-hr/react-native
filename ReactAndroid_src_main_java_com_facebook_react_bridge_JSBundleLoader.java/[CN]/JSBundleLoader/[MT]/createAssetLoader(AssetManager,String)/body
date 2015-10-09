@@ -3,6 +3,9 @@
     @Override public void loadScript(    ReactBridge bridge){
       bridge.loadScriptFromAssets(assetManager,assetFileName);
     }
+    @Override public String getSourceUrl(){
+      return "file:///android_asset/" + assetFileName;
+    }
   }
 ;
 }

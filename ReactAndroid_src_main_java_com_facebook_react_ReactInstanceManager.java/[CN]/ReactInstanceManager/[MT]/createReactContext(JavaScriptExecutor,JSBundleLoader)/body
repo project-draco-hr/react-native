@@ -1,5 +1,6 @@
 {
   FLog.i(ReactConstants.TAG,"Creating react context.");
+  mSourceUrl=jsBundleLoader.getSourceUrl();
   NativeModuleRegistry.Builder nativeRegistryBuilder=new NativeModuleRegistry.Builder();
   JavaScriptModulesConfig.Builder jsModulesBuilder=new JavaScriptModulesConfig.Builder();
   ReactApplicationContext reactContext=new ReactApplicationContext(mApplicationContext);

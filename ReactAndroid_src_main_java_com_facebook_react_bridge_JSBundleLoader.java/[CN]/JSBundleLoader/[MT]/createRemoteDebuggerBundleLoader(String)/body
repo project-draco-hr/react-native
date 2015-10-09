@@ -3,6 +3,9 @@
     @Override public void loadScript(    ReactBridge bridge){
       bridge.loadScriptFromNetworkCached(sourceURL,null);
     }
+    @Override public String getSourceUrl(){
+      return sourceURL;
+    }
   }
 ;
 }
