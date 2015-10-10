@@ -1,3 +1,7 @@
 {
-  sb.setSpan(what,start,end,Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+  int spanFlags=Spannable.SPAN_EXCLUSIVE_INCLUSIVE;
+  if (start == 0) {
+    spanFlags=Spannable.SPAN_INCLUSIVE_INCLUSIVE;
+  }
+  sb.setSpan(what,start,end,spanFlags);
 }
