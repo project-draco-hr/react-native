@@ -1,4 +1,0 @@
-{
-  super(prop,defaultType,setter,index);
-  mIndex=index;
-}

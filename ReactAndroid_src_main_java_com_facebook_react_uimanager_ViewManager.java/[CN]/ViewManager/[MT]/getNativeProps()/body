@@ -1,6 +1,6 @@
 {
   Class cls=getClass();
-  Map<String,String> nativeProps=ViewManagersPropertyCache.getNativePropsForClass(cls);
+  Map<String,String> nativeProps=ViewManagersPropertyCache.getNativePropsForView(cls);
   while (cls.getSuperclass() != null) {
     Map<String,UIProp.Type> props=getNativePropsForClass(cls);
     for (    Map.Entry<String,UIProp.Type> entry : props.entrySet()) {

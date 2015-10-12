@@ -1,3 +1,0 @@
-{
-  mSetter.invoke(viewManager,viewToUpdate,mIndex,props.isNull(mPropName) ? null : props.getInt(mPropName,0));
-}

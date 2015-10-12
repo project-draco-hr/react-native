@@ -1,0 +1,32 @@
+{
+  if (propTypeClass == boolean.class) {
+    return new BooleanPropSetter(annotation,method,annotation.defaultBoolean());
+  }
+ else   if (propTypeClass == int.class) {
+    return new IntPropSetter(annotation,method,annotation.defaultInt());
+  }
+ else   if (propTypeClass == float.class) {
+    return new FloatPropSetter(annotation,method,annotation.defaultFloat());
+  }
+ else   if (propTypeClass == double.class) {
+    return new DoublePropSetter(annotation,method,annotation.defaultDouble());
+  }
+ else   if (propTypeClass == String.class) {
+    return new StringPropSetter(annotation,method);
+  }
+ else   if (propTypeClass == Boolean.class) {
+    return new BoxedBooleanPropSetter(annotation,method);
+  }
+ else   if (propTypeClass == Integer.class) {
+    return new BoxedIntPropSetter(annotation,method);
+  }
+ else   if (propTypeClass == ReadableArray.class) {
+    return new ArrayPropSetter(annotation,method);
+  }
+ else   if (propTypeClass == ReadableMap.class) {
+    return new MapPropSetter(annotation,method);
+  }
+ else {
+    throw new RuntimeException("Unrecognized type: " + propTypeClass + " for method: "+ method.getDeclaringClass().getName()+ "#"+ method.getName());
+  }
+}

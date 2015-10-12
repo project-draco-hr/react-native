@@ -1,0 +1,8 @@
+{
+  Map<String,String> nativeProps=new HashMap<>();
+  Map<String,PropSetter> viewManagerProps=getNativePropSettersForViewManagerClass(viewManagerTopClass);
+  for (  PropSetter setter : viewManagerProps.values()) {
+    nativeProps.put(setter.getPropName(),setter.getPropType());
+  }
+  return nativeProps;
+}

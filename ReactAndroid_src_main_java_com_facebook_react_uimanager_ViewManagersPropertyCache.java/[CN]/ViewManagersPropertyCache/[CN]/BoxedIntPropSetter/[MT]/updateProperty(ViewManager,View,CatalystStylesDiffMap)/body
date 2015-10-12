@@ -1,7 +1,0 @@
-{
-  Integer value=null;
-  if (!props.isNull(mPropName)) {
-    value=props.getInt(mPropName,0);
-  }
-  mSetter.invoke(viewManager,viewToUpdate,value);
-}

@@ -1,7 +1,0 @@
-{
-  Boolean value=null;
-  if (!props.isNull(mPropName)) {
-    value=props.getBoolean(mPropName,false) ? Boolean.TRUE : Boolean.FALSE;
-  }
-  mSetter.invoke(viewManager,viewToUpdate,value);
-}
