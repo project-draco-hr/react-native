@@ -1,3 +1,20 @@
 {
-  BaseCSSPropertyApplicator.applyCSSProperties(this,styles);
+  Map<String,ViewManagersPropertyCache.PropSetter> propSetters=ViewManagersPropertyCache.getNativePropSettersForShadowNodeClass(getClass());
+  ReadableMap propMap=props.mBackingMap;
+  ReadableMapKeySeyIterator iterator=propMap.keySetIterator();
+  boolean missingSetters=false;
+  while (iterator.hasNextKey()) {
+    String key=iterator.nextKey();
+    ViewManagersPropertyCache.PropSetter setter=propSetters.get(key);
+    if (setter != null) {
+      setter.updateShadowNodeProp(this,props);
+    }
+ else {
+      missingSetters=true;
+    }
+  }
+  if (missingSetters) {
+    updateShadowNode(props);
+  }
+  onAfterUpdateTransaction();
 }

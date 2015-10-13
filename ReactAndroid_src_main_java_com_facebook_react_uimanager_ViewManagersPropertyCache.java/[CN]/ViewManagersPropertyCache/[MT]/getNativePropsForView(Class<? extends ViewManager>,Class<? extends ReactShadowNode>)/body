@@ -4,5 +4,9 @@
   for (  PropSetter setter : viewManagerProps.values()) {
     nativeProps.put(setter.getPropName(),setter.getPropType());
   }
+  Map<String,PropSetter> shadowNodeProps=getNativePropSettersForShadowNodeClass(shadowNodeTopClass);
+  for (  PropSetter setter : shadowNodeProps.values()) {
+    nativeProps.put(setter.getPropName(),setter.getPropType());
+  }
   return nativeProps;
 }

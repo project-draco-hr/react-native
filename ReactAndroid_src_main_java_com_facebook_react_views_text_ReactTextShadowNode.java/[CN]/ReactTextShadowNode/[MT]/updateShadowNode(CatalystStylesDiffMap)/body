@@ -1,5 +1,5 @@
 {
-  super.updateProperties(styles);
+  super.updateShadowNode(styles);
   if (styles.hasKey(PROP_TEXT)) {
     mText=styles.getString(PROP_TEXT);
     markUpdated();

@@ -1,0 +1,13 @@
+{
+  if (cls == ReactShadowNode.class) {
+    return EMPTY_PROPS_MAP;
+  }
+  Map<String,PropSetter> props=CLASS_PROPS_CACHE.get(cls);
+  if (props != null) {
+    return props;
+  }
+  props=new HashMap<>(getNativePropSettersForShadowNodeClass((Class<? extends ReactShadowNode>)cls.getSuperclass()));
+  extractPropSettersFromShadowNodeClassDefinition(cls,props);
+  CLASS_PROPS_CACHE.put(cls,props);
+  return props;
+}
