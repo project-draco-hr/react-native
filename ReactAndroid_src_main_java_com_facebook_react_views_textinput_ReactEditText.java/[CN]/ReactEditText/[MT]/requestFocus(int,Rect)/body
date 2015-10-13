@@ -1,4 +1,7 @@
 {
+  if (isFocused()) {
+    return true;
+  }
   if (!mIsJSSettingFocus) {
     return false;
   }
