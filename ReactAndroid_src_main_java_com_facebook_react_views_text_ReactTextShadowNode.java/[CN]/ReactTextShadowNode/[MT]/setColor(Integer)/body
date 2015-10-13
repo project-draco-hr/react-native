@@ -1,0 +1,7 @@
+{
+  mIsColorSet=(color != null);
+  if (mIsColorSet) {
+    mColor=color;
+  }
+  markUpdated();
+}
