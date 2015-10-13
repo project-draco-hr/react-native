@@ -263,7 +263,7 @@
         if (child.style.positionType == CSSPositionType.RELATIVE) {
           CSSAlign alignItem=getAlignItem(node,child);
           if (alignItem == CSSAlign.STRETCH) {
-            if (!(!Float.isNaN(child.style.dimensions[dim[crossAxis]]) && child.style.dimensions[dim[crossAxis]] > 0.0)) {
+            if (Float.isNaN(child.layout.dimensions[dim[crossAxis]])) {
               child.layout.dimensions[dim[crossAxis]]=Math.max(boundAxis(child,crossAxis,containerCrossAxis - paddingAndBorderAxisCross - (child.style.margin.getWithFallback(leadingSpacing[crossAxis],leading[crossAxis]) + child.style.margin.getWithFallback(trailingSpacing[crossAxis],trailing[crossAxis]))),((child.style.padding.getWithFallback(leadingSpacing[crossAxis],leading[crossAxis]) + child.style.border.getWithFallback(leadingSpacing[crossAxis],leading[crossAxis])) + (child.style.padding.getWithFallback(trailingSpacing[crossAxis],trailing[crossAxis]) + child.style.border.getWithFallback(trailingSpacing[crossAxis],trailing[crossAxis]))));
             }
           }

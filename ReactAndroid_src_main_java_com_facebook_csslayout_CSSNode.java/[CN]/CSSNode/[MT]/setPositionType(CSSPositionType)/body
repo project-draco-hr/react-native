@@ -1,5 +1,5 @@
 {
-  if (!valuesEqual(style.positionType,positionType)) {
+  if (style.positionType != positionType) {
     style.positionType=positionType;
     dirty();
   }

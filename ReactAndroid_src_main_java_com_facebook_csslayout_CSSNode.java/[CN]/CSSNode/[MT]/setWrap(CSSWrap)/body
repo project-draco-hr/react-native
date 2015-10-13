@@ -1,5 +1,5 @@
 {
-  if (!valuesEqual(style.flexWrap,flexWrap)) {
+  if (style.flexWrap != flexWrap) {
     style.flexWrap=flexWrap;
     dirty();
   }

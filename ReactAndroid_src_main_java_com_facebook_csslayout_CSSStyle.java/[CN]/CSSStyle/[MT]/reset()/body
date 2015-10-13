@@ -1,0 +1,21 @@
+{
+  direction=CSSDirection.INHERIT;
+  flexDirection=CSSFlexDirection.COLUMN;
+  justifyContent=CSSJustify.FLEX_START;
+  alignContent=CSSAlign.FLEX_START;
+  alignItems=CSSAlign.STRETCH;
+  alignSelf=CSSAlign.AUTO;
+  positionType=CSSPositionType.RELATIVE;
+  flexWrap=CSSWrap.NOWRAP;
+  flex=0f;
+  margin.reset();
+  ;
+  padding.reset();
+  border.reset();
+  Arrays.fill(position,CSSConstants.UNDEFINED);
+  Arrays.fill(dimensions,CSSConstants.UNDEFINED);
+  minWidth=CSSConstants.UNDEFINED;
+  minHeight=CSSConstants.UNDEFINED;
+  maxWidth=CSSConstants.UNDEFINED;
+  maxHeight=CSSConstants.UNDEFINED;
+}

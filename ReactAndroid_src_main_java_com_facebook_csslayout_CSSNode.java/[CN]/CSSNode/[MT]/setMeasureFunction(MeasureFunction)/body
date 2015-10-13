@@ -1,5 +1,5 @@
 {
-  if (!valuesEqual(mMeasureFunction,measureFunction)) {
+  if (mMeasureFunction != measureFunction) {
     mMeasureFunction=measureFunction;
     dirty();
   }

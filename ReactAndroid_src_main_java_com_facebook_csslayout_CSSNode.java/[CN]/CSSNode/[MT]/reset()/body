@@ -1,0 +1,9 @@
+{
+  if (mParent != null || (mChildren != null && mChildren.size() > 0)) {
+    throw new IllegalStateException("You should not reset an attached CSSNode");
+  }
+  style.reset();
+  layout.resetResult();
+  lineIndex=0;
+  mLayoutState=LayoutState.DIRTY;
+}

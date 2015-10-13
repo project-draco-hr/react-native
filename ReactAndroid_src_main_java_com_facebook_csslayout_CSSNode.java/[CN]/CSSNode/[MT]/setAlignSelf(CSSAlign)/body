@@ -1,5 +1,5 @@
 {
-  if (!valuesEqual(style.alignSelf,alignSelf)) {
+  if (style.alignSelf != alignSelf) {
     style.alignSelf=alignSelf;
     dirty();
   }

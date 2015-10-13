@@ -1,5 +1,5 @@
 {
-  if (!valuesEqual(style.flexDirection,flexDirection)) {
+  if (style.flexDirection != flexDirection) {
     style.flexDirection=flexDirection;
     dirty();
   }

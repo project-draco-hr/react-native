@@ -1,5 +1,5 @@
 {
-  if (!valuesEqual(style.justifyContent,justifyContent)) {
+  if (style.justifyContent != justifyContent) {
     style.justifyContent=justifyContent;
     dirty();
   }

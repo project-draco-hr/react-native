@@ -1,5 +1,5 @@
 {
-  if (!valuesEqual(style.direction,direction)) {
+  if (style.direction != direction) {
     style.direction=direction;
     dirty();
   }
