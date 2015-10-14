@@ -1,1 +1,1 @@
-BaseViewManager<T,ReactShadowNode>
+BaseViewManager<T,LayoutShadowNode>

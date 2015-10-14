@@ -1,0 +1,3 @@
+{
+  setAlignItems(alignItems == null ? CSSAlign.STRETCH : CSSAlign.valueOf(alignItems.toUpperCase(Locale.US).replace("-","_")));
+}

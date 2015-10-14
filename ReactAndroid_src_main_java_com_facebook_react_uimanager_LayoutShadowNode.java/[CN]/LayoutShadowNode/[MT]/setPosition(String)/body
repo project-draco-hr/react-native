@@ -1,0 +1,4 @@
+{
+  CSSPositionType positionType=position == null ? CSSPositionType.RELATIVE : CSSPositionType.valueOf(position.toUpperCase(Locale.US));
+  setPositionType(positionType);
+}

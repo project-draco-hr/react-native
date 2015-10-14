@@ -1,0 +1,3 @@
+{
+  setAlignSelf(alignSelf == null ? CSSAlign.AUTO : CSSAlign.valueOf(alignSelf.toUpperCase(Locale.US).replace("-","_")));
+}

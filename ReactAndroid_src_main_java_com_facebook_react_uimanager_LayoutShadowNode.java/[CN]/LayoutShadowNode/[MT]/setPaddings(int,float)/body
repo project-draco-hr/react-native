@@ -1,0 +1,3 @@
+{
+  setPadding(ViewProps.PADDING_MARGIN_SPACING_TYPES[index],CSSConstants.isUndefined(padding) ? padding : PixelUtil.toPixelFromDIP(padding));
+}

@@ -1,0 +1,3 @@
+{
+  setStyleWidth(CSSConstants.isUndefined(width) ? width : PixelUtil.toPixelFromDIP(width));
+}

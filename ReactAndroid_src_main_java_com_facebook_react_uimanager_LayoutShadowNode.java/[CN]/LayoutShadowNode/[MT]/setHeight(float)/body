@@ -1,0 +1,3 @@
+{
+  setStyleHeight(CSSConstants.isUndefined(height) ? height : PixelUtil.toPixelFromDIP(height));
+}

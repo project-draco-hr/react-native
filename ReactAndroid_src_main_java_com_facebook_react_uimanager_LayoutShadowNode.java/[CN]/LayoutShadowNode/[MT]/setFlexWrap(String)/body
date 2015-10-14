@@ -1,0 +1,3 @@
+{
+  setWrap(flexWrap == null ? CSSWrap.NOWRAP : CSSWrap.valueOf(flexWrap.toUpperCase(Locale.US)));
+}
