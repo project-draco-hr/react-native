@@ -1,3 +1,0 @@
-{
-  mFontSize=(int)Math.ceil(PixelUtil.toPixelFromSP(fontSize));
-}

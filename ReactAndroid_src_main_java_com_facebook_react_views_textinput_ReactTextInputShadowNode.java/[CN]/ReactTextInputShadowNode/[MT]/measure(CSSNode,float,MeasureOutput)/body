@@ -1,11 +1,11 @@
 {
   EditText editText=Assertions.assertNotNull(mEditText);
   measureOutput.width=width;
-  editText.setTextSize(TypedValue.COMPLEX_UNIT_PX,mFontSize);
+  editText.setTextSize(TypedValue.COMPLEX_UNIT_PX,mFontSize == UNSET ? (int)Math.ceil(PixelUtil.toPixelFromSP(ViewDefaults.FONT_SIZE_SP)) : mFontSize);
   mComputedPadding=spacingToFloatArray(getStylePadding());
   editText.setPadding((int)Math.ceil(getStylePadding().get(Spacing.LEFT)),(int)Math.ceil(getStylePadding().get(Spacing.TOP)),(int)Math.ceil(getStylePadding().get(Spacing.RIGHT)),(int)Math.ceil(getStylePadding().get(Spacing.BOTTOM)));
-  if (mNumLines != UNSET) {
-    editText.setLines(mNumLines);
+  if (mNumberOfLines != UNSET) {
+    editText.setLines(mNumberOfLines);
   }
   editText.measure(MEASURE_SPEC,MEASURE_SPEC);
   measureOutput.height=editText.getMeasuredHeight();

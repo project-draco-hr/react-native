@@ -1,5 +1,4 @@
 {
   super(false);
-  mFontSize=(int)Math.ceil(PixelUtil.toPixelFromSP(ViewDefaults.FONT_SIZE_SP));
   setMeasureFunction(this);
 }
