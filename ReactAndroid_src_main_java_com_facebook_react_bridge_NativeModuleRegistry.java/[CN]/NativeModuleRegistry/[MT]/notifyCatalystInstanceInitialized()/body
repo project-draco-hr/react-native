@@ -1,5 +1,6 @@
 {
   UiThreadUtil.assertOnUiThread();
+  ReactMarker.logMarker("NativeModule_start");
   Systrace.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"NativeModuleRegistry_notifyCatalystInstanceInitialized");
   try {
     for (    NativeModule nativeModule : mModuleInstances.values()) {
@@ -8,5 +9,6 @@
   }
   finally {
     Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);
+    ReactMarker.logMarker("NativeModule_end");
   }
 }
