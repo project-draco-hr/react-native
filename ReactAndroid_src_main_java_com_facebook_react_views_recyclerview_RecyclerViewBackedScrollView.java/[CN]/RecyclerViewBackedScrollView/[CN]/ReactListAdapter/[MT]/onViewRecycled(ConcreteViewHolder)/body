@@ -1,0 +1,4 @@
+{
+  super.onViewRecycled(holder);
+  ((RecyclableWrapperViewGroup)holder.itemView).removeAllViews();
+}

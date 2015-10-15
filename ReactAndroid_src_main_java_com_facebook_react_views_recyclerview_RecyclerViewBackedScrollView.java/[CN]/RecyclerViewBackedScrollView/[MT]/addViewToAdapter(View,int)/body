@@ -1,0 +1,3 @@
+{
+  ((ReactListAdapter)getAdapter()).addView(child,index);
+}

@@ -1,0 +1,7 @@
+{
+  dispatchChangeStarting(oldHolder,true);
+  dispatchChangeFinished(oldHolder,true);
+  dispatchChangeStarting(newHolder,false);
+  dispatchChangeFinished(newHolder,false);
+  return true;
+}

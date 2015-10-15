@@ -1,0 +1,5 @@
+{
+  dispatchMoveStarting(holder);
+  dispatchMoveFinished(holder);
+  return true;
+}

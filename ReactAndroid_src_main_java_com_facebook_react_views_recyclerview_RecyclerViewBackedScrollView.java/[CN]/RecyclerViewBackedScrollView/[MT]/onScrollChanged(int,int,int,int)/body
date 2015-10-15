@@ -1,0 +1,12 @@
+{
+  super.onScrollChanged(l,t,oldl,oldt);
+  ReactListAdapter adapter=(ReactListAdapter)getAdapter();
+  int offsetY=0;
+  if (getChildCount() > 0) {
+    View recyclerViewChild=getChildAt(0);
+    int childPosition=getChildAdapterPosition(recyclerViewChild);
+    offsetY=adapter.getTopOffsetForItem(childPosition) - recyclerViewChild.getTop();
+  }
+  ScrollEvent event=new ScrollEvent(getId(),SystemClock.uptimeMillis(),0,offsetY,getWidth(),adapter.getTotalChildrenHeight(),getWidth(),getHeight());
+  ((ReactContext)getContext()).getNativeModule(UIManagerModule.class).getEventDispatcher().dispatchEvent(event);
+}

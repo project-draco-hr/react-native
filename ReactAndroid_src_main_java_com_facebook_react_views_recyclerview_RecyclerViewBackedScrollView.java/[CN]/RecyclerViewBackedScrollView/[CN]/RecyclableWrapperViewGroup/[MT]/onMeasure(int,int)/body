@@ -1,0 +1,9 @@
+{
+  if (getChildCount() > 0) {
+    View child=getChildAt(0);
+    setMeasuredDimension(child.getMeasuredWidth(),child.getMeasuredHeight());
+  }
+ else {
+    Assertions.assertUnreachable("RecyclableWrapperView measured but no view attached");
+  }
+}

@@ -1,0 +1,7 @@
+{
+  RecyclableWrapperViewGroup vg=(RecyclableWrapperViewGroup)holder.itemView;
+  View row=mViews.get(position);
+  if (row.getParent() != vg) {
+    vg.addView(row,0);
+  }
+}
