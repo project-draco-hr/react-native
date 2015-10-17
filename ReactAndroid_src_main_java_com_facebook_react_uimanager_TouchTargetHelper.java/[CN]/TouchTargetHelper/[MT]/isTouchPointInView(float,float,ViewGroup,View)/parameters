@@ -1,4 +1,4 @@
-float x
 float y
+float x
 ViewGroup parent
 View child

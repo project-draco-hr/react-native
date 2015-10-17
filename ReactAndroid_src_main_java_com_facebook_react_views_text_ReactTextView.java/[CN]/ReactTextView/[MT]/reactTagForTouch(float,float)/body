@@ -3,10 +3,6 @@
   int target=getId();
   int x=(int)touchX;
   int y=(int)touchY;
-  x-=getTotalPaddingLeft();
-  y-=getTotalPaddingTop();
-  x+=getScrollX();
-  y+=getScrollY();
   Layout layout=getLayout();
   int line=layout.getLineForVertical(y);
   int lineStartX=(int)layout.getLineLeft(line);
