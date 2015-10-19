@@ -1,3 +1,4 @@
 int viewTag
+long timestampMs
 TouchEventType touchEventType
 MotionEvent motionEventToCopy

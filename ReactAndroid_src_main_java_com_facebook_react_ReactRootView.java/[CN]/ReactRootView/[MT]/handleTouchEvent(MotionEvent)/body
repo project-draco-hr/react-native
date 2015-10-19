@@ -12,7 +12,7 @@
     }
     mChildIsHandlingNativeGesture=false;
     mTargetTag=TouchTargetHelper.findTargetTagForTouch(ev.getY(),ev.getX(),this);
-    eventDispatcher.dispatchEvent(new TouchEvent(mTargetTag,TouchEventType.START,ev));
+    eventDispatcher.dispatchEvent(new TouchEvent(mTargetTag,SystemClock.uptimeMillis(),TouchEventType.START,ev));
   }
  else   if (mChildIsHandlingNativeGesture) {
     return;
@@ -21,17 +21,17 @@
     FLog.e(ReactConstants.TAG,"Unexpected state: received touch event but didn't get starting ACTION_DOWN for this " + "gesture before");
   }
  else   if (action == MotionEvent.ACTION_UP) {
-    eventDispatcher.dispatchEvent(new TouchEvent(mTargetTag,TouchEventType.END,ev));
+    eventDispatcher.dispatchEvent(new TouchEvent(mTargetTag,SystemClock.uptimeMillis(),TouchEventType.END,ev));
     mTargetTag=-1;
   }
  else   if (action == MotionEvent.ACTION_MOVE) {
-    eventDispatcher.dispatchEvent(new TouchEvent(mTargetTag,TouchEventType.MOVE,ev));
+    eventDispatcher.dispatchEvent(new TouchEvent(mTargetTag,SystemClock.uptimeMillis(),TouchEventType.MOVE,ev));
   }
  else   if (action == MotionEvent.ACTION_POINTER_DOWN) {
-    eventDispatcher.dispatchEvent(new TouchEvent(mTargetTag,TouchEventType.START,ev));
+    eventDispatcher.dispatchEvent(new TouchEvent(mTargetTag,SystemClock.uptimeMillis(),TouchEventType.START,ev));
   }
  else   if (action == MotionEvent.ACTION_POINTER_UP) {
-    eventDispatcher.dispatchEvent(new TouchEvent(mTargetTag,TouchEventType.END,ev));
+    eventDispatcher.dispatchEvent(new TouchEvent(mTargetTag,SystemClock.uptimeMillis(),TouchEventType.END,ev));
   }
  else   if (action == MotionEvent.ACTION_CANCEL) {
     dispatchCancelEvent(ev);
