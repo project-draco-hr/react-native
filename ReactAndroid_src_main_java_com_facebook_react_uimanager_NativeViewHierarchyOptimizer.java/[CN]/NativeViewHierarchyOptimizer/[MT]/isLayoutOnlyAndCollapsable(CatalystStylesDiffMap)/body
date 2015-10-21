@@ -5,7 +5,7 @@
   if (props.hasKey(ViewProps.COLLAPSABLE) && !props.getBoolean(ViewProps.COLLAPSABLE,true)) {
     return false;
   }
-  ReadableMapKeySeyIterator keyIterator=props.mBackingMap.keySetIterator();
+  ReadableMapKeySetIterator keyIterator=props.mBackingMap.keySetIterator();
   while (keyIterator.hasNextKey()) {
     if (!ViewProps.isLayoutOnly(keyIterator.nextKey())) {
       return false;
