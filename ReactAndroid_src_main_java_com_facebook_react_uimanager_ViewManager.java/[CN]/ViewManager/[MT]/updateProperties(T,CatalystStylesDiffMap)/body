@@ -1,7 +1,7 @@
 {
   Map<String,ViewManagersPropertyCache.PropSetter> propSetters=ViewManagersPropertyCache.getNativePropSettersForViewManagerClass(getClass());
   ReadableMap propMap=props.mBackingMap;
-  ReadableMapKeySeyIterator iterator=propMap.keySetIterator();
+  ReadableMapKeySetIterator iterator=propMap.keySetIterator();
   boolean missingSetters=false;
   while (iterator.hasNextKey()) {
     String key=iterator.nextKey();
