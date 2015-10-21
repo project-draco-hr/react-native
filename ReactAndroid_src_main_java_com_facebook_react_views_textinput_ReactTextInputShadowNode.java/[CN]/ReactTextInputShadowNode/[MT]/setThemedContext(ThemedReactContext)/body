@@ -6,5 +6,5 @@
   setDefaultPadding(Spacing.TOP,mEditText.getPaddingTop());
   setDefaultPadding(Spacing.RIGHT,mEditText.getPaddingRight());
   setDefaultPadding(Spacing.BOTTOM,mEditText.getPaddingBottom());
-  mComputedPadding=spacingToFloatArray(getStylePadding());
+  mComputedPadding=spacingToFloatArray(getPadding());
 }
