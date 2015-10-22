@@ -1,5 +1,4 @@
 {
   super.onFinishTemporaryDetach();
-  mLogoHolder.onAttach();
-  mNavIconHolder.onAttach();
+  attachDraweeHolders();
 }
