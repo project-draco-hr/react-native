@@ -1,5 +1,0 @@
-{
-  Project project=ProjectBuilder.builder().build();
-  project.getPlugins().apply("com.facebook.react");
-  assertTrue(project.getExtensions().getByName("react") instanceof ReactGradleExtension);
-}

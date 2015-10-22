@@ -1,8 +1,0 @@
-{
-  if ("build".equals(dir.getFileName().toString())) {
-    return FileVisitResult.SKIP_SUBTREE;
-  }
- else {
-    return FileVisitResult.CONTINUE;
-  }
-}

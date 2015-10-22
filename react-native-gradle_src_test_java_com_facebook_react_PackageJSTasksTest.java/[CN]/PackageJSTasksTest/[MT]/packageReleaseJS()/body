@@ -1,8 +1,0 @@
-{
-  Task task=project.getTasks().findByName("packageReleaseJS");
-  assertTrue(task != null && task instanceof PackageReleaseJsTask);
-  ((PackageReleaseJsTask)task).packageJS();
-  RecordedRequest request=server.takeRequest();
-  assertEquals("/test.bundle?dev=false&inlineSourceMap=false&minify=true&runModule=true",request.getPath());
-  assertEquals("This is some javascript",FileUtils.readFileToString(new File(project.getProjectDir(),FilenameUtils.separatorsToSystem("build/intermediates/assets/release/test.js"))));
-}
