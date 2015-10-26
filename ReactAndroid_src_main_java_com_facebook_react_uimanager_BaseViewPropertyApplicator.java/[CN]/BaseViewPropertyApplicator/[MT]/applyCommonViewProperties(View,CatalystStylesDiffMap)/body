@@ -1,0 +1,75 @@
+{
+  if (props.hasKey(ViewProps.BACKGROUND_COLOR)) {
+    final int backgroundColor=props.getInt(ViewProps.BACKGROUND_COLOR,Color.TRANSPARENT);
+    view.setBackgroundColor(backgroundColor);
+  }
+  if (props.hasKey(PROP_DECOMPOSED_MATRIX)) {
+    ReadableMap decomposedMatrix=props.getMap(PROP_DECOMPOSED_MATRIX);
+    if (decomposedMatrix == null) {
+      resetTransformMatrix(view);
+    }
+ else {
+      setTransformMatrix(view,decomposedMatrix);
+    }
+  }
+  if (props.hasKey(PROP_OPACITY)) {
+    view.setAlpha(props.getFloat(PROP_OPACITY,1.f));
+  }
+  if (props.hasKey(PROP_RENDER_TO_HARDWARE_TEXTURE)) {
+    boolean useHWTexture=props.getBoolean(PROP_RENDER_TO_HARDWARE_TEXTURE,false);
+    view.setLayerType(useHWTexture ? View.LAYER_TYPE_HARDWARE : View.LAYER_TYPE_NONE,null);
+  }
+  if (props.hasKey(PROP_TEST_ID)) {
+    view.setTag(props.getString(PROP_TEST_ID));
+  }
+  if (props.hasKey(PROP_ACCESSIBILITY_LABEL)) {
+    view.setContentDescription(props.getString(PROP_ACCESSIBILITY_LABEL));
+  }
+  if (props.hasKey(PROP_ACCESSIBILITY_COMPONENT_TYPE)) {
+    AccessibilityHelper.updateAccessibilityComponentType(view,props.getString(PROP_ACCESSIBILITY_COMPONENT_TYPE));
+  }
+  if (props.hasKey(PROP_ACCESSIBILITY_LIVE_REGION)) {
+    if (Build.VERSION.SDK_INT >= 19) {
+      String liveRegionString=props.getString(PROP_ACCESSIBILITY_LIVE_REGION);
+      if (liveRegionString == null || liveRegionString.equals("none")) {
+        view.setAccessibilityLiveRegion(View.ACCESSIBILITY_LIVE_REGION_NONE);
+      }
+ else       if (liveRegionString.equals("polite")) {
+        view.setAccessibilityLiveRegion(View.ACCESSIBILITY_LIVE_REGION_POLITE);
+      }
+ else       if (liveRegionString.equals("assertive")) {
+        view.setAccessibilityLiveRegion(View.ACCESSIBILITY_LIVE_REGION_ASSERTIVE);
+      }
+    }
+  }
+  if (props.hasKey(PROP_IMPORTANT_FOR_ACCESSIBILITY)) {
+    String importantForAccessibility=props.getString(PROP_IMPORTANT_FOR_ACCESSIBILITY);
+    if (importantForAccessibility == null || importantForAccessibility.equals("auto")) {
+      view.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_AUTO);
+    }
+ else     if (importantForAccessibility.equals("yes")) {
+      view.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_YES);
+    }
+ else     if (importantForAccessibility.equals("no")) {
+      view.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO);
+    }
+ else     if (importantForAccessibility.equals("no-hide-descendants")) {
+      view.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS);
+    }
+  }
+  if (props.hasKey(PROP_ROTATION)) {
+    view.setRotation(props.getFloat(PROP_ROTATION,0));
+  }
+  if (props.hasKey(PROP_SCALE_X)) {
+    view.setScaleX(props.getFloat(PROP_SCALE_X,1.f));
+  }
+  if (props.hasKey(PROP_SCALE_Y)) {
+    view.setScaleY(props.getFloat(PROP_SCALE_Y,1.f));
+  }
+  if (props.hasKey(PROP_TRANSLATE_X)) {
+    view.setTranslationX(PixelUtil.toPixelFromDIP(props.getFloat(PROP_TRANSLATE_X,0)));
+  }
+  if (props.hasKey(PROP_TRANSLATE_Y)) {
+    view.setTranslationY(PixelUtil.toPixelFromDIP(props.getFloat(PROP_TRANSLATE_Y,0)));
+  }
+}
