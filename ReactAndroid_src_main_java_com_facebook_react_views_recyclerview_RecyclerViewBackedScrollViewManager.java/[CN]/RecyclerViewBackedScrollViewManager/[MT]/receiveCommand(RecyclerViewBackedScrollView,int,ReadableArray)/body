@@ -1,0 +1,3 @@
+{
+  ReactScrollViewCommandHelper.receiveCommand(this,view,commandId,args);
+}

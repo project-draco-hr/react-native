@@ -1,0 +1,9 @@
+{
+  int deltaY=scrollY - calculateAbsoluteOffset();
+  if (animated) {
+    smoothScrollBy(0,deltaY);
+  }
+ else {
+    scrollBy(0,deltaY);
+  }
+}
