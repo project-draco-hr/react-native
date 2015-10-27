@@ -1,3 +1,6 @@
 {
-  this.method=method;
+  mMethod=method;
+  Class[] parameterTypes=method.getParameterTypes();
+  mArgumentExtractors=buildArgumentExtractors(parameterTypes);
+  mArguments=new Object[mArgumentExtractors.length];
 }
