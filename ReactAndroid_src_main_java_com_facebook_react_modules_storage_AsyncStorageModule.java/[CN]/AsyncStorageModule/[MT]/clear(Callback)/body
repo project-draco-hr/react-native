@@ -6,7 +6,7 @@
         return;
       }
       try {
-        mReactDatabaseSupplier.get().delete(TABLE_CATALYST,null,null);
+        mReactDatabaseSupplier.clear();
         callback.invoke();
       }
  catch (      Exception e) {
