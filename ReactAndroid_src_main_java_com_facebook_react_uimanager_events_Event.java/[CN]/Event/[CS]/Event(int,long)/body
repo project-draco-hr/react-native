@@ -1,3 +1,4 @@
 {
-  init(viewTag,timestampMs);
+  mViewTag=viewTag;
+  mTimestampMs=timestampMs;
 }

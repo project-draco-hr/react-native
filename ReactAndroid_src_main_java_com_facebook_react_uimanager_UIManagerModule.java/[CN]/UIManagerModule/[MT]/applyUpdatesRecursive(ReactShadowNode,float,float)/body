@@ -11,7 +11,7 @@
   if (!mShadowNodeRegistry.isRootNode(tag)) {
     cssNode.dispatchUpdates(absoluteX,absoluteY,mOperationsQueue,mNativeViewHierarchyOptimizer);
     if (cssNode.shouldNotifyOnLayout()) {
-      mEventDispatcher.dispatchEvent(OnLayoutEvent.obtain(tag,cssNode.getScreenX(),cssNode.getScreenY(),cssNode.getScreenWidth(),cssNode.getScreenHeight()));
+      mEventDispatcher.dispatchEvent(new OnLayoutEvent(tag,cssNode.getScreenX(),cssNode.getScreenY(),cssNode.getScreenWidth(),cssNode.getScreenHeight()));
     }
   }
   cssNode.markUpdateSeen();

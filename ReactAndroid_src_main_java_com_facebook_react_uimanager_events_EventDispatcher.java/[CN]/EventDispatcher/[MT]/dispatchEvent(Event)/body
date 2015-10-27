@@ -1,5 +1,4 @@
 {
-  Assertions.assertCondition(event.isInitialized(),"Dispatched event hasn't been initialized");
 synchronized (mEventsStagingLock) {
     mEventStaging.add(event);
   }

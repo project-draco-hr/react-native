@@ -1,3 +1,0 @@
-{
-  EVENTS_POOL.release(this);
-}

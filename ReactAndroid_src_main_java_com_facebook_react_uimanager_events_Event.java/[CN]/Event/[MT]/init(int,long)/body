@@ -1,5 +1,0 @@
-{
-  mViewTag=viewTag;
-  mTimestampMs=timestampMs;
-  mInitialized=true;
-}

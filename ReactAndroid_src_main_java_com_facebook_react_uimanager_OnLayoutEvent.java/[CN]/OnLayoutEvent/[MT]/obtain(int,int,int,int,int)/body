@@ -1,8 +1,0 @@
-{
-  OnLayoutEvent event=EVENTS_POOL.acquire();
-  if (event == null) {
-    event=new OnLayoutEvent();
-  }
-  event.init(viewTag,x,y,width,height);
-  return event;
-}
