@@ -1,5 +1,5 @@
 {
-  super(viewTag,timestampMs);
+  super.init(viewTag,timestampMs);
   mTouchEventType=touchEventType;
   mMotionEvent=MotionEvent.obtain(motionEventToCopy);
   short coalescingKey=0;
