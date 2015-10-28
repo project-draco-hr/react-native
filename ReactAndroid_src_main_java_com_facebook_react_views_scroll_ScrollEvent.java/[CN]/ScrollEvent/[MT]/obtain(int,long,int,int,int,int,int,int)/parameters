@@ -1,0 +1,8 @@
+int viewTag
+long timestampMs
+int scrollX
+int scrollY
+int contentWidth
+int contentHeight
+int scrollViewWidth
+int scrollViewHeight

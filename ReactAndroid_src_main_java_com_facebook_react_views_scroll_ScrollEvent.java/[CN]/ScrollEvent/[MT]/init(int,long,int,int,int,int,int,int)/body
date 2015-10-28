@@ -1,5 +1,5 @@
 {
-  super(viewTag,timestampMs);
+  super.init(viewTag,timestampMs);
   mScrollX=scrollX;
   mScrollY=scrollY;
   mContentWidth=contentWidth;
