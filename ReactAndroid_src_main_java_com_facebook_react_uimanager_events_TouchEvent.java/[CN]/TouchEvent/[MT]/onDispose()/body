@@ -1,5 +1,5 @@
 {
-  mMotionEvent.recycle();
+  Assertions.assertNotNull(mMotionEvent).recycle();
   mMotionEvent=null;
   EVENTS_POOL.release(this);
 }

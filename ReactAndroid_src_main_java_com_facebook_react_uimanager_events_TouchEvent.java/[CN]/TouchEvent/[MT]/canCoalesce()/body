@@ -1,5 +1,5 @@
 {
-switch (mTouchEventType) {
+switch (Assertions.assertNotNull(mTouchEventType)) {
 case START:
 case END:
 case CANCEL:
