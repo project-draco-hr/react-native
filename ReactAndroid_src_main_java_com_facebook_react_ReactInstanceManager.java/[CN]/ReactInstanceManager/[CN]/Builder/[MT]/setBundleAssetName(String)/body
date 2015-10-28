@@ -1,4 +1,3 @@
 {
-  mBundleAssetName=bundleAssetName;
-  return this;
+  return this.setJSBundleFile("assets://" + bundleAssetName);
 }
