@@ -1,7 +1,7 @@
 {
-  ArgumentExtractor[] argumentExtractors=new ArgumentExtractor[parameterTypes.length];
-  for (int i=0; i < parameterTypes.length; i++) {
-    Class argumentClass=parameterTypes[i];
+  ArgumentExtractor[] argumentExtractors=new ArgumentExtractor[paramTypes.length];
+  for (int i=0; i < paramTypes.length; i+=argumentExtractors[i].getJSArgumentsNeeded()) {
+    Class argumentClass=paramTypes[i];
     if (argumentClass == Boolean.class || argumentClass == boolean.class) {
       argumentExtractors[i]=ARGUMENT_EXTRACTOR_BOOLEAN;
     }
@@ -19,6 +19,11 @@
     }
  else     if (argumentClass == Callback.class) {
       argumentExtractors[i]=ARGUMENT_EXTRACTOR_CALLBACK;
+    }
+ else     if (argumentClass == Promise.class) {
+      argumentExtractors[i]=ARGUMENT_EXTRACTOR_PROMISE;
+      Assertions.assertCondition(i == paramTypes.length - 1,"Promise must be used as last parameter only");
+      mType=METHOD_TYPE_REMOTE_ASYNC;
     }
  else     if (argumentClass == ReadableMap.class) {
       argumentExtractors[i]=ARGUMENT_EXTRACTOR_MAP;

@@ -1,0 +1,4 @@
+{
+  mResolve=resolve;
+  mReject=reject;
+}
