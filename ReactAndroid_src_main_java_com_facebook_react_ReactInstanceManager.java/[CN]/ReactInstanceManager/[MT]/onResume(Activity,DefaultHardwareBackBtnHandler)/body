@@ -5,7 +5,8 @@
   if (mUseDeveloperSupport) {
     mDevSupportManager.setDevSupportEnabled(true);
   }
+  mCurrentActivity=activity;
   if (mCurrentReactContext != null) {
-    mCurrentReactContext.onResume();
+    mCurrentReactContext.onResume(activity);
   }
 }
