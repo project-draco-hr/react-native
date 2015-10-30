@@ -1,3 +1,0 @@
-{
-  mActivityEventListeners.remove(listener);
-}

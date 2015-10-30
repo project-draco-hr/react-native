@@ -1,5 +1,0 @@
-{
-  for (  ActivityEventListener listener : mActivityEventListeners) {
-    listener.onActivityResult(requestCode,resultCode,data);
-  }
-}
