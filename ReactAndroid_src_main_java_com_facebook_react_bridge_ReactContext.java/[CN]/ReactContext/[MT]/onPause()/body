@@ -1,5 +1,6 @@
 {
   UiThreadUtil.assertOnUiThread();
+  mCurrentActivity=null;
   for (  LifecycleEventListener listener : mLifecycleEventListeners) {
     listener.onHostPause();
   }
