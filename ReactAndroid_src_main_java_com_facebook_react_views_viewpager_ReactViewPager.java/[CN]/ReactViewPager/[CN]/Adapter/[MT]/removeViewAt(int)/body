@@ -1,0 +1,5 @@
+{
+  mViews.remove(index);
+  notifyDataSetChanged();
+  setOffscreenPageLimit(mViews.size());
+}
