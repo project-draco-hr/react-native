@@ -8,6 +8,9 @@
 );
   HashSet<RequestListener> requestListeners=new HashSet<>();
   requestListeners.add(new SystraceRequestListener());
+  if (mRequestListener != null) {
+    requestListeners.add(mRequestListener);
+  }
   Context context=this.getReactApplicationContext().getApplicationContext();
   OkHttpClient okHttpClient=OkHttpClientProvider.getOkHttpClient();
   ImagePipelineConfig config=OkHttpImagePipelineConfigFactory.newBuilder(context,okHttpClient).setDownsampleEnabled(false).setRequestListeners(requestListeners).build();
