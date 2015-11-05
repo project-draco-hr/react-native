@@ -13,6 +13,11 @@
   }
   Context context=this.getReactApplicationContext().getApplicationContext();
   OkHttpClient okHttpClient=OkHttpClientProvider.getOkHttpClient();
-  ImagePipelineConfig config=OkHttpImagePipelineConfigFactory.newBuilder(context,okHttpClient).setDownsampleEnabled(false).setRequestListeners(requestListeners).build();
+  ImagePipelineConfig.Builder builder=OkHttpImagePipelineConfigFactory.newBuilder(context,okHttpClient);
+  builder.setDownsampleEnabled(false).setRequestListeners(requestListeners);
+  if (mDiskCacheConfig != null) {
+    builder.setMainDiskCacheConfig(mDiskCacheConfig);
+  }
+  ImagePipelineConfig config=builder.build();
   Fresco.initialize(context,config);
 }
