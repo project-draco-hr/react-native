@@ -1,5 +1,0 @@
-{
-  final int style=getStyleFromString(styleName);
-  view.removeAllViews();
-  view.addView(new ProgressBar(view.getContext(),null,style),new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT));
-}

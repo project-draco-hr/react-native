@@ -1,0 +1,6 @@
+{
+  if (mProgressBar == null) {
+    throw new JSApplicationIllegalArgumentException("setStyle() not called");
+  }
+  setColor(mProgressBar);
+}
