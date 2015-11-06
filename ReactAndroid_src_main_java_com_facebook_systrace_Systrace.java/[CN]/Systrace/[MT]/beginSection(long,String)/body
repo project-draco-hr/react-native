@@ -1,2 +1,5 @@
 {
+  if (Build.VERSION.SDK_INT >= 18) {
+    Trace.beginSection(sectionName);
+  }
 }
