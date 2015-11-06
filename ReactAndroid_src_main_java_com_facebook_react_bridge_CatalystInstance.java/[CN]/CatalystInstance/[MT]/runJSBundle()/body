@@ -7,7 +7,12 @@
         Assertions.assertCondition(!mJSBundleHasLoaded,"JS bundle was already loaded!");
         mJSBundleHasLoaded=true;
         incrementPendingJSCalls();
-        mJSBundleLoader.loadScript(mBridge);
+        try {
+          mJSBundleLoader.loadScript(mBridge);
+        }
+ catch (        JSExecutionException e) {
+          mNativeModuleCallExceptionHandler.handleException(e);
+        }
         initLatch.countDown();
       }
     }
