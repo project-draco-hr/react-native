@@ -1,6 +1,9 @@
 {
   Object[] spans=getText().getSpans(0,length(),Object.class);
   for (int spanIdx=0; spanIdx < spans.length; spanIdx++) {
+    if (ForegroundColorSpan.class.isInstance(spans[spanIdx]) || BackgroundColorSpan.class.isInstance(spans[spanIdx]) || AbsoluteSizeSpan.class.isInstance(spans[spanIdx])|| CustomStyleSpan.class.isInstance(spans[spanIdx])|| ReactTagSpan.class.isInstance(spans[spanIdx])) {
+      getText().removeSpan(spans[spanIdx]);
+    }
     if ((getText().getSpanFlags(spans[spanIdx]) & Spanned.SPAN_EXCLUSIVE_EXCLUSIVE) != Spanned.SPAN_EXCLUSIVE_EXCLUSIVE) {
       continue;
     }
