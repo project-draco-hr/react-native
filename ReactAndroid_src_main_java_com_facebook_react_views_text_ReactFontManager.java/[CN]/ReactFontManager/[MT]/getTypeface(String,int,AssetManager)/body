@@ -1,0 +1,15 @@
+{
+  FontFamily fontFamily=mFontCache.get(fontFamilyName);
+  if (fontFamily == null) {
+    fontFamily=new FontFamily();
+    mFontCache.put(fontFamilyName,fontFamily);
+  }
+  Typeface typeface=fontFamily.getTypeface(style);
+  if (typeface == null) {
+    typeface=createTypeface(fontFamilyName,style,assetManager);
+    if (typeface != null) {
+      fontFamily.setTypeface(style,typeface);
+    }
+  }
+  return typeface;
+}

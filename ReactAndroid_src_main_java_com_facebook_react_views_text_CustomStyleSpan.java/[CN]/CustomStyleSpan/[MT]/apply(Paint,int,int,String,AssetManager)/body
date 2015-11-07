@@ -15,10 +15,10 @@
     want|=Typeface.ITALIC;
   }
   if (family != null) {
-    typeface=getOrCreateTypeface(family,want);
+    typeface=ReactFontManager.getInstance().getTypeface(family,want,assetManager);
   }
   if (typeface != null) {
-    paint.setTypeface(Typeface.create(typeface,want));
+    paint.setTypeface(typeface);
   }
  else {
     paint.setTypeface(Typeface.defaultFromStyle(want));

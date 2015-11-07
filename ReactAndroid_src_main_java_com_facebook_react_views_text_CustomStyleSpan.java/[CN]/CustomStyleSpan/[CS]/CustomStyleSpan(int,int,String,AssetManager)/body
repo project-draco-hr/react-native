@@ -2,4 +2,5 @@
   mStyle=fontStyle;
   mWeight=fontWeight;
   mFontFamily=fontFamily;
+  mAssetManager=assetManager;
 }

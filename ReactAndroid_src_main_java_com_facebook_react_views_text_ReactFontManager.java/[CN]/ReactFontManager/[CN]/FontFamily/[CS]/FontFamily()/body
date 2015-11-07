@@ -1,0 +1,3 @@
+{
+  mTypefaceSparseArray=new SparseArray<>(4);
+}

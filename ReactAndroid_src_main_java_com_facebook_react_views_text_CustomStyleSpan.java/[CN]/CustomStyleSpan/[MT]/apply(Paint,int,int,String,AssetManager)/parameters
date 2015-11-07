@@ -2,3 +2,4 @@ Paint paint
 int style
 int weight
 String family
+AssetManager assetManager
