@@ -1,0 +1,7 @@
+{
+  UiThreadUtil.assertOnUiThread();
+  mCurrentActivity=activity;
+  for (  LifecycleEventListener listener : mLifecycleEventListeners) {
+    listener.onHostResume();
+  }
+}

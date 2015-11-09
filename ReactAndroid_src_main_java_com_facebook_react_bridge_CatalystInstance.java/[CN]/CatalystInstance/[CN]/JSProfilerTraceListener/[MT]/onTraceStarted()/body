@@ -1,0 +1,12 @@
+{
+  mCatalystQueueConfiguration.getJSQueueThread().runOnQueue(new Runnable(){
+    @Override public void run(){
+      mCatalystQueueConfiguration.getJSQueueThread().assertIsOnThread();
+      if (mDestroyed) {
+        return;
+      }
+      Assertions.assertNotNull(mBridge).setGlobalVariable("__BridgeProfilingIsProfiling","true");
+    }
+  }
+);
+}

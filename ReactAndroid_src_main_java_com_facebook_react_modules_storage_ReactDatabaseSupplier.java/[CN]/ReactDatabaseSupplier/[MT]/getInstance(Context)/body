@@ -1,0 +1,6 @@
+{
+  if (mReactDatabaseSupplierInstance == null) {
+    mReactDatabaseSupplierInstance=new ReactDatabaseSupplier(context);
+  }
+  return mReactDatabaseSupplierInstance;
+}

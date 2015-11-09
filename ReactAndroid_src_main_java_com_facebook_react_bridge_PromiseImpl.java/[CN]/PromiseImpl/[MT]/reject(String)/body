@@ -1,0 +1,7 @@
+{
+  if (mReject != null) {
+    WritableNativeMap errorInfo=new WritableNativeMap();
+    errorInfo.putString("message",reason);
+    mReject.invoke(errorInfo);
+  }
+}

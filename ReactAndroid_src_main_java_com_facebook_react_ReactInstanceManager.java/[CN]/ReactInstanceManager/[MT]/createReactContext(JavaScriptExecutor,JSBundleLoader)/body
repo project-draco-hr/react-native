@@ -18,5 +18,6 @@
     catalystInstance.addBridgeIdleDebugListener(mBridgeIdleDebugListener);
   }
   reactContext.initializeWithInstance(catalystInstance);
+  catalystInstance.runJSBundle();
   return reactContext;
 }

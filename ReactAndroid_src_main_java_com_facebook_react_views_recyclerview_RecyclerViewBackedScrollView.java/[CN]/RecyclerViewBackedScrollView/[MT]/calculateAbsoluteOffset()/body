@@ -1,0 +1,9 @@
+{
+  int offsetY=0;
+  if (getChildCount() > 0) {
+    View recyclerViewChild=getChildAt(0);
+    int childPosition=getChildAdapterPosition(recyclerViewChild);
+    offsetY=((ReactListAdapter)getAdapter()).getTopOffsetForItem(childPosition) - recyclerViewChild.getTop();
+  }
+  return offsetY;
+}

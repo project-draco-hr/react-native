@@ -1,0 +1,4 @@
+{
+  mJSBundleFile=jsBundleFile;
+  return this;
+}

@@ -1,4 +1,0 @@
-{
-  File assets=new File(getProject().getProjectDir(),FilenameUtils.separatorsToSystem("build/intermediates/assets/" + (mDebug ? "debug" : "release")));
-  return new File(assets,config.getBundleFileName());
-}

@@ -1,0 +1,10 @@
+{
+  View child=mViews.get(index);
+  if (child != null) {
+    mViews.remove(index);
+    mTopOffsetsFromLayout.remove(child);
+    child.removeOnLayoutChangeListener(mChildLayoutChangeListener);
+    mTotalChildrenHeight-=child.getMeasuredHeight();
+    notifyDataSetChanged();
+  }
+}

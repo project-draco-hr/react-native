@@ -1,5 +1,6 @@
 {
   int newPendingCalls=mPendingJSCalls.decrementAndGet();
+  Assertions.assertCondition(newPendingCalls >= 0);
   boolean isNowIdle=newPendingCalls == 0;
   Systrace.traceCounter(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,mJsPendingCallsTitleForTrace,newPendingCalls);
   if (isNowIdle && !mBridgeIdleListeners.isEmpty()) {

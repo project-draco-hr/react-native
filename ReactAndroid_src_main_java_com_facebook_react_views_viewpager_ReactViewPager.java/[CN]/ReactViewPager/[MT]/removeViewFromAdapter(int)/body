@@ -1,0 +1,3 @@
+{
+  getAdapter().removeViewAt(index);
+}

@@ -1,7 +1,0 @@
-{
-  super(viewTag,0);
-  mX=x;
-  mY=y;
-  mWidth=width;
-  mHeight=height;
-}

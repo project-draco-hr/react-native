@@ -1,0 +1,8 @@
+{
+  if (mProgressBar == null) {
+    throw new JSApplicationIllegalArgumentException("setStyle() not called");
+  }
+  mProgressBar.setIndeterminate(mIndeterminate);
+  setColor(mProgressBar);
+  mProgressBar.setProgress((int)(mProgress * MAX_PROGRESS));
+}

@@ -1,3 +1,0 @@
-{
-  throw new IllegalStateException("RKRawText doesn't map into a native view");
-}

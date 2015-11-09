@@ -1,5 +1,5 @@
 Context applicationContext
-String bundleAssetName
+String jsBundleFile
 String jsMainModuleName
 List<ReactPackage> packages
 boolean useDeveloperSupport

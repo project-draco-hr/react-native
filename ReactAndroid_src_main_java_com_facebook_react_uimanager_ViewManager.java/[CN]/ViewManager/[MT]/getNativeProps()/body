@@ -1,12 +1,3 @@
 {
-  Class cls=getClass();
-  Map<String,String> nativeProps=ViewManagersPropertyCache.getNativePropsForView(cls,getShadowNodeClass());
-  while (cls.getSuperclass() != null) {
-    Map<String,UIProp.Type> props=getNativePropsForClass(cls);
-    for (    Map.Entry<String,UIProp.Type> entry : props.entrySet()) {
-      nativeProps.put(entry.getKey(),entry.getValue().toString());
-    }
-    cls=cls.getSuperclass();
-  }
-  return nativeProps;
+  return ViewManagersPropertyCache.getNativePropsForView(getClass(),getShadowNodeClass());
 }

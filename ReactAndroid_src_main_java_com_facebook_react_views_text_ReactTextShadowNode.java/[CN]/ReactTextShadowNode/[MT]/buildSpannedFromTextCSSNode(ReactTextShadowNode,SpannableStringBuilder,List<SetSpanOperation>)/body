@@ -14,7 +14,7 @@
     ((ReactTextShadowNode)child).markUpdateSeen();
   }
   int end=sb.length();
-  if (end > start) {
+  if (end >= start) {
     if (textCSSNode.mIsColorSet) {
       ops.add(new SetSpanOperation(start,end,new ForegroundColorSpan(textCSSNode.mColor)));
     }
@@ -25,7 +25,7 @@
       ops.add(new SetSpanOperation(start,end,new AbsoluteSizeSpan(textCSSNode.mFontSize)));
     }
     if (textCSSNode.mFontStyle != UNSET || textCSSNode.mFontWeight != UNSET || textCSSNode.mFontFamily != null) {
-      ops.add(new SetSpanOperation(start,end,new CustomStyleSpan(textCSSNode.mFontStyle,textCSSNode.mFontWeight,textCSSNode.mFontFamily)));
+      ops.add(new SetSpanOperation(start,end,new CustomStyleSpan(textCSSNode.mFontStyle,textCSSNode.mFontWeight,textCSSNode.mFontFamily,textCSSNode.getThemedContext().getAssets())));
     }
     ops.add(new SetSpanOperation(start,end,new ReactTagSpan(textCSSNode.getReactTag())));
   }

@@ -1,3 +1,6 @@
 {
+  if (mJSAppBundleName == null) {
+    return "";
+  }
   return mDevServerHelper.getSourceUrl(Assertions.assertNotNull(mJSAppBundleName));
 }

@@ -1,16 +1,3 @@
 {
-  clear(new Callback(){
-    @Override public void invoke(    Object... args){
-      if (args.length == 0) {
-        FLog.d(ReactConstants.TAG,"Cleaned AsyncLocalStorage.");
-        return;
-      }
-      if (mReactDatabaseSupplier.deleteDatabase()) {
-        FLog.d(ReactConstants.TAG,"Deleted Local Database AsyncLocalStorage.");
-        return;
-      }
-      throw new RuntimeException("Clearing and deleting database failed: " + args[0]);
-    }
-  }
-);
+  mReactDatabaseSupplier.clearAndCloseDatabase();
 }

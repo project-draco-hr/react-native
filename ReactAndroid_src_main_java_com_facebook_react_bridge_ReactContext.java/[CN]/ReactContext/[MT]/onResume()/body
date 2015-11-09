@@ -1,6 +1,0 @@
-{
-  UiThreadUtil.assertOnUiThread();
-  for (  LifecycleEventListener listener : mLifecycleEventListeners) {
-    listener.onHostResume();
-  }
-}

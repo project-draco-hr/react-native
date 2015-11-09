@@ -1,8 +1,0 @@
-{
-  if (mViews.remove(child)) {
-    mTopOffsetsFromLayout.remove(child);
-    child.removeOnLayoutChangeListener(mChildLayoutChangeListener);
-    mTotalChildrenHeight-=child.getMeasuredHeight();
-    notifyDataSetChanged();
-  }
-}

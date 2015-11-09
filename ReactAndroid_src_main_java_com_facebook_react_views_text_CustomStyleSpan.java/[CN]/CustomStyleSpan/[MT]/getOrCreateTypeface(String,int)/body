@@ -1,8 +1,0 @@
-{
-  if (sTypefaceCache.get(family) != null) {
-    return sTypefaceCache.get(family);
-  }
-  Typeface typeface=Typeface.create(family,style);
-  sTypefaceCache.put(family,typeface);
-  return typeface;
-}

@@ -1,0 +1,3 @@
+int scrollX
+int scrollY
+boolean animated

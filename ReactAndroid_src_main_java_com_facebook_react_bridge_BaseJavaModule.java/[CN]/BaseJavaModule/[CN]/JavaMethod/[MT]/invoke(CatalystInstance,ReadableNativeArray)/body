@@ -1,67 +1,33 @@
 {
   Systrace.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"callJavaModuleMethod");
   try {
-    Class[] types=method.getParameterTypes();
-    if (types.length != parameters.size()) {
-      throw new NativeArgumentsParseException(BaseJavaModule.this.getName() + "." + method.getName()+ " got "+ parameters.size()+ " arguments, expected "+ types.length);
+    if (mJSArgumentsNeeded != parameters.size()) {
+      throw new NativeArgumentsParseException(BaseJavaModule.this.getName() + "." + mMethod.getName()+ " got "+ parameters.size()+ " arguments, expected "+ mJSArgumentsNeeded);
     }
-    Object[] arguments=new Object[types.length];
-    int i=0;
+    int i=0, jsArgumentsConsumed=0;
     try {
-      for (; i < types.length; i++) {
-        Class argumentClass=types[i];
-        if (argumentClass == Boolean.class || argumentClass == boolean.class) {
-          arguments[i]=Boolean.valueOf(parameters.getBoolean(i));
-        }
- else         if (argumentClass == Integer.class || argumentClass == int.class) {
-          arguments[i]=Integer.valueOf((int)parameters.getDouble(i));
-        }
- else         if (argumentClass == Double.class || argumentClass == double.class) {
-          arguments[i]=Double.valueOf(parameters.getDouble(i));
-        }
- else         if (argumentClass == Float.class || argumentClass == float.class) {
-          arguments[i]=Float.valueOf((float)parameters.getDouble(i));
-        }
- else         if (argumentClass == String.class) {
-          arguments[i]=parameters.getString(i);
-        }
- else         if (argumentClass == Callback.class) {
-          if (parameters.isNull(i)) {
-            arguments[i]=null;
-          }
- else {
-            int id=(int)parameters.getDouble(i);
-            arguments[i]=new CallbackImpl(catalystInstance,id);
-          }
-        }
- else         if (argumentClass == ReadableMap.class) {
-          arguments[i]=parameters.getMap(i);
-        }
- else         if (argumentClass == ReadableArray.class) {
-          arguments[i]=parameters.getArray(i);
-        }
- else {
-          throw new RuntimeException("Got unknown argument class: " + argumentClass.getSimpleName());
-        }
+      for (; i < mArgumentExtractors.length; i++) {
+        mArguments[i]=mArgumentExtractors[i].extractArgument(catalystInstance,parameters,jsArgumentsConsumed);
+        jsArgumentsConsumed+=mArgumentExtractors[i].getJSArgumentsNeeded();
       }
     }
  catch (    UnexpectedNativeTypeException e) {
-      throw new NativeArgumentsParseException(e.getMessage() + " (constructing arguments for " + BaseJavaModule.this.getName()+ "."+ method.getName()+ " at argument index "+ i+ ")",e);
+      throw new NativeArgumentsParseException(e.getMessage() + " (constructing arguments for " + BaseJavaModule.this.getName()+ "."+ mMethod.getName()+ " at argument index "+ getAffectedRange(jsArgumentsConsumed,mArgumentExtractors[i].getJSArgumentsNeeded())+ ")",e);
     }
     try {
-      method.invoke(BaseJavaModule.this,arguments);
+      mMethod.invoke(BaseJavaModule.this,mArguments);
     }
  catch (    IllegalArgumentException ie) {
-      throw new RuntimeException("Could not invoke " + BaseJavaModule.this.getName() + "."+ method.getName(),ie);
+      throw new RuntimeException("Could not invoke " + BaseJavaModule.this.getName() + "."+ mMethod.getName(),ie);
     }
 catch (    IllegalAccessException iae) {
-      throw new RuntimeException("Could not invoke " + BaseJavaModule.this.getName() + "."+ method.getName(),iae);
+      throw new RuntimeException("Could not invoke " + BaseJavaModule.this.getName() + "."+ mMethod.getName(),iae);
     }
 catch (    InvocationTargetException ite) {
       if (ite.getCause() instanceof RuntimeException) {
         throw (RuntimeException)ite.getCause();
       }
-      throw new RuntimeException("Could not invoke " + BaseJavaModule.this.getName() + "."+ method.getName(),ite);
+      throw new RuntimeException("Could not invoke " + BaseJavaModule.this.getName() + "."+ mMethod.getName(),ite);
     }
   }
   finally {

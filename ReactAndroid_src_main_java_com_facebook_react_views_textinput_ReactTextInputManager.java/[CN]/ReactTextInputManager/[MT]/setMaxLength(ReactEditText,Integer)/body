@@ -1,0 +1,10 @@
+{
+  if (maxLength == null) {
+    view.setFilters(EMPTY_FILTERS);
+  }
+ else {
+    InputFilter[] filterArray=new InputFilter[1];
+    filterArray[0]=new InputFilter.LengthFilter(maxLength);
+    view.setFilters(filterArray);
+  }
+}

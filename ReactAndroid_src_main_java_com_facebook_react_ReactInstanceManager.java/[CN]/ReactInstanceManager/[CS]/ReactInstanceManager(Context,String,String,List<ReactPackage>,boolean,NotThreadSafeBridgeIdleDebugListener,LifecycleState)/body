@@ -1,7 +1,7 @@
 {
   initializeSoLoaderIfNecessary(applicationContext);
   mApplicationContext=applicationContext;
-  mBundleAssetName=bundleAssetName;
+  mJSBundleFile=jsBundleFile;
   mJSMainModuleName=jsMainModuleName;
   mPackages=packages;
   mUseDeveloperSupport=useDeveloperSupport;

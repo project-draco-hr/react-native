@@ -1,0 +1,30 @@
+{
+  String statusURL=createPacakgerStatusURL(getDebugServerHost());
+  Request request=new Request.Builder().url(statusURL).build();
+  mClient.newCall(request).enqueue(new Callback(){
+    @Override public void onFailure(    Request request,    IOException e){
+      Log.e(ReactConstants.TAG,"IOException requesting status from packager",e);
+      callback.onPackagerStatusFetched(false);
+    }
+    @Override public void onResponse(    Response response) throws IOException {
+      if (!response.isSuccessful()) {
+        Log.e(ReactConstants.TAG,"Got non-success http code from packager when requesting status: " + response.code());
+        callback.onPackagerStatusFetched(false);
+        return;
+      }
+      ResponseBody body=response.body();
+      if (body == null) {
+        Log.e(ReactConstants.TAG,"Got null body response from packager when requesting status");
+        callback.onPackagerStatusFetched(false);
+        return;
+      }
+      if (!PACKAGER_OK_STATUS.equals(body.string())) {
+        Log.e(ReactConstants.TAG,"Got unexpected response from packager when requesting status: " + body.string());
+        callback.onPackagerStatusFetched(false);
+        return;
+      }
+      callback.onPackagerStatusFetched(true);
+    }
+  }
+);
+}

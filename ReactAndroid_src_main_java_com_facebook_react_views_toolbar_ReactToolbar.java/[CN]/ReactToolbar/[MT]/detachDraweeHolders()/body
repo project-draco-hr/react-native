@@ -1,5 +1,6 @@
 {
   mLogoHolder.onDetach();
   mNavIconHolder.onDetach();
+  mOverflowIconHolder.onDetach();
   mActionsHolder.onDetach();
 }

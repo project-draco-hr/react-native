@@ -1,7 +1,7 @@
 {
   return new JSBundleLoader(){
     @Override public void loadScript(    ReactBridge bridge){
-      bridge.loadScriptFromNetworkCached(sourceURL,null);
+      bridge.loadScriptFromFile(null,sourceURL);
     }
     @Override public String getSourceUrl(){
       return sourceURL;

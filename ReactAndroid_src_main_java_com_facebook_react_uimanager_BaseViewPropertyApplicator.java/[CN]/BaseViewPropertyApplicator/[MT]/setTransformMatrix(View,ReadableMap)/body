@@ -1,7 +1,0 @@
-{
-  view.setTranslationX(PixelUtil.toPixelFromDIP((float)matrix.getDouble(PROP_DECOMPOSED_MATRIX_TRANSLATE_X)));
-  view.setTranslationY(PixelUtil.toPixelFromDIP((float)matrix.getDouble(PROP_DECOMPOSED_MATRIX_TRANSLATE_Y)));
-  view.setRotation((float)matrix.getDouble(PROP_DECOMPOSED_MATRIX_ROTATE));
-  view.setScaleX((float)matrix.getDouble(PROP_DECOMPOSED_MATRIX_SCALE_X));
-  view.setScaleY((float)matrix.getDouble(PROP_DECOMPOSED_MATRIX_SCALE_Y));
-}

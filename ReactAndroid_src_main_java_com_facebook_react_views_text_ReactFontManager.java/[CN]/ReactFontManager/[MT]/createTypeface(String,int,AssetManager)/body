@@ -1,0 +1,12 @@
+{
+  String extension=EXTENSIONS[style];
+  for (  String fileExtension : FILE_EXTENSIONS) {
+    String fileName=new StringBuilder().append(FONTS_ASSET_PATH).append(fontFamilyName).append(extension).append(fileExtension).toString();
+    try {
+      return Typeface.createFromAsset(assetManager,fileName);
+    }
+ catch (    RuntimeException e) {
+    }
+  }
+  return Typeface.create(fontFamilyName,style);
+}

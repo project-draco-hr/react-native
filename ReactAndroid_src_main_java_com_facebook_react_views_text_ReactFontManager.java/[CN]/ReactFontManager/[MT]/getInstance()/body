@@ -1,0 +1,6 @@
+{
+  if (sReactFontManagerInstance == null) {
+    sReactFontManagerInstance=new ReactFontManager();
+  }
+  return sReactFontManagerInstance;
+}

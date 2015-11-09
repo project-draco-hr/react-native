@@ -1,8 +1,0 @@
-{
-  Task task=project.getTasks().findByName("packageDebugJS");
-  assertTrue(task != null && task instanceof PackageDebugJsTask);
-  ((PackageDebugJsTask)task).packageJS();
-  RecordedRequest request=server.takeRequest();
-  assertEquals("/test.bundle?dev=true&inlineSourceMap=false&minify=false&runModule=true",request.getPath());
-  assertEquals("This is some javascript",FileUtils.readFileToString(new File(project.getProjectDir(),FilenameUtils.separatorsToSystem("build/intermediates/assets/debug/test.js"))));
-}

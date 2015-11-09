@@ -1,4 +1,5 @@
 {
+  UiThreadUtil.assertOnUiThread();
   if (mRedBoxDialog != null) {
     mRedBoxDialog.dismiss();
   }

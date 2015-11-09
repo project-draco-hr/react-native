@@ -1,0 +1,9 @@
+{
+  super.init(viewTag,timestampMs);
+  mScrollX=scrollX;
+  mScrollY=scrollY;
+  mContentWidth=contentWidth;
+  mContentHeight=contentHeight;
+  mScrollViewWidth=scrollViewWidth;
+  mScrollViewHeight=scrollViewHeight;
+}

@@ -1,0 +1,7 @@
+{
+  int n=0;
+  for (  ArgumentExtractor extractor : mArgumentExtractors) {
+    n+=extractor.getJSArgumentsNeeded();
+  }
+  return n;
+}
