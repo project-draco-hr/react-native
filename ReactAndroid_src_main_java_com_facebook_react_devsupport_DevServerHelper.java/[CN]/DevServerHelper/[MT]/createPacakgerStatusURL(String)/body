@@ -1,3 +1,0 @@
-{
-  return String.format(PACKAGER_STATUS_URL_FORMAT,host);
-}
