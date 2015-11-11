@@ -1,7 +1,6 @@
 {
   mViews.add(index,child);
   mTotalChildrenHeight+=child.getMeasuredHeight();
-  mTopOffsetsFromLayout.put(child,child.getTop());
   child.addOnLayoutChangeListener(mChildLayoutChangeListener);
-  notifyDataSetChanged();
+  notifyItemInserted(index);
 }

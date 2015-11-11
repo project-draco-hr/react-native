@@ -1,0 +1,5 @@
+{
+  if (index < mLastRequestedPosition) {
+    mOffsetForLastPosition=(mOffsetForLastPosition - oldHeight + newHeight);
+  }
+}
