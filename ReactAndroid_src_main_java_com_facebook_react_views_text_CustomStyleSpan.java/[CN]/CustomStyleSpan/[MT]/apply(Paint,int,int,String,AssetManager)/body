@@ -17,6 +17,9 @@
   if (family != null) {
     typeface=ReactFontManager.getInstance().getTypeface(family,want,assetManager);
   }
+ else   if (typeface != null) {
+    typeface=Typeface.create(typeface,want);
+  }
   if (typeface != null) {
     paint.setTypeface(typeface);
   }
