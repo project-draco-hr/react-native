@@ -1,3 +1,3 @@
 {
-  return Arrays.<NativeModule>asList(new AsyncStorageModule(reactContext),new FrescoModule(reactContext),new NetworkingModule(reactContext),new WebSocketModule(reactContext),new ToastModule(reactContext));
+  return Arrays.<NativeModule>asList(new AsyncStorageModule(reactContext),new FrescoModule(reactContext),new IntentModule(reactContext),new NetworkingModule(reactContext),new WebSocketModule(reactContext),new ToastModule(reactContext));
 }

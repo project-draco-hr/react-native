@@ -1,0 +1,13 @@
+{
+  if (url == null || url.isEmpty()) {
+    throw new JSApplicationIllegalArgumentException("Invalid URL: " + url);
+  }
+  try {
+    Intent intent=new Intent(Intent.ACTION_VIEW,Uri.parse(url));
+    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+    getReactApplicationContext().startActivity(intent);
+  }
+ catch (  Exception e) {
+    throw new JSApplicationIllegalArgumentException("Could not open URL '" + url + "': "+ e.getMessage());
+  }
+}
