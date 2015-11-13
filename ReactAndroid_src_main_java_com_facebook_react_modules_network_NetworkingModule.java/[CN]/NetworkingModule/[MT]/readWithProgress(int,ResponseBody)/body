@@ -1,0 +1,24 @@
+{
+  Reader reader=responseBody.charStream();
+  try {
+    StringBuilder sb=new StringBuilder(getBufferSize(responseBody));
+    char[] buffer=new char[MIN_BUFFER_SIZE];
+    int read;
+    long last=System.nanoTime();
+    while ((read=reader.read(buffer)) != -1) {
+      sb.append(buffer,0,read);
+      long now=System.nanoTime();
+      if (shouldDispatch(now,last)) {
+        onDataReceived(requestId,sb.toString());
+        sb.setLength(0);
+        last=now;
+      }
+    }
+    if (sb.length() > 0) {
+      onDataReceived(requestId,sb.toString());
+    }
+  }
+  finally {
+    reader.close();
+  }
+}

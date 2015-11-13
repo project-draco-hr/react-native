@@ -1,0 +1,13 @@
+{
+  WritableMap responseHeaders=Arguments.createMap();
+  for (int i=0; i < headers.size(); i++) {
+    String headerName=headers.name(i);
+    if (responseHeaders.hasKey(headerName)) {
+      responseHeaders.putString(headerName,responseHeaders.getString(headerName) + ", " + headers.value(i));
+    }
+ else {
+      responseHeaders.putString(headerName,headers.value(i));
+    }
+  }
+  return responseHeaders;
+}

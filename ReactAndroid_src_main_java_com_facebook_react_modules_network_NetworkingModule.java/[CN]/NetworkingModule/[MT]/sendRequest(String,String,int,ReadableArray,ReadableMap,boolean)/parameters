@@ -3,4 +3,4 @@ String url
 int requestId
 ReadableArray headers
 ReadableMap data
-Callback callback
+boolean useIncrementalUpdates
