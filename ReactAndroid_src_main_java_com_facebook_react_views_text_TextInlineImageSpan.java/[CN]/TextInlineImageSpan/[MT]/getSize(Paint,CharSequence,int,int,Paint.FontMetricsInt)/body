@@ -1,0 +1,9 @@
+{
+  if (fm != null) {
+    fm.ascent=-mHeight;
+    fm.descent=0;
+    fm.top=fm.ascent;
+    fm.bottom=0;
+  }
+  return mWidth;
+}

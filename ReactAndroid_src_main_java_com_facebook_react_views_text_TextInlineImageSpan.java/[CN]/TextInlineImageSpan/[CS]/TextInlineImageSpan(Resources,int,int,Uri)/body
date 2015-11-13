@@ -1,0 +1,6 @@
+{
+  mDraweeHolder=new DraweeHolder(GenericDraweeHierarchyBuilder.newInstance(resources).build());
+  mHeight=height;
+  mWidth=width;
+  mUri=(uri != null) ? uri : Uri.EMPTY;
+}

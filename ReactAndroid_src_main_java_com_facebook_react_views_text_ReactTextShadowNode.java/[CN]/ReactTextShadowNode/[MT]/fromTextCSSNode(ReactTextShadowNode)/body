@@ -5,8 +5,12 @@
   if (textCSSNode.mFontSize == UNSET) {
     sb.setSpan(new AbsoluteSizeSpan((int)Math.ceil(PixelUtil.toPixelFromSP(ViewDefaults.FONT_SIZE_SP))),0,sb.length(),Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
   }
+  textCSSNode.mContainsImages=false;
   for (int i=ops.size() - 1; i >= 0; i--) {
     SetSpanOperation op=ops.get(i);
+    if (op.what instanceof TextInlineImageSpan) {
+      textCSSNode.mContainsImages=true;
+    }
     op.execute(sb);
   }
   return sb;

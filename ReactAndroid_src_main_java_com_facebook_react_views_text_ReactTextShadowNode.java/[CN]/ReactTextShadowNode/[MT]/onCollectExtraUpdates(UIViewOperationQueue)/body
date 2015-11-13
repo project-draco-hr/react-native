@@ -3,7 +3,8 @@
     return;
   }
   super.onCollectExtraUpdates(uiViewOperationQueue);
-  if (mPreparedSpannedText != null) {
-    uiViewOperationQueue.enqueueUpdateExtraData(getReactTag(),mPreparedSpannedText);
+  if (mPreparedSpannableText != null) {
+    ReactTextUpdate reactTextUpdate=new ReactTextUpdate(mPreparedSpannableText,UNSET,mContainsImages);
+    uiViewOperationQueue.enqueueUpdateExtraData(getReactTag(),reactTextUpdate);
   }
 }

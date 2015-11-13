@@ -1,0 +1,20 @@
+{
+  Uri uri=null;
+  if (source != null) {
+    try {
+      uri=Uri.parse(source);
+      if (uri.getScheme() == null) {
+        uri=null;
+      }
+    }
+ catch (    Exception e) {
+    }
+    if (uri == null) {
+      uri=getResourceDrawableUri(getThemedContext(),source);
+    }
+  }
+  if (uri != mUri) {
+    markUpdated();
+  }
+  mUri=uri;
+}

@@ -1,0 +1,5 @@
+{
+  mText=text;
+  mJsEventCounter=jsEventCounter;
+  mContainsImages=containsImages;
+}

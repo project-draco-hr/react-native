@@ -2,6 +2,6 @@
   if (mIsVirtual) {
     return;
   }
-  mPreparedSpannedText=fromTextCSSNode(this);
+  mPreparedSpannableText=fromTextCSSNode(this);
   markUpdated();
 }

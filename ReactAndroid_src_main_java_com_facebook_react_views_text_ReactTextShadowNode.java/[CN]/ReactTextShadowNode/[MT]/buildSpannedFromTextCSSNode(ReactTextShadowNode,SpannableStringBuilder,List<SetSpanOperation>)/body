@@ -8,10 +8,13 @@
     if (child instanceof ReactTextShadowNode) {
       buildSpannedFromTextCSSNode((ReactTextShadowNode)child,sb,ops);
     }
+ else     if (child instanceof ReactTextInlineImageShadowNode) {
+      buildSpannedFromImageNode((ReactTextInlineImageShadowNode)child,sb,ops);
+    }
  else {
       throw new IllegalViewOperationException("Unexpected view type nested under text node: " + child.getClass());
     }
-    ((ReactTextShadowNode)child).markUpdateSeen();
+    ((ReactShadowNode)child).markUpdateSeen();
   }
   int end=sb.length();
   if (end >= start) {

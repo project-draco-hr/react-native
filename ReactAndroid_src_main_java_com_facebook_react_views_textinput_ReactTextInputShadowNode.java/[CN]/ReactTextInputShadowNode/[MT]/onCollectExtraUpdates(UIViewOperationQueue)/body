@@ -5,8 +5,8 @@
     mComputedPadding=null;
   }
   if (mJsEventCount != UNSET) {
-    Spanned preparedSpannedText=fromTextCSSNode(this);
-    ReactTextUpdate reactTextUpdate=new ReactTextUpdate(preparedSpannedText,mJsEventCount);
+    Spannable preparedSpannableText=fromTextCSSNode(this);
+    ReactTextUpdate reactTextUpdate=new ReactTextUpdate(preparedSpannableText,mJsEventCount,mContainsImages);
     uiViewOperationQueue.enqueueUpdateExtraData(getReactTag(),reactTextUpdate);
   }
 }

@@ -4,6 +4,7 @@
   }
   SpannableStringBuilder spannableStringBuilder=new SpannableStringBuilder(reactTextUpdate.getText());
   manageSpans(spannableStringBuilder);
+  mContainsImages=reactTextUpdate.containsImages();
   mIsSettingTextFromJS=true;
   getText().replace(0,length(),spannableStringBuilder);
   mIsSettingTextFromJS=false;

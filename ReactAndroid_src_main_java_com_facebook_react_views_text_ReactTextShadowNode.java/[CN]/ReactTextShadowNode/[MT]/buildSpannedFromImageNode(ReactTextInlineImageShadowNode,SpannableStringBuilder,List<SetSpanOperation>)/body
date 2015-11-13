@@ -1,0 +1,9 @@
+{
+  int start=sb.length();
+  Resources resources=node.getThemedContext().getResources();
+  int height=(int)PixelUtil.toDIPFromPixel(node.getStyleHeight());
+  int width=(int)PixelUtil.toDIPFromPixel(node.getStyleWidth());
+  TextInlineImageSpan imageSpan=new TextInlineImageSpan(resources,height,width,node.getUri());
+  sb.append(INLINE_IMAGE_PLACEHOLDER);
+  ops.add(new SetSpanOperation(start,sb.length(),imageSpan));
+}
