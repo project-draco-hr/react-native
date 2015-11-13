@@ -1,5 +1,5 @@
 {
   mIsCurrentItemFromJs=true;
-  setCurrentItem(item);
+  setCurrentItem(item,animated);
   mIsCurrentItemFromJs=false;
 }

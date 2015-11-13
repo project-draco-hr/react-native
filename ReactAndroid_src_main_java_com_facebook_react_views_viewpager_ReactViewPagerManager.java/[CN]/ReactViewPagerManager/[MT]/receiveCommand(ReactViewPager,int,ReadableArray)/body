@@ -1,0 +1,18 @@
+{
+  Assertions.assertNotNull(viewPager);
+  Assertions.assertNotNull(args);
+switch (commandType) {
+case COMMAND_SET_PAGE:
+{
+      viewPager.setCurrentItemFromJs(args.getInt(0),true);
+      return;
+    }
+case COMMAND_SET_PAGE_WITHOUT_ANIMATION:
+{
+    viewPager.setCurrentItemFromJs(args.getInt(0),false);
+    return;
+  }
+default :
+throw new IllegalArgumentException(String.format("Unsupported command %d received by %s.",commandType,getClass().getSimpleName()));
+}
+}

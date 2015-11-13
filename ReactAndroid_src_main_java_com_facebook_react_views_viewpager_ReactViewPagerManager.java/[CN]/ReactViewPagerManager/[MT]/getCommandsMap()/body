@@ -1,0 +1,3 @@
+{
+  return MapBuilder.of("setPage",COMMAND_SET_PAGE,"setPageWithoutAnimation",COMMAND_SET_PAGE_WITHOUT_ANIMATION);
+}
