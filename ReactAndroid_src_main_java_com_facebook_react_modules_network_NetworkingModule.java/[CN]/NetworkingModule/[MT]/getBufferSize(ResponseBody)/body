@@ -1,9 +1,0 @@
-{
-  long length=responseBody.contentLength();
-  if (length == -1) {
-    return MIN_BUFFER_SIZE;
-  }
- else {
-    return (int)min(length,MAX_BUFFER_SIZE);
-  }
-}
