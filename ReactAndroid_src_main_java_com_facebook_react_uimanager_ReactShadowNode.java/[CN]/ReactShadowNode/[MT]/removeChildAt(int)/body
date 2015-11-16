@@ -3,15 +3,6 @@
   markUpdated();
   int decrease=removed.mIsLayoutOnly ? removed.mTotalNativeChildren : 1;
   mTotalNativeChildren-=decrease;
-  if (mIsLayoutOnly) {
-    ReactShadowNode parent=getParent();
-    while (parent != null) {
-      parent.mTotalNativeChildren-=decrease;
-      if (!parent.mIsLayoutOnly) {
-        break;
-      }
-      parent=parent.getParent();
-    }
-  }
+  updateNativeChildrenCountInParent(-decrease);
   return removed;
 }
