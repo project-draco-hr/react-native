@@ -14,10 +14,10 @@
   roundingParams.setCornersRadius(hierarchyRadius);
   roundingParams.setBorder(mBorderColor,mBorderWidth);
   hierarchy.setRoundingParams(roundingParams);
-  hierarchy.setFadeDuration(mImageFadeDuration >= 0 ? mImageFadeDuration : mIsLocalImage ? 0 : REMOTE_IMAGE_FADE_DURATION_MS);
+  hierarchy.setFadeDuration(mFadeDurationMs >= 0 ? mFadeDurationMs : mIsLocalImage ? 0 : REMOTE_IMAGE_FADE_DURATION_MS);
   Postprocessor postprocessor=usePostprocessorScaling ? mRoundedCornerPostprocessor : null;
   ResizeOptions resizeOptions=doResize ? new ResizeOptions(getWidth(),getHeight()) : null;
-  ImageRequest imageRequest=ImageRequestBuilder.newBuilderWithSource(mUri).setPostprocessor(postprocessor).setResizeOptions(resizeOptions).build();
+  ImageRequest imageRequest=ImageRequestBuilder.newBuilderWithSource(mUri).setPostprocessor(postprocessor).setResizeOptions(resizeOptions).setProgressiveRenderingEnabled(mProgressiveRenderingEnabled).build();
   DraweeController draweeController=mDraweeControllerBuilder.reset().setAutoPlayAnimations(true).setCallerContext(mCallerContext).setOldController(getController()).setImageRequest(imageRequest).setControllerListener(mControllerListener).build();
   setController(draweeController);
   mIsDirty=false;

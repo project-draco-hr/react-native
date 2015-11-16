@@ -1,5 +1,0 @@
-{
-  mImageFadeDuration=imageFadeDuration;
-  mIsDirty=true;
-  maybeUpdateView();
-}
