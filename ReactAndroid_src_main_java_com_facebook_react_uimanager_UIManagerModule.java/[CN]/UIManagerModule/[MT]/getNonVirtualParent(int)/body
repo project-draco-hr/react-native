@@ -1,0 +1,7 @@
+{
+  ReactShadowNode node=mShadowNodeRegistry.getNode(reactTag);
+  while (node != null && node.isVirtual()) {
+    node=node.getParent();
+  }
+  return node == null ? -1 : node.getReactTag();
+}
