@@ -16,17 +16,21 @@
     }
   }
 );
-  options.put(mApplicationContext.getString(R.string.catalyst_settings),new DevOptionHandler(){
+  options.put(mDevSettings.isReloadOnJSChangeEnabled() ? mApplicationContext.getString(R.string.catalyst_live_reload_off) : mApplicationContext.getString(R.string.catalyst_live_reload),new DevOptionHandler(){
     @Override public void onOptionSelected(){
-      Intent intent=new Intent(mApplicationContext,DevSettingsActivity.class);
-      intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-      mApplicationContext.startActivity(intent);
+      mDevSettings.setReloadOnJSChangeEnabled(!mDevSettings.isReloadOnJSChangeEnabled());
     }
   }
 );
   options.put(mApplicationContext.getString(R.string.catalyst_inspect_element),new DevOptionHandler(){
     @Override public void onOptionSelected(){
       mReactInstanceCommandsHandler.toggleElementInspector();
+    }
+  }
+);
+  options.put(mDevSettings.isFpsDebugEnabled() ? mApplicationContext.getString(R.string.catalyst_perf_monitor_off) : mApplicationContext.getString(R.string.catalyst_perf_monitor),new DevOptionHandler(){
+    @Override public void onOptionSelected(){
+      mDevSettings.setFpsDebugEnabled(!mDevSettings.isFpsDebugEnabled());
     }
   }
 );
@@ -52,6 +56,14 @@
     }
 );
   }
+  options.put(mApplicationContext.getString(R.string.catalyst_settings),new DevOptionHandler(){
+    @Override public void onOptionSelected(){
+      Intent intent=new Intent(mApplicationContext,DevSettingsActivity.class);
+      intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+      mApplicationContext.startActivity(intent);
+    }
+  }
+);
   if (mCustomDevOptions.size() > 0) {
     options.putAll(mCustomDevOptions);
   }
