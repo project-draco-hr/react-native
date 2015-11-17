@@ -1,0 +1,8 @@
+{
+  if (mNativeChildren != null) {
+    for (int i=mNativeChildren.size() - 1; i >= 0; i--) {
+      mNativeChildren.get(i).mNativeParent=null;
+    }
+    mNativeChildren.clear();
+  }
+}

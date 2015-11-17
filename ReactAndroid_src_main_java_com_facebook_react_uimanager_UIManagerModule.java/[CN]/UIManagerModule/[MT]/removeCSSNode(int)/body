@@ -1,8 +1,0 @@
-{
-  ReactShadowNode node=mShadowNodeRegistry.getNode(tag);
-  mShadowNodeRegistry.removeNode(tag);
-  for (int i=node.getChildCount() - 1; i >= 0; i--) {
-    removeCSSNode(node.getChildAt(i).getReactTag());
-  }
-  node.removeAllChildren();
-}

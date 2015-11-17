@@ -2,7 +2,7 @@
   if (mIsLayoutOnly) {
     ReactShadowNode parent=getParent();
     while (parent != null) {
-      parent.mTotalNativeChildren-=delta;
+      parent.mTotalNativeChildren+=delta;
       if (!parent.mIsLayoutOnly) {
         break;
       }
