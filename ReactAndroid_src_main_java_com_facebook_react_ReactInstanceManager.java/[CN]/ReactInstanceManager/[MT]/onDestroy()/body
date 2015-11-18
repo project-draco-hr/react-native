@@ -5,5 +5,7 @@
   }
   if (mCurrentReactContext != null) {
     mCurrentReactContext.onDestroy();
+    mCurrentReactContext=null;
+    mHasStartedCreatingInitialContext=false;
   }
 }

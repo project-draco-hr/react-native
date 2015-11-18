@@ -1,0 +1,31 @@
+{
+  UiThreadUtil.assertOnUiThread();
+  if (mUseDeveloperSupport && mJSMainModuleName != null) {
+    if (mDevSupportManager.hasUpToDateJSBundleInCache()) {
+      onJSBundleLoadedFromServer();
+    }
+ else     if (mJSBundleFile == null) {
+      mDevSupportManager.handleReloadJS();
+    }
+ else {
+      mDevSupportManager.isPackagerRunning(new DevServerHelper.PackagerStatusCallback(){
+        @Override public void onPackagerStatusFetched(        final boolean packagerIsRunning){
+          UiThreadUtil.runOnUiThread(new Runnable(){
+            @Override public void run(){
+              if (packagerIsRunning) {
+                mDevSupportManager.handleReloadJS();
+              }
+ else {
+                recreateReactContextInBackgroundFromBundleFile();
+              }
+            }
+          }
+);
+        }
+      }
+);
+    }
+    return;
+  }
+  recreateReactContextInBackgroundFromBundleFile();
+}
