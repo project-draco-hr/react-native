@@ -1,7 +1,0 @@
-{
-  if (mRootTags.get(reactTag)) {
-    SoftAssertions.assertUnreachable("Cannot block native responder on " + reactTag + " that is a root view");
-  }
-  ViewParent viewParent=blockNativeResponder ? mTagsToViews.get(reactTag).getParent() : null;
-  mJSResponderHandler.setJSResponder(reactTag,viewParent);
-}

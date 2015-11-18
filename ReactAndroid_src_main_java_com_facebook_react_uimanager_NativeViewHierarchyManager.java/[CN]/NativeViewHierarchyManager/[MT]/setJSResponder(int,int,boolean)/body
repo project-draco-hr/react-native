@@ -1,0 +1,15 @@
+{
+  if (!blockNativeResponder) {
+    mJSResponderHandler.setJSResponder(initialReactTag,null);
+    return;
+  }
+  View view=mTagsToViews.get(reactTag);
+  if (initialReactTag != reactTag && view instanceof ViewParent) {
+    mJSResponderHandler.setJSResponder(initialReactTag,(ViewParent)view);
+    return;
+  }
+  if (mRootTags.get(reactTag)) {
+    SoftAssertions.assertUnreachable("Cannot block native responder on " + reactTag + " that is a root view");
+  }
+  mJSResponderHandler.setJSResponder(initialReactTag,view.getParent());
+}

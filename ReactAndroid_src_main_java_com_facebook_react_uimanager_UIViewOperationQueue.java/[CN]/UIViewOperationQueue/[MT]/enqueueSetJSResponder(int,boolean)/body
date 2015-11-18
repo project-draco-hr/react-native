@@ -1,3 +1,0 @@
-{
-  mOperations.add(new ChangeJSResponderOperation(reactTag,false,blockNativeResponder));
-}
