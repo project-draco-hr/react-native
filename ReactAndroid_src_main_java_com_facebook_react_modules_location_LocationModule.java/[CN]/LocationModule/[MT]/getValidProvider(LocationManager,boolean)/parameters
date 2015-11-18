@@ -1,0 +1,2 @@
+LocationManager locationManager
+boolean highAccuracy

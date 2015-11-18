@@ -1,0 +1,10 @@
+{
+  String provider=highAccuracy ? LocationManager.GPS_PROVIDER : LocationManager.NETWORK_PROVIDER;
+  if (!locationManager.isProviderEnabled(provider)) {
+    provider=provider.equals(LocationManager.GPS_PROVIDER) ? LocationManager.NETWORK_PROVIDER : LocationManager.GPS_PROVIDER;
+    if (!locationManager.isProviderEnabled(provider)) {
+      return null;
+    }
+  }
+  return provider;
+}
