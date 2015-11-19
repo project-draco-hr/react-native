@@ -1,12 +1,7 @@
 {
   UiThreadUtil.assertOnUiThread();
   mAttachedRootViews.add(rootView);
-  if (!mIsContextInitAsyncTaskRunning) {
-    if (mCurrentReactContext == null) {
-      createReactContextInBackground();
-    }
- else {
-      attachMeasuredRootViewToInstance(rootView,mCurrentReactContext.getCatalystInstance());
-    }
+  if (!mIsContextInitAsyncTaskRunning && mCurrentReactContext != null) {
+    attachMeasuredRootViewToInstance(rootView,mCurrentReactContext.getCatalystInstance());
   }
 }
