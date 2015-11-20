@@ -1,6 +1,5 @@
 {
   mNativeViewHierarchyOptimizer.handleRemoveNode(nodeToRemove);
-  mShadowNodeRegistry.removeNode(nodeToRemove.getReactTag());
   for (int i=nodeToRemove.getChildCount() - 1; i >= 0; i--) {
     removeShadowNode(nodeToRemove.getChildAt(i));
   }

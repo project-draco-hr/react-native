@@ -1,0 +1,4 @@
+{
+  mTagsToViews.remove(tag);
+  mTagsToViewManagers.remove(tag);
+}

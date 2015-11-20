@@ -1,0 +1,5 @@
+{
+  super(-1);
+  mViewTagsToDrop=viewTagsToDrop;
+  mArrayLength=length;
+}
