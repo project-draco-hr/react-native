@@ -3,4 +3,5 @@
   Assertions.assertCondition(mBridge == null,"initializeBridge should be called once");
   mBridge=new ReactBridge(jsExecutor,new NativeModulesReactCallback(),mCatalystQueueConfiguration.getNativeModulesQueueThread());
   mBridge.setGlobalVariable("__fbBatchedBridgeConfig",buildModulesConfigJSONProperty(mJavaRegistry,jsModulesConfig));
+  Systrace.registerListener(mTraceListener);
 }
