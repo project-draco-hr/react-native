@@ -3,5 +3,5 @@
   setHasFixedSize(true);
   setItemAnimator(new NotAnimatedItemAnimator());
   setLayoutManager(new LinearLayoutManager(context));
-  setAdapter(new ReactListAdapter());
+  setAdapter(new ReactListAdapter(this));
 }

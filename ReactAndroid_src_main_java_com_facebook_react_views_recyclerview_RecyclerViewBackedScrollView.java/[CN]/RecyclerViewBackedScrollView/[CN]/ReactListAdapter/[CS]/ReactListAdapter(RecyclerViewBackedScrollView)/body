@@ -1,4 +1,5 @@
 {
+  mScrollView=scrollView;
   mScrollOffsetTracker=new ScrollOffsetTracker(this);
   setHasStableIds(true);
 }

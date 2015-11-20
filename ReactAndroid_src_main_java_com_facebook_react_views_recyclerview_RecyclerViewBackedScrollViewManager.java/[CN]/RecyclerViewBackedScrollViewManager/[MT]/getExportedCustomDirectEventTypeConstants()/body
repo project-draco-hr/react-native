@@ -1,0 +1,3 @@
+{
+  return MapBuilder.builder().put(ScrollEvent.EVENT_NAME,MapBuilder.of("registrationName","onScroll")).put(ContentSizeChangeEvent.EVENT_NAME,MapBuilder.of("registrationName","onContentSizeChange")).build();
+}
