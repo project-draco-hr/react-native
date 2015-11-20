@@ -1,3 +1,0 @@
-{
-  return new CatalystInstance(Assertions.assertNotNull(mCatalystQueueConfigurationSpec),Assertions.assertNotNull(mJSExecutor),Assertions.assertNotNull(mRegistry),Assertions.assertNotNull(mJSModulesConfig),Assertions.assertNotNull(mJSBundleLoader),Assertions.assertNotNull(mNativeModuleCallExceptionHandler));
-}

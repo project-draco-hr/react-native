@@ -1,4 +1,0 @@
-{
-  Looper mainLooper=Looper.getMainLooper();
-  return new MessageQueueThread(name,mainLooper,exceptionHandler);
-}

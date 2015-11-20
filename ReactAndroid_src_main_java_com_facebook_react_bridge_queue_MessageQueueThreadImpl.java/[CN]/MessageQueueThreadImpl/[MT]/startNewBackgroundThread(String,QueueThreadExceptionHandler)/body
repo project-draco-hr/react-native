@@ -1,0 +1,13 @@
+{
+  final SimpleSettableFuture<Looper> simpleSettableFuture=new SimpleSettableFuture<>();
+  Thread bgThread=new Thread(new Runnable(){
+    @Override public void run(){
+      Looper.prepare();
+      simpleSettableFuture.set(Looper.myLooper());
+      Looper.loop();
+    }
+  }
+,"mqt_" + name);
+  bgThread.start();
+  return new MessageQueueThreadImpl(name,simpleSettableFuture.get(5000),exceptionHandler);
+}

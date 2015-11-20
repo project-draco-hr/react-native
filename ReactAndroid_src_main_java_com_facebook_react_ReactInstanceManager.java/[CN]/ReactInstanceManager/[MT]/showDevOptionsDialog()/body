@@ -1,4 +1,0 @@
-{
-  UiThreadUtil.assertOnUiThread();
-  mDevSupportManager.showDevOptionsDialog();
-}

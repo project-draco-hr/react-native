@@ -1,0 +1,7 @@
+{
+  List<ViewManager> allViewManagers=new ArrayList<>();
+  for (  ReactPackage reactPackage : mPackages) {
+    allViewManagers.addAll(reactPackage.createViewManagers(catalystApplicationContext));
+  }
+  return allViewManagers;
+}

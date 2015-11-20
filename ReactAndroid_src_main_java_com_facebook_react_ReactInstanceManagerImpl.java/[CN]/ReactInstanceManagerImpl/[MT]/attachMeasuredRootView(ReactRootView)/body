@@ -1,0 +1,7 @@
+{
+  UiThreadUtil.assertOnUiThread();
+  mAttachedRootViews.add(rootView);
+  if (!mIsContextInitAsyncTaskRunning && mCurrentReactContext != null) {
+    attachMeasuredRootViewToInstance(rootView,mCurrentReactContext.getCatalystInstance());
+  }
+}

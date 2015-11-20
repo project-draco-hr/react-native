@@ -1,5 +1,5 @@
 {
   Assertions.assertCondition(mUseDeveloperSupport || mJSBundleFile != null,"JS Bundle File has to be provided when dev support is disabled");
   Assertions.assertCondition(mJSMainModuleName != null || mJSBundleFile != null,"Either MainModuleName or JS Bundle File needs to be provided");
-  return new ReactInstanceManager(Assertions.assertNotNull(mApplication,"Application property has not been set with this builder"),mJSBundleFile,mJSMainModuleName,mPackages,mUseDeveloperSupport,mBridgeIdleDebugListener,Assertions.assertNotNull(mInitialLifecycleState,"Initial lifecycle state was not set"));
+  return new ReactInstanceManagerImpl(Assertions.assertNotNull(mApplication,"Application property has not been set with this builder"),mJSBundleFile,mJSMainModuleName,mPackages,mUseDeveloperSupport,mBridgeIdleDebugListener,Assertions.assertNotNull(mInitialLifecycleState,"Initial lifecycle state was not set"));
 }
