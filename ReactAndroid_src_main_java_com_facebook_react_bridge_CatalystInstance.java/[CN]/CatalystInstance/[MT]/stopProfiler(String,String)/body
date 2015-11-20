@@ -1,0 +1,6 @@
+{
+  if (mBridge == null) {
+    return;
+  }
+  mBridge.stopProfiler(title,filename);
+}

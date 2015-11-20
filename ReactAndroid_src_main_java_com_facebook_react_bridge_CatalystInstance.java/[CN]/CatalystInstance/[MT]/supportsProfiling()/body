@@ -1,0 +1,6 @@
+{
+  if (mBridge == null) {
+    return false;
+  }
+  return mBridge.supportsProfiling();
+}
