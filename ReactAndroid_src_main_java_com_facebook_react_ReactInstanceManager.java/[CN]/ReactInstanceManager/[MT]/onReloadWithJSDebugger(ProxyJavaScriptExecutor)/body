@@ -1,3 +1,0 @@
-{
-  recreateReactContextInBackground(proxyExecutor,JSBundleLoader.createRemoteDebuggerBundleLoader(mDevSupportManager.getJSBundleURLForRemoteDebugging()));
-}

@@ -5,6 +5,6 @@
     return callback.get();
   }
  catch (  Throwable cause) {
-    throw new ProxyJavaScriptExecutor.ProxyExecutorException(cause);
+    throw new ProxyExecutorException(cause);
   }
 }

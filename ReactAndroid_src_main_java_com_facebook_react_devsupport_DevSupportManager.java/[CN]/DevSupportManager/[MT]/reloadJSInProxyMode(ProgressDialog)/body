@@ -6,7 +6,7 @@
       progressDialog.dismiss();
       UiThreadUtil.runOnUiThread(new Runnable(){
         @Override public void run(){
-          mReactInstanceCommandsHandler.onReloadWithJSDebugger(new ProxyJavaScriptExecutor(webSocketJSExecutor));
+          mReactInstanceCommandsHandler.onReloadWithJSDebugger(webSocketJSExecutor);
         }
       }
 );
