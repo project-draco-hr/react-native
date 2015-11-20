@@ -1,6 +1,7 @@
 {
   super(reactContext);
   mClient=client;
+  mClient.networkInterceptors().add(new StethoInterceptor());
   mShuttingDown=false;
   mDefaultUserAgent=defaultUserAgent;
 }
