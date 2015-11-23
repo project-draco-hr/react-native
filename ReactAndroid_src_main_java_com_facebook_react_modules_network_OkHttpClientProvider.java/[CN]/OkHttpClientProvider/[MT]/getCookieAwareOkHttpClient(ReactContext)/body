@@ -1,0 +1,7 @@
+{
+  if (sCookieHandler == null) {
+    sCookieHandler=new ForwardingCookieHandler(context);
+    getOkHttpClient().setCookieHandler(sCookieHandler);
+  }
+  return getOkHttpClient();
+}

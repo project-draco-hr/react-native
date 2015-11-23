@@ -1,0 +1,3 @@
+{
+  return name.equalsIgnoreCase(VERSION_ZERO_HEADER) || name.equalsIgnoreCase(VERSION_ONE_HEADER);
+}

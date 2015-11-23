@@ -1,0 +1,18 @@
+{
+  if (USES_LEGACY_STORE) {
+    new GuardedResultAsyncTask<Boolean>(mContext){
+      @Override protected Boolean doInBackgroundGuarded(){
+        getCookieManager().removeAllCookie();
+        mCookieSaver.onCookiesModified();
+        return true;
+      }
+      @Override protected void onPostExecuteGuarded(      Boolean result){
+        callback.invoke(result);
+      }
+    }
+.execute();
+  }
+ else {
+    clearCookiesAsync(callback);
+  }
+}

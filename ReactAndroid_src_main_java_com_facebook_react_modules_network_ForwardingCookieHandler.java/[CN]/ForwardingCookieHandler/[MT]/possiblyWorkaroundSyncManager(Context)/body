@@ -1,0 +1,6 @@
+{
+  if (USES_LEGACY_STORE) {
+    CookieSyncManager syncManager=CookieSyncManager.createInstance(context);
+    syncManager.sync();
+  }
+}

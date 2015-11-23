@@ -1,0 +1,9 @@
+{
+  String url=uri.toString();
+  for (  Map.Entry<String,List<String>> entry : headers.entrySet()) {
+    String key=entry.getKey();
+    if (key != null && isCookieHeader(key)) {
+      addCookies(url,entry.getValue());
+    }
+  }
+}

@@ -1,2 +1,2 @@
-ReactApplicationContext reactContext
+ReactApplicationContext context
 String defaultUserAgent

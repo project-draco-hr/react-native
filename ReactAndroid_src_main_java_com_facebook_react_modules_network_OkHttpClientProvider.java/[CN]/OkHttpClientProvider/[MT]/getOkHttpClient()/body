@@ -1,9 +1,6 @@
 {
   if (sClient == null) {
-    sClient=new OkHttpClient();
-    sClient.setConnectTimeout(0,TimeUnit.MILLISECONDS);
-    sClient.setReadTimeout(0,TimeUnit.MILLISECONDS);
-    sClient.setWriteTimeout(0,TimeUnit.MILLISECONDS);
+    sClient=createClient();
   }
   return sClient;
 }

@@ -1,0 +1,5 @@
+{
+  if (USES_LEGACY_STORE) {
+    mHandler.sendEmptyMessageDelayed(MSG_PERSIST_COOKIES,TIMEOUT);
+  }
+}

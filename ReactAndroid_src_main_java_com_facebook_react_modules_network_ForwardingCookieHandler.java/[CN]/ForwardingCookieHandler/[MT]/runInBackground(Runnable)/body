@@ -1,0 +1,8 @@
+{
+  new GuardedAsyncTask<Void,Void>(mContext){
+    @Override protected void doInBackgroundGuarded(    Void... params){
+      runnable.run();
+    }
+  }
+.execute();
+}
