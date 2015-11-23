@@ -1,7 +1,5 @@
 {
-  if (mCurrentActivity == null) {
-    return false;
-  }
+  Assertions.assertNotNull(mCurrentActivity);
   mCurrentActivity.startActivityForResult(intent,code,bundle);
   return true;
 }
