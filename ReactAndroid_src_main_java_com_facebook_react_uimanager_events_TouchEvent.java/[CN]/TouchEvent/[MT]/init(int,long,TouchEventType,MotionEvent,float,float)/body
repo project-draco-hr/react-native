@@ -25,4 +25,6 @@ throw new RuntimeException("Unhandled MotionEvent action: " + action);
 mTouchEventType=touchEventType;
 mMotionEvent=MotionEvent.obtain(motionEventToCopy);
 mCoalescingKey=coalescingKey;
+mViewX=viewX;
+mViewY=viewY;
 }

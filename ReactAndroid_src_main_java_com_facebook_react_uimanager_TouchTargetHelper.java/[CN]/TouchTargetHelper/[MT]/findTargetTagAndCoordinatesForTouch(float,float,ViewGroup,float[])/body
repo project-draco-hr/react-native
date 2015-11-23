@@ -1,0 +1,14 @@
+{
+  UiThreadUtil.assertOnUiThread();
+  int targetTag=viewGroup.getId();
+  viewCoords[0]=eventY;
+  viewCoords[1]=eventX;
+  View nativeTargetView=findTouchTargetView(viewCoords,viewGroup);
+  if (nativeTargetView != null) {
+    View reactTargetView=findClosestReactAncestor(nativeTargetView);
+    if (reactTargetView != null) {
+      targetTag=getTouchTargetForView(reactTargetView,viewCoords[0],viewCoords[1]);
+    }
+  }
+  return targetTag;
+}

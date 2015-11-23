@@ -11,8 +11,8 @@
       FLog.e(ReactConstants.TAG,"Got DOWN touch before receiving UP or CANCEL from last gesture");
     }
     mChildIsHandlingNativeGesture=false;
-    mTargetTag=TouchTargetHelper.findTargetTagForTouch(ev.getY(),ev.getX(),this);
-    eventDispatcher.dispatchEvent(TouchEvent.obtain(mTargetTag,SystemClock.uptimeMillis(),TouchEventType.START,ev));
+    mTargetTag=TouchTargetHelper.findTargetTagAndCoordinatesForTouch(ev.getY(),ev.getX(),this,mTargetCoordinates);
+    eventDispatcher.dispatchEvent(TouchEvent.obtain(mTargetTag,SystemClock.uptimeMillis(),TouchEventType.START,ev,mTargetCoordinates[1],mTargetCoordinates[0]));
   }
  else   if (mChildIsHandlingNativeGesture) {
     return;
@@ -21,17 +21,17 @@
     FLog.e(ReactConstants.TAG,"Unexpected state: received touch event but didn't get starting ACTION_DOWN for this " + "gesture before");
   }
  else   if (action == MotionEvent.ACTION_UP) {
-    eventDispatcher.dispatchEvent(TouchEvent.obtain(mTargetTag,SystemClock.uptimeMillis(),TouchEventType.END,ev));
+    eventDispatcher.dispatchEvent(TouchEvent.obtain(mTargetTag,SystemClock.uptimeMillis(),TouchEventType.END,ev,mTargetCoordinates[1],mTargetCoordinates[0]));
     mTargetTag=-1;
   }
  else   if (action == MotionEvent.ACTION_MOVE) {
-    eventDispatcher.dispatchEvent(TouchEvent.obtain(mTargetTag,SystemClock.uptimeMillis(),TouchEventType.MOVE,ev));
+    eventDispatcher.dispatchEvent(TouchEvent.obtain(mTargetTag,SystemClock.uptimeMillis(),TouchEventType.MOVE,ev,mTargetCoordinates[1],mTargetCoordinates[0]));
   }
  else   if (action == MotionEvent.ACTION_POINTER_DOWN) {
-    eventDispatcher.dispatchEvent(TouchEvent.obtain(mTargetTag,SystemClock.uptimeMillis(),TouchEventType.START,ev));
+    eventDispatcher.dispatchEvent(TouchEvent.obtain(mTargetTag,SystemClock.uptimeMillis(),TouchEventType.START,ev,mTargetCoordinates[1],mTargetCoordinates[0]));
   }
  else   if (action == MotionEvent.ACTION_POINTER_UP) {
-    eventDispatcher.dispatchEvent(TouchEvent.obtain(mTargetTag,SystemClock.uptimeMillis(),TouchEventType.END,ev));
+    eventDispatcher.dispatchEvent(TouchEvent.obtain(mTargetTag,SystemClock.uptimeMillis(),TouchEventType.END,ev,mTargetCoordinates[1],mTargetCoordinates[0]));
   }
  else   if (action == MotionEvent.ACTION_CANCEL) {
     dispatchCancelEvent(ev);
