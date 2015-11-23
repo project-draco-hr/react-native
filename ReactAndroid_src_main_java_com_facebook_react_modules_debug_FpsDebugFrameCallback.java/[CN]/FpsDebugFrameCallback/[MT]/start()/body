@@ -1,6 +1,6 @@
 {
   mShouldStop=false;
   mReactContext.getCatalystInstance().addBridgeIdleDebugListener(mDidJSUpdateUiDuringFrameDetector);
-  mUIManagerModule.setUiManagerDebugListener(mDidJSUpdateUiDuringFrameDetector);
+  mUIManagerModule.setViewHierarchyUpdateDebugListener(mDidJSUpdateUiDuringFrameDetector);
   mChoreographer.postFrameCallback(this);
 }

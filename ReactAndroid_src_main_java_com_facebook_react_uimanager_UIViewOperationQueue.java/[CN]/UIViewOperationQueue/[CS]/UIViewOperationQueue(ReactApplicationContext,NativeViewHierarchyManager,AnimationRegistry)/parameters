@@ -1,4 +1,3 @@
 ReactApplicationContext reactContext
-UIManagerModule uiManagerModule
 NativeViewHierarchyManager nativeViewHierarchyManager
 AnimationRegistry animationRegistry

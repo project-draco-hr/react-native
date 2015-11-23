@@ -3,7 +3,9 @@
   if (operations != null) {
     mOperations=new ArrayList<>();
   }
-  mUIManagerModule.notifyOnViewHierarchyUpdateEnqueued();
+  if (mViewHierarchyUpdateDebugListener != null) {
+    mViewHierarchyUpdateDebugListener.onViewHierarchyUpdateEnqueued();
+  }
 synchronized (mDispatchRunnablesLock) {
     mDispatchUIRunnables.add(new Runnable(){
       @Override public void run(){
@@ -14,7 +16,9 @@ synchronized (mDispatchRunnablesLock) {
               operations.get(i).execute();
             }
           }
-          mUIManagerModule.notifyOnViewHierarchyUpdateFinished();
+          if (mViewHierarchyUpdateDebugListener != null) {
+            mViewHierarchyUpdateDebugListener.onViewHierarchyUpdateFinished();
+          }
         }
   finally {
           Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);

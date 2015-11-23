@@ -1,5 +1,4 @@
 {
-  mUIManagerModule=uiManagerModule;
   mNativeViewHierarchyManager=nativeViewHierarchyManager;
   mAnimationRegistry=animationRegistry;
   mDispatchUIFrameCallback=new DispatchUIFrameCallback(reactContext);
