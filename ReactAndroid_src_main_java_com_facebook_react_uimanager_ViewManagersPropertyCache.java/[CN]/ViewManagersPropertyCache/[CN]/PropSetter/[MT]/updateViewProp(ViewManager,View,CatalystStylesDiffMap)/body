@@ -4,12 +4,14 @@
       VIEW_MGR_ARGS[0]=viewToUpdate;
       VIEW_MGR_ARGS[1]=extractProperty(props);
       mSetter.invoke(viewManager,VIEW_MGR_ARGS);
+      Arrays.fill(VIEW_MGR_ARGS,null);
     }
  else {
       VIEW_MGR_GROUP_ARGS[0]=viewToUpdate;
       VIEW_MGR_GROUP_ARGS[1]=mIndex;
       VIEW_MGR_GROUP_ARGS[2]=extractProperty(props);
       mSetter.invoke(viewManager,VIEW_MGR_GROUP_ARGS);
+      Arrays.fill(VIEW_MGR_GROUP_ARGS,null);
     }
   }
  catch (  Throwable t) {
