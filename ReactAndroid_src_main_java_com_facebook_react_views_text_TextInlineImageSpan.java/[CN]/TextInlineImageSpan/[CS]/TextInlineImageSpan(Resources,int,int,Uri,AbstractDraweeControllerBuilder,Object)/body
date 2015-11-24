@@ -1,5 +1,7 @@
 {
   mDraweeHolder=new DraweeHolder(GenericDraweeHierarchyBuilder.newInstance(resources).build());
+  mDraweeControllerBuilder=draweeControllerBuilder;
+  mCallerContext=callerContext;
   mHeight=height;
   mWidth=width;
   mUri=(uri != null) ? uri : Uri.EMPTY;

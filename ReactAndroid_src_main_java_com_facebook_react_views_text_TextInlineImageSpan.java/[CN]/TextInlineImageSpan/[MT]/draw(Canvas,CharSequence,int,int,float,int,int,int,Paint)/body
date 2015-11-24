@@ -1,7 +1,7 @@
 {
   if (mDrawable == null) {
     ImageRequest imageRequest=ImageRequestBuilder.newBuilderWithSource(mUri).build();
-    DraweeController draweeController=Fresco.newDraweeControllerBuilder().setOldController(mDraweeHolder.getController()).setImageRequest(imageRequest).build();
+    DraweeController draweeController=mDraweeControllerBuilder.reset().setOldController(mDraweeHolder.getController()).setCallerContext(mCallerContext).setImageRequest(imageRequest).build();
     mDraweeHolder.setController(draweeController);
     mDrawable=mDraweeHolder.getTopLevelDrawable();
     mDrawable.setBounds(0,0,mWidth,mHeight);
