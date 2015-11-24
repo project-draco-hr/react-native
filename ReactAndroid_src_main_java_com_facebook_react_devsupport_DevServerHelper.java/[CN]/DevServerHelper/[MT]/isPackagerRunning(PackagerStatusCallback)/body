@@ -3,7 +3,7 @@
   Request request=new Request.Builder().url(statusURL).build();
   mClient.newCall(request).enqueue(new Callback(){
     @Override public void onFailure(    Request request,    IOException e){
-      FLog.e(ReactConstants.TAG,"IOException requesting status from packager",e);
+      FLog.w(ReactConstants.TAG,"The packager does not seem to be running as we got an IOException requesting " + "its status: " + e.getMessage());
       callback.onPackagerStatusFetched(false);
     }
     @Override public void onResponse(    Response response) throws IOException {
