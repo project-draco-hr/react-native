@@ -1,6 +1,6 @@
 {
-  if (mReactDatabaseSupplierInstance == null) {
-    mReactDatabaseSupplierInstance=new ReactDatabaseSupplier(context);
+  if (sReactDatabaseSupplierInstance == null) {
+    sReactDatabaseSupplierInstance=new ReactDatabaseSupplier(context.getApplicationContext());
   }
-  return mReactDatabaseSupplierInstance;
+  return sReactDatabaseSupplierInstance;
 }
