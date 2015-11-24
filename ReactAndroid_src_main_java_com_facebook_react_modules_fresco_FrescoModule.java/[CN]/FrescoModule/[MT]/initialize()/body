@@ -12,7 +12,7 @@
     requestListeners.add(mRequestListener);
   }
   Context context=this.getReactApplicationContext().getApplicationContext();
-  OkHttpClient okHttpClient=OkHttpClientProvider.getCookieAwareOkHttpClient(getReactApplicationContext());
+  OkHttpClient okHttpClient=OkHttpClientProvider.getOkHttpClient();
   ImagePipelineConfig.Builder builder=OkHttpImagePipelineConfigFactory.newBuilder(context,okHttpClient);
   builder.setDownsampleEnabled(false).setRequestListeners(requestListeners);
   if (mDiskCacheConfig != null) {

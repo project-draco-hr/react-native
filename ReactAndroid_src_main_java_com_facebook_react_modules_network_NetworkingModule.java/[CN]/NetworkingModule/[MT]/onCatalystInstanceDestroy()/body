@@ -1,8 +1,6 @@
 {
   mShuttingDown=true;
   mClient.cancel(null);
-  CookieHandler cookieHandler=mClient.getCookieHandler();
-  if (cookieHandler instanceof ForwardingCookieHandler) {
-    ((ForwardingCookieHandler)cookieHandler).destroy();
-  }
+  mCookieHandler.destroy();
+  mClient.setCookieHandler(null);
 }

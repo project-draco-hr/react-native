@@ -2,6 +2,7 @@
   super(reactContext);
   mClient=client;
   mClient.networkInterceptors().add(new StethoInterceptor());
+  mCookieHandler=new ForwardingCookieHandler(reactContext);
   mShuttingDown=false;
   mDefaultUserAgent=defaultUserAgent;
 }

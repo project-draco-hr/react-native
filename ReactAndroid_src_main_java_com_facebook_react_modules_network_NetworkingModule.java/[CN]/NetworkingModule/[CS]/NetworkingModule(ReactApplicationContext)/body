@@ -1,3 +1,3 @@
 {
-  this(context,null,OkHttpClientProvider.getCookieAwareOkHttpClient(context));
+  this(context,null,OkHttpClientProvider.getOkHttpClient());
 }

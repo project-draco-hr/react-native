@@ -1,6 +1,3 @@
 {
-  CookieHandler cookieHandler=mClient.getCookieHandler();
-  if (cookieHandler instanceof ForwardingCookieHandler) {
-    ((ForwardingCookieHandler)cookieHandler).clearCookies(callback);
-  }
+  mCookieHandler.clearCookies(callback);
 }
