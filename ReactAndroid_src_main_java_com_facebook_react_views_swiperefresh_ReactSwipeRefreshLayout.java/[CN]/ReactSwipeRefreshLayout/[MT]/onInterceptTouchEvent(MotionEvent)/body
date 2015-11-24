@@ -1,0 +1,7 @@
+{
+  if (super.onInterceptTouchEvent(ev)) {
+    NativeGestureUtil.notifyNativeGestureStarted(this,ev);
+    return true;
+  }
+  return false;
+}
