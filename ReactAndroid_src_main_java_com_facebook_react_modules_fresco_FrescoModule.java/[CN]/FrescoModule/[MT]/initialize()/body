@@ -1,11 +1,6 @@
 {
   super.initialize();
-  SoLoaderShim.setHandler(new SoLoaderShim.Handler(){
-    @Override public void loadLibrary(    String libraryName){
-      SoLoader.loadLibrary(libraryName);
-    }
-  }
-);
+  SoLoaderShim.setHandler(new FrescoHandler());
   HashSet<RequestListener> requestListeners=new HashSet<>();
   requestListeners.add(new SystraceRequestListener());
   if (mRequestListener != null) {

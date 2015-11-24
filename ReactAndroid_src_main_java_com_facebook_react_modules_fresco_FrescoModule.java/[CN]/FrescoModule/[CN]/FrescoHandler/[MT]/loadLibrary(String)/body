@@ -1,0 +1,3 @@
+{
+  SoLoader.loadLibrary(libraryName);
+}
