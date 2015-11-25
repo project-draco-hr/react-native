@@ -7,17 +7,58 @@
   if (mUseDeveloperSupport) {
     reactContext.setNativeModuleCallExceptionHandler(mDevSupportManager);
   }
-  CoreModulesPackage coreModulesPackage=new CoreModulesPackage(this,mBackBtnHandler);
-  processPackage(coreModulesPackage,reactContext,nativeRegistryBuilder,jsModulesBuilder);
-  for (  ReactPackage reactPackage : mPackages) {
-    processPackage(reactPackage,reactContext,nativeRegistryBuilder,jsModulesBuilder);
+  Systrace.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"createAndProcessCoreModulesPackage");
+  try {
+    CoreModulesPackage coreModulesPackage=new CoreModulesPackage(this,mBackBtnHandler);
+    processPackage(coreModulesPackage,reactContext,nativeRegistryBuilder,jsModulesBuilder);
   }
-  CatalystInstanceImpl.Builder catalystInstanceBuilder=new CatalystInstanceImpl.Builder().setCatalystQueueConfigurationSpec(CatalystQueueConfigurationSpec.createDefault()).setJSExecutor(jsExecutor).setRegistry(nativeRegistryBuilder.build()).setJSModulesConfig(jsModulesBuilder.build()).setJSBundleLoader(jsBundleLoader).setNativeModuleCallExceptionHandler(mDevSupportManager);
-  CatalystInstance catalystInstance=catalystInstanceBuilder.build();
+  finally {
+    Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);
+  }
+  for (  ReactPackage reactPackage : mPackages) {
+    Systrace.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"createAndProcessCustomReactPackage");
+    try {
+      processPackage(reactPackage,reactContext,nativeRegistryBuilder,jsModulesBuilder);
+    }
+  finally {
+      Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);
+    }
+  }
+  Systrace.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"buildNativeModuleRegistry");
+  NativeModuleRegistry nativeModuleRegistry;
+  try {
+    nativeModuleRegistry=nativeRegistryBuilder.build();
+  }
+  finally {
+    Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);
+  }
+  Systrace.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"buildJSModuleConfig");
+  JavaScriptModulesConfig javaScriptModulesConfig;
+  try {
+    javaScriptModulesConfig=jsModulesBuilder.build();
+  }
+  finally {
+    Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);
+  }
+  CatalystInstanceImpl.Builder catalystInstanceBuilder=new CatalystInstanceImpl.Builder().setCatalystQueueConfigurationSpec(CatalystQueueConfigurationSpec.createDefault()).setJSExecutor(jsExecutor).setRegistry(nativeModuleRegistry).setJSModulesConfig(javaScriptModulesConfig).setJSBundleLoader(jsBundleLoader).setNativeModuleCallExceptionHandler(mDevSupportManager);
+  Systrace.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"createCatalystInstance");
+  CatalystInstance catalystInstance;
+  try {
+    catalystInstance=catalystInstanceBuilder.build();
+  }
+  finally {
+    Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);
+  }
   if (mBridgeIdleDebugListener != null) {
     catalystInstance.addBridgeIdleDebugListener(mBridgeIdleDebugListener);
   }
   reactContext.initializeWithInstance(catalystInstance);
-  catalystInstance.runJSBundle();
+  Systrace.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"runJSBundle");
+  try {
+    catalystInstance.runJSBundle();
+  }
+  finally {
+    Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);
+  }
   return reactContext;
 }

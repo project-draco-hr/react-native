@@ -1,7 +1,13 @@
 {
-  List<ViewManager> allViewManagers=new ArrayList<>();
-  for (  ReactPackage reactPackage : mPackages) {
-    allViewManagers.addAll(reactPackage.createViewManagers(catalystApplicationContext));
+  Systrace.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"createAllViewManagers");
+  try {
+    List<ViewManager> allViewManagers=new ArrayList<>();
+    for (    ReactPackage reactPackage : mPackages) {
+      allViewManagers.addAll(reactPackage.createViewManagers(catalystApplicationContext));
+    }
+    return allViewManagers;
   }
-  return allViewManagers;
+  finally {
+    Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);
+  }
 }

@@ -7,6 +7,6 @@
   mNativeViewHierarchyOptimizer=new NativeViewHierarchyOptimizer(mOperationsQueue,mShadowNodeRegistry);
   DisplayMetrics displayMetrics=reactContext.getResources().getDisplayMetrics();
   DisplayMetricsHolder.setDisplayMetrics(displayMetrics);
-  mModuleConstants=UIManagerModuleConstantsHelper.createConstants(displayMetrics,viewManagerList);
+  mModuleConstants=createConstants(displayMetrics,viewManagerList);
   reactContext.addLifecycleEventListener(this);
 }
