@@ -18,7 +18,20 @@
   Postprocessor postprocessor=usePostprocessorScaling ? mRoundedCornerPostprocessor : null;
   ResizeOptions resizeOptions=doResize ? new ResizeOptions(getWidth(),getHeight()) : null;
   ImageRequest imageRequest=ImageRequestBuilder.newBuilderWithSource(mUri).setPostprocessor(postprocessor).setResizeOptions(resizeOptions).setProgressiveRenderingEnabled(mProgressiveRenderingEnabled).build();
-  DraweeController draweeController=mDraweeControllerBuilder.reset().setAutoPlayAnimations(true).setCallerContext(mCallerContext).setOldController(getController()).setImageRequest(imageRequest).setControllerListener(mControllerListener).build();
-  setController(draweeController);
+  mDraweeControllerBuilder.reset();
+  mDraweeControllerBuilder.setAutoPlayAnimations(true).setCallerContext(mCallerContext).setOldController(getController()).setImageRequest(imageRequest);
+  if (mControllerListener != null && mControllerForTesting != null) {
+    ForwardingControllerListener combinedListener=new ForwardingControllerListener();
+    combinedListener.addListener(mControllerListener);
+    combinedListener.addListener(mControllerForTesting);
+    mDraweeControllerBuilder.setControllerListener(combinedListener);
+  }
+ else   if (mControllerForTesting != null) {
+    mDraweeControllerBuilder.setControllerListener(mControllerForTesting);
+  }
+ else   if (mControllerListener != null) {
+    mDraweeControllerBuilder.setControllerListener(mControllerListener);
+  }
+  setController(mDraweeControllerBuilder.build());
   mIsDirty=false;
 }

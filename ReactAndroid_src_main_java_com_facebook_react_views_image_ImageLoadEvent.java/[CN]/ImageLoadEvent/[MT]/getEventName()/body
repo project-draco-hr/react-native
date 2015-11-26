@@ -1,0 +1,3 @@
+{
+  return ImageLoadEvent.eventNameForType(mEventType);
+}

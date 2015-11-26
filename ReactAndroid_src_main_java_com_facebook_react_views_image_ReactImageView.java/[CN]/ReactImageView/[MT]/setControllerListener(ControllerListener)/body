@@ -1,5 +1,5 @@
 {
-  mControllerListener=controllerListener;
+  mControllerForTesting=controllerListener;
   mIsDirty=true;
   maybeUpdateView();
 }

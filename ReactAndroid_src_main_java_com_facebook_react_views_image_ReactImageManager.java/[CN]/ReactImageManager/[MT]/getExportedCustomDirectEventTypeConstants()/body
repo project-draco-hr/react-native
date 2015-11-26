@@ -1,0 +1,3 @@
+{
+  return MapBuilder.of(ImageLoadEvent.eventNameForType(ImageLoadEvent.ON_LOAD_START),MapBuilder.of("registrationName","onLoadStart"),ImageLoadEvent.eventNameForType(ImageLoadEvent.ON_LOAD),MapBuilder.of("registrationName","onLoad"),ImageLoadEvent.eventNameForType(ImageLoadEvent.ON_LOAD_END),MapBuilder.of("registrationName","onLoadEnd"));
+}
