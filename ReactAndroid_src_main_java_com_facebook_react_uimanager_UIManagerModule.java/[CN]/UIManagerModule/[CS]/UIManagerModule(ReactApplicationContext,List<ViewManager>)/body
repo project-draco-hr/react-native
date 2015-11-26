@@ -2,8 +2,8 @@
   super(reactContext);
   mViewManagers=new ViewManagerRegistry(viewManagerList);
   mEventDispatcher=new EventDispatcher(reactContext);
-  mNativeViewHierarchyManager=new NativeViewHierarchyManager(mAnimationRegistry,mViewManagers);
-  mOperationsQueue=new UIViewOperationQueue(reactContext,mNativeViewHierarchyManager,mAnimationRegistry);
+  mNativeViewHierarchyManager=new NativeViewHierarchyManager(mViewManagers);
+  mOperationsQueue=new UIViewOperationQueue(reactContext,mNativeViewHierarchyManager);
   mNativeViewHierarchyOptimizer=new NativeViewHierarchyOptimizer(mOperationsQueue,mShadowNodeRegistry);
   DisplayMetrics displayMetrics=reactContext.getResources().getDisplayMetrics();
   DisplayMetricsHolder.setDisplayMetrics(displayMetrics);

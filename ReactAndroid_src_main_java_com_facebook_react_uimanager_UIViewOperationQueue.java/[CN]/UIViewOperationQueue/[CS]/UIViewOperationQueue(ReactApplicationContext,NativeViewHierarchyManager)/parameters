@@ -1,3 +1,2 @@
 ReactApplicationContext reactContext
 NativeViewHierarchyManager nativeViewHierarchyManager
-AnimationRegistry animationRegistry

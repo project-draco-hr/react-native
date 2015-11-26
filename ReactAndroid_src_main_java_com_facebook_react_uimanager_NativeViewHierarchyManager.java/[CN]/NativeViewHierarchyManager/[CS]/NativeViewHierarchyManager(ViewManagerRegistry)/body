@@ -1,5 +1,5 @@
 {
-  mAnimationRegistry=animationRegistry;
+  mAnimationRegistry=new AnimationRegistry();
   mViewManagers=viewManagers;
   mTagsToViews=new SparseArray<>();
   mTagsToViewManagers=new SparseArray<>();
