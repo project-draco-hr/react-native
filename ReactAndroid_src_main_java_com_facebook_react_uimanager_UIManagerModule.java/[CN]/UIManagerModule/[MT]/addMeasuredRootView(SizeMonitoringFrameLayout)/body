@@ -26,24 +26,6 @@
   }
 );
   mShadowNodeRegistry.addRootNode(rootCSSNode);
-  if (UiThreadUtil.isOnUiThread()) {
-    mNativeViewHierarchyManager.addRootView(tag,rootView,themedRootContext);
-  }
- else {
-    final Semaphore semaphore=new Semaphore(0);
-    getReactApplicationContext().runOnUiQueueThread(new Runnable(){
-      @Override public void run(){
-        mNativeViewHierarchyManager.addRootView(tag,rootView,themedRootContext);
-        semaphore.release();
-      }
-    }
-);
-    try {
-      SoftAssertions.assertCondition(semaphore.tryAcquire(5000,TimeUnit.MILLISECONDS),"Timed out adding root view");
-    }
- catch (    InterruptedException e) {
-      throw new RuntimeException(e);
-    }
-  }
+  mOperationsQueue.addRootView(tag,rootView,themedRootContext);
   return tag;
 }
