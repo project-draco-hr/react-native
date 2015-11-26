@@ -1,3 +1,0 @@
-{
-  mUIViewOperationQueue.enqueueDropViews(viewTagsToDrop,length);
-}

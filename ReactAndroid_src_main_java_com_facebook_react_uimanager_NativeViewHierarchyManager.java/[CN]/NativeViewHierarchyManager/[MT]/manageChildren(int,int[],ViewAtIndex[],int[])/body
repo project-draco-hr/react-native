@@ -41,7 +41,7 @@
       if (viewToDestroy == null) {
         throw new IllegalViewOperationException("Trying to destroy unknown view tag: " + tagToDelete + "\n detail: "+ constructManageChildrenErrorMessage(viewToManage,viewManager,indicesToRemove,viewsToAdd,tagsToDelete));
       }
-      detachView(viewToDestroy);
+      dropView(viewToDestroy);
     }
   }
 }

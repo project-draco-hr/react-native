@@ -1,5 +1,0 @@
-{
-  for (int i=0; i < mArrayLength; i++) {
-    mNativeViewHierarchyManager.dropView(mViewTagsToDrop[i]);
-  }
-}
