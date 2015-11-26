@@ -1,31 +1,28 @@
 {
   final int tag=mNextRootViewTag;
   mNextRootViewTag+=ROOT_VIEW_TAG_INCREMENT;
-  final ReactShadowNode rootCSSNode=new ReactShadowNode();
-  rootCSSNode.setReactTag(tag);
-  final ThemedReactContext themedRootContext=new ThemedReactContext(getReactApplicationContext(),rootView.getContext());
-  rootCSSNode.setThemedContext(themedRootContext);
+  final int width;
+  final int height;
   if (rootView.getLayoutParams() != null && rootView.getLayoutParams().width > 0 && rootView.getLayoutParams().height > 0) {
-    rootCSSNode.setStyleWidth(rootView.getLayoutParams().width);
-    rootCSSNode.setStyleHeight(rootView.getLayoutParams().height);
+    width=rootView.getLayoutParams().width;
+    height=rootView.getLayoutParams().height;
   }
  else {
-    rootCSSNode.setStyleWidth(rootView.getWidth());
-    rootCSSNode.setStyleHeight(rootView.getHeight());
+    width=rootView.getWidth();
+    height=rootView.getHeight();
   }
-  rootCSSNode.setViewClassName("Root");
+  final ThemedReactContext themedRootContext=new ThemedReactContext(getReactApplicationContext(),rootView.getContext());
+  mUIImplementation.registerRootView(rootView,tag,width,height,themedRootContext);
   rootView.setOnSizeChangedListener(new SizeMonitoringFrameLayout.OnSizeChangedListener(){
     @Override public void onSizeChanged(    final int width,    final int height,    int oldW,    int oldH){
       getReactApplicationContext().runOnNativeModulesQueueThread(new Runnable(){
         @Override public void run(){
-          updateRootNodeSize(rootCSSNode,width,height);
+          updateRootNodeSize(tag,width,height);
         }
       }
 );
     }
   }
 );
-  mShadowNodeRegistry.addRootNode(rootCSSNode);
-  mOperationsQueue.addRootView(tag,rootView,themedRootContext);
   return tag;
 }

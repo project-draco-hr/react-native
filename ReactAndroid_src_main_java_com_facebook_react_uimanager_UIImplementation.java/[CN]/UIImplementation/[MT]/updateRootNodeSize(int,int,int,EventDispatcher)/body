@@ -1,8 +1,8 @@
 {
-  getReactApplicationContext().assertOnNativeModulesQueueThread();
+  ReactShadowNode rootCSSNode=mShadowNodeRegistry.getNode(rootViewTag);
   rootCSSNode.setStyleWidth(newWidth);
   rootCSSNode.setStyleHeight(newHeight);
   if (mOperationsQueue.isEmpty()) {
-    dispatchViewUpdates(-1);
+    dispatchViewUpdates(eventDispatcher,-1);
   }
 }

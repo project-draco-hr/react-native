@@ -3,7 +3,7 @@
   mBatchId++;
   SystraceMessage.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"onBatchCompleteUI").arg("BatchId",batchId).flush();
   try {
-    dispatchViewUpdates(batchId);
+    mUIImplementation.dispatchViewUpdates(mEventDispatcher,batchId);
   }
   finally {
     Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);

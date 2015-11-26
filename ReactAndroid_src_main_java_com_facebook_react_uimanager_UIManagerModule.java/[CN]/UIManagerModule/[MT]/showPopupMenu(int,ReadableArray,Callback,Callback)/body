@@ -1,4 +1,3 @@
 {
-  assertViewExists(reactTag,"showPopupMenu");
-  mOperationsQueue.enqueueShowPopupMenu(reactTag,items,error,success);
+  mUIImplementation.showPopupMenu(reactTag,items,error,success);
 }

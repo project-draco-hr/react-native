@@ -1,0 +1,4 @@
+int rootViewTag
+int newWidth
+int newHeight
+EventDispatcher eventDispatcher

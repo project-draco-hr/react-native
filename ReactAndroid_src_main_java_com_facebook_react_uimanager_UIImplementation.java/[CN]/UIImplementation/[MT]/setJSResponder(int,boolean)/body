@@ -1,0 +1,8 @@
+{
+  assertViewExists(reactTag,"setJSResponder");
+  ReactShadowNode node=mShadowNodeRegistry.getNode(reactTag);
+  while (node.isVirtual() || node.isLayoutOnly()) {
+    node=node.getParent();
+  }
+  mOperationsQueue.enqueueSetJSResponder(node.getReactTag(),reactTag,blockNativeResponder);
+}

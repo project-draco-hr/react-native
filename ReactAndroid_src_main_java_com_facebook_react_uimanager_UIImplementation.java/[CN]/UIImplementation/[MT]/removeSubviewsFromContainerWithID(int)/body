@@ -1,0 +1,11 @@
+{
+  ReactShadowNode containerNode=mShadowNodeRegistry.getNode(containerTag);
+  if (containerNode == null) {
+    throw new IllegalViewOperationException("Trying to remove subviews of an unknown view tag: " + containerTag);
+  }
+  WritableArray indicesToRemove=Arguments.createArray();
+  for (int childIndex=0; childIndex < containerNode.getChildCount(); childIndex++) {
+    indicesToRemove.pushInt(childIndex);
+  }
+  manageChildren(containerTag,null,null,null,null,indicesToRemove);
+}

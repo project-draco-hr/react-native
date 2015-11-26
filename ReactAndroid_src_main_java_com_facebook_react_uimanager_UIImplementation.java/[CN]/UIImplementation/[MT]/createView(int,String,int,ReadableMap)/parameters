@@ -1,0 +1,4 @@
+int tag
+String className
+int rootViewTag
+ReadableMap props

@@ -1,0 +1,10 @@
+{
+  final ReactShadowNode rootCSSNode=new ReactShadowNode();
+  rootCSSNode.setReactTag(tag);
+  rootCSSNode.setThemedContext(context);
+  rootCSSNode.setStyleWidth(width);
+  rootCSSNode.setStyleHeight(height);
+  rootCSSNode.setViewClassName("Root");
+  mShadowNodeRegistry.addRootNode(rootCSSNode);
+  mOperationsQueue.addRootView(tag,rootView,context);
+}

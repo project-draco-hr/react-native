@@ -1,4 +1,3 @@
 {
-  mShadowNodeRegistry.removeRootNode(rootViewTag);
-  mOperationsQueue.enqueueRemoveRootView(rootViewTag);
+  mUIImplementation.removeRootView(rootViewTag);
 }

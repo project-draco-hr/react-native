@@ -1,13 +1,3 @@
 {
-  try {
-    measureLayoutRelativeToParent(tag,mMeasureBuffer);
-    float relativeX=PixelUtil.toDIPFromPixel(mMeasureBuffer[0]);
-    float relativeY=PixelUtil.toDIPFromPixel(mMeasureBuffer[1]);
-    float width=PixelUtil.toDIPFromPixel(mMeasureBuffer[2]);
-    float height=PixelUtil.toDIPFromPixel(mMeasureBuffer[3]);
-    successCallback.invoke(relativeX,relativeY,width,height);
-  }
- catch (  IllegalViewOperationException e) {
-    errorCallback.invoke(e.getMessage());
-  }
+  mUIImplementation.measureLayoutRelativeToParent(tag,errorCallback,successCallback);
 }

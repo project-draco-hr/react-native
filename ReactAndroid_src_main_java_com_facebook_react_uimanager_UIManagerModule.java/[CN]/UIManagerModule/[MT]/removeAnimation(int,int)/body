@@ -1,4 +1,3 @@
 {
-  assertViewExists(reactTag,"removeAnimation");
-  mOperationsQueue.enqueueRemoveAnimation(animationID);
+  mUIImplementation.removeAnimation(reactTag,animationID);
 }

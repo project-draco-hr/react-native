@@ -1,17 +1,3 @@
 {
-  ViewManager viewManager=mViewManagers.get(className);
-  if (viewManager == null) {
-    throw new IllegalViewOperationException("Got unknown view type: " + className);
-  }
-  ReactShadowNode cssNode=mShadowNodeRegistry.getNode(tag);
-  if (cssNode == null) {
-    throw new IllegalViewOperationException("Trying to update non-existent view with tag " + tag);
-  }
-  if (props != null) {
-    CatalystStylesDiffMap styles=new CatalystStylesDiffMap(props);
-    cssNode.updateProperties(styles);
-    if (!cssNode.isVirtual()) {
-      mNativeViewHierarchyOptimizer.handleUpdateView(cssNode,className,styles);
-    }
-  }
+  mUIImplementation.updateView(tag,className,props);
 }
