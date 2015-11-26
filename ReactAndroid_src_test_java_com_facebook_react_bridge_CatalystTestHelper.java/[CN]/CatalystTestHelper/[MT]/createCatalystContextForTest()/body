@@ -1,0 +1,5 @@
+{
+  ReactApplicationContext context=new ReactApplicationContext(RuntimeEnvironment.application);
+  context.initializeWithInstance(createMockCatalystInstance());
+  return context;
+}

@@ -1,0 +1,12 @@
+{
+  return new ReadableMapKeySetIterator(){
+    Iterator<String> mIterator=mBackingMap.keySet().iterator();
+    @Override public boolean hasNextKey(){
+      return mIterator.hasNext();
+    }
+    @Override public String nextKey(){
+      return mIterator.next();
+    }
+  }
+;
+}

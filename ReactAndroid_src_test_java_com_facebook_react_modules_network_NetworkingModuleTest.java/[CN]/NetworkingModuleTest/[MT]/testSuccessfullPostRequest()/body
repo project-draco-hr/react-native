@@ -1,0 +1,24 @@
+{
+  OkHttpClient httpClient=mock(OkHttpClient.class);
+  when(httpClient.newCall(any(Request.class))).thenAnswer(new Answer<Object>(){
+    @Override public Object answer(    InvocationOnMock invocation) throws Throwable {
+      Call callMock=mock(Call.class);
+      return callMock;
+    }
+  }
+);
+  NetworkingModule networkingModule=new NetworkingModule(null,"",httpClient);
+  SimpleMap body=new SimpleMap();
+  body.putString("string","This is request body");
+  networkingModule.sendRequest("POST","http://somedomain/bar",0,SimpleArray.of(SimpleArray.of("Content-Type","text/plain")),body,true);
+  ArgumentCaptor<Request> argumentCaptor=ArgumentCaptor.forClass(Request.class);
+  verify(httpClient).newCall(argumentCaptor.capture());
+  assertThat(argumentCaptor.getValue().urlString()).isEqualTo("http://somedomain/bar");
+  assertThat(argumentCaptor.getValue().headers().size()).isEqualTo(2);
+  assertThat(argumentCaptor.getValue().method()).isEqualTo("POST");
+  assertThat(argumentCaptor.getValue().body().contentType().type()).isEqualTo("text");
+  assertThat(argumentCaptor.getValue().body().contentType().subtype()).isEqualTo("plain");
+  Buffer contentBuffer=new Buffer();
+  argumentCaptor.getValue().body().writeTo(contentBuffer);
+  assertThat(contentBuffer.readUtf8()).isEqualTo("This is request body");
+}

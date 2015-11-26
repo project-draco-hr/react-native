@@ -1,0 +1,4 @@
+{
+  RuntimeEnvironment.application.deleteDatabase(ReactDatabaseSupplier.DATABASE_NAME);
+  ReactDatabaseSupplier.deleteInstance();
+}

@@ -1,0 +1,13 @@
+{
+  CatalystQueueConfigurationSpec spec=CatalystQueueConfigurationSpec.builder().setJSQueueThreadSpec(MessageQueueThreadSpec.mainThreadSpec()).setNativeModulesQueueThreadSpec(MessageQueueThreadSpec.mainThreadSpec()).build();
+  CatalystQueueConfiguration catalystQueueConfiguration=CatalystQueueConfigurationImpl.create(spec,new QueueThreadExceptionHandler(){
+    @Override public void handleException(    Exception e){
+      throw new RuntimeException(e);
+    }
+  }
+);
+  CatalystInstance reactInstance=mock(CatalystInstance.class);
+  when(reactInstance.getCatalystQueueConfiguration()).thenReturn(catalystQueueConfiguration);
+  when(reactInstance.getNativeModule(UIManagerModule.class)).thenReturn(mock(UIManagerModule.class));
+  return reactInstance;
+}

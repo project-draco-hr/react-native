@@ -1,0 +1,56 @@
+{
+  final int keyCount=1001;
+  final int magicalNumber=343;
+  SimpleArray keyValues=new SimpleArray();
+  for (int i=0; i < keyCount; i++) {
+    if (i % magicalNumber > 0) {
+      keyValues.pushArray(getArray("key" + i,"value" + i));
+    }
+  }
+  mStorage.multiSet(keyValues,mock(Callback.class));
+  SimpleArray keys=new SimpleArray();
+  for (int i=0; i < keyCount; i++) {
+    keys.pushString("key" + i);
+  }
+  mStorage.multiGet(keys,new Callback(){
+    @Override public void invoke(    Object... args){
+      assertThat(args.length).isEqualTo(2);
+      SimpleArray resultArray=(SimpleArray)args[1];
+      assertThat(resultArray.size()).isEqualTo(keyCount);
+      boolean keyReceived[]=new boolean[keyCount];
+      for (int i=0; i < keyCount; i++) {
+        String key=resultArray.getArray(i).getString(0).substring(3);
+        int idx=Integer.parseInt(key);
+        assertThat(keyReceived[idx]).isFalse();
+        keyReceived[idx]=true;
+        if (idx % magicalNumber > 0) {
+          String value=resultArray.getArray(i).getString(1).substring(5);
+          assertThat(key).isEqualTo(value);
+        }
+ else {
+          assertThat(resultArray.getArray(i).isNull(1));
+        }
+      }
+    }
+  }
+);
+  SimpleArray keyRemoves=new SimpleArray();
+  for (int i=0; i < keyCount; i++) {
+    if (i % 2 > 0) {
+      keyRemoves.pushString("key" + i);
+    }
+  }
+  mStorage.multiRemove(keyRemoves,mock(Callback.class));
+  mStorage.getAllKeys(new Callback(){
+    @Override public void invoke(    Object... args){
+      SimpleArray resultArray=(SimpleArray)args[1];
+      assertThat(resultArray.size()).isEqualTo(499);
+      for (int i=0; i < resultArray.size(); i++) {
+        String key=resultArray.getString(i).substring(3);
+        int idx=Integer.parseInt(key);
+        assertThat(idx % 2).isEqualTo(0);
+      }
+    }
+  }
+);
+}

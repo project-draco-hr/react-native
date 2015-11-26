@@ -1,0 +1,3 @@
+{
+  mBackingList=Arrays.asList(values);
+}
