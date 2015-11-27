@@ -1,3 +1,0 @@
-{
-  Fresco.getImagePipeline().clearMemoryCaches();
-}
