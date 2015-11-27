@@ -1,0 +1,4 @@
+{
+  getReactApplicationContext().getApplicationContext().unregisterComponentCallbacks(this);
+  clearMemoryCaches();
+}

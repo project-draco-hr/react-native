@@ -15,4 +15,5 @@
   }
   ImagePipelineConfig config=builder.build();
   Fresco.initialize(context,config);
+  getReactApplicationContext().getApplicationContext().registerComponentCallbacks(this);
 }
