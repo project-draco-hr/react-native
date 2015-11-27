@@ -1,5 +1,7 @@
 {
   Systrace.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"CreateJSON");
+  ArrayList<ModuleDefinition> moduleTable=new ArrayList<>();
+  Map<Class<? extends NativeModule>,NativeModule> moduleInstances=MapBuilder.newHashMap();
   String moduleDefinitionJson;
   try {
     JsonFactory jsonFactory=new JsonFactory();
@@ -7,19 +9,23 @@
     try {
       JsonGenerator jg=jsonFactory.createGenerator(writer);
       jg.writeStartObject();
-      for (      ModuleDefinition module : mModuleDefinitions) {
-        jg.writeObjectFieldStart(module.name);
-        jg.writeNumberField("moduleID",module.id);
+      int idx=0;
+      for (      NativeModule module : mModules.values()) {
+        ModuleDefinition moduleDef=new ModuleDefinition(idx++,module.getName(),module);
+        moduleTable.add(moduleDef);
+        moduleInstances.put(module.getClass(),module);
+        jg.writeObjectFieldStart(moduleDef.name);
+        jg.writeNumberField("moduleID",moduleDef.id);
         jg.writeObjectFieldStart("methods");
-        for (int i=0; i < module.methods.size(); i++) {
-          MethodRegistration method=module.methods.get(i);
+        for (int i=0; i < moduleDef.methods.size(); i++) {
+          MethodRegistration method=moduleDef.methods.get(i);
           jg.writeObjectFieldStart(method.name);
           jg.writeNumberField("methodID",i);
           jg.writeStringField("type",method.method.getType());
           jg.writeEndObject();
         }
         jg.writeEndObject();
-        module.target.writeConstantsField(jg,"constants");
+        moduleDef.target.writeConstantsField(jg,"constants");
         jg.writeEndObject();
       }
       jg.writeEndObject();
@@ -33,5 +39,5 @@
   finally {
     Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);
   }
-  return new NativeModuleRegistry(mModuleDefinitions,mModuleInstances,moduleDefinitionJson);
+  return new NativeModuleRegistry(moduleTable,moduleInstances,moduleDefinitionJson);
 }
