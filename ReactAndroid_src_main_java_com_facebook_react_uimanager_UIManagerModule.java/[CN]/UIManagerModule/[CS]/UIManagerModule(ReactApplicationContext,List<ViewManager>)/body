@@ -1,9 +1,3 @@
 {
-  super(reactContext);
-  mEventDispatcher=new EventDispatcher(reactContext);
-  DisplayMetrics displayMetrics=reactContext.getResources().getDisplayMetrics();
-  DisplayMetricsHolder.setDisplayMetrics(displayMetrics);
-  mModuleConstants=createConstants(displayMetrics,viewManagerList);
-  reactContext.addLifecycleEventListener(this);
-  mUIImplementation=new UIImplementation(reactContext,new ViewManagerRegistry(viewManagerList));
+  this(reactContext,viewManagerList,new UIImplementation(reactContext,viewManagerList));
 }

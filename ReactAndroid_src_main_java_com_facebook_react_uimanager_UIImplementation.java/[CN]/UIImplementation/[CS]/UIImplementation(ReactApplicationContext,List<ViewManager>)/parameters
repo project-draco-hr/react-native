@@ -1,2 +1,2 @@
 ReactApplicationContext reactContext
-ViewManagerRegistry viewManagers
+List<ViewManager> viewManagers
