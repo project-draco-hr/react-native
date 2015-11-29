@@ -1,5 +1,3 @@
 {
-  super(reactContext);
-  mRequestListener=listener;
-  mDiskCacheConfig=diskCacheConfig;
+  this(reactContext,getDefaultConfig(reactContext,listener,diskCacheConfig));
 }

@@ -1,18 +1,7 @@
 {
   super.initialize();
   SoLoaderShim.setHandler(new FrescoHandler());
-  HashSet<RequestListener> requestListeners=new HashSet<>();
-  requestListeners.add(new SystraceRequestListener());
-  if (mRequestListener != null) {
-    requestListeners.add(mRequestListener);
-  }
-  Context context=this.getReactApplicationContext().getApplicationContext();
-  OkHttpClient okHttpClient=OkHttpClientProvider.getOkHttpClient();
-  ImagePipelineConfig.Builder builder=OkHttpImagePipelineConfigFactory.newBuilder(context,okHttpClient);
-  builder.setDownsampleEnabled(false).setRequestListeners(requestListeners);
-  if (mDiskCacheConfig != null) {
-    builder.setMainDiskCacheConfig(mDiskCacheConfig);
-  }
-  ImagePipelineConfig config=builder.build();
-  Fresco.initialize(context,config);
+  Context context=getReactApplicationContext().getApplicationContext();
+  Fresco.initialize(context,mConfig);
+  mConfig=null;
 }

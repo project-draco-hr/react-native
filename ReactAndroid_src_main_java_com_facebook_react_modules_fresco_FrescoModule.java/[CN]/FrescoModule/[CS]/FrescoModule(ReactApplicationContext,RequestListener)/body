@@ -1,4 +1,3 @@
 {
-  super(reactContext);
-  mRequestListener=listener;
+  this(reactContext,getDefaultConfig(reactContext,listener,null));
 }
