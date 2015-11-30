@@ -2,15 +2,18 @@
   int childrenCount=viewGroup.getChildCount();
   for (int i=childrenCount - 1; i >= 0; i--) {
     View child=viewGroup.getChildAt(i);
-    if (isTouchPointInView(eventCoords[0],eventCoords[1],viewGroup,child)) {
-      eventCoords[0]+=viewGroup.getScrollY() - child.getTop();
-      eventCoords[1]+=viewGroup.getScrollX() - child.getLeft();
+    PointF childPoint=mTempPoint;
+    if (isTransformedTouchPointInView(eventCoords[0],eventCoords[1],viewGroup,child,childPoint)) {
+      float restoreY=eventCoords[0];
+      float restoreX=eventCoords[1];
+      eventCoords[0]=childPoint.y;
+      eventCoords[1]=childPoint.x;
       View targetView=findTouchTargetViewWithPointerEvents(eventCoords,child);
       if (targetView != null) {
         return targetView;
       }
-      eventCoords[0]-=viewGroup.getScrollY() - child.getTop();
-      eventCoords[1]-=viewGroup.getScrollX() - child.getLeft();
+      eventCoords[0]=restoreY;
+      eventCoords[1]=restoreX;
     }
   }
   return viewGroup;
