@@ -1,3 +1,3 @@
 ReadableMap config
-Callback successCallback
-Callback errorCallback
+Callback success
+Callback error

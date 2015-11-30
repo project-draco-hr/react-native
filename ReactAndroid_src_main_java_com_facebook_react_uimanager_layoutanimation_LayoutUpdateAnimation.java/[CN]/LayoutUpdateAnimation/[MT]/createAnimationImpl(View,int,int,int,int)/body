@@ -1,0 +1,13 @@
+{
+  boolean animateLocation=view.getX() != x || view.getY() != y;
+  boolean animateSize=view.getWidth() != width || view.getHeight() != height;
+  if (!animateLocation && !animateSize) {
+    return null;
+  }
+ else   if (animateLocation && !animateSize && USE_TRANSLATE_ANIMATION) {
+    return new TranslateAnimation(view.getX() - x,0,view.getY() - y,0);
+  }
+ else {
+    return new PositionAndSizeAnimation(view,x,y,width,height);
+  }
+}

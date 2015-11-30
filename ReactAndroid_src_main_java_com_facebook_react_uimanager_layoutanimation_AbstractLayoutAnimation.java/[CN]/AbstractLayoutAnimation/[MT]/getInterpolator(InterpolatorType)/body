@@ -1,0 +1,7 @@
+{
+  Interpolator interpolator=INTERPOLATOR.get(type);
+  if (interpolator == null) {
+    throw new IllegalArgumentException("Missing interpolator for type : " + type);
+  }
+  return interpolator;
+}

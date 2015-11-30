@@ -1,0 +1,8 @@
+{
+  if (mLayoutAnimationEnabled && mLayoutAnimator.shouldAnimateLayout(viewToUpdate)) {
+    mLayoutAnimator.applyLayoutUpdate(viewToUpdate,x,y,width,height);
+  }
+ else {
+    viewToUpdate.layout(x,y,x + width,y + height);
+  }
+}

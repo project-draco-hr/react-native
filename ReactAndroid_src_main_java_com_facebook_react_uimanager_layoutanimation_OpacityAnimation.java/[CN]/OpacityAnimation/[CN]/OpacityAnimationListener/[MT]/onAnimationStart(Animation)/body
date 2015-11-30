@@ -1,0 +1,6 @@
+{
+  if (mView.hasOverlappingRendering() && mView.getLayerType() == View.LAYER_TYPE_NONE) {
+    mLayerTypeChanged=true;
+    mView.setLayerType(View.LAYER_TYPE_HARDWARE,null);
+  }
+}

@@ -1,0 +1,11 @@
+{
+  mView=view;
+  mStartX=view.getX();
+  mStartY=view.getY();
+  mStartWidth=view.getWidth();
+  mStartHeight=view.getHeight();
+  mDeltaX=x - mStartX;
+  mDeltaY=y - mStartY;
+  mDeltaWidth=width - mStartWidth;
+  mDeltaHeight=height - mStartHeight;
+}

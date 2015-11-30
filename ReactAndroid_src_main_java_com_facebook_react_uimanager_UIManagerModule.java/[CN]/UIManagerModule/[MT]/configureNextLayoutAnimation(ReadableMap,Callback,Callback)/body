@@ -1,2 +1,3 @@
 {
+  mOperationsQueue.enqueueConfigureLayoutAnimation(config,success,error);
 }
