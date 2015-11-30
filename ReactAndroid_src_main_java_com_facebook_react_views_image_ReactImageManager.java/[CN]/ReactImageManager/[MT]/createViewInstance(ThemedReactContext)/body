@@ -1,6 +1,3 @@
 {
-  if (mDraweeControllerBuilder == null) {
-    mDraweeControllerBuilder=Fresco.newDraweeControllerBuilder();
-  }
-  return new ReactImageView(context,mDraweeControllerBuilder,mCallerContext);
+  return new ReactImageView(context,getDraweeControllerBuilder(),getCallerContext());
 }
