@@ -1,3 +1,0 @@
-{
-  return mDurationMs > 0;
-}

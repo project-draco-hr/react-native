@@ -1,3 +1,0 @@
-{
-  mOperations.add(new ConfigureLayoutAnimationOperation(config));
-}

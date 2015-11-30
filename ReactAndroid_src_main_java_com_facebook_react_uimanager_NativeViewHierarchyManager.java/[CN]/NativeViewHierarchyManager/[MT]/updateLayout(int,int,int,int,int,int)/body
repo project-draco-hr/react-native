@@ -15,10 +15,10 @@
       throw new IllegalViewOperationException("Trying to use view with tag " + tag + " as a parent, but its Manager doesn't extends ViewGroupManager");
     }
     if (parentViewGroupManager != null && !parentViewGroupManager.needsCustomLayoutForChildren()) {
-      updateLayout(viewToUpdate,x,y,width,height);
+      viewToUpdate.layout(x,y,x + width,y + height);
     }
   }
  else {
-    updateLayout(viewToUpdate,x,y,width,height);
+    viewToUpdate.layout(x,y,x + width,y + height);
   }
 }

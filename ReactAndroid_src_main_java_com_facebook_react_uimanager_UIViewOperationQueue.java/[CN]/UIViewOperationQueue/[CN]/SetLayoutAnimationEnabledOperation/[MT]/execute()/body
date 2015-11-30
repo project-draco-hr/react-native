@@ -1,3 +1,0 @@
-{
-  mNativeViewHierarchyManager.setLayoutAnimationEnabled(mEnabled);
-}

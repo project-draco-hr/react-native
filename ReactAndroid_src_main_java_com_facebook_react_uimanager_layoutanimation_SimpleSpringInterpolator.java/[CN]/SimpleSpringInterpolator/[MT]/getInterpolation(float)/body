@@ -1,3 +1,0 @@
-{
-  return (float)(1 + Math.pow(2,-10 * input) * Math.sin((input - FACTOR / 4) * Math.PI * 2 / FACTOR));
-}

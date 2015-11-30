@@ -1,3 +1,0 @@
-{
-  mOperationsQueue.enqueueSetLayoutAnimationEnabled(enabled);
-}

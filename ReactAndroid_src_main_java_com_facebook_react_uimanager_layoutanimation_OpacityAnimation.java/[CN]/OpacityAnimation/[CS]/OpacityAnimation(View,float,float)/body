@@ -1,6 +1,0 @@
-{
-  mView=view;
-  mStartOpacity=startOpacity;
-  mDeltaOpacity=endOpacity - startOpacity;
-  setAnimationListener(new OpacityAnimationListener(view));
-}

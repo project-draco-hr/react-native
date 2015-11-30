@@ -1,3 +1,0 @@
-{
-  mView.setAlpha(mStartOpacity + mDeltaOpacity * interpolatedTime);
-}

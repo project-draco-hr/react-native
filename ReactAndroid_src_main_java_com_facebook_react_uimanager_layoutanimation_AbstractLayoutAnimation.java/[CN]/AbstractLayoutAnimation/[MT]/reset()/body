@@ -1,6 +1,0 @@
-{
-  mAnimatedProperty=null;
-  mDurationMs=0;
-  mDelayMs=0;
-  mInterpolator=null;
-}

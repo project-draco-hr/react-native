@@ -1,3 +1,0 @@
-{
-  return mShouldAnimateLayout && viewToAnimate.getParent() != null;
-}
