@@ -1,21 +1,20 @@
 {
   LocationOptions locationOptions=LocationOptions.fromReactMap(options);
-  LocationManager locationManager=(LocationManager)getReactApplicationContext().getSystemService(Context.LOCATION_SERVICE);
-  String provider=getValidProvider(locationManager,locationOptions.highAccuracy);
-  if (provider == null) {
-    error.invoke("No available location provider.");
-    return;
-  }
-  Location location=null;
   try {
-    location=locationManager.getLastKnownLocation(provider);
+    LocationManager locationManager=(LocationManager)getReactApplicationContext().getSystemService(Context.LOCATION_SERVICE);
+    String provider=getValidProvider(locationManager,locationOptions.highAccuracy);
+    if (provider == null) {
+      error.invoke("No available location provider.");
+      return;
+    }
+    Location location=locationManager.getLastKnownLocation(provider);
+    if (location != null && SystemClock.currentTimeMillis() - location.getTime() < locationOptions.maximumAge) {
+      success.invoke(locationToMap(location));
+      return;
+    }
+    new SingleUpdateRequest(locationManager,provider,locationOptions.timeout,success,error).invoke();
   }
  catch (  SecurityException e) {
     throwLocationPermissionMissing(e);
   }
-  if (location != null && SystemClock.currentTimeMillis() - location.getTime() < locationOptions.maximumAge) {
-    success.invoke(locationToMap(location));
-    return;
-  }
-  new SingleUpdateRequest(locationManager,provider,locationOptions.timeout,success,error).invoke();
 }
