@@ -5,3 +5,4 @@ List<ReactPackage> packages
 boolean useDeveloperSupport
 NotThreadSafeBridgeIdleDebugListener bridgeIdleDebugListener
 LifecycleState initialLifecycleState
+UIImplementationProvider uiImplementationProvider

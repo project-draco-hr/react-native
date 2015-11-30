@@ -3,7 +3,7 @@
   UIManagerModule uiManagerModule;
   try {
     List<ViewManager> viewManagersList=mReactInstanceManager.createAllViewManagers(catalystApplicationContext);
-    uiManagerModule=new UIManagerModule(catalystApplicationContext,viewManagersList,new UIImplementation(catalystApplicationContext,viewManagersList));
+    uiManagerModule=new UIManagerModule(catalystApplicationContext,viewManagersList,mUIImplementationProvider.createUIImplementation(catalystApplicationContext,viewManagersList));
   }
   finally {
     Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);

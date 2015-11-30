@@ -1,3 +1,0 @@
-{
-  this(reactContext,viewManagerList,new UIImplementation(reactContext,viewManagerList));
-}
