@@ -13,6 +13,6 @@
     cssNode.updateProperties(styles);
   }
   if (!cssNode.isVirtual()) {
-    mNativeViewHierarchyOptimizer.handleCreateView(cssNode,rootViewTag,styles);
+    mNativeViewHierarchyOptimizer.handleCreateView(cssNode,rootNode.getThemedContext(),styles);
   }
 }

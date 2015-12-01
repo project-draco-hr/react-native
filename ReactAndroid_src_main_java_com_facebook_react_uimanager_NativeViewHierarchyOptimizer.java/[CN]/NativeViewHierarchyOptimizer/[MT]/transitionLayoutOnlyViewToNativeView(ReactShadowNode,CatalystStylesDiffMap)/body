@@ -8,7 +8,7 @@
   parent.removeChildAt(childIndex);
   removeNodeFromParent(node,false);
   node.setIsLayoutOnly(false);
-  mUIViewOperationQueue.enqueueCreateView(node.getRootNode().getReactTag(),node.getReactTag(),node.getViewClass(),props);
+  mUIViewOperationQueue.enqueueCreateView(node.getRootNode().getThemedContext(),node.getReactTag(),node.getViewClass(),props);
   parent.addChildAt(node,childIndex);
   addNodeToNode(parent,node,childIndex);
   for (int i=0; i < node.getChildCount(); i++) {

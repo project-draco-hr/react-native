@@ -1,4 +1,4 @@
-int rootViewTagForContext
+ThemedReactContext themedContext
 int tag
 String className
 CatalystStylesDiffMap initialProps

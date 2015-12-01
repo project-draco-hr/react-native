@@ -1,3 +1,0 @@
-{
-  mOperations.add(new CreateViewOperation(rootViewTagForContext,viewReactTag,viewClassName,initialProps));
-}

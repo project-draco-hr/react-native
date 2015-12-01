@@ -6,6 +6,5 @@
   mTagsToViews.put(tag,view);
   mTagsToViewManagers.put(tag,mRootViewManager);
   mRootTags.put(tag,true);
-  mRootViewsContext.put(tag,themedContext);
   view.setId(tag);
 }

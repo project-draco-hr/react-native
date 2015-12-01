@@ -6,5 +6,4 @@
   View rootView=mTagsToViews.get(rootViewTag);
   dropView(rootView);
   mRootTags.delete(rootViewTag);
-  mRootViewsContext.remove(rootViewTag);
 }

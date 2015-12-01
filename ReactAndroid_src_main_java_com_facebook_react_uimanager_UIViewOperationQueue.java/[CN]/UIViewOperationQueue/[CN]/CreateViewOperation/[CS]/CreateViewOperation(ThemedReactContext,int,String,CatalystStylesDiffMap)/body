@@ -1,6 +1,6 @@
 {
   super(tag);
-  mRootViewTagForContext=rootViewTagForContext;
+  mThemedContext=themedContext;
   mClassName=className;
   mInitialProps=initialProps;
 }

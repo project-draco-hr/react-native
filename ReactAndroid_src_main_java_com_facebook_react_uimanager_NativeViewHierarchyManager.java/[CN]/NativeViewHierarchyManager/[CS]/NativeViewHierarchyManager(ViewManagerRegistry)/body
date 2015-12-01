@@ -4,5 +4,4 @@
   mTagsToViews=new SparseArray<>();
   mTagsToViewManagers=new SparseArray<>();
   mRootTags=new SparseBooleanArray();
-  mRootViewsContext=new SparseArray<>();
 }
