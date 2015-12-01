@@ -1,0 +1,5 @@
+{
+  if (!cssNode.isVirtual()) {
+    mNativeViewHierarchyOptimizer.handleCreateView(cssNode,cssNode.getThemedContext(),styles);
+  }
+}

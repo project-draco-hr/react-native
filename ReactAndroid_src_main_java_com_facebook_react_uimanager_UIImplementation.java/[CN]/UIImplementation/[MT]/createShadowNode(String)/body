@@ -1,0 +1,4 @@
+{
+  ViewManager viewManager=mViewManagers.get(className);
+  return viewManager.createShadowNodeInstance();
+}

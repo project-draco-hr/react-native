@@ -1,0 +1,3 @@
+{
+  this(viewManagers,new UIViewOperationQueue(reactContext,new NativeViewHierarchyManager(viewManagers)));
+}

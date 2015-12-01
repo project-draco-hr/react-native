@@ -1,0 +1,5 @@
+{
+  mViewManagers=viewManagers;
+  mOperationsQueue=operationsQueue;
+  mNativeViewHierarchyOptimizer=new NativeViewHierarchyOptimizer(mOperationsQueue,mShadowNodeRegistry);
+}

@@ -1,0 +1,5 @@
+{
+  if (!cssNode.isVirtual()) {
+    mNativeViewHierarchyOptimizer.handleUpdateView(cssNode,className,styles);
+  }
+}

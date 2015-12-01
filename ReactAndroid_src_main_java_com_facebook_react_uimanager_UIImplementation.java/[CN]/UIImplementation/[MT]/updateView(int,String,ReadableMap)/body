@@ -10,8 +10,6 @@
   if (props != null) {
     CatalystStylesDiffMap styles=new CatalystStylesDiffMap(props);
     cssNode.updateProperties(styles);
-    if (!cssNode.isVirtual()) {
-      mNativeViewHierarchyOptimizer.handleUpdateView(cssNode,className,styles);
-    }
+    handleUpdateView(cssNode,className,styles);
   }
 }

@@ -1,5 +1,3 @@
 {
-  mViewManagers=new ViewManagerRegistry(viewManagers);
-  mOperationsQueue=new UIViewOperationQueue(reactContext,new NativeViewHierarchyManager(mViewManagers));
-  mNativeViewHierarchyOptimizer=new NativeViewHierarchyOptimizer(mOperationsQueue,mShadowNodeRegistry);
+  this(reactContext,new ViewManagerRegistry(viewManagers));
 }

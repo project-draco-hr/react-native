@@ -1,0 +1,9 @@
+{
+  SystraceMessage.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"cssRoot.calculateLayout").arg("rootTag",cssRoot.getReactTag()).flush();
+  try {
+    cssRoot.calculateLayout(mLayoutContext);
+  }
+  finally {
+    Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);
+  }
+}

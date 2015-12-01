@@ -1,6 +1,5 @@
 {
-  ViewManager viewManager=mViewManagers.get(className);
-  ReactShadowNode cssNode=viewManager.createShadowNodeInstance();
+  ReactShadowNode cssNode=createShadowNode(className);
   ReactShadowNode rootNode=mShadowNodeRegistry.getNode(rootViewTag);
   cssNode.setReactTag(tag);
   cssNode.setViewClassName(className);
@@ -12,7 +11,5 @@
     styles=new CatalystStylesDiffMap(props);
     cssNode.updateProperties(styles);
   }
-  if (!cssNode.isVirtual()) {
-    mNativeViewHierarchyOptimizer.handleCreateView(cssNode,rootNode.getThemedContext(),styles);
-  }
+  handleCreateView(cssNode,rootViewTag,styles);
 }
