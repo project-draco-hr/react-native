@@ -4,16 +4,16 @@
     View child=viewGroup.getChildAt(i);
     PointF childPoint=mTempPoint;
     if (isTransformedTouchPointInView(eventCoords[0],eventCoords[1],viewGroup,child,childPoint)) {
-      float restoreY=eventCoords[0];
-      float restoreX=eventCoords[1];
-      eventCoords[0]=childPoint.y;
-      eventCoords[1]=childPoint.x;
+      float restoreX=eventCoords[0];
+      float restoreY=eventCoords[1];
+      eventCoords[0]=childPoint.x;
+      eventCoords[1]=childPoint.y;
       View targetView=findTouchTargetViewWithPointerEvents(eventCoords,child);
       if (targetView != null) {
         return targetView;
       }
-      eventCoords[0]=restoreY;
-      eventCoords[1]=restoreX;
+      eventCoords[0]=restoreX;
+      eventCoords[1]=restoreY;
     }
   }
   return viewGroup;

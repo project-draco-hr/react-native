@@ -1,4 +1,4 @@
-float eventY
 float eventX
+float eventY
 ViewGroup viewGroup
 float[] viewCoords
