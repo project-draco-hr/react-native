@@ -1,9 +1,6 @@
 {
   ViewGroup viewToManage=(ViewGroup)mTagsToViews.get(tag);
-  ViewGroupManager viewManager=(ViewGroupManager)mTagsToViewManagers.get(tag);
-  if (viewManager == null) {
-    throw new IllegalViewOperationException("ViewManager for tag " + tag + " could not be found");
-  }
+  ViewGroupManager viewManager=(ViewGroupManager)resolveViewManager(tag);
   if (viewToManage == null) {
     throw new IllegalViewOperationException("Trying to manageChildren view with tag " + tag + " which doesn't exist\n detail: "+ constructManageChildrenErrorMessage(viewToManage,viewManager,indicesToRemove,viewsToAdd,tagsToDelete));
   }

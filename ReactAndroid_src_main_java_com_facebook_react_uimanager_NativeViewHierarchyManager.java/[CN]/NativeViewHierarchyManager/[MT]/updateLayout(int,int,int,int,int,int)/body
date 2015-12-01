@@ -1,9 +1,6 @@
 {
   UiThreadUtil.assertOnUiThread();
-  View viewToUpdate=mTagsToViews.get(tag);
-  if (viewToUpdate == null) {
-    throw new IllegalViewOperationException("Trying to update view with tag " + tag + " which "+ "doesn't exist");
-  }
+  View viewToUpdate=resolveView(tag);
   viewToUpdate.measure(View.MeasureSpec.makeMeasureSpec(width,View.MeasureSpec.EXACTLY),View.MeasureSpec.makeMeasureSpec(height,View.MeasureSpec.EXACTLY));
   if (!mRootTags.get(parentTag)) {
     ViewManager parentViewManager=mTagsToViewManagers.get(parentTag);

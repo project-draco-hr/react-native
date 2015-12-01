@@ -4,9 +4,6 @@
   if (view == null) {
     throw new IllegalViewOperationException("Trying to send command to a non-existing view " + "with tag " + reactTag);
   }
-  ViewManager viewManager=mTagsToViewManagers.get(reactTag);
-  if (viewManager == null) {
-    throw new IllegalViewOperationException("ViewManager for view tag " + reactTag + " could not be found");
-  }
+  ViewManager viewManager=resolveViewManager(reactTag);
   viewManager.receiveCommand(view,commandId,args);
 }

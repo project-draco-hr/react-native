@@ -1,7 +1,7 @@
 {
   UiThreadUtil.assertOnUiThread();
   if (!mRootTags.get(view.getId())) {
-    Assertions.assertNotNull(mTagsToViewManagers.get(view.getId())).onDropViewInstance((ThemedReactContext)view.getContext(),view);
+    resolveViewManager(view.getId()).onDropViewInstance((ThemedReactContext)view.getContext(),view);
   }
   ViewManager viewManager=mTagsToViewManagers.get(view.getId());
   if (view instanceof ViewGroup && viewManager instanceof ViewGroupManager) {

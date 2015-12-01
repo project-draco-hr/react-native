@@ -1,12 +1,6 @@
 {
   UiThreadUtil.assertOnUiThread();
-  ViewManager viewManager=mTagsToViewManagers.get(tag);
-  if (viewManager == null) {
-    throw new IllegalViewOperationException("ViewManager for tag " + tag + " could not be found");
-  }
-  View viewToUpdate=mTagsToViews.get(tag);
-  if (viewToUpdate == null) {
-    throw new IllegalViewOperationException("Trying to update view with tag " + tag + " which "+ "doesn't exist");
-  }
+  ViewManager viewManager=resolveViewManager(tag);
+  View viewToUpdate=resolveView(tag);
   viewManager.updateExtraData(viewToUpdate,extraData);
 }
