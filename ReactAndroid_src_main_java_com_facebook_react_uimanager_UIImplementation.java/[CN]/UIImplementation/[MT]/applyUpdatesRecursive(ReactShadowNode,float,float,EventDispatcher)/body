@@ -9,7 +9,10 @@
   }
   int tag=cssNode.getReactTag();
   if (!mShadowNodeRegistry.isRootNode(tag)) {
-    cssNode.dispatchUpdates(absoluteX,absoluteY,mOperationsQueue,mNativeViewHierarchyOptimizer,eventDispatcher);
+    cssNode.dispatchUpdates(absoluteX,absoluteY,mOperationsQueue,mNativeViewHierarchyOptimizer);
+    if (cssNode.shouldNotifyOnLayout()) {
+      eventDispatcher.dispatchEvent(OnLayoutEvent.obtain(tag,cssNode.getScreenX(),cssNode.getScreenY(),cssNode.getScreenWidth(),cssNode.getScreenHeight()));
+    }
   }
   cssNode.markUpdateSeen();
 }

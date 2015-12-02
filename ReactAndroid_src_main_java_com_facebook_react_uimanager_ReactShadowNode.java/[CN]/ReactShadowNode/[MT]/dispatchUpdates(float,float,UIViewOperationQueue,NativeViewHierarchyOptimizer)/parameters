@@ -2,4 +2,3 @@ float absoluteX
 float absoluteY
 UIViewOperationQueue uiViewOperationQueue
 NativeViewHierarchyOptimizer nativeViewHierarchyOptimizer
-EventDispatcher eventDispatcher
