@@ -1,0 +1,7 @@
+{
+  float newX=mStartX + mDeltaX * interpolatedTime;
+  float newY=mStartY + mDeltaY * interpolatedTime;
+  float newWidth=mStartWidth + mDeltaWidth * interpolatedTime;
+  float newHeight=mStartHeight + mDeltaHeight * interpolatedTime;
+  mView.layout(Math.round(newX),Math.round(newY),Math.round(newX + newWidth),Math.round(newY + newHeight));
+}

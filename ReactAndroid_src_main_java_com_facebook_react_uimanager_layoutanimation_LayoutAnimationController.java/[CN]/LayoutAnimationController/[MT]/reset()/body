@@ -1,0 +1,5 @@
+{
+  mLayoutCreateAnimation.reset();
+  mLayoutUpdateAnimation.reset();
+  mShouldAnimateLayout=false;
+}

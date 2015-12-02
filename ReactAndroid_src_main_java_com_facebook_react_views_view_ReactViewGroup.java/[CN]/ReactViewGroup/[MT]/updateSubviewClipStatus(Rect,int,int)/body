@@ -3,7 +3,9 @@
   sHelperRect.set(child.getLeft(),child.getTop(),child.getRight(),child.getBottom());
   boolean intersects=clippingRect.intersects(sHelperRect.left,sHelperRect.top,sHelperRect.right,sHelperRect.bottom);
   boolean needUpdateClippingRecursive=false;
-  if (!intersects && child.getParent() != null) {
+  Animation animation=child.getAnimation();
+  boolean isAnimating=animation != null && !animation.hasEnded();
+  if (!intersects && child.getParent() != null && !isAnimating) {
     super.removeViewsInLayout(idx - clippedSoFar,1);
     needUpdateClippingRecursive=true;
   }
