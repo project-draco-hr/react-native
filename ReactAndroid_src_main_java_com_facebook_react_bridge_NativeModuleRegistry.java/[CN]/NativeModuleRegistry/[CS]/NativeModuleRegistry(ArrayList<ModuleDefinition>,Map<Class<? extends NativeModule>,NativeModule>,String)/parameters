@@ -1,3 +1,0 @@
-ArrayList<ModuleDefinition> moduleTable
-Map<Class<? extends NativeModule>,NativeModule> moduleInstances
-String moduleDescriptions

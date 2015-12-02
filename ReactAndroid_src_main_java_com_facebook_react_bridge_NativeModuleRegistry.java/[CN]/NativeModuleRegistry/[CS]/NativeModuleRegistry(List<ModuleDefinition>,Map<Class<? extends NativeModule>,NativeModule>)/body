@@ -1,7 +1,6 @@
 {
   mModuleTable=moduleTable;
   mModuleInstances=moduleInstances;
-  mModuleDescriptions=moduleDescriptions;
   mBatchCompleteListenerModules=new ArrayList<OnBatchCompleteListener>(mModuleTable.size());
   for (int i=0; i < mModuleTable.size(); i++) {
     ModuleDefinition definition=mModuleTable.get(i);

@@ -5,9 +5,9 @@
     JsonGenerator jg=jsonFactory.createGenerator(writer);
     jg.writeStartObject();
     jg.writeFieldName("remoteModuleConfig");
-    jg.writeRawValue(nativeModuleRegistry.moduleDescriptions());
+    nativeModuleRegistry.writeModuleDescriptions(jg);
     jg.writeFieldName("localModulesConfig");
-    jg.writeRawValue(jsModulesConfig.moduleDescriptions());
+    jsModulesConfig.writeModuleDescriptions(jg);
     jg.writeEndObject();
     jg.close();
   }

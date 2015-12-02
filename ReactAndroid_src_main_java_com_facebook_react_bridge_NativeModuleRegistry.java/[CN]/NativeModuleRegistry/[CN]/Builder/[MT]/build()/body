@@ -1,43 +1,11 @@
 {
-  Systrace.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"CreateJSON");
-  ArrayList<ModuleDefinition> moduleTable=new ArrayList<>();
-  Map<Class<? extends NativeModule>,NativeModule> moduleInstances=MapBuilder.newHashMap();
-  String moduleDefinitionJson;
-  try {
-    JsonFactory jsonFactory=new JsonFactory();
-    StringWriter writer=new StringWriter();
-    try {
-      JsonGenerator jg=jsonFactory.createGenerator(writer);
-      jg.writeStartObject();
-      int idx=0;
-      for (      NativeModule module : mModules.values()) {
-        ModuleDefinition moduleDef=new ModuleDefinition(idx++,module.getName(),module);
-        moduleTable.add(moduleDef);
-        moduleInstances.put(module.getClass(),module);
-        jg.writeObjectFieldStart(moduleDef.name);
-        jg.writeNumberField("moduleID",moduleDef.id);
-        jg.writeObjectFieldStart("methods");
-        for (int i=0; i < moduleDef.methods.size(); i++) {
-          MethodRegistration method=moduleDef.methods.get(i);
-          jg.writeObjectFieldStart(method.name);
-          jg.writeNumberField("methodID",i);
-          jg.writeStringField("type",method.method.getType());
-          jg.writeEndObject();
-        }
-        jg.writeEndObject();
-        moduleDef.target.writeConstantsField(jg,"constants");
-        jg.writeEndObject();
-      }
-      jg.writeEndObject();
-      jg.close();
-    }
- catch (    IOException ioe) {
-      throw new RuntimeException("Unable to serialize Java module configuration",ioe);
-    }
-    moduleDefinitionJson=writer.getBuffer().toString();
+  List<ModuleDefinition> moduleTable=new ArrayList<>();
+  Map<Class<? extends NativeModule>,NativeModule> moduleInstances=new HashMap<>();
+  int idx=0;
+  for (  NativeModule module : mModules.values()) {
+    ModuleDefinition moduleDef=new ModuleDefinition(idx++,module.getName(),module);
+    moduleTable.add(moduleDef);
+    moduleInstances.put(module.getClass(),module);
   }
-  finally {
-    Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);
-  }
-  return new NativeModuleRegistry(moduleTable,moduleInstances,moduleDefinitionJson);
+  return new NativeModuleRegistry(moduleTable,moduleInstances);
 }
