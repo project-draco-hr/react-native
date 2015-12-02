@@ -8,4 +8,5 @@
     mCurrentReactContext=null;
     mHasStartedCreatingInitialContext=false;
   }
+  mCurrentActivity=null;
 }

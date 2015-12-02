@@ -6,4 +6,5 @@
   if (mCatalystInstance != null) {
     mCatalystInstance.destroy();
   }
+  mCurrentActivity=null;
 }
