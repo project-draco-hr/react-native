@@ -1,0 +1,3 @@
+{
+  successCallback.invoke(mConnectivityManagerCompat.isActiveNetworkMetered(mConnectivityManager));
+}

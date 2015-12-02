@@ -1,0 +1,8 @@
+{
+  if (mConnectivityBroadcastReceiver == null) {
+    return;
+  }
+  getReactApplicationContext().unregisterReceiver(mConnectivityBroadcastReceiver);
+  mConnectivityBroadcastReceiver=null;
+  mConnectivity="";
+}

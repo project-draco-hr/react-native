@@ -1,0 +1,12 @@
+{
+  NetworkInfo networkInfo=mConnectivityManager.getActiveNetworkInfo();
+  if (networkInfo == null || !networkInfo.isConnected()) {
+    return CONNECTION_TYPE_NONE;
+  }
+ else   if (ConnectivityManager.isNetworkTypeValid(networkInfo.getType())) {
+    return networkInfo.getTypeName().toUpperCase();
+  }
+ else {
+    return CONNECTION_TYPE_UNKNOWN;
+  }
+}
