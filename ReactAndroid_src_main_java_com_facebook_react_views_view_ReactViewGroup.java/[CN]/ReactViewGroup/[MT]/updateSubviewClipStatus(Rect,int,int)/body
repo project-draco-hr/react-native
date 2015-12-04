@@ -14,7 +14,7 @@
     invalidate();
     needUpdateClippingRecursive=true;
   }
- else   if (intersects && !clippingRect.contains(sHelperRect)) {
+ else   if (intersects) {
     needUpdateClippingRecursive=true;
   }
   if (needUpdateClippingRecursive) {
