@@ -8,6 +8,9 @@
   }
   GenericDraweeHierarchy hierarchy=getHierarchy();
   hierarchy.setActualImageScaleType(mScaleType);
+  if (mLoadingImageDrawable != null) {
+    hierarchy.setPlaceholderImage(mLoadingImageDrawable,ScalingUtils.ScaleType.CENTER);
+  }
   boolean usePostprocessorScaling=mScaleType != ScalingUtils.ScaleType.CENTER_CROP && mScaleType != ScalingUtils.ScaleType.FOCUS_CROP;
   float hierarchyRadius=usePostprocessorScaling ? 0 : mBorderRadius;
   RoundingParams roundingParams=hierarchy.getRoundingParams();

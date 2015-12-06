@@ -1,8 +1,4 @@
 {
-  if (name == null || name.isEmpty()) {
-    return null;
-  }
-  name=name.toLowerCase().replace("-","_");
-  int resId=context.getResources().getIdentifier(name,"drawable",context.getPackageName());
-  return new Uri.Builder().scheme(UriUtil.LOCAL_RESOURCE_SCHEME).path(String.valueOf(resId)).build();
+  int resId=getResourceDrawableId(context,name);
+  return resId > 0 ? new Uri.Builder().scheme(UriUtil.LOCAL_RESOURCE_SCHEME).path(String.valueOf(resId)).build() : null;
 }

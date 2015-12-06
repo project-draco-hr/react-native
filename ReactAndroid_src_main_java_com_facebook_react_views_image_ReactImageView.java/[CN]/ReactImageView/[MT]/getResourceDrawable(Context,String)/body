@@ -1,0 +1,4 @@
+{
+  int resId=getResourceDrawableId(context,name);
+  return resId > 0 ? context.getResources().getDrawable(resId) : null;
+}
