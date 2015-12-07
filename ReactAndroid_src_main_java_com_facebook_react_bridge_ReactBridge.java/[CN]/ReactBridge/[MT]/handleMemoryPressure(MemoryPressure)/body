@@ -1,0 +1,12 @@
+{
+switch (level) {
+case MODERATE:
+    handleMemoryPressureModerate();
+  break;
+case CRITICAL:
+handleMemoryPressureCritical();
+break;
+default :
+throw new IllegalArgumentException("Unknown level: " + level);
+}
+}

@@ -1,5 +1,6 @@
 {
   UiThreadUtil.assertOnUiThread();
+  mMemoryPressureRouter.destroy(mApplicationContext);
   if (mUseDeveloperSupport) {
     mDevSupportManager.setDevSupportEnabled(false);
   }

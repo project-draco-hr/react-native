@@ -5,6 +5,7 @@
   CatalystInstance catalystInstance=Assertions.assertNotNull(reactContext.getCatalystInstance());
   catalystInstance.initialize();
   mDevSupportManager.onNewReactContextCreated(reactContext);
+  mMemoryPressureRouter.onNewReactContextCreated(reactContext);
   moveReactContextToCurrentLifecycleState(reactContext);
   for (  ReactRootView rootView : mAttachedRootViews) {
     attachMeasuredRootViewToInstance(rootView,catalystInstance);

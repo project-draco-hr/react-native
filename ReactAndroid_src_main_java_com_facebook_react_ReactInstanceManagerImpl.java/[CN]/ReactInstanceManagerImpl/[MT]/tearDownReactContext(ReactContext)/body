@@ -8,4 +8,5 @@
   }
   reactContext.onDestroy();
   mDevSupportManager.onReactInstanceDestroyed(reactContext);
+  mMemoryPressureRouter.onReactInstanceDestroyed();
 }
