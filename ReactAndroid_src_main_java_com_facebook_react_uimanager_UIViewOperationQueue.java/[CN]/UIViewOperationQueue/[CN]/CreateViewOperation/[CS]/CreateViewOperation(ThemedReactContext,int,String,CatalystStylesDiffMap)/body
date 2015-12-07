@@ -3,4 +3,5 @@
   mThemedContext=themedContext;
   mClassName=className;
   mInitialProps=initialProps;
+  Systrace.startAsyncFlow(Systrace.TRACE_TAG_REACT_VIEW,"createView",mTag);
 }

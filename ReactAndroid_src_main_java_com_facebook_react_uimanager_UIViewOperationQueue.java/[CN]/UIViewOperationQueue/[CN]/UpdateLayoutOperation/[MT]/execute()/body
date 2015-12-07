@@ -1,3 +1,4 @@
 {
+  Systrace.endAsyncFlow(Systrace.TRACE_TAG_REACT_VIEW,"updateLayout",mTag);
   mNativeViewHierarchyManager.updateLayout(mParentTag,mTag,mX,mY,mWidth,mHeight);
 }

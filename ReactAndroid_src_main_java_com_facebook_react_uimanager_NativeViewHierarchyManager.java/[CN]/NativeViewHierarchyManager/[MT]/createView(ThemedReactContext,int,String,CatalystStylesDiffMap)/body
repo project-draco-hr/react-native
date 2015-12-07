@@ -1,11 +1,17 @@
 {
   UiThreadUtil.assertOnUiThread();
-  ViewManager viewManager=mViewManagers.get(className);
-  View view=viewManager.createView(themedContext,mJSResponderHandler);
-  mTagsToViews.put(tag,view);
-  mTagsToViewManagers.put(tag,viewManager);
-  view.setId(tag);
-  if (initialProps != null) {
-    viewManager.updateProperties(view,initialProps);
+  SystraceMessage.beginSection(Systrace.TRACE_TAG_REACT_VIEW,"NativeViewHierarchyManager_createView").arg("tag",tag).arg("className",className).flush();
+  try {
+    ViewManager viewManager=mViewManagers.get(className);
+    View view=viewManager.createView(themedContext,mJSResponderHandler);
+    mTagsToViews.put(tag,view);
+    mTagsToViewManagers.put(tag,viewManager);
+    view.setId(tag);
+    if (initialProps != null) {
+      viewManager.updateProperties(view,initialProps);
+    }
+  }
+  finally {
+    Systrace.endSection(Systrace.TRACE_TAG_REACT_VIEW);
   }
 }

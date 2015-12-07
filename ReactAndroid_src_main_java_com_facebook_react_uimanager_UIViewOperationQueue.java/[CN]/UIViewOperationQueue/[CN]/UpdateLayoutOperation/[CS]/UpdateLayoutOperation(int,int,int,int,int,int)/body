@@ -5,4 +5,5 @@
   mY=y;
   mWidth=width;
   mHeight=height;
+  Systrace.startAsyncFlow(Systrace.TRACE_TAG_REACT_VIEW,"updateLayout",mTag);
 }

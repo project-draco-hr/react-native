@@ -1,21 +1,27 @@
 {
   UiThreadUtil.assertOnUiThread();
-  View viewToUpdate=resolveView(tag);
-  viewToUpdate.measure(View.MeasureSpec.makeMeasureSpec(width,View.MeasureSpec.EXACTLY),View.MeasureSpec.makeMeasureSpec(height,View.MeasureSpec.EXACTLY));
-  if (!mRootTags.get(parentTag)) {
-    ViewManager parentViewManager=mTagsToViewManagers.get(parentTag);
-    ViewGroupManager parentViewGroupManager;
-    if (parentViewManager instanceof ViewGroupManager) {
-      parentViewGroupManager=(ViewGroupManager)parentViewManager;
+  SystraceMessage.beginSection(Systrace.TRACE_TAG_REACT_VIEW,"NativeViewHierarchyManager_updateLayout").arg("parentTag",parentTag).arg("tag",tag).flush();
+  try {
+    View viewToUpdate=resolveView(tag);
+    viewToUpdate.measure(View.MeasureSpec.makeMeasureSpec(width,View.MeasureSpec.EXACTLY),View.MeasureSpec.makeMeasureSpec(height,View.MeasureSpec.EXACTLY));
+    if (!mRootTags.get(parentTag)) {
+      ViewManager parentViewManager=mTagsToViewManagers.get(parentTag);
+      ViewGroupManager parentViewGroupManager;
+      if (parentViewManager instanceof ViewGroupManager) {
+        parentViewGroupManager=(ViewGroupManager)parentViewManager;
+      }
+ else {
+        throw new IllegalViewOperationException("Trying to use view with tag " + tag + " as a parent, but its Manager doesn't extends ViewGroupManager");
+      }
+      if (parentViewGroupManager != null && !parentViewGroupManager.needsCustomLayoutForChildren()) {
+        updateLayout(viewToUpdate,x,y,width,height);
+      }
     }
  else {
-      throw new IllegalViewOperationException("Trying to use view with tag " + tag + " as a parent, but its Manager doesn't extends ViewGroupManager");
-    }
-    if (parentViewGroupManager != null && !parentViewGroupManager.needsCustomLayoutForChildren()) {
       updateLayout(viewToUpdate,x,y,width,height);
     }
   }
- else {
-    updateLayout(viewToUpdate,x,y,width,height);
+  finally {
+    Systrace.endSection(Systrace.TRACE_TAG_REACT_VIEW);
   }
 }
