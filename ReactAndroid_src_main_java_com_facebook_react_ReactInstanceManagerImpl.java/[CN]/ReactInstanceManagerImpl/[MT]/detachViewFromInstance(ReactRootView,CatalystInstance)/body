@@ -1,4 +1,4 @@
 {
   UiThreadUtil.assertOnUiThread();
-  catalystInstance.getJSModule(ReactNative.class).unmountComponentAtNodeAndRemoveContainer(rootView.getId());
+  catalystInstance.getJSModule(AppRegistry.class).unmountApplicationComponentAtRootTag(rootView.getId());
 }
