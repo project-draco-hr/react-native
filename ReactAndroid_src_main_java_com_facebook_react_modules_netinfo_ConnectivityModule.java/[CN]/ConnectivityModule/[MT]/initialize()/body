@@ -1,5 +1,3 @@
 {
   getReactApplicationContext().addLifecycleEventListener(this);
-  maybeRegisterReceiver();
-  updateAndSendConnectionType();
 }

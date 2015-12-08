@@ -2,5 +2,5 @@
   super(reactContext);
   mConnectivityManager=(ConnectivityManager)reactContext.getSystemService(Context.CONNECTIVITY_SERVICE);
   mConnectivityManagerCompat=new ConnectivityManagerCompat();
-  mConnectivity="";
+  mConnectivityBroadcastReceiver=new ConnectivityBroadcastReceiver();
 }

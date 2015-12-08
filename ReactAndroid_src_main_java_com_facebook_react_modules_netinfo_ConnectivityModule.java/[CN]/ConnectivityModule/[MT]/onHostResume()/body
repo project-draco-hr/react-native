@@ -1,4 +1,3 @@
 {
-  maybeRegisterReceiver();
-  updateAndSendConnectionType();
+  registerReceiver();
 }
