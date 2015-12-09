@@ -1,0 +1,4 @@
+{
+  mClipboardModule=new ClipboardModule(ReactTestHelper.createCatalystContextForTest());
+  mClipboardManager=(ClipboardManager)RuntimeEnvironment.application.getSystemService(Context.CLIPBOARD_SERVICE);
+}

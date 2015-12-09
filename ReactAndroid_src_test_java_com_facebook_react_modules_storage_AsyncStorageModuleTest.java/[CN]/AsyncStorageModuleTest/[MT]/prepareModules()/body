@@ -12,6 +12,6 @@
     }
   }
 );
-  mStorage=new AsyncStorageModule(new ReactApplicationContext(new FakeFragmentContext(RuntimeEnvironment.application)));
+  mStorage=new AsyncStorageModule(ReactTestHelper.createCatalystContextForTest());
   mEmptyArray=new SimpleArray();
 }
