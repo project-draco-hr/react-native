@@ -8,6 +8,6 @@
     outline.setRoundRect(getBounds(),mBorderRadius + extraRadiusFromBorderWidth);
   }
  else {
-    super.getOutline(outline);
+    outline.setRect(getBounds());
   }
 }
