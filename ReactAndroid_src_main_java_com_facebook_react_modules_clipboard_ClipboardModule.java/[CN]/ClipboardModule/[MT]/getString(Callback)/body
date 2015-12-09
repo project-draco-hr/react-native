@@ -1,0 +1,21 @@
+{
+  try {
+    ClipboardManager clipboard=getClipboardService();
+    ClipData clipData=clipboard.getPrimaryClip();
+    if (clipData == null) {
+      cb.invoke("");
+      return;
+    }
+    if (clipData.getItemCount() >= 1) {
+      ClipData.Item firstItem=clipboard.getPrimaryClip().getItemAt(0);
+      String text="" + firstItem.getText();
+      cb.invoke(text);
+    }
+ else {
+      cb.invoke("");
+    }
+  }
+ catch (  Exception e) {
+    FLog.w(ReactConstants.TAG,"Cannot get clipboard contents: " + e.getMessage());
+  }
+}

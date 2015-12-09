@@ -1,0 +1,4 @@
+{
+  ReactApplicationContext reactContext=getReactApplicationContext();
+  return (ClipboardManager)reactContext.getSystemService(reactContext.CLIPBOARD_SERVICE);
+}
