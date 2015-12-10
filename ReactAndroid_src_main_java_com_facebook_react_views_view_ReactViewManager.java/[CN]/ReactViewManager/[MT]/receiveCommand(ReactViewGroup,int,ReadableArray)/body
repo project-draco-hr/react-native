@@ -6,9 +6,8 @@ case CMD_HOTSPOT_UPDATE:
         throw new JSApplicationIllegalArgumentException("Illegal number of arguments for 'updateHotspot' command");
       }
       if (Build.VERSION.SDK_INT >= 21) {
-        root.getLocationOnScreen(sLocationBuf);
-        float x=PixelUtil.toPixelFromDIP(args.getDouble(0)) - sLocationBuf[0];
-        float y=PixelUtil.toPixelFromDIP(args.getDouble(1)) - sLocationBuf[1];
+        float x=PixelUtil.toPixelFromDIP(args.getDouble(0));
+        float y=PixelUtil.toPixelFromDIP(args.getDouble(1));
         root.drawableHotspotChanged(x,y);
       }
       break;
