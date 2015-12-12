@@ -1,5 +1,5 @@
 {
   checkNotSet();
-  mResult=result;
+  mException=exception;
   mReadyLatch.countDown();
 }

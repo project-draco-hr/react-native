@@ -6,24 +6,21 @@
   mJSBundleLoader=jsBundleLoader;
   mNativeModuleCallExceptionHandler=nativeModuleCallExceptionHandler;
   mTraceListener=new JSProfilerTraceListener();
-  final CountDownLatch initLatch=new CountDownLatch(1);
-  mCatalystQueueConfiguration.getJSQueueThread().runOnQueue(new Runnable(){
-    @Override public void run(){
-      Systrace.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"initializeBridge");
-      try {
-        initializeBridge(jsExecutor,jsModulesConfig);
-        initLatch.countDown();
-      }
+  try {
+    mBridge=mCatalystQueueConfiguration.getJSQueueThread().callOnQueue(new Callable<ReactBridge>(){
+      @Override public ReactBridge call() throws Exception {
+        Systrace.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"initializeBridge");
+        try {
+          return initializeBridge(jsExecutor,jsModulesConfig);
+        }
   finally {
-        Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);
+          Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);
+        }
       }
     }
+).get(BRIDGE_SETUP_TIMEOUT_MS,TimeUnit.MILLISECONDS);
   }
-);
-  try {
-    Assertions.assertCondition(initLatch.await(BRIDGE_SETUP_TIMEOUT_MS,TimeUnit.MILLISECONDS),"Timed out waiting for bridge to initialize!");
-  }
- catch (  InterruptedException e) {
-    throw new RuntimeException(e);
+ catch (  Exception t) {
+    throw new RuntimeException("Failed to initialize bridge",t);
   }
 }

@@ -1,0 +1,15 @@
+{
+  final SimpleSettableFuture<T> future=new SimpleSettableFuture<>();
+  runOnQueue(new Runnable(){
+    @Override public void run(){
+      try {
+        future.set(callable.call());
+      }
+ catch (      Exception e) {
+        future.setException(e);
+      }
+    }
+  }
+);
+  return future;
+}

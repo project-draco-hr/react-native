@@ -9,5 +9,10 @@
   }
 ,"mqt_" + name);
   bgThread.start();
-  return new MessageQueueThreadImpl(name,simpleSettableFuture.get(5000),exceptionHandler);
+  try {
+    return new MessageQueueThreadImpl(name,simpleSettableFuture.get(5000,TimeUnit.MILLISECONDS),exceptionHandler);
+  }
+ catch (  Throwable t) {
+    throw new RuntimeException(t);
+  }
 }
