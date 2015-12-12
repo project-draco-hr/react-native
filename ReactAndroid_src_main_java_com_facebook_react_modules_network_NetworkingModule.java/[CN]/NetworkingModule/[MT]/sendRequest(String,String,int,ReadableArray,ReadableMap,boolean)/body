@@ -12,7 +12,7 @@
   String contentEncoding=requestHeaders.get(CONTENT_ENCODING_HEADER_NAME);
   requestBuilder.headers(requestHeaders);
   if (data == null) {
-    requestBuilder.method(method,null);
+    requestBuilder.method(method,RequestBodyUtil.getEmptyBody(method));
   }
  else   if (data.hasKey(REQUEST_BODY_KEY_STRING)) {
     if (contentType == null) {
