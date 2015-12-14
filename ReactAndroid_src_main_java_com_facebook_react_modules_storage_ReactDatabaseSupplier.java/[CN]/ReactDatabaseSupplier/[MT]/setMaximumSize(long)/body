@@ -1,0 +1,6 @@
+{
+  mMaximumDatabaseSize=size;
+  if (mDb != null) {
+    mDb.setMaximumSize(mMaximumDatabaseSize);
+  }
+}

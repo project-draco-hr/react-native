@@ -24,6 +24,6 @@
   if (mDb == null) {
     throw lastSQLiteException;
   }
-  mDb.setMaximumSize(DEFAULT_MAX_DB_SIZE);
+  mDb.setMaximumSize(mMaximumDatabaseSize);
   return true;
 }
