@@ -5,6 +5,9 @@
     throw new NoSuchNativeViewException("No native view for " + tag + " currently exists");
   }
   View rootView=(View)RootViewUtil.getRootView(v);
+  if (rootView == null) {
+    throw new NoSuchNativeViewException("Native view " + tag + " is no longer on screen");
+  }
   rootView.getLocationInWindow(outputBuffer);
   int rootX=outputBuffer[0];
   int rootY=outputBuffer[1];
