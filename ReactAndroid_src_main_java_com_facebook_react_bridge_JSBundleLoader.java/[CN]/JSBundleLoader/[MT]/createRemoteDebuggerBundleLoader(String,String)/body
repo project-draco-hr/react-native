@@ -1,10 +1,10 @@
 {
   return new JSBundleLoader(){
     @Override public void loadScript(    ReactBridge bridge){
-      bridge.loadScriptFromFile(null,sourceURL);
+      bridge.loadScriptFromFile(null,proxySourceURL);
     }
     @Override public String getSourceUrl(){
-      return sourceURL;
+      return realSourceURL;
     }
   }
 ;
