@@ -1,4 +1,5 @@
 CSSLayoutContext layoutContext
 CSSNode node
 float parentMaxWidth
+float parentMaxHeight
 CSSDirection parentDirection

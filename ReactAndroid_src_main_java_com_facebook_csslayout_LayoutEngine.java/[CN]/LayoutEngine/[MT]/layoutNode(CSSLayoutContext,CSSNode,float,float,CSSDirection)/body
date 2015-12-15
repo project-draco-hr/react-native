@@ -1,9 +1,10 @@
 {
-  if (needsRelayout(node,parentMaxWidth)) {
+  if (needsRelayout(node,parentMaxWidth,parentMaxHeight)) {
     node.lastLayout.requestedWidth=node.layout.dimensions[DIMENSION_WIDTH];
     node.lastLayout.requestedHeight=node.layout.dimensions[DIMENSION_HEIGHT];
     node.lastLayout.parentMaxWidth=parentMaxWidth;
-    layoutNodeImpl(layoutContext,node,parentMaxWidth,parentDirection);
+    node.lastLayout.parentMaxHeight=parentMaxHeight;
+    layoutNodeImpl(layoutContext,node,parentMaxWidth,parentMaxHeight,parentDirection);
     node.lastLayout.copy(node.layout);
   }
  else {
