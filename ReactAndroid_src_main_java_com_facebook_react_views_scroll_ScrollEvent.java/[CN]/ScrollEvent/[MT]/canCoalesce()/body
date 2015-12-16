@@ -1,0 +1,6 @@
+{
+  if (mScrollEventType == ScrollEventType.SCROLL) {
+    return true;
+  }
+  return false;
+}

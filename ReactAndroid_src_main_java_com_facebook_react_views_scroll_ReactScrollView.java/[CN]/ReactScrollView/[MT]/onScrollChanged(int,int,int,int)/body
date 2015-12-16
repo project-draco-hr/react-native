@@ -4,6 +4,9 @@
     if (mRemoveClippedSubviews) {
       updateClippingRect();
     }
-    ReactScrollViewHelper.emitScrollEvent(this,x,y);
+    if (mFlinging) {
+      mDoneFlinging=false;
+    }
+    ReactScrollViewHelper.emitScrollEvent(this);
   }
 }

@@ -1,5 +1,6 @@
 int viewTag
 long timestampMs
+ScrollEventType scrollEventType
 int scrollX
 int scrollY
 int contentWidth

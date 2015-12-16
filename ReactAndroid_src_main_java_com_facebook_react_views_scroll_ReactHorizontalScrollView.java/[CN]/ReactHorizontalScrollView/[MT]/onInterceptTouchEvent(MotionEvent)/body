@@ -1,6 +1,8 @@
 {
   if (super.onInterceptTouchEvent(ev)) {
     NativeGestureUtil.notifyNativeGestureStarted(this,ev);
+    ReactScrollViewHelper.emitScrollBeginDragEvent(this);
+    mDragging=true;
     return true;
   }
   return false;

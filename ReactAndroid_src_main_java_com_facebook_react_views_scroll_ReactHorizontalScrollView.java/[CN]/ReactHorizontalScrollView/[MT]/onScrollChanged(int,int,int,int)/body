@@ -1,6 +1,9 @@
 {
   super.onScrollChanged(x,y,oldX,oldY);
   if (mOnScrollDispatchHelper.onScrollChanged(x,y)) {
-    ReactScrollViewHelper.emitScrollEvent(this,x,y);
+    if (mFlinging) {
+      mDoneFlinging=false;
+    }
+    ReactScrollViewHelper.emitScrollEvent(this);
   }
 }
