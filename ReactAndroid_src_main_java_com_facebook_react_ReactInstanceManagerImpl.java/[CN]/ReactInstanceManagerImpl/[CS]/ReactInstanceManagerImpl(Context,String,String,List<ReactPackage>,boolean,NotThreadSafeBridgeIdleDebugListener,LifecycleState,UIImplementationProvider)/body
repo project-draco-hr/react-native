@@ -10,5 +10,4 @@
   mLifecycleState=initialLifecycleState;
   mUIImplementationProvider=uiImplementationProvider;
   mMemoryPressureRouter=new MemoryPressureRouter(applicationContext);
-  mNativeModuleCallExceptionHandler=nativeModuleCallExceptionHandler;
 }
