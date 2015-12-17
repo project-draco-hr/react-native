@@ -1,0 +1,24 @@
+{
+  FragmentManagerHelper fragmentManagerHelper=getFragmentManagerHelper();
+  if (fragmentManagerHelper == null) {
+    errorCallback.invoke("Tried to show an alert while not attached to an Activity");
+    return;
+  }
+  final Bundle args=new Bundle();
+  if (options.hasKey(KEY_TITLE)) {
+    args.putString(AlertFragment.ARG_TITLE,options.getString(KEY_TITLE));
+  }
+  if (options.hasKey(KEY_MESSAGE)) {
+    args.putString(AlertFragment.ARG_MESSAGE,options.getString(KEY_MESSAGE));
+  }
+  if (options.hasKey(KEY_BUTTON_POSITIVE)) {
+    args.putString(AlertFragment.ARG_BUTTON_POSITIVE,options.getString(KEY_BUTTON_POSITIVE));
+  }
+  if (options.hasKey(KEY_BUTTON_NEGATIVE)) {
+    args.putString(AlertFragment.ARG_BUTTON_NEGATIVE,options.getString(KEY_BUTTON_NEGATIVE));
+  }
+  if (options.hasKey(KEY_BUTTON_NEUTRAL)) {
+    args.putString(AlertFragment.ARG_BUTTON_NEUTRAL,options.getString(KEY_BUTTON_NEUTRAL));
+  }
+  fragmentManagerHelper.showNewAlert(mIsInForeground,args,actionCallback);
+}

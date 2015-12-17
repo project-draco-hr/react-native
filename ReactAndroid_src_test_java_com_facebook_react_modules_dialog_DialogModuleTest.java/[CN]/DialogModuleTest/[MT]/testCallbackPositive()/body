@@ -1,0 +1,11 @@
+{
+  final SimpleMap options=new SimpleMap();
+  options.putString("buttonPositive","OK");
+  final SimpleCallback actionCallback=new SimpleCallback();
+  mDialogModule.showAlert(options,null,actionCallback);
+  final AlertDialog dialog=(AlertDialog)getFragment().getDialog();
+  dialog.getButton(DialogInterface.BUTTON_POSITIVE).performClick();
+  assertEquals(1,actionCallback.getCalls());
+  assertEquals(DialogModule.ACTION_BUTTON_CLICKED,actionCallback.getArgs()[0]);
+  assertEquals(DialogInterface.BUTTON_POSITIVE,actionCallback.getArgs()[1]);
+}

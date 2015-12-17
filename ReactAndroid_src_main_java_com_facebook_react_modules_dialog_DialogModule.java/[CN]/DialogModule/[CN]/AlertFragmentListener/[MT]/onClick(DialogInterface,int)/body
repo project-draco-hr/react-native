@@ -1,0 +1,8 @@
+{
+  if (!mCallbackConsumed) {
+    if (getReactApplicationContext().hasActiveCatalystInstance()) {
+      mCallback.invoke(ACTION_BUTTON_CLICKED,which);
+      mCallbackConsumed=true;
+    }
+  }
+}

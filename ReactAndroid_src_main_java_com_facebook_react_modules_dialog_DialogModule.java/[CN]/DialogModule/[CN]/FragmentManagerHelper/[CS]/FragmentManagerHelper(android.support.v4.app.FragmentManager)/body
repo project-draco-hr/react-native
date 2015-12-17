@@ -1,0 +1,4 @@
+{
+  mFragmentManager=null;
+  mSupportFragmentManager=supportFragmentManager;
+}

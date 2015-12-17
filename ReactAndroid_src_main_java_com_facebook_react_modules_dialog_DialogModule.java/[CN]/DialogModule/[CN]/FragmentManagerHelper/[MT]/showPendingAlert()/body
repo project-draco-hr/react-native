@@ -1,0 +1,12 @@
+{
+  if (mFragmentToShow == null) {
+    return;
+  }
+  if (isUsingSupportLibrary()) {
+    ((SupportAlertFragment)mFragmentToShow).show(mSupportFragmentManager,FRAGMENT_TAG);
+  }
+ else {
+    ((AlertFragment)mFragmentToShow).show(mFragmentManager,FRAGMENT_TAG);
+  }
+  mFragmentToShow=null;
+}

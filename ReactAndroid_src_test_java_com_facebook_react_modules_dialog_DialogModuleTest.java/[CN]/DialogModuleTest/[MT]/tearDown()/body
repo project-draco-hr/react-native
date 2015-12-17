@@ -1,0 +1,5 @@
+{
+  mActivityController.pause().stop().destroy();
+  mActivityController=null;
+  mDialogModule=null;
+}

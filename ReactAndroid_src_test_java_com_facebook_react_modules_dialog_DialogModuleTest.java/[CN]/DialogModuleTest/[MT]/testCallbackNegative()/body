@@ -1,0 +1,11 @@
+{
+  final SimpleMap options=new SimpleMap();
+  options.putString("buttonNegative","Cancel");
+  final SimpleCallback actionCallback=new SimpleCallback();
+  mDialogModule.showAlert(options,null,actionCallback);
+  final AlertDialog dialog=(AlertDialog)getFragment().getDialog();
+  dialog.getButton(DialogInterface.BUTTON_NEGATIVE).performClick();
+  assertEquals(1,actionCallback.getCalls());
+  assertEquals(DialogModule.ACTION_BUTTON_CLICKED,actionCallback.getArgs()[0]);
+  assertEquals(DialogInterface.BUTTON_NEGATIVE,actionCallback.getArgs()[1]);
+}
