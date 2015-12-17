@@ -1,0 +1,5 @@
+{
+  super.onDropViewInstance(reactContext,webView);
+  reactContext.removeLifecycleEventListener((ReactWebView)webView);
+  ((ReactWebView)webView).cleanupCallbacksAndDestroy();
+}

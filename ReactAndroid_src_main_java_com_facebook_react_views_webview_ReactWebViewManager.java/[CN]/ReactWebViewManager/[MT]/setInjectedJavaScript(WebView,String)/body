@@ -1,0 +1,3 @@
+{
+  ((ReactWebView)view).setInjectedJavaScript(injectedJavaScript);
+}

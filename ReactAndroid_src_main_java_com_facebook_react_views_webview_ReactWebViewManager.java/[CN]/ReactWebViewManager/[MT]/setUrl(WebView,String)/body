@@ -1,0 +1,8 @@
+{
+  if (url != null) {
+    view.loadUrl(url);
+  }
+ else {
+    view.loadUrl(BLANK_URL);
+  }
+}

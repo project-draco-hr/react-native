@@ -1,0 +1,4 @@
+{
+  setWebViewClient(null);
+  destroy();
+}

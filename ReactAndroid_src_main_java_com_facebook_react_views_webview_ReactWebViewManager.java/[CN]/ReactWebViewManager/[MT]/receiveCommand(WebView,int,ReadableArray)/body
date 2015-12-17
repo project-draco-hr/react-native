@@ -1,0 +1,13 @@
+{
+switch (commandId) {
+case COMMAND_GO_BACK:
+    root.goBack();
+  break;
+case COMMAND_GO_FORWARD:
+root.goForward();
+break;
+case COMMAND_RELOAD:
+root.reload();
+break;
+}
+}

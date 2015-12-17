@@ -1,0 +1,6 @@
+{
+  ReactWebView webView=new ReactWebView(reactContext);
+  reactContext.addLifecycleEventListener(webView);
+  mWebViewConfig.configWebView(webView);
+  return webView;
+}
