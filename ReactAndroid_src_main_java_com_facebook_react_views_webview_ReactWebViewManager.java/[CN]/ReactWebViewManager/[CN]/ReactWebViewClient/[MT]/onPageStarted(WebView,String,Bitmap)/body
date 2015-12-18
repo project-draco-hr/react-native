@@ -3,5 +3,5 @@
   mLastLoadFailed=false;
   ReactContext reactContext=(ReactContext)((ReactWebView)webView).getContext();
   EventDispatcher eventDispatcher=reactContext.getNativeModule(UIManagerModule.class).getEventDispatcher();
-  eventDispatcher.dispatchEvent(new TopLoadingStartEvent(webView.getId(),SystemClock.uptimeMillis(),createWebViewEvent(webView)));
+  eventDispatcher.dispatchEvent(new TopLoadingStartEvent(webView.getId(),SystemClock.uptimeMillis(),createWebViewEvent(webView,url)));
 }

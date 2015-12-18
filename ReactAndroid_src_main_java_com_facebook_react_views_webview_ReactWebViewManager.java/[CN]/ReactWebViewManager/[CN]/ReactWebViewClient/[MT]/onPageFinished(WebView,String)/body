@@ -3,6 +3,6 @@
   if (!mLastLoadFailed) {
     ReactWebView reactWebView=(ReactWebView)webView;
     reactWebView.callInjectedJavaScript();
-    emitFinishEvent(webView);
+    emitFinishEvent(webView,url);
   }
 }

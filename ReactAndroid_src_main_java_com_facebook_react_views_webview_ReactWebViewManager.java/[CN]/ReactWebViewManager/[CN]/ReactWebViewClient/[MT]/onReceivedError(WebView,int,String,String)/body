@@ -1,9 +1,9 @@
 {
   super.onReceivedError(webView,errorCode,description,failingUrl);
   mLastLoadFailed=true;
-  emitFinishEvent(webView);
+  emitFinishEvent(webView,failingUrl);
   ReactContext reactContext=(ReactContext)((ReactWebView)webView).getContext();
-  WritableMap eventData=createWebViewEvent(webView);
+  WritableMap eventData=createWebViewEvent(webView,failingUrl);
   eventData.putDouble("code",errorCode);
   eventData.putString("description",description);
   EventDispatcher eventDispatcher=reactContext.getNativeModule(UIManagerModule.class).getEventDispatcher();
