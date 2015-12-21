@@ -1,0 +1,7 @@
+{
+  assertFalse("First failure: " + mFirstFailureStackTrace,mGotFailure);
+  assertTrue("Received no assertions during the test!",mGotSuccess);
+  mGotFailure=false;
+  mGotSuccess=false;
+  mFirstFailureStackTrace=null;
+}

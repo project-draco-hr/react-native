@@ -1,0 +1,3 @@
+{
+  return dragTo(view,stepCount,stepCount * DEFAULT_DELAY_MS);
+}

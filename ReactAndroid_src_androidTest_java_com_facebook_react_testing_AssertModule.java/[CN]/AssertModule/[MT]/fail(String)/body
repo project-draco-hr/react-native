@@ -1,0 +1,6 @@
+{
+  if (!mGotFailure) {
+    mGotFailure=true;
+    mFirstFailureStackTrace=stackTrace;
+  }
+}

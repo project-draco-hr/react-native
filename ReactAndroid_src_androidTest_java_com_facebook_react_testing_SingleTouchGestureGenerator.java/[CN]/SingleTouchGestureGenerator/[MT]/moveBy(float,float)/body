@@ -1,0 +1,3 @@
+{
+  return moveBy(dx,dy,DEFAULT_DELAY_MS);
+}

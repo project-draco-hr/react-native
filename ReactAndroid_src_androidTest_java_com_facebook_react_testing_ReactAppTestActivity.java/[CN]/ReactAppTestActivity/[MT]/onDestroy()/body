@@ -1,0 +1,7 @@
+{
+  super.onDestroy();
+  mDestroyCountDownLatch.countDown();
+  if (mReactInstanceManager != null) {
+    mReactInstanceManager.onDestroy();
+  }
+}

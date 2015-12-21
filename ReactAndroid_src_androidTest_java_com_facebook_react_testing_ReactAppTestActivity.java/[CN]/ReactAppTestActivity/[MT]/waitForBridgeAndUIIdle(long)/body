@@ -1,0 +1,3 @@
+{
+  ReactIdleDetectionUtil.waitForBridgeAndUIIdle(Assertions.assertNotNull(mBridgeIdleSignaler),getReactContext(),timeoutMs);
+}

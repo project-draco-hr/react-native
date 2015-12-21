@@ -1,0 +1,3 @@
+{
+  InstrumentationRegistry.getInstrumentation().waitForIdleSync();
+}

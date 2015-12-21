@@ -1,0 +1,13 @@
+{
+  while (true) {
+    try {
+      boolean gotScrollSignal=mScrollSignaler.tryAcquire(1000,TimeUnit.MILLISECONDS);
+      if (!gotScrollSignal) {
+        return;
+      }
+    }
+ catch (    InterruptedException e) {
+      throw new RuntimeException(e);
+    }
+  }
+}

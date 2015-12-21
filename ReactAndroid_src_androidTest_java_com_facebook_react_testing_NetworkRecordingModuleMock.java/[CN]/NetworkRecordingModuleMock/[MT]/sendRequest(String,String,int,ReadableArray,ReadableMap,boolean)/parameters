@@ -1,0 +1,6 @@
+String method
+String url
+int requestId
+ReadableArray headers
+ReadableMap data
+boolean incrementalUpdates

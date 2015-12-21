@@ -1,0 +1,3 @@
+{
+  return startGesture(getViewCenterX(view),getViewCenterY(view));
+}

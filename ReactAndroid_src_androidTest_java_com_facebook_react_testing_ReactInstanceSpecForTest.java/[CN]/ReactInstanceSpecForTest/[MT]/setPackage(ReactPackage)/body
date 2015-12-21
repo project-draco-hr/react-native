@@ -1,0 +1,4 @@
+{
+  mReactPackage=reactPackage;
+  return this;
+}

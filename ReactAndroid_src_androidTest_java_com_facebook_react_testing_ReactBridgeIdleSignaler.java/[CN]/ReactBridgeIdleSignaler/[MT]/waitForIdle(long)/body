@@ -1,0 +1,12 @@
+{
+  try {
+    if (mBridgeIdleSemaphore.tryAcquire(millis,TimeUnit.MILLISECONDS)) {
+      mBridgeIdleSemaphore.release();
+      return true;
+    }
+    return false;
+  }
+ catch (  InterruptedException e) {
+    throw new RuntimeException("Got interrupted",e);
+  }
+}

@@ -1,0 +1,3 @@
+{
+  loadApp(appKey,spec,null,DEFAULT_BUNDLE_NAME,enableDevSupport);
+}

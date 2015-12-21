@@ -1,0 +1,7 @@
+{
+  WritableArray args=Arguments.createArray();
+  args.pushInt(requestId);
+  args.pushInt(code);
+  args.pushMap(headers);
+  getEventEmitter().emit("didReceiveNetworkResponse",args);
+}

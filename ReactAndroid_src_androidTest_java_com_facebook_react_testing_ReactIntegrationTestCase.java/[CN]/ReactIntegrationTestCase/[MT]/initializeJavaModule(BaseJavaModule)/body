@@ -1,0 +1,19 @@
+{
+  final Semaphore semaphore=new Semaphore(0);
+  UiThreadUtil.runOnUiThread(new Runnable(){
+    @Override public void run(){
+      javaModule.initialize();
+      if (javaModule instanceof LifecycleEventListener) {
+        ((LifecycleEventListener)javaModule).onHostResume();
+      }
+      semaphore.release();
+    }
+  }
+);
+  try {
+    SoftAssertions.assertCondition(semaphore.tryAcquire(5000,TimeUnit.MILLISECONDS),"Timed out initializing timing module");
+  }
+ catch (  InterruptedException e) {
+    throw new RuntimeException(e);
+  }
+}

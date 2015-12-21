@@ -1,0 +1,4 @@
+{
+  mNativeModuleRegistryBuilder.add(module);
+  return this;
+}

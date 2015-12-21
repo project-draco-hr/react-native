@@ -1,0 +1,19 @@
+{
+  ScrollView scrollView=getViewAtPath(0);
+  ScrollViewTestModule jsModule=getReactContext().getCatalystInstance().getJSModule(ScrollViewTestModule.class);
+  assertEquals(0,scrollView.getScrollY());
+  jsModule.scrollTo(0,300);
+  waitForBridgeAndUIIdle();
+  getInstrumentation().waitForIdleSync();
+  long timeout=10000;
+  long interval=50;
+  long start=System.currentTimeMillis();
+  while (System.currentTimeMillis() - start < timeout) {
+    if (scrollView.getScrollY() > 0) {
+      break;
+    }
+    Thread.sleep(interval);
+  }
+  assertNotSame(0,scrollView.getScrollY());
+  assertFalse("Drag should not be called with scrollTo",mScrollListenerModule.dragEventsMatch());
+}

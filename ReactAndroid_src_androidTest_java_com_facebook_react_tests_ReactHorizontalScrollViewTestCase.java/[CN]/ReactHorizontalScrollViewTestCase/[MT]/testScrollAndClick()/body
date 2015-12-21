@@ -1,0 +1,24 @@
+{
+  SingleTouchGestureGenerator gestureGenerator=createGestureGenerator();
+  dragLeft(15000);
+  waitForBridgeAndUIIdle();
+  getInstrumentation().waitForIdleSync();
+  View visibleItem=null;
+  int visibleItemNumber=0;
+  for (; visibleItemNumber < 100; visibleItemNumber++) {
+    visibleItem=getViewAtPath(0,0,visibleItemNumber);
+    int pos[]=new int[2];
+    visibleItem.getLocationInWindow(pos);
+    if (pos[0] >= 0) {
+      break;
+    }
+  }
+  gestureGenerator.startGesture(visibleItem).endGesture();
+  waitForBridgeAndUIIdle();
+  ArrayList<Double> xOffsets=mScrollListenerModule.getXOffsets();
+  ArrayList<Integer> itemIds=mScrollListenerModule.getItemsPressed();
+  assertFalse("Expected to receive at least one scroll event",xOffsets.isEmpty());
+  assertTrue("Expected offset to be greater than 0",xOffsets.get(xOffsets.size() - 1) > 0);
+  assertEquals("Expected to receive exactly one item click event",1,itemIds.size());
+  assertEquals(visibleItemNumber,(int)itemIds.get(0));
+}

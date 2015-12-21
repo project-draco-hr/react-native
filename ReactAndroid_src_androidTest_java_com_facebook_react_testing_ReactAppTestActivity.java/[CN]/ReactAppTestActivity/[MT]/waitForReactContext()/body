@@ -1,0 +1,15 @@
+{
+  Assertions.assertNotNull(mReactInstanceManager);
+  try {
+    while (true) {
+      ReactContext reactContext=mReactInstanceManager.getCurrentReactContext();
+      if (reactContext != null) {
+        return reactContext;
+      }
+      Thread.sleep(100);
+    }
+  }
+ catch (  InterruptedException e) {
+    throw new RuntimeException(e);
+  }
+}

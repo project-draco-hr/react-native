@@ -1,0 +1,8 @@
+{
+  ViewGroup appWrapperView=rootView;
+  View view=appWrapperView.getChildAt(0);
+  for (int i=0; i < path.length; i++) {
+    view=((ViewGroup)view).getChildAt(path[i]);
+  }
+  return (T)view;
+}

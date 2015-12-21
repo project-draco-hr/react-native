@@ -1,0 +1,18 @@
+{
+  HorizontalScrollView scrollView=getViewAtPath(0);
+  ScrollViewTestModule jsModule=getReactContext().getCatalystInstance().getJSModule(ScrollViewTestModule.class);
+  assertEquals(0,scrollView.getScrollX());
+  jsModule.scrollTo(300,0);
+  waitForBridgeAndUIIdle();
+  getInstrumentation().waitForIdleSync();
+  long timeout=10000;
+  long interval=50;
+  long start=System.currentTimeMillis();
+  while (System.currentTimeMillis() - start < timeout) {
+    if (scrollView.getScrollX() > 0) {
+      break;
+    }
+    Thread.sleep(interval);
+  }
+  assertNotSame(0,scrollView.getScrollX());
+}

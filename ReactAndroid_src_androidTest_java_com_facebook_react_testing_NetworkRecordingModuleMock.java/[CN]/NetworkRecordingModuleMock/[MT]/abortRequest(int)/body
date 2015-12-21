@@ -1,0 +1,4 @@
+{
+  mLastRequestId=requestId;
+  mAbortedRequest=true;
+}

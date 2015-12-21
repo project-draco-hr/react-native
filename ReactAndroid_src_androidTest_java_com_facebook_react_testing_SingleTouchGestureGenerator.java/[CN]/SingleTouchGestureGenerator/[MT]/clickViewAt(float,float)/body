@@ -1,0 +1,4 @@
+{
+  float touchSlop=mViewConfig.getScaledTouchSlop();
+  return startGesture(x,y).moveBy(touchSlop / 2.0f,touchSlop / 2.0f).endGesture();
+}

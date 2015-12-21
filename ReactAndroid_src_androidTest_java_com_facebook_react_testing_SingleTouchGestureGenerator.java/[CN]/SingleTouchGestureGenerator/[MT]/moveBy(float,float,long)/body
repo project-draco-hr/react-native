@@ -1,0 +1,3 @@
+{
+  return moveGesture(mLastX + dx,mLastY + dy,delay);
+}

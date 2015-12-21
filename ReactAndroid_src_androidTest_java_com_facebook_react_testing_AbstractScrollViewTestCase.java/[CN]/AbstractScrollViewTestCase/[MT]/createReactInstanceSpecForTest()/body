@@ -1,0 +1,4 @@
+{
+  mScrollListenerModule=new ScrollListenerModule();
+  return super.createReactInstanceSpecForTest().addNativeModule(mScrollListenerModule).addJSModule(ScrollViewTestModule.class);
+}

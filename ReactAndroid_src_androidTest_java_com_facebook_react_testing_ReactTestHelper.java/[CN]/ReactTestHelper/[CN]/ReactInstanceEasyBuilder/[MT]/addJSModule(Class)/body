@@ -1,0 +1,4 @@
+{
+  mJSModulesConfigBuilder.add(moduleInterfaceClass);
+  return this;
+}

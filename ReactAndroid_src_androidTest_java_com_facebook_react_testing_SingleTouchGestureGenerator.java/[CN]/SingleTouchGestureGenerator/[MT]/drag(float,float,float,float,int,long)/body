@@ -1,0 +1,12 @@
+{
+  float xStep=(toX - fromX) / stepCount;
+  float yStep=(toY - fromY) / stepCount;
+  float x=fromX;
+  float y=fromY;
+  for (int i=0; i < stepCount; i++) {
+    x+=xStep;
+    y+=yStep;
+    moveGesture(x,y,totalDelay / stepCount);
+  }
+  return this;
+}

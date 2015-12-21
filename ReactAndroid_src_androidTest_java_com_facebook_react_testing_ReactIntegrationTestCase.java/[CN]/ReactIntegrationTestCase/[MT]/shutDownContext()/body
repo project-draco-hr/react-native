@@ -1,0 +1,15 @@
+{
+  if (mInstance != null) {
+    final ReactContext contextToDestroy=mReactContext;
+    mReactContext=null;
+    mInstance=null;
+    UiThreadUtil.runOnUiThread(new Runnable(){
+      @Override public void run(){
+        if (contextToDestroy != null) {
+          contextToDestroy.onDestroy();
+        }
+      }
+    }
+);
+  }
+}

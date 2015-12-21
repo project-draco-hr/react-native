@@ -1,0 +1,12 @@
+{
+  if (mBitmap == null) {
+    throw new RuntimeException("View has not been drawn yet!");
+  }
+  if (Looper.getMainLooper() != Looper.myLooper()) {
+    throw new RuntimeException("Must access screenshots from main thread or you may get partially drawn Bitmaps");
+  }
+  if (!isScreenshotReady()) {
+    throw new RuntimeException("Trying to get screenshot, but the view is dirty or needs layout");
+  }
+  return Bitmap.createBitmap(mBitmap);
+}

@@ -1,0 +1,3 @@
+{
+  createGestureGenerator().startGesture(200,200).dragTo(180,100,10,durationMs).endGesture(180,100);
+}

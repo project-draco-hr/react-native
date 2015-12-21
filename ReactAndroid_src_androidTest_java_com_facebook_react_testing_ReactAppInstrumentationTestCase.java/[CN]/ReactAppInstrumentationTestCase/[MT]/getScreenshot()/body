@@ -1,0 +1,34 @@
+{
+  getInstrumentation().waitForIdleSync();
+  final CountDownLatch latch=new CountDownLatch(1);
+  final BitmapHolder bitmapHolder=new BitmapHolder();
+  final Runnable getScreenshotRunnable=new Runnable(){
+    private static final int MAX_TRIES=1000;
+    private static final int FRAME_DELAY_MS=10;
+    private int mNumRuns=0;
+    @Override public void run(){
+      mNumRuns++;
+      ReactAppTestActivity activity=getActivity();
+      if (!activity.isScreenshotReady()) {
+        if (mNumRuns > MAX_TRIES) {
+          throw new RuntimeException("Waited " + MAX_TRIES + " frames to get screenshot but it's still not ready!");
+        }
+        activity.postDelayed(this,FRAME_DELAY_MS);
+        return;
+      }
+      bitmapHolder.bitmap=getActivity().getCurrentScreenshot();
+      latch.countDown();
+    }
+  }
+;
+  getActivity().runOnUiThread(getScreenshotRunnable);
+  try {
+    if (!latch.await(5000,TimeUnit.MILLISECONDS)) {
+      throw new RuntimeException("Timed out waiting for screenshot runnable to run!");
+    }
+  }
+ catch (  InterruptedException e) {
+    throw new RuntimeException(e);
+  }
+  return Assertions.assertNotNull(bitmapHolder.bitmap);
+}

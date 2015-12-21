@@ -1,0 +1,5 @@
+{
+  mDispatcherView=view;
+  mIdleWaiter=idleWaiter;
+  mViewConfig=ViewConfiguration.get(view.getContext());
+}

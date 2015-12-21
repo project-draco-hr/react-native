@@ -1,0 +1,5 @@
+{
+  mXOffsets.add(x);
+  mYOffsets.add(y);
+  mScrollSignaler.release();
+}

@@ -1,0 +1,3 @@
+{
+  waitForBridgeAndUIIdle(IDLE_TIMEOUT_MS);
+}

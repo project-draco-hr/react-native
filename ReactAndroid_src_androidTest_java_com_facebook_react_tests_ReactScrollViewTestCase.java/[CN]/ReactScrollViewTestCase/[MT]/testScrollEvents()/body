@@ -1,0 +1,13 @@
+{
+  ScrollView scrollView=getViewAtPath(0);
+  dragUp();
+  waitForBridgeAndUIIdle();
+  mScrollListenerModule.waitForScrollIdle();
+  waitForBridgeAndUIIdle();
+  ArrayList<Double> yOffsets=mScrollListenerModule.getYOffsets();
+  assertFalse("Expected to receive at least one scroll event",yOffsets.isEmpty());
+  assertTrue("Expected offset to be greater than 0",yOffsets.get(yOffsets.size() - 1) > 0);
+  assertTrue("Expected no item click event fired",mScrollListenerModule.getItemsPressed().isEmpty());
+  assertEquals("Expected last offset to be offset of scroll view",PixelUtil.toDIPFromPixel(scrollView.getScrollY()),yOffsets.get(yOffsets.size() - 1).doubleValue(),1e-5);
+  assertTrue("Begin and End Drag should be called",mScrollListenerModule.dragEventsMatch());
+}

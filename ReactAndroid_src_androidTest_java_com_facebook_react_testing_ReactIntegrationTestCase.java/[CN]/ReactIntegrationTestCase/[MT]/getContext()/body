@@ -1,0 +1,7 @@
+{
+  if (mReactContext == null) {
+    mReactContext=new ReactApplicationContext(super.getContext());
+    Assertions.assertNotNull(mReactContext);
+  }
+  return mReactContext;
+}

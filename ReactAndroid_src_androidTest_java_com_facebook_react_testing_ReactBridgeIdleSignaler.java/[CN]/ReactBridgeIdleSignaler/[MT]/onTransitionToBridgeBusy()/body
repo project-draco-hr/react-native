@@ -1,0 +1,11 @@
+{
+  mIsBridgeIdle=false;
+  try {
+    if (!mBridgeIdleSemaphore.tryAcquire(15000,TimeUnit.MILLISECONDS)) {
+      throw new RuntimeException("Timed out waiting to acquire the test idle listener semaphore. Deadlock?");
+    }
+  }
+ catch (  InterruptedException e) {
+    throw new RuntimeException("Got interrupted",e);
+  }
+}

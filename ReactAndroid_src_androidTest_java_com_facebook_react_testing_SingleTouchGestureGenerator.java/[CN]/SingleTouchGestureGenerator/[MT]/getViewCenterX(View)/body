@@ -1,0 +1,6 @@
+{
+  int[] xy=new int[2];
+  view.getLocationOnScreen(xy);
+  int viewWidth=view.getWidth();
+  return xy[0] + (viewWidth / 2.0f);
+}
