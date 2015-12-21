@@ -1,5 +1,6 @@
 {
   FLog.i(ReactConstants.TAG,"Creating react context.");
+  ReactMarker.logMarker("CREATE_REACT_CONTEXT_START");
   mSourceUrl=jsBundleLoader.getSourceUrl();
   NativeModuleRegistry.Builder nativeRegistryBuilder=new NativeModuleRegistry.Builder();
   JavaScriptModulesConfig.Builder jsModulesBuilder=new JavaScriptModulesConfig.Builder();
@@ -60,5 +61,6 @@
   finally {
     Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);
   }
+  ReactMarker.logMarker("CREATE_REACT_CONTEXT_END");
   return reactContext;
 }
