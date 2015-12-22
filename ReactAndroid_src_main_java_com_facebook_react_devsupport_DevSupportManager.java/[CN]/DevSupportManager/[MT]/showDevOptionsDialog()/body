@@ -22,8 +22,9 @@
     }
   }
 );
-  options.put(mApplicationContext.getString(R.string.catalyst_inspect_element),new DevOptionHandler(){
+  options.put(mDevSettings.isElementInspectorEnabled() ? mApplicationContext.getString(R.string.catalyst_element_inspector_off) : mApplicationContext.getString(R.string.catalyst_element_inspector),new DevOptionHandler(){
     @Override public void onOptionSelected(){
+      mDevSettings.setElementInspectorEnabled(!mDevSettings.isElementInspectorEnabled());
       mReactInstanceCommandsHandler.toggleElementInspector();
     }
   }

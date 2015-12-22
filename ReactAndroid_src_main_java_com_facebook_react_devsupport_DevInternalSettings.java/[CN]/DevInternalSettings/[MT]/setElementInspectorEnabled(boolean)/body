@@ -1,0 +1,3 @@
+{
+  mPreferences.edit().putBoolean(PREFS_INSPECTOR_DEBUG_KEY,enabled).apply();
+}
