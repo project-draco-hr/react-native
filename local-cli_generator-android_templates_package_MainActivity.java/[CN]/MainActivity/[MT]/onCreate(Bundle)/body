@@ -1,7 +1,0 @@
-{
-  super.onCreate(savedInstanceState);
-  mReactRootView=new ReactRootView(this);
-  mReactInstanceManager=ReactInstanceManager.builder().setApplication(getApplication()).setBundleAssetName("index.android.bundle").setJSMainModuleName("index.android").addPackage(new MainReactPackage()).setUseDeveloperSupport(BuildConfig.DEBUG).setInitialLifecycleState(LifecycleState.RESUMED).build();
-  mReactRootView.startReactApplication(mReactInstanceManager,"<%= name %>",null);
-  setContentView(mReactRootView);
-}

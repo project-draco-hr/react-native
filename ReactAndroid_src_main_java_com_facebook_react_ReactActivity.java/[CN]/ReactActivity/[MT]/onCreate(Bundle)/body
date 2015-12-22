@@ -1,0 +1,15 @@
+{
+  super.onCreate(savedInstanceState);
+  if (getUseDeveloperSupport() && Build.VERSION.SDK_INT >= 23) {
+    if (!Settings.canDrawOverlays(this)) {
+      Intent serviceIntent=new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION);
+      startActivity(serviceIntent);
+      FLog.w(ReactConstants.TAG,REDBOX_PERMISSION_MESSAGE);
+      Toast.makeText(this,REDBOX_PERMISSION_MESSAGE,Toast.LENGTH_LONG).show();
+    }
+  }
+  mReactInstanceManager=createReactInstanceManager();
+  ReactRootView mReactRootView=createRootView();
+  mReactRootView.startReactApplication(mReactInstanceManager,getMainComponentName());
+  setContentView(mReactRootView);
+}
