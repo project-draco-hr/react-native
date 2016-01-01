@@ -1,0 +1,3 @@
+{
+  textPaint.setShadowLayer(mRadius,mDx,mDy,mColor);
+}
