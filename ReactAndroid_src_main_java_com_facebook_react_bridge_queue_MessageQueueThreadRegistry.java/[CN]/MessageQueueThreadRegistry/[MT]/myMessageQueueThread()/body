@@ -1,0 +1,3 @@
+{
+  return Assertions.assertNotNull(sMyMessageQueueThread.get(),"This thread doesn't have a MessageQueueThread registered to it!");
+}

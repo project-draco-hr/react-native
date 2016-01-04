@@ -1,0 +1,8 @@
+{
+  try {
+    return get(timeout,unit);
+  }
+ catch (  InterruptedException|ExecutionException|TimeoutException e) {
+    throw new RuntimeException(e);
+  }
+}

@@ -1,4 +1,19 @@
 {
   Looper mainLooper=Looper.getMainLooper();
-  return new MessageQueueThreadImpl(name,mainLooper,exceptionHandler);
+  final MessageQueueThreadImpl mqt=new MessageQueueThreadImpl(name,mainLooper,exceptionHandler);
+  if (UiThreadUtil.isOnUiThread()) {
+    MessageQueueThreadRegistry.register(mqt);
+  }
+ else {
+    final SimpleSettableFuture<Void> registrationFuture=new SimpleSettableFuture<>();
+    UiThreadUtil.runOnUiThread(new Runnable(){
+      @Override public void run(){
+        MessageQueueThreadRegistry.register(mqt);
+        registrationFuture.set(null);
+      }
+    }
+);
+    registrationFuture.getOrThrow(5000,TimeUnit.MILLISECONDS);
+  }
+  return mqt;
 }
