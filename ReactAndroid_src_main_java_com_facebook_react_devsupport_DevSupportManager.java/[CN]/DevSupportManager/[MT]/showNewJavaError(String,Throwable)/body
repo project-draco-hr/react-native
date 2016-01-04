@@ -1,0 +1,3 @@
+{
+  showNewError(message,StackTraceHelper.convertJavaStackTrace(e),JAVA_ERROR_COOKIE);
+}

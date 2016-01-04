@@ -1,7 +1,7 @@
 {
   if (mIsDevSupportEnabled) {
     FLog.e(ReactConstants.TAG,"Exception in native call from JS",e);
-    showNewError(e.getMessage(),StackTraceHelper.convertJavaStackTrace(e),JAVA_ERROR_COOKIE);
+    showNewJavaError(e.getMessage(),e);
   }
  else {
     if (e instanceof RuntimeException) {

@@ -16,7 +16,7 @@
       FLog.e(ReactConstants.TAG,"Unable to connect to remote debugger",cause);
       UiThreadUtil.runOnUiThread(new Runnable(){
         @Override public void run(){
-          showNewError(mApplicationContext.getString(R.string.catalyst_remotedbg_error),StackTraceHelper.convertJavaStackTrace(cause),JAVA_ERROR_COOKIE);
+          showNewJavaError(mApplicationContext.getString(R.string.catalyst_remotedbg_error),cause);
         }
       }
 );
