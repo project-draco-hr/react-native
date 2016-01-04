@@ -1,7 +1,9 @@
 {
   Systrace.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"DispatchEventsRunnable");
   try {
+    Systrace.endAsyncFlow(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"ScheduleDispatchFrameCallback",mHasDispatchScheduledCount);
     mHasDispatchScheduled=false;
+    mHasDispatchScheduledCount++;
     Assertions.assertNotNull(mRCTEventEmitter);
 synchronized (mEventsToDispatchLock) {
       if (mEventsToDispatchSize > 1) {
@@ -12,6 +14,7 @@ synchronized (mEventsToDispatchLock) {
         if (event == null) {
           continue;
         }
+        Systrace.endAsyncFlow(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,event.getEventName(),event.getUniqueID());
         event.dispatch(mRCTEventEmitter);
         event.dispose();
       }

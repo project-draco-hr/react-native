@@ -4,9 +4,12 @@
     return;
   }
   incrementPendingJSCalls();
+  final int traceID=mTraceID++;
+  Systrace.startAsyncFlow(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,tracingName,traceID);
   mCatalystQueueConfiguration.getJSQueueThread().runOnQueue(new Runnable(){
     @Override public void run(){
       mCatalystQueueConfiguration.getJSQueueThread().assertIsOnThread();
+      Systrace.endAsyncFlow(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,tracingName,traceID);
       if (mDestroyed) {
         return;
       }
