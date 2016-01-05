@@ -1,6 +1,5 @@
 {
   initializeSoLoaderIfNecessary(applicationContext);
-  ApplicationHolder.setApplication((Application)applicationContext.getApplicationContext());
   mApplicationContext=applicationContext;
   mJSBundleFile=jsBundleFile;
   mJSMainModuleName=jsMainModuleName;
