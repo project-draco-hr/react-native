@@ -1,26 +1,22 @@
 {
   mDevServerHelper.launchChromeDevtools();
-  final WebsocketJavaScriptExecutor webSocketJSExecutor=new WebsocketJavaScriptExecutor();
-  webSocketJSExecutor.connect(mDevServerHelper.getWebsocketProxyURL(),new WebsocketJavaScriptExecutor.JSExecutorConnectCallback(){
-    @Override public void onSuccess(){
-      progressDialog.dismiss();
-      UiThreadUtil.runOnUiThread(new Runnable(){
-        @Override public void run(){
-          mReactInstanceCommandsHandler.onReloadWithJSDebugger(webSocketJSExecutor);
-        }
+  JavaJSExecutor.Factory factory=new JavaJSExecutor.Factory(){
+    @Override public JavaJSExecutor create() throws Exception {
+      WebsocketJavaScriptExecutor executor=new WebsocketJavaScriptExecutor();
+      SimpleSettableFuture<Boolean> future=new SimpleSettableFuture<>();
+      executor.connect(mDevServerHelper.getWebsocketProxyURL(),getExecutorConnectCallback(progressDialog,future));
+      try {
+        future.get(90,TimeUnit.SECONDS);
+        return executor;
       }
-);
-    }
-    @Override public void onFailure(    final Throwable cause){
-      progressDialog.dismiss();
-      FLog.e(ReactConstants.TAG,"Unable to connect to remote debugger",cause);
-      UiThreadUtil.runOnUiThread(new Runnable(){
-        @Override public void run(){
-          showNewJavaError(mApplicationContext.getString(R.string.catalyst_remotedbg_error),cause);
-        }
+ catch (      ExecutionException e) {
+        throw (Exception)e.getCause();
       }
-);
+catch (      InterruptedException|TimeoutException e) {
+        throw new RuntimeException(e);
+      }
     }
   }
-);
+;
+  mReactInstanceCommandsHandler.onReloadWithJSDebugger(factory);
 }

@@ -1,6 +1,6 @@
 {
   UiThreadUtil.assertOnUiThread();
-  ReactContextInitParams initParams=new ReactContextInitParams(jsExecutor,jsBundleLoader);
+  ReactContextInitParams initParams=new ReactContextInitParams(jsExecutorFactory,jsBundleLoader);
   if (!mIsContextInitAsyncTaskRunning) {
     ReactContextInitAsyncTask initTask=new ReactContextInitAsyncTask();
     initTask.execute(initParams);

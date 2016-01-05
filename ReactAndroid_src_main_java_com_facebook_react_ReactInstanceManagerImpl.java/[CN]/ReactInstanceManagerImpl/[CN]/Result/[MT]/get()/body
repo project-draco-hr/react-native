@@ -1,0 +1,7 @@
+{
+  if (mException != null) {
+    throw mException;
+  }
+  Assertions.assertNotNull(mResult);
+  return mResult;
+}
