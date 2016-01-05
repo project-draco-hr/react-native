@@ -1,0 +1,7 @@
+{
+  int length=value.size() > into.length ? into.length : value.size();
+  for (int i=0; i < length; i++) {
+    into[i]=(float)value.getDouble(i);
+  }
+  return value.size();
+}

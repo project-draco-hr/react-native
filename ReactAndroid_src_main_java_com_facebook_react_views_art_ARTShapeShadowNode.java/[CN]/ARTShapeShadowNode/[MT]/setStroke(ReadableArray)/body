@@ -1,0 +1,4 @@
+{
+  mStrokeColor=PropHelper.toFloatArray(strokeColors);
+  markUpdated();
+}

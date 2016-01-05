@@ -1,0 +1,4 @@
+{
+  mOpacity=opacity;
+  markUpdated();
+}

@@ -1,0 +1,4 @@
+{
+  mStrokeCap=strokeCap;
+  markUpdated();
+}

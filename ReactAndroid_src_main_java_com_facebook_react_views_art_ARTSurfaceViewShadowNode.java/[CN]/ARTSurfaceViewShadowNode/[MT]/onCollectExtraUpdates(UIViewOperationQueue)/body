@@ -1,0 +1,4 @@
+{
+  super.onCollectExtraUpdates(uiUpdater);
+  uiUpdater.enqueueUpdateExtraData(getReactTag(),drawOutput());
+}

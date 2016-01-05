@@ -1,0 +1,8 @@
+{
+  if (value != null) {
+    float[] result=new float[value.size()];
+    toFloatArray(value,result);
+    return result;
+  }
+  return null;
+}

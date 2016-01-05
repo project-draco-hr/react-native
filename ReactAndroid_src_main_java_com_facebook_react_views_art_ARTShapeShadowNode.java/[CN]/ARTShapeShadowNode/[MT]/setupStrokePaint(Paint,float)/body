@@ -1,0 +1,40 @@
+{
+  if (mStrokeWidth == 0 || mStrokeColor == null || mStrokeColor.length == 0) {
+    return false;
+  }
+  paint.reset();
+  paint.setFlags(Paint.ANTI_ALIAS_FLAG);
+  paint.setStyle(Paint.Style.STROKE);
+switch (mStrokeCap) {
+case CAP_BUTT:
+    paint.setStrokeCap(Paint.Cap.BUTT);
+  break;
+case CAP_SQUARE:
+paint.setStrokeCap(Paint.Cap.SQUARE);
+break;
+case CAP_ROUND:
+paint.setStrokeCap(Paint.Cap.ROUND);
+break;
+default :
+throw new JSApplicationIllegalArgumentException("strokeCap " + mStrokeCap + " unrecognized");
+}
+switch (mStrokeJoin) {
+case JOIN_MITER:
+paint.setStrokeJoin(Paint.Join.MITER);
+break;
+case JOIN_BEVEL:
+paint.setStrokeJoin(Paint.Join.BEVEL);
+break;
+case JOIN_ROUND:
+paint.setStrokeJoin(Paint.Join.ROUND);
+break;
+default :
+throw new JSApplicationIllegalArgumentException("strokeJoin " + mStrokeJoin + " unrecognized");
+}
+paint.setStrokeWidth(mStrokeWidth * mScale);
+paint.setARGB((int)(mStrokeColor.length > 3 ? mStrokeColor[3] * opacity * 255 : opacity * 255),(int)(mStrokeColor[0] * 255),(int)(mStrokeColor[1] * 255),(int)(mStrokeColor[2] * 255));
+if (mStrokeDash != null && mStrokeDash.length > 0) {
+FLog.w(ReactConstants.TAG,"ART: Dashes are not supported yet!");
+}
+return true;
+}

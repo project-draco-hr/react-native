@@ -1,0 +1,17 @@
+{
+  if (mFillColor != null && mFillColor.length > 0) {
+    paint.reset();
+    paint.setFlags(Paint.ANTI_ALIAS_FLAG);
+    paint.setStyle(Paint.Style.FILL);
+    int colorType=(int)mFillColor[0];
+switch (colorType) {
+case 0:
+      paint.setARGB((int)(mFillColor.length > 4 ? mFillColor[4] * opacity * 255 : opacity * 255),(int)(mFillColor[1] * 255),(int)(mFillColor[2] * 255),(int)(mFillColor[3] * 255));
+    break;
+default :
+  FLog.w(ReactConstants.TAG,"ART: Color type " + colorType + " not supported!");
+}
+return true;
+}
+return false;
+}

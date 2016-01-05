@@ -1,0 +1,11 @@
+{
+  opacity*=mOpacity;
+  if (opacity > MIN_OPACITY_FOR_DRAW) {
+    saveAndSetupCanvas(canvas);
+    for (int i=0; i < getChildCount(); i++) {
+      ARTVirtualNode child=(ARTVirtualNode)getChildAt(i);
+      child.draw(canvas,paint,opacity);
+      child.markUpdateSeen();
+    }
+  }
+}

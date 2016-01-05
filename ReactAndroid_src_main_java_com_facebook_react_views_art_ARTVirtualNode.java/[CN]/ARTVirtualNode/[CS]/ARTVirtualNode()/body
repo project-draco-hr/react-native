@@ -1,0 +1,3 @@
+{
+  mScale=DisplayMetricsHolder.getDisplayMetrics().density;
+}
