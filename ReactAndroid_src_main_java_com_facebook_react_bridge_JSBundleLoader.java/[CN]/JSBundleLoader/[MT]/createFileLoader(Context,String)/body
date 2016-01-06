@@ -9,7 +9,7 @@
       }
     }
     @Override public String getSourceUrl(){
-      return fileName;
+      return (fileName.startsWith("assets://") ? "" : "file://") + fileName;
     }
   }
 ;
