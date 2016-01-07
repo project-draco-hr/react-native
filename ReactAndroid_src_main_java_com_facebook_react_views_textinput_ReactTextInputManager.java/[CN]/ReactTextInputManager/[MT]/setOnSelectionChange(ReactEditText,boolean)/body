@@ -1,0 +1,8 @@
+{
+  if (onSelectionChange) {
+    view.setSelectionWatcher(new ReactSelectionWatcher(view));
+  }
+ else {
+    view.setSelectionWatcher(null);
+  }
+}

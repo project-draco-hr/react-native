@@ -1,0 +1,6 @@
+{
+  super.onSelectionChanged(selStart,selEnd);
+  if (mSelectionWatcher != null && hasFocus()) {
+    mSelectionWatcher.onSelectionChanged(selStart,selEnd);
+  }
+}
