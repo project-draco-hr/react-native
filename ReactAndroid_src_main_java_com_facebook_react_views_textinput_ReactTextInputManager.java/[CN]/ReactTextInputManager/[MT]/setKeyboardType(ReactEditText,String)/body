@@ -1,10 +1,11 @@
 {
-  int flagsToSet=0;
+  int flagsToSet=InputType.TYPE_CLASS_TEXT;
   if (KEYBOARD_TYPE_NUMERIC.equalsIgnoreCase(keyboardType)) {
-    flagsToSet=InputType.TYPE_CLASS_NUMBER;
+    flagsToSet=INPUT_TYPE_KEYBOARD_NUMBERED;
   }
  else   if (KEYBOARD_TYPE_EMAIL_ADDRESS.equalsIgnoreCase(keyboardType)) {
-    flagsToSet=InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS;
+    flagsToSet=InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS | InputType.TYPE_CLASS_TEXT;
   }
-  updateStagedInputTypeFlag(view,InputType.TYPE_CLASS_NUMBER | InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS,flagsToSet);
+  updateStagedInputTypeFlag(view,INPUT_TYPE_KEYBOARD_NUMBERED | InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS | InputType.TYPE_CLASS_TEXT,flagsToSet);
+  checkPasswordType(view);
 }
