@@ -1,0 +1,30 @@
+{
+  if (properties.isEmpty()) {
+    return CodeBlock.builder().build();
+  }
+  CodeBlock.Builder builder=CodeBlock.builder().addStatement("Integer id = mappings.get(name)").addStatement("if (id == null) return");
+  builder.add("switch (id) {\n").indent();
+  for (int i=0, size=properties.size(); i < size; i++) {
+    PropertyInfo propertyInfo=properties.get(i);
+    builder.add("case $L:\n",i).indent();
+switch (info.getType()) {
+case VIEW_MANAGER:
+      builder.add("manager.$L(view, ",propertyInfo.methodName);
+    break;
+case SHADOW_NODE:
+  builder.add("node.$L(",propertyInfo.methodName);
+break;
+}
+if (propertyInfo.mProperty instanceof GroupProperty) {
+builder.add("$L, ",((GroupProperty)propertyInfo.mProperty).mGroupIndex);
+}
+if (BOXED_PRIMITIVES.contains(propertyInfo.propertyType)) {
+builder.add("props.isNull(name) ? null : ");
+}
+getPropertyExtractor(propertyInfo,builder);
+builder.addStatement(")");
+builder.addStatement("break").unindent();
+}
+builder.unindent().add("}\n");
+return builder.build();
+}

@@ -1,13 +1,4 @@
 {
-  Map<String,ViewManagersPropertyCache.PropSetter> propSetters=ViewManagersPropertyCache.getNativePropSettersForShadowNodeClass(getClass());
-  ReadableMap propMap=props.mBackingMap;
-  ReadableMapKeySetIterator iterator=propMap.keySetIterator();
-  while (iterator.hasNextKey()) {
-    String key=iterator.nextKey();
-    ViewManagersPropertyCache.PropSetter setter=propSetters.get(key);
-    if (setter != null) {
-      setter.updateShadowNodeProp(this,props);
-    }
-  }
+  ViewManagerPropertyUpdater.updateProps(this,props);
   onAfterUpdateTransaction();
 }

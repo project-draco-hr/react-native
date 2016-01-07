@@ -1,0 +1,40 @@
+{
+  TypeName propertyType=info.propertyType;
+  if (propertyType.equals(STRING_TYPE)) {
+    return builder.add("props.getString(name)");
+  }
+ else   if (propertyType.equals(READABLE_ARRAY_TYPE)) {
+    return builder.add("props.getArray(name)");
+  }
+ else   if (propertyType.equals(READABLE_MAP_TYPE)) {
+    return builder.add("props.getMap(name)");
+  }
+  if (BOXED_PRIMITIVES.contains(propertyType)) {
+    propertyType=propertyType.unbox();
+  }
+  if (propertyType.equals(TypeName.BOOLEAN)) {
+    return builder.add("props.getBoolean(name, $L)",info.mProperty.defaultBoolean());
+  }
+  if (propertyType.equals(TypeName.DOUBLE)) {
+    double defaultDouble=info.mProperty.defaultDouble();
+    if (Double.isNaN(defaultDouble)) {
+      return builder.add("props.getDouble(name, $T.NaN)",Double.class);
+    }
+ else {
+      return builder.add("props.getDouble(name, $Lf)",defaultDouble);
+    }
+  }
+  if (propertyType.equals(TypeName.FLOAT)) {
+    float defaultFloat=info.mProperty.defaultFloat();
+    if (Float.isNaN(defaultFloat)) {
+      return builder.add("props.getFloat(name, $T.NaN)",Float.class);
+    }
+ else {
+      return builder.add("props.getFloat(name, $Lf)",defaultFloat);
+    }
+  }
+  if (propertyType.equals(TypeName.INT)) {
+    return builder.add("props.getInt(name, $L)",info.mProperty.defaultInt());
+  }
+  throw new IllegalArgumentException();
+}

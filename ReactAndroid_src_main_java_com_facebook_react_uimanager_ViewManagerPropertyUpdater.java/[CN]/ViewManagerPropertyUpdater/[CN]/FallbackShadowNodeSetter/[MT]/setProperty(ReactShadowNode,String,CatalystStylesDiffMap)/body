@@ -1,0 +1,6 @@
+{
+  ViewManagersPropertyCache.PropSetter setter=mPropSetters.get(name);
+  if (setter != null) {
+    setter.updateShadowNodeProp(node,props);
+  }
+}

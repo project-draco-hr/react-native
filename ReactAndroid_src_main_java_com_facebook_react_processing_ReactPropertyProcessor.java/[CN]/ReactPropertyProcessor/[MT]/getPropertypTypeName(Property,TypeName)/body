@@ -1,0 +1,5 @@
+{
+  String defaultType=DEFAULT_TYPES.get(propertyType);
+  String useDefaultType=property instanceof RegularProperty ? ReactProp.USE_DEFAULT_TYPE : ReactPropGroup.USE_DEFAULT_TYPE;
+  return useDefaultType.equals(property.customType()) ? defaultType : property.customType();
+}

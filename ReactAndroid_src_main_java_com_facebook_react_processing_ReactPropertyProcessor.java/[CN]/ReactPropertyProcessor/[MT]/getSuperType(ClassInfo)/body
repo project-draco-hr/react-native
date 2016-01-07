@@ -1,0 +1,10 @@
+{
+switch (classInfo.getType()) {
+case VIEW_MANAGER:
+    return ParameterizedTypeName.get(VIEW_MANAGER_SETTER_TYPE,classInfo.mClassName,classInfo.mViewType);
+case SHADOW_NODE:
+  return ParameterizedTypeName.get(SHADOW_NODE_SETTER_TYPE,classInfo.mClassName);
+default :
+throw new IllegalArgumentException();
+}
+}

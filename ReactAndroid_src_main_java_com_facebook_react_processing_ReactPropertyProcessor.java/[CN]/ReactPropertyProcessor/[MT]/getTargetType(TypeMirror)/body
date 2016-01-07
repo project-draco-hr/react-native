@@ -1,0 +1,17 @@
+{
+  TypeName typeName=TypeName.get(mirror);
+  if (typeName instanceof ParameterizedTypeName) {
+    ParameterizedTypeName parameterizedTypeName=(ParameterizedTypeName)typeName;
+    if (parameterizedTypeName.rawType.equals(VIEW_MANAGER_TYPE)) {
+      return parameterizedTypeName.typeArguments.get(0);
+    }
+  }
+ else   if (typeName.equals(SHADOW_NODE_TYPE)) {
+    return SHADOW_NODE_TYPE;
+  }
+ else   if (typeName.equals(TypeName.OBJECT)) {
+    throw new IllegalArgumentException("Could not find target type");
+  }
+  List<? extends TypeMirror> types=mTypes.directSupertypes(mirror);
+  return getTargetType(types.get(0));
+}

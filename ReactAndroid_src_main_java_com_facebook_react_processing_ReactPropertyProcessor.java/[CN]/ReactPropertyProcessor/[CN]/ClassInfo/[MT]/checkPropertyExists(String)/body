@@ -1,0 +1,8 @@
+{
+  for (  PropertyInfo propertyInfo : mProperties) {
+    if (propertyInfo.mProperty.name().equals(name)) {
+      return true;
+    }
+  }
+  return false;
+}

@@ -1,0 +1,26 @@
+{
+  String methodName=element.getSimpleName().toString();
+  ExecutableElement method=(ExecutableElement)element;
+  List<? extends VariableElement> parameters=method.getParameters();
+  if (parameters.size() != getArgCount(mClassInfo.getType(),property)) {
+    throw new ReactPropertyException("Wrong number of args",element);
+  }
+  int index=0;
+  if (mClassInfo.getType() == SettableType.VIEW_MANAGER) {
+    TypeMirror mirror=parameters.get(index++).asType();
+    if (!mTypes.isSubtype(mirror,mElements.getTypeElement("android.view.View").asType())) {
+      throw new ReactPropertyException("First argument must be a subclass of View",element);
+    }
+  }
+  if (property instanceof GroupProperty) {
+    TypeName indexType=TypeName.get(parameters.get(index++).asType());
+    if (!indexType.equals(TypeName.INT)) {
+      throw new ReactPropertyException("Argument " + index + " must be an int for @ReactPropGroup",element);
+    }
+  }
+  TypeName propertyType=TypeName.get(parameters.get(index++).asType());
+  if (!DEFAULT_TYPES.containsKey(propertyType)) {
+    throw new ReactPropertyException("Argument " + index + " must be of a supported type",element);
+  }
+  return new PropertyInfo(methodName,propertyType,element,property);
+}

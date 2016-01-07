@@ -1,0 +1,6 @@
+{
+  if (element.getKind() == ElementKind.METHOD && element.getModifiers().contains(PUBLIC)) {
+    return;
+  }
+  throw new ReactPropertyException("@ReactProp and @ReachPropGroup annotation must be on a public method",element);
+}

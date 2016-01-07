@@ -1,0 +1,7 @@
+{
+  String name=propertyInfo.mProperty.name();
+  if (checkPropertyExists(name)) {
+    throw new ReactPropertyException("Module " + mClassName + " has already registered a property named \""+ name+ '"',propertyInfo);
+  }
+  mProperties.add(propertyInfo);
+}

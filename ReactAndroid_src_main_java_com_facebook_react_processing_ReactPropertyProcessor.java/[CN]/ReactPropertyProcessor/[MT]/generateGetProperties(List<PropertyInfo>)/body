@@ -1,0 +1,16 @@
+{
+  if (properties.isEmpty()) {
+    return CodeBlock.builder().addStatement("return $T.emptyMap()",Collections.class).build();
+  }
+  CodeBlock.Builder builder=CodeBlock.builder().addStatement("$T props = new $T($L)",PROPERTY_MAP_TYPE,CONCRETE_PROPERTY_MAP_TYPE,properties.size());
+  for (  PropertyInfo propertyInfo : properties) {
+    try {
+      String typeName=getPropertypTypeName(propertyInfo.mProperty,propertyInfo.propertyType);
+      builder.addStatement("props.put($S, $S)",propertyInfo.mProperty.name(),typeName);
+    }
+ catch (    IllegalArgumentException e) {
+      throw new ReactPropertyException(e.getMessage(),propertyInfo);
+    }
+  }
+  return builder.addStatement("return props").build();
+}
