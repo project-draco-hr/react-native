@@ -20,6 +20,9 @@
  else   if (styleStr.equals("LargeInverse")) {
     return android.R.attr.progressBarStyleLargeInverse;
   }
+ else   if (styleStr.equals("Normal")) {
+    return android.R.attr.progressBarStyle;
+  }
  else {
     throw new JSApplicationIllegalArgumentException("Unknown ProgressBar style: " + styleStr);
   }
