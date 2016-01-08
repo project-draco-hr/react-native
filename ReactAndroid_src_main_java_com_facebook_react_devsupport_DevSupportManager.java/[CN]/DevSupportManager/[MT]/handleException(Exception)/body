@@ -4,6 +4,11 @@
     showNewJavaError(e.getMessage(),e);
   }
  else {
-    mDefaultNativeModuleCallExceptionHandler.handleException(e);
+    if (e instanceof RuntimeException) {
+      throw (RuntimeException)e;
+    }
+ else {
+      throw new RuntimeException(e);
+    }
   }
 }

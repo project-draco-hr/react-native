@@ -27,6 +27,5 @@
   }
 ;
   mJSBundleTempFile=new File(applicationContext.getFilesDir(),JS_BUNDLE_FILE_NAME);
-  mDefaultNativeModuleCallExceptionHandler=new DefaultNativeModuleCallExceptionHandler();
   setDevSupportEnabled(enableOnCreate);
 }
