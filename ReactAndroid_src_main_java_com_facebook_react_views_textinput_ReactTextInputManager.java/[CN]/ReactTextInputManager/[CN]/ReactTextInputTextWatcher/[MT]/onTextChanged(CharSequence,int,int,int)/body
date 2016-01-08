@@ -15,5 +15,5 @@
     contentHeight=mEditText.getCompoundPaddingTop() + mEditText.getLayout().getHeight() + mEditText.getCompoundPaddingTop();
   }
   mEventDispatcher.dispatchEvent(new ReactTextChangedEvent(mEditText.getId(),SystemClock.uptimeMillis(),s.toString(),(int)PixelUtil.toDIPFromPixel(contentWidth),(int)PixelUtil.toDIPFromPixel(contentHeight),mEditText.incrementAndGetEventCounter()));
-  mEventDispatcher.dispatchEvent(new ReactTextInputEvent(mEditText.getId(),SystemClock.uptimeMillis(),newText,oldText,start,count > 0 ? start + count - 1 : start + before));
+  mEventDispatcher.dispatchEvent(new ReactTextInputEvent(mEditText.getId(),SystemClock.uptimeMillis(),newText,oldText,start,start + before));
 }
