@@ -6,7 +6,12 @@
   mJSMainModuleName=jsMainModuleName;
   mPackages=packages;
   mUseDeveloperSupport=useDeveloperSupport;
-  mDevSupportManager=new DevSupportManager(applicationContext,mDevInterface,mJSMainModuleName,useDeveloperSupport);
+  if (mUseDeveloperSupport) {
+    mDevSupportManager=new DevSupportManagerImpl(applicationContext,mDevInterface,mJSMainModuleName,useDeveloperSupport);
+  }
+ else {
+    mDevSupportManager=new DisabledDevSupportManager();
+  }
   mBridgeIdleDebugListener=bridgeIdleDebugListener;
   mLifecycleState=initialLifecycleState;
   mUIImplementationProvider=uiImplementationProvider;
