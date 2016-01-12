@@ -2,26 +2,6 @@
   TypeName targetType=getTargetType(typeElement.asType());
   TypeName viewType=targetType.equals(SHADOW_NODE_TYPE) ? null : targetType;
   ClassInfo classInfo=new ClassInfo(className,typeElement,viewType);
-  PropertyInfo.Builder propertyBuilder=new PropertyInfo.Builder(mTypes,mElements,classInfo);
-  for (  Element element : mElements.getAllMembers(typeElement)) {
-    ReactProp prop=element.getAnnotation(ReactProp.class);
-    ReactPropGroup propGroup=element.getAnnotation(ReactPropGroup.class);
-    try {
-      if (prop != null || propGroup != null) {
-        checkElement(element);
-      }
-      if (prop != null) {
-        classInfo.addProperty(propertyBuilder.build(element,new RegularProperty(prop)));
-      }
- else       if (propGroup != null) {
-        for (int i=0, size=propGroup.names().length; i < size; i++) {
-          classInfo.addProperty(propertyBuilder.build(element,new GroupProperty(propGroup,i)));
-        }
-      }
-    }
- catch (    ReactPropertyException e) {
-      error(e.element,e.getMessage());
-    }
-  }
+  findProperties(classInfo,typeElement);
   return classInfo;
 }

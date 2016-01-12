@@ -1,0 +1,26 @@
+{
+  PropertyInfo.Builder propertyBuilder=new PropertyInfo.Builder(mTypes,mElements,classInfo);
+  while (typeElement != null) {
+    for (    Element element : typeElement.getEnclosedElements()) {
+      ReactProp prop=element.getAnnotation(ReactProp.class);
+      ReactPropGroup propGroup=element.getAnnotation(ReactPropGroup.class);
+      try {
+        if (prop != null || propGroup != null) {
+          checkElement(element);
+        }
+        if (prop != null) {
+          classInfo.addProperty(propertyBuilder.build(element,new RegularProperty(prop)));
+        }
+ else         if (propGroup != null) {
+          for (int i=0, size=propGroup.names().length; i < size; i++) {
+            classInfo.addProperty(propertyBuilder.build(element,new GroupProperty(propGroup,i)));
+          }
+        }
+      }
+ catch (      ReactPropertyException e) {
+        error(e.element,e.getMessage());
+      }
+    }
+    typeElement=(TypeElement)mTypes.asElement(typeElement.getSuperclass());
+  }
+}

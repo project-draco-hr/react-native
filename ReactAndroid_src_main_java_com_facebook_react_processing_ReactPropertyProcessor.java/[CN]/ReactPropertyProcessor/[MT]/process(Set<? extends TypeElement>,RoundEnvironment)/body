@@ -14,6 +14,12 @@
   for (  ClassInfo classInfo : mClasses.values()) {
     try {
       if (!shouldIgnoreClass(classInfo)) {
+        Collections.sort(classInfo.mProperties,new Comparator<PropertyInfo>(){
+          @Override public int compare(          PropertyInfo a,          PropertyInfo b){
+            return a.mProperty.name().compareTo(b.mProperty.name());
+          }
+        }
+);
         generateCode(classInfo,classInfo.mProperties);
       }
  else       if (shouldWarnClass(classInfo)) {
