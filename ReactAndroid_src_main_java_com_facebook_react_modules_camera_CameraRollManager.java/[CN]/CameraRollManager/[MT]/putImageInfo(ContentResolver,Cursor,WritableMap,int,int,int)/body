@@ -1,0 +1,30 @@
+{
+  WritableMap image=new WritableNativeMap();
+  Uri photoUri=Uri.withAppendedPath(Images.Media.EXTERNAL_CONTENT_URI,photos.getString(idIndex));
+  image.putString("uri",photoUri.toString());
+  float width=-1;
+  float height=-1;
+  if (IS_JELLY_BEAN_OR_LATER) {
+    width=photos.getInt(widthIndex);
+    height=photos.getInt(heightIndex);
+  }
+  if (width <= 0 || height <= 0) {
+    try {
+      AssetFileDescriptor photoDescriptor=resolver.openAssetFileDescriptor(photoUri,"r");
+      BitmapFactory.Options options=new BitmapFactory.Options();
+      options.inJustDecodeBounds=true;
+      BitmapFactory.decodeFileDescriptor(photoDescriptor.getFileDescriptor(),null,options);
+      photoDescriptor.close();
+      width=options.outWidth;
+      height=options.outHeight;
+    }
+ catch (    IOException e) {
+      FLog.e(TAG,"Could not get width/height for " + photoUri.toString(),e);
+      return false;
+    }
+  }
+  image.putDouble("width",width);
+  image.putDouble("height",height);
+  node.putMap("image",image);
+  return true;
+}

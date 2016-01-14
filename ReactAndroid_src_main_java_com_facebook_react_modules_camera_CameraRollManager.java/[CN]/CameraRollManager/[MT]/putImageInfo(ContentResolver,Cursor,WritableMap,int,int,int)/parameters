@@ -1,0 +1,6 @@
+ContentResolver resolver
+Cursor photos
+WritableMap node
+int idIndex
+int widthIndex
+int heightIndex

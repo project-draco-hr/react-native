@@ -1,0 +1,5 @@
+Cursor photos
+WritableMap node
+int mimeTypeIndex
+int groupNameIndex
+int dateTakenIndex

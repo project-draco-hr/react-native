@@ -1,0 +1,64 @@
+{
+  File source=new File(mUri.getPath());
+  FileChannel input=null, output=null;
+  try {
+    File pictures=Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+    pictures.mkdirs();
+    if (!pictures.isDirectory()) {
+      mError.invoke("External storage pictures directory not available");
+      return;
+    }
+    File dest=new File(pictures,source.getName());
+    int n=0;
+    String fullSourceName=source.getName();
+    String sourceName, sourceExt;
+    if (fullSourceName.indexOf('.') >= 0) {
+      sourceName=fullSourceName.substring(0,fullSourceName.lastIndexOf('.'));
+      sourceExt=fullSourceName.substring(fullSourceName.lastIndexOf('.'));
+    }
+ else {
+      sourceName=fullSourceName;
+      sourceExt="";
+    }
+    while (!dest.createNewFile()) {
+      dest=new File(pictures,sourceName + "_" + (n++)+ sourceExt);
+    }
+    input=new FileInputStream(source).getChannel();
+    output=new FileOutputStream(dest).getChannel();
+    output.transferFrom(input,0,input.size());
+    input.close();
+    output.close();
+    MediaScannerConnection.scanFile(mContext,new String[]{dest.getAbsolutePath()},null,new MediaScannerConnection.OnScanCompletedListener(){
+      @Override public void onScanCompleted(      String path,      Uri uri){
+        if (uri != null) {
+          mSuccess.invoke(uri.toString());
+        }
+ else {
+          mError.invoke("Could not add image to gallery");
+        }
+      }
+    }
+);
+  }
+ catch (  IOException e) {
+    mError.invoke(e.getMessage());
+  }
+ finally {
+    if (input != null && input.isOpen()) {
+      try {
+        input.close();
+      }
+ catch (      IOException e) {
+        FLog.e(ReactConstants.TAG,"Could not close input channel",e);
+      }
+    }
+    if (output != null && output.isOpen()) {
+      try {
+        output.close();
+      }
+ catch (      IOException e) {
+        FLog.e(ReactConstants.TAG,"Could not close output channel",e);
+      }
+    }
+  }
+}

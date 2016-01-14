@@ -1,0 +1,10 @@
+{
+  int first=params.getInt("first");
+  String after=params.hasKey("after") ? params.getString("after") : null;
+  String groupName=params.hasKey("groupName") ? params.getString("groupName") : null;
+  ReadableArray mimeTypes=params.hasKey("mimeTypes") ? params.getArray("mimeTypes") : null;
+  if (params.hasKey("groupTypes")) {
+    throw new JSApplicationIllegalArgumentException("groupTypes is not supported on Android");
+  }
+  new GetPhotosTask(getReactApplicationContext(),first,after,groupName,mimeTypes,success,error).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+}

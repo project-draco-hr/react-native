@@ -1,0 +1,28 @@
+{
+  WritableArray edges=new WritableNativeArray();
+  photos.moveToFirst();
+  int idIndex=photos.getColumnIndex(Images.Media._ID);
+  int mimeTypeIndex=photos.getColumnIndex(Images.Media.MIME_TYPE);
+  int groupNameIndex=photos.getColumnIndex(Images.Media.BUCKET_DISPLAY_NAME);
+  int dateTakenIndex=photos.getColumnIndex(Images.Media.DATE_TAKEN);
+  int widthIndex=IS_JELLY_BEAN_OR_LATER ? photos.getColumnIndex(Images.Media.WIDTH) : -1;
+  int heightIndex=IS_JELLY_BEAN_OR_LATER ? photos.getColumnIndex(Images.Media.HEIGHT) : -1;
+  int longitudeIndex=photos.getColumnIndex(Images.Media.LONGITUDE);
+  int latitudeIndex=photos.getColumnIndex(Images.Media.LATITUDE);
+  for (int i=0; i < limit && !photos.isAfterLast(); i++) {
+    WritableMap edge=new WritableNativeMap();
+    WritableMap node=new WritableNativeMap();
+    boolean imageInfoSuccess=putImageInfo(resolver,photos,node,idIndex,widthIndex,heightIndex);
+    if (imageInfoSuccess) {
+      putBasicNodeInfo(photos,node,mimeTypeIndex,groupNameIndex,dateTakenIndex);
+      putLocationInfo(photos,node,longitudeIndex,latitudeIndex);
+      edge.putMap("node",node);
+      edges.pushMap(edge);
+    }
+ else {
+      i--;
+    }
+    photos.moveToNext();
+  }
+  response.putArray("edges",edges);
+}

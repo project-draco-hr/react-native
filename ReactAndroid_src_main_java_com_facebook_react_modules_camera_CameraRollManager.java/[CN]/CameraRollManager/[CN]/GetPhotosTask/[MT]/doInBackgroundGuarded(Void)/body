@@ -1,0 +1,41 @@
+{
+  StringBuilder selection=new StringBuilder("1");
+  List<String> selectionArgs=new ArrayList<>();
+  if (!TextUtils.isEmpty(mAfter)) {
+    selection.append(" AND " + SELECTION_DATE_TAKEN);
+    selectionArgs.add(mAfter);
+  }
+  if (!TextUtils.isEmpty(mGroupName)) {
+    selection.append(" AND " + SELECTION_BUCKET);
+    selectionArgs.add(mGroupName);
+  }
+  if (mMimeTypes != null && mMimeTypes.size() > 0) {
+    selection.append(" AND " + Images.Media.MIME_TYPE + " IN (");
+    for (int i=0; i < mMimeTypes.size(); i++) {
+      selection.append("?,");
+      selectionArgs.add(mMimeTypes.getString(i));
+    }
+    selection.replace(selection.length() - 1,selection.length(),")");
+  }
+  WritableMap response=new WritableNativeMap();
+  ContentResolver resolver=mContext.getContentResolver();
+  try {
+    Cursor photos=resolver.query(Images.Media.EXTERNAL_CONTENT_URI,PROJECTION,selection.toString(),selectionArgs.toArray(new String[selectionArgs.size()]),Images.Media.DATE_TAKEN + " DESC, " + Images.Media.DATE_MODIFIED+ " DESC LIMIT "+ (mFirst + 1));
+    if (photos == null) {
+      mError.invoke("Could not get photos");
+    }
+ else {
+      try {
+        putEdges(resolver,photos,response,mFirst);
+        putPageInfo(photos,response,mFirst);
+      }
+  finally {
+        photos.close();
+        mSuccess.invoke(response);
+      }
+    }
+  }
+ catch (  SecurityException e) {
+    mError.invoke("Could not get photos: need READ_EXTERNAL_STORAGE permission");
+  }
+}

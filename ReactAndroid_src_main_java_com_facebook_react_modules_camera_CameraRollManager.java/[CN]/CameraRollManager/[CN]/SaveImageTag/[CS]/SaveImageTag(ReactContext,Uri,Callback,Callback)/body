@@ -1,0 +1,7 @@
+{
+  super(context);
+  mContext=context;
+  mUri=uri;
+  mSuccess=success;
+  mError=error;
+}

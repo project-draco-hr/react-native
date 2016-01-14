@@ -1,0 +1,5 @@
+{
+  node.putString("type",photos.getString(mimeTypeIndex));
+  node.putString("group_name",photos.getString(groupNameIndex));
+  node.putDouble("timestamp",photos.getLong(dateTakenIndex) / 1000d);
+}
