@@ -6,6 +6,9 @@
  else   if (KEYBOARD_TYPE_EMAIL_ADDRESS.equalsIgnoreCase(keyboardType)) {
     flagsToSet=InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS | InputType.TYPE_CLASS_TEXT;
   }
+ else   if (KEYBOARD_TYPE_PHONE_PAD.equalsIgnoreCase(keyboardType)) {
+    flagsToSet=InputType.TYPE_CLASS_PHONE;
+  }
   updateStagedInputTypeFlag(view,INPUT_TYPE_KEYBOARD_NUMBERED | InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS | InputType.TYPE_CLASS_TEXT,flagsToSet);
   checkPasswordType(view);
 }
