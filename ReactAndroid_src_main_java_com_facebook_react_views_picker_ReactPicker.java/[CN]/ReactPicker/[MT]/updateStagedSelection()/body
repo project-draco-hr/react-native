@@ -1,0 +1,6 @@
+{
+  if (mStagedSelection != null) {
+    setSelectionWithSuppressEvent(mStagedSelection);
+    mStagedSelection=null;
+  }
+}

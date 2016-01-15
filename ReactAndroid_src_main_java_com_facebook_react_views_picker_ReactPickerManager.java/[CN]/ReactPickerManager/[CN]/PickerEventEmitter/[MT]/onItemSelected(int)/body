@@ -1,0 +1,3 @@
+{
+  mEventDispatcher.dispatchEvent(new PickerItemSelectEvent(mReactPicker.getId(),SystemClock.uptimeMillis(),position));
+}

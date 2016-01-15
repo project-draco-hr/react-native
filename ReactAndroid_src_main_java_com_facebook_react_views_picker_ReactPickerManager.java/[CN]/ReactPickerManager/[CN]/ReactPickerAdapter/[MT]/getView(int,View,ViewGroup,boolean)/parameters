@@ -1,0 +1,4 @@
+int position
+View convertView
+ViewGroup parent
+boolean isDropdown

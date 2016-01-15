@@ -1,0 +1,4 @@
+{
+  mPrimaryTextColor=primaryTextColor;
+  notifyDataSetChanged();
+}

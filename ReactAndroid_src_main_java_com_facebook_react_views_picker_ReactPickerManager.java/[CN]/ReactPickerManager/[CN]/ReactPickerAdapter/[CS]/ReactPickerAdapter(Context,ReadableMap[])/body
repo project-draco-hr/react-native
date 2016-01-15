@@ -1,0 +1,4 @@
+{
+  super(context,0,data);
+  mInflater=(LayoutInflater)Assertions.assertNotNull(context.getSystemService(Context.LAYOUT_INFLATER_SERVICE));
+}

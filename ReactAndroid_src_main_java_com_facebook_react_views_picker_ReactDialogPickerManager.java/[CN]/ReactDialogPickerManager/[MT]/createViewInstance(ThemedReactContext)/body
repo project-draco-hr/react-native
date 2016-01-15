@@ -1,0 +1,3 @@
+{
+  return new ReactPicker(reactContext,Spinner.MODE_DIALOG);
+}
