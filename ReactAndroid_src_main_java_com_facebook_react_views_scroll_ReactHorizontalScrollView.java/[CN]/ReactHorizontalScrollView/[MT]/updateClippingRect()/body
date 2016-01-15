@@ -1,0 +1,11 @@
+{
+  if (!mRemoveClippedSubviews) {
+    return;
+  }
+  Assertions.assertNotNull(mClippingRect);
+  ReactClippingViewGroupHelper.calculateClippingRect(this,mClippingRect);
+  View contentView=getChildAt(0);
+  if (contentView instanceof ReactClippingViewGroup) {
+    ((ReactClippingViewGroup)contentView).updateClippingRect();
+  }
+}
