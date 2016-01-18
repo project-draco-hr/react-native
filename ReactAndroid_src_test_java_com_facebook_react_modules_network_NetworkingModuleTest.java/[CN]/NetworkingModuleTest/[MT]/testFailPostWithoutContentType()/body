@@ -7,6 +7,6 @@
   SimpleMap body=new SimpleMap();
   body.putString("string","This is request body");
   mockEvents();
-  networkingModule.sendRequest("POST","http://somedomain/bar",0,SimpleArray.of(),body,true);
+  networkingModule.sendRequest("POST","http://somedomain/bar",0,SimpleArray.of(),body,true,0);
   verifyErrorEmit(emitter,0);
 }

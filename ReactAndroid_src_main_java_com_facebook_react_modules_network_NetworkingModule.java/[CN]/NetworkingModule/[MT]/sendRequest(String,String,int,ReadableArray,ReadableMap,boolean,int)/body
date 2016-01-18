@@ -3,6 +3,7 @@
   if (requestId != 0) {
     requestBuilder.tag(requestId);
   }
+  mClient.setConnectTimeout(timeout,TimeUnit.MILLISECONDS);
   Headers requestHeaders=extractHeaders(headers,data);
   if (requestHeaders == null) {
     onRequestError(requestId,"Unrecognized headers format");
