@@ -4,3 +4,4 @@ int requestId
 ReadableArray headers
 ReadableMap data
 boolean incrementalUpdates
+int timeout
