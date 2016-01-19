@@ -10,6 +10,6 @@
   }
   mReactInstanceManager=createReactInstanceManager();
   ReactRootView mReactRootView=createRootView();
-  mReactRootView.startReactApplication(mReactInstanceManager,getMainComponentName());
+  mReactRootView.startReactApplication(mReactInstanceManager,getMainComponentName(),getLaunchOptions());
   setContentView(mReactRootView);
 }
