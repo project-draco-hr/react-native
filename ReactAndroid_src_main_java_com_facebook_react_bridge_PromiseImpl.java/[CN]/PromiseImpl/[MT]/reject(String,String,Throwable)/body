@@ -1,0 +1,11 @@
+{
+  if (mReject != null) {
+    if (code == null) {
+      code=DEFAULT_ERROR;
+    }
+    WritableNativeMap errorInfo=new WritableNativeMap();
+    errorInfo.putString("code",code);
+    errorInfo.putString("message",reason);
+    mReject.invoke(errorInfo);
+  }
+}
