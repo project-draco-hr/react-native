@@ -3,19 +3,17 @@
     ClipboardManager clipboard=getClipboardService();
     ClipData clipData=clipboard.getPrimaryClip();
     if (clipData == null) {
-      cb.invoke("");
-      return;
+      promise.resolve("");
     }
     if (clipData.getItemCount() >= 1) {
       ClipData.Item firstItem=clipboard.getPrimaryClip().getItemAt(0);
-      String text="" + firstItem.getText();
-      cb.invoke(text);
+      promise.resolve("" + firstItem.getText());
     }
  else {
-      cb.invoke("");
+      promise.resolve("");
     }
   }
  catch (  Exception e) {
-    FLog.w(ReactConstants.TAG,"Cannot get clipboard contents: " + e.getMessage());
+    promise.reject(e);
   }
 }
