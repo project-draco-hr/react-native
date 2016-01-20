@@ -3,8 +3,16 @@
   client.setConnectTimeout(10,TimeUnit.SECONDS);
   client.setWriteTimeout(10,TimeUnit.SECONDS);
   client.setReadTimeout(0,TimeUnit.MINUTES);
-  Request request=new Request.Builder().tag(id).url(url).build();
-  WebSocketCall.create(client,request).enqueue(new WebSocketListener(){
+  Request.Builder builder=new Request.Builder().tag(id).url(url);
+  if (options != null && options.hasKey("origin")) {
+    if (ReadableType.String.equals(options.getType("origin"))) {
+      builder.addHeader("Origin",options.getString("origin"));
+    }
+ else {
+      FLog.w(ReactConstants.TAG,"Ignoring: requested origin, value not a string");
+    }
+  }
+  WebSocketCall.create(client,builder.build()).enqueue(new WebSocketListener(){
     @Override public void onOpen(    WebSocket webSocket,    Response response){
       mWebSocketConnections.put(id,webSocket);
       WritableMap params=Arguments.createMap();
