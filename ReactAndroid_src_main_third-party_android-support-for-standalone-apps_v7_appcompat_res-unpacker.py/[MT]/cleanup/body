@@ -1,0 +1,4 @@
+@contextlib.contextmanager
+def cleanup(path):
+    yield path
+    shutil.rmtree(path)
