@@ -18,7 +18,7 @@
         }
       }
     }
-).get(BRIDGE_SETUP_TIMEOUT_MS,TimeUnit.MILLISECONDS);
+).get();
   }
  catch (  Exception t) {
     throw new RuntimeException("Failed to initialize bridge",t);

@@ -1,11 +1,6 @@
 {
-  try {
-    if (!mReadyLatch.await(timeout,unit)) {
-      throw new TimeoutException("Timed out waiting for result");
-    }
-  }
- catch (  InterruptedException e) {
-    throw new RuntimeException(e);
+  if (!mReadyLatch.await(timeout,unit)) {
+    throw new TimeoutException("Timed out waiting for result");
   }
   if (mException != null) {
     throw new ExecutionException(mException);

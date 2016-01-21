@@ -1,3 +1,7 @@
 {
-  throw new UnsupportedOperationException("Must use a timeout");
+  mReadyLatch.await();
+  if (mException != null) {
+    throw new ExecutionException(mException);
+  }
+  return mResult;
 }

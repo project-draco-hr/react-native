@@ -18,7 +18,7 @@
         return true;
       }
     }
-).get(LOAD_JS_BUNDLE_TIMEOUT_MS,TimeUnit.MILLISECONDS);
+).get();
   }
  catch (  Exception t) {
     throw new RuntimeException(t);
