@@ -4,6 +4,9 @@
   int x=(int)touchX;
   int y=(int)touchY;
   Layout layout=getLayout();
+  if (layout == null) {
+    return target;
+  }
   int line=layout.getLineForVertical(y);
   int lineStartX=(int)layout.getLineLeft(line);
   int lineEndX=(int)layout.getLineRight(line);
