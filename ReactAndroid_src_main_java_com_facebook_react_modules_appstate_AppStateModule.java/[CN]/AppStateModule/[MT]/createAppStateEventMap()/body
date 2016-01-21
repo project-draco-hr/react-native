@@ -1,0 +1,5 @@
+{
+  WritableMap appState=Arguments.createMap();
+  appState.putString("app_state",mAppState);
+  return appState;
+}
