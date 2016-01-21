@@ -5,6 +5,5 @@
   mAfter=after;
   mGroupName=groupName;
   mMimeTypes=mimeTypes;
-  mSuccess=success;
-  mError=error;
+  mPromise=promise;
 }

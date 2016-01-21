@@ -5,7 +5,7 @@
     File pictures=Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
     pictures.mkdirs();
     if (!pictures.isDirectory()) {
-      mError.invoke("External storage pictures directory not available");
+      mPromise.reject(ERROR_UNABLE_TO_LOAD,"External storage pictures directory not available",null);
       return;
     }
     File dest=new File(pictures,source.getName());
@@ -31,17 +31,17 @@
     MediaScannerConnection.scanFile(mContext,new String[]{dest.getAbsolutePath()},null,new MediaScannerConnection.OnScanCompletedListener(){
       @Override public void onScanCompleted(      String path,      Uri uri){
         if (uri != null) {
-          mSuccess.invoke(uri.toString());
+          mPromise.resolve(uri.toString());
         }
  else {
-          mError.invoke("Could not add image to gallery");
+          mPromise.reject(ERROR_UNABLE_TO_SAVE,"Could not add image to gallery",null);
         }
       }
     }
 );
   }
  catch (  IOException e) {
-    mError.invoke(e.getMessage());
+    mPromise.reject(e);
   }
  finally {
     if (input != null && input.isOpen()) {

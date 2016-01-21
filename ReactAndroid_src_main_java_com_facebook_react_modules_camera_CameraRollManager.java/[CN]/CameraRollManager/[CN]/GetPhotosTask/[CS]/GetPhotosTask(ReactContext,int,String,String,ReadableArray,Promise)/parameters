@@ -3,5 +3,4 @@ int first
 String after
 String groupName
 ReadableArray mimeTypes
-Callback success
-Callback error
+Promise promise

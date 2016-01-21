@@ -6,5 +6,5 @@
   if (params.hasKey("groupTypes")) {
     throw new JSApplicationIllegalArgumentException("groupTypes is not supported on Android");
   }
-  new GetPhotosTask(getReactApplicationContext(),first,after,groupName,mimeTypes,success,error).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+  new GetPhotosTask(getReactApplicationContext(),first,after,groupName,mimeTypes,promise).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
 }
