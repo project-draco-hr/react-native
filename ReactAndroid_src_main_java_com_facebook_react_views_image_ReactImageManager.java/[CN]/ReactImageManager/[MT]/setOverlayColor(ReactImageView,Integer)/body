@@ -1,0 +1,8 @@
+{
+  if (overlayColor == null) {
+    view.setOverlayColor(Color.TRANSPARENT);
+  }
+ else {
+    view.setOverlayColor(overlayColor);
+  }
+}

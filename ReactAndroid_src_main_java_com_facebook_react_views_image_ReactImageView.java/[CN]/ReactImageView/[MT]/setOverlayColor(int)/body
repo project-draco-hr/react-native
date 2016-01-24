@@ -1,0 +1,4 @@
+{
+  mOverlayColor=overlayColor;
+  mIsDirty=true;
+}
