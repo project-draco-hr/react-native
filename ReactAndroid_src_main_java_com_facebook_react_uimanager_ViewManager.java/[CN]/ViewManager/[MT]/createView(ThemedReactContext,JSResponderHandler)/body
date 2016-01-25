@@ -1,8 +1,8 @@
 {
   T view=createViewInstance(reactContext);
   addEventEmitters(reactContext,view);
-  if (view instanceof CatalystInterceptingViewGroup) {
-    ((CatalystInterceptingViewGroup)view).setOnInterceptTouchEventListener(jsResponderHandler);
+  if (view instanceof ReactInterceptingViewGroup) {
+    ((ReactInterceptingViewGroup)view).setOnInterceptTouchEventListener(jsResponderHandler);
   }
   return view;
 }

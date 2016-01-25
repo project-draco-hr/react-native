@@ -6,7 +6,7 @@
     throw new IllegalStateException("ReactContext has been already initialized");
   }
   mCatalystInstance=catalystInstance;
-  CatalystQueueConfiguration queueConfig=catalystInstance.getCatalystQueueConfiguration();
+  ReactQueueConfiguration queueConfig=catalystInstance.getReactQueueConfiguration();
   mUiMessageQueueThread=queueConfig.getUIQueueThread();
   mNativeModulesMessageQueueThread=queueConfig.getNativeModulesQueueThread();
   mJSMessageQueueThread=queueConfig.getJSQueueThread();

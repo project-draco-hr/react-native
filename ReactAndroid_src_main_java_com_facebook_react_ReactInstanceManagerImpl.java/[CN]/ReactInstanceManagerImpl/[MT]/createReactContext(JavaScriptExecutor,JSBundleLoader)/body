@@ -42,7 +42,7 @@
     Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);
   }
   NativeModuleCallExceptionHandler exceptionHandler=mNativeModuleCallExceptionHandler != null ? mNativeModuleCallExceptionHandler : mDevSupportManager;
-  CatalystInstanceImpl.Builder catalystInstanceBuilder=new CatalystInstanceImpl.Builder().setCatalystQueueConfigurationSpec(CatalystQueueConfigurationSpec.createDefault()).setJSExecutor(jsExecutor).setRegistry(nativeModuleRegistry).setJSModulesConfig(javaScriptModulesConfig).setJSBundleLoader(jsBundleLoader).setNativeModuleCallExceptionHandler(exceptionHandler);
+  CatalystInstanceImpl.Builder catalystInstanceBuilder=new CatalystInstanceImpl.Builder().setReactQueueConfigurationSpec(ReactQueueConfigurationSpec.createDefault()).setJSExecutor(jsExecutor).setRegistry(nativeModuleRegistry).setJSModulesConfig(javaScriptModulesConfig).setJSBundleLoader(jsBundleLoader).setNativeModuleCallExceptionHandler(exceptionHandler);
   Systrace.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"createCatalystInstance");
   CatalystInstance catalystInstance;
   try {

@@ -6,9 +6,9 @@
   cssNode.setRootNode(rootNode);
   cssNode.setThemedContext(rootNode.getThemedContext());
   mShadowNodeRegistry.addNode(cssNode);
-  CatalystStylesDiffMap styles=null;
+  ReactStylesDiffMap styles=null;
   if (props != null) {
-    styles=new CatalystStylesDiffMap(props);
+    styles=new ReactStylesDiffMap(props);
     cssNode.updateProperties(styles);
   }
   handleCreateView(cssNode,rootViewTag,styles);

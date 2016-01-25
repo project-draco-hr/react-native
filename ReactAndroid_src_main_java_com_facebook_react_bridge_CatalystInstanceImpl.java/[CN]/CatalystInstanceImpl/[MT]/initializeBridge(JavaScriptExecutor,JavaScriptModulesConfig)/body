@@ -1,10 +1,10 @@
 {
-  mCatalystQueueConfiguration.getJSQueueThread().assertIsOnThread();
+  mReactQueueConfiguration.getJSQueueThread().assertIsOnThread();
   Assertions.assertCondition(mBridge == null,"initializeBridge should be called once");
   Systrace.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"ReactBridgeCtor");
   ReactBridge bridge;
   try {
-    bridge=new ReactBridge(jsExecutor,new NativeModulesReactCallback(),mCatalystQueueConfiguration.getNativeModulesQueueThread());
+    bridge=new ReactBridge(jsExecutor,new NativeModulesReactCallback(),mReactQueueConfiguration.getNativeModulesQueueThread());
   }
   finally {
     Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);

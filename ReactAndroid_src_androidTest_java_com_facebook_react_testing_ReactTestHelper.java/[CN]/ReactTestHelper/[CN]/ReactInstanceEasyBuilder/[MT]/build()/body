@@ -1,5 +1,5 @@
 {
-  CatalystInstanceImpl instance=mTestCase.new ReactTestInstanceBuilder().setCatalystQueueConfigurationSpec(CatalystQueueConfigurationSpec.createDefault()).setJSExecutor(new JSCJavaScriptExecutor()).setRegistry(mNativeModuleRegistryBuilder.build()).setJSModulesConfig(mJSModulesConfigBuilder.build()).setJSBundleLoader(JSBundleLoader.createFileLoader(mTestCase.getContext(),"assets://AndroidTestBundle.js")).setNativeModuleCallExceptionHandler(new NativeModuleCallExceptionHandler(){
+  CatalystInstanceImpl instance=mTestCase.new ReactTestInstanceBuilder().setReactQueueConfigurationSpec(ReactQueueConfigurationSpec.createDefault()).setJSExecutor(new JSCJavaScriptExecutor()).setRegistry(mNativeModuleRegistryBuilder.build()).setJSModulesConfig(mJSModulesConfigBuilder.build()).setJSBundleLoader(JSBundleLoader.createFileLoader(mTestCase.getContext(),"assets://AndroidTestBundle.js")).setNativeModuleCallExceptionHandler(new NativeModuleCallExceptionHandler(){
     @Override public void handleException(    Exception e){
       throw new RuntimeException(e);
     }

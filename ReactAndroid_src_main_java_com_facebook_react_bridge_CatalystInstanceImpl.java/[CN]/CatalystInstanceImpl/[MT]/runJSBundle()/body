@@ -1,6 +1,6 @@
 {
   try {
-    mJSBundleHasLoaded=mCatalystQueueConfiguration.getJSQueueThread().callOnQueue(new Callable<Boolean>(){
+    mJSBundleHasLoaded=mReactQueueConfiguration.getJSQueueThread().callOnQueue(new Callable<Boolean>(){
       @Override public Boolean call() throws Exception {
         Assertions.assertCondition(!mJSBundleHasLoaded,"JS bundle was already loaded!");
         incrementPendingJSCalls();

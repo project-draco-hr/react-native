@@ -6,9 +6,9 @@
   incrementPendingJSCalls();
   final int traceID=mTraceID++;
   Systrace.startAsyncFlow(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"<callback>",traceID);
-  mCatalystQueueConfiguration.getJSQueueThread().runOnQueue(new Runnable(){
+  mReactQueueConfiguration.getJSQueueThread().runOnQueue(new Runnable(){
     @Override public void run(){
-      mCatalystQueueConfiguration.getJSQueueThread().assertIsOnThread();
+      mReactQueueConfiguration.getJSQueueThread().assertIsOnThread();
       Systrace.endAsyncFlow(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"<callback>",traceID);
       if (mDestroyed) {
         return;

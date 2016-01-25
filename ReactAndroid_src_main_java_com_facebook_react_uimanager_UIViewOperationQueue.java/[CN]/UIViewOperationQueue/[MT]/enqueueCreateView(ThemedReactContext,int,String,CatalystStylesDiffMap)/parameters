@@ -1,4 +1,0 @@
-ThemedReactContext themedContext
-int viewReactTag
-String viewClassName
-CatalystStylesDiffMap initialProps

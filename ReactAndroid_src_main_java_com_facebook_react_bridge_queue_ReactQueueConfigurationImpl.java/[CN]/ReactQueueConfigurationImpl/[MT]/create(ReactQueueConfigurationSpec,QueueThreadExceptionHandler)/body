@@ -1,0 +1,15 @@
+{
+  Map<MessageQueueThreadSpec,MessageQueueThreadImpl> specsToThreads=MapBuilder.newHashMap();
+  MessageQueueThreadSpec uiThreadSpec=MessageQueueThreadSpec.mainThreadSpec();
+  MessageQueueThreadImpl uiThread=MessageQueueThreadImpl.create(uiThreadSpec,exceptionHandler);
+  specsToThreads.put(uiThreadSpec,uiThread);
+  MessageQueueThreadImpl jsThread=specsToThreads.get(spec.getJSQueueThreadSpec());
+  if (jsThread == null) {
+    jsThread=MessageQueueThreadImpl.create(spec.getJSQueueThreadSpec(),exceptionHandler);
+  }
+  MessageQueueThreadImpl nativeModulesThread=specsToThreads.get(spec.getNativeModulesQueueThreadSpec());
+  if (nativeModulesThread == null) {
+    nativeModulesThread=MessageQueueThreadImpl.create(spec.getNativeModulesQueueThreadSpec(),exceptionHandler);
+  }
+  return new ReactQueueConfigurationImpl(uiThread,nativeModulesThread,jsThread);
+}

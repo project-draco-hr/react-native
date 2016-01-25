@@ -8,7 +8,7 @@
     throw new IllegalViewOperationException("Trying to update non-existent view with tag " + tag);
   }
   if (props != null) {
-    CatalystStylesDiffMap styles=new CatalystStylesDiffMap(props);
+    ReactStylesDiffMap styles=new ReactStylesDiffMap(props);
     cssNode.updateProperties(styles);
     handleUpdateView(cssNode,className,styles);
   }

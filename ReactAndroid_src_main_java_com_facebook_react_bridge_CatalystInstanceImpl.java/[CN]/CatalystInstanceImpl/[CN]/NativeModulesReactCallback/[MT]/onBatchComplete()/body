@@ -1,5 +1,5 @@
 {
-  mCatalystQueueConfiguration.getNativeModulesQueueThread().assertIsOnThread();
+  mReactQueueConfiguration.getNativeModulesQueueThread().assertIsOnThread();
   if (!mDestroyed) {
     Systrace.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"onBatchComplete");
     try {
