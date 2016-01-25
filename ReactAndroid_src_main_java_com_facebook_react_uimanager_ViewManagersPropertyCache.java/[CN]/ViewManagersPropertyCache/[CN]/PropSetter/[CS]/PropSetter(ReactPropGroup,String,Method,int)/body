@@ -1,0 +1,6 @@
+{
+  mPropName=prop.names()[index];
+  mPropType=ReactPropGroup.USE_DEFAULT_TYPE.equals(prop.customType()) ? defaultType : prop.customType();
+  mSetter=setter;
+  mIndex=index;
+}

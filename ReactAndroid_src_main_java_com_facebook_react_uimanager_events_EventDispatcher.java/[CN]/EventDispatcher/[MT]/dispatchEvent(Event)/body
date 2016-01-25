@@ -1,0 +1,7 @@
+{
+  Assertions.assertCondition(event.isInitialized(),"Dispatched event hasn't been initialized");
+synchronized (mEventsStagingLock) {
+    mEventStaging.add(event);
+    Systrace.startAsyncFlow(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,event.getEventName(),event.getUniqueID());
+  }
+}

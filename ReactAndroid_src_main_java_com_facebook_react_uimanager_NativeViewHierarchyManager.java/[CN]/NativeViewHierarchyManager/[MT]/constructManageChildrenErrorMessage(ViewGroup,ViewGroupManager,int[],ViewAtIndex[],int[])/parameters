@@ -1,0 +1,5 @@
+ViewGroup viewToManage
+ViewGroupManager viewManager
+int[] indicesToRemove
+ViewAtIndex[] viewsToAdd
+int[] tagsToDelete

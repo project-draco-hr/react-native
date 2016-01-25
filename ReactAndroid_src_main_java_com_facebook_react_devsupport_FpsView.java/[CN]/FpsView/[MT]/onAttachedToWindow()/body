@@ -1,0 +1,6 @@
+{
+  super.onAttachedToWindow();
+  mFrameCallback.reset();
+  mFrameCallback.start();
+  mFPSMonitorRunnable.start();
+}

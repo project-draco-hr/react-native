@@ -1,0 +1,16 @@
+{
+switch (eventType) {
+case ON_ERROR:
+    return "topError";
+case ON_LOAD:
+  return "topLoad";
+case ON_LOAD_END:
+return "topLoadEnd";
+case ON_LOAD_START:
+return "topLoadStart";
+case ON_PROGRESS:
+return "topProgress";
+default :
+throw new IllegalStateException("Invalid image event: " + Integer.toString(eventType));
+}
+}

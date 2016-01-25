@@ -1,0 +1,24 @@
+{
+  WritableMap contentInset=Arguments.createMap();
+  contentInset.putDouble("top",0);
+  contentInset.putDouble("bottom",0);
+  contentInset.putDouble("left",0);
+  contentInset.putDouble("right",0);
+  WritableMap contentOffset=Arguments.createMap();
+  contentOffset.putDouble("x",PixelUtil.toDIPFromPixel(mScrollX));
+  contentOffset.putDouble("y",PixelUtil.toDIPFromPixel(mScrollY));
+  WritableMap contentSize=Arguments.createMap();
+  contentSize.putDouble("width",PixelUtil.toDIPFromPixel(mContentWidth));
+  contentSize.putDouble("height",PixelUtil.toDIPFromPixel(mContentHeight));
+  WritableMap layoutMeasurement=Arguments.createMap();
+  layoutMeasurement.putDouble("width",PixelUtil.toDIPFromPixel(mScrollViewWidth));
+  layoutMeasurement.putDouble("height",PixelUtil.toDIPFromPixel(mScrollViewHeight));
+  WritableMap event=Arguments.createMap();
+  event.putMap("contentInset",contentInset);
+  event.putMap("contentOffset",contentOffset);
+  event.putMap("contentSize",contentSize);
+  event.putMap("layoutMeasurement",layoutMeasurement);
+  event.putInt("target",getViewTag());
+  event.putBoolean("responderIgnoreScroll",true);
+  return event;
+}

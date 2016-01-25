@@ -1,0 +1,5 @@
+{
+  ARTSurfaceViewShadowNode node=new ARTSurfaceViewShadowNode();
+  node.setMeasureFunction(MEASURE_FUNCTION);
+  return node;
+}

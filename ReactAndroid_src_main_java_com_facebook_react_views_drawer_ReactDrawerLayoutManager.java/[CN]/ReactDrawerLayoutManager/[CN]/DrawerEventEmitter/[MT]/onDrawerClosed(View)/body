@@ -1,0 +1,3 @@
+{
+  mEventDispatcher.dispatchEvent(new DrawerClosedEvent(mDrawerLayout.getId(),SystemClock.uptimeMillis()));
+}

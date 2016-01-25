@@ -1,0 +1,6 @@
+{
+  if (delta != 0) {
+    mTotalChildrenHeight+=delta;
+    mScrollView.onTotalChildrenHeightChange(mTotalChildrenHeight);
+  }
+}

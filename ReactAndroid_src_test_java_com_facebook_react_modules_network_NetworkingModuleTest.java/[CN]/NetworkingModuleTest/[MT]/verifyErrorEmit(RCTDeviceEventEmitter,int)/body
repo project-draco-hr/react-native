@@ -1,0 +1,7 @@
+{
+  ArgumentCaptor<WritableArray> captor=ArgumentCaptor.forClass(WritableArray.class);
+  verify(emitter).emit(eq("didCompleteNetworkResponse"),captor.capture());
+  WritableArray array=captor.getValue();
+  assertThat(array.getInt(0)).isEqualTo(requestId);
+  assertThat(array.getString(1)).isNotNull();
+}

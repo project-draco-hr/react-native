@@ -1,0 +1,5 @@
+{
+  if (mParent.getRemoveClippedSubviews()) {
+    mParent.updateSubviewClipStatus(v);
+  }
+}

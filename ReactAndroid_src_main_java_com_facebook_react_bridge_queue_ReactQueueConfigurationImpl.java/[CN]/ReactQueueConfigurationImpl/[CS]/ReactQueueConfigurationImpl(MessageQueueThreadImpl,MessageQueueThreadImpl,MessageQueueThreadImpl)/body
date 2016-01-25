@@ -1,0 +1,5 @@
+{
+  mUIQueueThread=uiQueueThread;
+  mNativeModulesQueueThread=nativeModulesQueueThread;
+  mJSQueueThread=jsQueueThread;
+}

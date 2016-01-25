@@ -1,0 +1,5 @@
+{
+  WritableMap event=new WritableNativeMap();
+  event.putString("network_info",mConnectivity);
+  return event;
+}

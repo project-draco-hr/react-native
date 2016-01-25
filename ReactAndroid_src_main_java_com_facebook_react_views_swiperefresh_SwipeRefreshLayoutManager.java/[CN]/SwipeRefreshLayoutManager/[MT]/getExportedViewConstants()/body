@@ -1,0 +1,3 @@
+{
+  return MapBuilder.<String,Object>of("SIZE",MapBuilder.of("DEFAULT",SwipeRefreshLayout.DEFAULT,"LARGE",SwipeRefreshLayout.LARGE));
+}

@@ -1,0 +1,6 @@
+{
+  if (mDownloadBundleFromURLCall != null) {
+    mDownloadBundleFromURLCall.cancel();
+    mDownloadBundleFromURLCall=null;
+  }
+}

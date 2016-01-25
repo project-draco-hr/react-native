@@ -1,0 +1,3 @@
+{
+  super(prop,"boolean",setter);
+}

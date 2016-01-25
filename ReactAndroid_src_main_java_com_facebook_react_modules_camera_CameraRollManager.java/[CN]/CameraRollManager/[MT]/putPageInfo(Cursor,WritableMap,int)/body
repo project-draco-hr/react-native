@@ -1,0 +1,9 @@
+{
+  WritableMap pageInfo=new WritableNativeMap();
+  pageInfo.putBoolean("has_next_page",limit < photos.getCount());
+  if (limit < photos.getCount()) {
+    photos.moveToPosition(limit - 1);
+    pageInfo.putString("end_cursor",photos.getString(photos.getColumnIndex(Images.Media.DATE_TAKEN)));
+  }
+  response.putMap("page_info",pageInfo);
+}

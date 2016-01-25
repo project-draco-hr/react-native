@@ -1,0 +1,3 @@
+{
+  return mInputMethodManager.showSoftInput(this,0);
+}

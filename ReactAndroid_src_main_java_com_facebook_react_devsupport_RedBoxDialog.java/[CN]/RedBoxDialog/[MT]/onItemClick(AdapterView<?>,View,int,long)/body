@@ -1,0 +1,3 @@
+{
+  new OpenStackFrameTask(mDevSupportManager).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,(StackFrame)mStackView.getAdapter().getItem(position));
+}

@@ -1,0 +1,4 @@
+{
+  mPackages.add(reactPackage);
+  return this;
+}

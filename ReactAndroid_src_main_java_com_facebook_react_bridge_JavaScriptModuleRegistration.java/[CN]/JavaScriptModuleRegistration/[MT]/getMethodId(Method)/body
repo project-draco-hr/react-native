@@ -1,0 +1,7 @@
+{
+  final Integer id=mMethodsToIds.get(method);
+  if (id == null) {
+    Assertions.assertUnreachable("Unknown method: " + method.getName());
+  }
+  return id.intValue();
+}

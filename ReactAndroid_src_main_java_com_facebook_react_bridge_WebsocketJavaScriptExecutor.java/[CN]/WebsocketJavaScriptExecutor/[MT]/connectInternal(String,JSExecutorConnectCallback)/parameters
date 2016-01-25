@@ -1,0 +1,2 @@
+String webSocketServerUrl
+JSExecutorConnectCallback callback

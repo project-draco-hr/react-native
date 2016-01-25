@@ -1,0 +1,3 @@
+@property
+def section_name(self):
+    return self._section_name

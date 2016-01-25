@@ -1,0 +1,6 @@
+def find(entries, line, col):
+    test = entry(line, col, u'', 0, 0)
+    index = bisect.bisect_right(entries, test)
+    if (index == 0):
+        return None
+    return entries[(index - 1)]

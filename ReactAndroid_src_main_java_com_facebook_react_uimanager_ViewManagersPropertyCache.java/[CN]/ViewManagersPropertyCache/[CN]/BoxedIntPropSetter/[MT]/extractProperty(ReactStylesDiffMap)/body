@@ -1,0 +1,6 @@
+{
+  if (!props.isNull(mPropName)) {
+    return props.getInt(mPropName,0);
+  }
+  return null;
+}

@@ -1,0 +1,19 @@
+{
+  UiThreadUtil.assertOnUiThread();
+  if (mShouldStop) {
+    return;
+  }
+  Systrace.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"ScheduleDispatchFrameCallback");
+  try {
+    moveStagedEventsToDispatchQueue();
+    if (!mHasDispatchScheduled) {
+      mHasDispatchScheduled=true;
+      Systrace.startAsyncFlow(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"ScheduleDispatchFrameCallback",mHasDispatchScheduledCount);
+      mReactContext.runOnJSQueueThread(mDispatchEventsRunnable);
+    }
+    ReactChoreographer.getInstance().postFrameCallback(ReactChoreographer.CallbackType.TIMERS_EVENTS,this);
+  }
+  finally {
+    Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);
+  }
+}

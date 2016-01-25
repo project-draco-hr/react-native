@@ -1,0 +1,11 @@
+{
+  UiThreadUtil.assertOnUiThread();
+  AbstractLayoutAnimation layoutAnimation=(view.getWidth() == 0 || view.getHeight() == 0) ? mLayoutCreateAnimation : mLayoutUpdateAnimation;
+  Animation animation=layoutAnimation.createAnimation(view,x,y,width,height);
+  if (animation == null || !(animation instanceof HandleLayout)) {
+    view.layout(x,y,x + width,y + height);
+  }
+  if (animation != null) {
+    view.startAnimation(animation);
+  }
+}

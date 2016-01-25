@@ -1,0 +1,8 @@
+{
+  try {
+    Os.posix_fallocate(fd,0,length);
+  }
+ catch (  ErrnoException ex) {
+    throw new IOException(ex.toString(),ex);
+  }
+}

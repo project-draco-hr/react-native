@@ -1,0 +1,13 @@
+{
+  if (mHttpClient != null) {
+    throw new IllegalStateException("JSDebuggerWebSocketClient is already initialized.");
+  }
+  mConnectCallback=callback;
+  mHttpClient=new OkHttpClient();
+  mHttpClient.setConnectTimeout(10,TimeUnit.SECONDS);
+  mHttpClient.setWriteTimeout(10,TimeUnit.SECONDS);
+  mHttpClient.setReadTimeout(0,TimeUnit.MINUTES);
+  Request request=new Request.Builder().url(url).build();
+  WebSocketCall call=WebSocketCall.create(mHttpClient,request);
+  call.enqueue(this);
+}

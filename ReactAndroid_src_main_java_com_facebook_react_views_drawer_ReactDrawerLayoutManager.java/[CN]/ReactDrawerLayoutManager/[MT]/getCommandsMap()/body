@@ -1,0 +1,3 @@
+{
+  return MapBuilder.of("openDrawer",OPEN_DRAWER,"closeDrawer",CLOSE_DRAWER);
+}

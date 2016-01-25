@@ -1,0 +1,9 @@
+{
+  ViewManager viewManager=mViewManagers.get(className);
+  if (viewManager != null) {
+    return viewManager;
+  }
+ else {
+    throw new IllegalViewOperationException("No ViewManager defined for class " + className);
+  }
+}

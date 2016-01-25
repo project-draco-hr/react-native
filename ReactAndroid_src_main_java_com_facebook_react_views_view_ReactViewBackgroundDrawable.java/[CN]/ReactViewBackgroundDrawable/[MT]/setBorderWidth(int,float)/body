@@ -1,0 +1,12 @@
+{
+  if (mBorderWidth == null) {
+    mBorderWidth=new Spacing();
+  }
+  if (!FloatUtil.floatsEqual(mBorderWidth.getRaw(position),width)) {
+    mBorderWidth.set(position,width);
+    if (position == Spacing.ALL) {
+      mNeedUpdatePathForBorderRadius=true;
+    }
+    invalidateSelf();
+  }
+}

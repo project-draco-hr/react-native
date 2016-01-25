@@ -1,0 +1,9 @@
+{
+  WritableMap headers=translateHeaders(response.headers());
+  WritableArray args=Arguments.createArray();
+  args.pushInt(requestId);
+  args.pushInt(response.code());
+  args.pushMap(headers);
+  args.pushString(response.request().urlString());
+  getEventEmitter().emit("didReceiveNetworkResponse",args);
+}

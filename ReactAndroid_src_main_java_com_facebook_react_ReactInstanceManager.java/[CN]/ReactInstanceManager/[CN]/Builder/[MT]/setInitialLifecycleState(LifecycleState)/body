@@ -1,0 +1,4 @@
+{
+  mInitialLifecycleState=initialLifecycleState;
+  return this;
+}

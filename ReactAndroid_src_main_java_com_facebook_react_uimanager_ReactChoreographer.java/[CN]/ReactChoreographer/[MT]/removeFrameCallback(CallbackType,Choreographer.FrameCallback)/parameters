@@ -1,0 +1,2 @@
+CallbackType type
+Choreographer.FrameCallback frameCallback

@@ -1,0 +1,7 @@
+{
+  mFile=file;
+  mMethod=method;
+  mLine=line;
+  mColumn=column;
+  mFileName=new File(file).getName();
+}

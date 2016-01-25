@@ -1,0 +1,39 @@
+{
+  ArgumentExtractor[] argumentExtractors=new ArgumentExtractor[paramTypes.length];
+  for (int i=0; i < paramTypes.length; i+=argumentExtractors[i].getJSArgumentsNeeded()) {
+    Class argumentClass=paramTypes[i];
+    if (argumentClass == Boolean.class || argumentClass == boolean.class) {
+      argumentExtractors[i]=ARGUMENT_EXTRACTOR_BOOLEAN;
+    }
+ else     if (argumentClass == Integer.class || argumentClass == int.class) {
+      argumentExtractors[i]=ARGUMENT_EXTRACTOR_INTEGER;
+    }
+ else     if (argumentClass == Double.class || argumentClass == double.class) {
+      argumentExtractors[i]=ARGUMENT_EXTRACTOR_DOUBLE;
+    }
+ else     if (argumentClass == Float.class || argumentClass == float.class) {
+      argumentExtractors[i]=ARGUMENT_EXTRACTOR_FLOAT;
+    }
+ else     if (argumentClass == String.class) {
+      argumentExtractors[i]=ARGUMENT_EXTRACTOR_STRING;
+    }
+ else     if (argumentClass == Callback.class) {
+      argumentExtractors[i]=ARGUMENT_EXTRACTOR_CALLBACK;
+    }
+ else     if (argumentClass == Promise.class) {
+      argumentExtractors[i]=ARGUMENT_EXTRACTOR_PROMISE;
+      Assertions.assertCondition(i == paramTypes.length - 1,"Promise must be used as last parameter only");
+      mType=METHOD_TYPE_REMOTE_ASYNC;
+    }
+ else     if (argumentClass == ReadableMap.class) {
+      argumentExtractors[i]=ARGUMENT_EXTRACTOR_MAP;
+    }
+ else     if (argumentClass == ReadableArray.class) {
+      argumentExtractors[i]=ARGUMENT_EXTRACTOR_ARRAY;
+    }
+ else {
+      throw new RuntimeException("Got unknown argument class: " + argumentClass.getSimpleName());
+    }
+  }
+  return argumentExtractors;
+}

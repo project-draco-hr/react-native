@@ -1,0 +1,4 @@
+{
+  mCause=cause;
+  mSemaphore.release();
+}

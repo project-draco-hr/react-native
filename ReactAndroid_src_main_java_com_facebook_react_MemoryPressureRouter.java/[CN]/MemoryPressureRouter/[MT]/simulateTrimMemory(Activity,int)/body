@@ -1,0 +1,4 @@
+{
+  activity.getApplication().onTrimMemory(level);
+  activity.onTrimMemory(level);
+}

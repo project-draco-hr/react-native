@@ -1,0 +1,3 @@
+{
+  mScreenshotingFrameLayout.setLayoutParams(new FrameLayout.LayoutParams(width,height));
+}

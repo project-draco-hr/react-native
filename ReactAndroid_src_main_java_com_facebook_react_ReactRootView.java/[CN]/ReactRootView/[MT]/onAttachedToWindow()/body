@@ -1,0 +1,7 @@
+{
+  super.onAttachedToWindow();
+  mIsAttachedToWindow=true;
+  if (mReactInstanceManager != null) {
+    mAttachScheduled=true;
+  }
+}

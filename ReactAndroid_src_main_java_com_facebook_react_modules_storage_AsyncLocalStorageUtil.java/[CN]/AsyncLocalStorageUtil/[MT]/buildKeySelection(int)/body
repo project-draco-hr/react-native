@@ -1,0 +1,5 @@
+{
+  String[] list=new String[selectionCount];
+  Arrays.fill(list,"?");
+  return KEY_COLUMN + " IN (" + TextUtils.join(", ",list)+ ")";
+}

@@ -1,0 +1,4 @@
+Editable oldText
+SpannableStringBuilder newText
+int start
+int end

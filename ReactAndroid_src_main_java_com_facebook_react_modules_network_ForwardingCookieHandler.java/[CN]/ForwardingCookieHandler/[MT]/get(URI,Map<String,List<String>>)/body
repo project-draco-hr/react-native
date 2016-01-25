@@ -1,0 +1,7 @@
+{
+  String cookies=getCookieManager().getCookie(uri.toString());
+  if (TextUtils.isEmpty(cookies)) {
+    return Collections.emptyMap();
+  }
+  return Collections.singletonMap(COOKIE_HEADER,Collections.singletonList(cookies));
+}

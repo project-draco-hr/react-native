@@ -1,0 +1,45 @@
+{
+  final String bundleURL=createBundleURL(getDebugServerHost(),jsModulePath,getDevMode(),getHMR());
+  Request request=new Request.Builder().url(bundleURL).build();
+  mDownloadBundleFromURLCall=Assertions.assertNotNull(mClient.newCall(request));
+  mDownloadBundleFromURLCall.enqueue(new Callback(){
+    @Override public void onFailure(    Request request,    IOException e){
+      if (mDownloadBundleFromURLCall == null || mDownloadBundleFromURLCall.isCanceled()) {
+        mDownloadBundleFromURLCall=null;
+        return;
+      }
+      mDownloadBundleFromURLCall=null;
+      callback.onFailure(e);
+    }
+    @Override public void onResponse(    Response response) throws IOException {
+      if (mDownloadBundleFromURLCall == null || mDownloadBundleFromURLCall.isCanceled()) {
+        mDownloadBundleFromURLCall=null;
+        return;
+      }
+      mDownloadBundleFromURLCall=null;
+      if (!response.isSuccessful()) {
+        String body=response.body().string();
+        DebugServerException debugServerException=DebugServerException.parse(body);
+        if (debugServerException != null) {
+          callback.onFailure(debugServerException);
+        }
+ else {
+          callback.onFailure(new IOException("Unexpected response code: " + response.code()));
+        }
+        return;
+      }
+      Sink output=null;
+      try {
+        output=Okio.sink(outputFile);
+        Okio.buffer(response.body().source()).readAll(output);
+        callback.onSuccess();
+      }
+  finally {
+        if (output != null) {
+          output.close();
+        }
+      }
+    }
+  }
+);
+}

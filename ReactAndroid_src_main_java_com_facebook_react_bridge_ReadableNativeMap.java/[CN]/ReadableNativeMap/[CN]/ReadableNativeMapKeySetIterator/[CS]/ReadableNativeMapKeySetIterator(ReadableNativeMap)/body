@@ -1,0 +1,4 @@
+{
+  mReadableNativeMap=readableNativeMap;
+  initialize(mReadableNativeMap);
+}

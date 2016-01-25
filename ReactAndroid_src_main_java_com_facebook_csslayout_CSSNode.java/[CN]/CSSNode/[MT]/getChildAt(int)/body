@@ -1,0 +1,4 @@
+{
+  Assertions.assertNotNull(mChildren);
+  return mChildren.get(i);
+}

@@ -1,0 +1,3 @@
+{
+  mBridge.stopProfiler(title,filename);
+}

@@ -1,0 +1,7 @@
+{
+  if (removeClippedSubviews && mClippingRect == null) {
+    mClippingRect=new Rect();
+  }
+  mRemoveClippedSubviews=removeClippedSubviews;
+  updateClippingRect();
+}

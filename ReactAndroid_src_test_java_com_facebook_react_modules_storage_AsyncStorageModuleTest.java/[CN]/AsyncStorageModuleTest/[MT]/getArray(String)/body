@@ -1,0 +1,7 @@
+{
+  SimpleArray array=new SimpleArray();
+  for (  String value : values) {
+    array.pushString(value);
+  }
+  return array;
+}

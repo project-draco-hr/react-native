@@ -1,0 +1,12 @@
+{
+  SimpleArray keyValues=new SimpleArray();
+  keyValues.pushArray(getArray("foo","foo2"));
+  keyValues.pushArray(getArray("bar","bar2"));
+  mStorage.multiSet(keyValues,mock(Callback.class));
+  Callback clearCallback2=mock(Callback.class);
+  mStorage.clear(clearCallback2);
+  Mockito.verify(clearCallback2,Mockito.times(1)).invoke();
+  Callback getAllCallback2=mock(Callback.class);
+  mStorage.getAllKeys(getAllCallback2);
+  Mockito.verify(getAllCallback2,Mockito.times(1)).invoke(null,mEmptyArray);
+}

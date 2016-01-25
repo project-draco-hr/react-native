@@ -1,0 +1,7 @@
+{
+  if (mBitmap != null) {
+    mBitmap.recycle();
+  }
+  mBitmap=bitmap;
+  invalidate();
+}

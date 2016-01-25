@@ -1,0 +1,12 @@
+{
+  if (!Systrace.isTracing(Systrace.TRACE_TAG_REACT_FRESCO)) {
+    return;
+  }
+  StringBuilder entryName=new StringBuilder();
+  entryName.append("FRESCO_REQUEST_");
+  entryName.append(request.getSourceUri().toString().replace(':','_'));
+  Pair<Integer,String> requestPair=Pair.create(mCurrentID,entryName.toString());
+  Systrace.beginAsyncSection(Systrace.TRACE_TAG_REACT_FRESCO,requestPair.second,mCurrentID);
+  mRequestsID.put(requestId,requestPair);
+  mCurrentID++;
+}

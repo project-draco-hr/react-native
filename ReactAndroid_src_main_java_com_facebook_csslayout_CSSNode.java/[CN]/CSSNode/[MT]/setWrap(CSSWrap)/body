@@ -1,0 +1,6 @@
+{
+  if (style.flexWrap != flexWrap) {
+    style.flexWrap=flexWrap;
+    dirty();
+  }
+}

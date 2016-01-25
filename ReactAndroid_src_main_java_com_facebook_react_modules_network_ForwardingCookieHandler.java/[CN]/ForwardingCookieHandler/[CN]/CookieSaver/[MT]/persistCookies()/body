@@ -1,0 +1,15 @@
+{
+  mHandler.removeMessages(MSG_PERSIST_COOKIES);
+  runInBackground(new Runnable(){
+    @Override public void run(){
+      if (USES_LEGACY_STORE) {
+        CookieSyncManager syncManager=CookieSyncManager.getInstance();
+        syncManager.sync();
+      }
+ else {
+        flush();
+      }
+    }
+  }
+);
+}

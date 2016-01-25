@@ -1,0 +1,19 @@
+{
+  try {
+    if (mIndex == null) {
+      SHADOW_ARGS[0]=extractProperty(props);
+      mSetter.invoke(nodeToUpdate,SHADOW_ARGS);
+      Arrays.fill(SHADOW_ARGS,null);
+    }
+ else {
+      SHADOW_GROUP_ARGS[0]=mIndex;
+      SHADOW_GROUP_ARGS[1]=extractProperty(props);
+      mSetter.invoke(nodeToUpdate,SHADOW_GROUP_ARGS);
+      Arrays.fill(SHADOW_GROUP_ARGS,null);
+    }
+  }
+ catch (  Throwable t) {
+    FLog.e(ViewManager.class,"Error while updating prop " + mPropName,t);
+    throw new JSApplicationIllegalArgumentException("Error while updating property '" + mPropName + "' in shadow node of type: "+ nodeToUpdate.getViewClass(),t);
+  }
+}

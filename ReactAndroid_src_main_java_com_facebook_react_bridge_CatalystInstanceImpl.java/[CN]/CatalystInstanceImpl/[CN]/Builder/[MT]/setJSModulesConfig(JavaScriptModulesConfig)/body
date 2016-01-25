@@ -1,0 +1,4 @@
+{
+  mJSModulesConfig=jsModulesConfig;
+  return this;
+}

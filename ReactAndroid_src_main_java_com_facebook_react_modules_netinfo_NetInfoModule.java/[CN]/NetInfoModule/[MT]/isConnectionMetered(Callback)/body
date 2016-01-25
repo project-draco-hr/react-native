@@ -1,0 +1,7 @@
+{
+  if (mNoNetworkPermission) {
+    FLog.e(ReactConstants.TAG,MISSING_PERMISSION_MESSAGE);
+    return;
+  }
+  successCallback.invoke(mConnectivityManagerCompat.isActiveNetworkMetered(mConnectivityManager));
+}

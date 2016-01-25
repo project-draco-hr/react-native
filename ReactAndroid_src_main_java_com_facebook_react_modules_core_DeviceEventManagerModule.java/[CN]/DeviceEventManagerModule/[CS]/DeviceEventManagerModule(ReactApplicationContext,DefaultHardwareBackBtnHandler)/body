@@ -1,0 +1,10 @@
+{
+  super(reactContext);
+  mInvokeDefaultBackPressRunnable=new Runnable(){
+    @Override public void run(){
+      UiThreadUtil.assertOnUiThread();
+      backBtnHandler.invokeDefaultOnBackPressed();
+    }
+  }
+;
+}

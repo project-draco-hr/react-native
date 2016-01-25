@@ -1,0 +1,15 @@
+{
+  Iterator<?> keys=newJSON.keys();
+  while (keys.hasNext()) {
+    String key=(String)keys.next();
+    JSONObject newJSONObject=newJSON.optJSONObject(key);
+    JSONObject oldJSONObject=oldJSON.optJSONObject(key);
+    if (newJSONObject != null && oldJSONObject != null) {
+      deepMergeInto(oldJSONObject,newJSONObject);
+      oldJSON.put(key,oldJSONObject);
+    }
+ else {
+      oldJSON.put(key,newJSON.get(key));
+    }
+  }
+}

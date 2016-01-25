@@ -1,0 +1,6 @@
+{
+  int[] xy=new int[2];
+  view.getLocationOnScreen(xy);
+  int viewHeight=view.getHeight();
+  return xy[1] + (viewHeight / 2.0f);
+}

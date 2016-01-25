@@ -1,0 +1,7 @@
+{
+  ContentValues contentValues=new ContentValues();
+  contentValues.put(KEY_COLUMN,key);
+  contentValues.put(VALUE_COLUMN,value);
+  long inserted=db.insertWithOnConflict(TABLE_CATALYST,null,contentValues,SQLiteDatabase.CONFLICT_REPLACE);
+  return (-1 != inserted);
+}

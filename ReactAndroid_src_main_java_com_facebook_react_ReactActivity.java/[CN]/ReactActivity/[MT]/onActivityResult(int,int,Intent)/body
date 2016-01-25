@@ -1,0 +1,5 @@
+{
+  if (mReactInstanceManager != null) {
+    mReactInstanceManager.onActivityResult(requestCode,resultCode,data);
+  }
+}

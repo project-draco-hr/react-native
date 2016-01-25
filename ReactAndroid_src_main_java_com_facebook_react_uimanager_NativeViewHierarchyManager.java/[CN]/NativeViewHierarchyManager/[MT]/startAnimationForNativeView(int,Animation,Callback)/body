@@ -1,0 +1,28 @@
+{
+  UiThreadUtil.assertOnUiThread();
+  View view=mTagsToViews.get(reactTag);
+  final int animationId=animation.getAnimationID();
+  if (view != null) {
+    animation.setAnimationListener(new AnimationListener(){
+      @Override public void onFinished(){
+        Animation removedAnimation=mAnimationRegistry.removeAnimation(animationId);
+        Assertions.assertNotNull(removedAnimation,"Animation was already removed somehow!");
+        if (animationCallback != null) {
+          animationCallback.invoke(true);
+        }
+      }
+      @Override public void onCancel(){
+        Animation removedAnimation=mAnimationRegistry.removeAnimation(animationId);
+        Assertions.assertNotNull(removedAnimation,"Animation was already removed somehow!");
+        if (animationCallback != null) {
+          animationCallback.invoke(false);
+        }
+      }
+    }
+);
+    animation.start(view);
+  }
+ else {
+    throw new IllegalViewOperationException("View with tag " + reactTag + " not found");
+  }
+}

@@ -1,0 +1,12 @@
+{
+  HorizontalScrollView scrollView=getViewAtPath(0);
+  dragLeft();
+  waitForBridgeAndUIIdle();
+  mScrollListenerModule.waitForScrollIdle();
+  waitForBridgeAndUIIdle();
+  ArrayList<Double> xOffsets=mScrollListenerModule.getXOffsets();
+  assertFalse("Expected to receive at least one scroll event",xOffsets.isEmpty());
+  assertTrue("Expected offset to be greater than 0",xOffsets.get(xOffsets.size() - 1) > 0);
+  assertTrue("Expected no item click event fired",mScrollListenerModule.getItemsPressed().isEmpty());
+  assertEquals("Expected last offset to be offset of scroll view",PixelUtil.toDIPFromPixel(scrollView.getScrollX()),xOffsets.get(xOffsets.size() - 1).doubleValue(),1e-5);
+}

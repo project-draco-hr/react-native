@@ -1,0 +1,9 @@
+{
+  Animation animation=mAnimationRegistry.getAnimation(mAnimationID);
+  if (animation != null) {
+    mNativeViewHierarchyManager.startAnimationForNativeView(mReactTag,animation,mSuccessCallback);
+  }
+ else {
+    throw new IllegalViewOperationException("Animation with id " + mAnimationID + " was not found");
+  }
+}

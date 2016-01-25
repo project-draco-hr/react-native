@@ -1,0 +1,4 @@
+ImageRequest request
+String requestId
+Throwable throwable
+boolean isPrefetch

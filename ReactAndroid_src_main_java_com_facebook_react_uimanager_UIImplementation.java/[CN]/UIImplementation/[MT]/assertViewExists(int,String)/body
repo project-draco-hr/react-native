@@ -1,0 +1,5 @@
+{
+  if (mShadowNodeRegistry.getNode(reactTag) == null) {
+    throw new IllegalViewOperationException("Unable to execute operation " + operationNameForExceptionMessage + " on view with "+ "tag: "+ reactTag+ ", since the view does not exists");
+  }
+}

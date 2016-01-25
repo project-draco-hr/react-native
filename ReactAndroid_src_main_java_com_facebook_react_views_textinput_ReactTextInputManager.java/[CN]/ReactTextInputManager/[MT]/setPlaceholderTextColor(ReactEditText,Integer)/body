@@ -1,0 +1,8 @@
+{
+  if (color == null) {
+    view.setHintTextColor(DefaultStyleValuesUtil.getDefaultTextColorHint(view.getContext()));
+  }
+ else {
+    view.setHintTextColor(color);
+  }
+}

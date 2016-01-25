@@ -1,0 +1,7 @@
+{
+  super(reactContext);
+  mEventDispatcher=reactContext.getNativeModule(UIManagerModule.class).getEventDispatcher();
+  mIsCurrentItemFromJs=false;
+  setOnPageChangeListener(new PageChangeListener());
+  setAdapter(new Adapter());
+}

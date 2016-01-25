@@ -1,0 +1,6 @@
+def parse(file):
+    lookup = []
+    for state in _parse_smap(file):
+        lookup.append(entry(state.dst_line, state.dst_col, state.src, state.src_line, state.src_col))
+    sorted_lookup = list(sorted(lookup))
+    return sorted_lookup

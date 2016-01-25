@@ -1,0 +1,8 @@
+{
+  BorderStyle borderStyle=style == null ? null : BorderStyle.valueOf(style.toUpperCase(Locale.US));
+  if (mBorderStyle != borderStyle) {
+    mBorderStyle=borderStyle;
+    mNeedUpdatePathForBorderRadius=true;
+    invalidateSelf();
+  }
+}

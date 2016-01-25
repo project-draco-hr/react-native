@@ -1,0 +1,7 @@
+{
+  if (mIsVirtual) {
+    return;
+  }
+  mPreparedSpannableText=fromTextCSSNode(this);
+  markUpdated();
+}

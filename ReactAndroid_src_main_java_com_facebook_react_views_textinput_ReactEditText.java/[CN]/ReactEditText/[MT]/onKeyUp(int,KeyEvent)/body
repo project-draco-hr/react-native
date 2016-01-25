@@ -1,0 +1,7 @@
+{
+  if (keyCode == KeyEvent.KEYCODE_ENTER && ((getInputType() & InputType.TYPE_TEXT_FLAG_MULTI_LINE) == 0)) {
+    hideSoftKeyboard();
+    return true;
+  }
+  return super.onKeyUp(keyCode,event);
+}

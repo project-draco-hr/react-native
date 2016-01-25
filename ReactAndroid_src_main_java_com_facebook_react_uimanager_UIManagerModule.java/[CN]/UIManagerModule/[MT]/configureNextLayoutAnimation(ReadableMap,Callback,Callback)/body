@@ -1,0 +1,3 @@
+{
+  mUIImplementation.configureNextLayoutAnimation(config,success,error);
+}

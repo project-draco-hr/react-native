@@ -1,0 +1,11 @@
+{
+  if (offsetMap == null) {
+    mTextShadowOffsetDx=0;
+    mTextShadowOffsetDy=0;
+  }
+ else {
+    mTextShadowOffsetDx=PixelUtil.toPixelFromDIP(offsetMap.getDouble("width"));
+    mTextShadowOffsetDy=PixelUtil.toPixelFromDIP(offsetMap.getDouble("height"));
+  }
+  markUpdated();
+}

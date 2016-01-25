@@ -1,0 +1,4 @@
+{
+  Assertions.assertCondition(source instanceof ReadableNativeMap,"Illegal type provided");
+  mergeNativeMap((ReadableNativeMap)source);
+}

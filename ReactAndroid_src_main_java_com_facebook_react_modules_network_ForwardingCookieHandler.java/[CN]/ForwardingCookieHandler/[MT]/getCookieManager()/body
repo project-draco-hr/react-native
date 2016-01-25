@@ -1,0 +1,10 @@
+{
+  if (mCookieManager == null) {
+    possiblyWorkaroundSyncManager(mContext);
+    mCookieManager=CookieManager.getInstance();
+    if (USES_LEGACY_STORE) {
+      mCookieManager.removeExpiredCookie();
+    }
+  }
+  return mCookieManager;
+}

@@ -1,0 +1,3 @@
+{
+  picker.setOnSelectListener(new PickerEventEmitter(picker,reactContext.getNativeModule(UIManagerModule.class).getEventDispatcher()));
+}

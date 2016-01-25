@@ -1,0 +1,22 @@
+{
+  mDevServerHelper.launchChromeDevtools();
+  JavaJSExecutor.Factory factory=new JavaJSExecutor.Factory(){
+    @Override public JavaJSExecutor create() throws Exception {
+      WebsocketJavaScriptExecutor executor=new WebsocketJavaScriptExecutor();
+      SimpleSettableFuture<Boolean> future=new SimpleSettableFuture<>();
+      executor.connect(mDevServerHelper.getWebsocketProxyURL(),getExecutorConnectCallback(progressDialog,future));
+      try {
+        future.get(90,TimeUnit.SECONDS);
+        return executor;
+      }
+ catch (      ExecutionException e) {
+        throw (Exception)e.getCause();
+      }
+catch (      InterruptedException|TimeoutException e) {
+        throw new RuntimeException(e);
+      }
+    }
+  }
+;
+  mReactInstanceCommandsHandler.onReloadWithJSDebugger(factory);
+}

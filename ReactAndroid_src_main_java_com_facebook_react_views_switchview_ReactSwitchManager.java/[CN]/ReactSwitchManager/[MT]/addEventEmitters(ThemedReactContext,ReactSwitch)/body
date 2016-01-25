@@ -1,0 +1,3 @@
+{
+  view.setOnCheckedChangeListener(ON_CHECKED_CHANGE_LISTENER);
+}

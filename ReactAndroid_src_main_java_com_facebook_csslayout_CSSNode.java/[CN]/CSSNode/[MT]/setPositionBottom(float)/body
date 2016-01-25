@@ -1,0 +1,6 @@
+{
+  if (!valuesEqual(style.position[POSITION_BOTTOM],positionBottom)) {
+    style.position[POSITION_BOTTOM]=positionBottom;
+    dirty();
+  }
+}

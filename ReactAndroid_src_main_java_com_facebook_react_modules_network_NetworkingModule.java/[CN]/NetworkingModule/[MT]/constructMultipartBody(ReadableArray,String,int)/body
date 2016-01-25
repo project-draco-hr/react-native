@@ -1,0 +1,40 @@
+{
+  MultipartBuilder multipartBuilder=new MultipartBuilder();
+  multipartBuilder.type(MediaType.parse(contentType));
+  for (int i=0, size=body.size(); i < size; i++) {
+    ReadableMap bodyPart=body.getMap(i);
+    ReadableArray headersArray=bodyPart.getArray("headers");
+    Headers headers=extractHeaders(headersArray,null);
+    if (headers == null) {
+      onRequestError(requestId,"Missing or invalid header format for FormData part.");
+      return null;
+    }
+    MediaType partContentType=null;
+    String partContentTypeStr=headers.get(CONTENT_TYPE_HEADER_NAME);
+    if (partContentTypeStr != null) {
+      partContentType=MediaType.parse(partContentTypeStr);
+      headers=headers.newBuilder().removeAll(CONTENT_TYPE_HEADER_NAME).build();
+    }
+    if (bodyPart.hasKey(REQUEST_BODY_KEY_STRING)) {
+      String bodyValue=bodyPart.getString(REQUEST_BODY_KEY_STRING);
+      multipartBuilder.addPart(headers,RequestBody.create(partContentType,bodyValue));
+    }
+ else     if (bodyPart.hasKey(REQUEST_BODY_KEY_URI)) {
+      if (partContentType == null) {
+        onRequestError(requestId,"Binary FormData part needs a content-type header.");
+        return null;
+      }
+      String fileContentUriStr=bodyPart.getString(REQUEST_BODY_KEY_URI);
+      InputStream fileInputStream=RequestBodyUtil.getFileInputStream(getReactApplicationContext(),fileContentUriStr);
+      if (fileInputStream == null) {
+        onRequestError(requestId,"Could not retrieve file for uri " + fileContentUriStr);
+        return null;
+      }
+      multipartBuilder.addPart(headers,RequestBodyUtil.create(partContentType,fileInputStream));
+    }
+ else {
+      onRequestError(requestId,"Unrecognized FormData part.");
+    }
+  }
+  return multipartBuilder;
+}

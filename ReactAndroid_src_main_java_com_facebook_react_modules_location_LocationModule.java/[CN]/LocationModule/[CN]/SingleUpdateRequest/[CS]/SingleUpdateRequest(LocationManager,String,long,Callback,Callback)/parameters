@@ -1,0 +1,5 @@
+LocationManager locationManager
+String provider
+long timeout
+Callback success
+Callback error

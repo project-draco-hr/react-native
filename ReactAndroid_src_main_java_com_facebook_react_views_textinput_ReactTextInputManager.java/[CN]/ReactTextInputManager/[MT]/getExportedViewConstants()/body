@@ -1,0 +1,3 @@
+{
+  return MapBuilder.of("AutoCapitalizationType",MapBuilder.of("none",0,"characters",InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS,"words",InputType.TYPE_TEXT_FLAG_CAP_WORDS,"sentences",InputType.TYPE_TEXT_FLAG_CAP_SENTENCES));
+}

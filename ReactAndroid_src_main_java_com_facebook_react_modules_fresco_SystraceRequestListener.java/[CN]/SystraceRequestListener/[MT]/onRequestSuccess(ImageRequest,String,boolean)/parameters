@@ -1,0 +1,3 @@
+ImageRequest request
+String requestId
+boolean isPrefetch

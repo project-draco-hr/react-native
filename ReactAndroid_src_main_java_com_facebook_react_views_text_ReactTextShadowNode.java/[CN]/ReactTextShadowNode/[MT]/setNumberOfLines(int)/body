@@ -1,0 +1,4 @@
+{
+  mNumberOfLines=numberOfLines;
+  markUpdated();
+}

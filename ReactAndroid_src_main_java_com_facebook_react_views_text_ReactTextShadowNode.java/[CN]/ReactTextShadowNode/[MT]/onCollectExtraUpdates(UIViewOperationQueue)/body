@@ -1,0 +1,10 @@
+{
+  if (mIsVirtual) {
+    return;
+  }
+  super.onCollectExtraUpdates(uiViewOperationQueue);
+  if (mPreparedSpannableText != null) {
+    ReactTextUpdate reactTextUpdate=new ReactTextUpdate(mPreparedSpannableText,UNSET,mContainsImages);
+    uiViewOperationQueue.enqueueUpdateExtraData(getReactTag(),reactTextUpdate);
+  }
+}

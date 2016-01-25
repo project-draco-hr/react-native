@@ -1,0 +1,18 @@
+{
+  try {
+    Activity currentActivity=getCurrentActivity();
+    String initialURL=null;
+    if (currentActivity != null) {
+      Intent intent=currentActivity.getIntent();
+      String action=intent.getAction();
+      Uri uri=intent.getData();
+      if (Intent.ACTION_VIEW.equals(action) && uri != null) {
+        initialURL=uri.toString();
+      }
+    }
+    callback.invoke(initialURL);
+  }
+ catch (  Exception e) {
+    throw new JSApplicationIllegalArgumentException("Could not get the initial URL : " + e.getMessage());
+  }
+}

@@ -1,0 +1,4 @@
+{
+  waitForBridgeAndUIIdle(60000);
+  super.tearDown();
+}

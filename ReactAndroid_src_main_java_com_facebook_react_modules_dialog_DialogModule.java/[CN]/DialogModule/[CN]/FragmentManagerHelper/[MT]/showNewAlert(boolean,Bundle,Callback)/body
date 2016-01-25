@@ -1,0 +1,22 @@
+{
+  dismissExisting();
+  AlertFragmentListener actionListener=actionCallback != null ? new AlertFragmentListener(actionCallback) : null;
+  if (isUsingSupportLibrary()) {
+    SupportAlertFragment alertFragment=new SupportAlertFragment(actionListener,arguments);
+    if (isInForeground) {
+      alertFragment.show(mSupportFragmentManager,FRAGMENT_TAG);
+    }
+ else {
+      mFragmentToShow=alertFragment;
+    }
+  }
+ else {
+    AlertFragment alertFragment=new AlertFragment(actionListener,arguments);
+    if (isInForeground) {
+      alertFragment.show(mFragmentManager,FRAGMENT_TAG);
+    }
+ else {
+      mFragmentToShow=alertFragment;
+    }
+  }
+}

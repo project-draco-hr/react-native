@@ -1,0 +1,6 @@
+{
+  JsonGenerator jg=mJsonFactory.createGenerator(new StringWriter());
+  jg.writeStartObject();
+  jg.writeNumberField("id",requestID);
+  return jg;
+}

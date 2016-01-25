@@ -1,0 +1,7 @@
+{
+  super(context);
+  setHasFixedSize(true);
+  setItemAnimator(new NotAnimatedItemAnimator());
+  setLayoutManager(new LinearLayoutManager(context));
+  setAdapter(new ReactListAdapter(this));
+}

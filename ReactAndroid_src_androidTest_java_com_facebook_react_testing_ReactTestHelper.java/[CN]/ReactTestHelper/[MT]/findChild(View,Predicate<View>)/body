@@ -1,0 +1,16 @@
+{
+  if (predicate.apply(root)) {
+    return root;
+  }
+  if (root instanceof ViewGroup) {
+    ViewGroup viewGroup=(ViewGroup)root;
+    for (int i=0; i < viewGroup.getChildCount(); i++) {
+      View child=viewGroup.getChildAt(i);
+      View result=findChild(child,predicate);
+      if (result != null) {
+        return result;
+      }
+    }
+  }
+  return null;
+}

@@ -1,0 +1,19 @@
+{
+  if (mFrameCallback == null) {
+    return;
+  }
+  checkAPILevel();
+  mFrameCallback.stop();
+  FpsDebugFrameCallback.FpsInfo fpsInfo=mFrameCallback.getFpsInfo((long)animationStopTimeMs);
+  if (fpsInfo == null) {
+    Toast.makeText(getReactApplicationContext(),"Unable to get FPS info",Toast.LENGTH_LONG);
+  }
+ else {
+    String fpsString=String.format(Locale.US,"FPS: %.2f, %d frames (%d expected)",fpsInfo.fps,fpsInfo.totalFrames,fpsInfo.totalExpectedFrames);
+    String jsFpsString=String.format(Locale.US,"JS FPS: %.2f, %d frames (%d expected)",fpsInfo.jsFps,fpsInfo.totalJsFrames,fpsInfo.totalExpectedFrames);
+    String debugString=fpsString + "\n" + jsFpsString+ "\n"+ "Total Time MS: "+ String.format(Locale.US,"%d",fpsInfo.totalTimeMs);
+    FLog.d(ReactConstants.TAG,debugString);
+    Toast.makeText(getReactApplicationContext(),debugString,Toast.LENGTH_LONG).show();
+  }
+  mFrameCallback=null;
+}

@@ -1,0 +1,14 @@
+{
+  if (mClassName == CLASS_GROUP) {
+    return ARTGroupShadowNode.class;
+  }
+ else   if (mClassName == CLASS_SHAPE) {
+    return ARTShapeShadowNode.class;
+  }
+ else   if (mClassName == CLASS_TEXT) {
+    return ARTTextShadowNode.class;
+  }
+ else {
+    throw new IllegalStateException("Unexpected type " + mClassName);
+  }
+}

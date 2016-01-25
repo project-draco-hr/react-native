@@ -1,0 +1,29 @@
+{
+  Spanned text=(Spanned)getText();
+  int target=getId();
+  int x=(int)touchX;
+  int y=(int)touchY;
+  Layout layout=getLayout();
+  if (layout == null) {
+    return target;
+  }
+  int line=layout.getLineForVertical(y);
+  int lineStartX=(int)layout.getLineLeft(line);
+  int lineEndX=(int)layout.getLineRight(line);
+  if (x >= lineStartX && x <= lineEndX) {
+    int index=layout.getOffsetForHorizontal(line,x);
+    ReactTagSpan[] spans=text.getSpans(index,index,ReactTagSpan.class);
+    if (spans != null) {
+      int targetSpanTextLength=text.length();
+      for (int i=0; i < spans.length; i++) {
+        int spanStart=text.getSpanStart(spans[i]);
+        int spanEnd=text.getSpanEnd(spans[i]);
+        if (spanEnd > index && (spanEnd - spanStart) <= targetSpanTextLength) {
+          target=spans[i].getReactTag();
+          targetSpanTextLength=(spanEnd - spanStart);
+        }
+      }
+    }
+  }
+  return target;
+}

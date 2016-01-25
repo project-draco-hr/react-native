@@ -1,0 +1,3 @@
+def testLineWithFlags(self):
+    line = u'          <idle>-0     [001] ...2  3269.291072: sched_switch: prev_comm=swapper/1 prev_pid=0 prev_prio=120 prev_state=R ==> next_comm=mmcqd/0 next_pid=120 next_prio=120\n'
+    self.assertEqual(line, str(parse_line(line)))

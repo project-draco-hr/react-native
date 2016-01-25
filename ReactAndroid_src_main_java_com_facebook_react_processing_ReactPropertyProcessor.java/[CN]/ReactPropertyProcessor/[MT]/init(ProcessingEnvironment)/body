@@ -1,0 +1,7 @@
+{
+  super.init(processingEnv);
+  mFiler=processingEnv.getFiler();
+  mMessager=processingEnv.getMessager();
+  mElements=processingEnv.getElementUtils();
+  mTypes=processingEnv.getTypeUtils();
+}

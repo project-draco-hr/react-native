@@ -1,0 +1,4 @@
+String requestId
+String producerName
+Throwable throwable
+Map<String,String> extraMap

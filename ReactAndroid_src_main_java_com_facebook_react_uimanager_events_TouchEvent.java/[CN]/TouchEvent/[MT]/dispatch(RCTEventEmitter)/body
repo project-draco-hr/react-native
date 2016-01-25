@@ -1,0 +1,3 @@
+{
+  TouchesHelper.sendTouchEvent(rctEventEmitter,Assertions.assertNotNull(mTouchEventType),getViewTag(),this);
+}

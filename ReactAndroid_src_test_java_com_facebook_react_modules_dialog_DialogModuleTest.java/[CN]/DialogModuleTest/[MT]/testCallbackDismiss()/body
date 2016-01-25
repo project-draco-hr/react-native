@@ -1,0 +1,8 @@
+{
+  final SimpleMap options=new SimpleMap();
+  final SimpleCallback actionCallback=new SimpleCallback();
+  mDialogModule.showAlert(options,null,actionCallback);
+  getFragment().getDialog().dismiss();
+  assertEquals(1,actionCallback.getCalls());
+  assertEquals(DialogModule.ACTION_DISMISSED,actionCallback.getArgs()[0]);
+}

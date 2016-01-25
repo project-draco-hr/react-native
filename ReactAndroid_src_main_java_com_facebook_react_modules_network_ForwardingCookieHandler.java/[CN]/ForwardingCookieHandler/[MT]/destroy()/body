@@ -1,0 +1,6 @@
+{
+  if (USES_LEGACY_STORE) {
+    getCookieManager().removeExpiredCookie();
+    mCookieSaver.persistCookies();
+  }
+}

@@ -1,0 +1,4 @@
+CatalystInstance catalystInstance
+int moduleId
+int methodId
+ReadableNativeArray parameters

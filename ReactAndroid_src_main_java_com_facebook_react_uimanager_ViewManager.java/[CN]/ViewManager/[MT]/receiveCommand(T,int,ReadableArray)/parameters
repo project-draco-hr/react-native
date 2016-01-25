@@ -1,0 +1,3 @@
+T root
+int commandId
+ReadableArray args

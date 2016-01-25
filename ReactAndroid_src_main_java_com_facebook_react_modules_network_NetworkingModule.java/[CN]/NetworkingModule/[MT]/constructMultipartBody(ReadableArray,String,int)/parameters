@@ -1,0 +1,3 @@
+ReadableArray body
+String contentType
+int requestId

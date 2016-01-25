@@ -1,0 +1,6 @@
+int viewId
+long timestampMs
+String text
+String previousText
+int rangeStart
+int rangeEnd

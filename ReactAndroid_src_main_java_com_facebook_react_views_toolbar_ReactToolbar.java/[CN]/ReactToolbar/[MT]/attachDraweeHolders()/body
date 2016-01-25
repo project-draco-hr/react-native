@@ -1,0 +1,6 @@
+{
+  mLogoHolder.onAttach();
+  mNavIconHolder.onAttach();
+  mOverflowIconHolder.onAttach();
+  mActionsHolder.onAttach();
+}

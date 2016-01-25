@@ -1,0 +1,3 @@
+{
+  return new ReactQueueConfigurationSpec(Assertions.assertNotNull(mNativeModulesQueueSpec),Assertions.assertNotNull(mJSQueueSpec));
+}

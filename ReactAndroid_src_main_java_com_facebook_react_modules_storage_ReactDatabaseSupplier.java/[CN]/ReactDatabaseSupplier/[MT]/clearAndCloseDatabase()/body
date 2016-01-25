@@ -1,0 +1,14 @@
+{
+  try {
+    clear();
+    closeDatabase();
+    FLog.d(ReactConstants.TAG,"Cleaned " + DATABASE_NAME);
+  }
+ catch (  Exception e) {
+    if (deleteDatabase()) {
+      FLog.d(ReactConstants.TAG,"Deleted Local Database " + DATABASE_NAME);
+      return;
+    }
+    throw new RuntimeException("Clearing and deleting database " + DATABASE_NAME + " failed");
+  }
+}

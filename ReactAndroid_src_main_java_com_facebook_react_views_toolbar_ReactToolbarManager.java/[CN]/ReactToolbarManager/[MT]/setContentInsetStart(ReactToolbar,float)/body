@@ -1,0 +1,4 @@
+{
+  int inset=Float.isNaN(insetStart) ? getDefaultContentInsets(view.getContext())[0] : Math.round(PixelUtil.toPixelFromDIP(insetStart));
+  view.setContentInsetsRelative(inset,view.getContentInsetEnd());
+}

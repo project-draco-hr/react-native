@@ -1,0 +1,8 @@
+{
+  if (!CSSConstants.isUndefined(mBorderRadius) && mBorderRadius > 0) {
+    drawRoundedBackgroundWithBorders(canvas);
+  }
+ else {
+    drawRectangularBackgroundWithBorders(canvas);
+  }
+}

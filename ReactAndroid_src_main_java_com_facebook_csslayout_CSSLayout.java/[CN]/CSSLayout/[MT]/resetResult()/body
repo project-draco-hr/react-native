@@ -1,0 +1,5 @@
+{
+  Arrays.fill(position,0);
+  Arrays.fill(dimensions,CSSConstants.UNDEFINED);
+  direction=CSSDirection.LTR;
+}

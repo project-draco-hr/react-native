@@ -1,0 +1,5 @@
+{
+  WritableMap eventData=Arguments.createMap();
+  eventData.putInt("position",mPosition);
+  return eventData;
+}

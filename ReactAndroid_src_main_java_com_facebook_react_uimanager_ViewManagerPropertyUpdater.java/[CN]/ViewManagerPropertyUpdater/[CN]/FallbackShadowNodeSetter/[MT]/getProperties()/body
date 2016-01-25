@@ -1,0 +1,7 @@
+{
+  Map<String,String> nativeProps=new HashMap<>();
+  for (  ViewManagersPropertyCache.PropSetter setter : mPropSetters.values()) {
+    nativeProps.put(setter.getPropName(),setter.getPropType());
+  }
+  return nativeProps;
+}

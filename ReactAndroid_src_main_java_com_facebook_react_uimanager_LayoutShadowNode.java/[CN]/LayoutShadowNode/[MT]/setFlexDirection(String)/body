@@ -1,0 +1,3 @@
+{
+  setFlexDirection(flexDirection == null ? CSSFlexDirection.COLUMN : CSSFlexDirection.valueOf(flexDirection.toUpperCase(Locale.US)));
+}

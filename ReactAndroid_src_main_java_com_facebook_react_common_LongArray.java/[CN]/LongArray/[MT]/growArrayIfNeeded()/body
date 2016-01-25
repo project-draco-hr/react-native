@@ -1,0 +1,8 @@
+{
+  if (mLength == mArray.length) {
+    int newSize=Math.max(mLength + 1,(int)(mLength * INNER_ARRAY_GROWTH_FACTOR));
+    long[] newArray=new long[newSize];
+    System.arraycopy(mArray,0,newArray,0,mLength);
+    mArray=newArray;
+  }
+}

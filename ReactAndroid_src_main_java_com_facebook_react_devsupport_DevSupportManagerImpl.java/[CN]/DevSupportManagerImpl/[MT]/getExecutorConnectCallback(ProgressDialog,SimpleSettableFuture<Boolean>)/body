@@ -1,0 +1,14 @@
+{
+  return new WebsocketJavaScriptExecutor.JSExecutorConnectCallback(){
+    @Override public void onSuccess(){
+      future.set(true);
+      progressDialog.dismiss();
+    }
+    @Override public void onFailure(    final Throwable cause){
+      progressDialog.dismiss();
+      FLog.e(ReactConstants.TAG,"Unable to connect to remote debugger",cause);
+      future.setException(new IOException(mApplicationContext.getString(R.string.catalyst_remotedbg_error),cause));
+    }
+  }
+;
+}

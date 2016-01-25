@@ -1,0 +1,6 @@
+{
+  if (position != getSelectedItemPosition()) {
+    mSuppressNextEvent=true;
+    setSelection(position);
+  }
+}

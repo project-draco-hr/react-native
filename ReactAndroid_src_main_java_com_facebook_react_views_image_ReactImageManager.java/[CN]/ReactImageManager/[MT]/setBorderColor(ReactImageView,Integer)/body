@@ -1,0 +1,8 @@
+{
+  if (borderColor == null) {
+    view.setBorderColor(Color.TRANSPARENT);
+  }
+ else {
+    view.setBorderColor(borderColor);
+  }
+}

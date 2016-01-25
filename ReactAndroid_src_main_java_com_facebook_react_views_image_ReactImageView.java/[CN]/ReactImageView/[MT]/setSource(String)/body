@@ -1,0 +1,21 @@
+{
+  mUri=null;
+  if (source != null) {
+    try {
+      mUri=Uri.parse(source);
+      if (mUri.getScheme() == null) {
+        mUri=null;
+      }
+    }
+ catch (    Exception e) {
+    }
+    if (mUri == null) {
+      mUri=getResourceDrawableUri(getContext(),source);
+      mIsLocalImage=true;
+    }
+ else {
+      mIsLocalImage=false;
+    }
+  }
+  mIsDirty=true;
+}

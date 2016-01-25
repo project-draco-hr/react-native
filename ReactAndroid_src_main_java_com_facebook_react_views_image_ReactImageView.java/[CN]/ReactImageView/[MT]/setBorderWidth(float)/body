@@ -1,0 +1,4 @@
+{
+  mBorderWidth=PixelUtil.toPixelFromDIP(borderWidth);
+  mIsDirty=true;
+}

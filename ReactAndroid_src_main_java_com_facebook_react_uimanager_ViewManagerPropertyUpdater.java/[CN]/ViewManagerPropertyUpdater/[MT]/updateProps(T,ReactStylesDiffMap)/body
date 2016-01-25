@@ -1,0 +1,9 @@
+{
+  ShadowNodeSetter<T> setter=findNodeSetter(node.getClass());
+  ReadableMap propMap=props.mBackingMap;
+  ReadableMapKeySetIterator iterator=propMap.keySetIterator();
+  while (iterator.hasNextKey()) {
+    String key=iterator.nextKey();
+    setter.setProperty(node,key,props);
+  }
+}

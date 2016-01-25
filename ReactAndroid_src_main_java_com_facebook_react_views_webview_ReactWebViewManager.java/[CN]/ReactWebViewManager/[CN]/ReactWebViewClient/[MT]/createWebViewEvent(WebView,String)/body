@@ -1,0 +1,10 @@
+{
+  WritableMap event=Arguments.createMap();
+  event.putDouble("target",webView.getId());
+  event.putString("url",url);
+  event.putBoolean("loading",!mLastLoadFailed && webView.getProgress() != 100);
+  event.putString("title",webView.getTitle());
+  event.putBoolean("canGoBack",webView.canGoBack());
+  event.putBoolean("canGoForward",webView.canGoForward());
+  return event;
+}

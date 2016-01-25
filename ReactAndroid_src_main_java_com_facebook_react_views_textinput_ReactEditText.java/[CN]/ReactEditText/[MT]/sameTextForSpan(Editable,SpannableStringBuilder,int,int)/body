@@ -1,0 +1,11 @@
+{
+  if (start > newText.length() || end > newText.length()) {
+    return false;
+  }
+  for (int charIdx=start; charIdx < end; charIdx++) {
+    if (oldText.charAt(charIdx) != newText.charAt(charIdx)) {
+      return false;
+    }
+  }
+  return true;
+}

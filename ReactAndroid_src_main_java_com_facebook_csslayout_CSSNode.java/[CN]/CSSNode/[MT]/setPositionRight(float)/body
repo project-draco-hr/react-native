@@ -1,0 +1,6 @@
+{
+  if (!valuesEqual(style.position[POSITION_RIGHT],positionRight)) {
+    style.position[POSITION_RIGHT]=positionRight;
+    dirty();
+  }
+}

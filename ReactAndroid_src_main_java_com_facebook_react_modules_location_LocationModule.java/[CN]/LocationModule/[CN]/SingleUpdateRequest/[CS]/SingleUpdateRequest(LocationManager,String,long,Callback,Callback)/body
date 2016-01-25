@@ -1,0 +1,7 @@
+{
+  mLocationManager=locationManager;
+  mProvider=provider;
+  mTimeout=timeout;
+  mSuccess=success;
+  mError=error;
+}

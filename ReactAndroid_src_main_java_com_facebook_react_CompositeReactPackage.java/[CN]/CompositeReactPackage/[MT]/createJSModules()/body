@@ -1,0 +1,9 @@
+{
+  final Set<Class<? extends JavaScriptModule>> moduleSet=new HashSet<>();
+  for (  ReactPackage reactPackage : mChildReactPackages) {
+    for (    Class<? extends JavaScriptModule> jsModule : reactPackage.createJSModules()) {
+      moduleSet.add(jsModule);
+    }
+  }
+  return new ArrayList(moduleSet);
+}

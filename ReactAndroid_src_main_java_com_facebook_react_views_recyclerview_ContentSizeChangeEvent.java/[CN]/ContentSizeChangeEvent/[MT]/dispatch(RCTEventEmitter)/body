@@ -1,0 +1,6 @@
+{
+  WritableMap data=Arguments.createMap();
+  data.putDouble("width",PixelUtil.toDIPFromPixel(mWidth));
+  data.putDouble("height",PixelUtil.toDIPFromPixel(mHeight));
+  rctEventEmitter.receiveEvent(getViewTag(),EVENT_NAME,data);
+}

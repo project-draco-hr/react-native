@@ -1,0 +1,7 @@
+{
+  ViewManager viewManager=mTagsToViewManagers.get(tag);
+  if (viewManager == null) {
+    throw new IllegalViewOperationException("ViewManager for tag " + tag + " could not be found");
+  }
+  return viewManager;
+}

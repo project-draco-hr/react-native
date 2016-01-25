@@ -1,0 +1,4 @@
+{
+  mAnimationID=animationID;
+  mPropertyUpdater=propertyUpdater;
+}

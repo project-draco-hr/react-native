@@ -1,0 +1,6 @@
+{
+  if (instance == null) {
+    throw new AssertionException("Expected object to not be null!");
+  }
+  return instance;
+}

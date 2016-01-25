@@ -1,0 +1,6 @@
+{
+  if (style.alignSelf != alignSelf) {
+    style.alignSelf=alignSelf;
+    dirty();
+  }
+}

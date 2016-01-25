@@ -1,0 +1,13 @@
+{
+  if (Build.VERSION.SDK_INT >= 19) {
+    if (liveRegion == null || liveRegion.equals("none")) {
+      view.setAccessibilityLiveRegion(View.ACCESSIBILITY_LIVE_REGION_NONE);
+    }
+ else     if (liveRegion.equals("polite")) {
+      view.setAccessibilityLiveRegion(View.ACCESSIBILITY_LIVE_REGION_POLITE);
+    }
+ else     if (liveRegion.equals("assertive")) {
+      view.setAccessibilityLiveRegion(View.ACCESSIBILITY_LIVE_REGION_ASSERTIVE);
+    }
+  }
+}

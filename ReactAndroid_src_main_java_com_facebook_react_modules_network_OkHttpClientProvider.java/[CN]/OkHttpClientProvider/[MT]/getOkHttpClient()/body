@@ -1,0 +1,6 @@
+{
+  if (sClient == null) {
+    sClient=createClient();
+  }
+  return sClient;
+}

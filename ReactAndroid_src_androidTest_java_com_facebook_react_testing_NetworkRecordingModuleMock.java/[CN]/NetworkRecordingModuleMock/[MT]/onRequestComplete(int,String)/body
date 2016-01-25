@@ -1,0 +1,6 @@
+{
+  WritableArray args=Arguments.createArray();
+  args.pushInt(requestId);
+  args.pushString(error);
+  getEventEmitter().emit("didCompleteNetworkResponse",args);
+}

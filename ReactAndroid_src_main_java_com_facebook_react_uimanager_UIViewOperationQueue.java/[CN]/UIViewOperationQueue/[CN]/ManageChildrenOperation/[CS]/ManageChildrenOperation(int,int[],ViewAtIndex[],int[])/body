@@ -1,0 +1,6 @@
+{
+  super(tag);
+  mIndicesToRemove=indicesToRemove;
+  mViewsToAdd=viewsToAdd;
+  mTagsToDelete=tagsToDelete;
+}

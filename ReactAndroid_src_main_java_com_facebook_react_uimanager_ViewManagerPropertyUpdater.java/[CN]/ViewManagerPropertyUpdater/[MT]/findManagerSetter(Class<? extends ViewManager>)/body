@@ -1,0 +1,11 @@
+{
+  @SuppressWarnings("unchecked") ViewManagerSetter<T,V> setter=(ViewManagerSetter<T,V>)VIEW_MANAGER_SETTER_MAP.get(managerClass);
+  if (setter == null) {
+    setter=findGeneratedSetter(managerClass);
+    if (setter == null) {
+      setter=new FallbackViewManagerSetter<>(managerClass);
+    }
+    VIEW_MANAGER_SETTER_MAP.put(managerClass,setter);
+  }
+  return setter;
+}

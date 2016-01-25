@@ -1,0 +1,4 @@
+{
+  mUIImplementationProvider=uiImplementationProvider;
+  return this;
+}

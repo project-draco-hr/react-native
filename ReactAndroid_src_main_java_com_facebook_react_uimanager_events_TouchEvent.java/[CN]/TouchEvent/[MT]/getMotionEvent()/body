@@ -1,0 +1,4 @@
+{
+  Assertions.assertNotNull(mMotionEvent);
+  return mMotionEvent;
+}

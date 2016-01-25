@@ -1,0 +1,4 @@
+{
+  int baseCount=type == SettableType.SHADOW_NODE ? 1 : 2;
+  return property instanceof GroupProperty ? baseCount + 1 : baseCount;
+}

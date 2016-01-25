@@ -1,0 +1,3 @@
+{
+  return mViewType == null ? SettableType.SHADOW_NODE : SettableType.VIEW_MANAGER;
+}

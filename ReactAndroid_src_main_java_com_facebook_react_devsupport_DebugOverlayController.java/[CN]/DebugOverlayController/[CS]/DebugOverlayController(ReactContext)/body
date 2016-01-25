@@ -1,0 +1,4 @@
+{
+  mReactContext=reactContext;
+  mWindowManager=(WindowManager)reactContext.getSystemService(Context.WINDOW_SERVICE);
+}

@@ -1,0 +1,45 @@
+{
+  if (keys.size() == 0) {
+    callback.invoke(AsyncStorageErrorUtil.getInvalidKeyError(null));
+    return;
+  }
+  new GuardedAsyncTask<Void,Void>(getReactApplicationContext()){
+    @Override protected void doInBackgroundGuarded(    Void... params){
+      if (!ensureDatabase()) {
+        callback.invoke(AsyncStorageErrorUtil.getDBError(null));
+        return;
+      }
+      WritableMap error=null;
+      try {
+        mReactDatabaseSupplier.get().beginTransaction();
+        for (int keyStart=0; keyStart < keys.size(); keyStart+=MAX_SQL_KEYS) {
+          int keyCount=Math.min(keys.size() - keyStart,MAX_SQL_KEYS);
+          mReactDatabaseSupplier.get().delete(TABLE_CATALYST,AsyncLocalStorageUtil.buildKeySelection(keyCount),AsyncLocalStorageUtil.buildKeySelectionArgs(keys,keyStart,keyCount));
+        }
+        mReactDatabaseSupplier.get().setTransactionSuccessful();
+      }
+ catch (      Exception e) {
+        FLog.w(ReactConstants.TAG,e.getMessage(),e);
+        error=AsyncStorageErrorUtil.getError(null,e.getMessage());
+      }
+ finally {
+        try {
+          mReactDatabaseSupplier.get().endTransaction();
+        }
+ catch (        Exception e) {
+          FLog.w(ReactConstants.TAG,e.getMessage(),e);
+          if (error == null) {
+            error=AsyncStorageErrorUtil.getError(null,e.getMessage());
+          }
+        }
+      }
+      if (error != null) {
+        callback.invoke(error);
+      }
+ else {
+        callback.invoke();
+      }
+    }
+  }
+.execute();
+}

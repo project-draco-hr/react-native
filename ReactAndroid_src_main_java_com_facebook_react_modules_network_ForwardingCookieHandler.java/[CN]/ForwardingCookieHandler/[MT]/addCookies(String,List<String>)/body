@@ -1,0 +1,19 @@
+{
+  if (USES_LEGACY_STORE) {
+    runInBackground(new Runnable(){
+      @Override public void run(){
+        for (        String cookie : cookies) {
+          getCookieManager().setCookie(url,cookie);
+        }
+        mCookieSaver.onCookiesModified();
+      }
+    }
+);
+  }
+ else {
+    for (    String cookie : cookies) {
+      addCookieAsync(url,cookie);
+    }
+    mCookieSaver.onCookiesModified();
+  }
+}

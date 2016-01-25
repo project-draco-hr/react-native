@@ -1,0 +1,57 @@
+{
+  OkHttpClient client=new OkHttpClient();
+  client.setConnectTimeout(10,TimeUnit.SECONDS);
+  client.setWriteTimeout(10,TimeUnit.SECONDS);
+  client.setReadTimeout(0,TimeUnit.MINUTES);
+  Request.Builder builder=new Request.Builder().tag(id).url(url);
+  if (options != null && options.hasKey("origin")) {
+    if (ReadableType.String.equals(options.getType("origin"))) {
+      builder.addHeader("Origin",options.getString("origin"));
+    }
+ else {
+      FLog.w(ReactConstants.TAG,"Ignoring: requested origin, value not a string");
+    }
+  }
+  WebSocketCall.create(client,builder.build()).enqueue(new WebSocketListener(){
+    @Override public void onOpen(    WebSocket webSocket,    Response response){
+      mWebSocketConnections.put(id,webSocket);
+      WritableMap params=Arguments.createMap();
+      params.putInt("id",id);
+      sendEvent("websocketOpen",params);
+    }
+    @Override public void onClose(    int code,    String reason){
+      WritableMap params=Arguments.createMap();
+      params.putInt("id",id);
+      params.putInt("code",code);
+      params.putString("reason",reason);
+      sendEvent("websocketClosed",params);
+    }
+    @Override public void onFailure(    IOException e,    Response response){
+      notifyWebSocketFailed(id,e.getMessage());
+    }
+    @Override public void onPong(    Buffer buffer){
+    }
+    @Override public void onMessage(    BufferedSource bufferedSource,    WebSocket.PayloadType payloadType){
+      String message;
+      try {
+        message=bufferedSource.readUtf8();
+      }
+ catch (      IOException e) {
+        notifyWebSocketFailed(id,e.getMessage());
+        return;
+      }
+      try {
+        bufferedSource.close();
+      }
+ catch (      IOException e) {
+        FLog.e(ReactConstants.TAG,"Could not close BufferedSource for WebSocket id " + id,e);
+      }
+      WritableMap params=Arguments.createMap();
+      params.putInt("id",id);
+      params.putString("data",message);
+      sendEvent("websocketMessage",params);
+    }
+  }
+);
+  client.getDispatcher().getExecutorService().shutdown();
+}

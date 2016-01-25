@@ -1,0 +1,3 @@
+{
+  return LAYOUT_ONLY_PROPS.contains(prop);
+}

@@ -1,0 +1,7 @@
+{
+  if (fontSize != UNSET) {
+    fontSize=(float)Math.ceil(PixelUtil.toPixelFromSP(fontSize));
+  }
+  mFontSize=(int)fontSize;
+  markUpdated();
+}

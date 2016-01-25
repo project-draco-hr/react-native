@@ -1,0 +1,3 @@
+{
+  return mBackingList != null ? mBackingList.hashCode() : 0;
+}

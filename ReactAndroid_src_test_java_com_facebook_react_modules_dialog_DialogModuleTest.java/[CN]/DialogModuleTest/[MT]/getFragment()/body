@@ -1,0 +1,3 @@
+{
+  return (AlertFragment)mActivity.getFragmentManager().findFragmentByTag(DialogModule.FRAGMENT_TAG);
+}

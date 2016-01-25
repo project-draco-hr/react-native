@@ -1,0 +1,4 @@
+{
+  Systrace.endAsyncFlow(Systrace.TRACE_TAG_REACT_VIEW,"createView",mTag);
+  mNativeViewHierarchyManager.createView(mThemedContext,mTag,mClassName,mInitialProps);
+}

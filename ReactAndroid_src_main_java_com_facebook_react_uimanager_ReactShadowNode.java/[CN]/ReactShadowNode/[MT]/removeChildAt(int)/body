@@ -1,0 +1,8 @@
+{
+  ReactShadowNode removed=(ReactShadowNode)super.removeChildAt(i);
+  markUpdated();
+  int decrease=removed.mIsLayoutOnly ? removed.mTotalNativeChildren : 1;
+  mTotalNativeChildren-=decrease;
+  updateNativeChildrenCountInParent(-decrease);
+  return removed;
+}

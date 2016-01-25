@@ -1,0 +1,22 @@
+{
+  if (!mRemoveClippedSubviews || getParent() == null) {
+    return;
+  }
+  Assertions.assertNotNull(mClippingRect);
+  Assertions.assertNotNull(mAllChildren);
+  sHelperRect.set(subview.getLeft(),subview.getTop(),subview.getRight(),subview.getBottom());
+  boolean intersects=mClippingRect.intersects(sHelperRect.left,sHelperRect.top,sHelperRect.right,sHelperRect.bottom);
+  boolean oldIntersects=(subview.getParent() != null);
+  if (intersects != oldIntersects) {
+    int clippedSoFar=0;
+    for (int i=0; i < mAllChildrenCount; i++) {
+      if (mAllChildren[i] == subview) {
+        updateSubviewClipStatus(mClippingRect,i,clippedSoFar);
+        break;
+      }
+      if (mAllChildren[i].getParent() == null) {
+        clippedSoFar++;
+      }
+    }
+  }
+}

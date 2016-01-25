@@ -1,0 +1,3 @@
+{
+  mInputMethodManager.hideSoftInputFromWindow(getWindowToken(),0);
+}

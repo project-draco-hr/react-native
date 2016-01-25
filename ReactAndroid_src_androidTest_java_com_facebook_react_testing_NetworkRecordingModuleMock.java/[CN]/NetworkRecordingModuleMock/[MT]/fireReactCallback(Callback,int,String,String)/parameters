@@ -1,0 +1,4 @@
+Callback callback
+int status
+String headers
+String body

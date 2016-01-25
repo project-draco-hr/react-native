@@ -1,0 +1,4 @@
+double currentFPS
+double currentJSFPS
+int droppedUIFrames
+int total4PlusFrameStutters

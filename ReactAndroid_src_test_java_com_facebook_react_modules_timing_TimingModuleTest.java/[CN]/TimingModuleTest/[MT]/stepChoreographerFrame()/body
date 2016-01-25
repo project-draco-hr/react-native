@@ -1,0 +1,7 @@
+{
+  Choreographer.FrameCallback callback=mPostFrameCallbackHandler.getAndResetFrameCallback();
+  mCurrentTimeNs+=FRAME_TIME_NS;
+  if (callback != null) {
+    callback.doFrame(mCurrentTimeNs);
+  }
+}

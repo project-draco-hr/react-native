@@ -1,0 +1,8 @@
+{
+  jg.writeObjectFieldStart(name);
+  Set<Map.Entry> entries=map.entrySet();
+  for (  Map.Entry entry : entries) {
+    writeObjectField(jg,entry.getKey().toString(),entry.getValue());
+  }
+  jg.writeEndObject();
+}

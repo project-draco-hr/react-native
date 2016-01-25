@@ -1,0 +1,19 @@
+{
+  if (mIsDevSupportEnabled && mJSBundleTempFile.exists()) {
+    try {
+      String packageName=mApplicationContext.getPackageName();
+      PackageInfo thisPackage=mApplicationContext.getPackageManager().getPackageInfo(packageName,0);
+      if (mJSBundleTempFile.lastModified() > thisPackage.lastUpdateTime) {
+        File exopackageDir=new File(String.format(Locale.US,EXOPACKAGE_LOCATION_FORMAT,packageName));
+        if (exopackageDir.exists()) {
+          return mJSBundleTempFile.lastModified() > exopackageDir.lastModified();
+        }
+        return true;
+      }
+    }
+ catch (    PackageManager.NameNotFoundException e) {
+      FLog.e(ReactConstants.TAG,"DevSupport is unable to get current app info");
+    }
+  }
+  return false;
+}

@@ -1,0 +1,7 @@
+{
+  int currentValue=sDownTimeToCoalescingKey.get((int)downTime,-1);
+  if (currentValue == -1) {
+    throw new RuntimeException("Tried to get non-existent cookie");
+  }
+  return ((short)(0xffff & currentValue));
+}

@@ -1,0 +1,16 @@
+{
+  String[] columns={VALUE_COLUMN};
+  String[] selectionArgs={key};
+  Cursor cursor=db.query(TABLE_CATALYST,columns,KEY_COLUMN + "=?",selectionArgs,null,null,null);
+  try {
+    if (!cursor.moveToFirst()) {
+      return null;
+    }
+ else {
+      return cursor.getString(0);
+    }
+  }
+  finally {
+    cursor.close();
+  }
+}

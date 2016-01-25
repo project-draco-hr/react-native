@@ -1,0 +1,6 @@
+{
+  if (gravityVertical == 0) {
+    gravityVertical=mDefaultGravityVertical;
+  }
+  setGravity((getGravity() & ~Gravity.VERTICAL_GRAVITY_MASK) | gravityVertical);
+}

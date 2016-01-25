@@ -1,0 +1,5 @@
+{
+  super(tag);
+  mItems=items;
+  mSuccess=success;
+}

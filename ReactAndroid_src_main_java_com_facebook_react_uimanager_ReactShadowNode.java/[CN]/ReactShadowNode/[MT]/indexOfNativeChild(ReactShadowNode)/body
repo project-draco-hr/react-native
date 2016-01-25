@@ -1,0 +1,4 @@
+{
+  Assertions.assertNotNull(mNativeChildren);
+  return mNativeChildren.indexOf(nativeChild);
+}

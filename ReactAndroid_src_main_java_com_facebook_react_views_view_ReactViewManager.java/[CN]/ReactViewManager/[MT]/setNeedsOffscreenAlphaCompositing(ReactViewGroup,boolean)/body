@@ -1,0 +1,3 @@
+{
+  view.setNeedsOffscreenAlphaCompositing(needsOffscreenAlphaCompositing);
+}

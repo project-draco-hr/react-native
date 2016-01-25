@@ -1,0 +1,17 @@
+{
+  Assertions.assertCondition(mRemoveClippedSubviews);
+  Assertions.assertNotNull(mClippingRect);
+  Assertions.assertNotNull(mAllChildren);
+  view.removeOnLayoutChangeListener(mChildrenLayoutChangeListener);
+  int index=indexOfChildInAllChildren(view);
+  if (mAllChildren[index].getParent() != null) {
+    int clippedSoFar=0;
+    for (int i=0; i < index; i++) {
+      if (mAllChildren[i].getParent() == null) {
+        clippedSoFar++;
+      }
+    }
+    super.removeViewsInLayout(index - clippedSoFar,1);
+  }
+  removeFromArray(index);
+}

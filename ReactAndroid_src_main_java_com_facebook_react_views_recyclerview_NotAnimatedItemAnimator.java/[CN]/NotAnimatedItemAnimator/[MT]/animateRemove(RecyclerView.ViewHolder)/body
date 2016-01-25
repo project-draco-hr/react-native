@@ -1,0 +1,5 @@
+{
+  dispatchRemoveStarting(holder);
+  dispatchRemoveFinished(holder);
+  return true;
+}

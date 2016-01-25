@@ -1,0 +1,3 @@
+{
+  getJSModule(com.facebook.react.bridge.Systrace.class).setEnabled(false);
+}

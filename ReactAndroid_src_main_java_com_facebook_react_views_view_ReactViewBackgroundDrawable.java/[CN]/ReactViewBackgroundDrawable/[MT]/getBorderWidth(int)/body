@@ -1,0 +1,3 @@
+{
+  return mBorderWidth != null ? Math.round(mBorderWidth.get(position)) : 0;
+}

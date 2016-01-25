@@ -1,0 +1,8 @@
+{
+  try {
+    mLock.release();
+  }
+  finally {
+    mLockFileOutputStream.close();
+  }
+}

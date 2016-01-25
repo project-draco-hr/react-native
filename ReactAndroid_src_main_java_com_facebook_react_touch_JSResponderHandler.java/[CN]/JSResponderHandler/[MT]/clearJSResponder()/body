@@ -1,0 +1,4 @@
+{
+  mCurrentJSResponder=JS_RESPONDER_UNSET;
+  maybeUnblockNativeResponder();
+}

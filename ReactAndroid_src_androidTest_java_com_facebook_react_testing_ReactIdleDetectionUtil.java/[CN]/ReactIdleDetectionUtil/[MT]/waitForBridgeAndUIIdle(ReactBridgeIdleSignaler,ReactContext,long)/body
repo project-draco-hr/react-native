@@ -1,0 +1,12 @@
+{
+  UiThreadUtil.assertNotOnUiThread();
+  long startTime=SystemClock.elapsedRealtime();
+  waitInner(idleSignaler,timeoutMs);
+  long timeToWait=Math.max(1,timeoutMs - (SystemClock.elapsedRealtime() - startTime));
+  waitForChoreographer(timeToWait);
+  waitForJSIdle(reactContext);
+  timeToWait=Math.max(1,timeoutMs - (SystemClock.elapsedRealtime() - startTime));
+  waitInner(idleSignaler,timeToWait);
+  timeToWait=Math.max(1,timeoutMs - (SystemClock.elapsedRealtime() - startTime));
+  waitForChoreographer(timeToWait);
+}

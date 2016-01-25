@@ -1,0 +1,3 @@
+{
+  return viewTag | (((long)eventTypeId) & 0xffff) << 32 | (((long)coalescingKey) & 0xffff) << 48;
+}

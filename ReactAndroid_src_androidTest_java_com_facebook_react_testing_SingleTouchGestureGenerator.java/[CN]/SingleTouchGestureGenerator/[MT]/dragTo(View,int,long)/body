@@ -1,0 +1,3 @@
+{
+  return dragTo(getViewCenterX(view),getViewCenterY(view),stepCount,totalDelay);
+}

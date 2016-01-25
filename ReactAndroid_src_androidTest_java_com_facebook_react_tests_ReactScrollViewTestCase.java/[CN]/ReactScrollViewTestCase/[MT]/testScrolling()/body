@@ -1,0 +1,7 @@
+{
+  ScrollView scrollView=getViewAtPath(0);
+  assertNotNull(scrollView);
+  assertEquals(0,scrollView.getScrollY());
+  dragUp();
+  assertTrue("Expected to scroll by at least 50 pixels",scrollView.getScrollY() >= 50);
+}

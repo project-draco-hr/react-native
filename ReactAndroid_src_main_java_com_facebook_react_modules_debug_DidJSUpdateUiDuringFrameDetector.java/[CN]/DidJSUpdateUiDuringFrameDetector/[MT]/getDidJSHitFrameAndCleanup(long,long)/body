@@ -1,0 +1,17 @@
+{
+  boolean finishedUiUpdate=hasEventBetweenTimestamps(mViewHierarchyUpdateFinishedEvents,frameStartTimeNanos,frameEndTimeNanos);
+  boolean didEndFrameIdle=didEndFrameIdle(frameStartTimeNanos,frameEndTimeNanos);
+  boolean hitFrame;
+  if (finishedUiUpdate) {
+    hitFrame=true;
+  }
+ else {
+    hitFrame=didEndFrameIdle && !hasEventBetweenTimestamps(mViewHierarchyUpdateEnqueuedEvents,frameStartTimeNanos,frameEndTimeNanos);
+  }
+  cleanUp(mTransitionToIdleEvents,frameEndTimeNanos);
+  cleanUp(mTransitionToBusyEvents,frameEndTimeNanos);
+  cleanUp(mViewHierarchyUpdateEnqueuedEvents,frameEndTimeNanos);
+  cleanUp(mViewHierarchyUpdateFinishedEvents,frameEndTimeNanos);
+  mWasIdleAtEndOfLastFrame=didEndFrameIdle;
+  return hitFrame;
+}

@@ -1,0 +1,6 @@
+{
+  final Map<String,Object> constants=MapBuilder.newHashMap();
+  constants.put(DURATION_SHORT_KEY,Toast.LENGTH_SHORT);
+  constants.put(DURATION_LONG_KEY,Toast.LENGTH_LONG);
+  return constants;
+}

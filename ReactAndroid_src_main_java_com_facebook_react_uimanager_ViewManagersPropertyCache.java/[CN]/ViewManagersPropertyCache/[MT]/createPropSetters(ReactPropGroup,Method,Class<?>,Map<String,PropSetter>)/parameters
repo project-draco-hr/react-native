@@ -1,0 +1,4 @@
+ReactPropGroup annotation
+Method method
+Class<?> propTypeClass
+Map<String,PropSetter> props

@@ -1,0 +1,3 @@
+def testKitKatFunction(self):
+    function = u'tracing_mark_write: B|14127|Looper.dispatchMessage|arg=>>>>> Dispatching to Handler (android.os.Handler) {422ae980} null: 0|Java'
+    self.assertEqual(function, str(_parse_function(function)))

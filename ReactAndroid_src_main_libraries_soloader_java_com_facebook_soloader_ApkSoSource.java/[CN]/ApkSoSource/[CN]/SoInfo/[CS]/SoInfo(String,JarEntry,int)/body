@@ -1,0 +1,5 @@
+{
+  this.soName=soName;
+  this.entry=entry;
+  this.abiScore=abiScore;
+}

@@ -1,0 +1,3 @@
+{
+  return Bitmap.createBitmap(canvas.getWidth(),canvas.getHeight(),Bitmap.Config.ARGB_8888);
+}

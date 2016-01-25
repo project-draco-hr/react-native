@@ -1,0 +1,9 @@
+{
+  if (!cssNode.hasUpdates()) {
+    return;
+  }
+  for (int i=0; i < cssNode.getChildCount(); i++) {
+    notifyOnBeforeLayoutRecursive(cssNode.getChildAt(i));
+  }
+  cssNode.onBeforeLayout();
+}

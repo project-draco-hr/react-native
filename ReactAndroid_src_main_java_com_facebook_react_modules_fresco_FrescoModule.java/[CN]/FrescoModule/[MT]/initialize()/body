@@ -1,0 +1,7 @@
+{
+  super.initialize();
+  SoLoaderShim.setHandler(new FrescoHandler());
+  Context context=getReactApplicationContext().getApplicationContext();
+  Fresco.initialize(context,mConfig);
+  mConfig=null;
+}

@@ -1,0 +1,3 @@
+{
+  emitScrollEvent(scrollView,ScrollEventType.MOMENTUM_END);
+}

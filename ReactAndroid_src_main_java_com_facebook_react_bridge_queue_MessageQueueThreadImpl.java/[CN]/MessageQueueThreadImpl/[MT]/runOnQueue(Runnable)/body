@@ -1,0 +1,6 @@
+{
+  if (mIsFinished) {
+    FLog.w(ReactConstants.TAG,"Tried to enqueue runnable on already finished thread: '" + getName() + "... dropping Runnable.");
+  }
+  mHandler.post(runnable);
+}

@@ -1,0 +1,6 @@
+{
+  this(toFirst,toSecond);
+  mFromValues[0]=fromFirst;
+  mFromValues[1]=fromSecond;
+  mFromSource=false;
+}

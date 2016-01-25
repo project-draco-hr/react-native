@@ -1,0 +1,9 @@
+{
+  UiThreadUtil.assertOnUiThread();
+  if (!mRootTags.get(rootViewTag)) {
+    SoftAssertions.assertUnreachable("View with tag " + rootViewTag + " is not registered as a root view");
+  }
+  View rootView=mTagsToViews.get(rootViewTag);
+  dropView(rootView);
+  mRootTags.delete(rootViewTag);
+}

@@ -1,0 +1,6 @@
+{
+  if (mEventsToDispatchSize == mEventsToDispatch.length) {
+    mEventsToDispatch=Arrays.copyOf(mEventsToDispatch,2 * mEventsToDispatch.length);
+  }
+  mEventsToDispatch[mEventsToDispatchSize++]=event;
+}

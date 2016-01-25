@@ -1,0 +1,3 @@
+{
+  return style.position[POSITION_BOTTOM];
+}

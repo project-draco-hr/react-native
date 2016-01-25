@@ -1,0 +1,12 @@
+{
+  UiThreadUtil.runOnUiThread(new Runnable(){
+    @Override public void run(){
+      if (mRedBoxDialog == null || !mRedBoxDialog.isShowing() || errorCookie != mRedBoxDialog.getErrorCookie()) {
+        return;
+      }
+      mRedBoxDialog.setExceptionDetails(message,StackTraceHelper.convertJsStackTrace(details));
+      mRedBoxDialog.show();
+    }
+  }
+);
+}

@@ -1,0 +1,28 @@
+{
+  Systrace.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"DispatchEventsRunnable");
+  try {
+    Systrace.endAsyncFlow(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"ScheduleDispatchFrameCallback",mHasDispatchScheduledCount);
+    mHasDispatchScheduled=false;
+    mHasDispatchScheduledCount++;
+    Assertions.assertNotNull(mRCTEventEmitter);
+synchronized (mEventsToDispatchLock) {
+      if (mEventsToDispatchSize > 1) {
+        Arrays.sort(mEventsToDispatch,0,mEventsToDispatchSize,EVENT_COMPARATOR);
+      }
+      for (int eventIdx=0; eventIdx < mEventsToDispatchSize; eventIdx++) {
+        Event event=mEventsToDispatch[eventIdx];
+        if (event == null) {
+          continue;
+        }
+        Systrace.endAsyncFlow(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,event.getEventName(),event.getUniqueID());
+        event.dispatch(mRCTEventEmitter);
+        event.dispose();
+      }
+      clearEventsToDispatch();
+      mEventCookieToLastEventIdx.clear();
+    }
+  }
+  finally {
+    Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);
+  }
+}

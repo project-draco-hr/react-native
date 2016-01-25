@@ -1,0 +1,3 @@
+{
+  mPropSetters=ViewManagersPropertyCache.getNativePropSettersForShadowNodeClass(shadowNodeClass);
+}

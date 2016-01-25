@@ -1,0 +1,4 @@
+{
+  Assertions.assertCondition(map == null || map instanceof WritableNativeMap,"Illegal type provided");
+  pushNativeMap((WritableNativeMap)map);
+}

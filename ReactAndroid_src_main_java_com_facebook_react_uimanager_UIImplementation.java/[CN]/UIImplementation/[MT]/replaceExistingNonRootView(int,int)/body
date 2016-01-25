@@ -1,0 +1,24 @@
+{
+  if (mShadowNodeRegistry.isRootNode(oldTag) || mShadowNodeRegistry.isRootNode(newTag)) {
+    throw new IllegalViewOperationException("Trying to add or replace a root tag!");
+  }
+  ReactShadowNode oldNode=mShadowNodeRegistry.getNode(oldTag);
+  if (oldNode == null) {
+    throw new IllegalViewOperationException("Trying to replace unknown view tag: " + oldTag);
+  }
+  ReactShadowNode parent=oldNode.getParent();
+  if (parent == null) {
+    throw new IllegalViewOperationException("Node is not attached to a parent: " + oldTag);
+  }
+  int oldIndex=parent.indexOf(oldNode);
+  if (oldIndex < 0) {
+    throw new IllegalStateException("Didn't find child tag in parent");
+  }
+  WritableArray tagsToAdd=Arguments.createArray();
+  tagsToAdd.pushInt(newTag);
+  WritableArray addAtIndices=Arguments.createArray();
+  addAtIndices.pushInt(oldIndex);
+  WritableArray indicesToRemove=Arguments.createArray();
+  indicesToRemove.pushInt(oldIndex);
+  manageChildren(parent.getReactTag(),null,null,tagsToAdd,addAtIndices,indicesToRemove);
+}

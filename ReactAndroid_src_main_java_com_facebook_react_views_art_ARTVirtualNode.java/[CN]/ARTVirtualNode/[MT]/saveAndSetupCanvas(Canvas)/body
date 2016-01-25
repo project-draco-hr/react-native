@@ -1,0 +1,6 @@
+{
+  canvas.save();
+  if (mMatrix != null) {
+    canvas.concat(mMatrix);
+  }
+}

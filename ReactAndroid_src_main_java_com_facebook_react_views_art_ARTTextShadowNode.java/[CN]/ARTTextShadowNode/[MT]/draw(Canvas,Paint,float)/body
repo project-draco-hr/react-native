@@ -1,0 +1,42 @@
+{
+  if (mFrame == null) {
+    return;
+  }
+  opacity*=mOpacity;
+  if (opacity <= MIN_OPACITY_FOR_DRAW) {
+    return;
+  }
+  if (!mFrame.hasKey(PROP_LINES)) {
+    return;
+  }
+  ReadableArray linesProp=mFrame.getArray(PROP_LINES);
+  if (linesProp == null || linesProp.size() == 0) {
+    return;
+  }
+  saveAndSetupCanvas(canvas);
+  String[] lines=new String[linesProp.size()];
+  for (int i=0; i < lines.length; i++) {
+    lines[i]=linesProp.getString(i);
+  }
+  String text=TextUtils.join("\n",lines);
+  if (setupStrokePaint(paint,opacity)) {
+    applyTextPropertiesToPaint(paint);
+    if (mPath == null) {
+      canvas.drawText(text,0,-paint.ascent(),paint);
+    }
+ else {
+      canvas.drawTextOnPath(text,mPath,0,0,paint);
+    }
+  }
+  if (setupFillPaint(paint,opacity)) {
+    applyTextPropertiesToPaint(paint);
+    if (mPath == null) {
+      canvas.drawText(text,0,-paint.ascent(),paint);
+    }
+ else {
+      canvas.drawTextOnPath(text,mPath,0,0,paint);
+    }
+  }
+  restoreCanvas(canvas);
+  markUpdateSeen();
+}

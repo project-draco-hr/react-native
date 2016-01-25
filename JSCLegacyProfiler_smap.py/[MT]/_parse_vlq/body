@@ -1,0 +1,18 @@
+def _parse_vlq(segment):
+    u'Parse a string of VLQ-encoded data.\n\n  Returns:\n    a list of integers.\n  '
+    values = []
+    (cur, shift) = (0, 0)
+    for c in segment:
+        val = B64[c]
+        (val, cont) = ((val & 31), (val >> 5))
+        cur += (val << shift)
+        shift += 5
+        if (not cont):
+            (cur, sign) = ((cur >> 1), (cur & 1))
+            if sign:
+                cur = (- cur)
+            values.append(cur)
+            (cur, shift) = (0, 0)
+    if (cur or shift):
+        raise Exception(u'leftover cur/shift in vlq decode')
+    return values

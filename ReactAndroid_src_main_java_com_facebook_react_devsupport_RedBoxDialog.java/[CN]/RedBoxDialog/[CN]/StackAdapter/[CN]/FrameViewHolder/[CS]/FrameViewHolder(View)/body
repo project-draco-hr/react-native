@@ -1,0 +1,4 @@
+{
+  mMethodView=(TextView)v.findViewById(R.id.rn_frame_method);
+  mFileView=(TextView)v.findViewById(R.id.rn_frame_file);
+}

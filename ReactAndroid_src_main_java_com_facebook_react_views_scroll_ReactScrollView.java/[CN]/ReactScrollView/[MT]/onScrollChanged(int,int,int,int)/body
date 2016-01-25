@@ -1,0 +1,12 @@
+{
+  super.onScrollChanged(x,y,oldX,oldY);
+  if (mOnScrollDispatchHelper.onScrollChanged(x,y)) {
+    if (mRemoveClippedSubviews) {
+      updateClippingRect();
+    }
+    if (mFlinging) {
+      mDoneFlinging=false;
+    }
+    ReactScrollViewHelper.emitScrollEvent(this);
+  }
+}

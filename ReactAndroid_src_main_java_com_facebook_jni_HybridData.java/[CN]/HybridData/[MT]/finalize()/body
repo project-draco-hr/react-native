@@ -1,0 +1,4 @@
+{
+  resetNative();
+  super.finalize();
+}

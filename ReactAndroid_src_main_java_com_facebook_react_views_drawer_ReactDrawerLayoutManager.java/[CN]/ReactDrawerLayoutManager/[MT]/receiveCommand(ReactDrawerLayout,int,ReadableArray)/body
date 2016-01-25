@@ -1,0 +1,10 @@
+{
+switch (commandId) {
+case OPEN_DRAWER:
+    root.openDrawer();
+  break;
+case CLOSE_DRAWER:
+root.closeDrawer();
+break;
+}
+}

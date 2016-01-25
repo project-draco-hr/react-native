@@ -1,0 +1,3 @@
+{
+  mReactDatabaseSupplier.clearAndCloseDatabase();
+}

@@ -1,0 +1,27 @@
+{
+  final String key1="foo1";
+  final String key2="foo2";
+  final String value1="bar1";
+  final String value2="bar2";
+  SimpleArray keyValues=new SimpleArray();
+  keyValues.pushArray(getArray(key1,value1));
+  keyValues.pushArray(getArray(key2,value2));
+  mStorage.multiSet(keyValues,mock(Callback.class));
+  SimpleArray keys=new SimpleArray();
+  keys.pushString(key1);
+  keys.pushString(key2);
+  Callback getCallback=mock(Callback.class);
+  mStorage.multiRemove(keys,getCallback);
+  Mockito.verify(getCallback,Mockito.times(1)).invoke();
+  Callback getAllCallback=mock(Callback.class);
+  mStorage.getAllKeys(getAllCallback);
+  Mockito.verify(getAllCallback,Mockito.times(1)).invoke(null,mEmptyArray);
+  mStorage.multiSet(keyValues,mock(Callback.class));
+  keys.pushString("fakeKey");
+  Callback getCallback2=mock(Callback.class);
+  mStorage.multiRemove(keys,getCallback2);
+  Mockito.verify(getCallback2,Mockito.times(1)).invoke();
+  Callback getAllCallback2=mock(Callback.class);
+  mStorage.getAllKeys(getAllCallback2);
+  Mockito.verify(getAllCallback2,Mockito.times(1)).invoke(null,mEmptyArray);
+}

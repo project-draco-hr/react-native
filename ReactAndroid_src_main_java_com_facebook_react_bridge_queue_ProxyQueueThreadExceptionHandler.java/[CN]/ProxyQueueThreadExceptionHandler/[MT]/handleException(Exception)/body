@@ -1,0 +1,8 @@
+{
+  mDelegateThread.runOnQueue(new Runnable(){
+    @Override public void run(){
+      throw new RuntimeException(e);
+    }
+  }
+);
+}

@@ -1,0 +1,6 @@
+{
+  Assertions.assertNotNull(mNativeChildren);
+  ReactShadowNode removed=mNativeChildren.remove(i);
+  removed.mNativeParent=null;
+  return removed;
+}

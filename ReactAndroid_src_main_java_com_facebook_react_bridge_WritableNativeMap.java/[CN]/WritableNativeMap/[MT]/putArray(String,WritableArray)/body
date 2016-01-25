@@ -1,0 +1,4 @@
+{
+  Assertions.assertCondition(value == null || value instanceof WritableNativeArray,"Illegal type provided");
+  putNativeArray(key,(WritableNativeArray)value);
+}

@@ -1,0 +1,4 @@
+{
+  super.initialize();
+  mRCTDebugComponentOwnership=getReactApplicationContext().getJSModule(RCTDebugComponentOwnership.class);
+}

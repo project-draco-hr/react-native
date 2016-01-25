@@ -1,0 +1,3 @@
+{
+  return classInfo.mElement.getModifiers().contains(PRIVATE) || classInfo.mElement.getModifiers().contains(ABSTRACT) || classInfo.mViewType instanceof TypeVariableName;
+}

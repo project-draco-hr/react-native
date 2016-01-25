@@ -1,0 +1,4 @@
+int width
+int height
+int oldWidth
+int oldHeight

@@ -1,0 +1,6 @@
+{
+  if (style.justifyContent != justifyContent) {
+    style.justifyContent=justifyContent;
+    dirty();
+  }
+}

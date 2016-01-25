@@ -1,0 +1,18 @@
+{
+  Drawable drawable;
+  if (progressBar.isIndeterminate()) {
+    drawable=progressBar.getIndeterminateDrawable();
+  }
+ else {
+    drawable=progressBar.getProgressDrawable();
+  }
+  if (drawable == null) {
+    return;
+  }
+  if (mColor != null) {
+    drawable.setColorFilter(mColor,PorterDuff.Mode.SRC_IN);
+  }
+ else {
+    drawable.clearColorFilter();
+  }
+}

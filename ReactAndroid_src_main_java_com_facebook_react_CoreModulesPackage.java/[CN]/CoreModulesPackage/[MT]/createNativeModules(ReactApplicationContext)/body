@@ -1,0 +1,12 @@
+{
+  Systrace.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"createUIManagerModule");
+  UIManagerModule uiManagerModule;
+  try {
+    List<ViewManager> viewManagersList=mReactInstanceManager.createAllViewManagers(catalystApplicationContext);
+    uiManagerModule=new UIManagerModule(catalystApplicationContext,viewManagersList,mUIImplementationProvider.createUIImplementation(catalystApplicationContext,viewManagersList));
+  }
+  finally {
+    Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);
+  }
+  return Arrays.<NativeModule>asList(new AnimationsDebugModule(catalystApplicationContext,mReactInstanceManager.getDevSupportManager().getDevSettings()),new AndroidInfoModule(),new DeviceEventManagerModule(catalystApplicationContext,mHardwareBackBtnHandler),new ExceptionsManagerModule(mReactInstanceManager.getDevSupportManager()),new Timing(catalystApplicationContext),new SourceCodeModule(mReactInstanceManager.getSourceUrl(),mReactInstanceManager.getDevSupportManager().getSourceMapUrl()),uiManagerModule,new DebugComponentOwnershipModule(catalystApplicationContext));
+}

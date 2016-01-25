@@ -1,0 +1,5 @@
+{
+  WritableMap event=new WritableNativeMap();
+  event.putInt("position",getPosition());
+  rctEventEmitter.receiveEvent(getViewTag(),getEventName(),event);
+}

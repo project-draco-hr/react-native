@@ -1,0 +1,9 @@
+{
+  mNativeModuleCallExceptionHandler.handleException(e);
+  mReactQueueConfiguration.getUIQueueThread().runOnQueue(new Runnable(){
+    @Override public void run(){
+      destroy();
+    }
+  }
+);
+}

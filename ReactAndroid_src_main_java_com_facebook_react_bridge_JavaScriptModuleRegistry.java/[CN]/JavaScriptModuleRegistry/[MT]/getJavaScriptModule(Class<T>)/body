@@ -1,0 +1,3 @@
+{
+  return (T)Assertions.assertNotNull(mModuleInstances.get(moduleInterface),"JS module " + moduleInterface.getSimpleName() + " hasn't been registered!");
+}

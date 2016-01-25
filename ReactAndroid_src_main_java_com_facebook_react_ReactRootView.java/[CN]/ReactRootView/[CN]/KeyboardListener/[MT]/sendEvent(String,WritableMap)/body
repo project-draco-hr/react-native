@@ -1,0 +1,5 @@
+{
+  if (mReactInstanceManager != null) {
+    mReactInstanceManager.getCurrentReactContext().getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit(eventName,params);
+  }
+}

@@ -1,0 +1,15 @@
+{
+  final SimpleMap options=new SimpleMap();
+  options.putString("title","Title");
+  options.putString("message","Message");
+  options.putString("buttonPositive","OK");
+  options.putString("buttonNegative","Cancel");
+  options.putString("buttonNeutral","Later");
+  mDialogModule.showAlert(options,null,null);
+  final AlertFragment fragment=getFragment();
+  assertNotNull("Fragment was not displayed",fragment);
+  final AlertDialog dialog=(AlertDialog)fragment.getDialog();
+  assertEquals("OK",dialog.getButton(DialogInterface.BUTTON_POSITIVE).getText().toString());
+  assertEquals("Cancel",dialog.getButton(DialogInterface.BUTTON_NEGATIVE).getText().toString());
+  assertEquals("Later",dialog.getButton(DialogInterface.BUTTON_NEUTRAL).getText().toString());
+}

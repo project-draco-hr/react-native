@@ -1,0 +1,5 @@
+{
+  int moduleId=mLastJSModuleId++;
+  mModules.add(new JavaScriptModuleRegistration(moduleId,moduleInterfaceClass));
+  return this;
+}

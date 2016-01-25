@@ -1,0 +1,4 @@
+{
+  mNativeModules.add(module);
+  return this;
+}

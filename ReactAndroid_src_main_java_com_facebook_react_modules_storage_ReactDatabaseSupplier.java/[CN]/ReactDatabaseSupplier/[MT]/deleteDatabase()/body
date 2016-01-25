@@ -1,0 +1,4 @@
+{
+  closeDatabase();
+  return mContext.deleteDatabase(DATABASE_NAME);
+}

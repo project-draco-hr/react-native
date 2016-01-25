@@ -1,0 +1,9 @@
+{
+  view.setTranslationX(PixelUtil.toPixelFromDIP(0));
+  view.setTranslationY(PixelUtil.toPixelFromDIP(0));
+  view.setRotation(0);
+  view.setRotationX(0);
+  view.setRotationY(0);
+  view.setScaleX(1);
+  view.setScaleY(1);
+}

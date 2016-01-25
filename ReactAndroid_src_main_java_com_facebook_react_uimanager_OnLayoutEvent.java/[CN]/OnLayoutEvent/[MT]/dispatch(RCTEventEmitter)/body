@@ -1,0 +1,11 @@
+{
+  WritableMap layout=Arguments.createMap();
+  layout.putDouble("x",PixelUtil.toDIPFromPixel(mX));
+  layout.putDouble("y",PixelUtil.toDIPFromPixel(mY));
+  layout.putDouble("width",PixelUtil.toDIPFromPixel(mWidth));
+  layout.putDouble("height",PixelUtil.toDIPFromPixel(mHeight));
+  WritableMap event=Arguments.createMap();
+  event.putMap("layout",layout);
+  event.putInt("target",getViewTag());
+  rctEventEmitter.receiveEvent(getViewTag(),getEventName(),event);
+}

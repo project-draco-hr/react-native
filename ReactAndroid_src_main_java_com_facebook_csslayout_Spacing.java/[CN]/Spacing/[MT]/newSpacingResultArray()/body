@@ -1,0 +1,3 @@
+{
+  return newSpacingResultArray(0);
+}

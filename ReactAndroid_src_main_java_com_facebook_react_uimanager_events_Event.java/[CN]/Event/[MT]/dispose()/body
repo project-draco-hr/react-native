@@ -1,0 +1,4 @@
+{
+  mInitialized=false;
+  onDispose();
+}

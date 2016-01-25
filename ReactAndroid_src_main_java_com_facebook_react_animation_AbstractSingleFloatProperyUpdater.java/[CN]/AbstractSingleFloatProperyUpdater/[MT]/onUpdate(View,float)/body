@@ -1,0 +1,3 @@
+{
+  setProperty(view,mFromValue + (mToValue - mFromValue) * progress);
+}

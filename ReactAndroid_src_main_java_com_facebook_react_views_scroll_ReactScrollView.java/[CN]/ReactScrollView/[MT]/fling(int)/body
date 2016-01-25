@@ -1,0 +1,21 @@
+{
+  super.fling(velocityY);
+  if (mSendMomentumEvents) {
+    mFlinging=true;
+    ReactScrollViewHelper.emitScrollMomentumBeginEvent(this);
+    Runnable r=new Runnable(){
+      @Override public void run(){
+        if (mDoneFlinging) {
+          mFlinging=false;
+          ReactScrollViewHelper.emitScrollMomentumEndEvent(ReactScrollView.this);
+        }
+ else {
+          mDoneFlinging=true;
+          ReactScrollView.this.postOnAnimationDelayed(this,ReactScrollViewHelper.MOMENTUM_DELAY);
+        }
+      }
+    }
+;
+    postOnAnimationDelayed(r,ReactScrollViewHelper.MOMENTUM_DELAY);
+  }
+}

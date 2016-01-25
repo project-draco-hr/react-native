@@ -1,0 +1,13 @@
+{
+  int fontStyle=UNSET;
+  if ("italic".equals(fontStyleString)) {
+    fontStyle=Typeface.ITALIC;
+  }
+ else   if ("normal".equals(fontStyleString)) {
+    fontStyle=Typeface.NORMAL;
+  }
+  if (fontStyle != mFontStyle) {
+    mFontStyle=fontStyle;
+    markUpdated();
+  }
+}

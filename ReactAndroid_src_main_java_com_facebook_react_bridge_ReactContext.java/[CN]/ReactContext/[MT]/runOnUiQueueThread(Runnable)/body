@@ -1,0 +1,3 @@
+{
+  Assertions.assertNotNull(mUiMessageQueueThread).runOnQueue(runnable);
+}

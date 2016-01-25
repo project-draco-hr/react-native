@@ -1,0 +1,5 @@
+{
+  if (getSettings().getJavaScriptEnabled() && injectedJS != null && !TextUtils.isEmpty(injectedJS)) {
+    loadUrl("javascript:(function() {\n" + injectedJS + ";\n})();");
+  }
+}

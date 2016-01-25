@@ -1,0 +1,5 @@
+{
+  mEventDispatcher=reactContext.getNativeModule(UIManagerModule.class).getEventDispatcher();
+  mEditText=editText;
+  mPreviousText=null;
+}

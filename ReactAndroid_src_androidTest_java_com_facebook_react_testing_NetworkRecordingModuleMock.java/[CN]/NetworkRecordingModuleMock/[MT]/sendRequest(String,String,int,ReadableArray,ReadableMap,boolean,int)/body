@@ -1,0 +1,16 @@
+{
+  mLastRequestId=requestId;
+  mRequestCount++;
+  mRequestMethod=method;
+  mRequestURL=url;
+  mRequestHeaders=headers;
+  mRequestData=data;
+  if (mRequestListener != null) {
+    mRequestListener.onRequest(method,url,headers,data);
+  }
+  if (mCompleteRequest) {
+    onResponseReceived(requestId,mResponseCode,null);
+    onDataReceived(requestId,mResponseBody);
+    onRequestComplete(requestId,null);
+  }
+}

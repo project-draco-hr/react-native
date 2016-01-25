@@ -1,0 +1,5 @@
+{
+  if (mReadyLatch.getCount() == 0) {
+    throw new RuntimeException("Result has already been set!");
+  }
+}

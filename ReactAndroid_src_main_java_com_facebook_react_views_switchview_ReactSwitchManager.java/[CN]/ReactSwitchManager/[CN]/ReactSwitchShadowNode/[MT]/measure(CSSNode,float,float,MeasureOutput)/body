@@ -1,0 +1,12 @@
+{
+  if (!mMeasured) {
+    ReactSwitch reactSwitch=new ReactSwitch(getThemedContext());
+    final int spec=View.MeasureSpec.makeMeasureSpec(ViewGroup.LayoutParams.WRAP_CONTENT,View.MeasureSpec.UNSPECIFIED);
+    reactSwitch.measure(spec,spec);
+    mWidth=reactSwitch.getMeasuredWidth();
+    mHeight=reactSwitch.getMeasuredHeight();
+    mMeasured=true;
+  }
+  measureOutput.width=mWidth;
+  measureOutput.height=mHeight;
+}

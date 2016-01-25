@@ -1,0 +1,3 @@
+{
+  sDownTimeToCoalescingKey.put((int)downTime,0);
+}

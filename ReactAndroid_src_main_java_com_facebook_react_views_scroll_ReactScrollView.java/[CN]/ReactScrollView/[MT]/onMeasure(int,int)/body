@@ -1,0 +1,4 @@
+{
+  MeasureSpecAssertions.assertExplicitMeasureSpec(widthMeasureSpec,heightMeasureSpec);
+  setMeasuredDimension(MeasureSpec.getSize(widthMeasureSpec),MeasureSpec.getSize(heightMeasureSpec));
+}

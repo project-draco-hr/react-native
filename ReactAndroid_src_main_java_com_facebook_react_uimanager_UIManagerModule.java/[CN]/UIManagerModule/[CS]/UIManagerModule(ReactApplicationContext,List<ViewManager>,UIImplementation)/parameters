@@ -1,0 +1,3 @@
+ReactApplicationContext reactContext
+List<ViewManager> viewManagerList
+UIImplementation uiImplementation

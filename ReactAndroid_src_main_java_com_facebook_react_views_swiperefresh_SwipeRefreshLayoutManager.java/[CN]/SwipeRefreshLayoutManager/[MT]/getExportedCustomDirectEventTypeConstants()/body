@@ -1,0 +1,3 @@
+{
+  return MapBuilder.<String,Object>builder().put("topRefresh",MapBuilder.of("registrationName","onRefresh")).build();
+}

@@ -1,0 +1,5 @@
+{
+  String fpsString=String.format(Locale.US,"UI: %.1f fps\n%d dropped so far\n%d stutters (4+) so far\nJS: %.1f fps",currentFPS,droppedUIFrames,total4PlusFrameStutters,currentJSFPS);
+  mTextView.setText(fpsString);
+  FLog.d(ReactConstants.TAG,fpsString);
+}

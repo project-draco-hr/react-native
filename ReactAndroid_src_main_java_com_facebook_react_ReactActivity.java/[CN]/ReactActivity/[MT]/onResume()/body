@@ -1,0 +1,7 @@
+{
+  super.onResume();
+  mLifecycleState=LifecycleState.RESUMED;
+  if (mReactInstanceManager != null) {
+    mReactInstanceManager.onResume(this,this);
+  }
+}

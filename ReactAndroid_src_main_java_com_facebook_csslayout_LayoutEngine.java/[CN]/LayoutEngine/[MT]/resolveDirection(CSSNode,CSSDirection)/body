@@ -1,0 +1,7 @@
+{
+  CSSDirection direction=node.style.direction;
+  if (direction == CSSDirection.INHERIT) {
+    direction=(parentDirection == null ? CSSDirection.LTR : parentDirection);
+  }
+  return direction;
+}

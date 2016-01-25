@@ -1,0 +1,3 @@
+{
+  Toast.makeText(getReactApplicationContext(),message,duration).show();
+}

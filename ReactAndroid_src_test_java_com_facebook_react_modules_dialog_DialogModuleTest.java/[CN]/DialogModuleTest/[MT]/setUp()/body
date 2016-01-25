@@ -1,0 +1,9 @@
+{
+  mActivityController=Robolectric.buildActivity(Activity.class);
+  mActivity=mActivityController.create().start().resume().get();
+  final ReactApplicationContext context=PowerMockito.mock(ReactApplicationContext.class);
+  PowerMockito.when(context.hasActiveCatalystInstance()).thenReturn(true);
+  PowerMockito.when(context,"getCurrentActivity").thenReturn(mActivity);
+  mDialogModule=new DialogModule(context);
+  mDialogModule.onHostResume();
+}

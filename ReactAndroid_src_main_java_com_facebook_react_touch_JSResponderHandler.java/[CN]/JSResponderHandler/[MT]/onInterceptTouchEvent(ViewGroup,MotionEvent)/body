@@ -1,0 +1,7 @@
+{
+  int currentJSResponder=mCurrentJSResponder;
+  if (currentJSResponder != JS_RESPONDER_UNSET && event.getAction() != MotionEvent.ACTION_UP) {
+    return v.getId() == currentJSResponder;
+  }
+  return false;
+}

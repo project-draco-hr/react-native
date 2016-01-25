@@ -1,0 +1,3 @@
+{
+  return getReactApplicationContext().getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class);
+}

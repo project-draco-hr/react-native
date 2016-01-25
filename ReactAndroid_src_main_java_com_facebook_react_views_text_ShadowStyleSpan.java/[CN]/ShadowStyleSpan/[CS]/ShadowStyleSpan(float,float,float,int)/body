@@ -1,0 +1,6 @@
+{
+  mDx=dx;
+  mDy=dy;
+  mRadius=radius;
+  mColor=color;
+}

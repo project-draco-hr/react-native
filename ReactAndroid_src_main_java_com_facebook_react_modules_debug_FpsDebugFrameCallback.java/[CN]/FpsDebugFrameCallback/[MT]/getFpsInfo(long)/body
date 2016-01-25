@@ -1,0 +1,8 @@
+{
+  Assertions.assertNotNull(mTimeToFps,"FPS was not recorded at each frame!");
+  Map.Entry<Long,FpsInfo> bestEntry=mTimeToFps.floorEntry(upToTimeMs);
+  if (bestEntry == null) {
+    return null;
+  }
+  return bestEntry.getValue();
+}

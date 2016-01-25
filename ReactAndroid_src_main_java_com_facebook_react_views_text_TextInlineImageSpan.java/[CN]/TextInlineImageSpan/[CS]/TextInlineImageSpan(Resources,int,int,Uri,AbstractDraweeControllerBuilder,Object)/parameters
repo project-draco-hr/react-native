@@ -1,0 +1,6 @@
+Resources resources
+int height
+int width
+Uri uri
+AbstractDraweeControllerBuilder draweeControllerBuilder
+Object callerContext

@@ -1,0 +1,6 @@
+{
+  if (isChecked() != on) {
+    super.setChecked(on);
+  }
+  mAllowChange=true;
+}

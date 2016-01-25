@@ -1,0 +1,7 @@
+{
+  mReadyLatch.await();
+  if (mException != null) {
+    throw new ExecutionException(mException);
+  }
+  return mResult;
+}

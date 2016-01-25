@@ -1,0 +1,3 @@
+{
+  view.setLayoutDirection(rtl ? LayoutDirection.LTR : LayoutDirection.RTL);
+}

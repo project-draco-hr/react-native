@@ -1,0 +1,5 @@
+{
+  if ((view.getStagedInputType() & INPUT_TYPE_KEYBOARD_NUMBERED) != 0 && (view.getStagedInputType() & InputType.TYPE_TEXT_VARIATION_PASSWORD) != 0) {
+    updateStagedInputTypeFlag(view,InputType.TYPE_TEXT_VARIATION_PASSWORD,InputType.TYPE_NUMBER_VARIATION_PASSWORD);
+  }
+}

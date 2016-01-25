@@ -1,0 +1,6 @@
+{
+  mShuttingDown=true;
+  mClient.cancel(null);
+  mCookieHandler.destroy();
+  mClient.setCookieHandler(null);
+}

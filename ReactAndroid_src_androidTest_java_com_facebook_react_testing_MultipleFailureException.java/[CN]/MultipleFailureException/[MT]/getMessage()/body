@@ -1,0 +1,13 @@
+{
+  StringBuilder sb=new StringBuilder();
+  List<Throwable> errors=getFailures();
+  sb.append(String.format("There were %d errors:",errors.size()));
+  int i=0;
+  for (  Throwable e : errors) {
+    sb.append(String.format("%n---- Error #%d",i));
+    sb.append("\n" + getStackTraceAsString(e));
+    i++;
+  }
+  sb.append("\n");
+  return sb.toString();
+}

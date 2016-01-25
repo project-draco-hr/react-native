@@ -1,0 +1,6 @@
+{
+  if (index >= mLength) {
+    throw new IndexOutOfBoundsException("" + index + " >= "+ mLength);
+  }
+  mArray[index]=value;
+}

@@ -1,0 +1,14 @@
+{
+  if (!FloatUtil.floatsEqual(mSpacing[spacingType],value)) {
+    mSpacing[spacingType]=value;
+    if (CSSConstants.isUndefined(value)) {
+      mValueFlags&=~sFlagsMap[spacingType];
+    }
+ else {
+      mValueFlags|=sFlagsMap[spacingType];
+    }
+    mHasAliasesSet=(mValueFlags & sFlagsMap[ALL]) != 0 || (mValueFlags & sFlagsMap[VERTICAL]) != 0 || (mValueFlags & sFlagsMap[HORIZONTAL]) != 0;
+    return true;
+  }
+  return false;
+}

@@ -1,0 +1,4 @@
+{
+  mApplication=application;
+  return this;
+}

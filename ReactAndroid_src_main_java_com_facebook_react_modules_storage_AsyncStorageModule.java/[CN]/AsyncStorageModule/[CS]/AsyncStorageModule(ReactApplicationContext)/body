@@ -1,0 +1,4 @@
+{
+  super(reactContext);
+  mReactDatabaseSupplier=ReactDatabaseSupplier.getInstance(reactContext);
+}

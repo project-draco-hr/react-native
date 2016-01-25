@@ -1,0 +1,3 @@
+{
+  return position == 0 ? mTitle : mStack[position - 1];
+}

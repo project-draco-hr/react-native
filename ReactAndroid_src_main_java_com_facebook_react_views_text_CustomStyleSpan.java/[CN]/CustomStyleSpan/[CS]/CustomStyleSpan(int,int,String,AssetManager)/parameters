@@ -1,0 +1,4 @@
+int fontStyle
+int fontWeight
+String fontFamily
+AssetManager assetManager

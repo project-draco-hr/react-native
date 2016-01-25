@@ -1,0 +1,7 @@
+{
+  mSemaphore.acquire();
+  if (mCause != null) {
+    throw mCause;
+  }
+  return mResponse;
+}

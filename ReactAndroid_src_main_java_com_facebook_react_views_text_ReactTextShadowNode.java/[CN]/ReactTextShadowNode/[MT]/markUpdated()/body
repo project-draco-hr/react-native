@@ -1,0 +1,6 @@
+{
+  super.markUpdated();
+  if (!mIsVirtual) {
+    super.dirty();
+  }
+}

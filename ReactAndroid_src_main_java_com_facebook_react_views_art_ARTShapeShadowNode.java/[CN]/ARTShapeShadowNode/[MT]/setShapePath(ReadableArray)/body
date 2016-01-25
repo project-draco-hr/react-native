@@ -1,0 +1,5 @@
+{
+  float[] pathData=PropHelper.toFloatArray(shapePath);
+  mPath=createPath(pathData);
+  markUpdated();
+}

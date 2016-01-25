@@ -1,0 +1,6 @@
+{
+  if (targetView instanceof ReactCompoundView) {
+    return ((ReactCompoundView)targetView).reactTagForTouch(eventX,eventY);
+  }
+  return targetView.getId();
+}

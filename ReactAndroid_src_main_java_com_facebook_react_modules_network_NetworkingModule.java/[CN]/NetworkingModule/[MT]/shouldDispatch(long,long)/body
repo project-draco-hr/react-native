@@ -1,0 +1,3 @@
+{
+  return last + CHUNK_TIMEOUT_NS < now;
+}

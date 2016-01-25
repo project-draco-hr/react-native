@@ -1,0 +1,3 @@
+{
+  mReactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit(eventName,params);
+}

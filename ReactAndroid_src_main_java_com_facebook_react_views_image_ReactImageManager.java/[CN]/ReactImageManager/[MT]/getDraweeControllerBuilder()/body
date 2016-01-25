@@ -1,0 +1,6 @@
+{
+  if (mDraweeControllerBuilder == null) {
+    mDraweeControllerBuilder=Fresco.newDraweeControllerBuilder();
+  }
+  return mDraweeControllerBuilder;
+}

@@ -1,0 +1,6 @@
+{
+  this.methodName=methodName;
+  this.propertyType=propertyType;
+  this.element=element;
+  mProperty=property;
+}

@@ -1,0 +1,12 @@
+def _parse_function(function):
+    line_match = APP_TRACE_LINE_PATTERN.match(function)
+    if (not line_match):
+        return None
+    type = line_match.group(u'type')
+    if (not (type in SYSTRACE_LINE_TYPES)):
+        return None
+    args = line_match.group(u'args').split(u'|')
+    if ((len(args) == 1) and (len(args[0]) == 0)):
+        args = None
+    constructor = TRACE_TYPE_MAP.get(args[0], AppTraceFunction)
+    return constructor(type, args)

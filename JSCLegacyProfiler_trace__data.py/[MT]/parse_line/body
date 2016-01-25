@@ -1,0 +1,15 @@
+def parse_line(line):
+    match = TRACE_LINE_PATTERN.match(line.strip())
+    if (not match):
+        return None
+    task = match.group(u'task')
+    pid = int(match.group(u'pid'))
+    tgid = match.group(u'tgid')
+    cpu = int(match.group(u'cpu'))
+    flags = match.group(u'flags')
+    timestamp = float(match.group(u'timestamp'))
+    function = match.group(u'function')
+    app_trace = _parse_function(function)
+    if app_trace:
+        function = app_trace
+    return TraceLine(task, pid, tgid, cpu, flags, timestamp, function)

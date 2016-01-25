@@ -1,0 +1,3 @@
+def testFunctionWithCookieAndArgs(self):
+    function = u'0: T|27311|NNFColdStart|1122|Start'
+    self.assertEqual(function, str(_parse_function(function)))

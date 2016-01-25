@@ -1,0 +1,4 @@
+{
+  mContainsImages=update.containsImages();
+  setText(update.getText());
+}

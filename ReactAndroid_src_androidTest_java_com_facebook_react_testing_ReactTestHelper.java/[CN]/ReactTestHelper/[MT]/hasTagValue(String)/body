@@ -1,0 +1,9 @@
+{
+  return new Predicate<View>(){
+    @Override public boolean apply(    View view){
+      Object tag=view.getTag();
+      return tag != null && tag.equals(tagValue);
+    }
+  }
+;
+}

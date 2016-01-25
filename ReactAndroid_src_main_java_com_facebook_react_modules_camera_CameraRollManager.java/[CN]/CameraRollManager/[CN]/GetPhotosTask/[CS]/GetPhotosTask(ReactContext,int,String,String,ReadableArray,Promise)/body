@@ -1,0 +1,9 @@
+{
+  super(context);
+  mContext=context;
+  mFirst=first;
+  mAfter=after;
+  mGroupName=groupName;
+  mMimeTypes=mimeTypes;
+  mPromise=promise;
+}

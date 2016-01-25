@@ -1,0 +1,11 @@
+{
+  mHasPostedCallback=false;
+  for (int i=0; i < mCallbackQueues.length; i++) {
+    int initialLength=mCallbackQueues[i].size();
+    for (int callback=0; callback < initialLength; callback++) {
+      mCallbackQueues[i].removeFirst().doFrame(frameTimeNanos);
+      mTotalCallbacks--;
+    }
+  }
+  maybeRemoveFrameCallback();
+}

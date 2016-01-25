@@ -1,0 +1,6 @@
+{
+  super(context);
+  mContext=context;
+  mUri=uri;
+  mPromise=promise;
+}

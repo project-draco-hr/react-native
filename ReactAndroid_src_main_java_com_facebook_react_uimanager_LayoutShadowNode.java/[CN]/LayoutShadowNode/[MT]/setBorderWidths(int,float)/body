@@ -1,0 +1,3 @@
+{
+  setBorder(ViewProps.BORDER_SPACING_TYPES[index],PixelUtil.toPixelFromDIP(borderWidth));
+}

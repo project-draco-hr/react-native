@@ -1,0 +1,14 @@
+{
+  if (isUsingSupportLibrary()) {
+    SupportAlertFragment oldFragment=(SupportAlertFragment)mSupportFragmentManager.findFragmentByTag(FRAGMENT_TAG);
+    if (oldFragment != null) {
+      oldFragment.dismiss();
+    }
+  }
+ else {
+    AlertFragment oldFragment=(AlertFragment)mFragmentManager.findFragmentByTag(FRAGMENT_TAG);
+    if (oldFragment != null) {
+      oldFragment.dismiss();
+    }
+  }
+}

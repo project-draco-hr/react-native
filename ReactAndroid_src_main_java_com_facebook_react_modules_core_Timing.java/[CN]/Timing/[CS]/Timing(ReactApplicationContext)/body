@@ -1,0 +1,19 @@
+{
+  super(reactContext);
+  mTimers=new PriorityQueue<Timer>(11,new Comparator<Timer>(){
+    @Override public int compare(    Timer lhs,    Timer rhs){
+      long diff=lhs.mTargetTime - rhs.mTargetTime;
+      if (diff == 0) {
+        return 0;
+      }
+ else       if (diff < 0) {
+        return -1;
+      }
+ else {
+        return 1;
+      }
+    }
+  }
+);
+  mTimerIdsToTimers=new SparseArray<Timer>();
+}

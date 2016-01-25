@@ -1,0 +1,6 @@
+{
+  super.onFocusChanged(focused,direction,previouslyFocusedRect);
+  if (focused && mSelectionWatcher != null) {
+    mSelectionWatcher.onSelectionChanged(getSelectionStart(),getSelectionEnd());
+  }
+}

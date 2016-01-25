@@ -1,0 +1,8 @@
+{
+  long lastIdleTransition=getLastEventBetweenTimestamps(mTransitionToIdleEvents,startTime,endTime);
+  long lastBusyTransition=getLastEventBetweenTimestamps(mTransitionToBusyEvents,startTime,endTime);
+  if (lastIdleTransition == -1 && lastBusyTransition == -1) {
+    return mWasIdleAtEndOfLastFrame;
+  }
+  return lastIdleTransition > lastBusyTransition;
+}

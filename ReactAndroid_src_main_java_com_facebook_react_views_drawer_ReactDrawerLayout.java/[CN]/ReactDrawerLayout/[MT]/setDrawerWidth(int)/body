@@ -1,0 +1,4 @@
+{
+  mDrawerWidth=drawerWidthInPx;
+  setDrawerProperties();
+}

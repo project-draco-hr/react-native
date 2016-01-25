@@ -1,0 +1,41 @@
+{
+  Path path=new Path();
+  path.moveTo(0,0);
+  int i=0;
+  while (i < data.length) {
+    int type=(int)data[i++];
+switch (type) {
+case PATH_TYPE_MOVETO:
+      path.moveTo(data[i++] * mScale,data[i++] * mScale);
+    break;
+case PATH_TYPE_CLOSE:
+  path.close();
+break;
+case PATH_TYPE_LINETO:
+path.lineTo(data[i++] * mScale,data[i++] * mScale);
+break;
+case PATH_TYPE_CURVETO:
+path.cubicTo(data[i++] * mScale,data[i++] * mScale,data[i++] * mScale,data[i++] * mScale,data[i++] * mScale,data[i++] * mScale);
+break;
+case PATH_TYPE_ARC:
+{
+float x=data[i++] * mScale;
+float y=data[i++] * mScale;
+float r=data[i++] * mScale;
+float start=(float)Math.toDegrees(data[i++]);
+float end=(float)Math.toDegrees(data[i++]);
+boolean clockwise=data[i++] == 0f;
+if (!clockwise) {
+end=360 - end;
+}
+float sweep=start - end;
+RectF oval=new RectF(x - r,y - r,x + r,y + r);
+path.addArc(oval,start,sweep);
+break;
+}
+default :
+throw new JSApplicationIllegalArgumentException("Unrecognized drawing instruction " + type);
+}
+}
+return path;
+}

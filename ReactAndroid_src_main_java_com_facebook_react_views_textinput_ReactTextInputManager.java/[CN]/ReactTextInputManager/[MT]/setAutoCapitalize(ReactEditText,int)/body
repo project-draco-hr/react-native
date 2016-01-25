@@ -1,0 +1,3 @@
+{
+  updateStagedInputTypeFlag(view,InputType.TYPE_TEXT_FLAG_CAP_SENTENCES | InputType.TYPE_TEXT_FLAG_CAP_WORDS | InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS,autoCapitalize);
+}

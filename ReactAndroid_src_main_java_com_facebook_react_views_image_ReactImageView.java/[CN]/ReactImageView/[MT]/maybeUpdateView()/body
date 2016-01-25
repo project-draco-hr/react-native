@@ -1,0 +1,46 @@
+{
+  if (!mIsDirty) {
+    return;
+  }
+  boolean doResize=shouldResize(mUri);
+  if (doResize && (getWidth() <= 0 || getHeight() <= 0)) {
+    return;
+  }
+  GenericDraweeHierarchy hierarchy=getHierarchy();
+  hierarchy.setActualImageScaleType(mScaleType);
+  if (mLoadingImageDrawable != null) {
+    hierarchy.setPlaceholderImage(mLoadingImageDrawable,ScalingUtils.ScaleType.CENTER);
+  }
+  boolean usePostprocessorScaling=mScaleType != ScalingUtils.ScaleType.CENTER_CROP && mScaleType != ScalingUtils.ScaleType.FOCUS_CROP;
+  float hierarchyRadius=usePostprocessorScaling ? 0 : mBorderRadius;
+  RoundingParams roundingParams=hierarchy.getRoundingParams();
+  roundingParams.setCornersRadius(hierarchyRadius);
+  roundingParams.setBorder(mBorderColor,mBorderWidth);
+  if (mOverlayColor != Color.TRANSPARENT) {
+    roundingParams.setOverlayColor(mOverlayColor);
+  }
+ else {
+    roundingParams.setRoundingMethod(RoundingParams.RoundingMethod.BITMAP_ONLY);
+  }
+  hierarchy.setRoundingParams(roundingParams);
+  hierarchy.setFadeDuration(mFadeDurationMs >= 0 ? mFadeDurationMs : mIsLocalImage ? 0 : REMOTE_IMAGE_FADE_DURATION_MS);
+  Postprocessor postprocessor=usePostprocessorScaling ? mRoundedCornerPostprocessor : null;
+  ResizeOptions resizeOptions=doResize ? new ResizeOptions(getWidth(),getHeight()) : null;
+  ImageRequest imageRequest=ImageRequestBuilder.newBuilderWithSource(mUri).setPostprocessor(postprocessor).setResizeOptions(resizeOptions).setAutoRotateEnabled(true).setProgressiveRenderingEnabled(mProgressiveRenderingEnabled).build();
+  mDraweeControllerBuilder.reset();
+  mDraweeControllerBuilder.setAutoPlayAnimations(true).setCallerContext(mCallerContext).setOldController(getController()).setImageRequest(imageRequest);
+  if (mControllerListener != null && mControllerForTesting != null) {
+    ForwardingControllerListener combinedListener=new ForwardingControllerListener();
+    combinedListener.addListener(mControllerListener);
+    combinedListener.addListener(mControllerForTesting);
+    mDraweeControllerBuilder.setControllerListener(combinedListener);
+  }
+ else   if (mControllerForTesting != null) {
+    mDraweeControllerBuilder.setControllerListener(mControllerForTesting);
+  }
+ else   if (mControllerListener != null) {
+    mDraweeControllerBuilder.setControllerListener(mControllerListener);
+  }
+  setController(mDraweeControllerBuilder.build());
+  mIsDirty=false;
+}

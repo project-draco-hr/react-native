@@ -1,0 +1,6 @@
+{
+  UiThreadUtil.assertOnUiThread();
+  ViewManager viewManager=resolveViewManager(tag);
+  View viewToUpdate=resolveView(tag);
+  viewManager.updateExtraData(viewToUpdate,extraData);
+}

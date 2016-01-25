@@ -1,0 +1,4 @@
+{
+  ViewManagerPropertyUpdater.updateProps(this,props);
+  onAfterUpdateTransaction();
+}

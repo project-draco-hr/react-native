@@ -1,0 +1,4 @@
+float dx
+float dy
+float radius
+int color

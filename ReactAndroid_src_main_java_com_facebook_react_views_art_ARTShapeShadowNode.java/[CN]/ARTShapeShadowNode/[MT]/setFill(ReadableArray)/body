@@ -1,0 +1,4 @@
+{
+  mFillColor=PropHelper.toFloatArray(fillColors);
+  markUpdated();
+}

@@ -1,0 +1,20 @@
+{
+  if (componentType == null) {
+    view.setAccessibilityDelegate(null);
+    return;
+  }
+switch (componentType) {
+case BUTTON:
+    view.setAccessibilityDelegate(BUTTON_DELEGATE);
+  break;
+case RADIOBUTTON_CHECKED:
+view.setAccessibilityDelegate(RADIOBUTTON_CHECKED_DELEGATE);
+break;
+case RADIOBUTTON_UNCHECKED:
+view.setAccessibilityDelegate(RADIOBUTTON_UNCHECKED_DELEGATE);
+break;
+default :
+view.setAccessibilityDelegate(null);
+break;
+}
+}

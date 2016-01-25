@@ -1,0 +1,6 @@
+{
+  int requestId=mNextRequestId;
+  mNextRequestId++;
+  mRequestIdToCallback.put(requestId,callback);
+  Assertions.assertNotNull(mRCTDebugComponentOwnership).getOwnerHierarchy(requestId,tag);
+}

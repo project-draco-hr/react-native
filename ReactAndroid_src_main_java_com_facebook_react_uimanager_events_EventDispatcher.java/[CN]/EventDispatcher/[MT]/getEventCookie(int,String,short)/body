@@ -1,0 +1,12 @@
+{
+  short eventTypeId;
+  Short eventIdObj=mEventNameToEventId.get(eventName);
+  if (eventIdObj != null) {
+    eventTypeId=eventIdObj;
+  }
+ else {
+    eventTypeId=mNextEventTypeId++;
+    mEventNameToEventId.put(eventName,eventTypeId);
+  }
+  return getEventCookie(viewTag,eventTypeId,coalescingKey);
+}

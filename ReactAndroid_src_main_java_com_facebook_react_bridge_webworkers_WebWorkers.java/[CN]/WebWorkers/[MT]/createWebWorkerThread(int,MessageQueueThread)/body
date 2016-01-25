@@ -1,0 +1,3 @@
+{
+  return MessageQueueThreadImpl.startNewBackgroundThread("web-worker-" + id,new ProxyQueueThreadExceptionHandler(ownerThread));
+}

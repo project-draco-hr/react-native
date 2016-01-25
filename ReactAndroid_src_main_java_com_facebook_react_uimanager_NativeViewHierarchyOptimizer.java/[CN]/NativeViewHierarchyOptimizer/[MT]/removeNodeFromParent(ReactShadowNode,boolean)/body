@@ -1,0 +1,13 @@
+{
+  ReactShadowNode nativeNodeToRemoveFrom=nodeToRemove.getNativeParent();
+  if (nativeNodeToRemoveFrom != null) {
+    int index=nativeNodeToRemoveFrom.indexOfNativeChild(nodeToRemove);
+    nativeNodeToRemoveFrom.removeNativeChildAt(index);
+    mUIViewOperationQueue.enqueueManageChildren(nativeNodeToRemoveFrom.getReactTag(),new int[]{index},null,shouldDelete ? new int[]{nodeToRemove.getReactTag()} : null);
+  }
+ else {
+    for (int i=nodeToRemove.getChildCount() - 1; i >= 0; i--) {
+      removeNodeFromParent(nodeToRemove.getChildAt(i),shouldDelete);
+    }
+  }
+}

@@ -1,0 +1,5 @@
+{
+  this(toValue);
+  mFromValue=fromValue;
+  mFromSource=false;
+}

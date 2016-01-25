@@ -1,0 +1,4 @@
+{
+  mArray=new long[initialCapacity];
+  mLength=0;
+}

@@ -1,0 +1,9 @@
+{
+  if (!mReadyLatch.await(timeout,unit)) {
+    throw new TimeoutException("Timed out waiting for result");
+  }
+  if (mException != null) {
+    throw new ExecutionException(mException);
+  }
+  return mResult;
+}

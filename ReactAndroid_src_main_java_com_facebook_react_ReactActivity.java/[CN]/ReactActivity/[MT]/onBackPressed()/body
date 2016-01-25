@@ -1,0 +1,8 @@
+{
+  if (mReactInstanceManager != null) {
+    mReactInstanceManager.onBackPressed();
+  }
+ else {
+    super.onBackPressed();
+  }
+}

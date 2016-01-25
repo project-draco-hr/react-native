@@ -1,0 +1,6 @@
+{
+  super(context);
+  mLogoHolder=DraweeHolder.create(createDraweeHierarchy(),context);
+  mNavIconHolder=DraweeHolder.create(createDraweeHierarchy(),context);
+  mOverflowIconHolder=DraweeHolder.create(createDraweeHierarchy(),context);
+}

@@ -1,0 +1,3 @@
+{
+  return FloatUtil.floatsEqual(f1,f2);
+}

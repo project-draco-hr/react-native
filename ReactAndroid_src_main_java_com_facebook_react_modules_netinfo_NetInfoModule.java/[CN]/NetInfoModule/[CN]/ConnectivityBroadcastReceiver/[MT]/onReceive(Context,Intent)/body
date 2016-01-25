@@ -1,0 +1,5 @@
+{
+  if (intent.getAction().equals(ConnectivityManager.CONNECTIVITY_ACTION)) {
+    updateAndSendConnectionType();
+  }
+}

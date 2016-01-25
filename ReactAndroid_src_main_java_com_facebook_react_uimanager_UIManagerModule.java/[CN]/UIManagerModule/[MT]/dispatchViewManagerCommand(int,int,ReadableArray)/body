@@ -1,0 +1,3 @@
+{
+  mUIImplementation.dispatchViewManagerCommand(reactTag,commandId,commandArgs);
+}

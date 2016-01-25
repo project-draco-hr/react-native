@@ -1,0 +1,6 @@
+{
+  if (textShadowColor != mTextShadowColor) {
+    mTextShadowColor=textShadowColor;
+    markUpdated();
+  }
+}

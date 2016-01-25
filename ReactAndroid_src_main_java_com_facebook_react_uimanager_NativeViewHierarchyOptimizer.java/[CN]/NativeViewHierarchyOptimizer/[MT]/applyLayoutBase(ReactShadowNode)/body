@@ -1,0 +1,16 @@
+{
+  int tag=node.getReactTag();
+  if (mTagsWithLayoutVisited.get(tag)) {
+    return;
+  }
+  mTagsWithLayoutVisited.put(tag,true);
+  ReactShadowNode parent=node.getParent();
+  int x=node.getScreenX();
+  int y=node.getScreenY();
+  while (parent != null && parent.isLayoutOnly()) {
+    x+=Math.round(parent.getLayoutX());
+    y+=Math.round(parent.getLayoutY());
+    parent=parent.getParent();
+  }
+  applyLayoutRecursive(node,x,y);
+}

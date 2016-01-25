@@ -1,0 +1,3 @@
+{
+  mStyle=style == null ? ReactProgressBarViewManager.DEFAULT_STYLE : style;
+}

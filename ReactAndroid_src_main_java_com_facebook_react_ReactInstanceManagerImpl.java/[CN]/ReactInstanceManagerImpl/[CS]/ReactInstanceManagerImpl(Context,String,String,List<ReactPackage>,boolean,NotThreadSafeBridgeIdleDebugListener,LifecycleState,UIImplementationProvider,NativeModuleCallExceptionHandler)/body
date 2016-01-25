@@ -1,0 +1,20 @@
+{
+  initializeSoLoaderIfNecessary(applicationContext);
+  ApplicationHolder.setApplication((Application)applicationContext.getApplicationContext());
+  mApplicationContext=applicationContext;
+  mJSBundleFile=jsBundleFile;
+  mJSMainModuleName=jsMainModuleName;
+  mPackages=packages;
+  mUseDeveloperSupport=useDeveloperSupport;
+  if (mUseDeveloperSupport) {
+    mDevSupportManager=new DevSupportManagerImpl(applicationContext,mDevInterface,mJSMainModuleName,useDeveloperSupport);
+  }
+ else {
+    mDevSupportManager=new DisabledDevSupportManager();
+  }
+  mBridgeIdleDebugListener=bridgeIdleDebugListener;
+  mLifecycleState=initialLifecycleState;
+  mUIImplementationProvider=uiImplementationProvider;
+  mMemoryPressureRouter=new MemoryPressureRouter(applicationContext);
+  mNativeModuleCallExceptionHandler=nativeModuleCallExceptionHandler;
+}

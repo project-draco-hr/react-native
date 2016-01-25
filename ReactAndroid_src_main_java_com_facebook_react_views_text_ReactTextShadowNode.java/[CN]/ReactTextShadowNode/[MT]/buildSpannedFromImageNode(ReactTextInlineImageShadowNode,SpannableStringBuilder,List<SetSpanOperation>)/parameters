@@ -1,0 +1,3 @@
+ReactTextInlineImageShadowNode node
+SpannableStringBuilder sb
+List<SetSpanOperation> ops

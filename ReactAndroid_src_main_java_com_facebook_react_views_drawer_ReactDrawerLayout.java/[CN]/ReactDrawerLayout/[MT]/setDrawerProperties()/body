@@ -1,0 +1,10 @@
+{
+  if (this.getChildCount() == 2) {
+    View drawerView=this.getChildAt(1);
+    LayoutParams layoutParams=(LayoutParams)drawerView.getLayoutParams();
+    layoutParams.gravity=mDrawerPosition;
+    layoutParams.width=mDrawerWidth;
+    drawerView.setLayoutParams(layoutParams);
+    drawerView.setClickable(true);
+  }
+}

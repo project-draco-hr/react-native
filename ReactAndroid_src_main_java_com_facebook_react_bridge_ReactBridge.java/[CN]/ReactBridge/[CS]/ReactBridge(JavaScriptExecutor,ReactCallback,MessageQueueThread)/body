@@ -1,0 +1,6 @@
+{
+  mJSExecutor=jsExecutor;
+  mCallback=callback;
+  mNativeModulesQueueThread=nativeModulesQueueThread;
+  initialize(jsExecutor,callback,mNativeModulesQueueThread);
+}

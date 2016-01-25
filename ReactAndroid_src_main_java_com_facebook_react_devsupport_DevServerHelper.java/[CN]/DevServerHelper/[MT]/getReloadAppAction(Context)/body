@@ -1,0 +1,3 @@
+{
+  return context.getPackageName() + RELOAD_APP_ACTION_SUFFIX;
+}

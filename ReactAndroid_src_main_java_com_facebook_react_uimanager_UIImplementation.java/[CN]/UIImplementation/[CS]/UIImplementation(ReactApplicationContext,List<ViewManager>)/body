@@ -1,0 +1,3 @@
+{
+  this(reactContext,new ViewManagerRegistry(viewManagers));
+}

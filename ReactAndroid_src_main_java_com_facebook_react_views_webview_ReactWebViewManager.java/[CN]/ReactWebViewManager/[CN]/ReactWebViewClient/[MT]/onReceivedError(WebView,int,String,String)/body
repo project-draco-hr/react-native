@@ -1,0 +1,9 @@
+{
+  super.onReceivedError(webView,errorCode,description,failingUrl);
+  mLastLoadFailed=true;
+  emitFinishEvent(webView,failingUrl);
+  WritableMap eventData=createWebViewEvent(webView,failingUrl);
+  eventData.putDouble("code",errorCode);
+  eventData.putString("description",description);
+  dispatchEvent(webView,new TopLoadingErrorEvent(webView.getId(),SystemClock.uptimeMillis(),eventData));
+}

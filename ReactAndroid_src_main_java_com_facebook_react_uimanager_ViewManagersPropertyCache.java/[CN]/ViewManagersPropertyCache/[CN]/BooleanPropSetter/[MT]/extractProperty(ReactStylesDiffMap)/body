@@ -1,0 +1,3 @@
+{
+  return props.getBoolean(mPropName,mDefaultValue) ? Boolean.TRUE : Boolean.FALSE;
+}

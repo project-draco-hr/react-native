@@ -1,0 +1,5 @@
+{
+  if (sSoSources == null) {
+    throw new RuntimeException("SoLoader.init() not yet called");
+  }
+}

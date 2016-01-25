@@ -1,0 +1,12 @@
+{
+  MethodSpec.Builder builder=MethodSpec.methodBuilder("setProperty").addModifiers(PUBLIC).addAnnotation(Override.class).returns(TypeName.VOID);
+switch (classInfo.getType()) {
+case VIEW_MANAGER:
+    builder.addParameter(classInfo.mClassName,"manager").addParameter(classInfo.mViewType,"view");
+  break;
+case SHADOW_NODE:
+builder.addParameter(classInfo.mClassName,"node");
+break;
+}
+return builder.addParameter(STRING_TYPE,"name").addParameter(PROPS_TYPE,"props").addCode(generateSetProperty(classInfo,properties)).build();
+}

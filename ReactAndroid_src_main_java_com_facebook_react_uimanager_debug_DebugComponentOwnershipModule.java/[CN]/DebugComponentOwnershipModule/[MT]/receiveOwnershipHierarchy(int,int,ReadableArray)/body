@@ -1,0 +1,8 @@
+{
+  OwnerHierarchyCallback callback=mRequestIdToCallback.get(requestId);
+  if (callback == null) {
+    throw new JSApplicationCausedNativeException("Got receiveOwnershipHierarchy for invalid request id: " + requestId);
+  }
+  mRequestIdToCallback.delete(requestId);
+  callback.onOwnerHierarchyLoaded(tag,owners);
+}

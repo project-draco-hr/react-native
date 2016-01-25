@@ -1,0 +1,13 @@
+{
+  AlertDialog.Builder builder=new AlertDialog.Builder(activityContext).setTitle(arguments.getString(ARG_TITLE)).setMessage(arguments.getString(ARG_MESSAGE));
+  if (arguments.containsKey(ARG_BUTTON_POSITIVE)) {
+    builder.setPositiveButton(arguments.getString(ARG_BUTTON_POSITIVE),fragment);
+  }
+  if (arguments.containsKey(ARG_BUTTON_NEGATIVE)) {
+    builder.setNegativeButton(arguments.getString(ARG_BUTTON_NEGATIVE),fragment);
+  }
+  if (arguments.containsKey(ARG_BUTTON_NEUTRAL)) {
+    builder.setNeutralButton(arguments.getString(ARG_BUTTON_NEUTRAL),fragment);
+  }
+  return builder.create();
+}

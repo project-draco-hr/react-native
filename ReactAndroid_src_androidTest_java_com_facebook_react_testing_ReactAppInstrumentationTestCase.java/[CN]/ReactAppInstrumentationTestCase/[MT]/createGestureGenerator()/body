@@ -1,0 +1,3 @@
+{
+  return new SingleTouchGestureGenerator(getRootView(),this);
+}

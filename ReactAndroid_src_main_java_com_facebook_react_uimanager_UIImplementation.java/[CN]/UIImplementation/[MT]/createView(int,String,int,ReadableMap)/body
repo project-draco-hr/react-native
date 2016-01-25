@@ -1,0 +1,15 @@
+{
+  ReactShadowNode cssNode=createShadowNode(className);
+  ReactShadowNode rootNode=mShadowNodeRegistry.getNode(rootViewTag);
+  cssNode.setReactTag(tag);
+  cssNode.setViewClassName(className);
+  cssNode.setRootNode(rootNode);
+  cssNode.setThemedContext(rootNode.getThemedContext());
+  mShadowNodeRegistry.addNode(cssNode);
+  ReactStylesDiffMap styles=null;
+  if (props != null) {
+    styles=new ReactStylesDiffMap(props);
+    cssNode.updateProperties(styles);
+  }
+  handleCreateView(cssNode,rootViewTag,styles);
+}

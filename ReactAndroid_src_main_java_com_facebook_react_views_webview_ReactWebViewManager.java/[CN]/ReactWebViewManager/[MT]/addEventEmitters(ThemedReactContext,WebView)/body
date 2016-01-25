@@ -1,0 +1,3 @@
+{
+  view.setWebViewClient(new ReactWebViewClient());
+}

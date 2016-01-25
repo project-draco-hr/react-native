@@ -1,0 +1,3 @@
+{
+  mNativeViewHierarchyManager.updateProperties(mTag,mProps);
+}

@@ -1,0 +1,13 @@
+{
+  if (!ENABLED) {
+    mUIViewOperationQueue.enqueueUpdateProperties(node.getReactTag(),className,props);
+    return;
+  }
+  boolean needsToLeaveLayoutOnly=node.isLayoutOnly() && !isLayoutOnlyAndCollapsable(props);
+  if (needsToLeaveLayoutOnly) {
+    transitionLayoutOnlyViewToNativeView(node,props);
+  }
+ else   if (!node.isLayoutOnly()) {
+    mUIViewOperationQueue.enqueueUpdateProperties(node.getReactTag(),className,props);
+  }
+}

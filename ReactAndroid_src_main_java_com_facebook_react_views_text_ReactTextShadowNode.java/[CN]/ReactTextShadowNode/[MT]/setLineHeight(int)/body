@@ -1,0 +1,4 @@
+{
+  mLineHeight=lineHeight;
+  markUpdated();
+}

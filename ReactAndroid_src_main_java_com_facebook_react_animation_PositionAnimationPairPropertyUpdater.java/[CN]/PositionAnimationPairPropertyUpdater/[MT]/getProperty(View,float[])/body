@@ -1,0 +1,4 @@
+{
+  returnValues[0]=view.getX() + 0.5f * view.getWidth();
+  returnValues[1]=view.getY() + 0.5f * view.getHeight();
+}

@@ -1,0 +1,4 @@
+{
+  UiThreadUtil.assertOnUiThread();
+  mRegistry.put(animation.getAnimationID(),animation);
+}

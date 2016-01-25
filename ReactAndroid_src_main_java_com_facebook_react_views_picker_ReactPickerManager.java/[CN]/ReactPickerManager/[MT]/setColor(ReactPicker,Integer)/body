@@ -1,0 +1,7 @@
+{
+  view.setPrimaryColor(color);
+  ReactPickerAdapter adapter=(ReactPickerAdapter)view.getAdapter();
+  if (adapter != null) {
+    adapter.setPrimaryTextColor(color);
+  }
+}

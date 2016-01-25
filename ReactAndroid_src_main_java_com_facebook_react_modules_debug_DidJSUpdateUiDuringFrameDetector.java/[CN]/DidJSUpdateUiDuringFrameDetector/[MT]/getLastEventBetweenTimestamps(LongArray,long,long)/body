@@ -1,0 +1,13 @@
+{
+  long lastEvent=-1;
+  for (int i=0; i < eventArray.size(); i++) {
+    long time=eventArray.get(i);
+    if (time >= startTime && time < endTime) {
+      lastEvent=time;
+    }
+ else     if (time >= endTime) {
+      break;
+    }
+  }
+  return lastEvent;
+}

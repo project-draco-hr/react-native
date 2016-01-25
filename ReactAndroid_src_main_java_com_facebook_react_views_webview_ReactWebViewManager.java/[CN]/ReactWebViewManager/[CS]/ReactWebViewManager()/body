@@ -1,0 +1,7 @@
+{
+  mWebViewConfig=new WebViewConfig(){
+    public void configWebView(    WebView webView){
+    }
+  }
+;
+}

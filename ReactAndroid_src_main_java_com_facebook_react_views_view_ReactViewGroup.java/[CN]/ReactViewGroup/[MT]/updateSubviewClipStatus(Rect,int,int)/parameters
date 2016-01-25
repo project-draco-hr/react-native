@@ -1,0 +1,3 @@
+Rect clippingRect
+int idx
+int clippedSoFar

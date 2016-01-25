@@ -1,0 +1,3 @@
+{
+  return mPreferences.getBoolean(PREFS_INSPECTOR_DEBUG_KEY,false);
+}

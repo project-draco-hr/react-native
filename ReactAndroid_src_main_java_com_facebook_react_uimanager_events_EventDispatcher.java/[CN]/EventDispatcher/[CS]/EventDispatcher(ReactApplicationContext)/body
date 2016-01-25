@@ -1,0 +1,4 @@
+{
+  mReactContext=reactContext;
+  mReactContext.addLifecycleEventListener(this);
+}

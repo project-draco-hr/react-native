@@ -1,0 +1,3 @@
+{
+  RootViewUtil.getRootView(view).onChildStartedNativeGesture(event);
+}

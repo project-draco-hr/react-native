@@ -1,0 +1,6 @@
+{
+  if (alpha != mAlpha) {
+    mAlpha=alpha;
+    invalidateSelf();
+  }
+}

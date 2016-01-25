@@ -1,0 +1,22 @@
+{
+  if (LocationManager.GPS_PROVIDER.equals(mWatchedProvider)) {
+    return;
+  }
+  LocationOptions locationOptions=LocationOptions.fromReactMap(options);
+  try {
+    LocationManager locationManager=(LocationManager)getReactApplicationContext().getSystemService(Context.LOCATION_SERVICE);
+    String provider=getValidProvider(locationManager,locationOptions.highAccuracy);
+    if (provider == null) {
+      emitError("No location provider available.");
+      return;
+    }
+    if (!provider.equals(mWatchedProvider)) {
+      locationManager.removeUpdates(mLocationListener);
+      locationManager.requestLocationUpdates(provider,1000,0,mLocationListener);
+    }
+    mWatchedProvider=provider;
+  }
+ catch (  SecurityException e) {
+    throwLocationPermissionMissing(e);
+  }
+}

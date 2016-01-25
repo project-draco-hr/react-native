@@ -1,0 +1,18 @@
+{
+  mEventTime=eventTime;
+  if (action == MotionEvent.ACTION_DOWN) {
+    mLastDownTime=eventTime;
+  }
+  mLastX=x;
+  mLastY=y;
+  mDispatcherView.post(new Runnable(){
+    @Override public void run(){
+      MotionEvent event=MotionEvent.obtain(mLastDownTime,mEventTime,action,x,y,0);
+      mDispatcherView.dispatchTouchEvent(event);
+      event.recycle();
+    }
+  }
+);
+  mIdleWaiter.waitForBridgeAndUIIdle();
+  return this;
+}

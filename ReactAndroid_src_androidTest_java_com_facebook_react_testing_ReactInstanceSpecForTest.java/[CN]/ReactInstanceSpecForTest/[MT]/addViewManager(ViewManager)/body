@@ -1,0 +1,4 @@
+{
+  mViewManagers.add(viewManager);
+  return this;
+}

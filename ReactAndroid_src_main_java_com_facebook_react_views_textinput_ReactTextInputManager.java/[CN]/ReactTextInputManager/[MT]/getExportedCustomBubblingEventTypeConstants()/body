@@ -1,0 +1,3 @@
+{
+  return MapBuilder.<String,Object>builder().put("topSubmitEditing",MapBuilder.of("phasedRegistrationNames",MapBuilder.of("bubbled","onSubmitEditing","captured","onSubmitEditingCapture"))).put("topEndEditing",MapBuilder.of("phasedRegistrationNames",MapBuilder.of("bubbled","onEndEditing","captured","onEndEditingCapture"))).put("topTextInput",MapBuilder.of("phasedRegistrationNames",MapBuilder.of("bubbled","onTextInput","captured","onTextInputCapture"))).put("topFocus",MapBuilder.of("phasedRegistrationNames",MapBuilder.of("bubbled","onFocus","captured","onFocusCapture"))).put("topBlur",MapBuilder.of("phasedRegistrationNames",MapBuilder.of("bubbled","onBlur","captured","onBlurCapture"))).build();
+}

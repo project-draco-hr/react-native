@@ -1,0 +1,4 @@
+{
+  mStrokeDash=PropHelper.toFloatArray(strokeDash);
+  markUpdated();
+}

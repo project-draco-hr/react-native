@@ -1,0 +1,15 @@
+{
+  ViewManager viewManager=mViewManagers.get(className);
+  if (viewManager == null) {
+    throw new IllegalViewOperationException("Got unknown view type: " + className);
+  }
+  ReactShadowNode cssNode=mShadowNodeRegistry.getNode(tag);
+  if (cssNode == null) {
+    throw new IllegalViewOperationException("Trying to update non-existent view with tag " + tag);
+  }
+  if (props != null) {
+    ReactStylesDiffMap styles=new ReactStylesDiffMap(props);
+    cssNode.updateProperties(styles);
+    handleUpdateView(cssNode,className,styles);
+  }
+}

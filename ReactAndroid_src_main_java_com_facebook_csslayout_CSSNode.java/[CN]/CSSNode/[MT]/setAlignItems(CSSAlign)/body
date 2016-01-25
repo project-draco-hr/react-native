@@ -1,0 +1,6 @@
+{
+  if (style.alignItems != alignItems) {
+    style.alignItems=alignItems;
+    dirty();
+  }
+}

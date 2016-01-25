@@ -1,0 +1,4 @@
+{
+  mqt.assertIsOnThread();
+  sMyMessageQueueThread.set(mqt);
+}

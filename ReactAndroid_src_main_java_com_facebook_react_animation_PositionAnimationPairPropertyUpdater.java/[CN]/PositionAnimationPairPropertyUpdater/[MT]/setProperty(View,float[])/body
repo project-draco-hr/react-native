@@ -1,0 +1,4 @@
+{
+  view.setX(propertyValues[0] - 0.5f * view.getWidth());
+  view.setY(propertyValues[1] - 0.5f * view.getHeight());
+}

@@ -1,0 +1,3 @@
+{
+  return new GenericDraweeHierarchyBuilder(context.getResources()).setRoundingParams(RoundingParams.fromCornersRadius(0)).build();
+}

@@ -1,0 +1,3 @@
+{
+  return jsArgumentsNeeded > 1 ? "" + startIndex + "-"+ (startIndex + jsArgumentsNeeded - 1) : "" + startIndex;
+}

@@ -1,0 +1,20 @@
+{
+  if (!reactContext.hasActiveCatalystInstance()) {
+    return;
+  }
+  final CountDownLatch latch=new CountDownLatch(1);
+  reactContext.runOnJSQueueThread(new Runnable(){
+    @Override public void run(){
+      latch.countDown();
+    }
+  }
+);
+  try {
+    if (!latch.await(5000,TimeUnit.MILLISECONDS)) {
+      throw new RuntimeException("Timed out waiting for JS thread");
+    }
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+}

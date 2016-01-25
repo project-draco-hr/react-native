@@ -1,0 +1,7 @@
+{
+  mMethod=method;
+  Class[] parameterTypes=method.getParameterTypes();
+  mArgumentExtractors=buildArgumentExtractors(parameterTypes);
+  mArguments=new Object[parameterTypes.length];
+  mJSArgumentsNeeded=calculateJSArgumentsNeeded();
+}

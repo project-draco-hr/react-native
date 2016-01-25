@@ -1,0 +1,3 @@
+{
+  recreateReactContextInBackground(new ProxyJavaScriptExecutor.Factory(jsExecutorFactory),JSBundleLoader.createRemoteDebuggerBundleLoader(mDevSupportManager.getJSBundleURLForRemoteDebugging(),mDevSupportManager.getSourceUrl()));
+}

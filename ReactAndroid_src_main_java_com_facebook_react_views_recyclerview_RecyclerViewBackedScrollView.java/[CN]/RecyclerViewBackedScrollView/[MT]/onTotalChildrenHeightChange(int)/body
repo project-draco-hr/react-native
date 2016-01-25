@@ -1,0 +1,5 @@
+{
+  if (mSendContentSizeChangeEvents) {
+    ((ReactContext)getContext()).getNativeModule(UIManagerModule.class).getEventDispatcher().dispatchEvent(new ContentSizeChangeEvent(getId(),SystemClock.uptimeMillis(),getWidth(),newTotalChildrenHeight));
+  }
+}

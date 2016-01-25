@@ -1,0 +1,12 @@
+{
+  if (fpsDebugViewVisible && mFPSDebugViewContainer == null) {
+    mFPSDebugViewContainer=new FpsView(mReactContext);
+    WindowManager.LayoutParams params=new WindowManager.LayoutParams(WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.TYPE_SYSTEM_OVERLAY,WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE | WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,PixelFormat.TRANSLUCENT);
+    mWindowManager.addView(mFPSDebugViewContainer,params);
+  }
+ else   if (!fpsDebugViewVisible && mFPSDebugViewContainer != null) {
+    mFPSDebugViewContainer.removeAllViews();
+    mWindowManager.removeView(mFPSDebugViewContainer);
+    mFPSDebugViewContainer=null;
+  }
+}

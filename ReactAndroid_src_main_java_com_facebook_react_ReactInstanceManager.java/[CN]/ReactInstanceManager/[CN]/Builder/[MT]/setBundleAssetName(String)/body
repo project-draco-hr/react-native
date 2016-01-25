@@ -1,0 +1,3 @@
+{
+  return this.setJSBundleFile(bundleAssetName == null ? null : "assets://" + bundleAssetName);
+}

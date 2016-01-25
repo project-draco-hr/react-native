@@ -1,0 +1,8 @@
+{
+  ReactTextUpdate update=(ReactTextUpdate)extraData;
+  if (update.containsImages()) {
+    Spannable spannable=update.getText();
+    TextInlineImageSpan.possiblyUpdateInlineImageSpans(spannable,view);
+  }
+  view.setText(update);
+}

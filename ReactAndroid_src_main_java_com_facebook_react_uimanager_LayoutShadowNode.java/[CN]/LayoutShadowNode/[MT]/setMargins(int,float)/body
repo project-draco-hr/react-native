@@ -1,0 +1,3 @@
+{
+  setMargin(ViewProps.PADDING_MARGIN_SPACING_TYPES[index],PixelUtil.toPixelFromDIP(margin));
+}

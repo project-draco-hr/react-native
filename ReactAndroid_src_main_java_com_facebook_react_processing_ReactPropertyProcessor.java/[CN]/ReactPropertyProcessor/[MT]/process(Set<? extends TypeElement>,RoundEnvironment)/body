@@ -1,0 +1,40 @@
+{
+  mClasses.clear();
+  Set<? extends Element> elements=roundEnv.getElementsAnnotatedWith(ReactPropertyHolder.class);
+  for (  Element element : elements) {
+    try {
+      TypeElement classType=(TypeElement)element;
+      ClassName className=ClassName.get(classType);
+      mClasses.put(className,parseClass(className,classType));
+    }
+ catch (    Exception e) {
+      error(element,e.getMessage());
+    }
+  }
+  for (  ClassInfo classInfo : mClasses.values()) {
+    try {
+      if (!shouldIgnoreClass(classInfo)) {
+        Collections.sort(classInfo.mProperties,new Comparator<PropertyInfo>(){
+          @Override public int compare(          PropertyInfo a,          PropertyInfo b){
+            return a.mProperty.name().compareTo(b.mProperty.name());
+          }
+        }
+);
+        generateCode(classInfo,classInfo.mProperties);
+      }
+ else       if (shouldWarnClass(classInfo)) {
+        warning(classInfo.mElement,"Class was skipped. Classes need to be non-private.");
+      }
+    }
+ catch (    IOException e) {
+      error(e.getMessage());
+    }
+catch (    ReactPropertyException e) {
+      error(e.element,e.getMessage());
+    }
+catch (    Exception e) {
+      error(classInfo.mElement,e.getMessage());
+    }
+  }
+  return true;
+}

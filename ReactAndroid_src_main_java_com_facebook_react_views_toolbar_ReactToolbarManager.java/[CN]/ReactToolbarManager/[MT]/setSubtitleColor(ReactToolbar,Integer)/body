@@ -1,0 +1,9 @@
+{
+  int[] defaultColors=getDefaultColors(view.getContext());
+  if (subtitleColor != null) {
+    view.setSubtitleTextColor(subtitleColor);
+  }
+ else {
+    view.setSubtitleTextColor(defaultColors[1]);
+  }
+}

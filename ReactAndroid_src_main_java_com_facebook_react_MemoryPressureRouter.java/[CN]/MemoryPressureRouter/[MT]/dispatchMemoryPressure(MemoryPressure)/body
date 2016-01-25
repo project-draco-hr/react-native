@@ -1,0 +1,5 @@
+{
+  if (mCatalystInstance != null) {
+    mCatalystInstance.handleMemoryPressure(level);
+  }
+}

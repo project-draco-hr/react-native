@@ -1,0 +1,10 @@
+{
+  if (mNodeUpdated) {
+    return;
+  }
+  mNodeUpdated=true;
+  ReactShadowNode parent=getParent();
+  if (parent != null) {
+    parent.markUpdated();
+  }
+}

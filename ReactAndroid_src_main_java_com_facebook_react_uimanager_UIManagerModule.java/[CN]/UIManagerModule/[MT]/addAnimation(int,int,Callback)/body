@@ -1,0 +1,3 @@
+{
+  mUIImplementation.addAnimation(reactTag,animationID,onSuccess);
+}

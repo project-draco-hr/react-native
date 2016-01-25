@@ -1,0 +1,8 @@
+{
+  try {
+    return mLatch.await(millis,TimeUnit.MILLISECONDS);
+  }
+ catch (  InterruptedException ignore) {
+    return false;
+  }
+}

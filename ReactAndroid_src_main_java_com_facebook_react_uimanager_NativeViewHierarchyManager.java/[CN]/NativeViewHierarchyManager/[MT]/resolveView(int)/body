@@ -1,0 +1,7 @@
+{
+  View view=mTagsToViews.get(tag);
+  if (view == null) {
+    throw new IllegalViewOperationException("Trying to resolve view with tag " + tag + " which doesn't exist");
+  }
+  return view;
+}

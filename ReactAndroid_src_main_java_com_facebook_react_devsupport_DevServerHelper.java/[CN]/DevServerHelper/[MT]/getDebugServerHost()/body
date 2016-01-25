@@ -1,0 +1,14 @@
+{
+  String hostFromSettings=mSettings.getDebugServerHost();
+  if (!TextUtils.isEmpty(hostFromSettings)) {
+    return Assertions.assertNotNull(hostFromSettings);
+  }
+  if (isRunningOnGenymotion()) {
+    return GENYMOTION_LOCALHOST;
+  }
+  if (isRunningOnStockEmulator()) {
+    return EMULATOR_LOCALHOST;
+  }
+  FLog.w(ReactConstants.TAG,"You seem to be running on device. Run 'adb reverse tcp:8081 tcp:8081' " + "to forward the debug server's port to the device.");
+  return DEVICE_LOCALHOST;
+}

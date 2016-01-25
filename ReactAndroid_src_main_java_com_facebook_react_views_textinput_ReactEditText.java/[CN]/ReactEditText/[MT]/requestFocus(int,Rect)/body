@@ -1,0 +1,12 @@
+{
+  if (isFocused()) {
+    return true;
+  }
+  if (!mIsJSSettingFocus) {
+    return false;
+  }
+  setFocusableInTouchMode(true);
+  boolean focused=super.requestFocus(direction,previouslyFocusedRect);
+  showSoftKeyboard();
+  return focused;
+}

@@ -1,0 +1,6 @@
+{
+  if (oldVersion != newVersion) {
+    deleteDatabase();
+    onCreate(db);
+  }
+}

@@ -1,0 +1,19 @@
+{
+  UiThreadUtil.assertOnUiThread();
+  View v=mTagsToViews.get(tag);
+  if (v == null) {
+    throw new NoSuchNativeViewException("No native view for " + tag + " currently exists");
+  }
+  View rootView=(View)RootViewUtil.getRootView(v);
+  if (rootView == null) {
+    throw new NoSuchNativeViewException("Native view " + tag + " is no longer on screen");
+  }
+  rootView.getLocationInWindow(outputBuffer);
+  int rootX=outputBuffer[0];
+  int rootY=outputBuffer[1];
+  v.getLocationInWindow(outputBuffer);
+  outputBuffer[0]=outputBuffer[0] - rootX;
+  outputBuffer[1]=outputBuffer[1] - rootY;
+  outputBuffer[2]=v.getWidth();
+  outputBuffer[3]=v.getHeight();
+}

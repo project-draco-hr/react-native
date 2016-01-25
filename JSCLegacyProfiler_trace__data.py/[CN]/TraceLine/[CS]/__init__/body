@@ -1,0 +1,9 @@
+def __init__(self, task, pid, tgid, cpu, flags, timestamp, function):
+    self.task = task
+    self.pid = pid
+    self.tgid = tgid
+    self.cpu = cpu
+    self.flags = flags
+    self.timestamp = timestamp
+    self.function = function
+    self.canceled = False

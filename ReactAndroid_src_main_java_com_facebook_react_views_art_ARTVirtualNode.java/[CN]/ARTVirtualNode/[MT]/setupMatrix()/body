@@ -1,0 +1,15 @@
+{
+  sRawMatrix[0]=sMatrixData[0];
+  sRawMatrix[1]=sMatrixData[2];
+  sRawMatrix[2]=sMatrixData[4] * mScale;
+  sRawMatrix[3]=sMatrixData[1];
+  sRawMatrix[4]=sMatrixData[3];
+  sRawMatrix[5]=sMatrixData[5] * mScale;
+  sRawMatrix[6]=0;
+  sRawMatrix[7]=0;
+  sRawMatrix[8]=1;
+  if (mMatrix == null) {
+    mMatrix=new Matrix();
+  }
+  mMatrix.setValues(sRawMatrix);
+}

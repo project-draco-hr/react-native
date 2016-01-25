@@ -1,0 +1,4 @@
+{
+  assertViewExists(reactTag,"dispatchViewManagerCommand");
+  mOperationsQueue.enqueueDispatchCommand(reactTag,commandId,commandArgs);
+}

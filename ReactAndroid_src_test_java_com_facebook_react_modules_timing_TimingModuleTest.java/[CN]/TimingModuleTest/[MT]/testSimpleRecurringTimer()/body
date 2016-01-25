@@ -1,0 +1,9 @@
+{
+  mTiming.createTimer(100,0,0,true);
+  mTiming.onHostResume();
+  stepChoreographerFrame();
+  verify(mJSTimersMock).callTimers(SimpleArray.of(100));
+  reset(mJSTimersMock);
+  stepChoreographerFrame();
+  verify(mJSTimersMock).callTimers(SimpleArray.of(100));
+}

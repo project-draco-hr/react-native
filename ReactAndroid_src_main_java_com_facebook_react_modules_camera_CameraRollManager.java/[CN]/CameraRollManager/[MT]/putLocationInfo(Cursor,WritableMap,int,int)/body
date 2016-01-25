@@ -1,0 +1,10 @@
+{
+  double longitude=photos.getDouble(longitudeIndex);
+  double latitude=photos.getDouble(latitudeIndex);
+  if (longitude > 0 || latitude > 0) {
+    WritableMap location=new WritableNativeMap();
+    location.putDouble("longitude",longitude);
+    location.putDouble("latitude",latitude);
+    node.putMap("location",location);
+  }
+}

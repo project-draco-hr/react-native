@@ -1,0 +1,3 @@
+{
+  return ColorUtil.getOpacityFromColor(ColorUtil.multiplyColorAlpha(mColor,mAlpha));
+}

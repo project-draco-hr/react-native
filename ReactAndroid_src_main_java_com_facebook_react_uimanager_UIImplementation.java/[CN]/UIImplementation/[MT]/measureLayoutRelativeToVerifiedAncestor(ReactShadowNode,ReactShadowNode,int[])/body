@@ -1,0 +1,21 @@
+{
+  int offsetX=0;
+  int offsetY=0;
+  if (node != ancestor) {
+    offsetX=Math.round(node.getLayoutX());
+    offsetY=Math.round(node.getLayoutY());
+    ReactShadowNode current=node.getParent();
+    while (current != ancestor) {
+      Assertions.assertNotNull(current);
+      assertNodeDoesNotNeedCustomLayoutForChildren(current);
+      offsetX+=Math.round(current.getLayoutX());
+      offsetY+=Math.round(current.getLayoutY());
+      current=current.getParent();
+    }
+    assertNodeDoesNotNeedCustomLayoutForChildren(ancestor);
+  }
+  outputBuffer[0]=offsetX;
+  outputBuffer[1]=offsetY;
+  outputBuffer[2]=node.getScreenWidth();
+  outputBuffer[3]=node.getScreenHeight();
+}

@@ -1,0 +1,3 @@
+{
+  Assertions.assertNotNull(mBridge).handleMemoryPressure(level);
+}

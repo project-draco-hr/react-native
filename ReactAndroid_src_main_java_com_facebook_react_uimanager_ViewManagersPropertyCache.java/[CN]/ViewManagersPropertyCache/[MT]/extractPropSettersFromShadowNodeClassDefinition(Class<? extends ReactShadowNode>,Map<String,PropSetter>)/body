@@ -1,0 +1,23 @@
+{
+  for (  Method method : cls.getDeclaredMethods()) {
+    ReactProp annotation=method.getAnnotation(ReactProp.class);
+    if (annotation != null) {
+      Class<?>[] paramTypes=method.getParameterTypes();
+      if (paramTypes.length != 1) {
+        throw new RuntimeException("Wrong number of args for prop setter: " + cls.getName() + "#"+ method.getName());
+      }
+      props.put(annotation.name(),createPropSetter(annotation,method,paramTypes[0]));
+    }
+    ReactPropGroup groupAnnotation=method.getAnnotation(ReactPropGroup.class);
+    if (groupAnnotation != null) {
+      Class<?>[] paramTypes=method.getParameterTypes();
+      if (paramTypes.length != 2) {
+        throw new RuntimeException("Wrong number of args for group prop setter: " + cls.getName() + "#"+ method.getName());
+      }
+      if (paramTypes[0] != int.class) {
+        throw new RuntimeException("Second argument should be property index: " + cls.getName() + "#"+ method.getName());
+      }
+      createPropSetters(groupAnnotation,method,paramTypes[1],props);
+    }
+  }
+}

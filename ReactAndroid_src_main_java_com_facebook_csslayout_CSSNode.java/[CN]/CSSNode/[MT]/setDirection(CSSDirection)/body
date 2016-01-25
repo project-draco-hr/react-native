@@ -1,0 +1,6 @@
+{
+  if (style.direction != direction) {
+    style.direction=direction;
+    dirty();
+  }
+}

@@ -1,0 +1,3 @@
+{
+  return layout.position[POSITION_LEFT];
+}

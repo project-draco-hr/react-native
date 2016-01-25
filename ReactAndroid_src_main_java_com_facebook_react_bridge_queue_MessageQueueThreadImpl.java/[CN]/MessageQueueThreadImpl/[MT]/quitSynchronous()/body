@@ -1,0 +1,12 @@
+{
+  mIsFinished=true;
+  mLooper.quit();
+  if (mLooper.getThread() != Thread.currentThread()) {
+    try {
+      mLooper.getThread().join();
+    }
+ catch (    InterruptedException e) {
+      throw new RuntimeException("Got interrupted waiting to join thread " + mName);
+    }
+  }
+}

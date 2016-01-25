@@ -1,0 +1,3 @@
+{
+  return (SimpleArray)mBackingMap.get(name);
+}

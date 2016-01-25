@@ -1,0 +1,7 @@
+{
+  super(context,buildHierarchy(context));
+  mScaleType=ImageResizeMode.defaultValue();
+  mDraweeControllerBuilder=draweeControllerBuilder;
+  mRoundedCornerPostprocessor=new RoundedCornerPostprocessor();
+  mCallerContext=callerContext;
+}

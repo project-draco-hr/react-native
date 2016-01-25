@@ -1,0 +1,12 @@
+{
+  if (!ENABLED) {
+    int tag=node.getReactTag();
+    mUIViewOperationQueue.enqueueCreateView(themedContext,tag,node.getViewClass(),initialProps);
+    return;
+  }
+  boolean isLayoutOnly=node.getViewClass().equals(ViewProps.VIEW_CLASS_NAME) && isLayoutOnlyAndCollapsable(initialProps);
+  node.setIsLayoutOnly(isLayoutOnly);
+  if (!isLayoutOnly) {
+    mUIViewOperationQueue.enqueueCreateView(themedContext,node.getReactTag(),node.getViewClass(),initialProps);
+  }
+}

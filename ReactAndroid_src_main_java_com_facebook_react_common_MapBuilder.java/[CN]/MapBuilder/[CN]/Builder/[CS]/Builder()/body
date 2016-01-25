@@ -1,0 +1,4 @@
+{
+  mMap=newHashMap();
+  mUnderConstruction=true;
+}

@@ -1,0 +1,8 @@
+{
+  if (!mClearResponder) {
+    mNativeViewHierarchyManager.setJSResponder(mTag,mInitialTag,mBlockNativeResponder);
+  }
+ else {
+    mNativeViewHierarchyManager.clearJSResponder();
+  }
+}

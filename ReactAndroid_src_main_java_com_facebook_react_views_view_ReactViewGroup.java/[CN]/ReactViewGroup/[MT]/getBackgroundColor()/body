@@ -1,0 +1,6 @@
+{
+  if (getBackground() != null) {
+    return ((ReactViewBackgroundDrawable)getBackground()).getColor();
+  }
+  return DEFAULT_BACKGROUND_COLOR;
+}

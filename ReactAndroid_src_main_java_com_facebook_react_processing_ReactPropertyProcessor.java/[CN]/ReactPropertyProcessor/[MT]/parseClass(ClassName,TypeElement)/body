@@ -1,0 +1,7 @@
+{
+  TypeName targetType=getTargetType(typeElement.asType());
+  TypeName viewType=targetType.equals(SHADOW_NODE_TYPE) ? null : targetType;
+  ClassInfo classInfo=new ClassInfo(className,typeElement,viewType);
+  findProperties(classInfo,typeElement);
+  return classInfo;
+}

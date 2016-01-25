@@ -1,0 +1,30 @@
+{
+  final int waitFrameCount=2;
+  final CountDownLatch latch=new CountDownLatch(1);
+  UiThreadUtil.runOnUiThread(new Runnable(){
+    @Override public void run(){
+      Choreographer.getInstance().postFrameCallback(new Choreographer.FrameCallback(){
+        private int frameCount=0;
+        @Override public void doFrame(        long frameTimeNanos){
+          frameCount++;
+          if (frameCount == waitFrameCount) {
+            latch.countDown();
+          }
+ else {
+            Choreographer.getInstance().postFrameCallback(this);
+          }
+        }
+      }
+);
+    }
+  }
+);
+  try {
+    if (!latch.await(timeToWait,TimeUnit.MILLISECONDS)) {
+      throw new RuntimeException("Timed out waiting for Choreographer");
+    }
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+}

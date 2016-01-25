@@ -1,0 +1,7 @@
+{
+  super.init(viewTag,SystemClock.uptimeMillis());
+  mX=x;
+  mY=y;
+  mWidth=width;
+  mHeight=height;
+}

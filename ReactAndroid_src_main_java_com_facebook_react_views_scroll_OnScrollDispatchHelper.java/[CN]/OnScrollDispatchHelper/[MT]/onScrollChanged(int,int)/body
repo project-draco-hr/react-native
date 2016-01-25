@@ -1,0 +1,8 @@
+{
+  long eventTime=SystemClock.uptimeMillis();
+  boolean shouldDispatch=eventTime - mLastScrollEventTimeMs > MIN_EVENT_SEPARATION_MS || mPrevX != x || mPrevY != y;
+  mLastScrollEventTimeMs=eventTime;
+  mPrevX=x;
+  mPrevY=y;
+  return shouldDispatch;
+}

@@ -1,0 +1,42 @@
+{
+  final JSDebuggerWebSocketClient client=new JSDebuggerWebSocketClient();
+  final Handler timeoutHandler=new Handler(Looper.getMainLooper());
+  client.connect(webSocketServerUrl,new JSDebuggerWebSocketClient.JSDebuggerCallback(){
+    private boolean didSendResult=false;
+    @Override public void onSuccess(    @Nullable String response){
+      client.prepareJSRuntime(new JSDebuggerWebSocketClient.JSDebuggerCallback(){
+        @Override public void onSuccess(        @Nullable String response){
+          timeoutHandler.removeCallbacksAndMessages(null);
+          mWebSocketClient=client;
+          if (!didSendResult) {
+            callback.onSuccess();
+            didSendResult=true;
+          }
+        }
+        @Override public void onFailure(        Throwable cause){
+          timeoutHandler.removeCallbacksAndMessages(null);
+          if (!didSendResult) {
+            callback.onFailure(cause);
+            didSendResult=true;
+          }
+        }
+      }
+);
+    }
+    @Override public void onFailure(    Throwable cause){
+      timeoutHandler.removeCallbacksAndMessages(null);
+      if (!didSendResult) {
+        callback.onFailure(cause);
+        didSendResult=true;
+      }
+    }
+  }
+);
+  timeoutHandler.postDelayed(new Runnable(){
+    @Override public void run(){
+      client.closeQuietly();
+      callback.onFailure(new WebsocketExecutorTimeoutException("Timeout while connecting to remote debugger"));
+    }
+  }
+,CONNECT_TIMEOUT_MS);
+}

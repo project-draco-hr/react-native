@@ -1,0 +1,3 @@
+{
+  view.setDrawerListener(new DrawerEventEmitter(view,reactContext.getNativeModule(UIManagerModule.class).getEventDispatcher()));
+}

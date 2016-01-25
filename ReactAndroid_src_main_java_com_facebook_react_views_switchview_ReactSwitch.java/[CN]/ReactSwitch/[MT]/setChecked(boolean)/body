@@ -1,0 +1,6 @@
+{
+  if (mAllowChange) {
+    mAllowChange=false;
+    super.setChecked(checked);
+  }
+}

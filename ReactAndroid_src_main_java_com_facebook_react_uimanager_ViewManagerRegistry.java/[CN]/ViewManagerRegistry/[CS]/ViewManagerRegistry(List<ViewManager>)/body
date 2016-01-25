@@ -1,0 +1,5 @@
+{
+  for (  ViewManager viewManager : viewManagerList) {
+    mViewManagers.put(viewManager.getName(),viewManager);
+  }
+}

@@ -1,0 +1,18 @@
+{
+  if (!cssNode.hasUpdates()) {
+    return;
+  }
+  if (!cssNode.isVirtualAnchor()) {
+    for (int i=0; i < cssNode.getChildCount(); i++) {
+      applyUpdatesRecursive(cssNode.getChildAt(i),absoluteX + cssNode.getLayoutX(),absoluteY + cssNode.getLayoutY(),eventDispatcher);
+    }
+  }
+  int tag=cssNode.getReactTag();
+  if (!mShadowNodeRegistry.isRootNode(tag)) {
+    cssNode.dispatchUpdates(absoluteX,absoluteY,mOperationsQueue,mNativeViewHierarchyOptimizer);
+    if (cssNode.shouldNotifyOnLayout()) {
+      eventDispatcher.dispatchEvent(OnLayoutEvent.obtain(tag,cssNode.getScreenX(),cssNode.getScreenY(),cssNode.getScreenWidth(),cssNode.getScreenHeight()));
+    }
+  }
+  cssNode.markUpdateSeen();
+}

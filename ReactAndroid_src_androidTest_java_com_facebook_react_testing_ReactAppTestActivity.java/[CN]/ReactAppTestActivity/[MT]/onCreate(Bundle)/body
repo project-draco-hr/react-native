@@ -1,0 +1,11 @@
+{
+  super.onCreate(savedInstanceState);
+  overridePendingTransition(0,0);
+  FrameLayout rootView=new FrameLayout(this);
+  setContentView(rootView);
+  mScreenshotingFrameLayout=new ScreenshotingFrameLayout(this);
+  mScreenshotingFrameLayout.setId(ROOT_VIEW_ID);
+  rootView.addView(mScreenshotingFrameLayout);
+  mReactRootView=new ReactRootView(this);
+  mScreenshotingFrameLayout.addView(mReactRootView);
+}

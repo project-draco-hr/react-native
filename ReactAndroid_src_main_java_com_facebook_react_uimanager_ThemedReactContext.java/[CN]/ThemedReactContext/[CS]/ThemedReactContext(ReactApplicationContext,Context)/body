@@ -1,0 +1,5 @@
+{
+  super(base);
+  initializeWithInstance(reactApplicationContext.getCatalystInstance());
+  mReactApplicationContext=reactApplicationContext;
+}

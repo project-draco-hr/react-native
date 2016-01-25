@@ -1,0 +1,36 @@
+{
+  int useColor=ColorUtil.multiplyColorAlpha(mColor,mAlpha);
+  if ((useColor >>> 24) != 0) {
+    mPaint.setColor(useColor);
+    mPaint.setStyle(Paint.Style.FILL);
+    canvas.drawRect(getBounds(),mPaint);
+  }
+  if (getBorderWidth(Spacing.LEFT) > 0 || getBorderWidth(Spacing.TOP) > 0 || getBorderWidth(Spacing.RIGHT) > 0 || getBorderWidth(Spacing.BOTTOM) > 0) {
+    int borderLeft=getBorderWidth(Spacing.LEFT);
+    int borderTop=getBorderWidth(Spacing.TOP);
+    int borderRight=getBorderWidth(Spacing.RIGHT);
+    int borderBottom=getBorderWidth(Spacing.BOTTOM);
+    int colorLeft=getBorderColor(Spacing.LEFT);
+    int colorTop=getBorderColor(Spacing.TOP);
+    int colorRight=getBorderColor(Spacing.RIGHT);
+    int colorBottom=getBorderColor(Spacing.BOTTOM);
+    int width=getBounds().width();
+    int height=getBounds().height();
+    if (borderLeft > 0 && colorLeft != Color.TRANSPARENT) {
+      mPaint.setColor(colorLeft);
+      canvas.drawRect(0,borderTop,borderLeft,height - borderBottom,mPaint);
+    }
+    if (borderTop > 0 && colorTop != Color.TRANSPARENT) {
+      mPaint.setColor(colorTop);
+      canvas.drawRect(0,0,width,borderTop,mPaint);
+    }
+    if (borderRight > 0 && colorRight != Color.TRANSPARENT) {
+      mPaint.setColor(colorRight);
+      canvas.drawRect(width - borderRight,borderTop,width,height - borderBottom,mPaint);
+    }
+    if (borderBottom > 0 && colorBottom != Color.TRANSPARENT) {
+      mPaint.setColor(colorBottom);
+      canvas.drawRect(0,height - borderBottom,width,height,mPaint);
+    }
+  }
+}

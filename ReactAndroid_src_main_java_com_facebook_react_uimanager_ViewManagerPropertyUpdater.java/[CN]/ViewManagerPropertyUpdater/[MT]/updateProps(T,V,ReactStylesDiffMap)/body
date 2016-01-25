@@ -1,0 +1,9 @@
+{
+  ViewManagerSetter<T,V> setter=findManagerSetter(manager.getClass());
+  ReadableMap propMap=props.mBackingMap;
+  ReadableMapKeySetIterator iterator=propMap.keySetIterator();
+  while (iterator.hasNextKey()) {
+    String key=iterator.nextKey();
+    setter.setProperty(manager,v,key,props);
+  }
+}

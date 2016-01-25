@@ -1,0 +1,6 @@
+{
+  mViews.add(index,child);
+  updateTotalChildrenHeight(child.getMeasuredHeight());
+  child.addOnLayoutChangeListener(mChildLayoutChangeListener);
+  notifyItemInserted(index);
+}

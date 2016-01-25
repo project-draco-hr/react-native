@@ -1,0 +1,5 @@
+{
+  if (style.border.set(spacingType,border)) {
+    dirty();
+  }
+}

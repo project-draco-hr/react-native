@@ -1,0 +1,4 @@
+{
+  mJSModuleSpecs.add(jsClass);
+  return this;
+}

@@ -1,0 +1,3 @@
+def testPlainSectionName(self):
+    section_name = u'SectionName12345-5562342fas'
+    self.assertEqual(section_name, _format_section_name(*_parse_section_name(section_name)))

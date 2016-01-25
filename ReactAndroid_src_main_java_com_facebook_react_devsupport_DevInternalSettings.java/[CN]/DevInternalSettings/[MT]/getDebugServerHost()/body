@@ -1,0 +1,3 @@
+{
+  return mPreferences.getString(PREFS_DEBUG_SERVER_HOST_KEY,null);
+}

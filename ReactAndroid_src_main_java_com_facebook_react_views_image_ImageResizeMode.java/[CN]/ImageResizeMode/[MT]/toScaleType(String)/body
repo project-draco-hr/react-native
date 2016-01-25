@@ -1,0 +1,15 @@
+{
+  if ("contain".equals(resizeModeValue)) {
+    return ScalingUtils.ScaleType.CENTER_INSIDE;
+  }
+  if ("cover".equals(resizeModeValue)) {
+    return ScalingUtils.ScaleType.CENTER_CROP;
+  }
+  if ("stretch".equals(resizeModeValue)) {
+    return ScalingUtils.ScaleType.FIT_XY;
+  }
+  if (resizeModeValue == null) {
+    return defaultValue();
+  }
+  throw new JSApplicationIllegalArgumentException("Invalid resize mode: '" + resizeModeValue + "'");
+}

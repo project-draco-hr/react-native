@@ -1,0 +1,4 @@
+{
+  mBorderColor=borderColor;
+  mIsDirty=true;
+}

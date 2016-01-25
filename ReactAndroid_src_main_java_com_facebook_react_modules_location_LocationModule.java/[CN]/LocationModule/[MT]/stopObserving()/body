@@ -1,0 +1,5 @@
+{
+  LocationManager locationManager=(LocationManager)getReactApplicationContext().getSystemService(Context.LOCATION_SERVICE);
+  locationManager.removeUpdates(mLocationListener);
+  mWatchedProvider=null;
+}

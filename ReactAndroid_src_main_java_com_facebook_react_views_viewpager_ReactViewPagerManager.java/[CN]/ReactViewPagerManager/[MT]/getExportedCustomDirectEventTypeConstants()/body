@@ -1,0 +1,3 @@
+{
+  return MapBuilder.of(PageScrollEvent.EVENT_NAME,MapBuilder.of("registrationName","onPageScroll"),PageSelectedEvent.EVENT_NAME,MapBuilder.of("registrationName","onPageSelected"));
+}

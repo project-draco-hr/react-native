@@ -1,0 +1,3 @@
+{
+  return MapBuilder.of("goBack",COMMAND_GO_BACK,"goForward",COMMAND_GO_FORWARD,"reload",COMMAND_RELOAD);
+}

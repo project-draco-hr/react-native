@@ -1,0 +1,18 @@
+{
+  if (position == 0) {
+    TextView title=convertView != null ? (TextView)convertView : (TextView)LayoutInflater.from(parent.getContext()).inflate(R.layout.redbox_item_title,parent,false);
+    title.setText(mTitle);
+    return title;
+  }
+ else {
+    if (convertView == null) {
+      convertView=LayoutInflater.from(parent.getContext()).inflate(R.layout.redbox_item_frame,parent,false);
+      convertView.setTag(new FrameViewHolder(convertView));
+    }
+    StackFrame frame=mStack[position - 1];
+    FrameViewHolder holder=(FrameViewHolder)convertView.getTag();
+    holder.mMethodView.setText(frame.getMethod());
+    holder.mFileView.setText(frame.getFileName() + ":" + frame.getLine());
+    return convertView;
+  }
+}

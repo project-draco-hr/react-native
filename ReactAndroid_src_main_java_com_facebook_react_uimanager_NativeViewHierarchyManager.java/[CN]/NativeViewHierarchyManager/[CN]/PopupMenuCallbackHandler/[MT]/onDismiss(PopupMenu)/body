@@ -1,0 +1,6 @@
+{
+  if (!mConsumed) {
+    mSuccess.invoke(UIManagerModuleConstants.ACTION_DISMISSED);
+    mConsumed=true;
+  }
+}

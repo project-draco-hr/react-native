@@ -1,0 +1,9 @@
+{
+  mFirstFrameTime=-1;
+  mLastFrameTime=-1;
+  mNumFrameCallbacks=0;
+  m4PlusFrameStutters=0;
+  mNumFrameCallbacksWithBatchDispatches=0;
+  mIsRecordingFpsInfoAtEachFrame=false;
+  mTimeToFps=null;
+}

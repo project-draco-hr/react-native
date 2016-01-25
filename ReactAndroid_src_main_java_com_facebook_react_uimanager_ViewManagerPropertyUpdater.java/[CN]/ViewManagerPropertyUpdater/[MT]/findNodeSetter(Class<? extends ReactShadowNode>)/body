@@ -1,0 +1,11 @@
+{
+  @SuppressWarnings("unchecked") ShadowNodeSetter<T> setter=(ShadowNodeSetter<T>)SHADOW_NODE_SETTER_MAP.get(nodeClass);
+  if (setter == null) {
+    setter=findGeneratedSetter(nodeClass);
+    if (setter == null) {
+      setter=new FallbackShadowNodeSetter<>(nodeClass);
+    }
+    SHADOW_NODE_SETTER_MAP.put(nodeClass,setter);
+  }
+  return setter;
+}

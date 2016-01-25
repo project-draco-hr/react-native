@@ -1,0 +1,5 @@
+float x
+float y
+ViewGroup parent
+View child
+PointF outLocalPoint

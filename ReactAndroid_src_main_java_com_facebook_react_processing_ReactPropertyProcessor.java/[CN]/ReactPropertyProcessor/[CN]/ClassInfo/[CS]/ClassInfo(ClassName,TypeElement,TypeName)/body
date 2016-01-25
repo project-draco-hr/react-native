@@ -1,0 +1,6 @@
+{
+  mClassName=className;
+  mElement=element;
+  mViewType=viewType;
+  mProperties=new ArrayList<>();
+}

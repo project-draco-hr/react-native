@@ -1,0 +1,12 @@
+{
+  ReactApplicationContext reactContext=getReactApplicationContext();
+  if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+    ClipData clipdata=ClipData.newPlainText(null,text);
+    ClipboardManager clipboard=getClipboardService();
+    clipboard.setPrimaryClip(clipdata);
+  }
+ else {
+    ClipboardManager clipboard=getClipboardService();
+    clipboard.setText(text);
+  }
+}

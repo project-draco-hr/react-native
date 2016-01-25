@@ -1,0 +1,19 @@
+{
+  new GuardedAsyncTask<Void,Void>(getReactApplicationContext()){
+    @Override protected void doInBackgroundGuarded(    Void... params){
+      if (!mReactDatabaseSupplier.ensureDatabase()) {
+        callback.invoke(AsyncStorageErrorUtil.getDBError(null));
+        return;
+      }
+      try {
+        mReactDatabaseSupplier.clear();
+        callback.invoke();
+      }
+ catch (      Exception e) {
+        FLog.w(ReactConstants.TAG,e.getMessage(),e);
+        callback.invoke(AsyncStorageErrorUtil.getError(null,e.getMessage()));
+      }
+    }
+  }
+.execute();
+}

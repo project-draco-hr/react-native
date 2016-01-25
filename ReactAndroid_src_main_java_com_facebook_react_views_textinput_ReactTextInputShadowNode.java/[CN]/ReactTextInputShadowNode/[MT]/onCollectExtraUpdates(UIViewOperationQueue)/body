@@ -1,0 +1,12 @@
+{
+  super.onCollectExtraUpdates(uiViewOperationQueue);
+  if (mComputedPadding != null) {
+    uiViewOperationQueue.enqueueUpdateExtraData(getReactTag(),mComputedPadding);
+    mComputedPadding=null;
+  }
+  if (mJsEventCount != UNSET) {
+    Spannable preparedSpannableText=fromTextCSSNode(this);
+    ReactTextUpdate reactTextUpdate=new ReactTextUpdate(preparedSpannableText,mJsEventCount,mContainsImages);
+    uiViewOperationQueue.enqueueUpdateExtraData(getReactTag(),reactTextUpdate);
+  }
+}

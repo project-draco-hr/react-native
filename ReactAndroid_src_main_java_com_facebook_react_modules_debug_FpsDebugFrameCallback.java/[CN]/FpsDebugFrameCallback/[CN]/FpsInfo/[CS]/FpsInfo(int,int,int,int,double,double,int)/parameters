@@ -1,0 +1,7 @@
+int totalFrames
+int totalJsFrames
+int totalExpectedFrames
+int total4PlusFrameStutters
+double fps
+double jsFps
+int totalTimeMs

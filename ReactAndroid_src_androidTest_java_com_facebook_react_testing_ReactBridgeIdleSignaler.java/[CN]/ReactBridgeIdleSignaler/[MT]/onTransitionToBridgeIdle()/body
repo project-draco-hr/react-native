@@ -1,0 +1,4 @@
+{
+  mIsBridgeIdle=true;
+  mBridgeIdleSemaphore.release();
+}

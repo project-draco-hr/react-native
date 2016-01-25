@@ -1,0 +1,4 @@
+{
+  mJavaJSExecutor=executor;
+  initialize(executor);
+}

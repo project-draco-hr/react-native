@@ -1,0 +1,6 @@
+{
+  mIsVirtual=isVirtual;
+  if (!isVirtual) {
+    setMeasureFunction(TEXT_MEASURE_FUNCTION);
+  }
+}

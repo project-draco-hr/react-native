@@ -1,0 +1,3 @@
+{
+  view.setLoadingIndicatorSource(source);
+}

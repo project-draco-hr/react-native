@@ -1,0 +1,12 @@
+{
+  String currentUrl=view.getUrl();
+  if (currentUrl != null && currentUrl.equals(url)) {
+    return;
+  }
+  if (url != null) {
+    view.loadUrl(url);
+  }
+ else {
+    view.loadUrl(BLANK_URL);
+  }
+}

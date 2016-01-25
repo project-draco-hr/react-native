@@ -1,0 +1,4 @@
+{
+  super(context);
+  mCanvas=new Canvas();
+}

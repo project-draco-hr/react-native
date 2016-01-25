@@ -1,0 +1,5 @@
+{
+  if (mLayerTypeChanged) {
+    mView.setLayerType(View.LAYER_TYPE_NONE,null);
+  }
+}

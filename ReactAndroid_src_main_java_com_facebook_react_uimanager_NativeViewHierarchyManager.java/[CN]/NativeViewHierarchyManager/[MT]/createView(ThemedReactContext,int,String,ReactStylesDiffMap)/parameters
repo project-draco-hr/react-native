@@ -1,0 +1,4 @@
+ThemedReactContext themedContext
+int tag
+String className
+ReactStylesDiffMap initialProps

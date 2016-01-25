@@ -1,0 +1,5 @@
+{
+  Assertions.assertCondition(mJSQueueSpec == null,"Setting JS queue multiple times!");
+  mJSQueueSpec=spec;
+  return this;
+}

@@ -1,0 +1,16 @@
+{
+  Instrumentation instrumentation=InstrumentationRegistry.getInstrumentation();
+  long startTime=SystemClock.elapsedRealtime();
+  boolean bridgeWasIdle=false;
+  while (SystemClock.elapsedRealtime() - startTime < timeToWait) {
+    boolean bridgeIsIdle=idleSignaler.isBridgeIdle();
+    if (bridgeIsIdle && bridgeWasIdle) {
+      return;
+    }
+    bridgeWasIdle=bridgeIsIdle;
+    long newTimeToWait=Math.max(1,timeToWait - (SystemClock.elapsedRealtime() - startTime));
+    idleSignaler.waitForIdle(newTimeToWait);
+    instrumentation.waitForIdleSync();
+  }
+  throw new RuntimeException("Timed out waiting for bridge and UI idle!");
+}

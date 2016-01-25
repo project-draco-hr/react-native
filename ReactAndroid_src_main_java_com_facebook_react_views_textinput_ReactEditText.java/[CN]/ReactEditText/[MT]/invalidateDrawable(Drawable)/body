@@ -1,0 +1,12 @@
+{
+  if (mContainsImages && getText() instanceof Spanned) {
+    Spanned text=(Spanned)getText();
+    TextInlineImageSpan[] spans=text.getSpans(0,text.length(),TextInlineImageSpan.class);
+    for (    TextInlineImageSpan span : spans) {
+      if (span.getDrawable() == drawable) {
+        invalidate();
+      }
+    }
+  }
+  super.invalidateDrawable(drawable);
+}

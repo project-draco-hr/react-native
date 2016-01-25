@@ -1,0 +1,3 @@
+{
+  return MapBuilder.builder().put("topSelectionChange",MapBuilder.of("registrationName","onSelectionChange")).put("topLoadingStart",MapBuilder.of("registrationName","onLoadingStart")).put("topLoadingFinish",MapBuilder.of("registrationName","onLoadingFinish")).put("topLoadingError",MapBuilder.of("registrationName","onLoadingError")).put("topLayout",MapBuilder.of("registrationName","onLayout")).build();
+}

@@ -1,0 +1,9 @@
+def parse_dextr_line(line):
+    task = line[u'name']
+    pid = line[u'pid']
+    tgid = line[u'tid']
+    cpu = None
+    flags = None
+    timestamp = line[u'ts']
+    function = AppTraceFunction(u'DextrTrace', [line[u'ph'], line[u'pid'], line[u'name']])
+    return TraceLine(task, pid, tgid, cpu, flags, timestamp, function)

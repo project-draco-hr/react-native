@@ -1,0 +1,37 @@
+{
+  mDevServerHelper.downloadBundleFromURL(new DevServerHelper.BundleDownloadCallback(){
+    @Override public void onSuccess(){
+      progressDialog.dismiss();
+      UiThreadUtil.runOnUiThread(new Runnable(){
+        @Override public void run(){
+          mReactInstanceCommandsHandler.onJSBundleLoadedFromServer();
+        }
+      }
+);
+    }
+    @Override public void onFailure(    final Exception cause){
+      progressDialog.dismiss();
+      FLog.e(ReactConstants.TAG,"Unable to download JS bundle",cause);
+      UiThreadUtil.runOnUiThread(new Runnable(){
+        @Override public void run(){
+          if (cause instanceof DebugServerException) {
+            DebugServerException debugServerException=(DebugServerException)cause;
+            showNewJavaError(debugServerException.description,cause);
+          }
+ else {
+            showNewJavaError(mApplicationContext.getString(R.string.catalyst_jsload_error),cause);
+          }
+        }
+      }
+);
+    }
+  }
+,Assertions.assertNotNull(mJSAppBundleName),mJSBundleTempFile);
+  progressDialog.setOnCancelListener(new DialogInterface.OnCancelListener(){
+    @Override public void onCancel(    DialogInterface dialog){
+      mDevServerHelper.cancelDownloadBundleFromURL();
+    }
+  }
+);
+  progressDialog.setCancelable(true);
+}

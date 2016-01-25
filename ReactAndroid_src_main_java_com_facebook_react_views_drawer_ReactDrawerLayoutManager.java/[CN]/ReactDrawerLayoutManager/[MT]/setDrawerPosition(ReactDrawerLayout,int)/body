@@ -1,0 +1,8 @@
+{
+  if (Gravity.START == drawerPosition || Gravity.END == drawerPosition) {
+    view.setDrawerPosition(drawerPosition);
+  }
+ else {
+    throw new JSApplicationIllegalArgumentException("Unknown drawerPosition " + drawerPosition);
+  }
+}

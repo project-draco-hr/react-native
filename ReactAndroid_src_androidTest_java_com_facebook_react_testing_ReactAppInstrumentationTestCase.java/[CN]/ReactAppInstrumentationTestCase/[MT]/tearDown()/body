@@ -1,0 +1,5 @@
+{
+  ReactAppTestActivity activity=getActivity();
+  super.tearDown();
+  activity.waitForDestroy(5000);
+}

@@ -1,0 +1,5 @@
+{
+  ReactShadowNode rootCSSNode=new ReactShadowNode();
+  rootCSSNode.setViewClassName("Root");
+  return rootCSSNode;
+}

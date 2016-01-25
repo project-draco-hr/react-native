@@ -1,0 +1,3 @@
+{
+  return mCatalystInstance != null && !mCatalystInstance.isDestroyed();
+}

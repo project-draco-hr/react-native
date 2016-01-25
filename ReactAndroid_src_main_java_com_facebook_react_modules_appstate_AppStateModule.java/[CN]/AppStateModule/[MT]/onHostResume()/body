@@ -1,0 +1,4 @@
+{
+  mAppState=APP_STATE_ACTIVE;
+  sendAppStateChangeEvent();
+}

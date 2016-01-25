@@ -1,0 +1,12 @@
+{
+  FLog.e(TAG,"Error occurred, shutting down websocket connection: " + message,cause);
+  closeQuietly();
+  if (mConnectCallback != null) {
+    mConnectCallback.onFailure(cause);
+    mConnectCallback=null;
+  }
+  for (  JSDebuggerCallback callback : mCallbacks.values()) {
+    callback.onFailure(cause);
+  }
+  mCallbacks.clear();
+}

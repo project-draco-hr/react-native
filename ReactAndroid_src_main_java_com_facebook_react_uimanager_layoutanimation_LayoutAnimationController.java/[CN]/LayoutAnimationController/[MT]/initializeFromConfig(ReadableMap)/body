@@ -1,0 +1,19 @@
+{
+  if (!ENABLED) {
+    return;
+  }
+  if (config == null) {
+    reset();
+    return;
+  }
+  mShouldAnimateLayout=false;
+  int globalDuration=config.hasKey("duration") ? config.getInt("duration") : 0;
+  if (config.hasKey(LayoutAnimationType.CREATE.toString())) {
+    mLayoutCreateAnimation.initializeFromConfig(config.getMap(LayoutAnimationType.CREATE.toString()),globalDuration);
+    mShouldAnimateLayout=true;
+  }
+  if (config.hasKey(LayoutAnimationType.UPDATE.toString())) {
+    mLayoutUpdateAnimation.initializeFromConfig(config.getMap(LayoutAnimationType.UPDATE.toString()),globalDuration);
+    mShouldAnimateLayout=true;
+  }
+}

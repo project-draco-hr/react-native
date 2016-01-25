@@ -1,0 +1,6 @@
+{
+  if (style.positionType != positionType) {
+    style.positionType=positionType;
+    dirty();
+  }
+}

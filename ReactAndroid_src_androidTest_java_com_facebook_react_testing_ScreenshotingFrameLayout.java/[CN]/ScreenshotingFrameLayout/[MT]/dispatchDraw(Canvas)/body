@@ -1,0 +1,13 @@
+{
+  if (mBitmap == null) {
+    mBitmap=createNewBitmap(canvas);
+    mCanvas.setBitmap(mBitmap);
+  }
+ else   if (mBitmap.getWidth() != canvas.getWidth() || mBitmap.getHeight() != canvas.getHeight()) {
+    mBitmap.recycle();
+    mBitmap=createNewBitmap(canvas);
+    mCanvas.setBitmap(mBitmap);
+  }
+  super.dispatchDraw(mCanvas);
+  canvas.drawBitmap(mBitmap,0,0,null);
+}

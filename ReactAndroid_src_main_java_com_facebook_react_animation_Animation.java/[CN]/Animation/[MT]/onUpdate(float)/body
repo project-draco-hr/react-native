@@ -1,0 +1,7 @@
+{
+  Assertions.assertCondition(!mIsFinished,"Animation must not already be finished!");
+  if (!mCancelled) {
+    mPropertyUpdater.onUpdate(Assertions.assertNotNull(mAnimatedView),value);
+  }
+  return !mCancelled;
+}

@@ -1,0 +1,4 @@
+{
+  int packageLen=packageName.length() + 1;
+  return type.getQualifiedName().toString().substring(packageLen).replace('.','$');
+}

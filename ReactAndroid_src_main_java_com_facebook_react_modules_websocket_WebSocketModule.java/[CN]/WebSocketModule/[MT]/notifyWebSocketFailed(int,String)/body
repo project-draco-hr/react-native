@@ -1,0 +1,6 @@
+{
+  WritableMap params=Arguments.createMap();
+  params.putInt("id",id);
+  params.putString("message",message);
+  sendEvent("websocketFailed",params);
+}

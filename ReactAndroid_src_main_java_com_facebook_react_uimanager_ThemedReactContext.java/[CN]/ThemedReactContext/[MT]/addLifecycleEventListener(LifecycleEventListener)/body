@@ -1,0 +1,3 @@
+{
+  mReactApplicationContext.addLifecycleEventListener(listener);
+}

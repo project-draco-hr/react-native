@@ -1,0 +1,6 @@
+{
+  if (child.style.alignSelf != CSSAlign.AUTO) {
+    return child.style.alignSelf;
+  }
+  return node.style.alignItems;
+}

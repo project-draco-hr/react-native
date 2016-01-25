@@ -1,0 +1,3 @@
+{
+  mLifecycleEventListeners.add(listener);
+}

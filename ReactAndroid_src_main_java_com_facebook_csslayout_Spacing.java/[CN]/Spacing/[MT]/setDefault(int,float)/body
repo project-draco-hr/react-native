@@ -1,0 +1,10 @@
+{
+  if (mDefaultSpacing == null) {
+    mDefaultSpacing=newSpacingResultArray();
+  }
+  if (!FloatUtil.floatsEqual(mDefaultSpacing[spacingType],value)) {
+    mDefaultSpacing[spacingType]=value;
+    return true;
+  }
+  return false;
+}

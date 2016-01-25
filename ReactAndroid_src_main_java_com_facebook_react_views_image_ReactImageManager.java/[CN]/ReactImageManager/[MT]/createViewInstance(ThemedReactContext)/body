@@ -1,0 +1,3 @@
+{
+  return new ReactImageView(context,getDraweeControllerBuilder(),getCallerContext());
+}

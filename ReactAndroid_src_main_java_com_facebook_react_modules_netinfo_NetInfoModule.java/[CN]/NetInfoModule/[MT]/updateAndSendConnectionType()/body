@@ -1,0 +1,7 @@
+{
+  String currentConnectivity=getCurrentConnectionType();
+  if (!currentConnectivity.equalsIgnoreCase(mConnectivity)) {
+    mConnectivity=currentConnectivity;
+    sendConnectivityChangedEvent();
+  }
+}

@@ -1,0 +1,18 @@
+{
+  final Event setupEvent=new Event();
+  UiThreadUtil.runOnUiThread(new Runnable(){
+    @Override public void run(){
+      mInstance=ReactTestInstanceBuilder.super.build();
+      mBridgeIdleSignaler=new ReactBridgeIdleSignaler();
+      mInstance.addBridgeIdleDebugListener(mBridgeIdleSignaler);
+      getContext().initializeWithInstance(mInstance);
+      ApplicationHolder.setApplication((Application)getContext().getApplicationContext());
+      setupEvent.occur();
+    }
+  }
+);
+  if (!setupEvent.await(SETUP_TIMEOUT_MS)) {
+    throw new RuntimeException("Instance setup should take less than " + SETUP_TIMEOUT_MS + "ms");
+  }
+  return mInstance;
+}

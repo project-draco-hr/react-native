@@ -1,0 +1,5 @@
+{
+  WritableMap eventData=Arguments.createMap();
+  eventData.putDouble("drawerState",getDrawerState());
+  return eventData;
+}

@@ -1,0 +1,3 @@
+boolean isInForeground
+Bundle arguments
+Callback actionCallback

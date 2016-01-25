@@ -1,0 +1,4 @@
+ContentResolver resolver
+Cursor photos
+WritableMap response
+int limit

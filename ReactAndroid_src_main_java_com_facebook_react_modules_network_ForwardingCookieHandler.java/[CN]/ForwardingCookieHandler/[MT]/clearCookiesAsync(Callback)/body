@@ -1,0 +1,9 @@
+{
+  getCookieManager().removeAllCookies(new ValueCallback<Boolean>(){
+    @Override public void onReceiveValue(    Boolean value){
+      mCookieSaver.onCookiesModified();
+      callback.invoke(value);
+    }
+  }
+);
+}

@@ -1,0 +1,3 @@
+{
+  updateStagedInputTypeFlag(view,InputType.TYPE_TEXT_FLAG_AUTO_CORRECT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS,autoCorrect != null ? (autoCorrect.booleanValue() ? InputType.TYPE_TEXT_FLAG_AUTO_CORRECT : InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS) : 0);
+}

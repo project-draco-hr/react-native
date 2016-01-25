@@ -1,0 +1,31 @@
+def _parse_smap(file):
+    u'Given a file-like object, yield SmapState()s as they are read from it.'
+    smap = json.load(file)
+    sources = smap[u'sources']
+    names = smap[u'names']
+    mappings = smap[u'mappings']
+    lines = mappings.split(u';')
+    (dst_col, src_id, src_line, src_col, name_id) = (0, 0, 0, 0, 0)
+    for (dst_line, line) in enumerate(lines):
+        segments = line.split(u',')
+        dst_col = 0
+        for segment in segments:
+            if (not segment):
+                continue
+            parsed = _parse_vlq(segment)
+            dst_col += parsed[0]
+            src = None
+            name = None
+            if (len(parsed) > 1):
+                src_id += parsed[1]
+                src = sources[src_id]
+                src_line += parsed[2]
+                src_col += parsed[3]
+                if (len(parsed) > 4):
+                    name_id += parsed[4]
+                    name = names[name_id]
+            assert (dst_line >= 0)
+            assert (dst_col >= 0)
+            assert (src_line >= 0)
+            assert (src_col >= 0)
+            yield SmapState(dst_line, dst_col, src, src_line, src_col, name)

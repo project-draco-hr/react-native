@@ -1,0 +1,12 @@
+{
+  Activity activity=getCurrentActivity();
+  if (activity == null) {
+    return null;
+  }
+  if (activity instanceof FragmentActivity) {
+    return new FragmentManagerHelper(((FragmentActivity)activity).getSupportFragmentManager());
+  }
+ else {
+    return new FragmentManagerHelper(activity.getFragmentManager());
+  }
+}

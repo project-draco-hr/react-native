@@ -1,0 +1,4 @@
+{
+  mReactPicker=reactPicker;
+  mEventDispatcher=eventDispatcher;
+}

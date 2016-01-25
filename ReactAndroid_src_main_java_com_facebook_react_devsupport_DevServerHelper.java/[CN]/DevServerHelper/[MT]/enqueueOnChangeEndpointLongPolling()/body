@@ -1,0 +1,20 @@
+{
+  Request request=new Request.Builder().url(createOnChangeEndpointUrl()).tag(this).build();
+  Assertions.assertNotNull(mOnChangePollingClient).newCall(request).enqueue(new Callback(){
+    @Override public void onFailure(    Request request,    IOException e){
+      if (mOnChangePollingEnabled) {
+        FLog.d(ReactConstants.TAG,"Error while requesting /onchange endpoint",e);
+        mRestartOnChangePollingHandler.postDelayed(new Runnable(){
+          @Override public void run(){
+            handleOnChangePollingResponse(false);
+          }
+        }
+,LONG_POLL_FAILURE_DELAY_MS);
+      }
+    }
+    @Override public void onResponse(    Response response) throws IOException {
+      handleOnChangePollingResponse(response.code() == 205);
+    }
+  }
+);
+}

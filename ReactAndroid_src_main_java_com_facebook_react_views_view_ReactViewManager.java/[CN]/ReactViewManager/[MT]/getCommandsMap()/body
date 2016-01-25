@@ -1,0 +1,3 @@
+{
+  return MapBuilder.of("hotspotUpdate",CMD_HOTSPOT_UPDATE,"setPressed",CMD_SET_PRESSED);
+}

@@ -1,0 +1,15 @@
+{
+  if (transformArray != null) {
+    int matrixSize=PropHelper.toFloatArray(transformArray,sMatrixData);
+    if (matrixSize == 6) {
+      setupMatrix();
+    }
+ else     if (matrixSize != -1) {
+      throw new JSApplicationIllegalArgumentException("Transform matrices must be of size 6");
+    }
+  }
+ else {
+    mMatrix=null;
+  }
+  markUpdated();
+}

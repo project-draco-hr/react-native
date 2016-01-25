@@ -1,0 +1,3 @@
+{
+  mLifecycleEventListeners.remove(listener);
+}

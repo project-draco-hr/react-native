@@ -1,0 +1,3 @@
+{
+  mNativeViewHierarchyManager.manageChildren(mTag,mIndicesToRemove,mViewsToAdd,mTagsToDelete);
+}

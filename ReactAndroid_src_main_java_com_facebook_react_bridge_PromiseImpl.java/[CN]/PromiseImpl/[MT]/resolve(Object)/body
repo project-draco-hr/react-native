@@ -1,0 +1,5 @@
+{
+  if (mResolve != null) {
+    mResolve.invoke(value);
+  }
+}

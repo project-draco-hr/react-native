@@ -1,0 +1,38 @@
+{
+  int start=sb.length();
+  if (textCSSNode.mText != null) {
+    sb.append(textCSSNode.mText);
+  }
+  for (int i=0, length=textCSSNode.getChildCount(); i < length; i++) {
+    CSSNode child=textCSSNode.getChildAt(i);
+    if (child instanceof ReactTextShadowNode) {
+      buildSpannedFromTextCSSNode((ReactTextShadowNode)child,sb,ops);
+    }
+ else     if (child instanceof ReactTextInlineImageShadowNode) {
+      buildSpannedFromImageNode((ReactTextInlineImageShadowNode)child,sb,ops);
+    }
+ else {
+      throw new IllegalViewOperationException("Unexpected view type nested under text node: " + child.getClass());
+    }
+    ((ReactShadowNode)child).markUpdateSeen();
+  }
+  int end=sb.length();
+  if (end >= start) {
+    if (textCSSNode.mIsColorSet) {
+      ops.add(new SetSpanOperation(start,end,new ForegroundColorSpan(textCSSNode.mColor)));
+    }
+    if (textCSSNode.mIsBackgroundColorSet) {
+      ops.add(new SetSpanOperation(start,end,new BackgroundColorSpan(textCSSNode.mBackgroundColor)));
+    }
+    if (textCSSNode.mFontSize != UNSET) {
+      ops.add(new SetSpanOperation(start,end,new AbsoluteSizeSpan(textCSSNode.mFontSize)));
+    }
+    if (textCSSNode.mFontStyle != UNSET || textCSSNode.mFontWeight != UNSET || textCSSNode.mFontFamily != null) {
+      ops.add(new SetSpanOperation(start,end,new CustomStyleSpan(textCSSNode.mFontStyle,textCSSNode.mFontWeight,textCSSNode.mFontFamily,textCSSNode.getThemedContext().getAssets())));
+    }
+    if (textCSSNode.mTextShadowOffsetDx != 0 || textCSSNode.mTextShadowOffsetDy != 0) {
+      ops.add(new SetSpanOperation(start,end,new ShadowStyleSpan(textCSSNode.mTextShadowOffsetDx,textCSSNode.mTextShadowOffsetDy,textCSSNode.mTextShadowRadius,textCSSNode.mTextShadowColor)));
+    }
+    ops.add(new SetSpanOperation(start,end,new ReactTagSpan(textCSSNode.getReactTag())));
+  }
+}

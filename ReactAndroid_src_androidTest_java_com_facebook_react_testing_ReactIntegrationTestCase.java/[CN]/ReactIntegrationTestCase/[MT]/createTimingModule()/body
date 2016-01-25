@@ -1,0 +1,16 @@
+{
+  final SimpleSettableFuture<Timing> simpleSettableFuture=new SimpleSettableFuture<Timing>();
+  UiThreadUtil.runOnUiThread(new Runnable(){
+    @Override public void run(){
+      Timing timing=new Timing(getContext());
+      simpleSettableFuture.set(timing);
+    }
+  }
+);
+  try {
+    return simpleSettableFuture.get(5000,TimeUnit.MILLISECONDS);
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+}

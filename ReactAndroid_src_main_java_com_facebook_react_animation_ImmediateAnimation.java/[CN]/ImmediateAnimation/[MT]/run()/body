@@ -1,0 +1,4 @@
+{
+  onUpdate(1.0f);
+  finish();
+}

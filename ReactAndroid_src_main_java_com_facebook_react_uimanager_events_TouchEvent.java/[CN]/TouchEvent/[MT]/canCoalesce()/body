@@ -1,0 +1,12 @@
+{
+switch (Assertions.assertNotNull(mTouchEventType)) {
+case START:
+case END:
+case CANCEL:
+    return false;
+case MOVE:
+  return true;
+default :
+throw new RuntimeException("Unknown touch event type: " + mTouchEventType);
+}
+}

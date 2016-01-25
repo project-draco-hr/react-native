@@ -1,0 +1,3 @@
+{
+  setJustifyContent(justifyContent == null ? CSSJustify.FLEX_START : CSSJustify.valueOf(justifyContent.toUpperCase(Locale.US).replace("-","_")));
+}

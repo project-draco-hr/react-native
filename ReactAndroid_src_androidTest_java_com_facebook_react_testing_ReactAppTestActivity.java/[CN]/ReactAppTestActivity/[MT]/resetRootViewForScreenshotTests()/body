@@ -1,0 +1,9 @@
+{
+  if (mReactInstanceManager != null) {
+    mReactInstanceManager.onDestroy();
+    mReactInstanceManager=null;
+  }
+  mReactRootView=new ReactRootView(this);
+  mScreenshotingFrameLayout.removeAllViews();
+  mScreenshotingFrameLayout.addView(mReactRootView);
+}

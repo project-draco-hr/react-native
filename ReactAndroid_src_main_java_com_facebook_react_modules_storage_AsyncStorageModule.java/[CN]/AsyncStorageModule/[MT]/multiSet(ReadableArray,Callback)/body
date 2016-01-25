@@ -1,0 +1,61 @@
+{
+  if (keyValueArray.size() == 0) {
+    callback.invoke(AsyncStorageErrorUtil.getInvalidKeyError(null));
+    return;
+  }
+  new GuardedAsyncTask<Void,Void>(getReactApplicationContext()){
+    @Override protected void doInBackgroundGuarded(    Void... params){
+      if (!ensureDatabase()) {
+        callback.invoke(AsyncStorageErrorUtil.getDBError(null));
+        return;
+      }
+      String sql="INSERT OR REPLACE INTO " + TABLE_CATALYST + " VALUES (?, ?);";
+      SQLiteStatement statement=mReactDatabaseSupplier.get().compileStatement(sql);
+      WritableMap error=null;
+      try {
+        mReactDatabaseSupplier.get().beginTransaction();
+        for (int idx=0; idx < keyValueArray.size(); idx++) {
+          if (keyValueArray.getArray(idx).size() != 2) {
+            error=AsyncStorageErrorUtil.getInvalidValueError(null);
+            return;
+          }
+          if (keyValueArray.getArray(idx).getString(0) == null) {
+            error=AsyncStorageErrorUtil.getInvalidKeyError(null);
+            return;
+          }
+          if (keyValueArray.getArray(idx).getString(1) == null) {
+            error=AsyncStorageErrorUtil.getInvalidValueError(null);
+            return;
+          }
+          statement.clearBindings();
+          statement.bindString(1,keyValueArray.getArray(idx).getString(0));
+          statement.bindString(2,keyValueArray.getArray(idx).getString(1));
+          statement.execute();
+        }
+        mReactDatabaseSupplier.get().setTransactionSuccessful();
+      }
+ catch (      Exception e) {
+        FLog.w(ReactConstants.TAG,e.getMessage(),e);
+        error=AsyncStorageErrorUtil.getError(null,e.getMessage());
+      }
+ finally {
+        try {
+          mReactDatabaseSupplier.get().endTransaction();
+        }
+ catch (        Exception e) {
+          FLog.w(ReactConstants.TAG,e.getMessage(),e);
+          if (error == null) {
+            error=AsyncStorageErrorUtil.getError(null,e.getMessage());
+          }
+        }
+      }
+      if (error != null) {
+        callback.invoke(error);
+      }
+ else {
+        callback.invoke();
+      }
+    }
+  }
+.execute();
+}

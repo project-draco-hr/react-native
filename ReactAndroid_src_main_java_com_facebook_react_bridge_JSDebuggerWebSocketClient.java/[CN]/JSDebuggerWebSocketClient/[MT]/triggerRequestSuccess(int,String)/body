@@ -1,0 +1,7 @@
+{
+  JSDebuggerCallback callback=mCallbacks.get(requestID);
+  if (callback != null) {
+    mCallbacks.remove(requestID);
+    callback.onSuccess(response);
+  }
+}

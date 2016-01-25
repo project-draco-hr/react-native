@@ -1,0 +1,3 @@
+{
+  return uri != null && (UriUtil.isLocalContentUri(uri) || UriUtil.isLocalFileUri(uri));
+}

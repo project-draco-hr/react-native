@@ -1,0 +1,4 @@
+ThemedReactContext themedContext
+int viewReactTag
+String viewClassName
+ReactStylesDiffMap initialProps

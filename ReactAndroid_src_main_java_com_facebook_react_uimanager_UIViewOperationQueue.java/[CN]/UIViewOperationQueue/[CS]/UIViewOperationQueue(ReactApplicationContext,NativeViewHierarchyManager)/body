@@ -1,0 +1,6 @@
+{
+  mNativeViewHierarchyManager=nativeViewHierarchyManager;
+  mAnimationRegistry=nativeViewHierarchyManager.getAnimationRegistry();
+  mDispatchUIFrameCallback=new DispatchUIFrameCallback(reactContext);
+  mReactApplicationContext=reactContext;
+}

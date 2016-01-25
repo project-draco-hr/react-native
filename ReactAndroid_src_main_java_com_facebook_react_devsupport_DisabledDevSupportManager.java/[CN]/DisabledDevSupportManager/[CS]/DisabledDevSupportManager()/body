@@ -1,0 +1,3 @@
+{
+  mDefaultNativeModuleCallExceptionHandler=new DefaultNativeModuleCallExceptionHandler();
+}

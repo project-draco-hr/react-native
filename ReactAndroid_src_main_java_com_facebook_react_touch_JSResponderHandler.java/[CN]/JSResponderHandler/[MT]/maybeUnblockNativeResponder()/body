@@ -1,0 +1,6 @@
+{
+  if (mViewParentBlockingNativeResponder != null) {
+    mViewParentBlockingNativeResponder.requestDisallowInterceptTouchEvent(false);
+    mViewParentBlockingNativeResponder=null;
+  }
+}

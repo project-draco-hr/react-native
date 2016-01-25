@@ -1,0 +1,3 @@
+{
+  return !mShuttingDown && mReactDatabaseSupplier.ensureDatabase();
+}

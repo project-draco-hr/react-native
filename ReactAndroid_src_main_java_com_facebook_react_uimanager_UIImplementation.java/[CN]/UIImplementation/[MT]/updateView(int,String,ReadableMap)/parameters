@@ -1,0 +1,3 @@
+int tag
+String className
+ReadableMap props

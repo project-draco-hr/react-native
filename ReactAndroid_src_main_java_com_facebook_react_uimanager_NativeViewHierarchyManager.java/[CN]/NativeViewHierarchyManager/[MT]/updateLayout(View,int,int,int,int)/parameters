@@ -1,0 +1,5 @@
+View viewToUpdate
+int x
+int y
+int width
+int height

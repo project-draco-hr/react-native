@@ -1,0 +1,8 @@
+{
+  if (method.equals("POST") || method.equals("PUT") || method.equals("PATCH")) {
+    return RequestBody.create(null,ByteString.EMPTY);
+  }
+ else {
+    return null;
+  }
+}
