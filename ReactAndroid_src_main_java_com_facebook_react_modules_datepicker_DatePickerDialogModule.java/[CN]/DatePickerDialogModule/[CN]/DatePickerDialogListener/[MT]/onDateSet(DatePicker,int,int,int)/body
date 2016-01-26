@@ -1,0 +1,11 @@
+{
+  if (!mPromiseResolved && getReactApplicationContext().hasActiveCatalystInstance()) {
+    WritableMap result=new WritableNativeMap();
+    result.putString("action",ACTION_DATE_SET);
+    result.putInt("year",year);
+    result.putInt("month",month);
+    result.putInt("day",day);
+    mPromise.resolve(result);
+    mPromiseResolved=true;
+  }
+}

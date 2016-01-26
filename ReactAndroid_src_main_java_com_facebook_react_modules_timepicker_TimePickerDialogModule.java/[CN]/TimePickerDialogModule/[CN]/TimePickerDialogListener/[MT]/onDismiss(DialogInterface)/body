@@ -1,0 +1,8 @@
+{
+  if (!mPromiseResolved && getReactApplicationContext().hasActiveCatalystInstance()) {
+    WritableMap result=new WritableNativeMap();
+    result.putString("action",ACTION_DISMISSED);
+    mPromise.resolve(result);
+    mPromiseResolved=true;
+  }
+}

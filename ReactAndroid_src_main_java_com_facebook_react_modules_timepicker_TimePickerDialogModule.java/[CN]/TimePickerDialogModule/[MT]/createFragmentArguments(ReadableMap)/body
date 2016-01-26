@@ -1,0 +1,13 @@
+{
+  final Bundle args=new Bundle();
+  if (options.hasKey(ARG_HOUR) && !options.isNull(ARG_HOUR)) {
+    args.putInt(ARG_HOUR,options.getInt(ARG_HOUR));
+  }
+  if (options.hasKey(ARG_MINUTE) && !options.isNull(ARG_MINUTE)) {
+    args.putInt(ARG_MINUTE,options.getInt(ARG_MINUTE));
+  }
+  if (options.hasKey(ARG_IS24HOUR) && !options.isNull(ARG_IS24HOUR)) {
+    args.putBoolean(ARG_IS24HOUR,options.getBoolean(ARG_IS24HOUR));
+  }
+  return args;
+}

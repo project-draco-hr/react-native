@@ -5,7 +5,7 @@
     File pictures=Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
     pictures.mkdirs();
     if (!pictures.isDirectory()) {
-      mPromise.reject(ERROR_UNABLE_TO_LOAD,"External storage pictures directory not available",null);
+      mPromise.reject(ERROR_UNABLE_TO_LOAD,"External storage pictures directory not available");
       return;
     }
     File dest=new File(pictures,source.getName());
@@ -34,7 +34,7 @@
           mPromise.resolve(uri.toString());
         }
  else {
-          mPromise.reject(ERROR_UNABLE_TO_SAVE,"Could not add image to gallery",null);
+          mPromise.reject(ERROR_UNABLE_TO_SAVE,"Could not add image to gallery");
         }
       }
     }

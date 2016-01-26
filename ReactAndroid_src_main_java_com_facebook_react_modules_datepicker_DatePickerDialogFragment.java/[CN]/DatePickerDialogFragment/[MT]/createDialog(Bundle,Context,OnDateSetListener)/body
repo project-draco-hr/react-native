@@ -1,0 +1,31 @@
+{
+  final Calendar c=Calendar.getInstance();
+  if (args != null && args.containsKey(DatePickerDialogModule.ARG_DATE)) {
+    c.setTimeInMillis(args.getLong(DatePickerDialogModule.ARG_DATE));
+  }
+  final int year=c.get(Calendar.YEAR);
+  final int month=c.get(Calendar.MONTH);
+  final int day=c.get(Calendar.DAY_OF_MONTH);
+  final DatePickerDialog dialog=new DismissableDatePickerDialog(activityContext,onDateSetListener,year,month,day);
+  final DatePicker datePicker=dialog.getDatePicker();
+  if (args != null && args.containsKey(DatePickerDialogModule.ARG_MINDATE)) {
+    c.setTimeInMillis(args.getLong(DatePickerDialogModule.ARG_MINDATE));
+    c.set(Calendar.HOUR_OF_DAY,0);
+    c.set(Calendar.MINUTE,0);
+    c.set(Calendar.SECOND,0);
+    c.set(Calendar.MILLISECOND,0);
+    datePicker.setMinDate(c.getTimeInMillis());
+  }
+ else {
+    datePicker.setMinDate(DEFAULT_MIN_DATE);
+  }
+  if (args != null && args.containsKey(DatePickerDialogModule.ARG_MAXDATE)) {
+    c.setTimeInMillis(args.getLong(DatePickerDialogModule.ARG_MAXDATE));
+    c.set(Calendar.HOUR_OF_DAY,23);
+    c.set(Calendar.MINUTE,59);
+    c.set(Calendar.SECOND,59);
+    c.set(Calendar.MILLISECOND,999);
+    datePicker.setMaxDate(c.getTimeInMillis());
+  }
+  return dialog;
+}

@@ -1,0 +1,6 @@
+{
+  super.onDismiss(dialog);
+  if (mOnDismissListener != null) {
+    mOnDismissListener.onDismiss(dialog);
+  }
+}

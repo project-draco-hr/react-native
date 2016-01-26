@@ -19,7 +19,7 @@
       height=options.outHeight;
     }
  catch (    IOException e) {
-      FLog.e(TAG,"Could not get width/height for " + photoUri.toString(),e);
+      FLog.e(ReactConstants.TAG,"Could not get width/height for " + photoUri.toString(),e);
       return false;
     }
   }

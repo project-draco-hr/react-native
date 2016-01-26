@@ -1,0 +1,10 @@
+{
+  if (!mPromiseResolved && getReactApplicationContext().hasActiveCatalystInstance()) {
+    WritableMap result=new WritableNativeMap();
+    result.putString("action",ACTION_TIME_SET);
+    result.putInt("hour",hour);
+    result.putInt("minute",minute);
+    mPromise.resolve(result);
+    mPromiseResolved=true;
+  }
+}

@@ -5,7 +5,7 @@
     }
     WritableNativeMap errorInfo=new WritableNativeMap();
     errorInfo.putString("code",code);
-    errorInfo.putString("message",reason);
+    errorInfo.putString("message",message);
     mReject.invoke(errorInfo);
   }
 }

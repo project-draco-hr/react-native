@@ -1,0 +1,12 @@
+{
+  final Calendar now=Calendar.getInstance();
+  int hour=now.get(Calendar.HOUR_OF_DAY);
+  int minute=now.get(Calendar.MINUTE);
+  boolean is24hour=DateFormat.is24HourFormat(activityContext);
+  if (args != null) {
+    hour=args.getInt(TimePickerDialogModule.ARG_HOUR,now.get(Calendar.HOUR_OF_DAY));
+    minute=args.getInt(TimePickerDialogModule.ARG_MINUTE,now.get(Calendar.MINUTE));
+    is24hour=args.getBoolean(TimePickerDialogModule.ARG_IS24HOUR,DateFormat.is24HourFormat(activityContext));
+  }
+  return new DismissableTimePickerDialog(activityContext,onTimeSetListener,hour,minute,is24hour);
+}

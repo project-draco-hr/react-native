@@ -1,0 +1,13 @@
+{
+  final Bundle args=new Bundle();
+  if (options.hasKey(ARG_DATE) && !options.isNull(ARG_DATE)) {
+    args.putLong(ARG_DATE,(long)options.getDouble(ARG_DATE));
+  }
+  if (options.hasKey(ARG_MINDATE) && !options.isNull(ARG_MINDATE)) {
+    args.putLong(ARG_MINDATE,(long)options.getDouble(ARG_MINDATE));
+  }
+  if (options.hasKey(ARG_MAXDATE) && !options.isNull(ARG_MAXDATE)) {
+    args.putLong(ARG_MAXDATE,(long)options.getDouble(ARG_MAXDATE));
+  }
+  return args;
+}
