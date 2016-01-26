@@ -1,14 +1,15 @@
 {
   if (url == null || url.isEmpty()) {
-    throw new JSApplicationIllegalArgumentException("Invalid URL: " + url);
+    promise.reject(new JSApplicationIllegalArgumentException("Invalid URL: " + url));
+    return;
   }
   try {
     Intent intent=new Intent(Intent.ACTION_VIEW,Uri.parse(url));
     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
     boolean canOpen=intent.resolveActivity(getReactApplicationContext().getPackageManager()) != null;
-    callback.invoke(canOpen);
+    promise.resolve(canOpen);
   }
  catch (  Exception e) {
-    throw new JSApplicationIllegalArgumentException("Could not check if URL '" + url + "' can be opened: "+ e.getMessage());
+    promise.reject(new JSApplicationIllegalArgumentException("Could not check if URL '" + url + "' can be opened: "+ e.getMessage()));
   }
 }

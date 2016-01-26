@@ -10,9 +10,9 @@
         initialURL=uri.toString();
       }
     }
-    callback.invoke(initialURL);
+    promise.resolve(initialURL);
   }
  catch (  Exception e) {
-    throw new JSApplicationIllegalArgumentException("Could not get the initial URL : " + e.getMessage());
+    promise.reject(new JSApplicationIllegalArgumentException("Could not get the initial URL : " + e.getMessage()));
   }
 }
