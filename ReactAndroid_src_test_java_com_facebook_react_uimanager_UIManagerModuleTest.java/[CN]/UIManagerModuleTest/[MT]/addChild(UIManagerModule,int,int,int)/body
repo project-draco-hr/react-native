@@ -1,0 +1,3 @@
+{
+  uiManager.manageChildren(parentTag,null,null,SimpleArray.of(childTag),SimpleArray.of(index),null);
+}

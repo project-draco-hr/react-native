@@ -1,0 +1,18 @@
+{
+  mViewManager.updateProperties(null,buildStyles("intProp",13));
+  verify(mUpdatesReceiverMock).onIntSetterCalled(13);
+  verifyNoMoreInteractions(mUpdatesReceiverMock);
+  reset(mUpdatesReceiverMock);
+  mViewManager.updateProperties(null,buildStyles("intProp",null));
+  verify(mUpdatesReceiverMock).onIntSetterCalled(0);
+  verifyNoMoreInteractions(mUpdatesReceiverMock);
+  reset(mUpdatesReceiverMock);
+  mViewManager.updateProperties(null,buildStyles("intPropWithDefault",-1));
+  verify(mUpdatesReceiverMock).onIntSetterCalled(-1);
+  verifyNoMoreInteractions(mUpdatesReceiverMock);
+  reset(mUpdatesReceiverMock);
+  mViewManager.updateProperties(null,buildStyles("intPropWithDefault",null));
+  verify(mUpdatesReceiverMock).onIntSetterCalled(7168);
+  verifyNoMoreInteractions(mUpdatesReceiverMock);
+  reset(mUpdatesReceiverMock);
+}

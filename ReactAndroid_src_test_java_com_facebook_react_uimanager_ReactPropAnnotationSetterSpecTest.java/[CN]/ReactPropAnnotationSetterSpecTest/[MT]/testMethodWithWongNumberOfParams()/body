@@ -1,0 +1,7 @@
+{
+  new BaseViewManager(){
+    @ReactProp(name="prop") public void setterWithIncorrectNumberOfArgs(    View v,    boolean value,    boolean otherValue){
+    }
+  }
+.getNativeProps();
+}

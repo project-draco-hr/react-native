@@ -1,0 +1,10 @@
+{
+  mViewManager.updateProperties(null,buildStyles("stringProp","someRandomString"));
+  verify(mUpdatesReceiverMock).onStringSetterCalled("someRandomString");
+  verifyNoMoreInteractions(mUpdatesReceiverMock);
+  reset(mUpdatesReceiverMock);
+  mViewManager.updateProperties(null,buildStyles("stringProp",null));
+  verify(mUpdatesReceiverMock).onStringSetterCalled(null);
+  verifyNoMoreInteractions(mUpdatesReceiverMock);
+  reset(mUpdatesReceiverMock);
+}

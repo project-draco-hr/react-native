@@ -1,0 +1,4 @@
+{
+  mReactContext=new ReactApplicationContext(RuntimeEnvironment.application);
+  mUIImplementation=mock(UIImplementation.class);
+}

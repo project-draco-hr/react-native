@@ -1,0 +1,3 @@
+{
+  mViewManager.updateProperties(null,buildStyles("boxedIntProp",Double.valueOf(1)));
+}

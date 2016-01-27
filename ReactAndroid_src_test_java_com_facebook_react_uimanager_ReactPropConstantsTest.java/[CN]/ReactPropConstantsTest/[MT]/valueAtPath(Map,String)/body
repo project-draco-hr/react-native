@@ -1,0 +1,11 @@
+{
+  assertThat(keyPath).isNotEmpty();
+  Object value=nestedMap;
+  for (  String key : keyPath) {
+    assertThat(value).isInstanceOf(Map.class);
+    nestedMap=(Map)value;
+    assertThat(nestedMap).containsKey(key);
+    value=nestedMap.get(key);
+  }
+  return value;
+}

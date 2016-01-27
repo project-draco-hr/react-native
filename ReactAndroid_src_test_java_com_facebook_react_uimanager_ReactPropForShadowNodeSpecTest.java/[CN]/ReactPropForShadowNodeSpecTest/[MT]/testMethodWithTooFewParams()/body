@@ -1,0 +1,7 @@
+{
+  new BaseViewManager(new ReactShadowNode(){
+    @ReactProp(name="prop") public void setterWithNoArgs(){
+    }
+  }
+.getClass()).getNativeProps();
+}

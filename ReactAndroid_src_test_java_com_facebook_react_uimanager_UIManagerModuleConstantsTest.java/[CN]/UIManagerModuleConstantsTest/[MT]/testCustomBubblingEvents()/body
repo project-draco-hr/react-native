@@ -1,0 +1,8 @@
+{
+  ViewManager mockViewManager=mock(ViewManager.class);
+  List<ViewManager> viewManagers=Arrays.asList(mockViewManager);
+  when(mockViewManager.getExportedCustomBubblingEventTypeConstants()).thenReturn(MapBuilder.of("onTwirl",TWIRL_BUBBLING_EVENT_MAP));
+  UIManagerModule uiManagerModule=new UIManagerModule(mReactContext,viewManagers,mUIImplementation);
+  Map<String,Object> constants=uiManagerModule.getConstants();
+  assertThat((Map)constants.get(CUSTOM_BUBBLING_EVENT_TYPES)).contains(MapEntry.entry("onTwirl",TWIRL_BUBBLING_EVENT_MAP)).containsKey("topChange");
+}

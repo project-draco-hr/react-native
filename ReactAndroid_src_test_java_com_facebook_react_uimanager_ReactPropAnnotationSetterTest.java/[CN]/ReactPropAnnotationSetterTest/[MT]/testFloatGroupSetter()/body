@@ -1,0 +1,18 @@
+{
+  mViewManager.updateProperties(null,buildStyles("floatGroupPropFirst",11.0));
+  verify(mUpdatesReceiverMock).onFloatGroupPropSetterCalled(0,11.0f);
+  verifyNoMoreInteractions(mUpdatesReceiverMock);
+  reset(mUpdatesReceiverMock);
+  mViewManager.updateProperties(null,buildStyles("floatGroupPropSecond",-111.0));
+  verify(mUpdatesReceiverMock).onFloatGroupPropSetterCalled(1,-111.0f);
+  verifyNoMoreInteractions(mUpdatesReceiverMock);
+  reset(mUpdatesReceiverMock);
+  mViewManager.updateProperties(null,buildStyles("floatGroupPropSecond",null));
+  verify(mUpdatesReceiverMock).onFloatGroupPropSetterCalled(1,0.0f);
+  verifyNoMoreInteractions(mUpdatesReceiverMock);
+  reset(mUpdatesReceiverMock);
+  mViewManager.updateProperties(null,buildStyles("floatGroupPropWithDefaultFirst",null));
+  verify(mUpdatesReceiverMock).onFloatGroupPropSetterCalled(0,-100.0f);
+  verifyNoMoreInteractions(mUpdatesReceiverMock);
+  reset(mUpdatesReceiverMock);
+}

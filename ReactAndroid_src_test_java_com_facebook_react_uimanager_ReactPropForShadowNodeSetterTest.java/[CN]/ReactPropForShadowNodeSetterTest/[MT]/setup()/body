@@ -1,0 +1,4 @@
+{
+  mUpdatesReceiverMock=mock(ViewManagerUpdatesReceiver.class);
+  mShadowView=new ShadowViewUnderTest(mUpdatesReceiverMock);
+}

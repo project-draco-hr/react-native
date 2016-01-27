@@ -1,0 +1,5 @@
+{
+  Map<String,String> nativeProps=mManager.getNativeProps();
+  assertThat(nativeProps.get("foo")).isEqualTo("boolean");
+  assertThat(nativeProps.get("bar")).isEqualTo("Map");
+}

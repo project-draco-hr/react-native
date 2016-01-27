@@ -1,0 +1,37 @@
+{
+  DisplayMetrics displayMetrics=new DisplayMetrics();
+  displayMetrics.density=1.0f;
+  DisplayMetricsHolder.setDisplayMetrics(displayMetrics);
+  LayoutShadowNode reactShadowNode=spy(new LayoutShadowNode());
+  ReactStylesDiffMap map=buildStyles("width",10.0,"height",10.0,"left",10.0,"top",10.0,"flex",1.0,"padding",10.0,"marginLeft",10.0,"borderTopWidth",10.0,"flexDirection","row","alignSelf","stretch","alignItems","center","justifyContent","space_between","position","absolute");
+  reactShadowNode.updateProperties(map);
+  verify(reactShadowNode).setStyleWidth(10.f);
+  verify(reactShadowNode).setStyleHeight(10.f);
+  verify(reactShadowNode).setPositionLeft(10.f);
+  verify(reactShadowNode).setPositionTop(10.f);
+  verify(reactShadowNode).setFlex(1.0f);
+  verify(reactShadowNode).setPadding(Spacing.ALL,10.f);
+  verify(reactShadowNode).setMargin(Spacing.LEFT,10.f);
+  verify(reactShadowNode).setBorder(Spacing.TOP,10.f);
+  verify(reactShadowNode).setFlexDirection(CSSFlexDirection.ROW);
+  verify(reactShadowNode).setAlignSelf(CSSAlign.STRETCH);
+  verify(reactShadowNode).setAlignItems(CSSAlign.CENTER);
+  verify(reactShadowNode).setJustifyContent(CSSJustify.SPACE_BETWEEN);
+  verify(reactShadowNode).setPositionType(CSSPositionType.ABSOLUTE);
+  map=buildStyles("width",null,"height",null,"left",null,"top",null,"flex",null,"padding",null,"marginLeft",null,"borderTopWidth",null,"flexDirection",null,"alignSelf",null,"alignItems",null,"justifyContent",null,"position",null);
+  reset(reactShadowNode);
+  reactShadowNode.updateProperties(map);
+  verify(reactShadowNode).setStyleWidth(CSSConstants.UNDEFINED);
+  verify(reactShadowNode).setStyleHeight(CSSConstants.UNDEFINED);
+  verify(reactShadowNode).setPositionLeft(CSSConstants.UNDEFINED);
+  verify(reactShadowNode).setPositionTop(CSSConstants.UNDEFINED);
+  verify(reactShadowNode).setFlex(0.f);
+  verify(reactShadowNode).setPadding(Spacing.ALL,CSSConstants.UNDEFINED);
+  verify(reactShadowNode).setMargin(Spacing.LEFT,CSSConstants.UNDEFINED);
+  verify(reactShadowNode).setBorder(Spacing.TOP,CSSConstants.UNDEFINED);
+  verify(reactShadowNode).setFlexDirection(CSSFlexDirection.COLUMN);
+  verify(reactShadowNode).setAlignSelf(CSSAlign.AUTO);
+  verify(reactShadowNode).setAlignItems(CSSAlign.STRETCH);
+  verify(reactShadowNode).setJustifyContent(CSSJustify.FLEX_START);
+  verify(reactShadowNode).setPositionType(CSSPositionType.RELATIVE);
+}

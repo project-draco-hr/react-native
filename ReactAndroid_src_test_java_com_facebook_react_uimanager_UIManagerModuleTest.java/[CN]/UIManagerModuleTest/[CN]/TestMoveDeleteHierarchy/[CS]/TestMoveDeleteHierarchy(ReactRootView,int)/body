@@ -1,0 +1,10 @@
+{
+  this.nativeRootView=nativeRootView;
+  rootView=rootViewTag;
+  view0=rootView + 1;
+  viewWithChildren1=rootView + 2;
+  view2=rootView + 3;
+  view3=rootView + 4;
+  childView0=rootView + 5;
+  childView1=rootView + 6;
+}

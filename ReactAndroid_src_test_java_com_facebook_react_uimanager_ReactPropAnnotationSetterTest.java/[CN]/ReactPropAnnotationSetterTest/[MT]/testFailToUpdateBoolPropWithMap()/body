@@ -1,0 +1,3 @@
+{
+  mViewManager.updateProperties(null,buildStyles("boolProp",new SimpleMap()));
+}

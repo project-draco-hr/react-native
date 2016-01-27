@@ -1,0 +1,6 @@
+{
+  assertThat(parent.getChildCount()).isEqualTo(views.length);
+  for (int i=0; i < views.length; i++) {
+    assertThat(parent.getChildAt(i)).describedAs("View at " + i).isEqualTo(views[i]);
+  }
+}

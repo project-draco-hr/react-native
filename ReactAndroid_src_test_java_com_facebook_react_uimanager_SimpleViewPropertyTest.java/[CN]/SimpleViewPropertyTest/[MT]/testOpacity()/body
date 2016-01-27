@@ -1,0 +1,9 @@
+{
+  View view=mManager.createView(mThemedContext,new JSResponderHandler());
+  mManager.updateProperties(view,buildStyles());
+  assertThat(view.getAlpha()).isEqualTo(1.0f);
+  mManager.updateProperties(view,buildStyles("opacity",0.31));
+  assertThat(view.getAlpha()).isEqualTo(0.31f,offset(1e-5f));
+  mManager.updateProperties(view,buildStyles("opacity",null));
+  assertThat(view.getAlpha()).isEqualTo(1.0f);
+}

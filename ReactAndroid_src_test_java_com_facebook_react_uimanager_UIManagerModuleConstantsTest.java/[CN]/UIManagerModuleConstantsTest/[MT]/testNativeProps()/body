@@ -1,0 +1,9 @@
+{
+  ViewManager mockViewManager=mock(ViewManager.class);
+  List<ViewManager> viewManagers=Arrays.asList(mockViewManager);
+  when(mockViewManager.getName()).thenReturn("SomeView");
+  when(mockViewManager.getNativeProps()).thenReturn(MapBuilder.of("fooProp","number"));
+  UIManagerModule uiManagerModule=new UIManagerModule(mReactContext,viewManagers,mUIImplementation);
+  Map<String,Object> constants=uiManagerModule.getConstants();
+  assertThat((String)valueAtPath(constants,"SomeView","NativeProps","fooProp")).isEqualTo("number");
+}

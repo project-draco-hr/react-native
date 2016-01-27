@@ -1,0 +1,57 @@
+{
+  mockStatic(PixelUtil.class);
+  when(PixelUtil.toPixelFromDIP(anyFloat())).thenAnswer(new Answer(){
+    @Override public Float answer(    InvocationOnMock invocation) throws Throwable {
+      Object[] args=invocation.getArguments();
+      return (Float)args[0];
+    }
+  }
+);
+  LayoutShadowNode[] nodes=new LayoutShadowNode[7];
+  for (int idx=0; idx < nodes.length; idx++) {
+    nodes[idx]=new LayoutShadowNode();
+    nodes[idx].setDefaultPadding(Spacing.LEFT,15);
+    nodes[idx].setDefaultPadding(Spacing.TOP,25);
+    nodes[idx].setDefaultPadding(Spacing.RIGHT,35);
+    nodes[idx].setDefaultPadding(Spacing.BOTTOM,45);
+  }
+  ReactStylesDiffMap[] mapNodes=new ReactStylesDiffMap[7];
+  mapNodes[0]=buildStyles("paddingLeft",10.0,"paddingHorizontal",5.0);
+  mapNodes[1]=buildStyles("padding",10.0,"paddingTop",5.0);
+  mapNodes[2]=buildStyles("paddingLeft",10.0,"paddingVertical",5.0);
+  mapNodes[3]=buildStyles("paddingBottom",10.0,"paddingHorizontal",5.0);
+  mapNodes[4]=buildStyles("padding",null,"paddingTop",5.0);
+  mapNodes[5]=buildStyles("paddingRight",10.0,"paddingHorizontal",null,"paddingVertical",7.0);
+  mapNodes[6]=buildStyles("margin",5.0);
+  for (int idx=0; idx < nodes.length; idx++) {
+    nodes[idx].updateProperties(mapNodes[idx]);
+  }
+  assertEquals(10.0,nodes[0].getPadding().get(Spacing.LEFT),.0001);
+  assertEquals(25.0,nodes[0].getPadding().get(Spacing.TOP),.0001);
+  assertEquals(5.0,nodes[0].getPadding().get(Spacing.RIGHT),.0001);
+  assertEquals(45.0,nodes[0].getPadding().get(Spacing.BOTTOM),.0001);
+  assertEquals(10.0,nodes[1].getPadding().get(Spacing.LEFT),.0001);
+  assertEquals(5.0,nodes[1].getPadding().get(Spacing.TOP),.0001);
+  assertEquals(10.0,nodes[1].getPadding().get(Spacing.RIGHT),.0001);
+  assertEquals(10.0,nodes[1].getPadding().get(Spacing.BOTTOM),.0001);
+  assertEquals(10.0,nodes[2].getPadding().get(Spacing.LEFT),.0001);
+  assertEquals(5.0,nodes[2].getPadding().get(Spacing.TOP),.0001);
+  assertEquals(35.0,nodes[2].getPadding().get(Spacing.RIGHT),.0001);
+  assertEquals(5.0,nodes[2].getPadding().get(Spacing.BOTTOM),.0001);
+  assertEquals(5.0,nodes[3].getPadding().get(Spacing.LEFT),.0001);
+  assertEquals(25.0,nodes[3].getPadding().get(Spacing.TOP),.0001);
+  assertEquals(5.0,nodes[3].getPadding().get(Spacing.RIGHT),.0001);
+  assertEquals(10.0,nodes[3].getPadding().get(Spacing.BOTTOM),.0001);
+  assertEquals(15.0,nodes[4].getPadding().get(Spacing.LEFT),.0001);
+  assertEquals(5.0,nodes[4].getPadding().get(Spacing.TOP),.0001);
+  assertEquals(35.0,nodes[4].getPadding().get(Spacing.RIGHT),.0001);
+  assertEquals(45.0,nodes[4].getPadding().get(Spacing.BOTTOM),.0001);
+  assertEquals(15.0,nodes[5].getPadding().get(Spacing.LEFT),.0001);
+  assertEquals(7.0,nodes[5].getPadding().get(Spacing.TOP),.0001);
+  assertEquals(10.0,nodes[5].getPadding().get(Spacing.RIGHT),.0001);
+  assertEquals(7.0,nodes[5].getPadding().get(Spacing.BOTTOM),.0001);
+  assertEquals(15.0,nodes[6].getPadding().get(Spacing.LEFT),.0001);
+  assertEquals(25.0,nodes[6].getPadding().get(Spacing.TOP),.0001);
+  assertEquals(35.0,nodes[6].getPadding().get(Spacing.RIGHT),.0001);
+  assertEquals(45.0,nodes[6].getPadding().get(Spacing.BOTTOM),.0001);
+}

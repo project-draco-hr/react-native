@@ -1,0 +1,7 @@
+{
+  new BaseViewManager(){
+    @ReactProp(name="prop") public void setterWithUnsupportedValueType(    View v,    Date value){
+    }
+  }
+.getNativeProps();
+}

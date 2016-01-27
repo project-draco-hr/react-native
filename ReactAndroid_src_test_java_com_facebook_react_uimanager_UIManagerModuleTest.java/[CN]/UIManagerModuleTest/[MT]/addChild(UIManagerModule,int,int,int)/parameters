@@ -1,0 +1,4 @@
+UIManagerModule uiManager
+int parentTag
+int childTag
+int index

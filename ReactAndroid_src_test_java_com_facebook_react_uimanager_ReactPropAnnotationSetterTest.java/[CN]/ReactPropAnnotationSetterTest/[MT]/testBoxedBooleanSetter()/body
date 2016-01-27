@@ -1,0 +1,14 @@
+{
+  mViewManager.updateProperties(null,buildStyles("boxedBoolProp",true));
+  verify(mUpdatesReceiverMock).onBoxedBooleanSetterCalled(Boolean.TRUE);
+  verifyNoMoreInteractions(mUpdatesReceiverMock);
+  reset(mUpdatesReceiverMock);
+  mViewManager.updateProperties(null,buildStyles("boxedBoolProp",false));
+  verify(mUpdatesReceiverMock).onBoxedBooleanSetterCalled(Boolean.FALSE);
+  verifyNoMoreInteractions(mUpdatesReceiverMock);
+  reset(mUpdatesReceiverMock);
+  mViewManager.updateProperties(null,buildStyles("boxedBoolProp",null));
+  verify(mUpdatesReceiverMock).onBoxedBooleanSetterCalled(null);
+  verifyNoMoreInteractions(mUpdatesReceiverMock);
+  reset(mUpdatesReceiverMock);
+}

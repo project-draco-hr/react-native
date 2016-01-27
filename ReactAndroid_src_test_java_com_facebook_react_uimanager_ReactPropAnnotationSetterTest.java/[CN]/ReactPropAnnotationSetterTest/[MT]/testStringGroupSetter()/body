@@ -1,0 +1,14 @@
+{
+  mViewManager.updateProperties(null,buildStyles("boxedIntGroupPropFirst",-7));
+  verify(mUpdatesReceiverMock).onBoxedIntGroupPropSetterCalled(0,-7);
+  verifyNoMoreInteractions(mUpdatesReceiverMock);
+  reset(mUpdatesReceiverMock);
+  mViewManager.updateProperties(null,buildStyles("boxedIntGroupPropSecond",12345));
+  verify(mUpdatesReceiverMock).onBoxedIntGroupPropSetterCalled(1,12345);
+  verifyNoMoreInteractions(mUpdatesReceiverMock);
+  reset(mUpdatesReceiverMock);
+  mViewManager.updateProperties(null,buildStyles("boxedIntGroupPropSecond",null));
+  verify(mUpdatesReceiverMock).onBoxedIntGroupPropSetterCalled(1,null);
+  verifyNoMoreInteractions(mUpdatesReceiverMock);
+  reset(mUpdatesReceiverMock);
+}

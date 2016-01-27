@@ -1,0 +1,3 @@
+{
+  mViewManagerUpdatesReceiver.onIntGroupPropSetterCalled(index,value);
+}

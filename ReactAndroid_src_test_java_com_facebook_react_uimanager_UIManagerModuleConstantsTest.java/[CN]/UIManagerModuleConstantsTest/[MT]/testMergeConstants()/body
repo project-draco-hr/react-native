@@ -1,0 +1,14 @@
+{
+  ViewManager managerX=mock(ViewManager.class);
+  when(managerX.getExportedCustomDirectEventTypeConstants()).thenReturn(MapBuilder.of("onTwirl",MapBuilder.of("registrationName","onTwirl","keyToOverride","valueX","mapToMerge",MapBuilder.of("keyToOverride","innerValueX","anotherKey","valueX"))));
+  ViewManager managerY=mock(ViewManager.class);
+  when(managerY.getExportedCustomDirectEventTypeConstants()).thenReturn(MapBuilder.of("onTwirl",MapBuilder.of("extraKey","extraValue","keyToOverride","valueY","mapToMerge",MapBuilder.of("keyToOverride","innerValueY","extraKey","valueY"))));
+  List<ViewManager> viewManagers=Arrays.asList(managerX,managerY);
+  UIManagerModule uiManagerModule=new UIManagerModule(mReactContext,viewManagers,mUIImplementation);
+  Map<String,Object> constants=uiManagerModule.getConstants();
+  assertThat((Map)constants.get(CUSTOM_DIRECT_EVENT_TYPES)).containsKey("onTwirl");
+  Map twirlMap=(Map)valueAtPath(constants,CUSTOM_DIRECT_EVENT_TYPES,"onTwirl");
+  assertThat(twirlMap).contains(MapEntry.entry("registrationName","onTwirl")).contains(MapEntry.entry("keyToOverride","valueY")).contains(MapEntry.entry("extraKey","extraValue")).containsKey("mapToMerge");
+  Map mapToMerge=(Map)valueAtPath(twirlMap,"mapToMerge");
+  assertThat(mapToMerge).contains(MapEntry.entry("keyToOverride","innerValueY")).contains(MapEntry.entry("anotherKey","valueX")).contains(MapEntry.entry("extraKey","valueY"));
+}

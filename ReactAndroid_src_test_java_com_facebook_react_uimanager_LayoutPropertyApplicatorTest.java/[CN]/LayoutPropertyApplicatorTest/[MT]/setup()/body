@@ -1,0 +1,3 @@
+{
+  DisplayMetricsHolder.setDisplayMetrics(new DisplayMetrics());
+}

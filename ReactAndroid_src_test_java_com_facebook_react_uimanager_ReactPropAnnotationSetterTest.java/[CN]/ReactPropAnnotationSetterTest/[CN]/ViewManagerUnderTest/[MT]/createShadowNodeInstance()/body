@@ -1,0 +1,4 @@
+{
+  fail("This method should not be executed as a part of this test");
+  return null;
+}

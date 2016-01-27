@@ -1,0 +1,6 @@
+{
+  List<ViewManager> viewManagers=Arrays.asList(mock(ViewManager.class));
+  UIManagerModule uiManagerModule=new UIManagerModule(mReactContext,viewManagers,mUIImplementation);
+  Map<String,Object> constants=uiManagerModule.getConstants();
+  assertThat(constants).containsKey(CUSTOM_BUBBLING_EVENT_TYPES).containsKey(CUSTOM_DIRECT_EVENT_TYPES).containsKey("Dimensions");
+}

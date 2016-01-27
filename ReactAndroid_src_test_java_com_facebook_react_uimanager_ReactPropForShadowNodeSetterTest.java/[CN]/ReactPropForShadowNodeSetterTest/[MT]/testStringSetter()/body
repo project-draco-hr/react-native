@@ -1,0 +1,10 @@
+{
+  mShadowView.updateProperties(buildStyles("stringProp","someRandomString"));
+  verify(mUpdatesReceiverMock).onStringSetterCalled("someRandomString");
+  verifyNoMoreInteractions(mUpdatesReceiverMock);
+  reset(mUpdatesReceiverMock);
+  mShadowView.updateProperties(buildStyles("stringProp",null));
+  verify(mUpdatesReceiverMock).onStringSetterCalled(null);
+  verifyNoMoreInteractions(mUpdatesReceiverMock);
+  reset(mUpdatesReceiverMock);
+}

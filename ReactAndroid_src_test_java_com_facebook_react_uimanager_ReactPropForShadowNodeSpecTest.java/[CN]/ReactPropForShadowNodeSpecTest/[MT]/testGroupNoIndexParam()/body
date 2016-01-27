@@ -1,0 +1,7 @@
+{
+  new BaseViewManager(new ReactShadowNode(){
+    @ReactPropGroup(names={"prop1","prop2"}) public void setterWithTooManyParams(    float value,    boolean bool){
+    }
+  }
+.getClass()).getNativeProps();
+}

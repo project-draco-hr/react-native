@@ -1,0 +1,10 @@
+{
+  mViewManager.updateProperties(null,buildStyles("boxedIntProp",55));
+  verify(mUpdatesReceiverMock).onBoxedIntSetterCalled(Integer.valueOf(55));
+  verifyNoMoreInteractions(mUpdatesReceiverMock);
+  reset(mUpdatesReceiverMock);
+  mViewManager.updateProperties(null,buildStyles("boxedIntProp",null));
+  verify(mUpdatesReceiverMock).onBoxedIntSetterCalled(null);
+  verifyNoMoreInteractions(mUpdatesReceiverMock);
+  reset(mUpdatesReceiverMock);
+}

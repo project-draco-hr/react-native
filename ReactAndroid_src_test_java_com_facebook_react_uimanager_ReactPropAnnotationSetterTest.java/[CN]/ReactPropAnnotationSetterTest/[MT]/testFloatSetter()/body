@@ -1,0 +1,18 @@
+{
+  mViewManager.updateProperties(null,buildStyles("floatProp",13.0));
+  verify(mUpdatesReceiverMock).onFloatSetterCalled(13.0f);
+  verifyNoMoreInteractions(mUpdatesReceiverMock);
+  reset(mUpdatesReceiverMock);
+  mViewManager.updateProperties(null,buildStyles("floatProp",null));
+  verify(mUpdatesReceiverMock).onFloatSetterCalled(0.0f);
+  verifyNoMoreInteractions(mUpdatesReceiverMock);
+  reset(mUpdatesReceiverMock);
+  mViewManager.updateProperties(null,buildStyles("floatPropWithDefault",-1.0));
+  verify(mUpdatesReceiverMock).onFloatSetterCalled(-1.0f);
+  verifyNoMoreInteractions(mUpdatesReceiverMock);
+  reset(mUpdatesReceiverMock);
+  mViewManager.updateProperties(null,buildStyles("floatPropWithDefault",null));
+  verify(mUpdatesReceiverMock).onFloatSetterCalled(14.0f);
+  verifyNoMoreInteractions(mUpdatesReceiverMock);
+  reset(mUpdatesReceiverMock);
+}

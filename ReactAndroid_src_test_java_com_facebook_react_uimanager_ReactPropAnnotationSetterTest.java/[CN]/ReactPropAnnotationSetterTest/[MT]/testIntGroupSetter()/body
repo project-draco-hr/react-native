@@ -1,0 +1,26 @@
+{
+  mViewManager.updateProperties(null,buildStyles("intGroupPropFirst",-7));
+  verify(mUpdatesReceiverMock).onIntGroupPropSetterCalled(0,-7);
+  verifyNoMoreInteractions(mUpdatesReceiverMock);
+  reset(mUpdatesReceiverMock);
+  mViewManager.updateProperties(null,buildStyles("intGroupPropSecond",-77));
+  verify(mUpdatesReceiverMock).onIntGroupPropSetterCalled(1,-77);
+  verifyNoMoreInteractions(mUpdatesReceiverMock);
+  reset(mUpdatesReceiverMock);
+  mViewManager.updateProperties(null,buildStyles("intGroupPropSecond",null));
+  verify(mUpdatesReceiverMock).onIntGroupPropSetterCalled(1,0);
+  verifyNoMoreInteractions(mUpdatesReceiverMock);
+  reset(mUpdatesReceiverMock);
+  mViewManager.updateProperties(null,buildStyles("intGroupPropWithDefaultFirst",5));
+  verify(mUpdatesReceiverMock).onIntGroupPropSetterCalled(0,5);
+  verifyNoMoreInteractions(mUpdatesReceiverMock);
+  reset(mUpdatesReceiverMock);
+  mViewManager.updateProperties(null,buildStyles("intGroupPropWithDefaultFirst",null));
+  verify(mUpdatesReceiverMock).onIntGroupPropSetterCalled(0,555);
+  verifyNoMoreInteractions(mUpdatesReceiverMock);
+  reset(mUpdatesReceiverMock);
+  mViewManager.updateProperties(null,buildStyles("intGroupPropWithDefaultSecond",null));
+  verify(mUpdatesReceiverMock).onIntGroupPropSetterCalled(1,555);
+  verifyNoMoreInteractions(mUpdatesReceiverMock);
+  reset(mUpdatesReceiverMock);
+}

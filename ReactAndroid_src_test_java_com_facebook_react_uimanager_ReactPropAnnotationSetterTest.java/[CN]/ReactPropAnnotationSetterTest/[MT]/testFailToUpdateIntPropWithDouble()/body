@@ -1,0 +1,3 @@
+{
+  mViewManager.updateProperties(null,buildStyles("intProp",-7.4));
+}

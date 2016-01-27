@@ -1,0 +1,3 @@
+{
+  mViewManagerUpdatesReceiver.onDoubleSetterCalled(value);
+}

@@ -1,0 +1,6 @@
+{
+  List<ViewManager> viewManagers=Arrays.<ViewManager>asList(new ReactViewManager(),new ReactTextViewManager(),new ReactRawTextManager());
+  UIManagerModule uiManagerModule=new UIManagerModule(mReactContext,viewManagers,new UIImplementation(mReactContext,viewManagers));
+  uiManagerModule.onHostResume();
+  return uiManagerModule;
+}

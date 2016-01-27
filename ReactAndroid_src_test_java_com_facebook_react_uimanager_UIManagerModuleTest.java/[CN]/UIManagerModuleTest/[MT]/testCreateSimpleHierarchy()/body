@@ -1,0 +1,8 @@
+{
+  UIManagerModule uiManager=getUIManagerModule();
+  ViewGroup rootView=createSimpleTextHierarchy(uiManager,"Some text");
+  assertThat(rootView.getChildCount()).isEqualTo(1);
+  View firstChild=rootView.getChildAt(0);
+  assertThat(firstChild).isInstanceOf(TextView.class);
+  assertThat(((TextView)firstChild).getText().toString()).isEqualTo("Some text");
+}

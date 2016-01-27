@@ -1,0 +1,18 @@
+{
+  UIManagerModule uiManager=getUIManagerModule();
+  TestMoveDeleteHierarchy hierarchy=createMoveDeleteHierarchy(uiManager);
+  int textViewTag=1000;
+  uiManager.createView(textViewTag,ReactTextViewManager.REACT_CLASS,hierarchy.rootView,SimpleMap.of("collapsable",false));
+  View expectedViewAt0=hierarchy.nativeRootView.getChildAt(0);
+  View expectedViewAt1=hierarchy.nativeRootView.getChildAt(3);
+  View expectedViewAt3=hierarchy.nativeRootView.getChildAt(1);
+  View expectedViewAt4=hierarchy.nativeRootView.getChildAt(2);
+  uiManager.manageChildren(hierarchy.rootView,SimpleArray.of(1,2,3),SimpleArray.of(3,4,1),SimpleArray.of(textViewTag),SimpleArray.of(2),null);
+  uiManager.onBatchComplete();
+  executePendingChoreographerCallbacks();
+  assertThat(hierarchy.nativeRootView.getChildCount()).isEqualTo(5);
+  assertThat(hierarchy.nativeRootView.getChildAt(0)).isEqualTo(expectedViewAt0);
+  assertThat(hierarchy.nativeRootView.getChildAt(1)).isEqualTo(expectedViewAt1);
+  assertThat(hierarchy.nativeRootView.getChildAt(3)).isEqualTo(expectedViewAt3);
+  assertThat(hierarchy.nativeRootView.getChildAt(4)).isEqualTo(expectedViewAt4);
+}

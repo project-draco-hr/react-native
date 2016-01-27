@@ -1,0 +1,7 @@
+{
+  new BaseViewManager(){
+    @ReactProp(name="prop") public void setterWithNonViewParam(    Object v,    boolean value){
+    }
+  }
+.getNativeProps();
+}

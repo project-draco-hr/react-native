@@ -1,0 +1,24 @@
+{
+  LayoutShadowNode reactShadowNode=spy(new LayoutShadowNode());
+  ReactStylesDiffMap map=spy(buildStyles("width",10.0,"height",10.0,"left",10.0,"top",10.0));
+  reactShadowNode.updateProperties(map);
+  verify(reactShadowNode).setStyleWidth(anyFloat());
+  verify(map).getFloat(eq("width"),anyFloat());
+  verify(reactShadowNode).setStyleHeight(anyFloat());
+  verify(map).getFloat(eq("height"),anyFloat());
+  verify(reactShadowNode).setPositionLeft(anyFloat());
+  verify(map).getFloat(eq("left"),anyFloat());
+  verify(reactShadowNode).setPositionTop(anyFloat());
+  verify(map).getFloat(eq("top"),anyFloat());
+  reactShadowNode=spy(new LayoutShadowNode());
+  map=spy(buildStyles());
+  reactShadowNode.updateProperties(map);
+  verify(reactShadowNode,never()).setStyleWidth(anyFloat());
+  verify(map,never()).getFloat(eq("width"),anyFloat());
+  verify(reactShadowNode,never()).setStyleHeight(anyFloat());
+  verify(map,never()).getFloat(eq("height"),anyFloat());
+  verify(reactShadowNode,never()).setPositionLeft(anyFloat());
+  verify(map,never()).getFloat(eq("left"),anyFloat());
+  verify(reactShadowNode,never()).setPositionTop(anyFloat());
+  verify(map,never()).getFloat(eq("top"),anyFloat());
+}

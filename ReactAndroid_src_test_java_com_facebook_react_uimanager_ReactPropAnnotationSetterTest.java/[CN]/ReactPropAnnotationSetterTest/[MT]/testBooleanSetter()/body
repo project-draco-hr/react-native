@@ -1,0 +1,22 @@
+{
+  mViewManager.updateProperties(null,buildStyles("boolProp",true));
+  verify(mUpdatesReceiverMock).onBooleanSetterCalled(true);
+  verifyNoMoreInteractions(mUpdatesReceiverMock);
+  reset(mUpdatesReceiverMock);
+  mViewManager.updateProperties(null,buildStyles("boolProp",false));
+  verify(mUpdatesReceiverMock).onBooleanSetterCalled(false);
+  verifyNoMoreInteractions(mUpdatesReceiverMock);
+  reset(mUpdatesReceiverMock);
+  mViewManager.updateProperties(null,buildStyles("boolProp",null));
+  verify(mUpdatesReceiverMock).onBooleanSetterCalled(false);
+  verifyNoMoreInteractions(mUpdatesReceiverMock);
+  reset(mUpdatesReceiverMock);
+  mViewManager.updateProperties(null,buildStyles("boolPropWithDefault",false));
+  verify(mUpdatesReceiverMock).onBooleanSetterCalled(false);
+  verifyNoMoreInteractions(mUpdatesReceiverMock);
+  reset(mUpdatesReceiverMock);
+  mViewManager.updateProperties(null,buildStyles("boolPropWithDefault",null));
+  verify(mUpdatesReceiverMock).onBooleanSetterCalled(true);
+  verifyNoMoreInteractions(mUpdatesReceiverMock);
+  reset(mUpdatesReceiverMock);
+}

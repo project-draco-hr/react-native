@@ -1,0 +1,11 @@
+{
+  ReadableMap map=new SimpleMap();
+  mViewManager.updateProperties(null,buildStyles("mapProp",map));
+  verify(mUpdatesReceiverMock).onMapSetterCalled(map);
+  verifyNoMoreInteractions(mUpdatesReceiverMock);
+  reset(mUpdatesReceiverMock);
+  mViewManager.updateProperties(null,buildStyles("mapProp",null));
+  verify(mUpdatesReceiverMock).onMapSetterCalled(null);
+  verifyNoMoreInteractions(mUpdatesReceiverMock);
+  reset(mUpdatesReceiverMock);
+}

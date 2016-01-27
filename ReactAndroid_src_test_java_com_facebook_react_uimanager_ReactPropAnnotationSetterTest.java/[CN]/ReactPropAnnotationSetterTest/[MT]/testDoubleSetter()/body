@@ -1,0 +1,18 @@
+{
+  mViewManager.updateProperties(null,buildStyles("doubleProp",13.0));
+  verify(mUpdatesReceiverMock).onDoubleSetterCalled(13.0);
+  verifyNoMoreInteractions(mUpdatesReceiverMock);
+  reset(mUpdatesReceiverMock);
+  mViewManager.updateProperties(null,buildStyles("doubleProp",null));
+  verify(mUpdatesReceiverMock).onDoubleSetterCalled(0.0);
+  verifyNoMoreInteractions(mUpdatesReceiverMock);
+  reset(mUpdatesReceiverMock);
+  mViewManager.updateProperties(null,buildStyles("doublePropWithDefault",-1.0));
+  verify(mUpdatesReceiverMock).onDoubleSetterCalled(-1.0);
+  verifyNoMoreInteractions(mUpdatesReceiverMock);
+  reset(mUpdatesReceiverMock);
+  mViewManager.updateProperties(null,buildStyles("doublePropWithDefault",null));
+  verify(mUpdatesReceiverMock).onDoubleSetterCalled(-88.0);
+  verifyNoMoreInteractions(mUpdatesReceiverMock);
+  reset(mUpdatesReceiverMock);
+}

@@ -1,0 +1,18 @@
+{
+  LayoutShadowNode reactShadowNode=spy(new LayoutShadowNode());
+  ReactStylesDiffMap map=buildStyles("flexDirection","column","alignSelf","stretch","alignItems","center","justifyContent","space_between","position","relative");
+  reactShadowNode.updateProperties(map);
+  verify(reactShadowNode).setFlexDirection(CSSFlexDirection.COLUMN);
+  verify(reactShadowNode).setAlignSelf(CSSAlign.STRETCH);
+  verify(reactShadowNode).setAlignItems(CSSAlign.CENTER);
+  verify(reactShadowNode).setJustifyContent(CSSJustify.SPACE_BETWEEN);
+  verify(reactShadowNode).setPositionType(CSSPositionType.RELATIVE);
+  reactShadowNode=spy(new LayoutShadowNode());
+  map=buildStyles();
+  reactShadowNode.updateProperties(map);
+  verify(reactShadowNode,never()).setFlexDirection(any(CSSFlexDirection.class));
+  verify(reactShadowNode,never()).setAlignSelf(any(CSSAlign.class));
+  verify(reactShadowNode,never()).setAlignItems(any(CSSAlign.class));
+  verify(reactShadowNode,never()).setJustifyContent(any(CSSJustify.class));
+  verify(reactShadowNode,never()).setPositionType(any(CSSPositionType.class));
+}

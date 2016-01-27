@@ -1,0 +1,3 @@
+{
+  mViewManagerUpdatesReceiver.onBoxedIntSetterCalled(value);
+}

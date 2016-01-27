@@ -1,0 +1,12 @@
+{
+  LayoutShadowNode reactShadowNode=spy(new LayoutShadowNode());
+  ReactStylesDiffMap map=spy(buildStyles("flex",10.0));
+  reactShadowNode.updateProperties(map);
+  verify(reactShadowNode).setFlex(anyFloat());
+  verify(map).getFloat("flex",0.f);
+  reactShadowNode=spy(new LayoutShadowNode());
+  map=spy(buildStyles());
+  reactShadowNode.updateProperties(map);
+  verify(reactShadowNode,never()).setFlex(anyFloat());
+  verify(map,never()).getFloat("flex",0.f);
+}

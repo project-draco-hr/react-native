@@ -1,0 +1,7 @@
+{
+  mContext=new ReactApplicationContext(RuntimeEnvironment.application);
+  mCatalystInstanceMock=ReactTestHelper.createMockCatalystInstance();
+  mContext.initializeWithInstance(mCatalystInstanceMock);
+  mThemedContext=new ThemedReactContext(mContext,mContext);
+  mManager=new ConcreteViewManager();
+}

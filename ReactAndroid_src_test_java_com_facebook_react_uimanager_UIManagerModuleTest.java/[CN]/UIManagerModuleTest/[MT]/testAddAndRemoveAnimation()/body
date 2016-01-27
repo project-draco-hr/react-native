@@ -1,0 +1,17 @@
+{
+  UIManagerModule uiManagerModule=getUIManagerModule();
+  TestMoveDeleteHierarchy hierarchy=createMoveDeleteHierarchy(uiManagerModule);
+  AnimationPropertyUpdater mockPropertyUpdater=mock(AnimationPropertyUpdater.class);
+  Animation mockAnimation=spy(new AnimationStub(1000,mockPropertyUpdater));
+  Callback callbackMock=mock(Callback.class);
+  int rootTag=hierarchy.rootView;
+  uiManagerModule.createView(hierarchy.rootView,ReactViewManager.REACT_CLASS,rootTag,SimpleMap.of("collapsable",false));
+  uiManagerModule.registerAnimation(mockAnimation);
+  uiManagerModule.addAnimation(hierarchy.rootView,1000,callbackMock);
+  uiManagerModule.removeAnimation(hierarchy.rootView,1000);
+  uiManagerModule.onBatchComplete();
+  executePendingChoreographerCallbacks();
+  verify(callbackMock,times(1)).invoke(false);
+  verify(mockAnimation).run();
+  verify(mockAnimation).cancel();
+}

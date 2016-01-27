@@ -1,0 +1,11 @@
+{
+  ReadableArray array=new SimpleArray();
+  mViewManager.updateProperties(null,buildStyles("arrayProp",array));
+  verify(mUpdatesReceiverMock).onArraySetterCalled(array);
+  verifyNoMoreInteractions(mUpdatesReceiverMock);
+  reset(mUpdatesReceiverMock);
+  mViewManager.updateProperties(null,buildStyles("arrayProp",null));
+  verify(mUpdatesReceiverMock).onArraySetterCalled(null);
+  verifyNoMoreInteractions(mUpdatesReceiverMock);
+  reset(mUpdatesReceiverMock);
+}
