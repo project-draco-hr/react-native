@@ -1,0 +1,7 @@
+{
+  if (width <= 0 || height <= 0) {
+    throw new JSApplicationIllegalArgumentException(String.format("Invalid target size: [%d, %d]",width,height));
+  }
+  mTargetWidth=width;
+  mTargetHeight=height;
+}

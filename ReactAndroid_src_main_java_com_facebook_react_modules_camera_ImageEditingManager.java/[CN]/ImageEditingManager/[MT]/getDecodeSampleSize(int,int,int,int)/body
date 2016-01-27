@@ -1,0 +1,11 @@
+{
+  int inSampleSize=1;
+  if (height > targetWidth || width > targetHeight) {
+    int halfHeight=height / 2;
+    int halfWidth=width / 2;
+    while ((halfWidth / inSampleSize) >= targetWidth && (halfHeight / inSampleSize) >= targetHeight) {
+      inSampleSize*=2;
+    }
+  }
+  return inSampleSize;
+}

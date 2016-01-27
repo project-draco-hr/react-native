@@ -1,0 +1,3 @@
+{
+  new CleanTask(getReactApplicationContext()).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+}

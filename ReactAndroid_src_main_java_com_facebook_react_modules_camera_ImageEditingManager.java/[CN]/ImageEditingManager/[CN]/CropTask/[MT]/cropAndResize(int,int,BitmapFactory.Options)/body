@@ -1,0 +1,55 @@
+{
+  Assertions.assertNotNull(outOptions);
+  BitmapFactory.Options options=new BitmapFactory.Options();
+  options.inJustDecodeBounds=true;
+  InputStream inputStream=openBitmapInputStream();
+  try {
+    BitmapFactory.decodeStream(inputStream,null,options);
+  }
+  finally {
+    if (inputStream != null) {
+      inputStream.close();
+    }
+  }
+  float newWidth, newHeight, newX, newY, scale;
+  float cropRectRatio=mWidth / (float)mHeight;
+  float targetRatio=targetWidth / (float)targetHeight;
+  if (cropRectRatio > targetRatio) {
+    newWidth=mHeight * targetRatio;
+    newHeight=mHeight;
+    newX=mX + (mWidth - newWidth) / 2;
+    newY=mY;
+    scale=targetHeight / (float)mHeight;
+  }
+ else {
+    newWidth=mWidth;
+    newHeight=mWidth / targetRatio;
+    newX=mX;
+    newY=mY + (mHeight - newHeight) / 2;
+    scale=targetWidth / (float)mWidth;
+  }
+  outOptions.inSampleSize=getDecodeSampleSize(mWidth,mHeight,targetWidth,targetHeight);
+  options.inJustDecodeBounds=false;
+  inputStream=openBitmapInputStream();
+  Bitmap bitmap;
+  try {
+    bitmap=BitmapFactory.decodeStream(inputStream,null,outOptions);
+    if (bitmap == null) {
+      throw new IOException("Cannot decode bitmap: " + mUri);
+    }
+  }
+  finally {
+    if (inputStream != null) {
+      inputStream.close();
+    }
+  }
+  int cropX=(int)Math.floor(newX / (float)outOptions.inSampleSize);
+  int cropY=(int)Math.floor(newY / (float)outOptions.inSampleSize);
+  int cropWidth=(int)Math.floor(newWidth / (float)outOptions.inSampleSize);
+  int cropHeight=(int)Math.floor(newHeight / (float)outOptions.inSampleSize);
+  float cropScale=scale * outOptions.inSampleSize;
+  Matrix scaleMatrix=new Matrix();
+  scaleMatrix.setScale(cropScale,cropScale);
+  boolean filter=true;
+  return Bitmap.createBitmap(bitmap,cropX,cropY,cropWidth,cropHeight,scaleMatrix,filter);
+}

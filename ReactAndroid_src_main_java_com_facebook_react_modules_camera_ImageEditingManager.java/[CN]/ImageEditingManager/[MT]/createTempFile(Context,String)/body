@@ -1,0 +1,18 @@
+{
+  File externalCacheDir=context.getExternalCacheDir();
+  File internalCacheDir=context.getCacheDir();
+  File cacheDir;
+  if (externalCacheDir == null && externalCacheDir == null) {
+    throw new IOException("No cache directory available");
+  }
+  if (externalCacheDir == null) {
+    cacheDir=internalCacheDir;
+  }
+ else   if (internalCacheDir == null) {
+    cacheDir=externalCacheDir;
+  }
+ else {
+    cacheDir=externalCacheDir.getFreeSpace() > internalCacheDir.getFreeSpace() ? externalCacheDir : internalCacheDir;
+  }
+  return File.createTempFile(TEMP_FILE_PREFIX,getFileExtensionForType(mimeType),cacheDir);
+}

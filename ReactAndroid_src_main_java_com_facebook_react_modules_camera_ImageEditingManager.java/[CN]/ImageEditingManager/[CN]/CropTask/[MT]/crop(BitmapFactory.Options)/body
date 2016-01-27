@@ -1,0 +1,15 @@
+{
+  InputStream inputStream=openBitmapInputStream();
+  try {
+    Bitmap fullResolutionBitmap=BitmapFactory.decodeStream(inputStream,null,outOptions);
+    if (fullResolutionBitmap == null) {
+      throw new IOException("Cannot decode bitmap: " + mUri);
+    }
+    return Bitmap.createBitmap(fullResolutionBitmap,mX,mY,mWidth,mHeight);
+  }
+  finally {
+    if (inputStream != null) {
+      inputStream.close();
+    }
+  }
+}

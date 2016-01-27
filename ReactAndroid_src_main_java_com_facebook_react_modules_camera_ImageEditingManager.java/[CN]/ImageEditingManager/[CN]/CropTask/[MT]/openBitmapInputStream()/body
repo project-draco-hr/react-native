@@ -1,0 +1,14 @@
+{
+  InputStream stream;
+  if (isLocalUri(mUri)) {
+    stream=mContext.getContentResolver().openInputStream(Uri.parse(mUri));
+  }
+ else {
+    URLConnection connection=new URL(mUri).openConnection();
+    stream=connection.getInputStream();
+  }
+  if (stream == null) {
+    throw new IOException("Cannot open bitmap: " + mUri);
+  }
+  return stream;
+}

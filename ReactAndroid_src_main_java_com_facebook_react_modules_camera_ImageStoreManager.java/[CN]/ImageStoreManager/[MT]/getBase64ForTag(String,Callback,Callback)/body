@@ -1,0 +1,3 @@
+{
+  new GetBase64Task(getReactApplicationContext(),uri,success,error).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+}

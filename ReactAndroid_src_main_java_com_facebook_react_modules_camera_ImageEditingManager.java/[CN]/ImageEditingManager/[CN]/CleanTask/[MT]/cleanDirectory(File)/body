@@ -1,0 +1,13 @@
+{
+  File[] toDelete=directory.listFiles(new FilenameFilter(){
+    @Override public boolean accept(    File dir,    String filename){
+      return filename.startsWith(TEMP_FILE_PREFIX);
+    }
+  }
+);
+  if (toDelete != null) {
+    for (    File file : toDelete) {
+      file.delete();
+    }
+  }
+}

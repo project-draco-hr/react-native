@@ -1,0 +1,9 @@
+{
+  if ("image/png".equals(mimeType)) {
+    return ".png";
+  }
+  if ("image/webp".equals(mimeType)) {
+    return ".webp";
+  }
+  return ".jpg";
+}

@@ -1,0 +1,23 @@
+{
+  try {
+    BitmapFactory.Options outOptions=new BitmapFactory.Options();
+    boolean hasTargetSize=(mTargetWidth > 0) && (mTargetHeight > 0);
+    Bitmap cropped;
+    if (hasTargetSize) {
+      cropped=cropAndResize(mTargetWidth,mTargetHeight,outOptions);
+    }
+ else {
+      cropped=crop(outOptions);
+    }
+    String mimeType=outOptions.outMimeType;
+    if (mimeType == null || mimeType.isEmpty()) {
+      throw new IOException("Could not determine MIME type");
+    }
+    File tempFile=createTempFile(mContext,mimeType);
+    writeCompressedBitmapToFile(cropped,mimeType,tempFile);
+    mSuccess.invoke(Uri.fromFile(tempFile).toString());
+  }
+ catch (  Exception e) {
+    mError.invoke(e.getMessage());
+  }
+}

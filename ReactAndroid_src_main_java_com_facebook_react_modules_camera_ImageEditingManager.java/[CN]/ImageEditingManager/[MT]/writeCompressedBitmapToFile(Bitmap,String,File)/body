@@ -1,0 +1,11 @@
+{
+  OutputStream out=new FileOutputStream(tempFile);
+  try {
+    cropped.compress(getCompressFormatForType(mimeType),COMPRESS_QUALITY,out);
+  }
+  finally {
+    if (out != null) {
+      out.close();
+    }
+  }
+}

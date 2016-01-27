@@ -1,0 +1,7 @@
+{
+  cleanDirectory(mContext.getCacheDir());
+  File externalCacheDir=mContext.getExternalCacheDir();
+  if (externalCacheDir != null) {
+    cleanDirectory(externalCacheDir);
+  }
+}

@@ -1,0 +1,14 @@
+{
+  super(context);
+  if (x < 0 || y < 0 || width <= 0 || height <= 0) {
+    throw new JSApplicationIllegalArgumentException(String.format("Invalid crop rectangle: [%d, %d, %d, %d]",x,y,width,height));
+  }
+  mContext=context;
+  mUri=uri;
+  mX=x;
+  mY=y;
+  mWidth=width;
+  mHeight=height;
+  mSuccess=success;
+  mError=error;
+}

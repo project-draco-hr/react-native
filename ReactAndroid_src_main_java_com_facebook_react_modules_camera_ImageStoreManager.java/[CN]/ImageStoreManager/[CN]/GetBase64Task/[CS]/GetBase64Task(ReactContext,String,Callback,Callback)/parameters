@@ -1,0 +1,4 @@
+ReactContext reactContext
+String uri
+Callback success
+Callback error

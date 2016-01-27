@@ -1,0 +1,8 @@
+{
+  for (  String localPrefix : LOCAL_URI_PREFIXES) {
+    if (uri.startsWith(localPrefix)) {
+      return true;
+    }
+  }
+  return false;
+}

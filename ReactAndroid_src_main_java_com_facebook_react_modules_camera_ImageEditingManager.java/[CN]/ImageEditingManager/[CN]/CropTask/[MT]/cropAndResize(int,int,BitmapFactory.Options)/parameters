@@ -1,0 +1,3 @@
+int targetWidth
+int targetHeight
+BitmapFactory.Options outOptions

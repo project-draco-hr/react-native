@@ -1,0 +1,27 @@
+{
+  try {
+    ContentResolver contentResolver=getReactApplicationContext().getContentResolver();
+    Uri uri=Uri.parse(mUri);
+    InputStream is=contentResolver.openInputStream(uri);
+    ByteArrayOutputStream baos=new ByteArrayOutputStream();
+    Base64OutputStream b64os=new Base64OutputStream(baos,Base64.DEFAULT);
+    byte[] buffer=new byte[BUFFER_SIZE];
+    int bytesRead;
+    try {
+      while ((bytesRead=is.read(buffer)) > -1) {
+        b64os.write(buffer,0,bytesRead);
+      }
+      mSuccess.invoke(baos.toString());
+    }
+ catch (    IOException e) {
+      mError.invoke(e.getMessage());
+    }
+ finally {
+      closeQuietly(is);
+      closeQuietly(b64os);
+    }
+  }
+ catch (  FileNotFoundException e) {
+    mError.invoke(e.getMessage());
+  }
+}

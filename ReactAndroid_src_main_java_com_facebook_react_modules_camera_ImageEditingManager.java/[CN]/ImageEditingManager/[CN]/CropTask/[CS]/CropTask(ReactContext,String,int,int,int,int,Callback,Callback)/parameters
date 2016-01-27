@@ -1,0 +1,8 @@
+ReactContext context
+String uri
+int x
+int y
+int width
+int height
+Callback success
+Callback error

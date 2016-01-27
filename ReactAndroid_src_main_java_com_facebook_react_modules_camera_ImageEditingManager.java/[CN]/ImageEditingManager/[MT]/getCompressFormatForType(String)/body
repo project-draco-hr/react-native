@@ -1,0 +1,9 @@
+{
+  if ("image/png".equals(type)) {
+    return Bitmap.CompressFormat.PNG;
+  }
+  if ("image/webp".equals(type)) {
+    return Bitmap.CompressFormat.WEBP;
+  }
+  return Bitmap.CompressFormat.JPEG;
+}
