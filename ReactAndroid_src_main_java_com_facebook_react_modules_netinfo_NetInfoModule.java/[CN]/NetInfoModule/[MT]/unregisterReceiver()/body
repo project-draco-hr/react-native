@@ -1,3 +1,6 @@
 {
-  getReactApplicationContext().unregisterReceiver(mConnectivityBroadcastReceiver);
+  if (mConnectivityBroadcastReceiver.isRegistered()) {
+    getReactApplicationContext().unregisterReceiver(mConnectivityBroadcastReceiver);
+    mConnectivityBroadcastReceiver.setRegistered(false);
+  }
 }
