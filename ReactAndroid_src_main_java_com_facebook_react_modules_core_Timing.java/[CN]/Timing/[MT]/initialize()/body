@@ -2,5 +2,4 @@
   mReactChoreographer=ReactChoreographer.getInstance();
   mJSTimersModule=getReactApplicationContext().getCatalystInstance().getJSModule(JSTimersExecution.class);
   getReactApplicationContext().addLifecycleEventListener(this);
-  setChoreographerCallback();
 }
