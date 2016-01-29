@@ -5,7 +5,7 @@
     convertView=mInflater.inflate(layoutResId,parent,false);
   }
   TextView textView=(TextView)convertView;
-  textView.setText(item.getString("text"));
+  textView.setText(item.getString("label"));
   if (!isDropdown && mPrimaryTextColor != null) {
     textView.setTextColor(mPrimaryTextColor);
   }
