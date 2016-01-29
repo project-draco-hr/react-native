@@ -13,7 +13,7 @@
       }
     }
 );
-    registrationFuture.getOrThrow(5000,TimeUnit.MILLISECONDS);
+    registrationFuture.getOrThrow();
   }
   return mqt;
 }

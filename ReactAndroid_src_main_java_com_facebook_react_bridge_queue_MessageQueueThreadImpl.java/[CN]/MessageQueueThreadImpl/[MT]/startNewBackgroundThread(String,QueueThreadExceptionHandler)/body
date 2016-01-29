@@ -5,13 +5,13 @@
     @Override public void run(){
       Looper.prepare();
       looperFuture.set(Looper.myLooper());
-      MessageQueueThreadRegistry.register(mqtFuture.getOrThrow(5000,TimeUnit.MILLISECONDS));
+      MessageQueueThreadRegistry.register(mqtFuture.getOrThrow());
       Looper.loop();
     }
   }
 ,"mqt_" + name);
   bgThread.start();
-  Looper myLooper=looperFuture.getOrThrow(5000,TimeUnit.MILLISECONDS);
+  Looper myLooper=looperFuture.getOrThrow();
   MessageQueueThreadImpl mqt=new MessageQueueThreadImpl(name,myLooper,exceptionHandler);
   mqtFuture.set(mqt);
   return mqt;
