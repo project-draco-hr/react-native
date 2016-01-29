@@ -1,0 +1,7 @@
+{
+  Instrumentation inst=InstrumentationRegistry.getInstrumentation();
+  if (!(inst instanceof ReactTestFactory)) {
+    return new DefaultReactTestFactory();
+  }
+  return (ReactTestFactory)inst;
+}

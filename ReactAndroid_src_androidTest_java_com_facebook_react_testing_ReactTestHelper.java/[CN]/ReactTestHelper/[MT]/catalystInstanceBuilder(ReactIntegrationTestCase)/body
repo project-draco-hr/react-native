@@ -1,3 +1,27 @@
 {
-  return new ReactInstanceEasyBuilder(testCase);
+  final ReactTestFactory.ReactInstanceEasyBuilder builder=getReactTestFactory().getCatalystInstanceBuilder();
+  ReactTestFactory.ReactInstanceEasyBuilder postBuilder=new ReactTestFactory.ReactInstanceEasyBuilder(){
+    @Override public ReactTestFactory.ReactInstanceEasyBuilder setContext(    Context context){
+      builder.setContext(context);
+      return this;
+    }
+    @Override public ReactTestFactory.ReactInstanceEasyBuilder addNativeModule(    NativeModule module){
+      builder.addNativeModule(module);
+      return this;
+    }
+    @Override public ReactTestFactory.ReactInstanceEasyBuilder addJSModule(    Class moduleInterfaceClass){
+      builder.addJSModule(moduleInterfaceClass);
+      return this;
+    }
+    @Override public CatalystInstance build(){
+      CatalystInstance instance=builder.build();
+      testCase.initializeWithInstance(instance);
+      instance.runJSBundle();
+      testCase.waitForBridgeAndUIIdle();
+      return instance;
+    }
+  }
+;
+  postBuilder.setContext(testCase.getContext());
+  return postBuilder;
 }

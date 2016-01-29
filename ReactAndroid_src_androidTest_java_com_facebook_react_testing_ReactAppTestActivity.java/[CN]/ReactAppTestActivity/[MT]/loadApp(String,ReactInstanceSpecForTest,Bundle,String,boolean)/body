@@ -1,7 +1,7 @@
 {
   final CountDownLatch currentLayoutEvent=mLayoutEvent=new CountDownLatch(1);
   mBridgeIdleSignaler=new ReactBridgeIdleSignaler();
-  ReactInstanceManager.Builder builder=ReactInstanceManager.builder().setApplication(getApplication()).setBundleAssetName(bundleName).addPackage(spec.getAlternativeReactPackageForTest() != null ? spec.getAlternativeReactPackageForTest() : new MainReactPackage()).addPackage(new InstanceSpecForTestPackage(spec)).setUseDeveloperSupport(useDevSupport).setBridgeIdleDebugListener(mBridgeIdleSignaler).setInitialLifecycleState(mLifecycleState);
+  ReactInstanceManager.Builder builder=ReactTestHelper.getReactTestFactory().getReactInstanceManagerBuilder().setApplication(getApplication()).setBundleAssetName(bundleName).addPackage(spec.getAlternativeReactPackageForTest() != null ? spec.getAlternativeReactPackageForTest() : new MainReactPackage()).addPackage(new InstanceSpecForTestPackage(spec)).setUseDeveloperSupport(useDevSupport).setBridgeIdleDebugListener(mBridgeIdleSignaler).setInitialLifecycleState(mLifecycleState);
   mReactInstanceManager=builder.build();
   mReactInstanceManager.onResume(this,this);
   Assertions.assertNotNull(mReactRootView).getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener(){

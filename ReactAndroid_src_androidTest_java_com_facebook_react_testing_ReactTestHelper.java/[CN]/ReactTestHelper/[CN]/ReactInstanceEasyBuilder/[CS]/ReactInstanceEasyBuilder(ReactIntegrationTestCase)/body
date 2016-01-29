@@ -1,5 +1,0 @@
-{
-  mTestCase=testCase;
-  mNativeModuleRegistryBuilder=new NativeModuleRegistry.Builder();
-  mJSModulesConfigBuilder=new JavaScriptModulesConfig.Builder();
-}
