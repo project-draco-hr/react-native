@@ -1,3 +1,0 @@
-{
-  scrollView.scrollTo(data.mDestX,data.mDestY);
-}

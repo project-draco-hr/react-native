@@ -7,17 +7,11 @@ case COMMAND_SCROLL_TO:
 {
       int destX=Math.round(PixelUtil.toPixelFromDIP(args.getDouble(0)));
       int destY=Math.round(PixelUtil.toPixelFromDIP(args.getDouble(1)));
-      viewManager.scrollTo(scrollView,new ScrollToCommandData(destX,destY));
+      boolean animated=args.getBoolean(2);
+      viewManager.scrollTo(scrollView,new ScrollToCommandData(destX,destY,animated));
       return;
     }
-case COMMAND_SCROLL_WITHOUT_ANIMATION_TO:
-{
-    int destX=Math.round(PixelUtil.toPixelFromDIP(args.getDouble(0)));
-    int destY=Math.round(PixelUtil.toPixelFromDIP(args.getDouble(1)));
-    viewManager.scrollWithoutAnimationTo(scrollView,new ScrollToCommandData(destX,destY));
-    return;
-  }
 default :
-throw new IllegalArgumentException(String.format("Unsupported command %d received by %s.",commandType,viewManager.getClass().getSimpleName()));
+  throw new IllegalArgumentException(String.format("Unsupported command %d received by %s.",commandType,viewManager.getClass().getSimpleName()));
 }
 }
