@@ -1,0 +1,13 @@
+{
+  ReactEditText view=mManager.createViewInstance(mThemedContext);
+  mManager.updateProperties(view,buildStyles());
+  assertThat(view.isEnabled()).isTrue();
+  mManager.updateProperties(view,buildStyles("editable",false));
+  assertThat(view.isEnabled()).isFalse();
+  mManager.updateProperties(view,buildStyles("editable",null));
+  assertThat(view.isEnabled()).isTrue();
+  mManager.updateProperties(view,buildStyles("editable",false));
+  assertThat(view.isEnabled()).isFalse();
+  mManager.updateProperties(view,buildStyles("editable",true));
+  assertThat(view.isEnabled()).isTrue();
+}

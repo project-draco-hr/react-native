@@ -1,0 +1,15 @@
+{
+  ReactEditText view=mManager.createViewInstance(mThemedContext);
+  final ColorStateList defaultPlaceholderColorStateList=DefaultStyleValuesUtil.getDefaultTextColorHint(view.getContext());
+  ColorStateList colors=view.getHintTextColors();
+  assertThat(colors).isEqualTo(defaultPlaceholderColorStateList);
+  mManager.updateProperties(view,buildStyles("placeholderTextColor",null));
+  colors=view.getHintTextColors();
+  assertThat(colors).isEqualTo(defaultPlaceholderColorStateList);
+  mManager.updateProperties(view,buildStyles("placeholderTextColor",Color.RED));
+  colors=view.getHintTextColors();
+  assertThat(colors.getDefaultColor()).isEqualTo(Color.RED);
+  mManager.updateProperties(view,buildStyles("placeholderTextColor",null));
+  colors=view.getHintTextColors();
+  assertThat(colors).isEqualTo(defaultPlaceholderColorStateList);
+}

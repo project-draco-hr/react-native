@@ -1,0 +1,22 @@
+{
+  PowerMockito.mockStatic(Arguments.class);
+  PowerMockito.when(Arguments.createArray()).thenAnswer(new Answer<Object>(){
+    @Override public Object answer(    InvocationOnMock invocation) throws Throwable {
+      return new SimpleArray();
+    }
+  }
+);
+  PowerMockito.when(Arguments.createMap()).thenAnswer(new Answer<Object>(){
+    @Override public Object answer(    InvocationOnMock invocation) throws Throwable {
+      return new SimpleMap();
+    }
+  }
+);
+  mCatalystInstanceMock=ReactTestHelper.createMockCatalystInstance();
+  mReactContext=new ReactApplicationContext(RuntimeEnvironment.application);
+  mReactContext.initializeWithInstance(mCatalystInstanceMock);
+  DisplayMetrics displayMetrics=mReactContext.getResources().getDisplayMetrics();
+  DisplayMetricsHolder.setDisplayMetrics(displayMetrics);
+  UIManagerModule uiManagerModuleMock=mock(UIManagerModule.class);
+  when(mCatalystInstanceMock.getNativeModule(UIManagerModule.class)).thenReturn(uiManagerModuleMock);
+}

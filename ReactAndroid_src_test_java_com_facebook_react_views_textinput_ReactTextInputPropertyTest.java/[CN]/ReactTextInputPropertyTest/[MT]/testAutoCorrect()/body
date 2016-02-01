@@ -1,0 +1,15 @@
+{
+  ReactEditText view=mManager.createViewInstance(mThemedContext);
+  mManager.updateProperties(view,buildStyles());
+  assertThat(view.getInputType() & InputType.TYPE_TEXT_FLAG_AUTO_CORRECT).isZero();
+  assertThat(view.getInputType() & InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS).isZero();
+  mManager.updateProperties(view,buildStyles("autoCorrect",true));
+  assertThat(view.getInputType() & InputType.TYPE_TEXT_FLAG_AUTO_CORRECT).isNotZero();
+  assertThat(view.getInputType() & InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS).isZero();
+  mManager.updateProperties(view,buildStyles("autoCorrect",false));
+  assertThat(view.getInputType() & InputType.TYPE_TEXT_FLAG_AUTO_CORRECT).isZero();
+  assertThat(view.getInputType() & InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS).isNotZero();
+  mManager.updateProperties(view,buildStyles("autoCorrect",null));
+  assertThat(view.getInputType() & InputType.TYPE_TEXT_FLAG_AUTO_CORRECT).isZero();
+  assertThat(view.getInputType() & InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS).isZero();
+}

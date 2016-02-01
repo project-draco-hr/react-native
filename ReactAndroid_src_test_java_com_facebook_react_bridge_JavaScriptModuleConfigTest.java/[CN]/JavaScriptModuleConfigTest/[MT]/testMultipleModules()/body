@@ -1,0 +1,13 @@
+{
+  JavaScriptModulesConfig jsModulesConfig=new JavaScriptModulesConfig.Builder().add(OtherModule.class).add(SomeModule.class).build();
+  String json=getModuleDescriptions(jsModulesConfig);
+  JsonNode node=parse(json);
+  assertThat(node).hasSize(2);
+  JsonNode someModuleNode=node.get("SomeModule");
+  assertThat(someModuleNode).isNotNull();
+  int someModuleID=someModuleNode.get("moduleID").asInt();
+  JsonNode otherModuleNode=node.get("OtherModule");
+  assertThat(otherModuleNode).isNotNull();
+  int otherModuleID=otherModuleNode.get("moduleID").asInt();
+  assertThat(otherModuleID).isNotEqualTo(someModuleID);
+}

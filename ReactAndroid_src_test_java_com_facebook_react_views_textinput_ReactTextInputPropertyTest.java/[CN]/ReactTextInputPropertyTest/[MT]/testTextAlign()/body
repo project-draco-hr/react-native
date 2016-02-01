@@ -1,0 +1,15 @@
+{
+  ReactEditText view=mManager.createViewInstance(mThemedContext);
+  int gravity=view.getGravity();
+  assertThat(view.getGravity() & Gravity.BOTTOM).isNotEqualTo(Gravity.BOTTOM);
+  mManager.updateProperties(view,buildStyles("textAlignVertical","bottom"));
+  assertThat(view.getGravity() & Gravity.BOTTOM).isEqualTo(Gravity.BOTTOM);
+  mManager.updateProperties(view,buildStyles("textAlign","right","textAlignVertical","top"));
+  assertThat(view.getGravity() & Gravity.BOTTOM).isNotEqualTo(Gravity.BOTTOM);
+  assertThat(view.getGravity() & (Gravity.RIGHT | Gravity.TOP)).isEqualTo(Gravity.RIGHT | Gravity.TOP);
+  mManager.updateProperties(view,buildStyles("textAlignVertical",null));
+  assertThat(view.getGravity() & Gravity.RIGHT).isEqualTo(Gravity.RIGHT);
+  assertThat(view.getGravity() & Gravity.TOP).isNotEqualTo(Gravity.TOP);
+  mManager.updateProperties(view,buildStyles("textAlign",null));
+  assertThat(view.getGravity()).isEqualTo(gravity);
+}

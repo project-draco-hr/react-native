@@ -1,0 +1,28 @@
+{
+  ReactEditText view=mManager.createViewInstance(mThemedContext);
+  mManager.updateProperties(view,buildStyles());
+  assertThat(view.getInputType() & InputType.TYPE_CLASS_NUMBER).isZero();
+  assertThat(view.getInputType() & InputType.TYPE_TEXT_FLAG_MULTI_LINE).isZero();
+  assertThat(view.getInputType() & InputType.TYPE_TEXT_FLAG_AUTO_CORRECT).isZero();
+  assertThat(view.getInputType() & InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS).isZero();
+  mManager.updateProperties(view,buildStyles("multiline",true));
+  assertThat(view.getInputType() & InputType.TYPE_CLASS_NUMBER).isZero();
+  assertThat(view.getInputType() & InputType.TYPE_TEXT_FLAG_MULTI_LINE).isNotZero();
+  assertThat(view.getInputType() & InputType.TYPE_TEXT_FLAG_AUTO_CORRECT).isZero();
+  assertThat(view.getInputType() & InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS).isZero();
+  mManager.updateProperties(view,buildStyles("autoCorrect",false));
+  assertThat(view.getInputType() & InputType.TYPE_CLASS_NUMBER).isZero();
+  assertThat(view.getInputType() & InputType.TYPE_TEXT_FLAG_MULTI_LINE).isNotZero();
+  assertThat(view.getInputType() & InputType.TYPE_TEXT_FLAG_AUTO_CORRECT).isZero();
+  assertThat(view.getInputType() & InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS).isNotZero();
+  mManager.updateProperties(view,buildStyles("keyboardType","NUMERIC"));
+  assertThat(view.getInputType() & InputType.TYPE_CLASS_NUMBER).isNotZero();
+  assertThat(view.getInputType() & InputType.TYPE_TEXT_FLAG_MULTI_LINE).isNotZero();
+  assertThat(view.getInputType() & InputType.TYPE_TEXT_FLAG_AUTO_CORRECT).isZero();
+  assertThat(view.getInputType() & InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS).isNotZero();
+  mManager.updateProperties(view,buildStyles("multiline",null));
+  assertThat(view.getInputType() & InputType.TYPE_CLASS_NUMBER).isNotZero();
+  assertThat(view.getInputType() & InputType.TYPE_TEXT_FLAG_MULTI_LINE).isZero();
+  assertThat(view.getInputType() & InputType.TYPE_TEXT_FLAG_AUTO_CORRECT).isZero();
+  assertThat(view.getInputType() & InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS).isNotZero();
+}

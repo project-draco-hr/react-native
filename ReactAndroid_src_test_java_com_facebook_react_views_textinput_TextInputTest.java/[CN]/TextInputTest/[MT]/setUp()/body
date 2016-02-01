@@ -1,0 +1,19 @@
+{
+  PowerMockito.mockStatic(Arguments.class,ReactChoreographer.class);
+  ReactChoreographer choreographerMock=mock(ReactChoreographer.class);
+  PowerMockito.when(Arguments.createMap()).thenAnswer(new Answer<Object>(){
+    @Override public Object answer(    InvocationOnMock invocation) throws Throwable {
+      return new SimpleMap();
+    }
+  }
+);
+  PowerMockito.when(ReactChoreographer.getInstance()).thenReturn(choreographerMock);
+  mPendingChoreographerCallbacks=new ArrayList<>();
+  doAnswer(new Answer(){
+    @Override public Object answer(    InvocationOnMock invocation) throws Throwable {
+      mPendingChoreographerCallbacks.add((Choreographer.FrameCallback)invocation.getArguments()[1]);
+      return null;
+    }
+  }
+).when(choreographerMock).postFrameCallback(any(ReactChoreographer.CallbackType.class),any(Choreographer.FrameCallback.class));
+}

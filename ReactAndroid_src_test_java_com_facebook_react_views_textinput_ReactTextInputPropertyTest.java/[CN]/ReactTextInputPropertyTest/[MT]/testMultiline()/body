@@ -1,0 +1,11 @@
+{
+  ReactEditText view=mManager.createViewInstance(mThemedContext);
+  mManager.updateProperties(view,buildStyles());
+  assertThat(view.getInputType() & InputType.TYPE_TEXT_FLAG_MULTI_LINE).isZero();
+  mManager.updateProperties(view,buildStyles("multiline",false));
+  assertThat(view.getInputType() & InputType.TYPE_TEXT_FLAG_MULTI_LINE).isZero();
+  mManager.updateProperties(view,buildStyles("multiline",true));
+  assertThat(view.getInputType() & InputType.TYPE_TEXT_FLAG_MULTI_LINE).isNotZero();
+  mManager.updateProperties(view,buildStyles("multiline",null));
+  assertThat(view.getInputType() & InputType.TYPE_TEXT_FLAG_MULTI_LINE).isZero();
+}

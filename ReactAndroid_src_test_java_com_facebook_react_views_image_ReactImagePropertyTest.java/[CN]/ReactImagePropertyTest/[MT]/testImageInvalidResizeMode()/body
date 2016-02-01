@@ -1,0 +1,5 @@
+{
+  ReactImageManager viewManager=new ReactImageManager();
+  ReactImageView view=viewManager.createViewInstance(mThemeContext);
+  viewManager.updateProperties(view,buildStyles("resizeMode","pancakes"));
+}

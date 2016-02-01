@@ -1,0 +1,9 @@
+{
+  ReactImageManager viewManager=new ReactImageManager();
+  ReactImageView view=viewManager.createViewInstance(mThemeContext);
+  assertNull(view.getColorFilter());
+  viewManager.updateProperties(view,buildStyles("tintColor",Color.argb(50,0,0,255)));
+  assertNotNull(view.getColorFilter());
+  viewManager.updateProperties(view,buildStyles("tintColor",null));
+  assertNull(view.getColorFilter());
+}

@@ -1,0 +1,21 @@
+{
+  CompositeReactPackage composite=new CompositeReactPackage(packageNo1,packageNo2);
+  Class<? extends JavaScriptModule> moduleNo1=mock(JavaScriptModuleNo1.class).getClass();
+  Class<? extends JavaScriptModule> moduleNo2=mock(JavaScriptModuleNo2.class).getClass();
+  Class<? extends JavaScriptModule> moduleNo3=mock(JavaScriptModuleNo3.class).getClass();
+  List<Class<? extends JavaScriptModule>> l1=new ArrayList<>();
+  l1.add(moduleNo1);
+  when(packageNo1.createJSModules()).thenReturn(l1);
+  List<Class<? extends JavaScriptModule>> l2=new ArrayList<>();
+  l2.add(moduleNo2);
+  l2.add(moduleNo3);
+  when(packageNo2.createJSModules()).thenReturn(l2);
+  List<Class<? extends JavaScriptModule>> compositeModules=composite.createJSModules();
+  List<Class<? extends JavaScriptModule>> l3=new ArrayList<>();
+  l3.add(moduleNo1);
+  l3.add(moduleNo2);
+  l3.add(moduleNo3);
+  Set<Class<? extends JavaScriptModule>> expected=new HashSet<>(l3);
+  Set<Class<? extends JavaScriptModule>> actual=new HashSet<>(compositeModules);
+  assertEquals(expected,actual);
+}

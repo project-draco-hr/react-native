@@ -1,0 +1,3 @@
+{
+  return MapBuilder.<String,Object>of("testInt",4);
+}

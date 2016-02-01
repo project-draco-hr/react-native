@@ -1,0 +1,9 @@
+{
+  ReactEditText view=mManager.createViewInstance(mThemedContext);
+  mManager.updateProperties(view,buildStyles());
+  assertThat(view.getMinLines()).isEqualTo(1);
+  mManager.updateProperties(view,buildStyles("numberOfLines",5));
+  assertThat(view.getMinLines()).isEqualTo(5);
+  mManager.updateProperties(view,buildStyles("numberOfLines",4));
+  assertThat(view.getMinLines()).isEqualTo(4);
+}

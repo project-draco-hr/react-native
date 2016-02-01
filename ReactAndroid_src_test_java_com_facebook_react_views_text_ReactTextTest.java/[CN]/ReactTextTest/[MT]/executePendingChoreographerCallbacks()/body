@@ -1,0 +1,7 @@
+{
+  ArrayList<Choreographer.FrameCallback> callbacks=new ArrayList<>(mPendingChoreographerCallbacks);
+  mPendingChoreographerCallbacks.clear();
+  for (  Choreographer.FrameCallback frameCallback : callbacks) {
+    frameCallback.doFrame(0);
+  }
+}

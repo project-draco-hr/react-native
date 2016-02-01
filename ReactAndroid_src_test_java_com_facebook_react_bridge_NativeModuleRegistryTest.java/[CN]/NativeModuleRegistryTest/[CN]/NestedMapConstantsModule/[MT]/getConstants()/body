@@ -1,0 +1,3 @@
+{
+  return MapBuilder.<String,Object>of("nestedMap",MapBuilder.of("weNeedToGoDeeper",MapBuilder.of("evenDeeper",MapBuilder.of("inception",true))));
+}

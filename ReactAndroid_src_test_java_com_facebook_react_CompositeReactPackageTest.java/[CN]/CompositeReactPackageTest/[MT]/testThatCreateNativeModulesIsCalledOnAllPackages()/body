@@ -1,0 +1,7 @@
+{
+  CompositeReactPackage composite=new CompositeReactPackage(packageNo1,packageNo2,packageNo3);
+  composite.createNativeModules(reactContext);
+  verify(packageNo1).createNativeModules(reactContext);
+  verify(packageNo2).createNativeModules(reactContext);
+  verify(packageNo3).createNativeModules(reactContext);
+}

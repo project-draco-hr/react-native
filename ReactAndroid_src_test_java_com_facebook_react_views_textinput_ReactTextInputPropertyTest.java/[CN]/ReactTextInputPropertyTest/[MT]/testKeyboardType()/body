@@ -1,0 +1,13 @@
+{
+  ReactEditText view=mManager.createViewInstance(mThemedContext);
+  mManager.updateProperties(view,buildStyles());
+  assertThat(view.getInputType() & InputType.TYPE_CLASS_NUMBER).isZero();
+  mManager.updateProperties(view,buildStyles("keyboardType","text"));
+  assertThat(view.getInputType() & InputType.TYPE_CLASS_NUMBER).isZero();
+  mManager.updateProperties(view,buildStyles("keyboardType","numeric"));
+  assertThat(view.getInputType() & InputType.TYPE_CLASS_NUMBER).isNotZero();
+  mManager.updateProperties(view,buildStyles("keyboardType","email-address"));
+  assertThat(view.getInputType() & InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS).isNotZero();
+  mManager.updateProperties(view,buildStyles("keyboardType",null));
+  assertThat(view.getInputType() & InputType.TYPE_CLASS_NUMBER).isZero();
+}

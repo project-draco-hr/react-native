@@ -1,0 +1,7 @@
+{
+  CompositeReactPackage composite=new CompositeReactPackage(packageNo1,packageNo2,packageNo3);
+  composite.createJSModules();
+  verify(packageNo1).createJSModules();
+  verify(packageNo2).createJSModules();
+  verify(packageNo3).createJSModules();
+}

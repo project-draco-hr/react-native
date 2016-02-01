@@ -1,0 +1,7 @@
+{
+  CompositeReactPackage composite=new CompositeReactPackage(packageNo1,packageNo2,packageNo3);
+  composite.createViewManagers(reactContext);
+  verify(packageNo1).createViewManagers(reactContext);
+  verify(packageNo2).createViewManagers(reactContext);
+  verify(packageNo3).createViewManagers(reactContext);
+}

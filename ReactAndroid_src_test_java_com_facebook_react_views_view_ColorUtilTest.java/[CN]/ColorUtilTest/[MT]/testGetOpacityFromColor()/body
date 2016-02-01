@@ -1,0 +1,11 @@
+{
+  assertEquals(PixelFormat.TRANSPARENT,ColorUtil.getOpacityFromColor(0x00000000));
+  assertEquals(PixelFormat.TRANSPARENT,ColorUtil.getOpacityFromColor(0x00123456));
+  assertEquals(PixelFormat.TRANSPARENT,ColorUtil.getOpacityFromColor(0x00FFFFFF));
+  assertEquals(PixelFormat.TRANSLUCENT,ColorUtil.getOpacityFromColor(0xC0000000));
+  assertEquals(PixelFormat.TRANSLUCENT,ColorUtil.getOpacityFromColor(0xC0123456));
+  assertEquals(PixelFormat.TRANSLUCENT,ColorUtil.getOpacityFromColor(0xC0FFFFFF));
+  assertEquals(PixelFormat.OPAQUE,ColorUtil.getOpacityFromColor(0xFF000000));
+  assertEquals(PixelFormat.OPAQUE,ColorUtil.getOpacityFromColor(0xFF123456));
+  assertEquals(PixelFormat.OPAQUE,ColorUtil.getOpacityFromColor(0xFFFFFFFF));
+}

@@ -1,0 +1,6 @@
+{
+  Spanned text=(Spanned)textView.getText();
+  TSPAN[] spans=text.getSpans(0,text.length(),spanClass);
+  assertThat(spans).hasSize(1);
+  return spans[0];
+}

@@ -1,0 +1,9 @@
+{
+  ReactEditText view=mManager.createViewInstance(mThemedContext);
+  mManager.updateProperties(view,buildStyles());
+  assertThat(view.getHint()).isNull();
+  mManager.updateProperties(view,buildStyles("placeholder","sometext"));
+  assertThat(view.getHint()).isEqualTo("sometext");
+  mManager.updateProperties(view,buildStyles("placeholder",null));
+  assertThat(view.getHint()).isNull();
+}
