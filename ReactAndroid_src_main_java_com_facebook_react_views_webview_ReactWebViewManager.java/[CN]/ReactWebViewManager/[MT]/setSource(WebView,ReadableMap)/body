@@ -1,0 +1,22 @@
+{
+  if (source != null) {
+    if (source.hasKey("html")) {
+      view.loadData(source.getString("html"),HTML_MIME_TYPE,HTML_ENCODING);
+      return;
+    }
+    if (source.hasKey("uri")) {
+      HashMap<String,String> headerMap=new HashMap<>();
+      if (source.hasKey("headers")) {
+        ReadableMap headers=source.getMap("headers");
+        ReadableMapKeySetIterator iter=headers.keySetIterator();
+        while (iter.hasNextKey()) {
+          String key=iter.nextKey();
+          headerMap.put(key,headers.getString(key));
+        }
+      }
+      view.loadUrl(source.getString("uri"),headerMap);
+      return;
+    }
+  }
+  view.loadUrl(BLANK_URL);
+}

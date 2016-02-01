@@ -1,8 +1,0 @@
-{
-  if (html != null) {
-    view.loadData(html,HTML_MIME_TYPE,HTML_ENCODING);
-  }
- else {
-    view.loadUrl(BLANK_URL);
-  }
-}
