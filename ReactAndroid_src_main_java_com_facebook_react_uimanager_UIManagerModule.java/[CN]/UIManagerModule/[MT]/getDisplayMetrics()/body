@@ -1,0 +1,21 @@
+{
+  Context context=getReactApplicationContext();
+  DisplayMetrics displayMetrics=context.getResources().getDisplayMetrics();
+  WindowManager wm=(WindowManager)context.getSystemService(Context.WINDOW_SERVICE);
+  Display display=wm.getDefaultDisplay();
+  if (Build.VERSION.SDK_INT >= 17) {
+    display.getRealMetrics(displayMetrics);
+  }
+ else {
+    try {
+      Method mGetRawH=Display.class.getMethod("getRawHeight");
+      Method mGetRawW=Display.class.getMethod("getRawWidth");
+      displayMetrics.widthPixels=(Integer)mGetRawW.invoke(display);
+      displayMetrics.heightPixels=(Integer)mGetRawH.invoke(display);
+    }
+ catch (    InvocationTargetException|IllegalAccessException|NoSuchMethodException e) {
+      throw new RuntimeException("Error getting real dimensions for API level < 17",e);
+    }
+  }
+  return displayMetrics;
+}
