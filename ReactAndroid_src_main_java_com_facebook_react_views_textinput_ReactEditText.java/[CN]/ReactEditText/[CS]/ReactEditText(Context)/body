@@ -10,4 +10,5 @@
   mListeners=null;
   mTextWatcherDelegator=null;
   mStagedInputType=getInputType();
+  mKeyListener=new InternalKeyListener();
 }

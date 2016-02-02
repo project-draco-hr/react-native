@@ -1,4 +1,6 @@
 {
   super.setInputType(type);
   mStagedInputType=type;
+  mKeyListener.setInputType(type);
+  setKeyListener(mKeyListener);
 }
