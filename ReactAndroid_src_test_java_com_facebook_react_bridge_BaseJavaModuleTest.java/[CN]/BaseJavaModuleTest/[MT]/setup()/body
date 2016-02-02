@@ -1,0 +1,5 @@
+{
+  mMethods=new MethodsModule().getMethods();
+  PowerMockito.mockStatic(SoLoader.class);
+  mArguments=PowerMockito.mock(ReadableNativeArray.class);
+}
