@@ -1,0 +1,20 @@
+{
+  final Activity activity=getCurrentActivity();
+  if (activity == null) {
+    res.reject(ERROR_NO_ACTIVITY);
+    return;
+  }
+  UiThreadUtil.runOnUiThread(new Runnable(){
+    @Override public void run(){
+      if (hidden) {
+        mWindowFlags|=View.SYSTEM_UI_FLAG_FULLSCREEN;
+      }
+ else {
+        mWindowFlags&=~View.SYSTEM_UI_FLAG_FULLSCREEN;
+      }
+      activity.getWindow().getDecorView().setSystemUiVisibility(mWindowFlags);
+      res.resolve(null);
+    }
+  }
+);
+}
