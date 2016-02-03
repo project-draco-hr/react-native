@@ -1,0 +1,8 @@
+{
+  if (color == null) {
+    view.setHighlightColor(DefaultStyleValuesUtil.getDefaultTextColorHighlight(view.getContext()));
+  }
+ else {
+    view.setHighlightColor(color);
+  }
+}

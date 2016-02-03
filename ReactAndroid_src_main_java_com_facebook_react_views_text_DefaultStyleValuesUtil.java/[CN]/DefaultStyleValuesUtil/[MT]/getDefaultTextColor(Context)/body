@@ -1,14 +1,3 @@
 {
-  Resources.Theme theme=context.getTheme();
-  TypedArray textAppearances=null;
-  try {
-    textAppearances=theme.obtainStyledAttributes(new int[]{android.R.attr.textColor});
-    ColorStateList textColor=textAppearances.getColorStateList(0);
-    return textColor;
-  }
-  finally {
-    if (textAppearances != null) {
-      textAppearances.recycle();
-    }
-  }
+  return getDefaultTextAttribute(context,android.R.attr.textColor);
 }

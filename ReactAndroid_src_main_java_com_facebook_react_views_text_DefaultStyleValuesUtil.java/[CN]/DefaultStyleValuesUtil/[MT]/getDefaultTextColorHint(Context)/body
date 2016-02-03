@@ -1,14 +1,3 @@
 {
-  Resources.Theme theme=context.getTheme();
-  TypedArray textAppearances=null;
-  try {
-    textAppearances=theme.obtainStyledAttributes(new int[]{android.R.attr.textColorHint});
-    ColorStateList textColorHint=textAppearances.getColorStateList(0);
-    return textColorHint;
-  }
-  finally {
-    if (textAppearances != null) {
-      textAppearances.recycle();
-    }
-  }
+  return getDefaultTextAttribute(context,android.R.attr.textColorHint);
 }

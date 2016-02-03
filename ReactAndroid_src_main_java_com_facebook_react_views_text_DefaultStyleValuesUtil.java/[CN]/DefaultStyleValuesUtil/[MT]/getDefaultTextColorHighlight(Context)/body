@@ -1,0 +1,3 @@
+{
+  return getDefaultTextAttribute(context,android.R.attr.textColorHighlight).getDefaultColor();
+}
