@@ -1,6 +1,7 @@
 {
   Context context=getReactApplicationContext();
-  DisplayMetrics displayMetrics=context.getResources().getDisplayMetrics();
+  DisplayMetrics displayMetrics=new DisplayMetrics();
+  displayMetrics.setTo(context.getResources().getDisplayMetrics());
   WindowManager wm=(WindowManager)context.getSystemService(Context.WINDOW_SERVICE);
   Display display=wm.getDefaultDisplay();
   if (Build.VERSION.SDK_INT >= 17) {
