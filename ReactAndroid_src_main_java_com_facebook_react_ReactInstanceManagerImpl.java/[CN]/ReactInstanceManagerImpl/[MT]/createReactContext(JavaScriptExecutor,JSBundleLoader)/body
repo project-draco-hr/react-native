@@ -1,6 +1,6 @@
 {
   FLog.i(ReactConstants.TAG,"Creating react context.");
-  ReactMarker.logMarker("CREATE_REACT_CONTEXT_START");
+  ReactMarker.logMarker(CREATE_REACT_CONTEXT_START);
   mSourceUrl=jsBundleLoader.getSourceUrl();
   NativeModuleRegistry.Builder nativeRegistryBuilder=new NativeModuleRegistry.Builder();
   JavaScriptModulesConfig.Builder jsModulesBuilder=new JavaScriptModulesConfig.Builder();
@@ -8,6 +8,7 @@
   if (mUseDeveloperSupport) {
     reactContext.setNativeModuleCallExceptionHandler(mDevSupportManager);
   }
+  ReactMarker.logMarker(PROCESS_PACKAGES_START);
   Systrace.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"createAndProcessCoreModulesPackage");
   try {
     CoreModulesPackage coreModulesPackage=new CoreModulesPackage(this,mBackBtnHandler,mUIImplementationProvider);
@@ -25,6 +26,8 @@
       Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);
     }
   }
+  ReactMarker.logMarker(PROCESS_PACKAGES_END);
+  ReactMarker.logMarker(BUILD_NATIVE_MODULE_REGISTRY_START);
   Systrace.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"buildNativeModuleRegistry");
   NativeModuleRegistry nativeModuleRegistry;
   try {
@@ -32,7 +35,9 @@
   }
   finally {
     Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);
+    ReactMarker.logMarker(BUILD_NATIVE_MODULE_REGISTRY_END);
   }
+  ReactMarker.logMarker(BUILD_JS_MODULE_CONFIG_START);
   Systrace.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"buildJSModuleConfig");
   JavaScriptModulesConfig javaScriptModulesConfig;
   try {
@@ -40,9 +45,11 @@
   }
   finally {
     Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);
+    ReactMarker.logMarker(BUILD_JS_MODULE_CONFIG_END);
   }
   NativeModuleCallExceptionHandler exceptionHandler=mNativeModuleCallExceptionHandler != null ? mNativeModuleCallExceptionHandler : mDevSupportManager;
   CatalystInstanceImpl.Builder catalystInstanceBuilder=new CatalystInstanceImpl.Builder().setReactQueueConfigurationSpec(ReactQueueConfigurationSpec.createDefault()).setJSExecutor(jsExecutor).setRegistry(nativeModuleRegistry).setJSModulesConfig(javaScriptModulesConfig).setJSBundleLoader(jsBundleLoader).setNativeModuleCallExceptionHandler(exceptionHandler);
+  ReactMarker.logMarker(CREATE_CATALYST_INSTANCE_START);
   Systrace.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"createCatalystInstance");
   CatalystInstance catalystInstance;
   try {
@@ -50,18 +57,21 @@
   }
   finally {
     Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);
+    ReactMarker.logMarker(CREATE_CATALYST_INSTANCE_END);
   }
   if (mBridgeIdleDebugListener != null) {
     catalystInstance.addBridgeIdleDebugListener(mBridgeIdleDebugListener);
   }
   reactContext.initializeWithInstance(catalystInstance);
+  ReactMarker.logMarker(RUN_JS_BUNDLE_START);
   Systrace.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"runJSBundle");
   try {
     catalystInstance.runJSBundle();
   }
   finally {
     Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);
+    ReactMarker.logMarker(RUN_JS_BUNDLE_END);
   }
-  ReactMarker.logMarker("CREATE_REACT_CONTEXT_END");
+  ReactMarker.logMarker(CREATE_REACT_CONTEXT_END);
   return reactContext;
 }
