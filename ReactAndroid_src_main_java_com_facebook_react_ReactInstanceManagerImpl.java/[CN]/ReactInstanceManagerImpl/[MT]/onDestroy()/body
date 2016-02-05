@@ -1,5 +1,8 @@
 {
   UiThreadUtil.assertOnUiThread();
+  if (mReactContextInitAsyncTask != null) {
+    mReactContextInitAsyncTask.cancel(true);
+  }
   mMemoryPressureRouter.destroy(mApplicationContext);
   if (mUseDeveloperSupport) {
     mDevSupportManager.setDevSupportEnabled(false);

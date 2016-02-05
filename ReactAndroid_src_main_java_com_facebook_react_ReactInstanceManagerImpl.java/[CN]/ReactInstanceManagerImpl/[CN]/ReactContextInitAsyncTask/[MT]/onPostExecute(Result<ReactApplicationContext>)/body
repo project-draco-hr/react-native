@@ -6,7 +6,7 @@
     mDevSupportManager.handleException(e);
   }
  finally {
-    mIsContextInitAsyncTaskRunning=false;
+    mReactContextInitAsyncTask=null;
   }
   if (mPendingReactContextInitParams != null) {
     recreateReactContextInBackground(mPendingReactContextInitParams.getJsExecutorFactory(),mPendingReactContextInitParams.getJsBundleLoader());
