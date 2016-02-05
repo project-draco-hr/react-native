@@ -20,5 +20,13 @@
   if (options.hasKey(KEY_BUTTON_NEUTRAL)) {
     args.putString(AlertFragment.ARG_BUTTON_NEUTRAL,options.getString(KEY_BUTTON_NEUTRAL));
   }
+  if (options.hasKey(KEY_ITEMS)) {
+    ReadableArray items=options.getArray(KEY_ITEMS);
+    CharSequence[] itemsArray=new CharSequence[items.size()];
+    for (int i=0; i < items.size(); i++) {
+      itemsArray[i]=items.getString(i);
+    }
+    args.putCharSequenceArray(AlertFragment.ARG_ITEMS,itemsArray);
+  }
   fragmentManagerHelper.showNewAlert(mIsInForeground,args,actionCallback);
 }

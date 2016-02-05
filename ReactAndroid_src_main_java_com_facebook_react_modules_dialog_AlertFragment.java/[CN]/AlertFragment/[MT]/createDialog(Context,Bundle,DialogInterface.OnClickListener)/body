@@ -1,5 +1,5 @@
 {
-  AlertDialog.Builder builder=new AlertDialog.Builder(activityContext).setTitle(arguments.getString(ARG_TITLE)).setMessage(arguments.getString(ARG_MESSAGE));
+  AlertDialog.Builder builder=new AlertDialog.Builder(activityContext).setTitle(arguments.getString(ARG_TITLE));
   if (arguments.containsKey(ARG_BUTTON_POSITIVE)) {
     builder.setPositiveButton(arguments.getString(ARG_BUTTON_POSITIVE),fragment);
   }
@@ -8,6 +8,12 @@
   }
   if (arguments.containsKey(ARG_BUTTON_NEUTRAL)) {
     builder.setNeutralButton(arguments.getString(ARG_BUTTON_NEUTRAL),fragment);
+  }
+  if (arguments.containsKey(ARG_MESSAGE)) {
+    builder.setMessage(arguments.getString(ARG_MESSAGE));
+  }
+  if (arguments.containsKey(ARG_ITEMS)) {
+    builder.setItems(arguments.getCharSequenceArray(ARG_ITEMS),fragment);
   }
   return builder.create();
 }
