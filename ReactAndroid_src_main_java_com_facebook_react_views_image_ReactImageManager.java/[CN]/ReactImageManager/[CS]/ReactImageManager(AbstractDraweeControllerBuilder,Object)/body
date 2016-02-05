@@ -1,4 +1,5 @@
 {
   mDraweeControllerBuilder=draweeControllerBuilder;
   mCallerContext=callerContext;
+  mResourceDrawableIdHelper=new ResourceDrawableIdHelper();
 }

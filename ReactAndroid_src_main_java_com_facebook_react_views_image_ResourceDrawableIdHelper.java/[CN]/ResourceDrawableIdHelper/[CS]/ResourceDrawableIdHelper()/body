@@ -1,0 +1,3 @@
+{
+  mResourceDrawableIdMap=new HashMap<String,Integer>();
+}

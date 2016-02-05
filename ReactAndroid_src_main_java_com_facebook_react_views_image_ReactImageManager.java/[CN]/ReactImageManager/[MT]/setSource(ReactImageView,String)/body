@@ -1,3 +1,3 @@
 {
-  view.setSource(source);
+  view.setSource(source,mResourceDrawableIdHelper);
 }
