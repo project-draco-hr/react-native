@@ -1,0 +1,4 @@
+{
+  super.setUp();
+  ApplicationHolder.setApplication((Application)getContext().getApplicationContext());
+}

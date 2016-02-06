@@ -3,5 +3,4 @@
   mBridgeIdleSignaler=new ReactBridgeIdleSignaler();
   mInstance.addBridgeIdleDebugListener(mBridgeIdleSignaler);
   getContext().initializeWithInstance(mInstance);
-  ApplicationHolder.setApplication((Application)getContext().getApplicationContext());
 }
