@@ -2,4 +2,5 @@
   this.timeout=timeout;
   this.maximumAge=maximumAge;
   this.highAccuracy=highAccuracy;
+  this.distanceFilter=distanceFilter;
 }

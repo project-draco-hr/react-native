@@ -12,7 +12,7 @@
     }
     if (!provider.equals(mWatchedProvider)) {
       locationManager.removeUpdates(mLocationListener);
-      locationManager.requestLocationUpdates(provider,1000,0,mLocationListener);
+      locationManager.requestLocationUpdates(provider,1000,locationOptions.distanceFilter,mLocationListener);
     }
     mWatchedProvider=provider;
   }

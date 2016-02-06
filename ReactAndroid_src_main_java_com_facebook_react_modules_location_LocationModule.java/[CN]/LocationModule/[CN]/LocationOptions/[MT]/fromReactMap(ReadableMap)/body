@@ -2,5 +2,6 @@
   long timeout=map.hasKey("timeout") ? (long)map.getDouble("timeout") : Long.MAX_VALUE;
   double maximumAge=map.hasKey("maximumAge") ? map.getDouble("maximumAge") : Double.POSITIVE_INFINITY;
   boolean highAccuracy=map.hasKey("enableHighAccuracy") && map.getBoolean("enableHighAccuracy");
-  return new LocationOptions(timeout,maximumAge,highAccuracy);
+  float distanceFilter=map.hasKey("distanceFilter") ? (float)map.getDouble("distanceFilter") : RCT_DEFAULT_LOCATION_ACCURACY;
+  return new LocationOptions(timeout,maximumAge,highAccuracy,distanceFilter);
 }
