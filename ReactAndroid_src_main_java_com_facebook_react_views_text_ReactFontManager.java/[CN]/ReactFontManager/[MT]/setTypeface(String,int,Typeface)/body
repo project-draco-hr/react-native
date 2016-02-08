@@ -1,0 +1,10 @@
+{
+  if (typeface != null) {
+    FontFamily fontFamily=mFontCache.get(fontFamilyName);
+    if (fontFamily == null) {
+      fontFamily=new FontFamily();
+      mFontCache.put(fontFamilyName,fontFamily);
+    }
+    fontFamily.setTypeface(style,typeface);
+  }
+}
