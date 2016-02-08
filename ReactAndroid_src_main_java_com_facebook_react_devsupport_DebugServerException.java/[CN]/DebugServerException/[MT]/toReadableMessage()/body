@@ -1,3 +1,0 @@
-{
-  return description + "\n  at " + fileName+ ":"+ lineNumber+ ":"+ column;
-}
