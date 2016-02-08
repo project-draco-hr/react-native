@@ -1,3 +1,4 @@
 {
   mVisibleViewArea=new Rect();
+  mMinKeyboardHeightDetected=(int)PixelUtil.toPixelFromDIP(60);
 }

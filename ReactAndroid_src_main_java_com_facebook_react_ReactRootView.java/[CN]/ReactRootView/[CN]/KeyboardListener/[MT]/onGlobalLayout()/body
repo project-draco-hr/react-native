@@ -5,7 +5,7 @@
   }
   getRootView().getWindowVisibleDisplayFrame(mVisibleViewArea);
   final int heightDiff=DisplayMetricsHolder.getDisplayMetrics().heightPixels - mVisibleViewArea.bottom;
-  if (mKeyboardHeight != heightDiff && heightDiff > 0) {
+  if (mKeyboardHeight != heightDiff && heightDiff > mMinKeyboardHeightDetected) {
     mKeyboardHeight=heightDiff;
     WritableMap params=Arguments.createMap();
     WritableMap coordinates=Arguments.createMap();
@@ -16,8 +16,8 @@
     params.putMap("endCoordinates",coordinates);
     sendEvent("keyboardDidShow",params);
   }
- else   if (mKeyboardHeight != 0 && heightDiff == 0) {
-    mKeyboardHeight=heightDiff;
+ else   if (mKeyboardHeight != 0 && heightDiff <= mMinKeyboardHeightDetected) {
+    mKeyboardHeight=0;
     sendEvent("keyboardDidHide",null);
   }
 }
