@@ -3,9 +3,9 @@
     super.getOutline(outline);
     return;
   }
-  if (!CSSConstants.isUndefined(mBorderRadius) && mBorderRadius > 0) {
-    float extraRadiusFromBorderWidth=(mBorderWidth != null) ? mBorderWidth.get(Spacing.ALL) / 2f : 0;
-    outline.setRoundRect(getBounds(),mBorderRadius + extraRadiusFromBorderWidth);
+  if ((!CSSConstants.isUndefined(mBorderRadius) && mBorderRadius > 0) || mBorderCornerRadii != null) {
+    updatePath();
+    outline.setConvexPath(mPathForBorderRadiusOutline);
   }
  else {
     outline.setRect(getBounds());

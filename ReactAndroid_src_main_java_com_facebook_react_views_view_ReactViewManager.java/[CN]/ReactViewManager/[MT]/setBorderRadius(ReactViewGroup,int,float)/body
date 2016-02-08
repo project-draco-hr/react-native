@@ -1,0 +1,11 @@
+{
+  if (!CSSConstants.isUndefined(borderRadius)) {
+    borderRadius=PixelUtil.toPixelFromDIP(borderRadius);
+  }
+  if (index == 0) {
+    view.setBorderRadius(borderRadius);
+  }
+ else {
+    view.setBorderRadius(borderRadius,index - 1);
+  }
+}

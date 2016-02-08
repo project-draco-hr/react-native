@@ -1,6 +1,7 @@
 {
-  if (mBorderRadius != radius) {
+  if (!FloatUtil.floatsEqual(mBorderRadius,radius)) {
     mBorderRadius=radius;
+    mNeedUpdatePathForBorderRadius=true;
     invalidateSelf();
   }
 }

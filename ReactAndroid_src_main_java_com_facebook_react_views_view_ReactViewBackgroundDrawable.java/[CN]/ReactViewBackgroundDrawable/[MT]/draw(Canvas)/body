@@ -1,5 +1,5 @@
 {
-  if (!CSSConstants.isUndefined(mBorderRadius) && mBorderRadius > 0) {
+  if ((!CSSConstants.isUndefined(mBorderRadius) && mBorderRadius > 0) || mBorderCornerRadii != null) {
     drawRoundedBackgroundWithBorders(canvas);
   }
  else {

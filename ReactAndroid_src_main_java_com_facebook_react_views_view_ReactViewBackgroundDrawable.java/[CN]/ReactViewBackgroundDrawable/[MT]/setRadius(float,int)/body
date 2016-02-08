@@ -1,0 +1,11 @@
+{
+  if (mBorderCornerRadii == null) {
+    mBorderCornerRadii=new float[4];
+    Arrays.fill(mBorderCornerRadii,CSSConstants.UNDEFINED);
+  }
+  if (!FloatUtil.floatsEqual(mBorderCornerRadii[position],radius)) {
+    mBorderCornerRadii[position]=radius;
+    mNeedUpdatePathForBorderRadius=true;
+    invalidateSelf();
+  }
+}

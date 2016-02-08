@@ -1,2 +1,3 @@
 ReactViewGroup view
+int index
 float borderRadius
