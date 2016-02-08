@@ -1,4 +1,6 @@
 {
   mReactContext=new ReactApplicationContext(RuntimeEnvironment.application);
   mUIImplementation=mock(UIImplementation.class);
+  DisplayMetrics displayMetrics=mReactContext.getResources().getDisplayMetrics();
+  DisplayMetricsHolder.setDisplayMetrics(displayMetrics);
 }

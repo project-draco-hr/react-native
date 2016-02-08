@@ -10,7 +10,7 @@
   if (mWasMeasured && mIsAttachedToWindow) {
     mReactInstanceManager.attachMeasuredRootView(this);
     mIsAttachedToInstance=true;
-    getViewTreeObserver().addOnGlobalLayoutListener(mKeyboardListener);
+    getViewTreeObserver().addOnGlobalLayoutListener(getKeyboardListener());
   }
  else {
     mAttachScheduled=true;

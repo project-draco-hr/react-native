@@ -1,7 +1,7 @@
 {
   Systrace.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"CreateUIManagerConstants");
   try {
-    return UIManagerModuleConstantsHelper.createConstants(displayMetrics,viewManagerList);
+    return UIManagerModuleConstantsHelper.createConstants(viewManagerList);
   }
   finally {
     Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);

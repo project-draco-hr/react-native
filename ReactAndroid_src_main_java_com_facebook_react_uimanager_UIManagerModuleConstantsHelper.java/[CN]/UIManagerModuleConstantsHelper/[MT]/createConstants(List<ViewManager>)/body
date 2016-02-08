@@ -1,5 +1,5 @@
 {
-  Map<String,Object> constants=UIManagerModuleConstants.getConstants(displayMetrics);
+  Map<String,Object> constants=UIManagerModuleConstants.getConstants();
   Map bubblingEventTypesConstants=UIManagerModuleConstants.getBubblingEventTypeConstants();
   Map directEventTypesConstants=UIManagerModuleConstants.getDirectEventTypeConstants();
   for (  ViewManager viewManager : viewManagers) {

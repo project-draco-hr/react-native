@@ -1,6 +1,7 @@
 {
   initializeSoLoaderIfNecessary(applicationContext);
   ApplicationHolder.setApplication((Application)applicationContext.getApplicationContext());
+  setDisplayMetrics(applicationContext);
   mApplicationContext=applicationContext;
   mJSBundleFile=jsBundleFile;
   mJSMainModuleName=jsMainModuleName;

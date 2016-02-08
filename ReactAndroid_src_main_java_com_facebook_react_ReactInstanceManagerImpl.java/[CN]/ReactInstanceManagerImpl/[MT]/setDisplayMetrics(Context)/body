@@ -1,5 +1,4 @@
 {
-  Context context=getReactApplicationContext();
   DisplayMetrics displayMetrics=new DisplayMetrics();
   displayMetrics.setTo(context.getResources().getDisplayMetrics());
   WindowManager wm=(WindowManager)context.getSystemService(Context.WINDOW_SERVICE);
@@ -18,5 +17,5 @@
       throw new RuntimeException("Error getting real dimensions for API level < 17",e);
     }
   }
-  return displayMetrics;
+  DisplayMetricsHolder.setDisplayMetrics(displayMetrics);
 }
