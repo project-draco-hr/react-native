@@ -2,12 +2,12 @@
   ReactRootView rootView=new ReactRootView(mReactContext);
   int rootTag=uiManager.addMeasuredRootView(rootView);
   TestMoveDeleteHierarchy hierarchy=new TestMoveDeleteHierarchy(rootView,rootTag);
-  uiManager.createView(hierarchy.view0,ReactViewManager.REACT_CLASS,rootTag,SimpleMap.of("collapsable",false));
-  uiManager.createView(hierarchy.viewWithChildren1,ReactViewManager.REACT_CLASS,rootTag,SimpleMap.of("collapsable",false));
-  uiManager.createView(hierarchy.view2,ReactViewManager.REACT_CLASS,rootTag,SimpleMap.of("collapsable",false));
-  uiManager.createView(hierarchy.view3,ReactViewManager.REACT_CLASS,rootTag,SimpleMap.of("collapsable",false));
-  uiManager.createView(hierarchy.childView0,ReactViewManager.REACT_CLASS,rootTag,SimpleMap.of("collapsable",false));
-  uiManager.createView(hierarchy.childView1,ReactViewManager.REACT_CLASS,rootTag,SimpleMap.of("collapsable",false));
+  uiManager.createView(hierarchy.view0,ReactViewManager.REACT_CLASS,rootTag,JavaOnlyMap.of("collapsable",false));
+  uiManager.createView(hierarchy.viewWithChildren1,ReactViewManager.REACT_CLASS,rootTag,JavaOnlyMap.of("collapsable",false));
+  uiManager.createView(hierarchy.view2,ReactViewManager.REACT_CLASS,rootTag,JavaOnlyMap.of("collapsable",false));
+  uiManager.createView(hierarchy.view3,ReactViewManager.REACT_CLASS,rootTag,JavaOnlyMap.of("collapsable",false));
+  uiManager.createView(hierarchy.childView0,ReactViewManager.REACT_CLASS,rootTag,JavaOnlyMap.of("collapsable",false));
+  uiManager.createView(hierarchy.childView1,ReactViewManager.REACT_CLASS,rootTag,JavaOnlyMap.of("collapsable",false));
   addChild(uiManager,rootTag,hierarchy.view0,0);
   addChild(uiManager,rootTag,hierarchy.viewWithChildren1,1);
   addChild(uiManager,rootTag,hierarchy.view2,2);

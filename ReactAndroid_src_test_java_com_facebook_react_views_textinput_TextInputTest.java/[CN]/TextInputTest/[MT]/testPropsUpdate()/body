@@ -4,8 +4,8 @@
   int rootTag=uiManager.addMeasuredRootView(rootView);
   int textInputTag=rootTag + 1;
   final String hintStr="placeholder text";
-  uiManager.createView(textInputTag,ReactTextInputManager.REACT_CLASS,rootTag,SimpleMap.of(ViewProps.FONT_SIZE,13.37,ViewProps.HEIGHT,20.0,"placeholder",hintStr));
-  uiManager.manageChildren(rootTag,null,null,SimpleArray.of(textInputTag),SimpleArray.of(0),null);
+  uiManager.createView(textInputTag,ReactTextInputManager.REACT_CLASS,rootTag,JavaOnlyMap.of(ViewProps.FONT_SIZE,13.37,ViewProps.HEIGHT,20.0,"placeholder",hintStr));
+  uiManager.manageChildren(rootTag,null,null,JavaOnlyArray.of(textInputTag),JavaOnlyArray.of(0),null);
   uiManager.onBatchComplete();
   executePendingChoreographerCallbacks();
   EditText editText=(EditText)rootView.getChildAt(0);
@@ -13,7 +13,7 @@
   assertThat(editText.getTextSize()).isEqualTo((float)Math.ceil(13.37));
   assertThat(editText.getHeight()).isEqualTo(20);
   final String hintStr2="such hint";
-  uiManager.updateView(textInputTag,ReactTextInputManager.REACT_CLASS,SimpleMap.of(ViewProps.FONT_SIZE,26.74,ViewProps.HEIGHT,40.0,"placeholder",hintStr2));
+  uiManager.updateView(textInputTag,ReactTextInputManager.REACT_CLASS,JavaOnlyMap.of(ViewProps.FONT_SIZE,26.74,ViewProps.HEIGHT,40.0,"placeholder",hintStr2));
   uiManager.onBatchComplete();
   executePendingChoreographerCallbacks();
   EditText updatedEditText=(EditText)rootView.getChildAt(0);

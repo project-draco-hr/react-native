@@ -1,5 +1,5 @@
 {
-  final SimpleMap options=new SimpleMap();
+  final JavaOnlyMap options=new JavaOnlyMap();
   options.putString("buttonNeutral","Later");
   final SimpleCallback actionCallback=new SimpleCallback();
   mDialogModule.showAlert(options,null,actionCallback);

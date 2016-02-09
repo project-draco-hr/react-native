@@ -1,7 +1,7 @@
 {
   UIManagerModule uiManager=getUIManagerModule();
   TestMoveDeleteHierarchy hierarchy=createMoveDeleteHierarchy(uiManager);
-  uiManager.manageChildren(hierarchy.rootView,null,null,null,null,SimpleArray.of(3,3));
+  uiManager.manageChildren(hierarchy.rootView,null,null,null,null,JavaOnlyArray.of(3,3));
   uiManager.onBatchComplete();
   executePendingChoreographerCallbacks();
 }

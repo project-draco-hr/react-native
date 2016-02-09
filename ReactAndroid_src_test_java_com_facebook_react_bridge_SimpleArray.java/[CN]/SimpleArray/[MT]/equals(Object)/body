@@ -1,7 +1,0 @@
-{
-  if (this == o)   return true;
-  if (o == null || getClass() != o.getClass())   return false;
-  SimpleArray that=(SimpleArray)o;
-  if (mBackingList != null ? !mBackingList.equals(that.mBackingList) : that.mBackingList != null)   return false;
-  return true;
-}

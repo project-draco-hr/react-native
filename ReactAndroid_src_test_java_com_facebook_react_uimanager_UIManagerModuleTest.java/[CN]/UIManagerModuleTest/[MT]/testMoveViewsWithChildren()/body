@@ -5,7 +5,7 @@
   View expectedViewAt1=hierarchy.nativeRootView.getChildAt(2);
   View expectedViewAt2=hierarchy.nativeRootView.getChildAt(1);
   View expectedViewAt3=hierarchy.nativeRootView.getChildAt(3);
-  uiManager.manageChildren(hierarchy.rootView,SimpleArray.of(1,2),SimpleArray.of(2,1),null,null,null);
+  uiManager.manageChildren(hierarchy.rootView,JavaOnlyArray.of(1,2),JavaOnlyArray.of(2,1),null,null,null);
   uiManager.onBatchComplete();
   executePendingChoreographerCallbacks();
   assertChildrenAreExactly(hierarchy.nativeRootView,expectedViewAt0,expectedViewAt1,expectedViewAt2,expectedViewAt3);

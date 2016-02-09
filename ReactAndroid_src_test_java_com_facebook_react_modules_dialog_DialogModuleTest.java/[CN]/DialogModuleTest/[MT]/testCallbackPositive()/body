@@ -1,5 +1,5 @@
 {
-  final SimpleMap options=new SimpleMap();
+  final JavaOnlyMap options=new JavaOnlyMap();
   options.putString("buttonPositive","OK");
   final SimpleCallback actionCallback=new SimpleCallback();
   mDialogModule.showAlert(options,null,actionCallback);

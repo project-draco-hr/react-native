@@ -1,5 +1,5 @@
 {
-  ReadableMap map=new SimpleMap();
+  ReadableMap map=new JavaOnlyMap();
   mViewManager.updateProperties(null,buildStyles("mapProp",map));
   verify(mUpdatesReceiverMock).onMapSetterCalled(map);
   verifyNoMoreInteractions(mUpdatesReceiverMock);

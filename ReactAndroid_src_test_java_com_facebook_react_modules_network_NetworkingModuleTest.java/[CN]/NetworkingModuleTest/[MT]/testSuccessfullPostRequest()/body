@@ -8,9 +8,9 @@
   }
 );
   NetworkingModule networkingModule=new NetworkingModule(null,"",httpClient);
-  SimpleMap body=new SimpleMap();
+  JavaOnlyMap body=new JavaOnlyMap();
   body.putString("string","This is request body");
-  networkingModule.sendRequest("POST","http://somedomain/bar",0,SimpleArray.of(SimpleArray.of("Content-Type","text/plain")),body,true,0);
+  networkingModule.sendRequest("POST","http://somedomain/bar",0,JavaOnlyArray.of(JavaOnlyArray.of("Content-Type","text/plain")),body,true,0);
   ArgumentCaptor<Request> argumentCaptor=ArgumentCaptor.forClass(Request.class);
   verify(httpClient).newCall(argumentCaptor.capture());
   assertThat(argumentCaptor.getValue().urlString()).isEqualTo("http://somedomain/bar");

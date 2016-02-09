@@ -4,12 +4,12 @@
   int rootTag=uiManager.addMeasuredRootView(rootView);
   final int containerTag=rootTag + 1;
   final int containerSiblingTag=containerTag + 1;
-  uiManager.createView(containerTag,ReactViewManager.REACT_CLASS,rootTag,SimpleMap.of("collapsable",false));
-  uiManager.createView(containerSiblingTag,ReactViewManager.REACT_CLASS,rootTag,SimpleMap.of("collapsable",false));
+  uiManager.createView(containerTag,ReactViewManager.REACT_CLASS,rootTag,JavaOnlyMap.of("collapsable",false));
+  uiManager.createView(containerSiblingTag,ReactViewManager.REACT_CLASS,rootTag,JavaOnlyMap.of("collapsable",false));
   addChild(uiManager,rootTag,containerTag,0);
   addChild(uiManager,rootTag,containerSiblingTag,1);
-  uiManager.createView(containerTag + 2,ReactTextViewManager.REACT_CLASS,rootTag,SimpleMap.of("collapsable",false));
-  uiManager.createView(containerTag + 3,ReactTextViewManager.REACT_CLASS,rootTag,SimpleMap.of("collapsable",false));
+  uiManager.createView(containerTag + 2,ReactTextViewManager.REACT_CLASS,rootTag,JavaOnlyMap.of("collapsable",false));
+  uiManager.createView(containerTag + 3,ReactTextViewManager.REACT_CLASS,rootTag,JavaOnlyMap.of("collapsable",false));
   addChild(uiManager,containerTag,containerTag + 2,0);
   addChild(uiManager,containerTag,containerTag + 3,1);
   uiManager.onBatchComplete();

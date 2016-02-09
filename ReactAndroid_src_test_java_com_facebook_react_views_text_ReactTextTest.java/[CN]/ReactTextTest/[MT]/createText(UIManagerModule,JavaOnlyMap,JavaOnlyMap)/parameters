@@ -1,0 +1,3 @@
+UIManagerModule uiManager
+JavaOnlyMap textProps
+JavaOnlyMap rawTextProps

@@ -2,7 +2,7 @@
   PowerMockito.mockStatic(Arguments.class);
   when(Arguments.createArray()).thenAnswer(new Answer<Object>(){
     @Override public Object answer(    InvocationOnMock invocation) throws Throwable {
-      return new SimpleArray();
+      return new JavaOnlyArray();
     }
   }
 );

@@ -1,0 +1,13 @@
+{
+  ReactRootView rootView=new ReactRootView(RuntimeEnvironment.application);
+  int rootTag=uiManager.addMeasuredRootView(rootView);
+  int textTag=rootTag + 1;
+  int rawTextTag=textTag + 1;
+  uiManager.createView(textTag,ReactTextViewManager.REACT_CLASS,rootTag,textProps);
+  uiManager.createView(rawTextTag,ReactRawTextManager.REACT_CLASS,rootTag,rawTextProps);
+  uiManager.manageChildren(textTag,null,null,JavaOnlyArray.of(rawTextTag),JavaOnlyArray.of(0),null);
+  uiManager.manageChildren(rootTag,null,null,JavaOnlyArray.of(textTag),JavaOnlyArray.of(0),null);
+  uiManager.onBatchComplete();
+  executePendingChoreographerCallbacks();
+  return rootView;
+}

@@ -3,7 +3,7 @@
   ReactChoreographer choreographerMock=mock(ReactChoreographer.class);
   PowerMockito.when(Arguments.createMap()).thenAnswer(new Answer<Object>(){
     @Override public Object answer(    InvocationOnMock invocation) throws Throwable {
-      return new SimpleMap();
+      return new JavaOnlyMap();
     }
   }
 );

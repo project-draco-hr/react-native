@@ -4,8 +4,8 @@
   int rootTag=uiManager.addMeasuredRootView(rootView);
   int textInputTag=rootTag + 1;
   final String hintStr="placeholder text";
-  uiManager.createView(textInputTag,ReactTextInputManager.REACT_CLASS,rootTag,SimpleMap.of(ViewProps.FONT_SIZE,13.37,ViewProps.HEIGHT,20.0,"placeholder",hintStr));
-  uiManager.manageChildren(rootTag,null,null,SimpleArray.of(textInputTag),SimpleArray.of(0),null);
+  uiManager.createView(textInputTag,ReactTextInputManager.REACT_CLASS,rootTag,JavaOnlyMap.of(ViewProps.FONT_SIZE,13.37,ViewProps.HEIGHT,20.0,"placeholder",hintStr));
+  uiManager.manageChildren(rootTag,null,null,JavaOnlyArray.of(textInputTag),JavaOnlyArray.of(0),null);
   uiManager.onBatchComplete();
   executePendingChoreographerCallbacks();
   EditText editText=(EditText)rootView.getChildAt(0);

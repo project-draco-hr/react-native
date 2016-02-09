@@ -2,13 +2,13 @@
   PowerMockito.mockStatic(Arguments.class);
   Mockito.when(Arguments.createArray()).thenAnswer(new Answer<WritableArray>(){
     @Override public WritableArray answer(    InvocationOnMock invocation) throws Throwable {
-      return new SimpleArray();
+      return new JavaOnlyArray();
     }
   }
 );
   Mockito.when(Arguments.createMap()).thenAnswer(new Answer<WritableMap>(){
     @Override public WritableMap answer(    InvocationOnMock invocation) throws Throwable {
-      return new SimpleMap();
+      return new JavaOnlyMap();
     }
   }
 );

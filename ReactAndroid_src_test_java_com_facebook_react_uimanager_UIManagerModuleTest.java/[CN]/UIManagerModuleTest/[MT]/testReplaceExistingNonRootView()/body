@@ -2,7 +2,7 @@
   UIManagerModule uiManager=getUIManagerModule();
   TestMoveDeleteHierarchy hierarchy=createMoveDeleteHierarchy(uiManager);
   int newViewTag=1234;
-  uiManager.createView(newViewTag,ReactViewManager.REACT_CLASS,hierarchy.rootView,SimpleMap.of("backgroundColor",Color.RED));
+  uiManager.createView(newViewTag,ReactViewManager.REACT_CLASS,hierarchy.rootView,JavaOnlyMap.of("backgroundColor",Color.RED));
   uiManager.replaceExistingNonRootView(hierarchy.view2,newViewTag);
   uiManager.onBatchComplete();
   executePendingChoreographerCallbacks();

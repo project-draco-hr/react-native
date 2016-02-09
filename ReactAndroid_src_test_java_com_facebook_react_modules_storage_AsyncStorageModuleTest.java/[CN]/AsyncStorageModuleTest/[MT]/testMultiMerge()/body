@@ -5,11 +5,11 @@
   value.put("foo2",createJSONArray("val1","val2",3));
   value.put("foo3",1001);
   value.put("foo4",createJSONObject("key1","randomValueThatWillNeverBeUsed"));
-  mStorage.multiSet(SimpleArray.of(getArray(mergeKey,value.toString())),mock(Callback.class));
+  mStorage.multiSet(JavaOnlyArray.of(getArray(mergeKey,value.toString())),mock(Callback.class));
 {
     Callback callback=mock(Callback.class);
     mStorage.multiGet(getArray(mergeKey),callback);
-    Mockito.verify(callback,Mockito.times(1)).invoke(null,SimpleArray.of(getArray(mergeKey,value.toString())));
+    Mockito.verify(callback,Mockito.times(1)).invoke(null,JavaOnlyArray.of(getArray(mergeKey,value.toString())));
   }
   value.put("foo1",1001);
   value.put("foo2",createJSONObject("key1","val1"));
@@ -19,9 +19,9 @@
   newValue.put("foo2",createJSONObject("key2","val2"));
   JSONObject newValue2=new JSONObject();
   newValue2.put("foo2",createJSONObject("key1","val3"));
-  mStorage.multiMerge(SimpleArray.of(SimpleArray.of(mergeKey,value.toString()),SimpleArray.of(mergeKey,newValue.toString()),SimpleArray.of(mergeKey,newValue2.toString())),mock(Callback.class));
+  mStorage.multiMerge(JavaOnlyArray.of(JavaOnlyArray.of(mergeKey,value.toString()),JavaOnlyArray.of(mergeKey,newValue.toString()),JavaOnlyArray.of(mergeKey,newValue2.toString())),mock(Callback.class));
   value.put("foo2",createJSONObject("key1","val3","key2","val2"));
   Callback callback=mock(Callback.class);
   mStorage.multiGet(getArray(mergeKey),callback);
-  Mockito.verify(callback,Mockito.times(1)).invoke(null,SimpleArray.of(getArray(mergeKey,value.toString())));
+  Mockito.verify(callback,Mockito.times(1)).invoke(null,JavaOnlyArray.of(getArray(mergeKey,value.toString())));
 }

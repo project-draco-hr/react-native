@@ -4,9 +4,9 @@
   when(context.getJSModule(any(Class.class))).thenReturn(emitter);
   OkHttpClient httpClient=mock(OkHttpClient.class);
   NetworkingModule networkingModule=new NetworkingModule(context,"",httpClient);
-  SimpleMap body=new SimpleMap();
+  JavaOnlyMap body=new JavaOnlyMap();
   body.putString("string","This is request body");
   mockEvents();
-  networkingModule.sendRequest("POST","http://somedomain/bar",0,SimpleArray.of(),body,true,0);
+  networkingModule.sendRequest("POST","http://somedomain/bar",0,JavaOnlyArray.of(),body,true,0);
   verifyErrorEmit(emitter,0);
 }

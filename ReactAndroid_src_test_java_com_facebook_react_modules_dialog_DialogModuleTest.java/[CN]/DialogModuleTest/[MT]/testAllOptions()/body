@@ -1,5 +1,5 @@
 {
-  final SimpleMap options=new SimpleMap();
+  final JavaOnlyMap options=new JavaOnlyMap();
   options.putString("title","Title");
   options.putString("message","Message");
   options.putString("buttonPositive","OK");

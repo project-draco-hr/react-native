@@ -1,5 +1,5 @@
 {
-  SimpleArray keyValues=new SimpleArray();
+  JavaOnlyArray keyValues=new JavaOnlyArray();
   keyValues.pushArray(getArray("foo","foo2"));
   keyValues.pushArray(getArray("bar","bar2"));
   mStorage.multiSet(keyValues,mock(Callback.class));

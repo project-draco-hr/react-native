@@ -24,17 +24,17 @@
     }
   }
 );
-  List<SimpleArray> headers=Arrays.asList(SimpleArray.of("content-type","multipart/form-data"));
-  SimpleMap body=new SimpleMap();
-  SimpleArray formData=new SimpleArray();
+  List<JavaOnlyArray> headers=Arrays.asList(JavaOnlyArray.of("content-type","multipart/form-data"));
+  JavaOnlyMap body=new JavaOnlyMap();
+  JavaOnlyArray formData=new JavaOnlyArray();
   body.putArray("formData",formData);
-  SimpleMap bodyPart=new SimpleMap();
+  JavaOnlyMap bodyPart=new JavaOnlyMap();
   bodyPart.putString("string","locale");
-  bodyPart.putArray("headers",SimpleArray.from(Arrays.asList(SimpleArray.of("content-disposition","user"))));
+  bodyPart.putArray("headers",JavaOnlyArray.from(Arrays.asList(JavaOnlyArray.of("content-disposition","user"))));
   formData.pushMap(bodyPart);
-  SimpleMap imageBodyPart=new SimpleMap();
+  JavaOnlyMap imageBodyPart=new JavaOnlyMap();
   imageBodyPart.putString("uri","imageUri");
-  imageBodyPart.putArray("headers",SimpleArray.from(Arrays.asList(SimpleArray.of("content-type","image/jpg"),SimpleArray.of("content-disposition","filename=photo.jpg"))));
+  imageBodyPart.putArray("headers",JavaOnlyArray.from(Arrays.asList(JavaOnlyArray.of("content-type","image/jpg"),JavaOnlyArray.of("content-disposition","filename=photo.jpg"))));
   formData.pushMap(imageBodyPart);
   OkHttpClient httpClient=mock(OkHttpClient.class);
   when(httpClient.newCall(any(Request.class))).thenAnswer(new Answer<Object>(){
@@ -45,7 +45,7 @@
   }
 );
   NetworkingModule networkingModule=new NetworkingModule(null,"",httpClient);
-  networkingModule.sendRequest("POST","http://someurl/uploadFoo",0,SimpleArray.from(headers),body,true,0);
+  networkingModule.sendRequest("POST","http://someurl/uploadFoo",0,JavaOnlyArray.from(headers),body,true,0);
   PowerMockito.verifyStatic(times(1));
   RequestBodyUtil.getFileInputStream(any(ReactContext.class),eq("imageUri"));
   PowerMockito.verifyStatic(times(1));

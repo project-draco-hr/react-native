@@ -4,10 +4,10 @@
   int rootTag=uiManager.addMeasuredRootView(rootView);
   int viewTag=rootTag + 1;
   int subViewTag=viewTag + 1;
-  uiManager.createView(viewTag,ReactViewManager.REACT_CLASS,rootTag,SimpleMap.of("collapsable",false));
-  uiManager.createView(subViewTag,ReactViewManager.REACT_CLASS,rootTag,SimpleMap.of("collapsable",false));
-  uiManager.manageChildren(viewTag,null,null,SimpleArray.of(subViewTag),SimpleArray.of(0),null);
-  uiManager.manageChildren(rootTag,null,null,SimpleArray.of(viewTag),SimpleArray.of(0),null);
+  uiManager.createView(viewTag,ReactViewManager.REACT_CLASS,rootTag,JavaOnlyMap.of("collapsable",false));
+  uiManager.createView(subViewTag,ReactViewManager.REACT_CLASS,rootTag,JavaOnlyMap.of("collapsable",false));
+  uiManager.manageChildren(viewTag,null,null,JavaOnlyArray.of(subViewTag),JavaOnlyArray.of(0),null);
+  uiManager.manageChildren(rootTag,null,null,JavaOnlyArray.of(viewTag),JavaOnlyArray.of(0),null);
   uiManager.onBatchComplete();
   executePendingChoreographerCallbacks();
   assertThat(rootView.getChildCount()).isEqualTo(1);

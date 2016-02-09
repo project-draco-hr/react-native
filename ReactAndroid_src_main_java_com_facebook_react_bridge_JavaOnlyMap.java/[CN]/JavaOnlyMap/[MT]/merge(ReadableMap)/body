@@ -1,0 +1,3 @@
+{
+  mBackingMap.putAll(((JavaOnlyMap)source).mBackingMap);
+}

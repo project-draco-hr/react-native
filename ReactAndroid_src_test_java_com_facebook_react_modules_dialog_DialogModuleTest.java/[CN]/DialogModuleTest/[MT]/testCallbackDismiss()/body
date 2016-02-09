@@ -1,5 +1,5 @@
 {
-  final SimpleMap options=new SimpleMap();
+  final JavaOnlyMap options=new JavaOnlyMap();
   final SimpleCallback actionCallback=new SimpleCallback();
   mDialogModule.showAlert(options,null,actionCallback);
   getFragment().getDialog().dismiss();

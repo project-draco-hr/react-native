@@ -2,7 +2,7 @@
   mTiming.onHostResume();
   mTiming.createTimer(1,0,0,false);
   stepChoreographerFrame();
-  verify(mJSTimersMock).callTimers(SimpleArray.of(1));
+  verify(mJSTimersMock).callTimers(JavaOnlyArray.of(1));
   reset(mJSTimersMock);
   stepChoreographerFrame();
   verifyNoMoreInteractions(mJSTimersMock);

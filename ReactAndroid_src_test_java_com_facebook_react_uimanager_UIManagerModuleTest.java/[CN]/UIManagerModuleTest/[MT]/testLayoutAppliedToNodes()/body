@@ -2,8 +2,8 @@
   UIManagerModule uiManager=getUIManagerModule();
   TestMoveDeleteHierarchy hierarchy=createMoveDeleteHierarchy(uiManager);
   int newViewTag=10000;
-  uiManager.createView(newViewTag,ReactViewManager.REACT_CLASS,hierarchy.rootView,SimpleMap.of("left",10.0,"top",20.0,"width",30.0,"height",40.0,"collapsable",false));
-  uiManager.manageChildren(hierarchy.rootView,null,null,SimpleArray.of(newViewTag),SimpleArray.of(4),null);
+  uiManager.createView(newViewTag,ReactViewManager.REACT_CLASS,hierarchy.rootView,JavaOnlyMap.of("left",10.0,"top",20.0,"width",30.0,"height",40.0,"collapsable",false));
+  uiManager.manageChildren(hierarchy.rootView,null,null,JavaOnlyArray.of(newViewTag),JavaOnlyArray.of(4),null);
   uiManager.onBatchComplete();
   executePendingChoreographerCallbacks();
   View newView=hierarchy.nativeRootView.getChildAt(4);

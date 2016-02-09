@@ -3,7 +3,7 @@
   TestMoveDeleteHierarchy hierarchy=createMoveDeleteHierarchy(uiManager);
   View expectedViewAt0=hierarchy.nativeRootView.getChildAt(1);
   View expectedViewAt1=hierarchy.nativeRootView.getChildAt(2);
-  uiManager.manageChildren(hierarchy.rootView,null,null,null,null,SimpleArray.of(0,3));
+  uiManager.manageChildren(hierarchy.rootView,null,null,null,null,JavaOnlyArray.of(0,3));
   uiManager.onBatchComplete();
   executePendingChoreographerCallbacks();
   assertChildrenAreExactly(hierarchy.nativeRootView,expectedViewAt0,expectedViewAt1);

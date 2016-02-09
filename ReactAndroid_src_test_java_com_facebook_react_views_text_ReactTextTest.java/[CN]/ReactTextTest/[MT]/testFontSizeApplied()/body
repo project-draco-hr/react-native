@@ -1,6 +1,6 @@
 {
   UIManagerModule uiManager=getUIManagerModule();
-  ReactRootView rootView=createText(uiManager,SimpleMap.of(ViewProps.FONT_SIZE,21.0),SimpleMap.of(ReactTextShadowNode.PROP_TEXT,"test text"));
+  ReactRootView rootView=createText(uiManager,JavaOnlyMap.of(ViewProps.FONT_SIZE,21.0),JavaOnlyMap.of(ReactTextShadowNode.PROP_TEXT,"test text"));
   AbsoluteSizeSpan sizeSpan=getSingleSpan((TextView)rootView.getChildAt(0),AbsoluteSizeSpan.class);
   assertThat(sizeSpan.getSize()).isEqualTo(21);
 }

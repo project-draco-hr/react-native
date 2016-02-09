@@ -8,7 +8,7 @@
   }
 );
   NetworkingModule networkingModule=new NetworkingModule(null,"",httpClient);
-  networkingModule.sendRequest("GET","http://somedomain/foo",0,SimpleArray.of(),null,true,0);
+  networkingModule.sendRequest("GET","http://somedomain/foo",0,JavaOnlyArray.of(),null,true,0);
   ArgumentCaptor<Request> argumentCaptor=ArgumentCaptor.forClass(Request.class);
   verify(httpClient).newCall(argumentCaptor.capture());
   assertThat(argumentCaptor.getValue().urlString()).isEqualTo("http://somedomain/foo");

@@ -1,5 +1,5 @@
 {
-  SimpleArray array=new SimpleArray();
+  JavaOnlyArray array=new JavaOnlyArray();
   for (  String value : values) {
     array.pushString(value);
   }

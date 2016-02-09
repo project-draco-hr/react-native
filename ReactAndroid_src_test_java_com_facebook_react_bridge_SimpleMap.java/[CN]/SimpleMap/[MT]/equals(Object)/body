@@ -1,7 +1,0 @@
-{
-  if (this == o)   return true;
-  if (o == null || getClass() != o.getClass())   return false;
-  SimpleMap that=(SimpleMap)o;
-  if (mBackingMap != null ? !mBackingMap.equals(that.mBackingMap) : that.mBackingMap != null)   return false;
-  return true;
-}

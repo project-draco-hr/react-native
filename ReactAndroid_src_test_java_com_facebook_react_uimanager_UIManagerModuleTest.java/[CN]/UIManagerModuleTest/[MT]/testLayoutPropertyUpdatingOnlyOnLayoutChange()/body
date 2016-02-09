@@ -3,12 +3,12 @@
   TestMoveDeleteHierarchy hierarchy=createMoveDeleteHierarchy(uiManager);
   View view0=hierarchy.nativeRootView.getChildAt(0);
   view0.layout(1,2,3,4);
-  uiManager.updateView(hierarchy.view0,ReactViewManager.REACT_CLASS,SimpleMap.of("left",10.0,"top",20.0,"width",30.0,"height",40.0));
+  uiManager.updateView(hierarchy.view0,ReactViewManager.REACT_CLASS,JavaOnlyMap.of("left",10.0,"top",20.0,"width",30.0,"height",40.0));
   uiManager.onBatchComplete();
   executePendingChoreographerCallbacks();
   assertThat(view0.getLeft()).isGreaterThan(2);
   view0.layout(1,2,3,4);
-  uiManager.updateView(hierarchy.view0,ReactViewManager.REACT_CLASS,SimpleMap.of("backgroundColor",Color.RED));
+  uiManager.updateView(hierarchy.view0,ReactViewManager.REACT_CLASS,JavaOnlyMap.of("backgroundColor",Color.RED));
   uiManager.onBatchComplete();
   executePendingChoreographerCallbacks();
   assertThat(view0.getLeft()).isEqualTo(1);

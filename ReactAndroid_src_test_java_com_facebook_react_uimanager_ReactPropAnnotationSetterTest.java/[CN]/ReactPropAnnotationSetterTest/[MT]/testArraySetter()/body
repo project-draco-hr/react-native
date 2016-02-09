@@ -1,5 +1,5 @@
 {
-  ReadableArray array=new SimpleArray();
+  ReadableArray array=new JavaOnlyArray();
   mViewManager.updateProperties(null,buildStyles("arrayProp",array));
   verify(mUpdatesReceiverMock).onArraySetterCalled(array);
   verifyNoMoreInteractions(mUpdatesReceiverMock);

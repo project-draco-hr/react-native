@@ -1,11 +1,11 @@
 {
   final String[] keys={"foo","foo2"};
   final String[] values={"bar","bar2"};
-  SimpleArray keyValues=new SimpleArray();
+  JavaOnlyArray keyValues=new JavaOnlyArray();
   keyValues.pushArray(getArray(keys[0],values[0]));
   keyValues.pushArray(getArray(keys[1],values[1]));
   mStorage.multiSet(keyValues,mock(Callback.class));
-  SimpleArray storedKeys=new SimpleArray();
+  JavaOnlyArray storedKeys=new JavaOnlyArray();
   storedKeys.pushString(keys[0]);
   storedKeys.pushString(keys[1]);
   Callback getAllCallback=mock(Callback.class);

@@ -1,6 +1,6 @@
 {
   UIManagerModule uiManager=getUIManagerModule();
-  ReactRootView rootView=createText(uiManager,SimpleMap.of(ViewProps.FONT_WEIGHT,"200"),SimpleMap.of(ReactTextShadowNode.PROP_TEXT,"test text"));
+  ReactRootView rootView=createText(uiManager,JavaOnlyMap.of(ViewProps.FONT_WEIGHT,"200"),JavaOnlyMap.of(ReactTextShadowNode.PROP_TEXT,"test text"));
   CustomStyleSpan customStyleSpan=getSingleSpan((TextView)rootView.getChildAt(0),CustomStyleSpan.class);
   assertThat(customStyleSpan.getWeight() & Typeface.BOLD).isZero();
 }

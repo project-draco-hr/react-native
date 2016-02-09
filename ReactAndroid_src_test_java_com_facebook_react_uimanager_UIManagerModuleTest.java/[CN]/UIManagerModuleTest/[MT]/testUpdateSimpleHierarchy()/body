@@ -3,7 +3,7 @@
   ViewGroup rootView=createSimpleTextHierarchy(uiManager,"Some text");
   TextView textView=(TextView)rootView.getChildAt(0);
   int rawTextTag=3;
-  uiManager.updateView(rawTextTag,ReactRawTextManager.REACT_CLASS,SimpleMap.of(ReactTextShadowNode.PROP_TEXT,"New text"));
+  uiManager.updateView(rawTextTag,ReactRawTextManager.REACT_CLASS,JavaOnlyMap.of(ReactTextShadowNode.PROP_TEXT,"New text"));
   uiManager.onBatchComplete();
   executePendingChoreographerCallbacks();
   assertThat(textView.getText().toString()).isEqualTo("New text");

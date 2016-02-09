@@ -3,11 +3,11 @@
   final String key2="foo2";
   final String value1="bar1";
   final String value2="bar2";
-  SimpleArray keyValues=new SimpleArray();
+  JavaOnlyArray keyValues=new JavaOnlyArray();
   keyValues.pushArray(getArray(key1,value1));
   keyValues.pushArray(getArray(key2,value2));
   mStorage.multiSet(keyValues,mock(Callback.class));
-  SimpleArray keys=new SimpleArray();
+  JavaOnlyArray keys=new JavaOnlyArray();
   keys.pushString(key1);
   keys.pushString(key2);
   Callback getCallback=mock(Callback.class);
