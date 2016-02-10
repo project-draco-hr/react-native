@@ -1,3 +1,9 @@
 {
-  return getResources().getDrawable(getDrawableResourceByName(name));
+  int drawableResId=getDrawableResourceByName(name);
+  if (drawableResId != 0) {
+    return getResources().getDrawable(getDrawableResourceByName(name));
+  }
+ else {
+    return null;
+  }
 }

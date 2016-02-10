@@ -1,0 +1,10 @@
+{
+  if (source.hasKey(PROP_ICON_WIDTH) && source.hasKey(PROP_ICON_HEIGHT)) {
+    final int width=Math.round(PixelUtil.toPixelFromDIP(source.getInt(PROP_ICON_WIDTH)));
+    final int height=Math.round(PixelUtil.toPixelFromDIP(source.getInt(PROP_ICON_HEIGHT)));
+    return new IconImageInfo(width,height);
+  }
+ else {
+    return null;
+  }
+}

@@ -1,5 +1,0 @@
-{
-  if (imageInfo != null) {
-    mItem.setIcon(new DrawableWithIntrinsicSize(mHolder.getTopLevelDrawable(),imageInfo));
-  }
-}

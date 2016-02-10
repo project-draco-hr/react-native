@@ -1,4 +1,4 @@
 {
+  super(holder);
   mItem=item;
-  mHolder=holder;
 }

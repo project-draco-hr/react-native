@@ -1,13 +1,3 @@
 {
-  String uri=source != null ? source.getString("uri") : null;
-  if (uri == null) {
-    setLogo(null);
-  }
- else   if (uri.startsWith("http://") || uri.startsWith("https://")) {
-    DraweeController controller=Fresco.newDraweeControllerBuilder().setUri(Uri.parse(uri)).setControllerListener(mLogoControllerListener).setOldController(mLogoHolder.getController()).build();
-    mLogoHolder.setController(controller);
-  }
- else {
-    setLogo(getDrawableResourceByName(uri));
-  }
+  setIconSource(source,mLogoControllerListener,mLogoHolder);
 }

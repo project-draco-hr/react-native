@@ -1,0 +1,15 @@
+{
+  String uri=source != null ? source.getString(PROP_ICON_URI) : null;
+  if (uri == null) {
+    controllerListener.setIconImageInfo(null);
+    controllerListener.setDrawable(null);
+  }
+ else   if (uri.startsWith("http://") || uri.startsWith("https://") || uri.startsWith("file://")) {
+    controllerListener.setIconImageInfo(getIconImageInfo(source));
+    DraweeController controller=Fresco.newDraweeControllerBuilder().setUri(Uri.parse(uri)).setControllerListener(controllerListener).setOldController(holder.getController()).build();
+    holder.setController(controller);
+  }
+ else {
+    controllerListener.setDrawable(getDrawableByName(uri));
+  }
+}

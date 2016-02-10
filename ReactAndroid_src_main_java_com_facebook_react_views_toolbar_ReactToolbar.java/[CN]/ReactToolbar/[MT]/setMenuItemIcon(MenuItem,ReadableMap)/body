@@ -1,7 +1,7 @@
 {
-  String iconSource=icon.getString("uri");
   DraweeHolder<GenericDraweeHierarchy> holder=DraweeHolder.create(createDraweeHierarchy(),getContext());
-  DraweeController controller=Fresco.newDraweeControllerBuilder().setUri(Uri.parse(iconSource)).setControllerListener(new ActionIconControllerListener(item,holder)).setOldController(holder.getController()).build();
-  holder.setController(controller);
+  ActionIconControllerListener controllerListener=new ActionIconControllerListener(item,holder);
+  controllerListener.setIconImageInfo(getIconImageInfo(iconSource));
+  setIconSource(iconSource,controllerListener,holder);
   mActionsHolder.add(holder);
 }

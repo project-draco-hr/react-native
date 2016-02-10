@@ -1,13 +1,3 @@
 {
-  String uri=source != null ? source.getString("uri") : null;
-  if (uri == null) {
-    setNavigationIcon(null);
-  }
- else   if (uri.startsWith("http://") || uri.startsWith("https://")) {
-    DraweeController controller=Fresco.newDraweeControllerBuilder().setUri(Uri.parse(uri)).setControllerListener(mNavIconControllerListener).setOldController(mNavIconHolder.getController()).build();
-    mNavIconHolder.setController(controller);
-  }
- else {
-    setNavigationIcon(getDrawableResourceByName(uri));
-  }
+  setIconSource(source,mNavIconControllerListener,mNavIconHolder);
 }

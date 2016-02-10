@@ -3,4 +3,22 @@
   mLogoHolder=DraweeHolder.create(createDraweeHierarchy(),context);
   mNavIconHolder=DraweeHolder.create(createDraweeHierarchy(),context);
   mOverflowIconHolder=DraweeHolder.create(createDraweeHierarchy(),context);
+  mLogoControllerListener=new IconControllerListener(mLogoHolder){
+    @Override protected void setDrawable(    Drawable d){
+      setLogo(d);
+    }
+  }
+;
+  mNavIconControllerListener=new IconControllerListener(mNavIconHolder){
+    @Override protected void setDrawable(    Drawable d){
+      setNavigationIcon(d);
+    }
+  }
+;
+  mOverflowIconControllerListener=new IconControllerListener(mOverflowIconHolder){
+    @Override protected void setDrawable(    Drawable d){
+      setOverflowIcon(d);
+    }
+  }
+;
 }

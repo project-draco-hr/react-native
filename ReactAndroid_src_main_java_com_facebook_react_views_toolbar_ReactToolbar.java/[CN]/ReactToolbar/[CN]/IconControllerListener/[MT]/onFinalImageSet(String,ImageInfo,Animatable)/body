@@ -1,0 +1,5 @@
+{
+  super.onFinalImageSet(id,imageInfo,animatable);
+  final ImageInfo info=mIconImageInfo != null ? mIconImageInfo : imageInfo;
+  setDrawable(new DrawableWithIntrinsicSize(mHolder.getTopLevelDrawable(),info));
+}
