@@ -3,6 +3,6 @@
     mDevSupportManager.showNewJSError(title,details,exceptionId);
   }
  else {
-    throw new JavascriptException(stackTraceToString(details));
+    throw new JavascriptException(stackTraceToString(title,details));
   }
 }
