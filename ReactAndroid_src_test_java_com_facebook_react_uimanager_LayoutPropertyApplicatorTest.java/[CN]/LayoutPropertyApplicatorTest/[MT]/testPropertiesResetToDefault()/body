@@ -1,7 +1,7 @@
 {
   DisplayMetrics displayMetrics=new DisplayMetrics();
   displayMetrics.density=1.0f;
-  DisplayMetricsHolder.setDisplayMetrics(displayMetrics);
+  DisplayMetricsHolder.setWindowDisplayMetrics(displayMetrics);
   LayoutShadowNode reactShadowNode=spy(new LayoutShadowNode());
   ReactStylesDiffMap map=buildStyles("width",10.0,"height",10.0,"left",10.0,"top",10.0,"flex",1.0,"padding",10.0,"marginLeft",10.0,"borderTopWidth",10.0,"flexDirection","row","alignSelf","stretch","alignItems","center","justifyContent","space_between","position","absolute");
   reactShadowNode.updateProperties(map);

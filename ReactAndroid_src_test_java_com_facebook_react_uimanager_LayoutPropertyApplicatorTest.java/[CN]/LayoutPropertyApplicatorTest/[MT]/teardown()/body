@@ -1,3 +1,4 @@
 {
-  DisplayMetricsHolder.setDisplayMetrics(null);
+  DisplayMetricsHolder.setWindowDisplayMetrics(null);
+  DisplayMetricsHolder.setScreenDisplayMetrics(null);
 }

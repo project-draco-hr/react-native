@@ -4,5 +4,5 @@
   mContext.initializeWithInstance(mCatalystInstanceMock);
   mThemeContext=new ThemedReactContext(mContext,mContext);
   Fresco.initialize(mContext);
-  DisplayMetricsHolder.setDisplayMetrics(new DisplayMetrics());
+  DisplayMetricsHolder.setWindowDisplayMetrics(new DisplayMetrics());
 }

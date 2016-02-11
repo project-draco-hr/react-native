@@ -4,7 +4,7 @@
     return;
   }
   getRootView().getWindowVisibleDisplayFrame(mVisibleViewArea);
-  final int heightDiff=DisplayMetricsHolder.getDisplayMetrics().heightPixels - mVisibleViewArea.bottom;
+  final int heightDiff=DisplayMetricsHolder.getWindowDisplayMetrics().heightPixels - mVisibleViewArea.bottom;
   if (mKeyboardHeight != heightDiff && heightDiff > mMinKeyboardHeightDetected) {
     mKeyboardHeight=heightDiff;
     WritableMap params=Arguments.createMap();
