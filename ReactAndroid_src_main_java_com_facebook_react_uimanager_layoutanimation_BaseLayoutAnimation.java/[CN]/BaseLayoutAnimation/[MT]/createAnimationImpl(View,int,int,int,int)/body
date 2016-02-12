@@ -6,7 +6,7 @@ switch (mAnimatedProperty) {
 case OPACITY:
       return new OpacityAnimation(view,fromValue,toValue);
 case SCALE_XY:
-    return new ScaleAnimation(fromValue,toValue,fromValue,toValue,Animation.RELATIVE_TO_PARENT,.5f,Animation.RELATIVE_TO_PARENT,.5f);
+    return new ScaleAnimation(fromValue,toValue,fromValue,toValue,Animation.RELATIVE_TO_SELF,.5f,Animation.RELATIVE_TO_SELF,.5f);
 default :
   throw new IllegalViewOperationException("Missing animation for property : " + mAnimatedProperty);
 }
