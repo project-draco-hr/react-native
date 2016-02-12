@@ -63,7 +63,7 @@
     requestBuilder.method(method,multipartBuilder.build());
   }
  else {
-    requestBuilder.method(method,null);
+    requestBuilder.method(method,RequestBodyUtil.getEmptyBody(method));
   }
   client.newCall(requestBuilder.build()).enqueue(new Callback(){
     @Override public void onFailure(    Request request,    IOException e){
