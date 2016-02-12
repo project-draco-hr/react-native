@@ -16,6 +16,7 @@ synchronized (mDispatchRunnablesLock) {
               operations.get(i).execute();
             }
           }
+          mNativeViewHierarchyManager.clearLayoutAnimation();
           if (mViewHierarchyUpdateDebugListener != null) {
             mViewHierarchyUpdateDebugListener.onViewHierarchyUpdateFinished();
           }

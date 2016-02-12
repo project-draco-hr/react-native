@@ -4,7 +4,6 @@ synchronized (mDispatchRunnablesLock) {
       mDispatchUIRunnables.get(i).run();
     }
     mDispatchUIRunnables.clear();
-    mNativeViewHierarchyManager.clearLayoutAnimation();
   }
   ReactChoreographer.getInstance().postFrameCallback(ReactChoreographer.CallbackType.DISPATCH_UI,this);
 }
