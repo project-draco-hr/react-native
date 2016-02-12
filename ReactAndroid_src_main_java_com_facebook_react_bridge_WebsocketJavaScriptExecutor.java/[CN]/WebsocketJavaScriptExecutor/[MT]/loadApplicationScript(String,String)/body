@@ -1,6 +1,6 @@
 {
   JSExecutorCallbackFuture callback=new JSExecutorCallbackFuture();
-  Assertions.assertNotNull(mWebSocketClient).executeApplicationScript(sourceURL,mInjectedObjects,callback);
+  Assertions.assertNotNull(mWebSocketClient).loadApplicationScript(sourceURL,mInjectedObjects,callback);
   try {
     callback.get();
   }
