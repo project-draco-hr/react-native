@@ -16,5 +16,17 @@
   if (reactContext != null) {
     mDebugOverlayController=new DebugOverlayController(reactContext);
   }
+  if (mDevSettings.isHotModuleReplacementEnabled() && mCurrentContext != null) {
+    try {
+      URL sourceUrl=new URL(getSourceUrl());
+      String path=sourceUrl.getPath().substring(1);
+      String host=sourceUrl.getHost();
+      int port=sourceUrl.getPort();
+      mCurrentContext.getJSModule(HMRClient.class).enable("android",path,host,port);
+    }
+ catch (    MalformedURLException e) {
+      showNewJavaError(e.getMessage(),e);
+    }
+  }
   reloadSettings();
 }

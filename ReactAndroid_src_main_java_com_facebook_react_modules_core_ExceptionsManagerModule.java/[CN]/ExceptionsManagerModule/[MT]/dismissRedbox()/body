@@ -1,0 +1,5 @@
+{
+  if (mDevSupportManager.getDevSupportEnabled()) {
+    mDevSupportManager.hideRedboxDialog();
+  }
+}

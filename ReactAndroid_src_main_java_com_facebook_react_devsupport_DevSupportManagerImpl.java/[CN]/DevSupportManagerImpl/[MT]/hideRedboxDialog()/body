@@ -1,0 +1,5 @@
+{
+  if (mRedBoxDialog != null) {
+    mRedBoxDialog.dismiss();
+  }
+}
