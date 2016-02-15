@@ -1,0 +1,7 @@
+{
+  if (mNoNetworkPermission) {
+    promise.reject(ERROR_MISSING_PERMISSION,MISSING_PERMISSION_MESSAGE,null);
+    return;
+  }
+  promise.resolve(createConnectivityEventMap());
+}
