@@ -1,0 +1,11 @@
+{
+  Systrace.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"NativeModuleRegistry_notifyReactBridgeInitialized");
+  try {
+    for (    NativeModule nativeModule : mModuleInstances.values()) {
+      nativeModule.onReactBridgeInitialized(bridge);
+    }
+  }
+  finally {
+    Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);
+  }
+}
