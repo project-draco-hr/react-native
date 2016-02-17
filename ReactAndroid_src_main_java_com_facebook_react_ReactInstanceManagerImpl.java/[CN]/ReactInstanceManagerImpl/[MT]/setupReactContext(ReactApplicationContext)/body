@@ -10,7 +10,9 @@
   for (  ReactRootView rootView : mAttachedRootViews) {
     attachMeasuredRootViewToInstance(rootView,catalystInstance);
   }
-  for (  ReactInstanceEventListener listener : mReactInstanceEventListeners) {
+  ReactInstanceEventListener[] listeners=new ReactInstanceEventListener[mReactInstanceEventListeners.size()];
+  listeners=mReactInstanceEventListeners.toArray(listeners);
+  for (  ReactInstanceEventListener listener : listeners) {
     listener.onReactContextInitialized(reactContext);
   }
 }
