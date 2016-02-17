@@ -1,0 +1,3 @@
+{
+  mOperations.add(new MeasureInWindowOperation(reactTag,callback));
+}

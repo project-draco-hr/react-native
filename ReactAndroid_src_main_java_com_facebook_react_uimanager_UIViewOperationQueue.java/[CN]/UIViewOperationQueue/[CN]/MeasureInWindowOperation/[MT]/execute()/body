@@ -1,0 +1,14 @@
+{
+  try {
+    mNativeViewHierarchyManager.measureInWindow(mReactTag,mMeasureBuffer);
+  }
+ catch (  NoSuchNativeViewException e) {
+    mCallback.invoke();
+    return;
+  }
+  float x=PixelUtil.toDIPFromPixel(mMeasureBuffer[0]);
+  float y=PixelUtil.toDIPFromPixel(mMeasureBuffer[1]);
+  float width=PixelUtil.toDIPFromPixel(mMeasureBuffer[2]);
+  float height=PixelUtil.toDIPFromPixel(mMeasureBuffer[3]);
+  mCallback.invoke(x,y,width,height);
+}
