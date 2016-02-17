@@ -12,9 +12,19 @@
     localX=localXY[0];
     localY=localXY[1];
   }
-  if ((localX >= 0 && localX < (child.getRight() - child.getLeft())) && (localY >= 0 && localY < (child.getBottom() - child.getTop()))) {
-    outLocalPoint.set(localX,localY);
-    return true;
+  if (child instanceof ReactHitSlopView && ((ReactHitSlopView)child).getHitSlopRect() != null) {
+    Rect hitSlopRect=((ReactHitSlopView)child).getHitSlopRect();
+    if ((localX >= -hitSlopRect.left && localX < (child.getRight() - child.getLeft()) + hitSlopRect.right) && (localY >= -hitSlopRect.top && localY < (child.getBottom() - child.getTop()) + hitSlopRect.bottom)) {
+      outLocalPoint.set(localX,localY);
+      return true;
+    }
+    return false;
   }
-  return false;
+ else {
+    if ((localX >= 0 && localX < (child.getRight() - child.getLeft())) && (localY >= 0 && localY < (child.getBottom() - child.getTop()))) {
+      outLocalPoint.set(localX,localY);
+      return true;
+    }
+    return false;
+  }
 }
