@@ -5,6 +5,8 @@
   }
   mDestroyed=true;
   mJavaRegistry.notifyCatalystInstanceDestroy();
+  Systrace.unregisterListener(mTraceListener);
+  synchronouslyDisposeBridgeOnJSThread();
   mReactQueueConfiguration.destroy();
   boolean wasIdle=(mPendingJSCalls.getAndSet(0) == 0);
   if (!wasIdle && !mBridgeIdleListeners.isEmpty()) {
@@ -12,6 +14,4 @@
       listener.onTransitionToBridgeIdle();
     }
   }
-  Systrace.unregisterListener(mTraceListener);
-  mBridge.dispose();
 }

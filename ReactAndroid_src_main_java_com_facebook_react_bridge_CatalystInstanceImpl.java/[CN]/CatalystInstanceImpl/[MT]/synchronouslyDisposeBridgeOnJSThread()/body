@@ -1,0 +1,11 @@
+{
+  final SimpleSettableFuture<Void> bridgeDisposeFuture=new SimpleSettableFuture<>();
+  mReactQueueConfiguration.getJSQueueThread().runOnQueue(new Runnable(){
+    @Override public void run(){
+      mBridge.dispose();
+      bridgeDisposeFuture.set(null);
+    }
+  }
+);
+  bridgeDisposeFuture.getOrThrow();
+}
