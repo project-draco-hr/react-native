@@ -1,14 +1,15 @@
 {
   UiThreadUtil.assertOnUiThread();
+  if (mUseDeveloperSupport) {
+    mDevSupportManager.setDevSupportEnabled(false);
+  }
+  moveToBeforeCreateLifecycleState();
   if (mReactContextInitAsyncTask != null) {
     mReactContextInitAsyncTask.cancel(true);
   }
   mMemoryPressureRouter.destroy(mApplicationContext);
-  if (mUseDeveloperSupport) {
-    mDevSupportManager.setDevSupportEnabled(false);
-  }
   if (mCurrentReactContext != null) {
-    mCurrentReactContext.onDestroy();
+    mCurrentReactContext.destroy();
     mCurrentReactContext=null;
     mHasStartedCreatingInitialContext=false;
   }

@@ -3,6 +3,6 @@
   mLifecycleState=LifecycleState.BEFORE_RESUME;
   overridePendingTransition(0,0);
   if (mReactInstanceManager != null) {
-    mReactInstanceManager.onPause();
+    mReactInstanceManager.onHostPause();
   }
 }

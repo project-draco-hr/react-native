@@ -1,6 +1,6 @@
 {
   if (mReactInstanceManager != null) {
-    mReactInstanceManager.onDestroy();
+    mReactInstanceManager.destroy();
     mReactInstanceManager=null;
   }
   mReactRootView=new ReactRootView(this);

@@ -6,7 +6,7 @@
   catalystInstance.initialize();
   mDevSupportManager.onNewReactContextCreated(reactContext);
   mMemoryPressureRouter.onNewReactContextCreated(reactContext);
-  moveReactContextToCurrentLifecycleState(reactContext);
+  moveReactContextToCurrentLifecycleState();
   for (  ReactRootView rootView : mAttachedRootViews) {
     attachMeasuredRootViewToInstance(rootView,catalystInstance);
   }

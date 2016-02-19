@@ -1,6 +1,6 @@
 {
   super.onDestroy();
   if (mReactInstanceManager != null) {
-    mReactInstanceManager.onDestroy();
+    mReactInstanceManager.destroy();
   }
 }

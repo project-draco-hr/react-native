@@ -1,0 +1,6 @@
+{
+  UiThreadUtil.assertOnUiThread();
+  if (mCatalystInstance != null) {
+    mCatalystInstance.destroy();
+  }
+}
