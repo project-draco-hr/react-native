@@ -7,4 +7,7 @@
     jg.writeEndObject();
   }
   jg.writeEndObject();
+  if (registration.getModuleInterface().isAnnotationPresent(SupportsWebWorkers.class)) {
+    jg.writeBooleanField("supportsWebWorkers",true);
+  }
 }
