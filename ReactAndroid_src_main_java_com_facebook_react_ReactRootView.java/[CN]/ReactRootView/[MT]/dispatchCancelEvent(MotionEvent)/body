@@ -5,5 +5,5 @@
   }
   EventDispatcher eventDispatcher=mReactInstanceManager.getCurrentReactContext().getNativeModule(UIManagerModule.class).getEventDispatcher();
   Assertions.assertCondition(!mChildIsHandlingNativeGesture,"Expected to not have already sent a cancel for this gesture");
-  Assertions.assertNotNull(eventDispatcher).dispatchEvent(TouchEvent.obtain(mTargetTag,SystemClock.uptimeMillis(),TouchEventType.CANCEL,androidEvent,mTargetCoordinates[0],mTargetCoordinates[1]));
+  Assertions.assertNotNull(eventDispatcher).dispatchEvent(TouchEvent.obtain(mTargetTag,SystemClock.nanoTime(),TouchEventType.CANCEL,androidEvent,mTargetCoordinates[0],mTargetCoordinates[1]));
 }

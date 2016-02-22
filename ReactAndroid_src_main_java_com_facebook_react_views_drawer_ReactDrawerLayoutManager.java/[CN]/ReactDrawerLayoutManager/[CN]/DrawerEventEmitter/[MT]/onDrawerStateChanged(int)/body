@@ -1,3 +1,3 @@
 {
-  mEventDispatcher.dispatchEvent(new DrawerStateChangedEvent(mDrawerLayout.getId(),SystemClock.uptimeMillis(),i));
+  mEventDispatcher.dispatchEvent(new DrawerStateChangedEvent(mDrawerLayout.getId(),SystemClock.nanoTime(),i));
 }

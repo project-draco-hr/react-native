@@ -4,11 +4,11 @@
     public void onFocusChange(    View v,    boolean hasFocus){
       EventDispatcher eventDispatcher=reactContext.getNativeModule(UIManagerModule.class).getEventDispatcher();
       if (hasFocus) {
-        eventDispatcher.dispatchEvent(new ReactTextInputFocusEvent(editText.getId(),SystemClock.uptimeMillis()));
+        eventDispatcher.dispatchEvent(new ReactTextInputFocusEvent(editText.getId(),SystemClock.nanoTime()));
       }
  else {
-        eventDispatcher.dispatchEvent(new ReactTextInputBlurEvent(editText.getId(),SystemClock.uptimeMillis()));
-        eventDispatcher.dispatchEvent(new ReactTextInputEndEditingEvent(editText.getId(),SystemClock.uptimeMillis(),editText.getText().toString()));
+        eventDispatcher.dispatchEvent(new ReactTextInputBlurEvent(editText.getId(),SystemClock.nanoTime()));
+        eventDispatcher.dispatchEvent(new ReactTextInputEndEditingEvent(editText.getId(),SystemClock.nanoTime(),editText.getText().toString()));
       }
     }
   }
@@ -17,7 +17,7 @@
     @Override public boolean onEditorAction(    TextView v,    int actionId,    KeyEvent keyEvent){
       if ((actionId & EditorInfo.IME_MASK_ACTION) > 0 || actionId == EditorInfo.IME_NULL) {
         EventDispatcher eventDispatcher=reactContext.getNativeModule(UIManagerModule.class).getEventDispatcher();
-        eventDispatcher.dispatchEvent(new ReactTextInputSubmitEditingEvent(editText.getId(),SystemClock.uptimeMillis(),editText.getText().toString()));
+        eventDispatcher.dispatchEvent(new ReactTextInputSubmitEditingEvent(editText.getId(),SystemClock.nanoTime(),editText.getText().toString()));
       }
       return false;
     }

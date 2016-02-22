@@ -1,5 +1,5 @@
 {
-  super.init(viewTag,SystemClock.uptimeMillis());
+  super.init(viewTag,SystemClock.nanoTime());
   mX=x;
   mY=y;
   mWidth=width;
