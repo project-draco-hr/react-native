@@ -1,6 +1,0 @@
-{
-  super.onCreate(savedInstanceState);
-  setContentView(R.layout.activity_main);
-  mReactInstanceManager=ReactInstanceManager.builder().setApplication(getApplication()).setBundleAssetName("UIExplorerApp.android.bundle").setJSMainModuleName("Examples/UIExplorer/UIExplorerApp.android").addPackage(new MainReactPackage()).setUseDeveloperSupport(true).setInitialLifecycleState(LifecycleState.RESUMED).build();
-  ((ReactRootView)findViewById(R.id.react_root_view)).startReactApplication(mReactInstanceManager,"UIExplorerApp",null);
-}

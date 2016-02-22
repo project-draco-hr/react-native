@@ -1,6 +1,0 @@
-{
-  super.onCreate(savedInstanceState);
-  setContentView(R.layout.activity_main);
-  mReactInstanceManager=ReactInstanceManager.builder().setApplication(getApplication()).setBundleAssetName("MoviesApp.android.bundle").setJSMainModuleName("Examples/Movies/MoviesApp.android").addPackage(new MainReactPackage()).setUseDeveloperSupport(true).setInitialLifecycleState(LifecycleState.RESUMED).build();
-  ((ReactRootView)findViewById(R.id.react_root_view)).startReactApplication(mReactInstanceManager,"MoviesApp",null);
-}
