@@ -1,7 +1,7 @@
 {
   final Activity activity=getCurrentActivity();
   if (activity == null) {
-    res.reject(ERROR_NO_ACTIVITY);
+    res.reject(ERROR_NO_ACTIVITY,ERROR_NO_ACTIVITY_MESSAGE);
     return;
   }
   if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
