@@ -1,13 +1,15 @@
 {
   UiThreadUtil.assertOnUiThread();
-  if (mDestroyed) {
-    return;
+synchronized (mTeardownLock) {
+    if (mDestroyed) {
+      return;
+    }
+    mDestroyed=true;
+    mJavaRegistry.notifyCatalystInstanceDestroy();
+    Systrace.unregisterListener(mTraceListener);
+    synchronouslyDisposeBridgeOnJSThread();
+    mReactQueueConfiguration.destroy();
   }
-  mDestroyed=true;
-  mJavaRegistry.notifyCatalystInstanceDestroy();
-  Systrace.unregisterListener(mTraceListener);
-  synchronouslyDisposeBridgeOnJSThread();
-  mReactQueueConfiguration.destroy();
   boolean wasIdle=(mPendingJSCalls.getAndSet(0) == 0);
   if (!wasIdle && !mBridgeIdleListeners.isEmpty()) {
     for (    NotThreadSafeBridgeIdleDebugListener listener : mBridgeIdleListeners) {
