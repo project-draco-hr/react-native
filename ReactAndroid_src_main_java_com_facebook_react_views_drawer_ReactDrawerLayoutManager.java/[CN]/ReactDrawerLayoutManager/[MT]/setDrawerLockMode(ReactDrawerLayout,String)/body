@@ -1,0 +1,14 @@
+{
+  if (drawerLockMode == null || "unlocked".equals(drawerLockMode)) {
+    view.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+  }
+ else   if ("locked-closed".equals(drawerLockMode)) {
+    view.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+  }
+ else   if ("locked-open".equals(drawerLockMode)) {
+    view.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_OPEN);
+  }
+ else {
+    throw new JSApplicationIllegalArgumentException("Unknown drawerLockMode " + drawerLockMode);
+  }
+}
