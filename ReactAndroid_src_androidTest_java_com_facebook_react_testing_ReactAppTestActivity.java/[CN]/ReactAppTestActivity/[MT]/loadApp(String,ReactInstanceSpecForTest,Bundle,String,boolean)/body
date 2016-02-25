@@ -1,14 +1,3 @@
 {
-  final CountDownLatch currentLayoutEvent=mLayoutEvent=new CountDownLatch(1);
-  mBridgeIdleSignaler=new ReactBridgeIdleSignaler();
-  ReactInstanceManager.Builder builder=ReactTestHelper.getReactTestFactory().getReactInstanceManagerBuilder().setApplication(getApplication()).setBundleAssetName(bundleName).addPackage(spec.getAlternativeReactPackageForTest() != null ? spec.getAlternativeReactPackageForTest() : new MainReactPackage()).addPackage(new InstanceSpecForTestPackage(spec)).setUseDeveloperSupport(useDevSupport).setBridgeIdleDebugListener(mBridgeIdleSignaler).setInitialLifecycleState(mLifecycleState);
-  mReactInstanceManager=builder.build();
-  mReactInstanceManager.onHostResume(this,this);
-  Assertions.assertNotNull(mReactRootView).getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener(){
-    @Override public void onGlobalLayout(){
-      currentLayoutEvent.countDown();
-    }
-  }
-);
-  Assertions.assertNotNull(mReactRootView).startReactApplication(mReactInstanceManager,appKey,initialProps);
+  loadApp(appKey,spec,initialProps,bundleName,useDevSupport,null);
 }

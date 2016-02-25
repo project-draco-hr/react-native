@@ -1,0 +1,6 @@
+String appKey
+ReactInstanceSpecForTest spec
+Bundle initialProps
+String bundleName
+boolean useDevSupport
+UIImplementationProvider uiImplementationProvider

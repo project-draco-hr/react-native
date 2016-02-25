@@ -1,0 +1,3 @@
+{
+  loadApp(appKey,spec,null,bundleName,false,uiImplementationProvider);
+}
