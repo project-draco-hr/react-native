@@ -9,14 +9,13 @@
     String selfPackageName=getReactApplicationContext().getPackageName();
     ComponentName componentName=intent.resolveActivity(getReactApplicationContext().getPackageManager());
     String otherPackageName=(componentName != null ? componentName.getPackageName() : "");
-    if (!selfPackageName.equals(otherPackageName)) {
+    if (currentActivity == null || !selfPackageName.equals(otherPackageName)) {
       intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
     }
     if (currentActivity != null) {
       currentActivity.startActivity(intent);
     }
  else {
-      intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
       getReactApplicationContext().startActivity(intent);
     }
     promise.resolve(true);
