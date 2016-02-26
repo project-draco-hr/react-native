@@ -9,7 +9,8 @@
       buildSpannedFromTextCSSNode((ReactTextShadowNode)child,sb,ops);
     }
  else     if (child instanceof ReactTextInlineImageShadowNode) {
-      buildSpannedFromImageNode((ReactTextInlineImageShadowNode)child,sb,ops);
+      sb.append(INLINE_IMAGE_PLACEHOLDER);
+      ops.add(new SetSpanOperation(sb.length() - INLINE_IMAGE_PLACEHOLDER.length(),sb.length(),((ReactTextInlineImageShadowNode)child).buildInlineImageSpan()));
     }
  else {
       throw new IllegalViewOperationException("Unexpected view type nested under text node: " + child.getClass());

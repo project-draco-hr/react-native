@@ -1,9 +1,0 @@
-{
-  int start=sb.length();
-  Resources resources=node.getThemedContext().getResources();
-  int height=(int)Math.ceil(node.getStyleHeight());
-  int width=(int)Math.ceil(node.getStyleWidth());
-  TextInlineImageSpan imageSpan=new TextInlineImageSpan(resources,height,width,node.getUri(),node.getDraweeControllerBuilder(),node.getCallerContext());
-  sb.append(INLINE_IMAGE_PLACEHOLDER);
-  ops.add(new SetSpanOperation(start,sb.length(),imageSpan));
-}

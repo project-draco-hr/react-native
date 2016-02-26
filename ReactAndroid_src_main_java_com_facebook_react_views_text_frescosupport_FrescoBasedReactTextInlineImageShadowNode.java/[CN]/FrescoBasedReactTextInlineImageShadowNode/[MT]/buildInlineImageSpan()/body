@@ -1,0 +1,6 @@
+{
+  Resources resources=getThemedContext().getResources();
+  int height=(int)Math.ceil(getStyleHeight());
+  int width=(int)Math.ceil(getStyleWidth());
+  return new FrescoBasedReactTextInlineImageSpan(resources,height,width,getUri(),getDraweeControllerBuilder(),getCallerContext());
+}

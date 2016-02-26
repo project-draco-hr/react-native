@@ -2,6 +2,6 @@
   TextInlineImageSpan[] spans=spannable.getSpans(0,spannable.length(),TextInlineImageSpan.class);
   for (  TextInlineImageSpan span : spans) {
     span.onAttachedToWindow();
-    span.mTextView=view;
+    span.setTextView(view);
   }
 }

@@ -1,0 +1,3 @@
+{
+  return new FrescoBasedReactTextInlineImageShadowNode((mDraweeControllerBuilder != null) ? mDraweeControllerBuilder : Fresco.newDraweeControllerBuilder(),mCallerContext);
+}
