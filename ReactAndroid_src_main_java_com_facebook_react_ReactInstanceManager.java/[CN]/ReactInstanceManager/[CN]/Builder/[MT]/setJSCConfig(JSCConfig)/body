@@ -1,0 +1,4 @@
+{
+  mJSCConfig=jscConfig;
+  return this;
+}

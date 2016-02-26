@@ -1,7 +1,7 @@
 {
   Assertions.assertCondition(params != null && params.length > 0 && params[0] != null);
   try {
-    JavaScriptExecutor jsExecutor=params[0].getJsExecutorFactory().create();
+    JavaScriptExecutor jsExecutor=params[0].getJsExecutorFactory().create(mJSCConfig == null ? new WritableNativeMap() : mJSCConfig.getConfigMap());
     return Result.of(createReactContext(jsExecutor,params[0].getJsBundleLoader()));
   }
  catch (  Exception e) {

@@ -13,4 +13,5 @@
   mUIImplementationProvider=uiImplementationProvider;
   mMemoryPressureRouter=new MemoryPressureRouter(applicationContext);
   mNativeModuleCallExceptionHandler=nativeModuleCallExceptionHandler;
+  mJSCConfig=jscConfig;
 }
