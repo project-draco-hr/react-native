@@ -3,6 +3,6 @@
     view.clearColorFilter();
   }
  else {
-    view.setColorFilter(tintColor);
+    view.setColorFilter(tintColor,Mode.SRC_IN);
   }
 }
