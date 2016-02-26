@@ -7,6 +7,6 @@
   if (mNumberOfLines != UNSET) {
     editText.setLines(mNumberOfLines);
   }
-  editText.measure(MEASURE_SPEC,MEASURE_SPEC);
+  editText.measure(0,0);
   measureOutput.height=editText.getMeasuredHeight();
 }
