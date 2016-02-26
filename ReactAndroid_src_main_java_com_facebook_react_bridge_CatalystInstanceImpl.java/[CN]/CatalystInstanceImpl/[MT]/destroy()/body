@@ -16,6 +16,4 @@ synchronized (mTeardownLock) {
       listener.onTransitionToBridgeIdle();
     }
   }
-  Systrace.unregisterListener(mTraceListener);
-  mBridge.dispose();
 }
