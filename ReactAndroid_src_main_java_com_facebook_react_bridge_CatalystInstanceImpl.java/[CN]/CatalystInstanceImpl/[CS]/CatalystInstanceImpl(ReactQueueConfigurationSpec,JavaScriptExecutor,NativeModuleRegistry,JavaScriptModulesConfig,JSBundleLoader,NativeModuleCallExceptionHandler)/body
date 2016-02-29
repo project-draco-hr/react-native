@@ -1,4 +1,5 @@
 {
+  FLog.d(ReactConstants.TAG,"Initializing React Bridge.");
   mReactQueueConfiguration=ReactQueueConfigurationImpl.create(ReactQueueConfigurationSpec,new NativeExceptionHandler());
   mBridgeIdleListeners=new CopyOnWriteArrayList<>();
   mJavaRegistry=registry;
