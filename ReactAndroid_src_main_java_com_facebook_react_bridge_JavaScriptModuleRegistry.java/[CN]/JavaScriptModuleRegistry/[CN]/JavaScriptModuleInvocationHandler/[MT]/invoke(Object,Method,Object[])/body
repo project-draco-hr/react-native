@@ -1,5 +1,10 @@
 {
+  ExecutorToken executorToken=mExecutorToken.get();
+  if (executorToken == null) {
+    FLog.w(ReactConstants.TAG,"Dropping JS call, ExecutorToken went away...");
+    return null;
+  }
   String tracingName=mModuleRegistration.getTracingName(method);
-  mCatalystInstance.callFunction(mModuleRegistration.getModuleId(),mModuleRegistration.getMethodId(method),Arguments.fromJavaArgs(args),tracingName);
+  mCatalystInstance.callFunction(executorToken,mModuleRegistration.getModuleId(),mModuleRegistration.getMethodId(method),Arguments.fromJavaArgs(args),tracingName);
   return null;
 }

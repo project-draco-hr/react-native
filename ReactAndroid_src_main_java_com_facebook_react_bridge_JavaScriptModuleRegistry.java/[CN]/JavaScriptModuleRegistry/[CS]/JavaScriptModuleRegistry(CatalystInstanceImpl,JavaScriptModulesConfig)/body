@@ -1,8 +1,8 @@
 {
-  mModuleInstances=new HashMap<>();
+  mCatalystInstance=instance;
+  mModuleInstances=new WeakHashMap<>();
+  mModuleRegistrations=new HashMap<>();
   for (  JavaScriptModuleRegistration registration : config.getModuleDefinitions()) {
-    Class<? extends JavaScriptModule> moduleInterface=registration.getModuleInterface();
-    JavaScriptModule interfaceProxy=(JavaScriptModule)Proxy.newProxyInstance(moduleInterface.getClassLoader(),new Class[]{moduleInterface},new JavaScriptModuleInvocationHandler(instance,registration));
-    mModuleInstances.put(moduleInterface,interfaceProxy);
+    mModuleRegistrations.put(registration.getModuleInterface(),registration);
   }
 }

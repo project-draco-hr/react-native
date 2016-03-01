@@ -1,0 +1,10 @@
+{
+synchronized (mTeardownLock) {
+    if (mDestroyed) {
+      FLog.w(ReactConstants.TAG,"Invoking JS callback after bridge has been destroyed.");
+      return;
+    }
+    incrementPendingJSCalls();
+    Assertions.assertNotNull(mBridge).invokeCallback(executorToken,callbackID,arguments);
+  }
+}

@@ -1,0 +1,15 @@
+{
+  HashMap<Class<? extends JavaScriptModule>,JavaScriptModule> instancesForContext=mModuleInstances.get(executorToken);
+  if (instancesForContext == null) {
+    instancesForContext=new HashMap<>();
+    mModuleInstances.put(executorToken,instancesForContext);
+  }
+  JavaScriptModule module=instancesForContext.get(moduleInterface);
+  if (module != null) {
+    return (T)module;
+  }
+  JavaScriptModuleRegistration registration=Assertions.assertNotNull(mModuleRegistrations.get(moduleInterface),"JS module " + moduleInterface.getSimpleName() + " hasn't been registered!");
+  JavaScriptModule interfaceProxy=(JavaScriptModule)Proxy.newProxyInstance(moduleInterface.getClassLoader(),new Class[]{moduleInterface},new JavaScriptModuleInvocationHandler(executorToken,mCatalystInstance,registration));
+  instancesForContext.put(moduleInterface,interfaceProxy);
+  return (T)interfaceProxy;
+}

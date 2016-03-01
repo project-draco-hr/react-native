@@ -1,3 +1,3 @@
 {
-  mCatalystInstance.invokeCallback(mCallbackId,Arguments.fromJavaArgs(args));
+  mCatalystInstance.invokeCallback(mExecutorToken,mCallbackId,Arguments.fromJavaArgs(args));
 }

@@ -1,5 +1,5 @@
 {
   BaseJavaModule.NativeMethod asyncMethod=mMethods.get("asyncMethod");
   Mockito.stub(mArguments.size()).toReturn(2);
-  asyncMethod.invoke(null,mArguments);
+  asyncMethod.invoke(null,null,mArguments);
 }

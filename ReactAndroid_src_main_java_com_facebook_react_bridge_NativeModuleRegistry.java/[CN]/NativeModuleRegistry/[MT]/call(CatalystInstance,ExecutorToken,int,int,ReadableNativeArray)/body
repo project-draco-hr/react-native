@@ -1,0 +1,7 @@
+{
+  ModuleDefinition definition=mModuleTable.get(moduleId);
+  if (definition == null) {
+    throw new RuntimeException("Call to unknown module: " + moduleId);
+  }
+  definition.call(catalystInstance,executorToken,methodId,parameters);
+}

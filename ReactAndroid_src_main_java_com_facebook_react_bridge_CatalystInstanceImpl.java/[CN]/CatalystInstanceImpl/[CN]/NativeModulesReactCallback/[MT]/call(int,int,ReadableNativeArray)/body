@@ -1,7 +1,0 @@
-{
-  mReactQueueConfiguration.getNativeModulesQueueThread().assertIsOnThread();
-  if (mDestroyed) {
-    return;
-  }
-  mJavaRegistry.call(CatalystInstanceImpl.this,moduleId,methodId,parameters);
-}

@@ -1,0 +1,5 @@
+{
+  mExecutorToken=new WeakReference<>(executorToken);
+  mCatalystInstance=catalystInstance;
+  mModuleRegistration=moduleRegistration;
+}

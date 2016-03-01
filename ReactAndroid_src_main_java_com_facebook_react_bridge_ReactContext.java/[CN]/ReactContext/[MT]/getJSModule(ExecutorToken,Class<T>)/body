@@ -1,0 +1,6 @@
+{
+  if (mCatalystInstance == null) {
+    throw new RuntimeException("Trying to invoke JS before CatalystInstance has been set!");
+  }
+  return mCatalystInstance.getJSModule(executorToken,jsInterface);
+}

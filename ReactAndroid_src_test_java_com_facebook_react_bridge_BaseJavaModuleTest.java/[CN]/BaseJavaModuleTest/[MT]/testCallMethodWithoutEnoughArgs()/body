@@ -1,5 +1,5 @@
 {
   BaseJavaModule.NativeMethod regularMethod=mMethods.get("regularMethod");
   Mockito.stub(mArguments.size()).toReturn(1);
-  regularMethod.invoke(null,mArguments);
+  regularMethod.invoke(null,null,mArguments);
 }

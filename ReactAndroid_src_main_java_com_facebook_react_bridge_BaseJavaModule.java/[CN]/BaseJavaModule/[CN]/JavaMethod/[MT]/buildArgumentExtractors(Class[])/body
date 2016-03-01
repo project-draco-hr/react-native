@@ -1,7 +1,14 @@
 {
-  ArgumentExtractor[] argumentExtractors=new ArgumentExtractor[paramTypes.length];
-  for (int i=0; i < paramTypes.length; i+=argumentExtractors[i].getJSArgumentsNeeded()) {
-    Class argumentClass=paramTypes[i];
+  int executorTokenOffset=0;
+  if (BaseJavaModule.this.supportsWebWorkers()) {
+    if (paramTypes[0] != ExecutorToken.class) {
+      throw new RuntimeException("Module " + BaseJavaModule.this + " supports web workers, but "+ mMethod.getName()+ "does not take an ExecutorToken as its first parameter.");
+    }
+    executorTokenOffset=1;
+  }
+  ArgumentExtractor[] argumentExtractors=new ArgumentExtractor[paramTypes.length - executorTokenOffset];
+  for (int i=0; i < paramTypes.length - executorTokenOffset; i+=argumentExtractors[i].getJSArgumentsNeeded()) {
+    Class argumentClass=paramTypes[i + executorTokenOffset];
     if (argumentClass == Boolean.class || argumentClass == boolean.class) {
       argumentExtractors[i]=ARGUMENT_EXTRACTOR_BOOLEAN;
     }

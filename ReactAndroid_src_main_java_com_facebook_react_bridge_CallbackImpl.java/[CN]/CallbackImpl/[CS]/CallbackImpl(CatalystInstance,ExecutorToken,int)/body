@@ -1,0 +1,5 @@
+{
+  mCatalystInstance=bridge;
+  mExecutorToken=executorToken;
+  mCallbackId=callbackId;
+}

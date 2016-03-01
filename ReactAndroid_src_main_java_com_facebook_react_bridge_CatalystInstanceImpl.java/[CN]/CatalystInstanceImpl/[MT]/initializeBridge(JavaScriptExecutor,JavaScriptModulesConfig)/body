@@ -5,6 +5,7 @@
   ReactBridge bridge;
   try {
     bridge=new ReactBridge(jsExecutor,new NativeModulesReactCallback(),mReactQueueConfiguration.getNativeModulesQueueThread());
+    mMainExecutorToken=bridge.getMainExecutorToken();
   }
   finally {
     Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);

@@ -1,0 +1,41 @@
+{
+  Systrace.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"callJavaModuleMethod");
+  try {
+    if (mJSArgumentsNeeded != parameters.size()) {
+      throw new NativeArgumentsParseException(BaseJavaModule.this.getName() + "." + mMethod.getName()+ " got "+ parameters.size()+ " arguments, expected "+ mJSArgumentsNeeded);
+    }
+    int i=0, jsArgumentsConsumed=0;
+    int executorTokenOffset=0;
+    if (BaseJavaModule.this.supportsWebWorkers()) {
+      mArguments[0]=executorToken;
+      executorTokenOffset=1;
+    }
+    try {
+      for (; i < mArgumentExtractors.length; i++) {
+        mArguments[i + executorTokenOffset]=mArgumentExtractors[i].extractArgument(catalystInstance,executorToken,parameters,jsArgumentsConsumed);
+        jsArgumentsConsumed+=mArgumentExtractors[i].getJSArgumentsNeeded();
+      }
+    }
+ catch (    UnexpectedNativeTypeException e) {
+      throw new NativeArgumentsParseException(e.getMessage() + " (constructing arguments for " + BaseJavaModule.this.getName()+ "."+ mMethod.getName()+ " at argument index "+ getAffectedRange(jsArgumentsConsumed,mArgumentExtractors[i].getJSArgumentsNeeded())+ ")",e);
+    }
+    try {
+      mMethod.invoke(BaseJavaModule.this,mArguments);
+    }
+ catch (    IllegalArgumentException ie) {
+      throw new RuntimeException("Could not invoke " + BaseJavaModule.this.getName() + "."+ mMethod.getName(),ie);
+    }
+catch (    IllegalAccessException iae) {
+      throw new RuntimeException("Could not invoke " + BaseJavaModule.this.getName() + "."+ mMethod.getName(),iae);
+    }
+catch (    InvocationTargetException ite) {
+      if (ite.getCause() instanceof RuntimeException) {
+        throw (RuntimeException)ite.getCause();
+      }
+      throw new RuntimeException("Could not invoke " + BaseJavaModule.this.getName() + "."+ mMethod.getName(),ite);
+    }
+  }
+  finally {
+    Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);
+  }
+}

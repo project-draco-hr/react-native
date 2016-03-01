@@ -1,0 +1,4 @@
+CatalystInstance catalystInstance
+ExecutorToken executorToken
+int methodId
+ReadableNativeArray parameters
