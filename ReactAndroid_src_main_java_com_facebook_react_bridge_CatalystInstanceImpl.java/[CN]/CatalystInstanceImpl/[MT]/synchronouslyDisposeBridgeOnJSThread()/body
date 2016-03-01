@@ -2,6 +2,7 @@
   final SimpleSettableFuture<Void> bridgeDisposeFuture=new SimpleSettableFuture<>();
   mReactQueueConfiguration.getJSQueueThread().runOnQueue(new Runnable(){
     @Override public void run(){
+      mBridge.destroy();
       mBridge.dispose();
       bridgeDisposeFuture.set(null);
     }
