@@ -7,6 +7,7 @@
   mNativeEventCount=0;
   mIsSettingTextFromJS=false;
   mIsJSSettingFocus=false;
+  mBlurOnSubmit=true;
   mListeners=null;
   mTextWatcherDelegator=null;
   mStagedInputType=getInputType();
