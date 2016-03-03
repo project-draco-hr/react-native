@@ -1,0 +1,6 @@
+{
+  Vibrator v=(Vibrator)getReactApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
+  if (v != null) {
+    v.vibrate(duration);
+  }
+}
