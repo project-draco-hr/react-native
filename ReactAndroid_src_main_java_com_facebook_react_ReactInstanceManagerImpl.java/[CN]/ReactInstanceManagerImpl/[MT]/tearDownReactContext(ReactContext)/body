@@ -8,5 +8,5 @@
   }
   reactContext.destroy();
   mDevSupportManager.onReactInstanceDestroyed(reactContext);
-  mMemoryPressureRouter.onReactInstanceDestroyed();
+  mMemoryPressureRouter.removeMemoryPressureListener(reactContext.getCatalystInstance());
 }

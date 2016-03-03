@@ -1,5 +1,6 @@
 {
-  if (mCatalystInstance != null) {
-    mCatalystInstance.handleMemoryPressure(level);
+  MemoryPressureListener[] listeners=mListeners.toArray(new MemoryPressureListener[mListeners.size()]);
+  for (  MemoryPressureListener listener : listeners) {
+    listener.handleMemoryPressure(level);
   }
 }
