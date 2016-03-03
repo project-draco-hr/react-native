@@ -8,8 +8,8 @@ synchronized (mTeardownLock) {
     mJavaRegistry.notifyCatalystInstanceDestroy();
     Systrace.unregisterListener(mTraceListener);
     synchronouslyDisposeBridgeOnJSThread();
-    mReactQueueConfiguration.destroy();
   }
+  mReactQueueConfiguration.destroy();
   boolean wasIdle=(mPendingJSCalls.getAndSet(0) == 0);
   if (!wasIdle && !mBridgeIdleListeners.isEmpty()) {
     for (    NotThreadSafeBridgeIdleDebugListener listener : mBridgeIdleListeners) {

@@ -2,14 +2,13 @@
   mReactQueueConfiguration.getNativeModulesQueueThread().assertIsOnThread();
 synchronized (mTeardownLock) {
     if (!mDestroyed) {
-      Systrace.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"onBatchComplete");
+      Systrace.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"onExecutorUnregistered");
       try {
-        mJavaRegistry.onBatchComplete();
+        mJavaRegistry.onExecutorUnregistered(executorToken);
       }
   finally {
         Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);
       }
     }
   }
-  decrementPendingJSCalls();
 }

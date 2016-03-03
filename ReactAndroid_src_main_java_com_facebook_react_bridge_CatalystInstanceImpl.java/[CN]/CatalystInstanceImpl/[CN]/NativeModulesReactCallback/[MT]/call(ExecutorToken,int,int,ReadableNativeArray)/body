@@ -1,7 +1,9 @@
 {
   mReactQueueConfiguration.getNativeModulesQueueThread().assertIsOnThread();
-  if (mDestroyed) {
-    return;
+synchronized (mTeardownLock) {
+    if (mDestroyed) {
+      return;
+    }
+    mJavaRegistry.call(CatalystInstanceImpl.this,executorToken,moduleId,methodId,parameters);
   }
-  mJavaRegistry.call(CatalystInstanceImpl.this,executorToken,moduleId,methodId,parameters);
 }
