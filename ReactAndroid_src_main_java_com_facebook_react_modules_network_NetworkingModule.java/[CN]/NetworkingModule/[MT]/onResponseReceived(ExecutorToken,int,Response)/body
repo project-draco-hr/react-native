@@ -5,5 +5,5 @@
   args.pushInt(response.code());
   args.pushMap(headers);
   args.pushString(response.request().urlString());
-  getEventEmitter().emit("didReceiveNetworkResponse",args);
+  getEventEmitter(ExecutorToken).emit("didReceiveNetworkResponse",args);
 }

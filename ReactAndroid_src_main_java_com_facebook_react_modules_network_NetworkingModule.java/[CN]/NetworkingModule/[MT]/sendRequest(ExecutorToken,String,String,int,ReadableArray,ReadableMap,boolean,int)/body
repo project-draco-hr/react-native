@@ -10,7 +10,7 @@
   }
   Headers requestHeaders=extractHeaders(headers,data);
   if (requestHeaders == null) {
-    onRequestError(requestId,"Unrecognized headers format");
+    onRequestError(executorToken,requestId,"Unrecognized headers format");
     return;
   }
   String contentType=requestHeaders.get(CONTENT_TYPE_HEADER_NAME);
@@ -21,7 +21,7 @@
   }
  else   if (data.hasKey(REQUEST_BODY_KEY_STRING)) {
     if (contentType == null) {
-      onRequestError(requestId,"Payload is set but no content-type header specified");
+      onRequestError(executorToken,requestId,"Payload is set but no content-type header specified");
       return;
     }
     String body=data.getString(REQUEST_BODY_KEY_STRING);
@@ -29,7 +29,7 @@
     if (RequestBodyUtil.isGzipEncoding(contentEncoding)) {
       RequestBody requestBody=RequestBodyUtil.createGzip(contentMediaType,body);
       if (requestBody == null) {
-        onRequestError(requestId,"Failed to gzip request body");
+        onRequestError(executorToken,requestId,"Failed to gzip request body");
         return;
       }
       requestBuilder.method(method,requestBody);
@@ -40,13 +40,13 @@
   }
  else   if (data.hasKey(REQUEST_BODY_KEY_URI)) {
     if (contentType == null) {
-      onRequestError(requestId,"Payload is set but no content-type header specified");
+      onRequestError(executorToken,requestId,"Payload is set but no content-type header specified");
       return;
     }
     String uri=data.getString(REQUEST_BODY_KEY_URI);
     InputStream fileInputStream=RequestBodyUtil.getFileInputStream(getReactApplicationContext(),uri);
     if (fileInputStream == null) {
-      onRequestError(requestId,"Could not retrieve file for uri " + uri);
+      onRequestError(executorToken,requestId,"Could not retrieve file for uri " + uri);
       return;
     }
     requestBuilder.method(method,RequestBodyUtil.create(MediaType.parse(contentType),fileInputStream));
@@ -56,7 +56,7 @@
       contentType="multipart/form-data";
     }
     ReadableArray parts=data.getArray(REQUEST_BODY_KEY_FORMDATA);
-    MultipartBuilder multipartBuilder=constructMultipartBody(parts,contentType,requestId);
+    MultipartBuilder multipartBuilder=constructMultipartBody(executorToken,parts,contentType,requestId);
     if (multipartBuilder == null) {
       return;
     }
@@ -70,26 +70,26 @@
       if (mShuttingDown) {
         return;
       }
-      onRequestError(requestId,e.getMessage());
+      onRequestError(executorToken,requestId,e.getMessage());
     }
     @Override public void onResponse(    Response response) throws IOException {
       if (mShuttingDown) {
         return;
       }
-      onResponseReceived(requestId,response);
+      onResponseReceived(executorToken,requestId,response);
       ResponseBody responseBody=response.body();
       try {
         if (useIncrementalUpdates) {
-          readWithProgress(requestId,responseBody);
-          onRequestSuccess(requestId);
+          readWithProgress(executorToken,requestId,responseBody);
+          onRequestSuccess(executorToken,requestId);
         }
  else {
-          onDataReceived(requestId,responseBody.string());
-          onRequestSuccess(requestId);
+          onDataReceived(executorToken,requestId,responseBody.string());
+          onRequestSuccess(executorToken,requestId);
         }
       }
  catch (      IOException e) {
-        onRequestError(requestId,e.getMessage());
+        onRequestError(executorToken,requestId,e.getMessage());
       }
     }
   }

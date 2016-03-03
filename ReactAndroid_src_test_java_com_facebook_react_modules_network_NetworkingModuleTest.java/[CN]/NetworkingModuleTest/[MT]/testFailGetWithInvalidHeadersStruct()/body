@@ -1,11 +1,11 @@
 {
   RCTDeviceEventEmitter emitter=mock(RCTDeviceEventEmitter.class);
   ReactApplicationContext context=mock(ReactApplicationContext.class);
-  when(context.getJSModule(any(Class.class))).thenReturn(emitter);
+  when(context.getJSModule(any(ExecutorToken.class),any(Class.class))).thenReturn(emitter);
   OkHttpClient httpClient=mock(OkHttpClient.class);
   NetworkingModule networkingModule=new NetworkingModule(context,"",httpClient);
   List<JavaOnlyArray> invalidHeaders=Arrays.asList(JavaOnlyArray.of("foo"));
   mockEvents();
-  networkingModule.sendRequest("GET","http://somedoman/foo",0,JavaOnlyArray.from(invalidHeaders),null,true,0);
+  networkingModule.sendRequest(mock(ExecutorToken.class),"GET","http://somedoman/foo",0,JavaOnlyArray.from(invalidHeaders),null,true,0);
   verifyErrorEmit(emitter,0);
 }

@@ -1,12 +1,12 @@
 {
   RCTDeviceEventEmitter emitter=mock(RCTDeviceEventEmitter.class);
   ReactApplicationContext context=mock(ReactApplicationContext.class);
-  when(context.getJSModule(any(Class.class))).thenReturn(emitter);
+  when(context.getJSModule(any(ExecutorToken.class),any(Class.class))).thenReturn(emitter);
   OkHttpClient httpClient=mock(OkHttpClient.class);
   NetworkingModule networkingModule=new NetworkingModule(context,"",httpClient);
   JavaOnlyMap body=new JavaOnlyMap();
   body.putString("string","This is request body");
   mockEvents();
-  networkingModule.sendRequest("POST","http://somedomain/bar",0,JavaOnlyArray.of(),body,true,0);
+  networkingModule.sendRequest(mock(ExecutorToken.class),"POST","http://somedomain/bar",0,JavaOnlyArray.of(),body,true,0);
   verifyErrorEmit(emitter,0);
 }

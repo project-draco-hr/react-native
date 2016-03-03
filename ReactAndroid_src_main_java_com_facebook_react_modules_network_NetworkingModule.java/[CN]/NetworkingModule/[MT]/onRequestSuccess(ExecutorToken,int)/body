@@ -2,5 +2,5 @@
   WritableArray args=Arguments.createArray();
   args.pushInt(requestId);
   args.pushNull();
-  getEventEmitter().emit("didCompleteNetworkResponse",args);
+  getEventEmitter(ExecutorToken).emit("didCompleteNetworkResponse",args);
 }

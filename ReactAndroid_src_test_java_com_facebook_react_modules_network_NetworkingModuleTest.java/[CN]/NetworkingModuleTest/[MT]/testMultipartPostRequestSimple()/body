@@ -18,7 +18,7 @@
   }
 );
   NetworkingModule networkingModule=new NetworkingModule(null,"",httpClient);
-  networkingModule.sendRequest("POST","http://someurl/uploadFoo",0,new JavaOnlyArray(),body,true,0);
+  networkingModule.sendRequest(mock(ExecutorToken.class),"POST","http://someurl/uploadFoo",0,new JavaOnlyArray(),body,true,0);
   ArgumentCaptor<Request> argumentCaptor=ArgumentCaptor.forClass(Request.class);
   verify(httpClient).newCall(argumentCaptor.capture());
   assertThat(argumentCaptor.getValue().urlString()).isEqualTo("http://someurl/uploadFoo");
