@@ -1,0 +1,12 @@
+{
+switch (action) {
+case ACTION_TRIM_MEMORY_MODERATE:
+    simulateTrimMemory(application,TRIM_MEMORY_MODERATE);
+  break;
+case ACTION_TRIM_MEMORY_CRITICAL:
+simulateTrimMemory(application,TRIM_MEMORY_COMPLETE);
+default :
+return false;
+}
+return true;
+}
