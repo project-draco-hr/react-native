@@ -15,5 +15,5 @@
     }
   }
 );
-  mTimerIdsToTimers=new SparseArray<Timer>();
+  mTimerIdsToTimers=new HashMap<>();
 }

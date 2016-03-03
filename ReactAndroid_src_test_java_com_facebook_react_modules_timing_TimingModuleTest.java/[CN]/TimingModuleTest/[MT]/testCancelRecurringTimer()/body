@@ -1,10 +1,10 @@
 {
   mTiming.onHostResume();
-  mTiming.createTimer(105,0,0,true);
+  mTiming.createTimer(mExecutorTokenMock,105,0,0,true);
   stepChoreographerFrame();
   verify(mJSTimersMock).callTimers(JavaOnlyArray.of(105));
   reset(mJSTimersMock);
-  mTiming.deleteTimer(105);
+  mTiming.deleteTimer(mExecutorTokenMock,105);
   stepChoreographerFrame();
   verifyNoMoreInteractions(mJSTimersMock);
 }

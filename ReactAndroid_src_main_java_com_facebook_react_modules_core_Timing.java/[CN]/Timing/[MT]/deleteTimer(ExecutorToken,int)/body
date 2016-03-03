@@ -1,6 +1,6 @@
 {
 synchronized (mTimerGuard) {
-    Timer timer=mTimerIdsToTimers.get(timerId);
+    Timer timer=mTimerIdsToTimers.get(executorToken).get(timerId);
     if (timer != null) {
       mTimerIdsToTimers.remove(timerId);
       mTimers.remove(timer);

@@ -1,4 +1,5 @@
 {
+  mExecutorToken=executorToken;
   mCallbackID=callbackID;
   mTargetTime=initialTargetTime;
   mInterval=duration;

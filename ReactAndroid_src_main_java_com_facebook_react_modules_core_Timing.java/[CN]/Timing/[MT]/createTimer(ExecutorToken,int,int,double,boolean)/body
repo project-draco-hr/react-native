@@ -1,0 +1,14 @@
+{
+  long adjustedDuration=(long)Math.max(0,jsSchedulingTime - SystemClock.currentTimeMillis() + duration);
+  long initialTargetTime=SystemClock.nanoTime() / 1000000 + adjustedDuration;
+  Timer timer=new Timer(executorToken,callbackID,initialTargetTime,duration,repeat);
+synchronized (mTimerGuard) {
+    mTimers.add(timer);
+    SparseArray<Timer> timersForContext=mTimerIdsToTimers.get(executorToken);
+    if (timersForContext == null) {
+      timersForContext=new SparseArray<>();
+      mTimerIdsToTimers.put(executorToken,timersForContext);
+    }
+    timersForContext.put(callbackID,timer);
+  }
+}

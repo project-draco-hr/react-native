@@ -1,9 +1,0 @@
-{
-  long adjustedDuration=(long)Math.max(0,jsSchedulingTime - SystemClock.currentTimeMillis() + duration);
-  long initialTargetTime=SystemClock.nanoTime() / 1000000 + adjustedDuration;
-  Timer timer=new Timer(callbackID,initialTargetTime,duration,repeat);
-synchronized (mTimerGuard) {
-    mTimers.add(timer);
-    mTimerIdsToTimers.put(callbackID,timer);
-  }
-}

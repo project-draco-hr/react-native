@@ -1,0 +1,12 @@
+{
+synchronized (mTimerGuard) {
+    SparseArray<Timer> timersForContext=mTimerIdsToTimers.remove(executorToken);
+    if (timersForContext == null) {
+      return;
+    }
+    for (int i=0; i < timersForContext.size(); i++) {
+      Timer timer=timersForContext.get(timersForContext.keyAt(i));
+      mTimers.remove(timer);
+    }
+  }
+}
