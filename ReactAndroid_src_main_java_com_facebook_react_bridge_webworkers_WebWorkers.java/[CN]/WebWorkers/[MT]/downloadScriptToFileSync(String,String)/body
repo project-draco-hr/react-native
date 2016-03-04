@@ -1,0 +1,16 @@
+{
+  if (!ReactBuildConfig.DEBUG) {
+    throw new RuntimeException("For security reasons, downloading scripts is only allowed in debug builds.");
+  }
+  OkHttpClient client=new OkHttpClient();
+  final File out=new File(outFileName);
+  Request request=new Request.Builder().url(url).build();
+  try {
+    Response response=client.newCall(request).execute();
+    Sink output=Okio.sink(out);
+    Okio.buffer(response.body().source()).readAll(output);
+  }
+ catch (  IOException e) {
+    throw new RuntimeException("Exception downloading web worker script to file",e);
+  }
+}
