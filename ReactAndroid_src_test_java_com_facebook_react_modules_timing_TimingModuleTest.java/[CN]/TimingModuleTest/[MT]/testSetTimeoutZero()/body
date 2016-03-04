@@ -1,0 +1,4 @@
+{
+  mTiming.createTimer(mExecutorTokenMock,100,0,0,false);
+  verify(mJSTimersMock).callTimers(JavaOnlyArray.of(100));
+}

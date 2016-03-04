@@ -1,6 +1,6 @@
 {
   mTiming.onHostResume();
-  mTiming.createTimer(mExecutorTokenMock,1,0,0,false);
+  mTiming.createTimer(mExecutorTokenMock,1,1,0,false);
   stepChoreographerFrame();
   verify(mJSTimersMock).callTimers(JavaOnlyArray.of(1));
   reset(mJSTimersMock);
