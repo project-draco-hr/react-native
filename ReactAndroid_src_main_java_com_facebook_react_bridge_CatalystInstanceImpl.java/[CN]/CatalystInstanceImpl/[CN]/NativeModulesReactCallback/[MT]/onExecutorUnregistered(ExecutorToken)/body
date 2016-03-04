@@ -1,6 +1,6 @@
 {
   mReactQueueConfiguration.getNativeModulesQueueThread().assertIsOnThread();
-synchronized (mTeardownLock) {
+synchronized (mJSToJavaCallsTeardownLock) {
     if (!mDestroyed) {
       Systrace.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"onExecutorUnregistered");
       try {

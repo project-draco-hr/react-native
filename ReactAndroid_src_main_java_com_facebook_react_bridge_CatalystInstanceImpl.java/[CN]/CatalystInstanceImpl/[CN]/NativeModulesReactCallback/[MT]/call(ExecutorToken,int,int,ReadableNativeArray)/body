@@ -1,6 +1,6 @@
 {
   mReactQueueConfiguration.getNativeModulesQueueThread().assertIsOnThread();
-synchronized (mTeardownLock) {
+synchronized (mJSToJavaCallsTeardownLock) {
     if (mDestroyed) {
       return;
     }

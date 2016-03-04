@@ -1,13 +1,15 @@
 {
   UiThreadUtil.assertOnUiThread();
-synchronized (mTeardownLock) {
-    if (mDestroyed) {
-      return;
+synchronized (mJSToJavaCallsTeardownLock) {
+synchronized (mJavaToJSCallsTeardownLock) {
+      if (mDestroyed) {
+        return;
+      }
+      mDestroyed=true;
+      mJavaRegistry.notifyCatalystInstanceDestroy();
+      Systrace.unregisterListener(mTraceListener);
+      synchronouslyDisposeBridgeOnJSThread();
     }
-    mDestroyed=true;
-    mJavaRegistry.notifyCatalystInstanceDestroy();
-    Systrace.unregisterListener(mTraceListener);
-    synchronouslyDisposeBridgeOnJSThread();
   }
   mReactQueueConfiguration.destroy();
   boolean wasIdle=(mPendingJSCalls.getAndSet(0) == 0);
