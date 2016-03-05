@@ -1,0 +1,9 @@
+{
+  for (int i=0; i < mShadowNodeRegistry.getRootNodeCount(); i++) {
+    int tag=mShadowNodeRegistry.getRootTag(i);
+    ReactShadowNode cssRoot=mShadowNodeRegistry.getNode(tag);
+    notifyOnBeforeLayoutRecursive(cssRoot);
+    calculateRootLayout(cssRoot);
+    applyUpdatesRecursive(cssRoot,0f,0f,eventDispatcher);
+  }
+}
