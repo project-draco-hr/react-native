@@ -6,7 +6,7 @@
   try {
     client.sendMessage(WebSocket.PayloadType.TEXT,new Buffer().writeUtf8(message));
   }
- catch (  IOException e) {
+ catch (  IOException|IllegalStateException e) {
     notifyWebSocketFailed(id,e.getMessage());
   }
 }
