@@ -3,5 +3,4 @@
   for (  LifecycleEventListener listener : mLifecycleEventListeners) {
     listener.onHostDestroy();
   }
-  mCurrentActivity=null;
 }
