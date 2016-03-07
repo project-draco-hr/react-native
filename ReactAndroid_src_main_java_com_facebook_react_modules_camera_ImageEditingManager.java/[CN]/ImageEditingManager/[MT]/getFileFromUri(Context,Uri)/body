@@ -1,0 +1,22 @@
+{
+  if (uri.getScheme().equals("file")) {
+    return new File(uri.getPath());
+  }
+ else   if (uri.getScheme().equals("content")) {
+    Cursor cursor=context.getContentResolver().query(uri,new String[]{MediaStore.MediaColumns.DATA},null,null,null);
+    if (cursor != null) {
+      try {
+        if (cursor.moveToFirst()) {
+          String path=cursor.getString(0);
+          if (!TextUtils.isEmpty(path)) {
+            return new File(path);
+          }
+        }
+      }
+  finally {
+        cursor.close();
+      }
+    }
+  }
+  return null;
+}
