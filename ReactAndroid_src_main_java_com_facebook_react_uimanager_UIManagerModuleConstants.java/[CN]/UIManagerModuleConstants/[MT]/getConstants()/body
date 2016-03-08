@@ -1,6 +1,6 @@
 {
   HashMap<String,Object> constants=new HashMap<String,Object>();
-  constants.put("UIView",MapBuilder.of("ContentMode",MapBuilder.of("ScaleAspectFit",ImageView.ScaleType.CENTER_INSIDE.ordinal(),"ScaleAspectFill",ImageView.ScaleType.CENTER_CROP.ordinal())));
+  constants.put("UIView",MapBuilder.of("ContentMode",MapBuilder.of("ScaleAspectFit",ImageView.ScaleType.FIT_CENTER.ordinal(),"ScaleAspectFill",ImageView.ScaleType.CENTER_CROP.ordinal())));
   DisplayMetrics displayMetrics=DisplayMetricsHolder.getWindowDisplayMetrics();
   DisplayMetrics screenDisplayMetrics=DisplayMetricsHolder.getScreenDisplayMetrics();
   constants.put("Dimensions",MapBuilder.of("windowPhysicalPixels",MapBuilder.of("width",displayMetrics.widthPixels,"height",displayMetrics.heightPixels,"scale",displayMetrics.density,"fontScale",displayMetrics.scaledDensity,"densityDpi",displayMetrics.densityDpi),"screenPhysicalPixels",MapBuilder.of("width",screenDisplayMetrics.widthPixels,"height",screenDisplayMetrics.heightPixels,"scale",screenDisplayMetrics.density,"fontScale",screenDisplayMetrics.scaledDensity,"densityDpi",screenDisplayMetrics.densityDpi)));
