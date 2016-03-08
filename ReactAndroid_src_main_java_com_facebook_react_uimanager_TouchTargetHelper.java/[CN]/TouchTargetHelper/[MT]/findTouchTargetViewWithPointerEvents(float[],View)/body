@@ -22,6 +22,11 @@
     return null;
   }
  else   if (pointerEvents == PointerEvents.AUTO) {
+    if (view instanceof ReactCompoundViewGroup) {
+      if (((ReactCompoundViewGroup)view).interceptsTouchEvent(eventCoords[0],eventCoords[1])) {
+        return view;
+      }
+    }
     if (view instanceof ViewGroup) {
       return findTouchTargetView(eventCoords,(ViewGroup)view);
     }
