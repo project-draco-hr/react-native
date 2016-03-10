@@ -1,9 +1,14 @@
 {
 synchronized (mTimerGuard) {
-    Timer timer=mTimerIdsToTimers.get(executorToken).get(timerId);
-    if (timer != null) {
-      mTimerIdsToTimers.remove(timerId);
-      mTimers.remove(timer);
+    SparseArray<Timer> timersForContext=mTimerIdsToTimers.get(executorToken);
+    if (timersForContext == null) {
+      return;
     }
+    Timer timer=timersForContext.get(timerId);
+    if (timer == null) {
+      return;
+    }
+    mTimerIdsToTimers.remove(timerId);
+    mTimers.remove(timer);
   }
 }
