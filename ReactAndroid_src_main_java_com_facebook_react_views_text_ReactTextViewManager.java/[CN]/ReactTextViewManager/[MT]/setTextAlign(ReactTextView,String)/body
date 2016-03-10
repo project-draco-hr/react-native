@@ -1,15 +1,15 @@
 {
   if (textAlign == null || "auto".equals(textAlign)) {
-    view.setGravity(Gravity.NO_GRAVITY);
+    view.setGravityHorizontal(Gravity.NO_GRAVITY);
   }
  else   if ("left".equals(textAlign)) {
-    view.setGravity(Gravity.LEFT);
+    view.setGravityHorizontal(Gravity.LEFT);
   }
  else   if ("right".equals(textAlign)) {
-    view.setGravity(Gravity.RIGHT);
+    view.setGravityHorizontal(Gravity.RIGHT);
   }
  else   if ("center".equals(textAlign)) {
-    view.setGravity(Gravity.CENTER_HORIZONTAL);
+    view.setGravityHorizontal(Gravity.CENTER_HORIZONTAL);
   }
  else {
     throw new JSApplicationIllegalArgumentException("Invalid textAlign: " + textAlign);

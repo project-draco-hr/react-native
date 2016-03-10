@@ -1,0 +1,6 @@
+{
+  if (gravityHorizontal == 0) {
+    gravityHorizontal=mDefaultGravityHorizontal;
+  }
+  setGravity((getGravity() & ~Gravity.HORIZONTAL_GRAVITY_MASK & ~Gravity.RELATIVE_HORIZONTAL_GRAVITY_MASK) | gravityHorizontal);
+}
