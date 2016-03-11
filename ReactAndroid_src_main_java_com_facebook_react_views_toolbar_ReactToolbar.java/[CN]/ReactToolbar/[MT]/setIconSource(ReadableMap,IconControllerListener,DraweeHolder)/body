@@ -8,6 +8,7 @@
     controllerListener.setIconImageInfo(getIconImageInfo(source));
     DraweeController controller=Fresco.newDraweeControllerBuilder().setUri(Uri.parse(uri)).setControllerListener(controllerListener).setOldController(holder.getController()).build();
     holder.setController(controller);
+    holder.getTopLevelDrawable().setVisible(true,true);
   }
  else {
     controllerListener.setDrawable(getDrawableByName(uri));
