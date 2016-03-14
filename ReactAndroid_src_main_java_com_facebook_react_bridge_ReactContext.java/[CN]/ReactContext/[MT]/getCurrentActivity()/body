@@ -1,3 +1,6 @@
 {
-  return mCurrentActivity;
+  if (mCurrentActivity == null) {
+    return null;
+  }
+  return mCurrentActivity.get();
 }

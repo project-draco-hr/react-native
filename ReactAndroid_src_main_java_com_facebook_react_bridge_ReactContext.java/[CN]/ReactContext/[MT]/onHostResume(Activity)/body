@@ -1,6 +1,6 @@
 {
   UiThreadUtil.assertOnUiThread();
-  mCurrentActivity=activity;
+  mCurrentActivity=new WeakReference(activity);
   for (  LifecycleEventListener listener : mLifecycleEventListeners) {
     listener.onHostResume();
   }
