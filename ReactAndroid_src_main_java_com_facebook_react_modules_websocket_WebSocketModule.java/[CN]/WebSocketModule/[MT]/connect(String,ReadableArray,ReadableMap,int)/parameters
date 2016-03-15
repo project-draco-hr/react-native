@@ -1,4 +1,4 @@
 String url
 ReadableArray protocols
-ReadableMap options
+ReadableMap headers
 int id
