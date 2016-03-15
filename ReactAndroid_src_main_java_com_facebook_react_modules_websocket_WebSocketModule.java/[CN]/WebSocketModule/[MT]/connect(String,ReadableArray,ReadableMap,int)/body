@@ -4,13 +4,23 @@
   client.setWriteTimeout(10,TimeUnit.SECONDS);
   client.setReadTimeout(0,TimeUnit.MINUTES);
   Request.Builder builder=new Request.Builder().tag(id).url(url);
-  if (options != null && options.hasKey("origin")) {
-    if (ReadableType.String.equals(options.getType("origin"))) {
-      builder.addHeader("Origin",options.getString("origin"));
+  if (headers != null) {
+    ReadableMapKeySetIterator iterator=headers.keySetIterator();
+    if (!headers.hasKey("origin")) {
+      builder.addHeader("origin",setDefaultOrigin(url));
     }
+    while (iterator.hasNextKey()) {
+      String key=iterator.nextKey();
+      if (ReadableType.String.equals(headers.getType(key))) {
+        builder.addHeader(key,headers.getString(key));
+      }
  else {
-      FLog.w(ReactConstants.TAG,"Ignoring: requested origin, value not a string");
+        FLog.w(ReactConstants.TAG,"Ignoring: requested " + key + ", value not a string");
+      }
     }
+  }
+ else {
+    builder.addHeader("origin",setDefaultOrigin(url));
   }
   WebSocketCall.create(client,builder.build()).enqueue(new WebSocketListener(){
     @Override public void onOpen(    WebSocket webSocket,    Response response){
