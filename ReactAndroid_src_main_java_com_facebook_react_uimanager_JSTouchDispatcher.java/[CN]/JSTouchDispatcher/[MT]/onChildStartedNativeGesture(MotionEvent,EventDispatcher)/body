@@ -1,0 +1,8 @@
+{
+  if (mChildIsHandlingNativeGesture) {
+    return;
+  }
+  dispatchCancelEvent(androidEvent,eventDispatcher);
+  mChildIsHandlingNativeGesture=true;
+  mTargetTag=-1;
+}

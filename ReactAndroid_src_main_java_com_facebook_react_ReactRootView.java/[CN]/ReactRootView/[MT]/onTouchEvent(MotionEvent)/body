@@ -1,5 +1,5 @@
 {
-  handleTouchEvent(ev);
+  dispatchJSTouchEvent(ev);
   super.onTouchEvent(ev);
   return true;
 }

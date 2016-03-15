@@ -5,5 +5,5 @@
   }
   ReactContext reactContext=mReactInstanceManager.getCurrentReactContext();
   EventDispatcher eventDispatcher=reactContext.getNativeModule(UIManagerModule.class).getEventDispatcher();
-  mJSTouchDispatcher.onChildStartedNativeGesture(androidEvent,eventDispatcher);
+  mJSTouchDispatcher.handleTouchEvent(event,eventDispatcher);
 }

@@ -1,4 +1,4 @@
 {
-  handleTouchEvent(ev);
+  dispatchJSTouchEvent(ev);
   return super.onInterceptTouchEvent(ev);
 }
