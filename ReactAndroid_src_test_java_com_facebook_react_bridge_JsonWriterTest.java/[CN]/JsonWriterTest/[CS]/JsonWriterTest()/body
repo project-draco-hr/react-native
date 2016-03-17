@@ -1,0 +1,4 @@
+{
+  mStringWriter=new StringWriter();
+  mWriter=new JsonWriter(mStringWriter);
+}

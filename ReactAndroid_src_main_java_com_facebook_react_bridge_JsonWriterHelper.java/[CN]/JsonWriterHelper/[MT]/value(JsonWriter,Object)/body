@@ -1,0 +1,11 @@
+{
+  if (value instanceof Map) {
+    mapValue(writer,(Map)value);
+  }
+ else   if (value instanceof List) {
+    listValue(writer,(List)value);
+  }
+ else {
+    objectValue(writer,value);
+  }
+}

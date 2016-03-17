@@ -1,0 +1,5 @@
+{
+  mWriter.beginObject();
+  mWriter.endObject();
+  verify("{}");
+}

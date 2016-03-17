@@ -1,0 +1,26 @@
+{
+  Systrace.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"CreateJSON");
+  try {
+    writer.beginObject();
+    for (    ModuleDefinition moduleDef : mModuleTable) {
+      writer.name(moduleDef.name).beginObject();
+      writer.name("moduleID").value(moduleDef.id);
+      writer.name("supportsWebWorkers").value(moduleDef.target.supportsWebWorkers());
+      writer.name("methods").beginObject();
+      for (int i=0; i < moduleDef.methods.size(); i++) {
+        MethodRegistration method=moduleDef.methods.get(i);
+        writer.name(method.name).beginObject();
+        writer.name("methodID").value(i);
+        writer.name("type").value(method.method.getType());
+        writer.endObject();
+      }
+      writer.endObject();
+      moduleDef.target.writeConstantsField(writer,"constants");
+      writer.endObject();
+    }
+    writer.endObject();
+  }
+  finally {
+    Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);
+  }
+}

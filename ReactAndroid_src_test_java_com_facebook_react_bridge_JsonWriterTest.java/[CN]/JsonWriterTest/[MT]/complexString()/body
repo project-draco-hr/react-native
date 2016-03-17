@@ -1,0 +1,6 @@
+{
+  mWriter.beginObject();
+  mWriter.name("string").value("\t\uD83D\uDCA9");
+  mWriter.endObject();
+  verify("{\"string\":\"\\t\uD83D\uDCA9\"}");
+}

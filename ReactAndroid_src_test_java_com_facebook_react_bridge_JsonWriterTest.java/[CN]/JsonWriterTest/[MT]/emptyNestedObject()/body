@@ -1,0 +1,7 @@
+{
+  mWriter.beginObject();
+  mWriter.beginObject();
+  mWriter.endObject();
+  mWriter.endObject();
+  verify("{{}}");
+}

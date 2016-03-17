@@ -1,0 +1,9 @@
+{
+  if (name == null) {
+    throw new NullPointerException("name can not be null");
+  }
+  beforeName();
+  string(name);
+  mWriter.write(':');
+  return this;
+}

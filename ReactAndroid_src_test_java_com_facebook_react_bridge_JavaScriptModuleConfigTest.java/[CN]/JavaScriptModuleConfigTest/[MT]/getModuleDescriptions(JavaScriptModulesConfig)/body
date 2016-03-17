@@ -1,8 +1,7 @@
 {
-  JsonFactory jsonFactory=new JsonFactory();
-  StringWriter writer=new StringWriter();
-  JsonGenerator jg=jsonFactory.createGenerator(writer);
-  jsModulesConfig.writeModuleDescriptions(jg);
-  jg.close();
-  return writer.getBuffer().toString();
+  StringWriter stringWriter=new StringWriter();
+  JsonWriter writer=new JsonWriter(stringWriter);
+  jsModulesConfig.writeModuleDescriptions(writer);
+  writer.close();
+  return stringWriter.getBuffer().toString();
 }

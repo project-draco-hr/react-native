@@ -1,9 +1,0 @@
-{
-  jg.writeStartObject();
-  for (  JavaScriptModuleRegistration registration : mModules) {
-    jg.writeObjectFieldStart(registration.getName());
-    appendJSModuleToJSONObject(jg,registration);
-    jg.writeEndObject();
-  }
-  jg.writeEndObject();
-}

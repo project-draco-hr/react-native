@@ -1,0 +1,13 @@
+{
+  writer.name("moduleID").value(registration.getModuleId());
+  writer.name("methods").beginObject();
+  for (  Method method : registration.getMethods()) {
+    writer.name(method.getName()).beginObject();
+    writer.name("methodID").value(registration.getMethodId(method));
+    writer.endObject();
+  }
+  writer.endObject();
+  if (registration.getModuleInterface().isAnnotationPresent(SupportsWebWorkers.class)) {
+    writer.name("supportsWebWorkers").value(true);
+  }
+}

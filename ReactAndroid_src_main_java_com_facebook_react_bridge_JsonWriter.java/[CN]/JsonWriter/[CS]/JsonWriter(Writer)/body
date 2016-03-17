@@ -1,0 +1,4 @@
+{
+  mWriter=writer;
+  mScopes=new ArrayDeque<>();
+}

@@ -1,0 +1,4 @@
+{
+  mScopes.pop();
+  mScopes.push(scope);
+}

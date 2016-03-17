@@ -1,0 +1,4 @@
+{
+  mWriter.close();
+  assertThat(mStringWriter.getBuffer().toString()).isEqualTo(expected);
+}

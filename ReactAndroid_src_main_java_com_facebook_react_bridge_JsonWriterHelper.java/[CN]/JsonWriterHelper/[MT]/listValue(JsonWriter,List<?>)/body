@@ -1,0 +1,7 @@
+{
+  writer.beginArray();
+  for (  Object item : list) {
+    objectValue(writer,item);
+  }
+  writer.endArray();
+}

@@ -1,0 +1,4 @@
+{
+  open(Scope.EMPTY_OBJECT,'{');
+  return this;
+}

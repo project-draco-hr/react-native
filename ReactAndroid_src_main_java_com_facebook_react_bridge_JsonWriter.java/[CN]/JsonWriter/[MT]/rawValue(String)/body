@@ -1,0 +1,5 @@
+{
+  beforeValue();
+  mWriter.write(json);
+  return this;
+}

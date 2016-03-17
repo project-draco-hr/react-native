@@ -1,0 +1,7 @@
+{
+  mWriter.beginArray();
+  mWriter.beginArray();
+  mWriter.endArray();
+  mWriter.endArray();
+  verify("[[]]");
+}

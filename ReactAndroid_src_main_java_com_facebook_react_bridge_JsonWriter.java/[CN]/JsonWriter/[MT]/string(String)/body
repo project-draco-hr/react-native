@@ -1,0 +1,41 @@
+{
+  mWriter.write('"');
+  for (int i=0, length=string.length(); i < length; i++) {
+    char c=string.charAt(i);
+switch (c) {
+case '\t':
+      mWriter.write("\\t");
+    break;
+case '\b':
+  mWriter.write("\\b");
+break;
+case '\n':
+mWriter.write("\\n");
+break;
+case '\r':
+mWriter.write("\\r");
+break;
+case '\f':
+mWriter.write("\\f");
+break;
+case '"':
+case '\\':
+mWriter.write('\\');
+mWriter.write(c);
+break;
+case '\u2028':
+case '\u2029':
+mWriter.write(String.format("\\u%04x",(int)c));
+break;
+default :
+if (c <= 0x1F) {
+mWriter.write(String.format("\\u%04x",(int)c));
+}
+ else {
+mWriter.write(c);
+}
+break;
+}
+}
+mWriter.write('"');
+}

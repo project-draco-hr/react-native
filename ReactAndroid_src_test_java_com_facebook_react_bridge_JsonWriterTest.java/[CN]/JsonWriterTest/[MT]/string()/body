@@ -1,0 +1,6 @@
+{
+  mWriter.beginObject();
+  mWriter.name("string").value("hello!");
+  mWriter.endObject();
+  verify("{\"string\":\"hello!\"}");
+}

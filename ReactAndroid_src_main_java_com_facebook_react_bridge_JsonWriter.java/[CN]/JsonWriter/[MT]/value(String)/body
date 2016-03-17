@@ -1,0 +1,8 @@
+{
+  if (value == null) {
+    return nullValue();
+  }
+  beforeValue();
+  string(value);
+  return this;
+}

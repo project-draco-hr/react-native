@@ -1,0 +1,16 @@
+{
+  Scope scope=mScopes.peek();
+switch (scope) {
+case EMPTY_ARRAY:
+case ARRAY:
+    throw new IllegalStateException("name not allowed in array");
+case EMPTY_OBJECT:
+  replace(Scope.OBJECT);
+break;
+case OBJECT:
+mWriter.write(',');
+break;
+default :
+throw new IllegalStateException("Unknown scope: " + scope);
+}
+}

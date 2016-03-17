@@ -1,0 +1,4 @@
+{
+  open(Scope.EMPTY_ARRAY,'[');
+  return this;
+}

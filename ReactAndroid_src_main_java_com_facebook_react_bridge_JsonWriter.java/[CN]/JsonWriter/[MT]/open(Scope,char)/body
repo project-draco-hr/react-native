@@ -1,0 +1,4 @@
+{
+  mScopes.push(scope);
+  mWriter.write(bracket);
+}

@@ -1,0 +1,5 @@
+{
+  beforeValue();
+  mWriter.append(Double.toString(value));
+  return this;
+}

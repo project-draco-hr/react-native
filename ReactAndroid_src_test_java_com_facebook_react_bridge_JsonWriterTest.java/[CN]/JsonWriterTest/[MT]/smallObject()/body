@@ -1,0 +1,7 @@
+{
+  mWriter.beginObject();
+  mWriter.name("hello").value(true);
+  mWriter.name("hello_again").value("hi!");
+  mWriter.endObject();
+  verify("{\"hello\":true,\"hello_again\":\"hi!\"}");
+}

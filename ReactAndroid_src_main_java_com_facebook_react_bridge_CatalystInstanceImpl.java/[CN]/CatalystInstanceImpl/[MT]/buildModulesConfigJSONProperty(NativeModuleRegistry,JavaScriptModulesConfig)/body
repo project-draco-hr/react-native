@@ -1,18 +1,23 @@
 {
-  JsonFactory jsonFactory=new JsonFactory();
-  StringWriter writer=new StringWriter();
+  StringWriter stringWriter=new StringWriter();
+  JsonWriter writer=new JsonWriter(stringWriter);
   try {
-    JsonGenerator jg=jsonFactory.createGenerator(writer);
-    jg.writeStartObject();
-    jg.writeFieldName("remoteModuleConfig");
-    nativeModuleRegistry.writeModuleDescriptions(jg);
-    jg.writeFieldName("localModulesConfig");
-    jsModulesConfig.writeModuleDescriptions(jg);
-    jg.writeEndObject();
-    jg.close();
+    writer.beginObject();
+    writer.name("remoteModuleConfig");
+    nativeModuleRegistry.writeModuleDescriptions(writer);
+    writer.name("localModulesConfig");
+    jsModulesConfig.writeModuleDescriptions(writer);
+    writer.endObject();
+    return stringWriter.toString();
   }
  catch (  IOException ioe) {
     throw new RuntimeException("Unable to serialize JavaScript module declaration",ioe);
   }
-  return writer.getBuffer().toString();
+ finally {
+    try {
+      writer.close();
+    }
+ catch (    IOException ignored) {
+    }
+  }
 }

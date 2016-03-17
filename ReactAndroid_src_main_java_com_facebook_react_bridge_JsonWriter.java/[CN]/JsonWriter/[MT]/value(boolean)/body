@@ -1,0 +1,5 @@
+{
+  beforeValue();
+  mWriter.write(value ? "true" : "false");
+  return this;
+}

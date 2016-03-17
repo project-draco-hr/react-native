@@ -1,0 +1,9 @@
+{
+  mWriter.beginArray();
+  mWriter.value(true);
+  mWriter.value(1);
+  mWriter.value(1.0);
+  mWriter.value("hi!");
+  mWriter.endArray();
+  verify("[true,1,1.0,\"hi!\"]");
+}

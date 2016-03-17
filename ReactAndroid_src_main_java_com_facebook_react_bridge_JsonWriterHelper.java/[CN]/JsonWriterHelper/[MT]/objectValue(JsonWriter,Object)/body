@@ -1,0 +1,17 @@
+{
+  if (value == null) {
+    writer.nullValue();
+  }
+ else   if (value instanceof String) {
+    writer.value((String)value);
+  }
+ else   if (value instanceof Number) {
+    writer.value((Number)value);
+  }
+ else   if (value instanceof Boolean) {
+    writer.value((Boolean)value);
+  }
+ else {
+    throw new IllegalArgumentException("Unknown value: " + value);
+  }
+}
