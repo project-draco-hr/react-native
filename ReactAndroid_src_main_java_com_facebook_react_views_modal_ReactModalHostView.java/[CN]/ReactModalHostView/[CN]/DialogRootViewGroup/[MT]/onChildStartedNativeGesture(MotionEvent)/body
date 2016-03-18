@@ -1,0 +1,3 @@
+{
+  mJSTouchDispatcher.onChildStartedNativeGesture(androidEvent,getEventDispatcher());
+}

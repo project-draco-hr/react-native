@@ -1,0 +1,4 @@
+{
+  mAnimated=animated;
+  mPropertyRequiresNewDialog=true;
+}

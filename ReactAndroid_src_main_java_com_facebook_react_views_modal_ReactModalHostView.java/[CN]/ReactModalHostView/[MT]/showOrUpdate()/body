@@ -1,0 +1,34 @@
+{
+  if (mDialog != null) {
+    if (mPropertyRequiresNewDialog) {
+      dismiss();
+    }
+ else {
+      updateProperties();
+      return;
+    }
+  }
+  mPropertyRequiresNewDialog=false;
+  int theme=R.style.Theme_FullScreenDialog;
+  if (mAnimated) {
+    theme=R.style.Theme_FullScreenDialogAnimated;
+  }
+  mDialog=new Dialog(getContext(),theme);
+  mDialog.setContentView(mHostView);
+  updateProperties();
+  mDialog.setOnShowListener(mOnShowListener);
+  mDialog.setOnKeyListener(new DialogInterface.OnKeyListener(){
+    @Override public boolean onKey(    DialogInterface dialog,    int keyCode,    KeyEvent event){
+      if (keyCode == KeyEvent.KEYCODE_BACK) {
+        if (event.getAction() == KeyEvent.ACTION_UP) {
+          Assertions.assertNotNull(mOnRequestCloseListener,"setOnRequestCloseListener must be called by the manager");
+          mOnRequestCloseListener.onRequestClose(dialog);
+        }
+        return true;
+      }
+      return false;
+    }
+  }
+);
+  mDialog.show();
+}

@@ -1,0 +1,4 @@
+{
+  View child=getChildAt(index);
+  mHostView.removeView(child);
+}

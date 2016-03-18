@@ -1,0 +1,10 @@
+{
+  Assertions.assertNotNull(mDialog,"mDialog must exist when we call updateProperties");
+  if (mTransparent) {
+    mDialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+  }
+ else {
+    mDialog.getWindow().setDimAmount(0.5f);
+    mDialog.getWindow().setFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND,WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+  }
+}

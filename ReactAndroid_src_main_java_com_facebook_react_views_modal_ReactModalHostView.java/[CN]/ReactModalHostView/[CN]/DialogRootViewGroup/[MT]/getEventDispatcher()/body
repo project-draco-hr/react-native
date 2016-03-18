@@ -1,0 +1,4 @@
+{
+  ReactContext reactContext=(ReactContext)getContext();
+  return reactContext.getNativeModule(UIManagerModule.class).getEventDispatcher();
+}

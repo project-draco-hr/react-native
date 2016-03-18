@@ -1,0 +1,3 @@
+{
+  mHostView.removeView(child);
+}

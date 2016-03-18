@@ -1,0 +1,3 @@
+{
+  return MapBuilder.<String,Object>builder().put(RequestCloseEvent.EVENT_NAME,MapBuilder.of("registrationName","onRequestClose")).put(ShowEvent.EVENT_NAME,MapBuilder.of("registrationName","onShow")).build();
+}

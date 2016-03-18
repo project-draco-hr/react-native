@@ -1,0 +1,8 @@
+{
+  if (mDialog != null) {
+    mDialog.dismiss();
+    mDialog=null;
+    ViewGroup parent=(ViewGroup)mHostView.getParent();
+    parent.removeViewAt(0);
+  }
+}

@@ -1,0 +1,4 @@
+{
+  mJSTouchDispatcher.handleTouchEvent(event,getEventDispatcher());
+  return super.onInterceptTouchEvent(event);
+}

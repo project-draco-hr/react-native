@@ -1,0 +1,3 @@
+{
+  return mHostView.getChildAt(index);
+}

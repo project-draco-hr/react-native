@@ -1,0 +1,15 @@
+{
+  final EventDispatcher dispatcher=reactContext.getNativeModule(UIManagerModule.class).getEventDispatcher();
+  view.setOnRequestCloseListener(new ReactModalHostView.OnRequestCloseListener(){
+    @Override public void onRequestClose(    DialogInterface dialog){
+      dispatcher.dispatchEvent(new RequestCloseEvent(view.getId(),SystemClock.nanoTime()));
+    }
+  }
+);
+  view.setOnShowListener(new DialogInterface.OnShowListener(){
+    @Override public void onShow(    DialogInterface dialog){
+      dispatcher.dispatchEvent(new ShowEvent(view.getId(),SystemClock.nanoTime()));
+    }
+  }
+);
+}
