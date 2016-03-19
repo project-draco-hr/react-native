@@ -8,6 +8,9 @@
   if ("stretch".equals(resizeModeValue)) {
     return ScalingUtils.ScaleType.FIT_XY;
   }
+  if ("center".equals(resizeModeValue)) {
+    return ScalingUtils.ScaleType.CENTER_INSIDE;
+  }
   if (resizeModeValue == null) {
     return defaultValue();
   }

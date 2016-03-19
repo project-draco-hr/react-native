@@ -3,5 +3,6 @@
   assertThat(ImageResizeMode.toScaleType("contain")).isEqualTo(ScalingUtils.ScaleType.FIT_CENTER);
   assertThat(ImageResizeMode.toScaleType("cover")).isEqualTo(ScalingUtils.ScaleType.CENTER_CROP);
   assertThat(ImageResizeMode.toScaleType("stretch")).isEqualTo(ScalingUtils.ScaleType.FIT_XY);
+  assertThat(ImageResizeMode.toScaleType("center")).isEqualTo(ScalingUtils.ScaleType.CENTER_INSIDE);
   assertThat(ImageResizeMode.defaultValue()).isEqualTo(ScalingUtils.ScaleType.CENTER_CROP);
 }
