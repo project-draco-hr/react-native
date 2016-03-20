@@ -15,9 +15,6 @@
     }
     File tempFile=createTempFile(mContext,mimeType);
     writeCompressedBitmapToFile(cropped,mimeType,tempFile);
-    if (mimeType.equals("image/jpeg")) {
-      copyExif(mContext,Uri.parse(mUri),tempFile);
-    }
     mSuccess.invoke(Uri.fromFile(tempFile).toString());
   }
  catch (  Exception e) {
