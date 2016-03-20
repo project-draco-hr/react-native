@@ -26,7 +26,7 @@
   hierarchy.setFadeDuration(mFadeDurationMs >= 0 ? mFadeDurationMs : mIsLocalImage ? 0 : REMOTE_IMAGE_FADE_DURATION_MS);
   Postprocessor postprocessor=usePostprocessorScaling ? mRoundedCornerPostprocessor : null;
   ResizeOptions resizeOptions=doResize ? new ResizeOptions(getWidth(),getHeight()) : null;
-  ImageRequest imageRequest=ImageRequestBuilder.newBuilderWithSource(mUri).setPostprocessor(postprocessor).setResizeOptions(resizeOptions).setAutoRotateEnabled(true).setProgressiveRenderingEnabled(mProgressiveRenderingEnabled).build();
+  ImageRequest imageRequest=ImageRequestBuilder.newBuilderWithSource(mUri).setPostprocessor(postprocessor).setResizeOptions(resizeOptions).setProgressiveRenderingEnabled(mProgressiveRenderingEnabled).build();
   mDraweeControllerBuilder.reset();
   mDraweeControllerBuilder.setAutoPlayAnimations(true).setCallerContext(mCallerContext).setOldController(getController()).setImageRequest(imageRequest);
   if (mControllerListener != null && mControllerForTesting != null) {
