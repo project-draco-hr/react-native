@@ -1,0 +1,11 @@
+{
+  if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+    try {
+      Method method=ReactDrawerLayout.class.getMethod("setDrawerElevation",float.class);
+      method.invoke(view,PixelUtil.toPixelFromDIP(elevation));
+    }
+ catch (    Exception ex) {
+      FLog.w(ReactConstants.TAG,"setDrawerElevation is not available in this version of the support lib.",ex);
+    }
+  }
+}
