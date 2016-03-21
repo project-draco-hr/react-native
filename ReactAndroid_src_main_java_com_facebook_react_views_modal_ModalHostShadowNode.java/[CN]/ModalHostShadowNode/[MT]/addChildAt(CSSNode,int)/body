@@ -1,5 +1,5 @@
 {
-  super.onAfterUpdateTransaction();
+  super.addChildAt(child,i);
   Context context=getThemedContext();
   WindowManager wm=(WindowManager)context.getSystemService(Context.WINDOW_SERVICE);
   Display display=wm.getDefaultDisplay();
@@ -14,6 +14,6 @@
     width=mMaxPoint.x;
     height=mMinPoint.y;
   }
-  setStyleWidth(width);
-  setStyleHeight(height);
+  child.setStyleWidth(width);
+  child.setStyleHeight(height);
 }
