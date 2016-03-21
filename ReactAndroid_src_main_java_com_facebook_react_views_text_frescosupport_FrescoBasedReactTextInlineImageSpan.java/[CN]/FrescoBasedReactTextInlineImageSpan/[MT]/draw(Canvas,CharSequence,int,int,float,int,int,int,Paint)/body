@@ -9,6 +9,7 @@
   }
   canvas.save();
   int transY=bottom - mDrawable.getBounds().bottom;
+  transY-=paint.getFontMetricsInt().descent;
   canvas.translate(x,transY);
   mDrawable.draw(canvas);
   canvas.restore();
