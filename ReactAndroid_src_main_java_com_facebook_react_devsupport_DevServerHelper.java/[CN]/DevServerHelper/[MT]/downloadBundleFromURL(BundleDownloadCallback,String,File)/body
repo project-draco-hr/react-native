@@ -1,5 +1,5 @@
 {
-  final String bundleURL=createBundleURL(getDebugServerHost(),jsModulePath,getDevMode(),getHMR());
+  final String bundleURL=createBundleURL(getDebugServerHost(),jsModulePath,getDevMode(),getHMR(),getJSMinifyMode());
   final Request request=new Request.Builder().url(bundleURL).build();
   mDownloadBundleFromURLCall=Assertions.assertNotNull(mClient.newCall(request));
   mDownloadBundleFromURLCall.enqueue(new Callback(){

@@ -1,5 +1,5 @@
 {
-  if (PREFS_FPS_DEBUG_KEY.equals(key) || PREFS_RELOAD_ON_JS_CHANGE_KEY.equals(key) || PREFS_JS_DEV_MODE_DEBUG_KEY.equals(key)) {
+  if (PREFS_FPS_DEBUG_KEY.equals(key) || PREFS_RELOAD_ON_JS_CHANGE_KEY.equals(key) || PREFS_JS_DEV_MODE_DEBUG_KEY.equals(key)|| PREFS_JS_MINIFY_DEBUG_KEY.equals(key)) {
     mDebugManager.reloadSettings();
   }
 }

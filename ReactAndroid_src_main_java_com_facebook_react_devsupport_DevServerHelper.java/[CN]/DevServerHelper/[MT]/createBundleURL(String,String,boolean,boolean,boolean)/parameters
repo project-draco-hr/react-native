@@ -2,3 +2,4 @@ String host
 String jsModulePath
 boolean devMode
 boolean hmr
+boolean jsMinify

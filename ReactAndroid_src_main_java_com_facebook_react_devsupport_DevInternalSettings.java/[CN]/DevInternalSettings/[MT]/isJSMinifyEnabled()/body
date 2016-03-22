@@ -1,0 +1,3 @@
+{
+  return mPreferences.getBoolean(PREFS_JS_MINIFY_DEBUG_KEY,false);
+}
