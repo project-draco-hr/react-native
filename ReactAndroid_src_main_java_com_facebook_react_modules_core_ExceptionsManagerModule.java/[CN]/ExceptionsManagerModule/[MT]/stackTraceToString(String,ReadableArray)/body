@@ -2,7 +2,7 @@
   StringBuilder stringBuilder=new StringBuilder(message).append(", stack:\n");
   for (int i=0; i < stack.size(); i++) {
     ReadableMap frame=stack.getMap(i);
-    stringBuilder.append(frame.getString("methodName")).append("@").append(frame.getInt("lineNumber"));
+    stringBuilder.append(frame.getString("methodName")).append("@").append(stackFrameToModuleId(frame)).append(frame.getInt("lineNumber"));
     if (frame.hasKey("column") && !frame.isNull("column") && frame.getType("column") == ReadableType.Number) {
       stringBuilder.append(":").append(frame.getInt("column"));
     }

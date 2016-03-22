@@ -1,0 +1,9 @@
+{
+  if (frame.hasKey("file") && !frame.isNull("file") && frame.getType("file") == ReadableType.String) {
+    final Matcher matcher=mJsModuleIdPattern.matcher(frame.getString("file"));
+    if (matcher.find()) {
+      return matcher.group(1) + ":";
+    }
+  }
+  return "";
+}
