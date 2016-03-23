@@ -1,0 +1,12 @@
+{
+  super(reactContext);
+  mClient=client;
+  if (networkInterceptorCreators != null) {
+    for (    NetworkInterceptorCreator networkInterceptorCreator : networkInterceptorCreators) {
+      mClient.networkInterceptors().add(networkInterceptorCreator.create());
+    }
+  }
+  mCookieHandler=new ForwardingCookieHandler(reactContext);
+  mShuttingDown=false;
+  mDefaultUserAgent=defaultUserAgent;
+}

@@ -1,3 +1,3 @@
-ReactApplicationContext reactContext
+ReactApplicationContext context
 String defaultUserAgent
 OkHttpClient client
