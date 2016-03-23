@@ -8,11 +8,13 @@
     ReactClippingViewGroup clippingViewGroup=(ReactClippingViewGroup)parent;
     if (clippingViewGroup.getRemoveClippedSubviews()) {
       clippingViewGroup.getClippingRect(sHelperRect);
-      sHelperRect.offset(-view.getLeft(),-view.getTop());
-      view.getDrawingRect(outputRect);
-      if (!outputRect.intersect(sHelperRect)) {
+      if (!sHelperRect.intersect(view.getLeft(),view.getTop(),view.getRight(),view.getBottom())) {
         outputRect.setEmpty();
+        return;
       }
+      sHelperRect.offset(-view.getLeft(),-view.getTop());
+      sHelperRect.offset(view.getScrollX(),view.getScrollY());
+      outputRect.set(sHelperRect);
       return;
     }
   }
