@@ -1,3 +1,3 @@
 {
-  return DEVICE_LOCALHOST;
+  return AndroidInfoHelpers.DEVICE_LOCALHOST;
 }

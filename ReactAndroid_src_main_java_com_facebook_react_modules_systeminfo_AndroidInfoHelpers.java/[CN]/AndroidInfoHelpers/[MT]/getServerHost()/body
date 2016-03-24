@@ -1,0 +1,9 @@
+{
+  if (isRunningOnGenymotion()) {
+    return GENYMOTION_LOCALHOST;
+  }
+  if (isRunningOnStockEmulator()) {
+    return EMULATOR_LOCALHOST;
+  }
+  return DEVICE_LOCALHOST;
+}
