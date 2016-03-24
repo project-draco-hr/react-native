@@ -1,0 +1,3 @@
+{
+  mAnimatedNodes.remove(tag);
+}

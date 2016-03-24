@@ -1,0 +1,7 @@
+{
+  if (mChildren == null) {
+    mChildren=new ArrayList<>(DEFAULT_ANIMATED_NODE_CHILD_COUNT);
+  }
+  Assertions.assertNotNull(mChildren).add(child);
+  child.onAttachedToNode(this);
+}

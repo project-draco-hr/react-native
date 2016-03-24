@@ -1,0 +1,11 @@
+{
+  ReadableMap props=config.getMap("props");
+  ReadableMapKeySetIterator iter=props.keySetIterator();
+  mPropMapping=new HashMap<>();
+  while (iter.hasNextKey()) {
+    String propKey=iter.nextKey();
+    int nodeIndex=props.getInt(propKey);
+    mPropMapping.put(propKey,nodeIndex);
+  }
+  mNativeAnimatedNodesManager=nativeAnimatedNodesManager;
+}

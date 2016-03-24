@@ -1,0 +1,23 @@
+{
+  if (mStartFrameTimeNanos < 0) {
+    mStartFrameTimeNanos=frameTimeNanos;
+    mFromValue=mAnimatedValue.mValue;
+  }
+  long timeFromStartNanos=(frameTimeNanos - mStartFrameTimeNanos);
+  int frameIndex=(int)(timeFromStartNanos / 1000000L * 60L / 1000L);
+  if (frameIndex < 0) {
+    throw new IllegalStateException("Calculated frame index should never be lower than 0");
+  }
+ else   if (mHasFinished) {
+    return;
+  }
+  double nextValue;
+  if (frameIndex >= mFrames.length - 1) {
+    mHasFinished=true;
+    nextValue=mToValue;
+  }
+ else {
+    nextValue=mFromValue + mFrames[frameIndex] * (mToValue - mFromValue);
+  }
+  mAnimatedValue.mValue=nextValue;
+}

@@ -1,0 +1,3 @@
+{
+  Assertions.assertNotNull(mReactChoreographer).postFrameCallback(ReactChoreographer.CallbackType.NATIVE_ANIMATED_MODULE,mAnimatedFrameCallback);
+}

@@ -1,0 +1,9 @@
+{
+  ReadableArray frames=config.getArray("frames");
+  int numberOfFrames=frames.size();
+  mFrames=new double[numberOfFrames];
+  for (int i=0; i < numberOfFrames; i++) {
+    mFrames[i]=frames.getDouble(i);
+  }
+  mToValue=config.getDouble("toValue");
+}

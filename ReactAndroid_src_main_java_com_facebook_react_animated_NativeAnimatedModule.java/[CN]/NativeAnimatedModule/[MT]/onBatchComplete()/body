@@ -1,0 +1,14 @@
+{
+  ArrayList<UIThreadOperation> operations=mOperations.isEmpty() ? null : mOperations;
+  if (operations != null) {
+    mOperations=new ArrayList<>();
+synchronized (mOperationsCopyLock) {
+      if (mReadyOperations == null) {
+        mReadyOperations=operations;
+      }
+ else {
+        mReadyOperations.addAll(operations);
+      }
+    }
+  }
+}

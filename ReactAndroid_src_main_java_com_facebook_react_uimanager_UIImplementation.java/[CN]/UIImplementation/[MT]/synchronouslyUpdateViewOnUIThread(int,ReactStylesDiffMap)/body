@@ -1,0 +1,4 @@
+{
+  UiThreadUtil.assertOnUiThread();
+  mOperationsQueue.getNativeViewHierarchyManager().updateProperties(tag,props);
+}

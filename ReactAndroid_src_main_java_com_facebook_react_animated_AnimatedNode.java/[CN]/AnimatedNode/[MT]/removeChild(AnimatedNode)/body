@@ -1,0 +1,7 @@
+{
+  if (mChildren == null) {
+    return;
+  }
+  child.onDetachedFromNode(this);
+  mChildren.remove(child);
+}

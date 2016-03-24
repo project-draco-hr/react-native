@@ -1,0 +1,22 @@
+{
+  if (mConnectedViewTag == -1) {
+    throw new IllegalStateException("Node has not been attached to a view");
+  }
+  JavaOnlyMap propsMap=new JavaOnlyMap();
+  for (  Map.Entry<String,Integer> entry : mPropMapping.entrySet()) {
+    AnimatedNode node=mNativeAnimatedNodesManager.getNodeById(entry.getValue());
+    if (node == null) {
+      throw new IllegalArgumentException("Mapped property node does not exists");
+    }
+ else     if (node instanceof StyleAnimatedNode) {
+      ((StyleAnimatedNode)node).collectViewUpdates(propsMap);
+    }
+ else     if (node instanceof ValueAnimatedNode) {
+      propsMap.putDouble(entry.getKey(),((ValueAnimatedNode)node).mValue);
+    }
+ else {
+      throw new IllegalArgumentException("Unsupported type of node used in property node " + node.getClass());
+    }
+  }
+  uiImplementation.synchronouslyUpdateViewOnUIThread(mConnectedViewTag,new ReactStylesDiffMap(propsMap));
+}

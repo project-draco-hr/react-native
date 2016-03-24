@@ -1,0 +1,14 @@
+{
+  AnimatedNode node=mAnimatedNodes.get(animatedNodeTag);
+  if (node == null) {
+    throw new JSApplicationIllegalArgumentException("Animated node with tag " + animatedNodeTag + " does not exists");
+  }
+  if (!(node instanceof PropsAnimatedNode)) {
+    throw new JSApplicationIllegalArgumentException("Animated node connected to view should be" + "of type " + PropsAnimatedNode.class.getName());
+  }
+  PropsAnimatedNode propsAnimatedNode=(PropsAnimatedNode)node;
+  if (propsAnimatedNode.mConnectedViewTag != -1) {
+    throw new JSApplicationIllegalArgumentException("Animated node " + animatedNodeTag + " is "+ "already attached to a view");
+  }
+  propsAnimatedNode.mConnectedViewTag=viewTag;
+}

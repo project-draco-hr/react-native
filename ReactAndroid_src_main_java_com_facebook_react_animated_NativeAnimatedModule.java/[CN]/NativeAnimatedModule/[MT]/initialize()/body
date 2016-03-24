@@ -1,0 +1,26 @@
+{
+  mReactChoreographer=ReactChoreographer.getInstance();
+  ReactApplicationContext reactCtx=getReactApplicationContext();
+  UIImplementation uiImplementation=reactCtx.getNativeModule(UIManagerModule.class).getUIImplementation();
+  final NativeAnimatedNodesManager nodesManager=new NativeAnimatedNodesManager(uiImplementation);
+  mAnimatedFrameCallback=new GuardedChoreographerFrameCallback(reactCtx){
+    @Override protected void doFrameGuarded(    final long frameTimeNanos){
+      ArrayList<UIThreadOperation> operations;
+synchronized (mOperationsCopyLock) {
+        operations=mReadyOperations;
+        mReadyOperations=null;
+      }
+      if (operations != null) {
+        for (int i=0, size=operations.size(); i < size; i++) {
+          operations.get(i).execute(nodesManager);
+        }
+      }
+      if (nodesManager.hasActiveAnimations()) {
+        nodesManager.runUpdates(frameTimeNanos);
+      }
+      Assertions.assertNotNull(mReactChoreographer).postFrameCallback(ReactChoreographer.CallbackType.NATIVE_ANIMATED_MODULE,mAnimatedFrameCallback);
+    }
+  }
+;
+  reactCtx.addLifecycleEventListener(this);
+}

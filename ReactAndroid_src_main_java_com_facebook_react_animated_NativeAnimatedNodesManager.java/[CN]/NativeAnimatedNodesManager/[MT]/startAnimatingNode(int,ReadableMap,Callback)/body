@@ -1,0 +1,20 @@
+{
+  AnimatedNode node=mAnimatedNodes.get(animatedNodeTag);
+  if (node == null) {
+    throw new JSApplicationIllegalArgumentException("Animated node with tag " + animatedNodeTag + " does not exists");
+  }
+  if (!(node instanceof ValueAnimatedNode)) {
+    throw new JSApplicationIllegalArgumentException("Animated node should be of type " + ValueAnimatedNode.class.getName());
+  }
+  String type=animationConfig.getString("type");
+  final AnimationDriver animation;
+  if ("frames".equals(type)) {
+    animation=new FrameBasedAnimationDriver(animationConfig);
+  }
+ else {
+    throw new JSApplicationIllegalArgumentException("Unsupported animation type: " + type);
+  }
+  animation.mEndCallback=endCallback;
+  animation.mAnimatedValue=(ValueAnimatedNode)node;
+  mActiveAnimations.add(animation);
+}

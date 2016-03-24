@@ -1,0 +1,105 @@
+{
+  UiThreadUtil.assertOnUiThread();
+  int activeNodesCount=0;
+  int updatedNodesCount=0;
+  boolean hasFinishedAnimations=false;
+  mAnimatedGraphBFSColor++;
+  if (mAnimatedGraphBFSColor == AnimatedNode.INITIAL_BFS_COLOR) {
+    mAnimatedGraphBFSColor++;
+  }
+  Queue<AnimatedNode> nodesQueue=new ArrayDeque<>();
+  for (int i=0; i < mUpdatedNodes.size(); i++) {
+    AnimatedNode node=mUpdatedNodes.get(i);
+    if (node.mBFSColor != mAnimatedGraphBFSColor) {
+      node.mBFSColor=mAnimatedGraphBFSColor;
+      activeNodesCount++;
+      nodesQueue.add(node);
+    }
+  }
+  for (int i=0; i < mActiveAnimations.size(); i++) {
+    AnimationDriver animation=mActiveAnimations.get(i);
+    animation.runAnimationStep(frameTimeNanos);
+    AnimatedNode valueNode=animation.mAnimatedValue;
+    if (valueNode.mBFSColor != mAnimatedGraphBFSColor) {
+      valueNode.mBFSColor=mAnimatedGraphBFSColor;
+      activeNodesCount++;
+      nodesQueue.add(valueNode);
+    }
+    if (animation.mHasFinished) {
+      hasFinishedAnimations=true;
+    }
+  }
+  while (!nodesQueue.isEmpty()) {
+    AnimatedNode nextNode=nodesQueue.poll();
+    if (nextNode.mChildren != null) {
+      for (int i=0; i < nextNode.mChildren.size(); i++) {
+        AnimatedNode child=nextNode.mChildren.get(i);
+        child.mActiveIncomingNodes++;
+        if (child.mBFSColor != mAnimatedGraphBFSColor) {
+          child.mBFSColor=mAnimatedGraphBFSColor;
+          activeNodesCount++;
+          nodesQueue.add(child);
+        }
+      }
+    }
+  }
+  mAnimatedGraphBFSColor++;
+  if (mAnimatedGraphBFSColor == AnimatedNode.INITIAL_BFS_COLOR) {
+    mAnimatedGraphBFSColor++;
+  }
+  for (int i=0; i < mUpdatedNodes.size(); i++) {
+    AnimatedNode node=mUpdatedNodes.get(i);
+    if (node.mActiveIncomingNodes == 0 && node.mBFSColor != mAnimatedGraphBFSColor) {
+      node.mBFSColor=mAnimatedGraphBFSColor;
+      updatedNodesCount++;
+      nodesQueue.add(node);
+    }
+  }
+  for (int i=0; i < mActiveAnimations.size(); i++) {
+    AnimationDriver animation=mActiveAnimations.get(i);
+    AnimatedNode valueNode=animation.mAnimatedValue;
+    if (valueNode.mActiveIncomingNodes == 0 && valueNode.mBFSColor != mAnimatedGraphBFSColor) {
+      valueNode.mBFSColor=mAnimatedGraphBFSColor;
+      updatedNodesCount++;
+      nodesQueue.add(valueNode);
+    }
+  }
+  while (!nodesQueue.isEmpty()) {
+    AnimatedNode nextNode=nodesQueue.poll();
+    nextNode.update();
+    if (nextNode instanceof PropsAnimatedNode) {
+      ((PropsAnimatedNode)nextNode).updateView(mUIImplementation);
+    }
+    if (nextNode.mChildren != null) {
+      for (int i=0; i < nextNode.mChildren.size(); i++) {
+        AnimatedNode child=nextNode.mChildren.get(i);
+        child.mActiveIncomingNodes--;
+        if (child.mBFSColor != mAnimatedGraphBFSColor && child.mActiveIncomingNodes == 0) {
+          child.mBFSColor=mAnimatedGraphBFSColor;
+          updatedNodesCount++;
+          nodesQueue.add(child);
+        }
+      }
+    }
+  }
+  if (activeNodesCount != updatedNodesCount) {
+    throw new IllegalStateException("Looks like animated nodes graph has cycles, there are " + activeNodesCount + " but toposort visited only "+ updatedNodesCount);
+  }
+  if (hasFinishedAnimations) {
+    int dest=0;
+    for (int i=0; i < mActiveAnimations.size(); i++) {
+      AnimationDriver animation=mActiveAnimations.get(i);
+      if (!animation.mHasFinished) {
+        mActiveAnimations.set(dest++,animation);
+      }
+ else {
+        WritableMap endCallbackResponse=Arguments.createMap();
+        endCallbackResponse.putBoolean("finished",true);
+        animation.mEndCallback.invoke(endCallbackResponse);
+      }
+    }
+    for (int i=mActiveAnimations.size() - 1; i >= dest; i--) {
+      mActiveAnimations.remove(i);
+    }
+  }
+}

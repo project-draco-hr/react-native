@@ -1,0 +1,11 @@
+{
+  AnimatedNode parentNode=mAnimatedNodes.get(parentNodeTag);
+  if (parentNode == null) {
+    throw new JSApplicationIllegalArgumentException("Animated node with tag " + parentNodeTag + " does not exists");
+  }
+  AnimatedNode childNode=mAnimatedNodes.get(childNodeTag);
+  if (childNode == null) {
+    throw new JSApplicationIllegalArgumentException("Animated node with tag " + childNodeTag + " does not exists");
+  }
+  parentNode.removeChild(childNode);
+}

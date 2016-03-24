@@ -1,0 +1,22 @@
+{
+  if (mAnimatedNodes.get(tag) != null) {
+    throw new JSApplicationIllegalArgumentException("Animated node with tag " + tag + " already exists");
+  }
+  String type=config.getString("type");
+  final AnimatedNode node;
+  if ("style".equals(type)) {
+    node=new StyleAnimatedNode(config,this);
+  }
+ else   if ("value".equals(type)) {
+    node=new ValueAnimatedNode(config);
+    mUpdatedNodes.add(node);
+  }
+ else   if ("props".equals(type)) {
+    node=new PropsAnimatedNode(config,this);
+  }
+ else {
+    throw new JSApplicationIllegalArgumentException("Unsupported node type: " + type);
+  }
+  node.mTag=tag;
+  mAnimatedNodes.put(tag,node);
+}
