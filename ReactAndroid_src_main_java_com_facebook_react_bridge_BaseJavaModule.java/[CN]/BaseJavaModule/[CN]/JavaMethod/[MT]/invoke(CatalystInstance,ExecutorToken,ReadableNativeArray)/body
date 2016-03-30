@@ -1,5 +1,5 @@
 {
-  Systrace.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"callJavaModuleMethod");
+  SystraceMessage.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"callJavaModuleMethod").arg("method",mTraceName).flush();
   try {
     if (mJSArgumentsNeeded != parameters.size()) {
       throw new NativeArgumentsParseException(BaseJavaModule.this.getName() + "." + mMethod.getName()+ " got "+ parameters.size()+ " arguments, expected "+ mJSArgumentsNeeded);

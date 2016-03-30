@@ -4,4 +4,5 @@
   mArgumentExtractors=buildArgumentExtractors(parameterTypes);
   mArguments=new Object[parameterTypes.length];
   mJSArgumentsNeeded=calculateJSArgumentsNeeded();
+  mTraceName=BaseJavaModule.this.getName() + "." + mMethod.getName();
 }
