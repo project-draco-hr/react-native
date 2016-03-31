@@ -1,0 +1,10 @@
+{
+  if (mEndFillColor != Color.TRANSPARENT) {
+    final View content=getChildAt(0);
+    if (mEndBackground != null && content != null && content.getBottom() < getHeight()) {
+      mEndBackground.setBounds(0,content.getBottom(),getWidth(),getHeight());
+      mEndBackground.draw(canvas);
+    }
+  }
+  super.draw(canvas);
+}

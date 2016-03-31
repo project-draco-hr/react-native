@@ -1,0 +1,6 @@
+{
+  if (color != mEndFillColor) {
+    mEndFillColor=color;
+    mEndBackground=new ColorDrawable(mEndFillColor);
+  }
+}
