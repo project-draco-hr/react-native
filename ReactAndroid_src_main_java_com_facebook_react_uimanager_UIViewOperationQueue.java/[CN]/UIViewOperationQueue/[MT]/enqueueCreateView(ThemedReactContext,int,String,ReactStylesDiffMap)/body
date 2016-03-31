@@ -1,3 +1,5 @@
 {
-  mOperations.add(new CreateViewOperation(themedContext,viewReactTag,viewClassName,initialProps));
+synchronized (mNonBatchedOperationsLock) {
+    mNonBatchedOperations.addLast(new CreateViewOperation(themedContext,viewReactTag,viewClassName,initialProps));
+  }
 }

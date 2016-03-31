@@ -1,0 +1,16 @@
+{
+  while (true) {
+    long timeLeftInFrame=FRAME_TIME_MS - ((System.nanoTime() - frameTimeNanos) / 1000000);
+    if (timeLeftInFrame < MIN_TIME_LEFT_IN_FRAME_TO_SCHEDULE_MORE_WORK_MS) {
+      break;
+    }
+    UIOperation nextOperation;
+synchronized (mNonBatchedOperationsLock) {
+      if (mNonBatchedOperations.isEmpty()) {
+        break;
+      }
+      nextOperation=mNonBatchedOperations.pollFirst();
+    }
+    nextOperation.execute();
+  }
+}

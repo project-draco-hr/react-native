@@ -1,4 +1,11 @@
 {
+  Systrace.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"dispatchNonBatchedUIOperations");
+  try {
+    dispatchPendingNonBatchedOperations(frameTimeNanos);
+  }
+  finally {
+    Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);
+  }
 synchronized (mDispatchRunnablesLock) {
     for (int i=0; i < mDispatchUIRunnables.size(); i++) {
       mDispatchUIRunnables.get(i).run();
