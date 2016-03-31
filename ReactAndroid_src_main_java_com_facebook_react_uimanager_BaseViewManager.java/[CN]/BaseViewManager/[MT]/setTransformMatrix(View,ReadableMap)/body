@@ -6,13 +6,4 @@
   view.setRotationY((float)matrix.getDouble(PROP_DECOMPOSED_MATRIX_ROTATE_Y));
   view.setScaleX((float)matrix.getDouble(PROP_DECOMPOSED_MATRIX_SCALE_X));
   view.setScaleY((float)matrix.getDouble(PROP_DECOMPOSED_MATRIX_SCALE_Y));
-  if (matrix.hasKey(PROP_DECOMPOSED_MATRIX_PERSPECTIVE)) {
-    ReadableArray perspectiveArray=matrix.getArray(PROP_DECOMPOSED_MATRIX_PERSPECTIVE);
-    if (perspectiveArray.size() > PERSPECTIVE_ARRAY_INVERTED_CAMERA_DISTANCE_INDEX) {
-      float cameraDistance=(float)(-1 / perspectiveArray.getDouble(PERSPECTIVE_ARRAY_INVERTED_CAMERA_DISTANCE_INDEX));
-      float scale=DisplayMetricsHolder.getScreenDisplayMetrics().density;
-      float normalizedCameraDistance=scale * cameraDistance * CAMERA_DISTANCE_NORMALIZATION_MULTIPLIER;
-      view.setCameraDistance(normalizedCameraDistance);
-    }
-  }
 }
