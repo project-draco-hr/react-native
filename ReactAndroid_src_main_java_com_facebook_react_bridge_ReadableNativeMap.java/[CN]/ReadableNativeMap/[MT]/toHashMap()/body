@@ -13,6 +13,9 @@ break;
 case Number:
 hashMap.put(key,getDouble(key));
 break;
+case String:
+hashMap.put(key,getString(key));
+break;
 case Map:
 hashMap.put(key,getMap(key).toHashMap());
 break;
