@@ -1,7 +1,4 @@
 {
-  for (int i=0, childCount=node.getChildCount(); i < childCount; i++) {
-    node.getChildAt(i).layout.resetResult();
-  }
   CSSDirection direction=resolveDirection(node,parentDirection);
   int mainAxis=resolveAxis(getFlexDirection(node),direction);
   int crossAxis=getCrossFlexDirection(mainAxis,direction);
