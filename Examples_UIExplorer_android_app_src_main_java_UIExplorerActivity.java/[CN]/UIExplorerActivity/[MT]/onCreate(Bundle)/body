@@ -1,0 +1,9 @@
+{
+  Bundle bundle=getIntent().getExtras();
+  if (bundle != null && bundle.containsKey(PARAM_ROUTE)) {
+    String routeUri=new StringBuilder("rnuiexplorer://example/").append(bundle.getString(PARAM_ROUTE)).append("Example").toString();
+    mInitialProps=new Bundle();
+    mInitialProps.putString("exampleFromAppetizeParams",routeUri);
+  }
+  super.onCreate(savedInstanceState);
+}
