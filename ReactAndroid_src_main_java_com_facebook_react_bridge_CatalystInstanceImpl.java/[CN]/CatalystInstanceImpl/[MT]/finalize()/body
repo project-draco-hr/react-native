@@ -1,0 +1,4 @@
+{
+  Assertions.assertCondition(mDestroyed,"Bridge was not destroyed before finalizer!");
+  super.finalize();
+}
