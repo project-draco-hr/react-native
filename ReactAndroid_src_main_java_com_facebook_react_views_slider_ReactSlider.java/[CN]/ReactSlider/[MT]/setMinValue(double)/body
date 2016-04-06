@@ -1,0 +1,4 @@
+{
+  mMinValue=min;
+  updateAll();
+}

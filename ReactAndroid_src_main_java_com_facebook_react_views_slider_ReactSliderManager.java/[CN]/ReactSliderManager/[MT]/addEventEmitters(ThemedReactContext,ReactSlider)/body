@@ -1,0 +1,3 @@
+{
+  view.setOnSeekBarChangeListener(ON_CHANGE_LISTENER);
+}

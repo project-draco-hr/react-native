@@ -1,0 +1,4 @@
+int viewId
+long timestampMs
+double value
+boolean fromUser

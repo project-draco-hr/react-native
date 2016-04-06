@@ -1,0 +1,6 @@
+{
+  if (seekBarProgress == getMax()) {
+    return mMaxValue;
+  }
+  return seekBarProgress * mStep + mMinValue;
+}

@@ -1,0 +1,7 @@
+{
+  if (mStep == 0) {
+    mStep=(mMaxValue - mMinValue) / (double)DEFAULT_TOTAL_STEPS;
+  }
+  setMax(getTotalSteps());
+  updateValue();
+}

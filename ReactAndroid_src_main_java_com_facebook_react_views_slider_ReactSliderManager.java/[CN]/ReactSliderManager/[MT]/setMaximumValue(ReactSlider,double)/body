@@ -1,0 +1,3 @@
+{
+  view.setMaxValue(value);
+}

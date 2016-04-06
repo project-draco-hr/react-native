@@ -1,0 +1,3 @@
+{
+  view.setMinValue(value);
+}

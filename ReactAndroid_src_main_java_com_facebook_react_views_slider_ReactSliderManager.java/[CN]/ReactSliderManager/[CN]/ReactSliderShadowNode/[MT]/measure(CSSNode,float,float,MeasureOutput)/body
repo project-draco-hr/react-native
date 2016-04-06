@@ -1,0 +1,12 @@
+{
+  if (!mMeasured) {
+    SeekBar reactSlider=new ReactSlider(getThemedContext(),null,STYLE);
+    final int spec=View.MeasureSpec.makeMeasureSpec(ViewGroup.LayoutParams.WRAP_CONTENT,View.MeasureSpec.UNSPECIFIED);
+    reactSlider.measure(spec,spec);
+    mWidth=reactSlider.getMeasuredWidth();
+    mHeight=reactSlider.getMeasuredHeight();
+    mMeasured=true;
+  }
+  measureOutput.width=mWidth;
+  measureOutput.height=mHeight;
+}

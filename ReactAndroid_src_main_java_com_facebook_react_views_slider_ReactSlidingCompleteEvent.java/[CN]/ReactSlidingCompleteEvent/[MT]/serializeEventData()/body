@@ -1,0 +1,6 @@
+{
+  WritableMap eventData=Arguments.createMap();
+  eventData.putInt("target",getViewTag());
+  eventData.putDouble("value",getValue());
+  return eventData;
+}

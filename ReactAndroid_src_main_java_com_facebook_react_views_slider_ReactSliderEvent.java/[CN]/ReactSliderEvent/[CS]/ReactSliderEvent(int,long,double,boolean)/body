@@ -1,0 +1,5 @@
+{
+  super(viewId,timestampMs);
+  mValue=value;
+  mFromUser=fromUser;
+}

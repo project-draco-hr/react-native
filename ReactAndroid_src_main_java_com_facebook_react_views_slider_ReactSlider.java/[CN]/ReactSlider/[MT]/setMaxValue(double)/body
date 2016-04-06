@@ -1,0 +1,4 @@
+{
+  mMaxValue=max;
+  updateAll();
+}

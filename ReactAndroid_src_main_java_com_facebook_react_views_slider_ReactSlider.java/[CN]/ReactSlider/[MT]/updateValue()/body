@@ -1,0 +1,3 @@
+{
+  setProgress((int)Math.round((mValue - mMinValue) / (mMaxValue - mMinValue) * getTotalSteps()));
+}
