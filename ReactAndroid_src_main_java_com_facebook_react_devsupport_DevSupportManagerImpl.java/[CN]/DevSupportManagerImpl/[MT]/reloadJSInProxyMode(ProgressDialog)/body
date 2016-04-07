@@ -1,5 +1,5 @@
 {
-  mDevServerHelper.launchChromeDevtools();
+  mDevServerHelper.launchJSDevtools();
   JavaJSExecutor.Factory factory=new JavaJSExecutor.Factory(){
     @Override public JavaJSExecutor create() throws Exception {
       WebsocketJavaScriptExecutor executor=new WebsocketJavaScriptExecutor();

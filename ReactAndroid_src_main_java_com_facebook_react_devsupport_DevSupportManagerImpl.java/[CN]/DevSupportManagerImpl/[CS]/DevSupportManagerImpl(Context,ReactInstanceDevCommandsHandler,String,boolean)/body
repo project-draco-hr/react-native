@@ -16,7 +16,7 @@
       if (DevServerHelper.getReloadAppAction(context).equals(action)) {
         if (intent.getBooleanExtra(DevServerHelper.RELOAD_APP_EXTRA_JS_PROXY,false)) {
           mIsUsingJSProxy=true;
-          mDevServerHelper.launchChromeDevtools();
+          mDevServerHelper.launchJSDevtools();
         }
  else {
           mIsUsingJSProxy=false;

@@ -1,0 +1,3 @@
+{
+  return String.format(LAUNCH_JS_DEVTOOLS_COMMAND_URL_FORMAT,getDebugServerHost());
+}

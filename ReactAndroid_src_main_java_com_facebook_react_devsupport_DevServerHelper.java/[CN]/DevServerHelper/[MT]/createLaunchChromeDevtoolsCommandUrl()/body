@@ -1,3 +1,0 @@
-{
-  return String.format(LAUNCH_CHROME_DEVTOOLS_COMMAND_URL_FORMAT,getDebugServerHost());
-}

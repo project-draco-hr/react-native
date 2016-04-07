@@ -1,5 +1,5 @@
 {
-  Request request=new Request.Builder().url(createLaunchChromeDevtoolsCommandUrl()).build();
+  Request request=new Request.Builder().url(createLaunchJSDevtoolsCommandUrl()).build();
   mClient.newCall(request).enqueue(new Callback(){
     @Override public void onFailure(    Request request,    IOException e){
     }
