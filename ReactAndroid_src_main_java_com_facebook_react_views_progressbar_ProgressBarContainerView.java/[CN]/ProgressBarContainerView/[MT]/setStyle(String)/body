@@ -1,6 +1,6 @@
 {
   int style=ReactProgressBarViewManager.getStyleFromString(styleName);
-  mProgressBar=new ProgressBar(getContext(),null,style);
+  mProgressBar=ReactProgressBarViewManager.createProgressBar(getContext(),style);
   mProgressBar.setMax(MAX_PROGRESS);
   removeAllViews();
   addView(mProgressBar,new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));

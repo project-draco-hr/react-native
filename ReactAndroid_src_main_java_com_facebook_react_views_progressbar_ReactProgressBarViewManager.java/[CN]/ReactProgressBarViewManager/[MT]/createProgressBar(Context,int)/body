@@ -1,0 +1,5 @@
+{
+synchronized (sProgressBarCtorLock) {
+    return new ProgressBar(context,null,style);
+  }
+}
