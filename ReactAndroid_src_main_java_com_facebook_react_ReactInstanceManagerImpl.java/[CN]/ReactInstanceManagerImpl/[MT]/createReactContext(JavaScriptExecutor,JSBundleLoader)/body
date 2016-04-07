@@ -70,7 +70,6 @@
   }
   finally {
     Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);
-    ReactMarker.logMarker(RUN_JS_BUNDLE_END);
   }
   return reactContext;
 }
