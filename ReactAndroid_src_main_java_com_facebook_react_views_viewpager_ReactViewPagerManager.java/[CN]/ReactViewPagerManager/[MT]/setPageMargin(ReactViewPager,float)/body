@@ -1,0 +1,3 @@
+{
+  pager.setPageMargin((int)PixelUtil.toPixelFromDIP(margin));
+}
