@@ -2,6 +2,7 @@
   mMethod=method;
   Class[] parameterTypes=method.getParameterTypes();
   mArgumentExtractors=buildArgumentExtractors(parameterTypes);
+  mSignature=buildSignature(parameterTypes);
   mArguments=new Object[parameterTypes.length];
   mJSArgumentsNeeded=calculateJSArgumentsNeeded();
   mTraceName=BaseJavaModule.this.getName() + "." + mMethod.getName();

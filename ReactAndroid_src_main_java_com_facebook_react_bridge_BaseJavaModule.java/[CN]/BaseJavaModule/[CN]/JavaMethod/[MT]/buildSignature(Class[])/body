@@ -1,0 +1,62 @@
+{
+  StringBuilder builder=new StringBuilder(paramTypes.length);
+  for (int i=0; i < paramTypes.length; i++) {
+    Class argumentClass=paramTypes[i];
+    if (argumentClass == ExecutorToken.class) {
+      if (!BaseJavaModule.this.supportsWebWorkers()) {
+        throw new RuntimeException("Module " + BaseJavaModule.this + " doesn't support web workers, but "+ mMethod.getName()+ " takes an ExecutorToken.");
+      }
+      builder.append('T');
+    }
+ else     if (argumentClass == boolean.class) {
+      builder.append('z');
+    }
+ else     if (argumentClass == Boolean.class) {
+      builder.append('Z');
+    }
+ else     if (argumentClass == int.class) {
+      builder.append('i');
+    }
+ else     if (argumentClass == Integer.class) {
+      builder.append('I');
+    }
+ else     if (argumentClass == double.class) {
+      builder.append('d');
+    }
+ else     if (argumentClass == Double.class) {
+      builder.append('D');
+    }
+ else     if (argumentClass == float.class) {
+      builder.append('f');
+    }
+ else     if (argumentClass == Float.class) {
+      builder.append('F');
+    }
+ else     if (argumentClass == String.class) {
+      builder.append('S');
+    }
+ else     if (argumentClass == Callback.class) {
+      builder.append('X');
+    }
+ else     if (argumentClass == Promise.class) {
+      builder.append('P');
+      Assertions.assertCondition(i == paramTypes.length - 1,"Promise must be used as last parameter only");
+      mType=METHOD_TYPE_REMOTE_ASYNC;
+    }
+ else     if (argumentClass == ReadableMap.class) {
+      builder.append('M');
+    }
+ else     if (argumentClass == ReadableArray.class) {
+      builder.append('A');
+    }
+ else {
+      throw new RuntimeException("Got unknown argument class: " + argumentClass.getSimpleName());
+    }
+  }
+  if (BaseJavaModule.this.supportsWebWorkers()) {
+    if (builder.charAt(0) != 'T') {
+      throw new RuntimeException("Module " + BaseJavaModule.this + " supports web workers, but "+ mMethod.getName()+ "does not take an ExecutorToken as its first parameter.");
+    }
+  }
+  return builder.toString();
+}
