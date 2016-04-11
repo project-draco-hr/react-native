@@ -4,6 +4,6 @@
   }
   measureOutput.height=CSSConstants.UNDEFINED;
   measureOutput.width=CSSConstants.UNDEFINED;
-  Assertions.assertNotNull(mMeasureFunction).measure(this,width,widthMode,height,heightMode,measureOutput);
+  Assertions.assertNotNull(mMeasureFunction).measure(this,width,height,measureOutput);
   return measureOutput;
 }

@@ -1,5 +1,3 @@
 MeasureOutput measureOutput
 float width
-CSSMeasureMode widthMode
 float height
-CSSMeasureMode heightMode
