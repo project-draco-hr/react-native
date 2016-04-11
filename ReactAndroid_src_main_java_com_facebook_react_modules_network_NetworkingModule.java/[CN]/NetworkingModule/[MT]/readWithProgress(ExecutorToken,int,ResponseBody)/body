@@ -1,21 +1,10 @@
 {
   Reader reader=responseBody.charStream();
   try {
-    StringBuilder sb=new StringBuilder(getBufferSize(responseBody));
-    char[] buffer=new char[MIN_BUFFER_SIZE];
+    char[] buffer=new char[MAX_CHUNK_SIZE_BETWEEN_FLUSHES];
     int read;
-    long last=System.nanoTime();
     while ((read=reader.read(buffer)) != -1) {
-      sb.append(buffer,0,read);
-      long now=System.nanoTime();
-      if (shouldDispatch(now,last)) {
-        onDataReceived(executorToken,requestId,sb.toString());
-        sb.setLength(0);
-        last=now;
-      }
-    }
-    if (sb.length() > 0) {
-      onDataReceived(executorToken,requestId,sb.toString());
+      onDataReceived(executorToken,requestId,new String(buffer,0,read));
     }
   }
   finally {
