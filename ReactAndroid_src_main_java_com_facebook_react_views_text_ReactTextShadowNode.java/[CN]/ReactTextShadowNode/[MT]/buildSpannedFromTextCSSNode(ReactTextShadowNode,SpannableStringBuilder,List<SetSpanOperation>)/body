@@ -31,6 +31,12 @@
     if (textCSSNode.mFontStyle != UNSET || textCSSNode.mFontWeight != UNSET || textCSSNode.mFontFamily != null) {
       ops.add(new SetSpanOperation(start,end,new CustomStyleSpan(textCSSNode.mFontStyle,textCSSNode.mFontWeight,textCSSNode.mFontFamily,textCSSNode.getThemedContext().getAssets())));
     }
+    if (textCSSNode.mIsUnderlineTextDecorationSet) {
+      ops.add(new SetSpanOperation(start,end,new UnderlineSpan()));
+    }
+    if (textCSSNode.mIsLineThroughTextDecorationSet) {
+      ops.add(new SetSpanOperation(start,end,new StrikethroughSpan()));
+    }
     if (textCSSNode.mTextShadowOffsetDx != 0 || textCSSNode.mTextShadowOffsetDy != 0) {
       ops.add(new SetSpanOperation(start,end,new ShadowStyleSpan(textCSSNode.mTextShadowOffsetDx,textCSSNode.mTextShadowOffsetDy,textCSSNode.mTextShadowRadius,textCSSNode.mTextShadowColor)));
     }

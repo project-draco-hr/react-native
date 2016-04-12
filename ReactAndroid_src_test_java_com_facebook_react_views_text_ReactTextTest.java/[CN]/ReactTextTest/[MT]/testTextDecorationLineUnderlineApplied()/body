@@ -1,0 +1,10 @@
+{
+  UIManagerModule uiManager=getUIManagerModule();
+  ReactRootView rootView=createText(uiManager,JavaOnlyMap.of(ViewProps.TEXT_DECORATION_LINE,"underline"),JavaOnlyMap.of(ReactTextShadowNode.PROP_TEXT,"test text"));
+  TextView textView=(TextView)rootView.getChildAt(0);
+  Spanned text=(Spanned)textView.getText();
+  UnderlineSpan underlineSpan=getSingleSpan(textView,UnderlineSpan.class);
+  StrikethroughSpan[] strikeThroughSpans=text.getSpans(0,text.length(),StrikethroughSpan.class);
+  assertThat(underlineSpan instanceof UnderlineSpan).isTrue();
+  assertThat(strikeThroughSpans).hasSize(0);
+}
