@@ -1,0 +1,5 @@
+{
+  super(viewId,timestampMs);
+  mEventType=eventType;
+  mImageUri=imageUri;
+}

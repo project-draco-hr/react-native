@@ -1,4 +1,3 @@
 {
-  super(viewId,timestampMs);
-  mEventType=eventType;
+  this(viewId,timestampMs,eventType,null);
 }

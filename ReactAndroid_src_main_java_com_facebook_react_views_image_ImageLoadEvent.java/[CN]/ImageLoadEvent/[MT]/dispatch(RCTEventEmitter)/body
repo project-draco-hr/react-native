@@ -1,3 +1,8 @@
 {
-  rctEventEmitter.receiveEvent(getViewTag(),getEventName(),null);
+  WritableMap eventData=null;
+  if (mImageUri != null) {
+    eventData=Arguments.createMap();
+    eventData.putString("uri",mImageUri);
+  }
+  rctEventEmitter.receiveEvent(getViewTag(),getEventName(),eventData);
 }
