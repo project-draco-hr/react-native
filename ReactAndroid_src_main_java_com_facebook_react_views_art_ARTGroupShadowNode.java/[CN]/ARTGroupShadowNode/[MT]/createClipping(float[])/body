@@ -1,0 +1,7 @@
+{
+  if (data.length != 4) {
+    throw new JSApplicationIllegalArgumentException("Clipping should be array of length 4 (e.g. [x, y, width, height])");
+  }
+  RectF clippingRect=new RectF(data[0],data[1],data[0] + data[2],data[1] + data[3]);
+  return clippingRect;
+}

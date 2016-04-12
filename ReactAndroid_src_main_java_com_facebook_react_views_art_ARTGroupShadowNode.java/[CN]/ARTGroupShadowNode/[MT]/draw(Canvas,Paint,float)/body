@@ -2,6 +2,9 @@
   opacity*=mOpacity;
   if (opacity > MIN_OPACITY_FOR_DRAW) {
     saveAndSetupCanvas(canvas);
+    if (mClipping != null) {
+      canvas.clipRect(mClipping.left * mScale,mClipping.top * mScale,mClipping.right * mScale,mClipping.bottom * mScale,Region.Op.REPLACE);
+    }
     for (int i=0; i < getChildCount(); i++) {
       ARTVirtualNode child=(ARTVirtualNode)getChildAt(i);
       child.draw(canvas,paint,opacity);

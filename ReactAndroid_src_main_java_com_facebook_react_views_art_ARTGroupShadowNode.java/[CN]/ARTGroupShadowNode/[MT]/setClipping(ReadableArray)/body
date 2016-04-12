@@ -1,0 +1,7 @@
+{
+  float[] clippingData=PropHelper.toFloatArray(clippingDims);
+  if (clippingData != null) {
+    mClipping=createClipping(clippingData);
+    markUpdated();
+  }
+}
