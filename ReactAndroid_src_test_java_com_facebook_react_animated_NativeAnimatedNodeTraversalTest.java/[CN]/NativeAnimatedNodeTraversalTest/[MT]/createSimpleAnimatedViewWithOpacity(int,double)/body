@@ -1,0 +1,8 @@
+{
+  mNativeAnimatedNodesManager.createAnimatedNode(1,JavaOnlyMap.of("type","value","value",opacity));
+  mNativeAnimatedNodesManager.createAnimatedNode(2,JavaOnlyMap.of("type","style","style",JavaOnlyMap.of("opacity",1)));
+  mNativeAnimatedNodesManager.createAnimatedNode(3,JavaOnlyMap.of("type","props","props",JavaOnlyMap.of("style",2)));
+  mNativeAnimatedNodesManager.connectAnimatedNodes(1,2);
+  mNativeAnimatedNodesManager.connectAnimatedNodes(2,3);
+  mNativeAnimatedNodesManager.connectAnimatedNodeToView(3,viewTag);
+}

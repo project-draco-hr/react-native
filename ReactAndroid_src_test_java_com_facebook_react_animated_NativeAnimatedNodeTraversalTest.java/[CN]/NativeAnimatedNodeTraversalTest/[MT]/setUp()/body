@@ -1,0 +1,18 @@
+{
+  PowerMockito.mockStatic(Arguments.class);
+  PowerMockito.when(Arguments.createArray()).thenAnswer(new Answer<Object>(){
+    @Override public Object answer(    InvocationOnMock invocation) throws Throwable {
+      return new JavaOnlyArray();
+    }
+  }
+);
+  PowerMockito.when(Arguments.createMap()).thenAnswer(new Answer<Object>(){
+    @Override public Object answer(    InvocationOnMock invocation) throws Throwable {
+      return new JavaOnlyMap();
+    }
+  }
+);
+  mFrameTimeNanos=INITIAL_FRAME_TIME_NANOS;
+  mUIImplementationMock=mock(UIImplementation.class);
+  mNativeAnimatedNodesManager=new NativeAnimatedNodesManager(mUIImplementationMock);
+}

@@ -4,7 +4,7 @@
   }
   JavaOnlyMap propsMap=new JavaOnlyMap();
   for (  Map.Entry<String,Integer> entry : mPropMapping.entrySet()) {
-    AnimatedNode node=mNativeAnimatedNodesManager.getNodeById(entry.getValue());
+    @Nullable AnimatedNode node=mNativeAnimatedNodesManager.getNodeById(entry.getValue());
     if (node == null) {
       throw new IllegalArgumentException("Mapped property node does not exists");
     }

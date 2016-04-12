@@ -1,0 +1,20 @@
+{
+  createSimpleAnimatedViewWithOpacity(1000,0d);
+  JavaOnlyArray frames=JavaOnlyArray.of(0d,0.2d,0.4d,0.6d,0.8d,1d);
+  Callback animationCallback=mock(Callback.class);
+  mNativeAnimatedNodesManager.startAnimatingNode(1,JavaOnlyMap.of("type","frames","frames",frames,"toValue",1d),animationCallback);
+  ArgumentCaptor<ReactStylesDiffMap> stylesCaptor=ArgumentCaptor.forClass(ReactStylesDiffMap.class);
+  reset(mUIImplementationMock);
+  mNativeAnimatedNodesManager.runUpdates(nextFrameTime());
+  verify(mUIImplementationMock).synchronouslyUpdateViewOnUIThread(eq(1000),stylesCaptor.capture());
+  assertThat(stylesCaptor.getValue().getDouble("opacity",Double.NaN)).isEqualTo(0);
+  for (int i=0; i < frames.size(); i++) {
+    reset(mUIImplementationMock);
+    mNativeAnimatedNodesManager.runUpdates(nextFrameTime());
+    verify(mUIImplementationMock).synchronouslyUpdateViewOnUIThread(eq(1000),stylesCaptor.capture());
+    assertThat(stylesCaptor.getValue().getDouble("opacity",Double.NaN)).isEqualTo(frames.getDouble(i));
+  }
+  reset(mUIImplementationMock);
+  mNativeAnimatedNodesManager.runUpdates(nextFrameTime());
+  verifyNoMoreInteractions(mUIImplementationMock);
+}

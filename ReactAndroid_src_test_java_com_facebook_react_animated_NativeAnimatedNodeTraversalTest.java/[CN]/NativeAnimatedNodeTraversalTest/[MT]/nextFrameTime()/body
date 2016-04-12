@@ -1,0 +1,3 @@
+{
+  return mFrameTimeNanos+=FRAME_LEN_NANOS;
+}

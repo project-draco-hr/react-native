@@ -1,3 +1,3 @@
 {
-  return !mActiveAnimations.isEmpty();
+  return !mActiveAnimations.isEmpty() || !mUpdatedNodes.isEmpty();
 }
