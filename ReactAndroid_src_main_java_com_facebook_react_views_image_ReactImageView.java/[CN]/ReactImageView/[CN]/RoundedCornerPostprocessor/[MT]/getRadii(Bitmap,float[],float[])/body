@@ -1,0 +1,12 @@
+{
+  ScalingUtils.getTransform(sMatrix,new Rect(0,0,source.getWidth(),source.getHeight()),source.getWidth(),source.getHeight(),0.0f,0.0f,mScaleType);
+  sMatrix.invert(sInverse);
+  mappedRadii[0]=sInverse.mapRadius(computedCornerRadii[0]);
+  mappedRadii[1]=mappedRadii[0];
+  mappedRadii[2]=sInverse.mapRadius(computedCornerRadii[1]);
+  mappedRadii[3]=mappedRadii[2];
+  mappedRadii[4]=sInverse.mapRadius(computedCornerRadii[2]);
+  mappedRadii[5]=mappedRadii[4];
+  mappedRadii[6]=sInverse.mapRadius(computedCornerRadii[3]);
+  mappedRadii[7]=mappedRadii[6];
+}

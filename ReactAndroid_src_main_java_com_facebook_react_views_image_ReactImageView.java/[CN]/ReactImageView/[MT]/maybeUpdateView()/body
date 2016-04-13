@@ -12,9 +12,14 @@
     hierarchy.setPlaceholderImage(mLoadingImageDrawable,ScalingUtils.ScaleType.CENTER);
   }
   boolean usePostprocessorScaling=mScaleType != ScalingUtils.ScaleType.CENTER_CROP && mScaleType != ScalingUtils.ScaleType.FOCUS_CROP;
-  float hierarchyRadius=usePostprocessorScaling ? 0 : mBorderRadius;
   RoundingParams roundingParams=hierarchy.getRoundingParams();
-  roundingParams.setCornersRadius(hierarchyRadius);
+  if (usePostprocessorScaling) {
+    roundingParams.setCornersRadius(0);
+  }
+ else {
+    cornerRadii(sComputedCornerRadii);
+    roundingParams.setCornersRadii(sComputedCornerRadii[0],sComputedCornerRadii[1],sComputedCornerRadii[2],sComputedCornerRadii[3]);
+  }
   roundingParams.setBorder(mBorderColor,mBorderWidth);
   if (mOverlayColor != Color.TRANSPARENT) {
     roundingParams.setOverlayColor(mOverlayColor);

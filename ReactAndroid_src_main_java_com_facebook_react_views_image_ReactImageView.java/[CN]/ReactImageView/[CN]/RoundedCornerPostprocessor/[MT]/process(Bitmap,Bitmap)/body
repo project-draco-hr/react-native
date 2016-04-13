@@ -1,6 +1,7 @@
 {
+  cornerRadii(sComputedCornerRadii);
   output.setHasAlpha(true);
-  if (mBorderRadius < 0.01f) {
+  if (FloatUtil.floatsEqual(sComputedCornerRadii[0],0f) && FloatUtil.floatsEqual(sComputedCornerRadii[1],0f) && FloatUtil.floatsEqual(sComputedCornerRadii[2],0f)&& FloatUtil.floatsEqual(sComputedCornerRadii[3],0f)) {
     super.process(output,source);
     return;
   }
@@ -8,6 +9,9 @@
   paint.setAntiAlias(true);
   paint.setShader(new BitmapShader(source,Shader.TileMode.CLAMP,Shader.TileMode.CLAMP));
   Canvas canvas=new Canvas(output);
-  float radius=getRadius(source);
-  canvas.drawRoundRect(new RectF(0,0,source.getWidth(),source.getHeight()),radius,radius,paint);
+  float[] radii=new float[8];
+  getRadii(source,sComputedCornerRadii,radii);
+  Path pathForBorderRadius=new Path();
+  pathForBorderRadius.addRoundRect(new RectF(0,0,source.getWidth(),source.getHeight()),radii,Path.Direction.CW);
+  canvas.drawPath(pathForBorderRadius,paint);
 }

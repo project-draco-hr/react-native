@@ -1,2 +1,3 @@
 ReactImageView view
+int index
 float borderRadius

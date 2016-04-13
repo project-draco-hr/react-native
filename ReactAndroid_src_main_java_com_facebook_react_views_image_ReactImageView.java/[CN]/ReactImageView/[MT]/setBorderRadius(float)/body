@@ -1,4 +1,6 @@
 {
-  mBorderRadius=PixelUtil.toPixelFromDIP(borderRadius);
-  mIsDirty=true;
+  if (!FloatUtil.floatsEqual(mBorderRadius,borderRadius)) {
+    mBorderRadius=borderRadius;
+    mIsDirty=true;
+  }
 }
