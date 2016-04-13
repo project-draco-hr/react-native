@@ -1,0 +1,32 @@
+{
+  if (uriString == null || uriString.isEmpty()) {
+    promise.reject(ERROR_INVALID_URI,"Cannot prefetch an image for an empty URI");
+    return;
+  }
+  Uri uri=Uri.parse(uriString);
+  ImageRequest request=ImageRequestBuilder.newBuilderWithSource(uri).build();
+  DataSource<Void> prefetchSource=Fresco.getImagePipeline().prefetchToDiskCache(request,this);
+  DataSubscriber<Void> prefetchSubscriber=new BaseDataSubscriber<Void>(){
+    @Override protected void onNewResultImpl(    DataSource<Void> dataSource){
+      if (!dataSource.isFinished()) {
+        return;
+      }
+      try {
+        promise.resolve(true);
+      }
+  finally {
+        dataSource.close();
+      }
+    }
+    @Override protected void onFailureImpl(    DataSource<Void> dataSource){
+      try {
+        promise.reject(ERROR_PREFETCH_FAILURE,dataSource.getFailureCause());
+      }
+  finally {
+        dataSource.close();
+      }
+    }
+  }
+;
+  prefetchSource.subscribe(prefetchSubscriber,CallerThreadExecutor.getInstance());
+}
