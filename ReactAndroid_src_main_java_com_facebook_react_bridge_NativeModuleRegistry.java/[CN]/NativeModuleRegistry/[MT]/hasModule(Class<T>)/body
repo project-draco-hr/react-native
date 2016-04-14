@@ -1,0 +1,3 @@
+{
+  return mModuleInstances.containsKey(moduleInterface);
+}

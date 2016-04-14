@@ -2,5 +2,5 @@
   if (mCatalystInstance == null) {
     throw new RuntimeException("Trying to call native module before CatalystInstance has been set!");
   }
-  return mCatalystInstance.getNativeModule(nativeModuleInterface);
+  return mCatalystInstance.hasNativeModule(nativeModuleInterface);
 }
