@@ -10,7 +10,7 @@
   }
   Headers requestHeaders=extractHeaders(headers,data);
   if (requestHeaders == null) {
-    onRequestError(executorToken,requestId,"Unrecognized headers format");
+    onRequestError(executorToken,requestId,"Unrecognized headers format",null);
     return;
   }
   String contentType=requestHeaders.get(CONTENT_TYPE_HEADER_NAME);
@@ -21,7 +21,7 @@
   }
  else   if (data.hasKey(REQUEST_BODY_KEY_STRING)) {
     if (contentType == null) {
-      onRequestError(executorToken,requestId,"Payload is set but no content-type header specified");
+      onRequestError(executorToken,requestId,"Payload is set but no content-type header specified",null);
       return;
     }
     String body=data.getString(REQUEST_BODY_KEY_STRING);
@@ -29,7 +29,7 @@
     if (RequestBodyUtil.isGzipEncoding(contentEncoding)) {
       RequestBody requestBody=RequestBodyUtil.createGzip(contentMediaType,body);
       if (requestBody == null) {
-        onRequestError(executorToken,requestId,"Failed to gzip request body");
+        onRequestError(executorToken,requestId,"Failed to gzip request body",null);
         return;
       }
       requestBuilder.method(method,requestBody);
@@ -40,13 +40,13 @@
   }
  else   if (data.hasKey(REQUEST_BODY_KEY_URI)) {
     if (contentType == null) {
-      onRequestError(executorToken,requestId,"Payload is set but no content-type header specified");
+      onRequestError(executorToken,requestId,"Payload is set but no content-type header specified",null);
       return;
     }
     String uri=data.getString(REQUEST_BODY_KEY_URI);
     InputStream fileInputStream=RequestBodyUtil.getFileInputStream(getReactApplicationContext(),uri);
     if (fileInputStream == null) {
-      onRequestError(executorToken,requestId,"Could not retrieve file for uri " + uri);
+      onRequestError(executorToken,requestId,"Could not retrieve file for uri " + uri,null);
       return;
     }
     requestBuilder.method(method,RequestBodyUtil.create(MediaType.parse(contentType),fileInputStream));
@@ -70,7 +70,7 @@
       if (mShuttingDown) {
         return;
       }
-      onRequestError(executorToken,requestId,e.getMessage());
+      onRequestError(executorToken,requestId,e.getMessage(),e);
     }
     @Override public void onResponse(    Response response) throws IOException {
       if (mShuttingDown) {
@@ -89,7 +89,7 @@
         }
       }
  catch (      IOException e) {
-        onRequestError(executorToken,requestId,e.getMessage());
+        onRequestError(executorToken,requestId,e.getMessage(),e);
       }
     }
   }
