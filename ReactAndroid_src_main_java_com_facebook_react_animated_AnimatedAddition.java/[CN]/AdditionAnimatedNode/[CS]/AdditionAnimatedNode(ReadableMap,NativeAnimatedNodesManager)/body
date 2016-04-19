@@ -1,0 +1,8 @@
+{
+  mNativeAnimatedNodesManager=nativeAnimatedNodesManager;
+  ReadableArray inputNodes=config.getArray("input");
+  mInputNodes=new int[inputNodes.size()];
+  for (int i=0; i < mInputNodes.length; i++) {
+    mInputNodes[i]=inputNodes.getInt(i);
+  }
+}
