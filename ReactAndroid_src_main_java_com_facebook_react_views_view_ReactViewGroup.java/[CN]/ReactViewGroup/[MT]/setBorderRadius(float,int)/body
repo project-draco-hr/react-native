@@ -1,3 +1,4 @@
 {
   getOrCreateReactViewBackground().setRadius(borderRadius,position);
+  refreshTranslucentBackgroundDrawable();
 }

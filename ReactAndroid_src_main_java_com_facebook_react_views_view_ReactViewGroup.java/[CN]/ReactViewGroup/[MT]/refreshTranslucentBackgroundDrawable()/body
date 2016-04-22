@@ -1,4 +1,12 @@
 {
+  Drawable background=null;
+  if (mNativeBackground != null) {
+    float[] cornerRadii=null;
+    if (mReactBackgroundDrawable != null) {
+      cornerRadii=mReactBackgroundDrawable.getBorderRadii();
+    }
+    background=ReactDrawableHelper.createDrawableFromJSDescription(getContext(),mNativeBackground,cornerRadii);
+  }
   super.setBackground(null);
   if (mReactBackgroundDrawable != null && background != null) {
     LayerDrawable layerDrawable=new LayerDrawable(new Drawable[]{mReactBackgroundDrawable,background});
