@@ -1,3 +1,4 @@
+int animationId
 int animatedNodeTag
 ReadableMap animationConfig
 Callback endCallback

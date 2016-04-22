@@ -2,7 +2,7 @@
   createSimpleAnimatedViewWithOpacity(1000,0d);
   JavaOnlyArray frames=JavaOnlyArray.of(0d,1d);
   Callback animationCallback=mock(Callback.class);
-  mNativeAnimatedNodesManager.startAnimatingNode(1,JavaOnlyMap.of("type","frames","frames",frames,"toValue",1d),animationCallback);
+  mNativeAnimatedNodesManager.startAnimatingNode(1,1,JavaOnlyMap.of("type","frames","frames",frames,"toValue",1d),animationCallback);
   ArgumentCaptor<ReadableMap> callbackResponseCaptor=ArgumentCaptor.forClass(ReadableMap.class);
   reset(animationCallback);
   mNativeAnimatedNodesManager.runUpdates(nextFrameTime());

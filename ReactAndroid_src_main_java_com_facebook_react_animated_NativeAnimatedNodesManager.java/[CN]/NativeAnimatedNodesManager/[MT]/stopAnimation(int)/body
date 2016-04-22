@@ -1,0 +1,12 @@
+{
+  for (int i=0; i < mActiveAnimations.size(); i++) {
+    AnimationDriver animation=mActiveAnimations.get(i);
+    if (animation.mId == animationId) {
+      WritableMap endCallbackResponse=Arguments.createMap();
+      endCallbackResponse.putBoolean("finished",false);
+      animation.mEndCallback.invoke(endCallbackResponse);
+      mActiveAnimations.remove(i);
+      return;
+    }
+  }
+}

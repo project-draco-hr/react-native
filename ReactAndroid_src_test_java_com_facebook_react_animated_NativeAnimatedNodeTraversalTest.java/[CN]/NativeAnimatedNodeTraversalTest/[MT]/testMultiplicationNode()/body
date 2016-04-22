@@ -11,8 +11,8 @@
   mNativeAnimatedNodesManager.connectAnimatedNodeToView(5,50);
   Callback animationCallback=mock(Callback.class);
   JavaOnlyArray frames=JavaOnlyArray.of(0d,1d);
-  mNativeAnimatedNodesManager.startAnimatingNode(1,JavaOnlyMap.of("type","frames","frames",frames,"toValue",2d),animationCallback);
-  mNativeAnimatedNodesManager.startAnimatingNode(2,JavaOnlyMap.of("type","frames","frames",frames,"toValue",10d),animationCallback);
+  mNativeAnimatedNodesManager.startAnimatingNode(1,1,JavaOnlyMap.of("type","frames","frames",frames,"toValue",2d),animationCallback);
+  mNativeAnimatedNodesManager.startAnimatingNode(2,2,JavaOnlyMap.of("type","frames","frames",frames,"toValue",10d),animationCallback);
   ArgumentCaptor<ReactStylesDiffMap> stylesCaptor=ArgumentCaptor.forClass(ReactStylesDiffMap.class);
   reset(mUIImplementationMock);
   mNativeAnimatedNodesManager.runUpdates(nextFrameTime());

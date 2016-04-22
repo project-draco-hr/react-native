@@ -2,9 +2,9 @@
   createAnimatedGraphWithAdditionNode(50,100d,1000d);
   Callback animationCallback=mock(Callback.class);
   JavaOnlyArray firstFrames=JavaOnlyArray.of(0d,1d);
-  mNativeAnimatedNodesManager.startAnimatingNode(1,JavaOnlyMap.of("type","frames","frames",firstFrames,"toValue",200d),animationCallback);
+  mNativeAnimatedNodesManager.startAnimatingNode(1,1,JavaOnlyMap.of("type","frames","frames",firstFrames,"toValue",200d),animationCallback);
   JavaOnlyArray secondFrames=JavaOnlyArray.of(0d,0.2d,0.4d,0.6d,0.8d,1d);
-  mNativeAnimatedNodesManager.startAnimatingNode(2,JavaOnlyMap.of("type","frames","frames",secondFrames,"toValue",1010d),animationCallback);
+  mNativeAnimatedNodesManager.startAnimatingNode(2,2,JavaOnlyMap.of("type","frames","frames",secondFrames,"toValue",1010d),animationCallback);
   ArgumentCaptor<ReactStylesDiffMap> stylesCaptor=ArgumentCaptor.forClass(ReactStylesDiffMap.class);
   reset(mUIImplementationMock);
   mNativeAnimatedNodesManager.runUpdates(nextFrameTime());

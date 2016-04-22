@@ -1,0 +1,28 @@
+{
+  createSimpleAnimatedViewWithOpacity(1000,0d);
+  JavaOnlyArray frames=JavaOnlyArray.of(0d,0.2d,0.4d,0.6d,0.8d,1.0d);
+  Callback animationCallback=mock(Callback.class);
+  mNativeAnimatedNodesManager.startAnimatingNode(404,1,JavaOnlyMap.of("type","frames","frames",frames,"toValue",1d),animationCallback);
+  ArgumentCaptor<ReadableMap> callbackResponseCaptor=ArgumentCaptor.forClass(ReadableMap.class);
+  reset(animationCallback);
+  reset(mUIImplementationMock);
+  mNativeAnimatedNodesManager.runUpdates(nextFrameTime());
+  mNativeAnimatedNodesManager.runUpdates(nextFrameTime());
+  verify(mUIImplementationMock,times(2)).synchronouslyUpdateViewOnUIThread(anyInt(),any(ReactStylesDiffMap.class));
+  verifyNoMoreInteractions(animationCallback);
+  reset(animationCallback);
+  reset(mUIImplementationMock);
+  mNativeAnimatedNodesManager.stopAnimation(404);
+  verify(animationCallback).invoke(callbackResponseCaptor.capture());
+  verifyNoMoreInteractions(animationCallback);
+  verifyNoMoreInteractions(mUIImplementationMock);
+  assertThat(callbackResponseCaptor.getValue().hasKey("finished")).isTrue();
+  assertThat(callbackResponseCaptor.getValue().getBoolean("finished")).isFalse();
+  reset(animationCallback);
+  reset(mUIImplementationMock);
+  for (int i=0; i < 5; i++) {
+    mNativeAnimatedNodesManager.runUpdates(nextFrameTime());
+  }
+  verifyNoMoreInteractions(mUIImplementationMock);
+  verifyNoMoreInteractions(animationCallback);
+}

@@ -1,7 +1,7 @@
 {
   mOperations.add(new UIThreadOperation(){
     @Override public void execute(    NativeAnimatedNodesManager animatedNodesManager){
-      animatedNodesManager.startAnimatingNode(animatedNodeTag,animationConfig,endCallback);
+      animatedNodesManager.startAnimatingNode(animationId,animatedNodeTag,animationConfig,endCallback);
     }
   }
 );
