@@ -1,5 +1,5 @@
 {
-  if (super.onInterceptTouchEvent(ev)) {
+  if (mScrollEnabled && super.onInterceptTouchEvent(ev)) {
     NativeGestureUtil.notifyNativeGestureStarted(this,ev);
     return true;
   }

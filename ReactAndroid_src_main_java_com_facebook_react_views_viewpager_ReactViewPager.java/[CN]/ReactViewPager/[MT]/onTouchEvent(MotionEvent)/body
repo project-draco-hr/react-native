@@ -1,0 +1,6 @@
+{
+  if (!mScrollEnabled) {
+    return false;
+  }
+  return super.onTouchEvent(ev);
+}
