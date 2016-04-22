@@ -9,5 +9,8 @@ break;
 case COMMAND_RELOAD:
 root.reload();
 break;
+case COMMAND_STOP_LOADING:
+root.stopLoading();
+break;
 }
 }
