@@ -1,0 +1,4 @@
+{
+  mInputRange=fromDoubleArray(config.getArray("inputRange"));
+  mOutputRange=fromDoubleArray(config.getArray("outputRange"));
+}

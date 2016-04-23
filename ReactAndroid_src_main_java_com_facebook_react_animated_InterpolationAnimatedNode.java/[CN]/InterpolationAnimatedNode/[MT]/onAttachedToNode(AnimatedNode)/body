@@ -1,0 +1,9 @@
+{
+  if (mParent != null) {
+    throw new IllegalStateException("Parent already attached");
+  }
+  if (!(parent instanceof ValueAnimatedNode)) {
+    throw new IllegalArgumentException("Parent is of an invalid type");
+  }
+  mParent=(ValueAnimatedNode)parent;
+}

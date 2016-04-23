@@ -1,0 +1,6 @@
+{
+  if (parent != mParent) {
+    throw new IllegalArgumentException("Invalid parent node provided");
+  }
+  mParent=null;
+}

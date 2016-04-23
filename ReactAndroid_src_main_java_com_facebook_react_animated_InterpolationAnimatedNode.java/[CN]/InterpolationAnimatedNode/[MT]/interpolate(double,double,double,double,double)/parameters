@@ -1,0 +1,5 @@
+double value
+double inputMin
+double inputMax
+double outputMin
+double outputMax

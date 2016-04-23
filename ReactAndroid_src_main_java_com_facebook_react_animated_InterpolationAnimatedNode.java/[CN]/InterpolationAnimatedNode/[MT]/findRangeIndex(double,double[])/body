@@ -1,0 +1,9 @@
+{
+  int index;
+  for (index=1; index < ranges.length - 1; index++) {
+    if (ranges[index] >= value) {
+      break;
+    }
+  }
+  return index - 1;
+}

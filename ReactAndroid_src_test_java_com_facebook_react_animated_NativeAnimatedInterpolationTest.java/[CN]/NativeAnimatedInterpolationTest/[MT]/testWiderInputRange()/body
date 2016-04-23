@@ -1,0 +1,8 @@
+{
+  double[] input=new double[]{2000d,3000d};
+  double[] output=new double[]{1d,2d};
+  assertThat(InterpolationAnimatedNode.interpolate(2000,input,output)).isEqualTo(1);
+  assertThat(InterpolationAnimatedNode.interpolate(2250,input,output)).isEqualTo(1.25);
+  assertThat(InterpolationAnimatedNode.interpolate(2800,input,output)).isEqualTo(1.8);
+  assertThat(InterpolationAnimatedNode.interpolate(3000,input,output)).isEqualTo(2);
+}
