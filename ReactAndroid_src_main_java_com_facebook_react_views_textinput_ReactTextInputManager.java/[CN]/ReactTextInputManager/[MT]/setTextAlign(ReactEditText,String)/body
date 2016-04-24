@@ -11,6 +11,9 @@
  else   if ("center".equals(textAlign)) {
     view.setGravityHorizontal(Gravity.CENTER_HORIZONTAL);
   }
+ else   if ("justify".equals(textAlign)) {
+    view.setGravityHorizontal(Gravity.LEFT);
+  }
  else {
     throw new JSApplicationIllegalArgumentException("Invalid textAlign: " + textAlign);
   }
