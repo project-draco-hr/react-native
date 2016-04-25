@@ -1,0 +1,3 @@
+{
+  ReactChoreographer.getInstance().postFrameCallback(ReactChoreographer.CallbackType.TIMERS_EVENTS,mCurrentFrameCallback);
+}

@@ -1,0 +1,6 @@
+{
+  if (!mIsPosted) {
+    mIsPosted=true;
+    post();
+  }
+}

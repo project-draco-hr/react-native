@@ -1,0 +1,16 @@
+{
+  if (mIsPosted) {
+    return;
+  }
+  if (mReactContext.isOnUiQueueThread()) {
+    maybePost();
+  }
+ else {
+    mReactContext.runOnUiQueueThread(new Runnable(){
+      @Override public void run(){
+        maybePost();
+      }
+    }
+);
+  }
+}

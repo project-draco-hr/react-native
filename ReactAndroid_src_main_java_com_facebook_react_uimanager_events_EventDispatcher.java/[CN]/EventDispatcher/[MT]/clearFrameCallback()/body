@@ -1,7 +1,0 @@
-{
-  UiThreadUtil.assertOnUiThread();
-  if (mCurrentFrameCallback != null) {
-    mCurrentFrameCallback.stop();
-    mCurrentFrameCallback=null;
-  }
-}

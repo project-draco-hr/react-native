@@ -1,9 +1,7 @@
 {
   UiThreadUtil.assertOnUiThread();
-  Assertions.assumeCondition(mCurrentFrameCallback == null);
   if (mRCTEventEmitter == null) {
     mRCTEventEmitter=mReactContext.getJSModule(RCTEventEmitter.class);
   }
-  mCurrentFrameCallback=new ScheduleDispatchFrameCallback();
-  ReactChoreographer.getInstance().postFrameCallback(ReactChoreographer.CallbackType.TIMERS_EVENTS,mCurrentFrameCallback);
+  mCurrentFrameCallback.maybePost();
 }
