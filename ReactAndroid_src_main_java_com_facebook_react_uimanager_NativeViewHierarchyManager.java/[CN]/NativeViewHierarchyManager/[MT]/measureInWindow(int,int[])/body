@@ -5,6 +5,12 @@
     throw new NoSuchNativeViewException("No native view for " + tag + " currently exists");
   }
   v.getLocationOnScreen(outputBuffer);
+  Resources resources=v.getContext().getResources();
+  int statusBarId=resources.getIdentifier("status_bar_height","dimen","android");
+  if (statusBarId > 0) {
+    int height=(int)resources.getDimension(statusBarId);
+    outputBuffer[1]-=height;
+  }
   outputBuffer[2]=v.getWidth();
   outputBuffer[3]=v.getHeight();
 }
