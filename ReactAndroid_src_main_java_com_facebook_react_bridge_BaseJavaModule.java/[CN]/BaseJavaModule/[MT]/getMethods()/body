@@ -1,15 +1,3 @@
 {
-  Map<String,NativeMethod> methods=new HashMap<String,NativeMethod>();
-  Method[] targetMethods=getClass().getDeclaredMethods();
-  for (int i=0; i < targetMethods.length; i++) {
-    Method targetMethod=targetMethods[i];
-    if (targetMethod.getAnnotation(ReactMethod.class) != null) {
-      String methodName=targetMethod.getName();
-      if (methods.containsKey(methodName)) {
-        throw new IllegalArgumentException("Java Module " + getName() + " method name already registered: "+ methodName);
-      }
-      methods.put(methodName,new JavaMethod(targetMethod));
-    }
-  }
-  return methods;
+  return mMethods;
 }

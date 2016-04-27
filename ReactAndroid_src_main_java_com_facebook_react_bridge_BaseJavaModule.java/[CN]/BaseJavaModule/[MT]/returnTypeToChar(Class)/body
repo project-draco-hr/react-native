@@ -1,0 +1,18 @@
+{
+  char tryCommon=commonTypeToChar(returnClass);
+  if (tryCommon != '\0') {
+    return tryCommon;
+  }
+  if (returnClass == void.class) {
+    return 'v';
+  }
+ else   if (returnClass == WritableMap.class) {
+    return 'M';
+  }
+ else   if (returnClass == WritableArray.class) {
+    return 'A';
+  }
+ else {
+    throw new RuntimeException("Got unknown return class: " + returnClass.getSimpleName());
+  }
+}

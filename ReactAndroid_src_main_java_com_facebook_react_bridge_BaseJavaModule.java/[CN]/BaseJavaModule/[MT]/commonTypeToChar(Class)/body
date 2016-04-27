@@ -1,0 +1,32 @@
+{
+  if (typeClass == boolean.class) {
+    return 'z';
+  }
+ else   if (typeClass == Boolean.class) {
+    return 'Z';
+  }
+ else   if (typeClass == int.class) {
+    return 'i';
+  }
+ else   if (typeClass == Integer.class) {
+    return 'I';
+  }
+ else   if (typeClass == double.class) {
+    return 'd';
+  }
+ else   if (typeClass == Double.class) {
+    return 'D';
+  }
+ else   if (typeClass == float.class) {
+    return 'f';
+  }
+ else   if (typeClass == Float.class) {
+    return 'F';
+  }
+ else   if (typeClass == String.class) {
+    return 'S';
+  }
+ else {
+    return '\0';
+  }
+}

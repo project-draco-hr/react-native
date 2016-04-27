@@ -1,0 +1,4 @@
+{
+  mMethod=method;
+  mSignature=buildSignature(method);
+}

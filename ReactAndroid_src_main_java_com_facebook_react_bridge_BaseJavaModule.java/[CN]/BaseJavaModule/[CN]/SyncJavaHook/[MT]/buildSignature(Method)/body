@@ -1,6 +1,8 @@
 {
-  StringBuilder builder=new StringBuilder(paramTypes.length);
-  builder.append("v.");
+  Class[] paramTypes=method.getParameterTypes();
+  StringBuilder builder=new StringBuilder(paramTypes.length + 2);
+  builder.append(returnTypeToChar(method.getReturnType()));
+  builder.append('.');
   for (int i=0; i < paramTypes.length; i++) {
     Class paramClass=paramTypes[i];
     if (paramClass == ExecutorToken.class) {
@@ -10,14 +12,8 @@
     }
  else     if (paramClass == Promise.class) {
       Assertions.assertCondition(i == paramTypes.length - 1,"Promise must be used as last parameter only");
-      mType=METHOD_TYPE_REMOTE_ASYNC;
     }
     builder.append(paramTypeToChar(paramClass));
-  }
-  if (BaseJavaModule.this.supportsWebWorkers()) {
-    if (builder.charAt(2) != 'T') {
-      throw new RuntimeException("Module " + BaseJavaModule.this + " supports web workers, but "+ mMethod.getName()+ "does not take an ExecutorToken as its first parameter.");
-    }
   }
   return builder.toString();
 }

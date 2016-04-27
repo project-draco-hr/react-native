@@ -1,0 +1,20 @@
+{
+  Method[] targetMethods=getClass().getDeclaredMethods();
+  for (int i=0; i < targetMethods.length; i++) {
+    Method targetMethod=targetMethods[i];
+    if (targetMethod.getAnnotation(ReactMethod.class) != null) {
+      String methodName=targetMethod.getName();
+      if (mHooks.containsKey(methodName) || mMethods.containsKey(methodName)) {
+        throw new IllegalArgumentException("Java Module " + getName() + " sync method name already registered: "+ methodName);
+      }
+      mMethods.put(methodName,new JavaMethod(targetMethod));
+    }
+    if (targetMethod.getAnnotation(ReactSyncHook.class) != null) {
+      String methodName=targetMethod.getName();
+      if (mHooks.containsKey(methodName) || mMethods.containsKey(methodName)) {
+        throw new IllegalArgumentException("Java Module " + getName() + " sync method name already registered: "+ methodName);
+      }
+      mHooks.put(methodName,new SyncJavaHook(targetMethod));
+    }
+  }
+}
