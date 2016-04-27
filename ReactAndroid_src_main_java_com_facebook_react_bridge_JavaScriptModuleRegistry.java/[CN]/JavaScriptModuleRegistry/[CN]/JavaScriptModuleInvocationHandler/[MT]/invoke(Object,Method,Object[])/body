@@ -5,6 +5,7 @@
     return null;
   }
   String tracingName=mModuleRegistration.getTracingName(method);
-  mCatalystInstance.callFunction(executorToken,mModuleRegistration.getModuleId(),mModuleRegistration.getMethodId(method),Arguments.fromJavaArgs(args),tracingName);
+  NativeArray jsArgs=args != null ? Arguments.fromJavaArgs(args) : new WritableNativeArray();
+  mCatalystInstance.callFunction(executorToken,mModuleRegistration.getModuleId(),mModuleRegistration.getMethodId(method),jsArgs,tracingName);
   return null;
 }
