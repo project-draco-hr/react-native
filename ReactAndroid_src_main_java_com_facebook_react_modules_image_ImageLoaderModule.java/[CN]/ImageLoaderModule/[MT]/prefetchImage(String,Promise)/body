@@ -5,7 +5,7 @@
   }
   Uri uri=Uri.parse(uriString);
   ImageRequest request=ImageRequestBuilder.newBuilderWithSource(uri).build();
-  DataSource<Void> prefetchSource=Fresco.getImagePipeline().prefetchToDiskCache(request,this);
+  DataSource<Void> prefetchSource=Fresco.getImagePipeline().prefetchToDiskCache(request,mCallerContext);
   DataSubscriber<Void> prefetchSubscriber=new BaseDataSubscriber<Void>(){
     @Override protected void onNewResultImpl(    DataSource<Void> dataSource){
       if (!dataSource.isFinished()) {

@@ -1,0 +1,4 @@
+{
+  super(reactContext);
+  mCallerContext=callerContext;
+}
