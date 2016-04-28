@@ -1,2 +1,2 @@
 ReactModalHostView view
-boolean animated
+String animationType

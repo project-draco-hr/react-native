@@ -1,4 +1,4 @@
 {
-  mAnimated=animated;
+  mAnimationType=animationType;
   mPropertyRequiresNewDialog=true;
 }
