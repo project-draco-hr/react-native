@@ -1,0 +1,3 @@
+{
+  return fontWeightString.length() == 3 && fontWeightString.endsWith("00") && fontWeightString.charAt(0) <= '9' && fontWeightString.charAt(0) >= '1' ? 100 * (fontWeightString.charAt(0) - '0') : -1;
+}

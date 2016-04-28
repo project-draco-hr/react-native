@@ -1,0 +1,8 @@
+{
+  int style=Typeface.NORMAL;
+  if (view.getTypeface() != null) {
+    style=view.getTypeface().getStyle();
+  }
+  Typeface newTypeface=Typeface.create(fontFamily,style);
+  view.setTypeface(newTypeface);
+}

@@ -1,0 +1,16 @@
+{
+  int fontStyle=UNSET;
+  if ("italic".equals(fontStyleString)) {
+    fontStyle=Typeface.ITALIC;
+  }
+ else   if ("normal".equals(fontStyleString)) {
+    fontStyle=Typeface.NORMAL;
+  }
+  Typeface currentTypeface=view.getTypeface();
+  if (currentTypeface == null) {
+    currentTypeface=Typeface.DEFAULT;
+  }
+  if (fontStyle != currentTypeface.getStyle()) {
+    view.setTypeface(currentTypeface,fontStyle);
+  }
+}

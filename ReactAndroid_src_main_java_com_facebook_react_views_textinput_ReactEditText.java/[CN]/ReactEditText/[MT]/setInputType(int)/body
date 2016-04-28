@@ -1,6 +1,8 @@
 {
+  Typeface tf=super.getTypeface();
   super.setInputType(type);
   mStagedInputType=type;
+  super.setTypeface(tf);
   mKeyListener.setInputType(type);
   setKeyListener(mKeyListener);
 }
