@@ -1,0 +1,7 @@
+{
+  ReactEditText view=mManager.createViewInstance(mThemedContext);
+  InputFilter[] filters=new InputFilter[]{new InputFilter.AllCaps()};
+  view.setFilters(filters);
+  mManager.setMaxLength(view,null);
+  assertThat(view.getFilters()).isEqualTo(filters);
+}
