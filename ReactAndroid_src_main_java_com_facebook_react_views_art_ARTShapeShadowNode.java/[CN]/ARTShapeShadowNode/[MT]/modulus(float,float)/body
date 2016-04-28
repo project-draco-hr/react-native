@@ -1,0 +1,8 @@
+{
+  float remainder=x % y;
+  float modulus=remainder;
+  if (remainder < 0) {
+    modulus+=y;
+  }
+  return modulus;
+}
