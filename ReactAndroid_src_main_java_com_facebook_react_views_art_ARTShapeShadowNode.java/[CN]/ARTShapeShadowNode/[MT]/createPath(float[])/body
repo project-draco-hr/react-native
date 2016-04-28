@@ -24,18 +24,11 @@ float y=data[i++] * mScale;
 float r=data[i++] * mScale;
 float start=(float)Math.toDegrees(data[i++]);
 float end=(float)Math.toDegrees(data[i++]);
-boolean clockwise=data[i++] == 1f;
-float sweep=end - start;
-if (Math.abs(sweep) > 360) {
-sweep=360;
+boolean clockwise=data[i++] == 0f;
+if (!clockwise) {
+end=360 - end;
 }
- else {
-sweep=modulus(sweep,360);
-}
-if (!clockwise && sweep < 360) {
-start=end;
-sweep=360 - sweep;
-}
+float sweep=start - end;
 RectF oval=new RectF(x - r,y - r,x + r,y + r);
 path.addArc(oval,start,sweep);
 break;
