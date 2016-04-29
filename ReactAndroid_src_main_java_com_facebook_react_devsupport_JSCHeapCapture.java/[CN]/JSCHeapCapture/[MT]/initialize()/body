@@ -1,0 +1,5 @@
+{
+  super.initialize();
+  mHeapCapture=getReactApplicationContext().getJSModule(HeapCapture.class);
+  registerHeapCapture(this);
+}

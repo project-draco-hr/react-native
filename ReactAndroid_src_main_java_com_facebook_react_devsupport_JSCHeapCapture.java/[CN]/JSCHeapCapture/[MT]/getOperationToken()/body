@@ -1,0 +1,7 @@
+{
+  if (mOperationInProgress) {
+    throw new CaptureException("Another operation already in progress.");
+  }
+  mOperationInProgress=true;
+  return ++mOperationToken;
+}

@@ -1,0 +1,5 @@
+{
+  super.onCatalystInstanceDestroy();
+  unregisterHeapCapture(this);
+  mHeapCapture=null;
+}

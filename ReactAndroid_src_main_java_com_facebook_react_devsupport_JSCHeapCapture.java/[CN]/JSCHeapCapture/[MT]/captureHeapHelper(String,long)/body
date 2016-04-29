@@ -1,0 +1,7 @@
+{
+  if (mHeapCapture == null) {
+    throw new CaptureException("HeapCapture.js module not connected");
+  }
+  mHeapCapture.captureHeap(getOperationToken(),path);
+  waitForOperation(timeout);
+}

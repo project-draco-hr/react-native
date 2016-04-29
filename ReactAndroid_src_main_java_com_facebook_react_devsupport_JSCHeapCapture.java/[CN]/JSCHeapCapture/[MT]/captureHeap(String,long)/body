@@ -1,0 +1,6 @@
+{
+  if (sJSCHeapCapture == null) {
+    throw new CaptureException("No JSC registered.");
+  }
+  sJSCHeapCapture.captureHeapHelper(path,timeout);
+}

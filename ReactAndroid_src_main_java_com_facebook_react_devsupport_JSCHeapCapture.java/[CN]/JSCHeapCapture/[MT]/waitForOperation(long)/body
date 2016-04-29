@@ -1,0 +1,15 @@
+{
+  try {
+    wait(timeout);
+  }
+ catch (  InterruptedException e) {
+    throw new CaptureException("Waiting for heap capture failed: " + e.getMessage());
+  }
+  if (mOperationInProgress) {
+    mOperationInProgress=false;
+    throw new CaptureException("heap capture timed out.");
+  }
+  if (mOperationError != null) {
+    throw new CaptureException(mOperationError);
+  }
+}

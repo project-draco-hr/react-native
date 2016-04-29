@@ -1,0 +1,10 @@
+{
+  if (token == mOperationToken) {
+    mOperationInProgress=false;
+    mOperationError=error;
+    this.notify();
+  }
+ else {
+    throw new RuntimeException("Completed operation is not in progress.");
+  }
+}

@@ -1,0 +1,6 @@
+{
+  if (sJSCHeapCapture != dumper) {
+    throw new RuntimeException("Can't unregister JSCHeapCapture that is not registered.");
+  }
+  sJSCHeapCapture=null;
+}
