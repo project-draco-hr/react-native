@@ -3,6 +3,8 @@
   ApplicationHolder.setApplication((Application)applicationContext.getApplicationContext());
   setDisplayMetrics(applicationContext);
   mApplicationContext=applicationContext;
+  mCurrentActivity=currentActivity;
+  mDefaultBackButtonImpl=defaultHardwareBackBtnHandler;
   mJSBundleFile=jsBundleFile;
   mJSMainModuleName=jsMainModuleName;
   mPackages=packages;
