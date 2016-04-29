@@ -1,0 +1,4 @@
+{
+  mPathEffectForBorderStyle=mBorderStyle != null ? mBorderStyle.getPathEffect(getFullBorderWidth()) : null;
+  mPaint.setPathEffect(mPathEffectForBorderStyle);
+}
