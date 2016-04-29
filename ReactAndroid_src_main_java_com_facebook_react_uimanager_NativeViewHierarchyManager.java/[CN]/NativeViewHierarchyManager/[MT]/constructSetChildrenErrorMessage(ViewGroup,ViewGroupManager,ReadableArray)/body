@@ -1,0 +1,7 @@
+{
+  ViewAtIndex[] viewsToAdd=new ViewAtIndex[childrenTags.size()];
+  for (int i=0; i < childrenTags.size(); i++) {
+    viewsToAdd[i]=new ViewAtIndex(childrenTags.getInt(i),i);
+  }
+  return constructManageChildrenErrorMessage(viewToManage,viewManager,null,viewsToAdd,null);
+}

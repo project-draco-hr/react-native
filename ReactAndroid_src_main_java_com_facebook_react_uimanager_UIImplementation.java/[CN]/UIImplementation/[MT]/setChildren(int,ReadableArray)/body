@@ -1,0 +1,13 @@
+{
+  ReactShadowNode cssNodeToManage=mShadowNodeRegistry.getNode(viewTag);
+  for (int i=0; i < childrenTags.size(); i++) {
+    ReactShadowNode cssNodeToAdd=mShadowNodeRegistry.getNode(childrenTags.getInt(i));
+    if (cssNodeToAdd == null) {
+      throw new IllegalViewOperationException("Trying to add unknown view tag: " + childrenTags.getInt(i));
+    }
+    cssNodeToManage.addChildAt(cssNodeToAdd,i);
+  }
+  if (!cssNodeToManage.isVirtual() && !cssNodeToManage.isVirtualAnchor()) {
+    mNativeViewHierarchyOptimizer.handleSetChildren(cssNodeToManage,childrenTags);
+  }
+}

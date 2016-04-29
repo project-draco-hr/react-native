@@ -1,0 +1,3 @@
+{
+  mNativeViewHierarchyManager.setChildren(mTag,mChildrenTags);
+}

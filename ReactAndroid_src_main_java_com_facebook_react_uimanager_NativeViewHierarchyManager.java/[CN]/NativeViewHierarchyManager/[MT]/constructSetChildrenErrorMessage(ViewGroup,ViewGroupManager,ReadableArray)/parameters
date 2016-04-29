@@ -1,0 +1,3 @@
+ViewGroup viewToManage
+ViewGroupManager viewManager
+ReadableArray childrenTags

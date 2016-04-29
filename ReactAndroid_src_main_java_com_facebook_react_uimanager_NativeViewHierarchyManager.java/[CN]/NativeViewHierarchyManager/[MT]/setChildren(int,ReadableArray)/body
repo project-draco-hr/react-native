@@ -1,0 +1,11 @@
+{
+  ViewGroup viewToManage=(ViewGroup)mTagsToViews.get(tag);
+  ViewGroupManager viewManager=(ViewGroupManager)resolveViewManager(tag);
+  for (int i=0; i < childrenTags.size(); i++) {
+    View viewToAdd=mTagsToViews.get(childrenTags.getInt(i));
+    if (viewToAdd == null) {
+      throw new IllegalViewOperationException("Trying to add unknown view tag: " + childrenTags.getInt(i) + "\n detail: "+ constructSetChildrenErrorMessage(viewToManage,viewManager,childrenTags));
+    }
+    viewManager.addView(viewToManage,viewToAdd,i);
+  }
+}
