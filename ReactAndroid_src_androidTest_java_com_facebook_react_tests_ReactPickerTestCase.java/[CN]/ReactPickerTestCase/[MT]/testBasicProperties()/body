@@ -1,0 +1,26 @@
+{
+  ReactPicker spinner=getViewAtPath(0,0);
+  SpinnerAdapter adapter=spinner.getAdapter();
+  assertEquals(Spinner.MODE_DIALOG,spinner.getMode());
+  assertEquals("prompt",spinner.getPrompt());
+  assertNotNull(adapter);
+  assertEquals(3,adapter.getCount());
+  assertEquals("item1",((TextView)adapter.getView(0,null,null)).getText());
+  assertEquals("item2",((TextView)adapter.getView(1,null,null)).getText());
+  assertEquals("item3",((TextView)adapter.getView(2,null,null)).getText());
+  assertEquals(1,spinner.getSelectedItemPosition());
+  assertEquals(Color.RED,((TextView)adapter.getView(0,null,null)).getCurrentTextColor());
+  assertEquals(Color.GREEN,((TextView)adapter.getView(1,null,null)).getCurrentTextColor());
+  assertEquals(Color.BLUE,((TextView)adapter.getView(2,null,null)).getCurrentTextColor());
+  assertEquals(Color.RED,((TextView)adapter.getDropDownView(0,null,null)).getCurrentTextColor());
+  assertEquals(Color.GREEN,((TextView)adapter.getDropDownView(1,null,null)).getCurrentTextColor());
+  assertEquals(Color.BLUE,((TextView)adapter.getDropDownView(2,null,null)).getCurrentTextColor());
+  getTestModule().setPrimaryColor("black");
+  waitForBridgeAndUIIdle();
+  assertEquals(Color.BLACK,((TextView)adapter.getView(0,null,null)).getCurrentTextColor());
+  assertEquals(Color.BLACK,((TextView)adapter.getView(1,null,null)).getCurrentTextColor());
+  assertEquals(Color.BLACK,((TextView)adapter.getView(2,null,null)).getCurrentTextColor());
+  assertEquals(Color.RED,((TextView)adapter.getDropDownView(0,null,null)).getCurrentTextColor());
+  assertEquals(Color.GREEN,((TextView)adapter.getDropDownView(1,null,null)).getCurrentTextColor());
+  assertEquals(Color.BLUE,((TextView)adapter.getDropDownView(2,null,null)).getCurrentTextColor());
+}

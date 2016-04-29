@@ -1,0 +1,10 @@
+{
+  ReactPicker spinner=getViewAtPath(0,1);
+  assertEquals(Spinner.MODE_DROPDOWN,spinner.getMode());
+  getTestModule().setMode("dialog");
+  waitForBridgeAndUIIdle();
+  getInstrumentation().waitForIdleSync();
+  ReactPicker newPicker=getViewAtPath(0,1);
+  assertTrue(spinner != newPicker);
+  assertEquals(Spinner.MODE_DIALOG,newPicker.getMode());
+}

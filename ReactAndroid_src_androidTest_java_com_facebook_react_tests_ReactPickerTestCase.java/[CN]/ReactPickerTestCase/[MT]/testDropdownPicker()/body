@@ -1,0 +1,4 @@
+{
+  ReactPicker spinner=getViewAtPath(0,1);
+  assertEquals(Spinner.MODE_DROPDOWN,spinner.getMode());
+}

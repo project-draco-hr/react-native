@@ -1,0 +1,8 @@
+{
+  ReactPicker spinner=getViewAtPath(0,0);
+  assertEquals(1,spinner.getSelectedItemPosition());
+  getTestModule().selectItem(2);
+  waitForBridgeAndUIIdle();
+  getInstrumentation().waitForIdleSync();
+  assertEquals(2,spinner.getSelectedItemPosition());
+}

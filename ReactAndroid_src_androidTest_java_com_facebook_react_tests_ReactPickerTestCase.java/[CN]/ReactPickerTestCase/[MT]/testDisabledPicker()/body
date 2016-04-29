@@ -1,0 +1,4 @@
+{
+  ReactPicker spinner=getViewAtPath(0,2);
+  assertFalse(spinner.isEnabled());
+}

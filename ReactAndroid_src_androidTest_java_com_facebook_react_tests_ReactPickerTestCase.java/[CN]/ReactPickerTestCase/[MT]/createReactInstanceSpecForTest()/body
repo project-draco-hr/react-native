@@ -1,0 +1,4 @@
+{
+  mRecordingModule=new PickerAndroidRecordingModule();
+  return super.createReactInstanceSpecForTest().addJSModule(PickerAndroidTestModule.class).addNativeModule(mRecordingModule);
+}

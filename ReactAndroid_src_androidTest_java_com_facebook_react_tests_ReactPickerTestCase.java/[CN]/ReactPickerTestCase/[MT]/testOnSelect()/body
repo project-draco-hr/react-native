@@ -1,0 +1,14 @@
+{
+  runTestOnUiThread(new Runnable(){
+    @Override public void run(){
+      ReactPicker spinner=getViewAtPath(0,0);
+      spinner.setSelection(2);
+    }
+  }
+);
+  getInstrumentation().waitForIdleSync();
+  waitForBridgeAndUIIdle();
+  List<Integer> selections=mRecordingModule.getSelections();
+  assertEquals(1,selections.size());
+  assertEquals(2,(int)selections.get(0));
+}
