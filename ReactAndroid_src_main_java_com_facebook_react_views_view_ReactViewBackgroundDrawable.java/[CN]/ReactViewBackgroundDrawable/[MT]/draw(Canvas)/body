@@ -1,10 +1,8 @@
 {
-  updatePathEffect();
-  boolean roundedBorders=mBorderCornerRadii != null || (!CSSConstants.isUndefined(mBorderRadius) && mBorderRadius > 0);
-  if ((mBorderStyle == null || mBorderStyle == BorderStyle.SOLID) && !roundedBorders) {
-    drawRectangularBackgroundWithBorders(canvas);
+  if ((!CSSConstants.isUndefined(mBorderRadius) && mBorderRadius > 0) || mBorderCornerRadii != null) {
+    drawRoundedBackgroundWithBorders(canvas);
   }
  else {
-    drawRoundedBackgroundWithBorders(canvas);
+    drawRectangularBackgroundWithBorders(canvas);
   }
 }

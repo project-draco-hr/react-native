@@ -12,6 +12,7 @@
     mPaint.setColor(ColorUtil.multiplyColorAlpha(borderColor,mAlpha));
     mPaint.setStyle(Paint.Style.STROKE);
     mPaint.setStrokeWidth(fullBorderWidth);
+    mPaint.setPathEffect(mPathEffectForBorderStyle);
     canvas.drawPath(mPathForBorderRadius,mPaint);
   }
 }

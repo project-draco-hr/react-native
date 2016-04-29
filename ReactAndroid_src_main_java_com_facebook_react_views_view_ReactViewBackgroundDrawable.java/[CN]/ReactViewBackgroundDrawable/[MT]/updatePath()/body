@@ -28,4 +28,5 @@
     extraRadiusForOutline=mBorderWidth.get(Spacing.ALL) / 2f;
   }
   mPathForBorderRadiusOutline.addRoundRect(mTempRectForBorderRadiusOutline,new float[]{topLeftRadius + extraRadiusForOutline,topLeftRadius + extraRadiusForOutline,topRightRadius + extraRadiusForOutline,topRightRadius + extraRadiusForOutline,bottomRightRadius + extraRadiusForOutline,bottomRightRadius + extraRadiusForOutline,bottomLeftRadius + extraRadiusForOutline,bottomLeftRadius + extraRadiusForOutline},Path.Direction.CW);
+  mPathEffectForBorderStyle=mBorderStyle != null ? mBorderStyle.getPathEffect(getFullBorderWidth()) : null;
 }
