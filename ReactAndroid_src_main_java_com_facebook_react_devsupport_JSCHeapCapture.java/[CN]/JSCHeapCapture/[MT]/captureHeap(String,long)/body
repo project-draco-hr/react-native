@@ -1,6 +1,19 @@
 {
-  if (sJSCHeapCapture == null) {
-    throw new CaptureException("No JSC registered.");
+  LinkedList<String> captureFiles=new LinkedList<>();
+  if (sRegisteredDumpers.isEmpty()) {
+    throw new CaptureException("No JSC registered");
   }
-  sJSCHeapCapture.captureHeapHelper(path,timeout);
+  int disambiguate=0;
+  File f=new File(path + "/capture" + Integer.toString(disambiguate)+ ".json");
+  while (f.delete()) {
+    disambiguate++;
+    f=new File(path + "/capture" + Integer.toString(disambiguate)+ ".json");
+  }
+  disambiguate=0;
+  for (  JSCHeapCapture dumper : sRegisteredDumpers) {
+    String file=path + "/capture" + Integer.toString(disambiguate)+ ".json";
+    dumper.captureHeapHelper(file,timeout);
+    captureFiles.add(file);
+  }
+  return captureFiles;
 }

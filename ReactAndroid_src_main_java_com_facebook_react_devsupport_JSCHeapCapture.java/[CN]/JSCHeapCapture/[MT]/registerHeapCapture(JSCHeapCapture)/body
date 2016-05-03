@@ -1,6 +1,6 @@
 {
-  if (sJSCHeapCapture != null) {
-    throw new RuntimeException("JSCHeapCapture already registered. Are you running more than one JSC?");
+  if (sRegisteredDumpers.contains(dumper)) {
+    throw new RuntimeException("a JSCHeapCapture registered more than once");
   }
-  sJSCHeapCapture=dumper;
+  sRegisteredDumpers.add(dumper);
 }
