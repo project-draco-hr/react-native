@@ -1,4 +1,5 @@
 {
   super(context);
+  ((ReactContext)context).addLifecycleEventListener(this);
   mHostView=new DialogRootViewGroup(context);
 }
