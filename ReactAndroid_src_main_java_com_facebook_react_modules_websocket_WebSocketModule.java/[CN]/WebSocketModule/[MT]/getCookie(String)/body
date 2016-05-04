@@ -1,0 +1,15 @@
+{
+  try {
+    Map<String,List<String>> cookieMap=cookieHandler.get(new URI(setDefaultOrigin(uri)),new HashMap());
+    List<String> cookieList=cookieMap.get("Cookie");
+    if (cookieList != null) {
+      return cookieList.get(0);
+    }
+ else {
+      return null;
+    }
+  }
+ catch (  URISyntaxException|IOException e) {
+    throw new IllegalArgumentException("Unable to get cookie from the " + uri);
+  }
+}
