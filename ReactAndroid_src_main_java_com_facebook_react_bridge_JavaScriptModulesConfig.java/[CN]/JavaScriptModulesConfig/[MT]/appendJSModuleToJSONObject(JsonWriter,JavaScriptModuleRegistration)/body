@@ -1,9 +1,9 @@
 {
-  writer.name("moduleID").value(registration.getModuleId());
+  writer.name("moduleID").value(registration.getName());
   writer.name("methods").beginObject();
   for (  Method method : registration.getMethods()) {
     writer.name(method.getName()).beginObject();
-    writer.name("methodID").value(registration.getMethodId(method));
+    writer.name("methodID").value(method.getName());
     writer.endObject();
   }
   writer.endObject();

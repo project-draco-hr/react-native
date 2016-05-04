@@ -1,3 +1,3 @@
 {
-  return mMethodsToIds.keySet();
+  return Arrays.asList(mModuleInterface.getDeclaredMethods());
 }

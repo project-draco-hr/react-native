@@ -1,0 +1,12 @@
+{
+  mModuleInterface=moduleInterface;
+  mMethodsToTracingNames=new HashMap<>();
+  if (ReactBuildConfig.DEBUG) {
+    Set<String> methodNames=new LinkedHashSet<>();
+    for (    Method method : mModuleInterface.getDeclaredMethods()) {
+      if (!methodNames.add(method.getName())) {
+        throw new AssertionError("Method overloading is unsupported: " + mModuleInterface.getName() + "#"+ method.getName());
+      }
+    }
+  }
+}

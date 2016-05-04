@@ -1,5 +1,5 @@
 ExecutorToken executorToken
-int moduleId
-int methodId
+String module
+String method
 NativeArray arguments
 String tracingName

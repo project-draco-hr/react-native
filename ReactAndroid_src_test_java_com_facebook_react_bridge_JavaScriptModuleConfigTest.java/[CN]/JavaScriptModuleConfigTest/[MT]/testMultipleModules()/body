@@ -5,9 +5,9 @@
   assertThat(node).hasSize(2);
   JsonNode someModuleNode=node.get("SomeModule");
   assertThat(someModuleNode).isNotNull();
-  int someModuleID=someModuleNode.get("moduleID").asInt();
+  String someModuleID=someModuleNode.get("moduleID").asText();
   JsonNode otherModuleNode=node.get("OtherModule");
   assertThat(otherModuleNode).isNotNull();
-  int otherModuleID=otherModuleNode.get("moduleID").asInt();
+  String otherModuleID=otherModuleNode.get("moduleID").asText();
   assertThat(otherModuleID).isNotEqualTo(someModuleID);
 }

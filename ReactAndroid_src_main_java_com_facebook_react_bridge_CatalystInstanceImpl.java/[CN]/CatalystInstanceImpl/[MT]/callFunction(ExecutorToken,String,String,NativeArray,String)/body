@@ -5,6 +5,6 @@ synchronized (mJavaToJSCallsTeardownLock) {
       return;
     }
     incrementPendingJSCalls();
-    Assertions.assertNotNull(mBridge).callFunction(executorToken,moduleId,methodId,arguments,tracingName);
+    Assertions.assertNotNull(mBridge).callFunction(executorToken,module,method,arguments,tracingName);
   }
 }

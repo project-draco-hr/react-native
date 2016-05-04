@@ -1,2 +1,1 @@
-int moduleId
 Class<? extends JavaScriptModule> moduleInterface

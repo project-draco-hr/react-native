@@ -9,8 +9,8 @@
   assertThat(methods).isNotNull().hasSize(2);
   JsonNode intMethodNode=methods.get("intMethod");
   assertThat(intMethodNode).isNotNull();
-  assertThat(intMethodNode.get("methodID").asInt()).isEqualTo(0);
+  assertThat(intMethodNode.get("methodID").asText()).isEqualTo("intMethod");
   JsonNode stringMethod=methods.get("stringMethod");
   assertThat(stringMethod).isNotNull();
-  assertThat(stringMethod.get("methodID").asInt()).isEqualTo(1);
+  assertThat(stringMethod.get("methodID").asText()).isEqualTo("stringMethod");
 }
