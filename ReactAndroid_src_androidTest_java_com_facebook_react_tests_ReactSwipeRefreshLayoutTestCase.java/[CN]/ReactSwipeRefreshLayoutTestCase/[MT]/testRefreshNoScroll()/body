@@ -1,0 +1,6 @@
+{
+  View refreshLayout=getViewAtPath(0);
+  createGestureGenerator().startGesture(refreshLayout.getWidth() / 2,10).dragTo(refreshLayout.getWidth() / 2,refreshLayout.getHeight() / 2,100,1000).endGesture();
+  waitForBridgeAndUIIdle();
+  assertEquals(1,mRecordingModule.getCount());
+}

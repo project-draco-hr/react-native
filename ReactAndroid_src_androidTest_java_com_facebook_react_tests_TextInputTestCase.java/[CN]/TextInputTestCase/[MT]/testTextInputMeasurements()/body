@@ -1,0 +1,12 @@
+{
+  View textInputViewHeightSet=getViewByTestId("textInput1");
+  EditText textInputViewNoHeight=getViewByTestId("textInput2");
+  int expectedHeight=Math.round(PixelUtil.toPixelFromDIP(30));
+  assertEquals(expectedHeight,textInputViewHeightSet.getHeight());
+  EditText editText=new EditText(textInputViewNoHeight.getContext());
+  editText.setTextSize(TypedValue.COMPLEX_UNIT_PX,(float)Math.ceil(PixelUtil.toPixelFromSP(21.f)));
+  editText.setPadding(0,0,0,0);
+  int measureSpec=View.MeasureSpec.makeMeasureSpec(ViewGroup.LayoutParams.WRAP_CONTENT,View.MeasureSpec.UNSPECIFIED);
+  editText.measure(measureSpec,measureSpec);
+  assertEquals(editText.getMeasuredHeight(),textInputViewNoHeight.getHeight());
+}

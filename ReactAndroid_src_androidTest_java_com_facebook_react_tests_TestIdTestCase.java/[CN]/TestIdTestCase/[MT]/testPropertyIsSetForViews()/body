@@ -1,0 +1,6 @@
+{
+  for (  String tag : viewTags) {
+    View viewWithTag=ReactTestHelper.getViewWithReactTestId(getActivity().getRootView(),tag);
+    assertNotNull("View with testID tag " + tag + " was not found. Check TestIdTestModule.js.",viewWithTag);
+  }
+}

@@ -1,0 +1,11 @@
+{
+  String testIDs[]=new String[]{"textInput4","textInput5","textInput6"};
+  for (  String testID : testIDs) {
+    getReactContext().getJSModule(TextInputTestModule.class).setValueRef(testID,"NewText");
+  }
+  waitForBridgeAndUIIdle();
+  for (  String testID : testIDs) {
+    ReactEditText reactEditText=getViewByTestId(testID);
+    assertEquals(Color.GREEN,reactEditText.getText().getSpans(0,1,ForegroundColorSpan.class)[0].getForegroundColor());
+  }
+}

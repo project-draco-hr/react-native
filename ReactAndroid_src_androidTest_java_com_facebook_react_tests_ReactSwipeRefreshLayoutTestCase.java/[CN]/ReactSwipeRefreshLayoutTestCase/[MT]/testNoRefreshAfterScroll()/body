@@ -1,0 +1,9 @@
+{
+  View refreshLayout=getViewAtPath(0);
+  getReactContext().getJSModule(SwipeRefreshLayoutTestModule.class).setRows(100);
+  createGestureGenerator().startGesture(refreshLayout.getWidth() / 2,refreshLayout.getHeight() / 2).dragTo(refreshLayout.getWidth() / 2,10,100,1000).endGesture();
+  waitForBridgeAndUIIdle();
+  createGestureGenerator().startGesture(refreshLayout.getWidth() / 2,10).dragTo(refreshLayout.getWidth() / 2,refreshLayout.getHeight() / 2,100,1000).endGesture();
+  waitForBridgeAndUIIdle();
+  assertEquals(0,mRecordingModule.getCount());
+}

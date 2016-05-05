@@ -1,0 +1,13 @@
+{
+  final EditText textInputWithText=getViewByTestId("textInput3");
+  runTestOnUiThread(new Runnable(){
+    @Override public void run(){
+      textInputWithText.setSelection(3);
+    }
+  }
+);
+  getReactContext().getJSModule(TextInputTestModule.class).setValueRef("textInput3","Some other value");
+  waitForBridgeAndUIIdle();
+  assertEquals(4,textInputWithText.getSelectionStart());
+  assertEquals(4,textInputWithText.getSelectionEnd());
+}
