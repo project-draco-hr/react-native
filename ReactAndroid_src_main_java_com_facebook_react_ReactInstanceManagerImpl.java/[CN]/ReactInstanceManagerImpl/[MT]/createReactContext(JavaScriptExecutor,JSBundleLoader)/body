@@ -4,7 +4,7 @@
   mSourceUrl=jsBundleLoader.getSourceUrl();
   NativeModuleRegistry.Builder nativeRegistryBuilder=new NativeModuleRegistry.Builder();
   JavaScriptModulesConfig.Builder jsModulesBuilder=new JavaScriptModulesConfig.Builder();
-  ReactApplicationContext reactContext=new ReactApplicationContext(mApplicationContext);
+  final ReactApplicationContext reactContext=new ReactApplicationContext(mApplicationContext);
   if (mUseDeveloperSupport) {
     reactContext.setNativeModuleCallExceptionHandler(mDevSupportManager);
   }
@@ -51,7 +51,7 @@
   CatalystInstanceImpl.Builder catalystInstanceBuilder=new CatalystInstanceImpl.Builder().setReactQueueConfigurationSpec(ReactQueueConfigurationSpec.createDefault()).setJSExecutor(jsExecutor).setRegistry(nativeModuleRegistry).setJSModulesConfig(javaScriptModulesConfig).setJSBundleLoader(jsBundleLoader).setNativeModuleCallExceptionHandler(exceptionHandler);
   ReactMarker.logMarker(CREATE_CATALYST_INSTANCE_START);
   Systrace.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"createCatalystInstance");
-  CatalystInstance catalystInstance;
+  final CatalystInstance catalystInstance;
   try {
     catalystInstance=catalystInstanceBuilder.build();
   }
@@ -62,14 +62,25 @@
   if (mBridgeIdleDebugListener != null) {
     catalystInstance.addBridgeIdleDebugListener(mBridgeIdleDebugListener);
   }
-  reactContext.initializeWithInstance(catalystInstance);
-  ReactMarker.logMarker(RUN_JS_BUNDLE_START);
-  Systrace.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"runJSBundle");
   try {
-    catalystInstance.runJSBundle();
-  }
+    catalystInstance.getReactQueueConfiguration().getJSQueueThread().callOnQueue(new Callable<Void>(){
+      @Override public Void call(){
+        reactContext.initializeWithInstance(catalystInstance);
+        ReactMarker.logMarker(RUN_JS_BUNDLE_START);
+        Systrace.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"runJSBundle");
+        try {
+          catalystInstance.runJSBundle();
+        }
   finally {
-    Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);
+          Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);
+        }
+        return null;
+      }
+    }
+).get();
+  }
+ catch (  InterruptedException|ExecutionException e) {
+    throw new RuntimeException(e);
   }
   return reactContext;
 }

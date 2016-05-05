@@ -1,26 +1,17 @@
 {
+  mReactQueueConfiguration.getJSQueueThread().assertIsOnThread();
+  Assertions.assertCondition(!mJSBundleHasLoaded,"JS bundle was already loaded!");
+  incrementPendingJSCalls();
+  Systrace.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"loadJSScript");
   try {
-    mJSBundleHasLoaded=mReactQueueConfiguration.getJSQueueThread().callOnQueue(new Callable<Boolean>(){
-      @Override public Boolean call() throws Exception {
-        Assertions.assertCondition(!mJSBundleHasLoaded,"JS bundle was already loaded!");
-        incrementPendingJSCalls();
-        Systrace.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"loadJSScript");
-        try {
-          mJSBundleLoader.loadScript(mBridge);
-          Systrace.registerListener(mTraceListener);
-        }
- catch (        JSExecutionException e) {
-          mNativeModuleCallExceptionHandler.handleException(e);
-        }
+    mJSBundleLoader.loadScript(mBridge);
+    Systrace.registerListener(mTraceListener);
+  }
+ catch (  JSExecutionException e) {
+    mNativeModuleCallExceptionHandler.handleException(e);
+  }
  finally {
-          Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);
-        }
-        return true;
-      }
-    }
-).get();
+    Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);
   }
- catch (  Exception t) {
-    throw new RuntimeException(t);
-  }
+  mJSBundleHasLoaded=true;
 }
