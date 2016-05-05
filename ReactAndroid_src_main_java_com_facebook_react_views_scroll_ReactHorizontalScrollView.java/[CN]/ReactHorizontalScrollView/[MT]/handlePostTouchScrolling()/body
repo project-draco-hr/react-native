@@ -1,0 +1,40 @@
+{
+  if (!mSendMomentumEvents && !mPagingEnabled) {
+    return;
+  }
+  if (mPostTouchRunnable != null) {
+    return;
+  }
+  if (mSendMomentumEvents) {
+    ReactScrollViewHelper.emitScrollMomentumBeginEvent(this);
+  }
+  mActivelyScrolling=false;
+  mPostTouchRunnable=new Runnable(){
+    private boolean mSnappingToPage=false;
+    @Override public void run(){
+      if (mActivelyScrolling) {
+        mActivelyScrolling=false;
+        ReactHorizontalScrollView.this.postOnAnimationDelayed(this,ReactScrollViewHelper.MOMENTUM_DELAY);
+      }
+ else {
+        boolean doneWithAllScrolling=true;
+        if (mPagingEnabled && !mSnappingToPage) {
+          mSnappingToPage=true;
+          smoothScrollToPage(0);
+          doneWithAllScrolling=false;
+        }
+        if (doneWithAllScrolling) {
+          if (mSendMomentumEvents) {
+            ReactScrollViewHelper.emitScrollMomentumEndEvent(ReactHorizontalScrollView.this);
+          }
+          ReactHorizontalScrollView.this.mPostTouchRunnable=null;
+        }
+ else {
+          ReactHorizontalScrollView.this.postOnAnimationDelayed(this,ReactScrollViewHelper.MOMENTUM_DELAY);
+        }
+      }
+    }
+  }
+;
+  postOnAnimationDelayed(mPostTouchRunnable,ReactScrollViewHelper.MOMENTUM_DELAY);
+}

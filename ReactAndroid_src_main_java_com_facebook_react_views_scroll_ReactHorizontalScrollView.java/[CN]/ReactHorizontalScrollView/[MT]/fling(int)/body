@@ -1,21 +1,9 @@
 {
-  super.fling(velocityX);
-  if (mSendMomentumEvents) {
-    mFlinging=true;
-    ReactScrollViewHelper.emitScrollMomentumBeginEvent(this);
-    Runnable r=new Runnable(){
-      @Override public void run(){
-        if (mDoneFlinging) {
-          mFlinging=false;
-          ReactScrollViewHelper.emitScrollMomentumEndEvent(ReactHorizontalScrollView.this);
-        }
- else {
-          mDoneFlinging=true;
-          ReactHorizontalScrollView.this.postOnAnimationDelayed(this,ReactScrollViewHelper.MOMENTUM_DELAY);
-        }
-      }
-    }
-;
-    postOnAnimationDelayed(r,ReactScrollViewHelper.MOMENTUM_DELAY);
+  if (mPagingEnabled) {
+    smoothScrollToPage(velocityX);
   }
+ else {
+    super.fling(velocityX);
+  }
+  handlePostTouchScrolling();
 }

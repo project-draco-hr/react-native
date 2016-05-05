@@ -1,0 +1,10 @@
+{
+  int width=getWidth();
+  int currentX=getScrollX();
+  int predictedX=currentX + velocity;
+  int page=currentX / width;
+  if (predictedX > page * width + width / 2) {
+    page=page + 1;
+  }
+  smoothScrollTo(page * width,getScrollY());
+}

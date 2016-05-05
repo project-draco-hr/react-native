@@ -6,6 +6,7 @@
   if (action == MotionEvent.ACTION_UP && mDragging) {
     ReactScrollViewHelper.emitScrollEndDragEvent(this);
     mDragging=false;
+    handlePostTouchScrolling();
   }
   return super.onTouchEvent(ev);
 }
