@@ -1,18 +1,13 @@
 {
   UiThreadUtil.assertOnUiThread();
-  Assertions.assertCondition(mReactInstanceManager == null,"This root view has already " + "been attached to a catalyst instance manager");
+  Assertions.assertCondition(mReactInstanceManager == null,"This root view has already been attached to a catalyst instance manager");
   mReactInstanceManager=reactInstanceManager;
   mJSModuleName=moduleName;
   mLaunchOptions=launchOptions;
   if (!mReactInstanceManager.hasStartedCreatingInitialContext()) {
     mReactInstanceManager.createReactContextInBackground();
   }
-  if (mWasMeasured && mIsAttachedToWindow) {
-    mReactInstanceManager.attachMeasuredRootView(this);
-    mIsAttachedToInstance=true;
-    getViewTreeObserver().addOnGlobalLayoutListener(getKeyboardListener());
-  }
- else {
-    mAttachScheduled=true;
+  if (mWasMeasured) {
+    attachToReactInstanceManager();
   }
 }

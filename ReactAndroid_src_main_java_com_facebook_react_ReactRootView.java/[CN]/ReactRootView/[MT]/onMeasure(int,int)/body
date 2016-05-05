@@ -6,13 +6,10 @@
   }
   setMeasuredDimension(MeasureSpec.getSize(widthMeasureSpec),MeasureSpec.getSize(heightMeasureSpec));
   mWasMeasured=true;
-  if (mAttachScheduled && mReactInstanceManager != null && mIsAttachedToWindow) {
-    mAttachScheduled=false;
+  if (mReactInstanceManager != null && !mIsAttachedToInstance) {
     UiThreadUtil.runOnUiThread(new Runnable(){
       @Override public void run(){
-        Assertions.assertNotNull(mReactInstanceManager).attachMeasuredRootView(ReactRootView.this);
-        mIsAttachedToInstance=true;
-        getViewTreeObserver().addOnGlobalLayoutListener(getKeyboardListener());
+        attachToReactInstanceManager();
       }
     }
 );

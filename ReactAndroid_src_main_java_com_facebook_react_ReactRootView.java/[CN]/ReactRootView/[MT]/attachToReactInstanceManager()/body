@@ -1,0 +1,8 @@
+{
+  if (mIsAttachedToInstance) {
+    return;
+  }
+  mIsAttachedToInstance=true;
+  Assertions.assertNotNull(mReactInstanceManager).attachMeasuredRootView(this);
+  getViewTreeObserver().addOnGlobalLayoutListener(getKeyboardListener());
+}
