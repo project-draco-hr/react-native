@@ -4,10 +4,6 @@
   client.setWriteTimeout(10,TimeUnit.SECONDS);
   client.setReadTimeout(0,TimeUnit.MINUTES);
   Request.Builder builder=new Request.Builder().tag(id).url(url);
-  String cookie=getCookie(url);
-  if (cookie != null) {
-    builder.addHeader("Cookie",getCookie(url));
-  }
   if (headers != null) {
     ReadableMapKeySetIterator iterator=headers.keySetIterator();
     if (!headers.hasKey("origin")) {
