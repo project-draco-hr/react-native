@@ -1,8 +1,6 @@
 {
   super.onDetachedFromWindow();
-  if (mReactInstanceManager != null && mIsAttachedToInstance) {
-    mReactInstanceManager.detachRootView(this);
-    mIsAttachedToInstance=false;
+  if (mIsAttachedToInstance) {
     getViewTreeObserver().removeOnGlobalLayoutListener(getKeyboardListener());
   }
 }

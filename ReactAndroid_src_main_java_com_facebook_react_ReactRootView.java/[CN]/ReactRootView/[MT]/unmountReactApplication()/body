@@ -1,0 +1,6 @@
+{
+  if (mReactInstanceManager != null && mIsAttachedToInstance) {
+    mReactInstanceManager.detachRootView(this);
+    mIsAttachedToInstance=false;
+  }
+}
