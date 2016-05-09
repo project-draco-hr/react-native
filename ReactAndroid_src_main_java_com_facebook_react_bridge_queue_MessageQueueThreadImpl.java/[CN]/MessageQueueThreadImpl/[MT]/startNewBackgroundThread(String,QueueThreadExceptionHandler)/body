@@ -1,18 +1,3 @@
 {
-  final SimpleSettableFuture<Looper> looperFuture=new SimpleSettableFuture<>();
-  final SimpleSettableFuture<MessageQueueThread> mqtFuture=new SimpleSettableFuture<>();
-  Thread bgThread=new Thread(new Runnable(){
-    @Override public void run(){
-      Looper.prepare();
-      looperFuture.set(Looper.myLooper());
-      MessageQueueThreadRegistry.register(mqtFuture.getOrThrow());
-      Looper.loop();
-    }
-  }
-,"mqt_" + name);
-  bgThread.start();
-  Looper myLooper=looperFuture.getOrThrow();
-  MessageQueueThreadImpl mqt=new MessageQueueThreadImpl(name,myLooper,exceptionHandler);
-  mqtFuture.set(mqt);
-  return mqt;
+  return startNewBackgroundThread(name,MessageQueueThreadSpec.DEFAULT_STACK_SIZE_BYTES,exceptionHandler);
 }

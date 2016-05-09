@@ -3,7 +3,7 @@ switch (spec.getThreadType()) {
 case MAIN_UI:
     return createForMainThread(spec.getName(),exceptionHandler);
 case NEW_BACKGROUND:
-  return startNewBackgroundThread(spec.getName(),exceptionHandler);
+  return startNewBackgroundThread(spec.getName(),spec.getStackSize(),exceptionHandler);
 default :
 throw new RuntimeException("Unknown thread type: " + spec.getThreadType());
 }

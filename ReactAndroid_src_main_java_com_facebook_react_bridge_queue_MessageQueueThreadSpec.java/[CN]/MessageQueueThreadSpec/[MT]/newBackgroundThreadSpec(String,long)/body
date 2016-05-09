@@ -1,0 +1,3 @@
+{
+  return new MessageQueueThreadSpec(ThreadType.NEW_BACKGROUND,name,stackSize);
+}

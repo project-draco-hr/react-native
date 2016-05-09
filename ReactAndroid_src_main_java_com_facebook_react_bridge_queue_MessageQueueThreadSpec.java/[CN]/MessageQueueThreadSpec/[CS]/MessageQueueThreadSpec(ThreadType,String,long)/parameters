@@ -1,0 +1,3 @@
+ThreadType threadType
+String name
+long stackSize

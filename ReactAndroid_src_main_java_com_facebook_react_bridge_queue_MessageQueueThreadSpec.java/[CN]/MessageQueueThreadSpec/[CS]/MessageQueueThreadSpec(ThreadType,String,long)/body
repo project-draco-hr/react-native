@@ -1,0 +1,5 @@
+{
+  mThreadType=threadType;
+  mName=name;
+  mStackSize=stackSize;
+}

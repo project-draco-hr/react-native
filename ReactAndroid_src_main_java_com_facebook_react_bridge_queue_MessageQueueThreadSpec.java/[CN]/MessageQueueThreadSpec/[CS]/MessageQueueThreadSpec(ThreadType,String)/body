@@ -1,4 +1,3 @@
 {
-  mThreadType=threadType;
-  mName=name;
+  this(threadType,name,DEFAULT_STACK_SIZE_BYTES);
 }
