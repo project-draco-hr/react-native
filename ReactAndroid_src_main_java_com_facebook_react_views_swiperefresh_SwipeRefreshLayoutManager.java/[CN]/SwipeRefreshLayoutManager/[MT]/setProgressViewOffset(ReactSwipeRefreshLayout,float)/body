@@ -1,0 +1,11 @@
+{
+  view.post(new Runnable(){
+    @Override public void run(){
+      int diameter=view.getProgressCircleDiameter();
+      int start=Math.round(PixelUtil.toPixelFromDIP(offset)) - diameter;
+      int end=Math.round(PixelUtil.toPixelFromDIP(offset + REFRESH_TRIGGER_DISTANCE));
+      view.setProgressViewOffset(false,start,end);
+    }
+  }
+);
+}
