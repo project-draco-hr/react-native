@@ -1,9 +1,6 @@
 {
   ReactApplicationContext reactContext=ReactTestHelper.createCatalystContextForTest();
   List<ViewManager> viewManagers=Arrays.asList(new ViewManager[]{new ReactTextInputManager()});
-  DisplayMetrics displayMetrics=reactContext.getResources().getDisplayMetrics();
-  DisplayMetricsHolder.setWindowDisplayMetrics(displayMetrics);
-  DisplayMetricsHolder.setScreenDisplayMetrics(displayMetrics);
   UIManagerModule uiManagerModule=new UIManagerModule(reactContext,viewManagers,new UIImplementation(reactContext,viewManagers));
   uiManagerModule.onHostResume();
   return uiManagerModule;

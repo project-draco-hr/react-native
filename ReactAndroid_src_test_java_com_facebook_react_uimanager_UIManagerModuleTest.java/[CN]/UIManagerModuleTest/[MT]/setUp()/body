@@ -25,9 +25,6 @@
   mCatalystInstanceMock=ReactTestHelper.createMockCatalystInstance();
   mReactContext=new ReactApplicationContext(RuntimeEnvironment.application);
   mReactContext.initializeWithInstance(mCatalystInstanceMock);
-  DisplayMetrics displayMetrics=mReactContext.getResources().getDisplayMetrics();
-  DisplayMetricsHolder.setWindowDisplayMetrics(displayMetrics);
-  DisplayMetricsHolder.setScreenDisplayMetrics(displayMetrics);
   UIManagerModule uiManagerModuleMock=mock(UIManagerModule.class);
   when(mCatalystInstanceMock.getNativeModule(UIManagerModule.class)).thenReturn(uiManagerModuleMock);
 }

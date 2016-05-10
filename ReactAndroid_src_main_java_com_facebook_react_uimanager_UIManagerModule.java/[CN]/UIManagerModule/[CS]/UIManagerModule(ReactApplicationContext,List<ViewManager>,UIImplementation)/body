@@ -1,5 +1,6 @@
 {
   super(reactContext);
+  DisplayMetricsHolder.initDisplayMetricsIfNotInitialized(reactContext);
   mEventDispatcher=new EventDispatcher(reactContext);
   mModuleConstants=createConstants(viewManagerList);
   mUIImplementation=uiImplementation;

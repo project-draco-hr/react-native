@@ -1,9 +1,6 @@
 {
   List<ViewManager> viewManagers=Arrays.<ViewManager>asList(new ViewManagerUnderTest());
   ReactApplicationContext reactContext=new ReactApplicationContext(RuntimeEnvironment.application);
-  DisplayMetrics displayMetrics=reactContext.getResources().getDisplayMetrics();
-  DisplayMetricsHolder.setWindowDisplayMetrics(displayMetrics);
-  DisplayMetricsHolder.setScreenDisplayMetrics(displayMetrics);
   UIManagerModule uiManagerModule=new UIManagerModule(reactContext,viewManagers,new UIImplementation(reactContext,viewManagers));
   Map<String,String> constants=(Map)valueAtPath(uiManagerModule.getConstants(),"SomeView","NativeProps");
   assertThat(constants).isEqualTo(MapBuilder.<String,String>builder().put("boolProp","boolean").put("intProp","number").put("doubleProp","number").put("floatProp","number").put("stringProp","String").put("boxedBoolProp","boolean").put("boxedIntProp","number").put("arrayProp","Array").put("mapProp","Map").put("floatGroupPropFirst","number").put("floatGroupPropSecond","number").put("intGroupPropFirst","number").put("intGroupPropSecond","number").put("boxedIntGroupPropFirst","number").put("boxedIntGroupPropSecond","number").put("customIntProp","date").put("customBoxedIntGroupPropFirst","color").put("customBoxedIntGroupPropSecond","color").build());

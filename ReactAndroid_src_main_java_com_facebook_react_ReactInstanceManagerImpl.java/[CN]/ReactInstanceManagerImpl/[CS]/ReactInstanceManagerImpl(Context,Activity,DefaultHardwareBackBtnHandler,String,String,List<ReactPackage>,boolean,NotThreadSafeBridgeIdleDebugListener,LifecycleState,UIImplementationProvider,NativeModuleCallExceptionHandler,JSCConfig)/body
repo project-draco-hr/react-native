@@ -1,7 +1,7 @@
 {
   initializeSoLoaderIfNecessary(applicationContext);
   ApplicationHolder.setApplication((Application)applicationContext.getApplicationContext());
-  setDisplayMetrics(applicationContext);
+  DisplayMetricsHolder.initDisplayMetricsIfNotInitialized(applicationContext);
   mApplicationContext=applicationContext;
   mCurrentActivity=currentActivity;
   mDefaultBackButtonImpl=defaultHardwareBackBtnHandler;
