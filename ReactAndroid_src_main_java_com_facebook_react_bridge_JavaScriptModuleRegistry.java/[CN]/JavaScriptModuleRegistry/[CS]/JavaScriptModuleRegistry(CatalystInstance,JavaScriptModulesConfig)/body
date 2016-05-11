@@ -1,8 +1,0 @@
-{
-  mCatalystInstance=instance;
-  mModuleInstances=new WeakHashMap<>();
-  mModuleRegistrations=new HashMap<>();
-  for (  JavaScriptModuleRegistration registration : config.getModuleDefinitions()) {
-    mModuleRegistrations.put(registration.getModuleInterface(),registration);
-  }
-}

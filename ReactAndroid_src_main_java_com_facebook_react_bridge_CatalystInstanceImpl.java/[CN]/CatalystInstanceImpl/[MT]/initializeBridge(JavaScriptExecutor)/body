@@ -1,0 +1,23 @@
+{
+  mReactQueueConfiguration.getJSQueueThread().assertIsOnThread();
+  Assertions.assertCondition(mBridge == null,"initializeBridge should be called once");
+  Systrace.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"ReactBridgeCtor");
+  ReactBridge bridge;
+  try {
+    bridge=new ReactBridge(jsExecutor,new NativeModulesReactCallback(),mReactQueueConfiguration.getNativeModulesQueueThread());
+    mMainExecutorToken=bridge.getMainExecutorToken();
+  }
+  finally {
+    Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);
+  }
+  Systrace.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"setBatchedBridgeConfig");
+  try {
+    bridge.setGlobalVariable("__fbBatchedBridgeConfig",buildModulesConfigJSONProperty(mJavaRegistry));
+    bridge.setGlobalVariable("__RCTProfileIsProfiling",Systrace.isTracing(Systrace.TRACE_TAG_REACT_APPS) ? "true" : "false");
+  }
+  finally {
+    Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);
+  }
+  mJavaRegistry.notifyReactBridgeInitialized(bridge);
+  return bridge;
+}

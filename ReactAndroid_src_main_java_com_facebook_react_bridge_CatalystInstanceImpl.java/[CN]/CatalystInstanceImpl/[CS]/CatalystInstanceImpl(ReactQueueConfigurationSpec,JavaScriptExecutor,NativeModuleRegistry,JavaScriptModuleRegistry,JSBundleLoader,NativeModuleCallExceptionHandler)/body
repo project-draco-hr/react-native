@@ -1,0 +1,27 @@
+{
+  FLog.d(ReactConstants.TAG,"Initializing React Bridge.");
+  mReactQueueConfiguration=ReactQueueConfigurationImpl.create(ReactQueueConfigurationSpec,new NativeExceptionHandler());
+  mBridgeIdleListeners=new CopyOnWriteArrayList<>();
+  mJavaRegistry=registry;
+  mJSModuleRegistry=jsModuleRegistry;
+  mJSBundleLoader=jsBundleLoader;
+  mNativeModuleCallExceptionHandler=nativeModuleCallExceptionHandler;
+  mTraceListener=new JSProfilerTraceListener();
+  try {
+    mBridge=mReactQueueConfiguration.getJSQueueThread().callOnQueue(new Callable<ReactBridge>(){
+      @Override public ReactBridge call() throws Exception {
+        Systrace.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"initializeBridge");
+        try {
+          return initializeBridge(jsExecutor);
+        }
+  finally {
+          Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);
+        }
+      }
+    }
+).get();
+  }
+ catch (  Exception t) {
+    throw new RuntimeException("Failed to initialize bridge",t);
+  }
+}

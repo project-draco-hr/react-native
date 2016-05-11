@@ -1,0 +1,4 @@
+{
+  mJSModuleRegistry=jsModuleRegistry;
+  return this;
+}

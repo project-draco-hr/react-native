@@ -1,0 +1,7 @@
+{
+  mModuleInstances=new WeakHashMap<>();
+  mModuleRegistrations=new HashMap<>();
+  for (  JavaScriptModuleRegistration registration : config) {
+    mModuleRegistrations.put(registration.getModuleInterface(),registration);
+  }
+}

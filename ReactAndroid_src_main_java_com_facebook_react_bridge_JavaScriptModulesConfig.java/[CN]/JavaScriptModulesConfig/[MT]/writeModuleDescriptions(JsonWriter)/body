@@ -1,9 +1,0 @@
-{
-  writer.beginObject();
-  for (  JavaScriptModuleRegistration registration : mModules) {
-    writer.name(registration.getName()).beginObject();
-    appendJSModuleToJSONObject(writer,registration);
-    writer.endObject();
-  }
-  writer.endObject();
-}

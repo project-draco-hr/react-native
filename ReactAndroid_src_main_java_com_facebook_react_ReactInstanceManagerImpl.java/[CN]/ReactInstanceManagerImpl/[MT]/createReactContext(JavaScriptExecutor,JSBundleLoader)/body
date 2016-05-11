@@ -3,7 +3,7 @@
   ReactMarker.logMarker(CREATE_REACT_CONTEXT_START);
   mSourceUrl=jsBundleLoader.getSourceUrl();
   NativeModuleRegistry.Builder nativeRegistryBuilder=new NativeModuleRegistry.Builder();
-  JavaScriptModulesConfig.Builder jsModulesBuilder=new JavaScriptModulesConfig.Builder();
+  JavaScriptModuleRegistry.Builder jsModulesBuilder=new JavaScriptModuleRegistry.Builder();
   final ReactApplicationContext reactContext=new ReactApplicationContext(mApplicationContext);
   if (mUseDeveloperSupport) {
     reactContext.setNativeModuleCallExceptionHandler(mDevSupportManager);
@@ -37,18 +37,8 @@
     Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);
     ReactMarker.logMarker(BUILD_NATIVE_MODULE_REGISTRY_END);
   }
-  ReactMarker.logMarker(BUILD_JS_MODULE_CONFIG_START);
-  Systrace.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"buildJSModuleConfig");
-  JavaScriptModulesConfig javaScriptModulesConfig;
-  try {
-    javaScriptModulesConfig=jsModulesBuilder.build();
-  }
-  finally {
-    Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);
-    ReactMarker.logMarker(BUILD_JS_MODULE_CONFIG_END);
-  }
   NativeModuleCallExceptionHandler exceptionHandler=mNativeModuleCallExceptionHandler != null ? mNativeModuleCallExceptionHandler : mDevSupportManager;
-  CatalystInstanceImpl.Builder catalystInstanceBuilder=new CatalystInstanceImpl.Builder().setReactQueueConfigurationSpec(ReactQueueConfigurationSpec.createDefault()).setJSExecutor(jsExecutor).setRegistry(nativeModuleRegistry).setJSModulesConfig(javaScriptModulesConfig).setJSBundleLoader(jsBundleLoader).setNativeModuleCallExceptionHandler(exceptionHandler);
+  CatalystInstanceImpl.Builder catalystInstanceBuilder=new CatalystInstanceImpl.Builder().setReactQueueConfigurationSpec(ReactQueueConfigurationSpec.createDefault()).setJSExecutor(jsExecutor).setRegistry(nativeModuleRegistry).setJSModuleRegistry(jsModulesBuilder.build()).setJSBundleLoader(jsBundleLoader).setNativeModuleCallExceptionHandler(exceptionHandler);
   ReactMarker.logMarker(CREATE_CATALYST_INSTANCE_START);
   Systrace.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"createCatalystInstance");
   final CatalystInstance catalystInstance;
