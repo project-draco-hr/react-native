@@ -1,0 +1,11 @@
+{
+  if (mRefreshing != refreshing) {
+    mRefreshing=refreshing;
+    post(new Runnable(){
+      @Override public void run(){
+        ReactSwipeRefreshLayout.super.setRefreshing(mRefreshing);
+      }
+    }
+);
+  }
+}
