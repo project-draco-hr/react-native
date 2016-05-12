@@ -1,4 +1,5 @@
 {
+  final long ts=SystemClock.nanoTime();
   PowerMockito.mockStatic(Arguments.class);
   PowerMockito.when(Arguments.createArray()).thenAnswer(new Answer<Object>(){
     @Override public Object answer(    InvocationOnMock invocation) throws Throwable {
@@ -9,6 +10,13 @@
   PowerMockito.when(Arguments.createMap()).thenAnswer(new Answer<Object>(){
     @Override public Object answer(    InvocationOnMock invocation) throws Throwable {
       return new JavaOnlyMap();
+    }
+  }
+);
+  PowerMockito.mockStatic(SystemClock.class);
+  PowerMockito.when(SystemClock.nanoTime()).thenAnswer(new Answer<Object>(){
+    @Override public Object answer(    InvocationOnMock invocation) throws Throwable {
+      return ts;
     }
   }
 );
