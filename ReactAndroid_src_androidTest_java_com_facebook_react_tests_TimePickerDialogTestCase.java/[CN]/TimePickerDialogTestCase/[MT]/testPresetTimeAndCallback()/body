@@ -1,0 +1,22 @@
+{
+  final WritableMap options=new WritableNativeMap();
+  options.putInt("hour",4);
+  options.putInt("minute",5);
+  final DialogFragment fragment=showDialog(options);
+  List<Integer[]> recordedTimes=mRecordingModule.getTimes();
+  assertEquals(0,recordedTimes.size());
+  runTestOnUiThread(new Runnable(){
+    @Override public void run(){
+      ((TimePickerDialog)fragment.getDialog()).getButton(DialogInterface.BUTTON_POSITIVE).performClick();
+    }
+  }
+);
+  getInstrumentation().waitForIdleSync();
+  waitForBridgeAndUIIdle();
+  assertEquals(0,mRecordingModule.getErrors());
+  assertEquals(0,mRecordingModule.getDismissed());
+  recordedTimes=mRecordingModule.getTimes();
+  assertEquals(1,recordedTimes.size());
+  assertEquals(4,(int)recordedTimes.get(0)[0]);
+  assertEquals(5,(int)recordedTimes.get(0)[1]);
+}

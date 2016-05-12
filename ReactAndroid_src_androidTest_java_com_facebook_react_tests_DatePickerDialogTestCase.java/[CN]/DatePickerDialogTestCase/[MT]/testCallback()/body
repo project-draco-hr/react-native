@@ -1,0 +1,18 @@
+{
+  final WritableMap options=new WritableNativeMap();
+  options.putDouble("date",getDateInMillis(2020,5,6));
+  final DialogFragment datePickerFragment=showDialog(options);
+  runTestOnUiThread(new Runnable(){
+    @Override public void run(){
+      ((DatePickerDialog)datePickerFragment.getDialog()).getButton(DialogInterface.BUTTON_POSITIVE).performClick();
+    }
+  }
+);
+  getInstrumentation().waitForIdleSync();
+  waitForBridgeAndUIIdle();
+  assertEquals(0,mRecordingModule.getErrors());
+  assertEquals(1,mRecordingModule.getDates().size());
+  assertEquals(2020,(int)mRecordingModule.getDates().get(0)[0]);
+  assertEquals(5,(int)mRecordingModule.getDates().get(0)[1]);
+  assertEquals(6,(int)mRecordingModule.getDates().get(0)[2]);
+}

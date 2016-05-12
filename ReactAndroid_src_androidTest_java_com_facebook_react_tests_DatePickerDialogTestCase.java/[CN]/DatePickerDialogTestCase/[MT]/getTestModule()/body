@@ -1,0 +1,3 @@
+{
+  return getReactContext().getCatalystInstance().getJSModule(DatePickerDialogTestModule.class);
+}

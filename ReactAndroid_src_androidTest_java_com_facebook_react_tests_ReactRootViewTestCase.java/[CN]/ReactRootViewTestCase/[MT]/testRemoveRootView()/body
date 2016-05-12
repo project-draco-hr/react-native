@@ -1,0 +1,26 @@
+{
+  final ReactRootView rootView=(ReactRootView)getRootView();
+  assertEquals(1,rootView.getChildCount());
+  runTestOnUiThread(new Runnable(){
+    @Override public void run(){
+      ViewGroup parent=(ViewGroup)rootView.getParent();
+      parent.removeView(rootView);
+      assertEquals(1,rootView.getChildCount());
+    }
+  }
+);
+  getInstrumentation().waitForIdleSync();
+  waitForBridgeAndUIIdle();
+  assertEquals("root component should not be automatically unmounted",0,mRecordingModule.getCalls().size());
+  assertEquals(1,rootView.getChildCount());
+  runTestOnUiThread(new Runnable(){
+    @Override public void run(){
+      rootView.unmountReactApplication();
+    }
+  }
+);
+  waitForBridgeAndUIIdle();
+  assertEquals(1,mRecordingModule.getCalls().size());
+  assertEquals("RootComponentWillUnmount",mRecordingModule.getCalls().get(0));
+  assertEquals(0,rootView.getChildCount());
+}

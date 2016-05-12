@@ -1,0 +1,7 @@
+{
+  final Calendar c=Calendar.getInstance();
+  c.set(Calendar.YEAR,year);
+  c.set(Calendar.MONTH,month);
+  c.set(Calendar.DATE,date);
+  return c.getTimeInMillis();
+}

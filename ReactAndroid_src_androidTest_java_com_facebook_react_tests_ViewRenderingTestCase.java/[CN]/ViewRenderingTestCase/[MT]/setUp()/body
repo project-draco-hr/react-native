@@ -1,0 +1,15 @@
+{
+  super.setUp();
+  List<ViewManager> viewManagers=Arrays.<ViewManager>asList(new ReactViewManager());
+  final UIManagerModule uiManager=new UIManagerModule(getContext(),viewManagers,new UIImplementation(getContext(),viewManagers));
+  UiThreadUtil.runOnUiThread(new Runnable(){
+    @Override public void run(){
+      uiManager.onHostResume();
+    }
+  }
+);
+  waitForIdleSync();
+  mCatalystInstance=ReactTestHelper.catalystInstanceBuilder(this).addNativeModule(uiManager).addNativeModule(new AndroidInfoModule()).addJSModule(ViewRenderingTestModule.class).build();
+  mRootView=new ReactRootView(getContext());
+  mRootTag=uiManager.addMeasuredRootView(mRootView);
+}

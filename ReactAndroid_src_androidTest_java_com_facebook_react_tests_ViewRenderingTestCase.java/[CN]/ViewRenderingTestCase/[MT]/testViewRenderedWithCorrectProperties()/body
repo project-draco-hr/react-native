@@ -1,0 +1,9 @@
+{
+  float expectedOpacity=0.75f;
+  int expectedBackgroundColor=Color.rgb(255,0,0);
+  mCatalystInstance.getJSModule(ViewRenderingTestModule.class).renderViewApplication(mRootTag);
+  waitForBridgeAndUIIdle();
+  ReactViewGroup view=getViewAtPath(mRootView);
+  assertEquals("Incorrect (or not applied) opacity",expectedOpacity,view.getAlpha());
+  assertEquals("Incorrect (or not applied) backgroundColor",expectedBackgroundColor,view.getBackgroundColor());
+}

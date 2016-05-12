@@ -1,0 +1,4 @@
+{
+  final DialogFragment fragment=showDialog(null);
+  assertNotNull(fragment);
+}

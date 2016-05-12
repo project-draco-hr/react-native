@@ -1,0 +1,3 @@
+{
+  return super.createReactInstanceSpecForTest().addNativeModule(mRecordingModule).addJSModule(TimePickerDialogTestModule.class);
+}

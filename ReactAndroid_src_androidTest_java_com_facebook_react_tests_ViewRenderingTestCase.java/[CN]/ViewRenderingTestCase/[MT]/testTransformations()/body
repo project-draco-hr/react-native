@@ -1,0 +1,12 @@
+{
+  mCatalystInstance.getJSModule(ViewRenderingTestModule.class).renderTransformApplication(mRootTag);
+  waitForBridgeAndUIIdle();
+  View view=getViewAtPath(mRootView);
+  float expectedTranslateX=PixelUtil.toPixelFromDIP(20);
+  float expectedTranslateY=PixelUtil.toPixelFromDIP(25);
+  assertEquals(5f,view.getScaleX());
+  assertEquals(10f,view.getScaleY());
+  assertEquals(15f,view.getRotation());
+  assertEquals(expectedTranslateX,view.getTranslationX());
+  assertEquals(expectedTranslateY,view.getTranslationY());
+}

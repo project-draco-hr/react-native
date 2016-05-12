@@ -1,0 +1,14 @@
+{
+  final DialogFragment datePickerFragment=showDialog(null);
+  runTestOnUiThread(new Runnable(){
+    @Override public void run(){
+      datePickerFragment.getDialog().dismiss();
+    }
+  }
+);
+  getInstrumentation().waitForIdleSync();
+  waitForBridgeAndUIIdle();
+  assertEquals(0,mRecordingModule.getErrors());
+  assertEquals(0,mRecordingModule.getDates().size());
+  assertEquals(1,mRecordingModule.getDismissed());
+}

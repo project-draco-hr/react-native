@@ -1,0 +1,9 @@
+{
+  final WritableMap options=new WritableNativeMap();
+  options.putDouble("date",getDateInMillis(2020,5,6));
+  final DialogFragment datePickerFragment=showDialog(options);
+  final DatePicker datePicker=((DatePickerDialog)datePickerFragment.getDialog()).getDatePicker();
+  assertEquals(2020,datePicker.getYear());
+  assertEquals(5,datePicker.getMonth());
+  assertEquals(6,datePicker.getDayOfMonth());
+}

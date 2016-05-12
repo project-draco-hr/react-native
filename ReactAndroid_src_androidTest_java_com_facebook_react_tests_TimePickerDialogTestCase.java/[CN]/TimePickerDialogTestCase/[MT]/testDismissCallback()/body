@@ -1,0 +1,15 @@
+{
+  final DialogFragment fragment=showDialog(null);
+  assertEquals(0,mRecordingModule.getDismissed());
+  runTestOnUiThread(new Runnable(){
+    @Override public void run(){
+      fragment.getDialog().dismiss();
+    }
+  }
+);
+  getInstrumentation().waitForIdleSync();
+  waitForBridgeAndUIIdle();
+  assertEquals(0,mRecordingModule.getErrors());
+  assertEquals(0,mRecordingModule.getTimes().size());
+  assertEquals(1,mRecordingModule.getDismissed());
+}

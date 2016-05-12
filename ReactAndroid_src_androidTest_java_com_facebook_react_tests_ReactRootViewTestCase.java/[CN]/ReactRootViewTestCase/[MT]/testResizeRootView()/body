@@ -1,0 +1,15 @@
+{
+  final ReactRootView rootView=(ReactRootView)getRootView();
+  final View childView=rootView.getChildAt(0);
+  assertEquals(rootView.getWidth(),childView.getWidth());
+  final int newWidth=rootView.getWidth() / 2;
+  runTestOnUiThread(new Runnable(){
+    @Override public void run(){
+      rootView.setLayoutParams(new FrameLayout.LayoutParams(newWidth,ViewGroup.LayoutParams.MATCH_PARENT));
+    }
+  }
+);
+  getInstrumentation().waitForIdleSync();
+  waitForBridgeAndUIIdle();
+  assertEquals(newWidth,childView.getWidth());
+}

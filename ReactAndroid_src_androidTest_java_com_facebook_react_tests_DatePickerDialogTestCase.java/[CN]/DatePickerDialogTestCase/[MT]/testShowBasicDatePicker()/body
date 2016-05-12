@@ -1,0 +1,4 @@
+{
+  final Fragment datePickerFragment=showDialog(null);
+  assertNotNull(datePickerFragment);
+}

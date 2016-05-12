@@ -1,0 +1,9 @@
+{
+  mCatalystInstance.getJSModule(ViewRenderingTestModule.class).renderMarginApplication(mRootTag);
+  waitForBridgeAndUIIdle();
+  View view=getViewAtPath(mRootView);
+  int expectedMargin=Math.round(PixelUtil.toPixelFromDIP(10));
+  int expectedMarginLeft=Math.round(PixelUtil.toPixelFromDIP(20));
+  assertEquals(expectedMarginLeft,(int)view.getX());
+  assertEquals(expectedMargin,(int)view.getY());
+}

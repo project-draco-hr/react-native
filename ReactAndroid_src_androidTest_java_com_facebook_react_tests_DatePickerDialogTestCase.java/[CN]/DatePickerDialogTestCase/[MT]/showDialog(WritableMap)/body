@@ -1,0 +1,6 @@
+{
+  getTestModule().showDatePickerDialog(options);
+  waitForBridgeAndUIIdle();
+  getInstrumentation().waitForIdleSync();
+  return (DialogFragment)getActivity().getSupportFragmentManager().findFragmentByTag(DatePickerDialogModule.FRAGMENT_TAG);
+}

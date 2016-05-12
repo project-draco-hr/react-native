@@ -1,0 +1,6 @@
+{
+  getTestModule().showTimePickerDialog(options);
+  waitForBridgeAndUIIdle();
+  getInstrumentation().waitForIdleSync();
+  return (DialogFragment)getActivity().getSupportFragmentManager().findFragmentByTag(TimePickerDialogModule.FRAGMENT_TAG);
+}

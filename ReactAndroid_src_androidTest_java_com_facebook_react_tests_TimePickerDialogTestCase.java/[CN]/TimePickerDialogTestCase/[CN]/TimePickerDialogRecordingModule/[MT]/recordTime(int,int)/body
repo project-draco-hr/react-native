@@ -1,0 +1,3 @@
+{
+  mTimes.add(new Integer[]{hour,minute});
+}

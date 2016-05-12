@@ -1,0 +1,10 @@
+{
+  mCatalystInstance.getJSModule(ViewRenderingTestModule.class).renderBorderApplication(mRootTag);
+  waitForBridgeAndUIIdle();
+  View view=getViewAtPath(mRootView);
+  View child=((ViewGroup)view).getChildAt(0);
+  int expectedBorderX=Math.round(PixelUtil.toPixelFromDIP(20));
+  int expectedBorderY=Math.round(PixelUtil.toPixelFromDIP(5));
+  assertEquals(expectedBorderX,(int)child.getX());
+  assertEquals(expectedBorderY,(int)child.getY());
+}
