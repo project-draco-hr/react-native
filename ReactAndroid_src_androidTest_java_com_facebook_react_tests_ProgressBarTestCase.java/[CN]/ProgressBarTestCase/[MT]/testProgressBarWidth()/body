@@ -1,0 +1,6 @@
+{
+  View viewContainingProgressBar=getViewByTestId(mRootView,"Horizontal200");
+  assertEquals(viewContainingProgressBar.getWidth(),dpToPixels(200));
+  ProgressBar progressBar=(ProgressBar)((ViewGroup)viewContainingProgressBar).getChildAt(0);
+  assertEquals(progressBar.getWidth(),dpToPixels(200));
+}

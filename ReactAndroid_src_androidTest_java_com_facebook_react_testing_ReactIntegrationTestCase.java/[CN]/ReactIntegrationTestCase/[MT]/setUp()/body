@@ -1,4 +1,5 @@
 {
   super.setUp();
+  SoLoader.init(getContext(),false);
   ApplicationHolder.setApplication((Application)getContext().getApplicationContext());
 }

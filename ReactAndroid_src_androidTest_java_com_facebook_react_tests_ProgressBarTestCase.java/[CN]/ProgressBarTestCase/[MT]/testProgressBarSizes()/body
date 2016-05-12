@@ -1,0 +1,11 @@
+{
+  for (  String style : styleList) {
+    ProgressBar newProgressBar=new ProgressBar(getContext(),null,styles.get(style));
+    final int spec=View.MeasureSpec.makeMeasureSpec(ViewGroup.LayoutParams.WRAP_CONTENT,View.MeasureSpec.UNSPECIFIED);
+    newProgressBar.measure(spec,spec);
+    final int expectedHeight=newProgressBar.getMeasuredHeight();
+    View viewContainingProgressBar=getViewByTestId(mRootView,style);
+    assertEquals(expectedHeight,viewContainingProgressBar.getHeight());
+    assertTrue(((ViewGroup)viewContainingProgressBar).getChildAt(0) instanceof ProgressBar);
+  }
+}
