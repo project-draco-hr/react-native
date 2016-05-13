@@ -4,5 +4,9 @@ synchronized (mEventsStagingLock) {
     mEventStaging.add(event);
     Systrace.startAsyncFlow(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,event.getEventName(),event.getUniqueID());
   }
-  mCurrentFrameCallback.maybePostFromNonUI();
+  if (mRCTEventEmitter != null) {
+    mCurrentFrameCallback.maybePostFromNonUI();
+  }
+ else {
+  }
 }
