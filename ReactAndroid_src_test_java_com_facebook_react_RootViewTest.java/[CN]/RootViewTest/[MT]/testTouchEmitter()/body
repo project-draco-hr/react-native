@@ -25,7 +25,7 @@
   reset(eventEmitterModuleMock,eventDispatcher);
   ArgumentCaptor<Event> upEventCaptor=ArgumentCaptor.forClass(Event.class);
   ArgumentCaptor<JavaOnlyArray> upActionTouchesArgCaptor=ArgumentCaptor.forClass(JavaOnlyArray.class);
-  rootView.onTouchEvent(MotionEvent.obtain(100,ts,MotionEvent.ACTION_UP,0,0,0));
+  rootView.onTouchEvent(MotionEvent.obtain(50,ts,MotionEvent.ACTION_UP,0,0,0));
   verify(eventDispatcher).dispatchEvent(upEventCaptor.capture());
   verifyNoMoreInteractions(eventDispatcher);
   upEventCaptor.getValue().dispatch(eventEmitterModuleMock);
