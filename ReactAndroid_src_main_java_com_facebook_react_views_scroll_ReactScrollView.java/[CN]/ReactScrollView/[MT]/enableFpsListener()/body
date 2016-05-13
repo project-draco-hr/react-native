@@ -1,0 +1,7 @@
+{
+  if (isScrollPerfLoggingEnabled()) {
+    Assertions.assertNotNull(mFpsListener);
+    Assertions.assertNotNull(mScrollPerfTag);
+    mFpsListener.enable(mScrollPerfTag);
+  }
+}

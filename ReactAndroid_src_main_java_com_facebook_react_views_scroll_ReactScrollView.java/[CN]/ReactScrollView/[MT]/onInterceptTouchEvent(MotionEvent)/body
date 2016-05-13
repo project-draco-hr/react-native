@@ -6,6 +6,7 @@
     NativeGestureUtil.notifyNativeGestureStarted(this,ev);
     ReactScrollViewHelper.emitScrollBeginDragEvent(this);
     mDragging=true;
+    enableFpsListener();
     return true;
   }
   return false;

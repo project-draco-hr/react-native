@@ -1,12 +1,14 @@
 {
   super.fling(velocityY);
-  if (mSendMomentumEvents) {
+  if (mSendMomentumEvents || isScrollPerfLoggingEnabled()) {
     mFlinging=true;
+    enableFpsListener();
     ReactScrollViewHelper.emitScrollMomentumBeginEvent(this);
     Runnable r=new Runnable(){
       @Override public void run(){
         if (mDoneFlinging) {
           mFlinging=false;
+          disableFpsListener();
           ReactScrollViewHelper.emitScrollMomentumEndEvent(ReactScrollView.this);
         }
  else {

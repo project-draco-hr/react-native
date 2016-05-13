@@ -1,0 +1,3 @@
+{
+  return mFpsListener != null && mScrollPerfTag != null && !mScrollPerfTag.isEmpty();
+}

@@ -1,5 +1,5 @@
 {
-  if (!mSendMomentumEvents && !mPagingEnabled) {
+  if (!mSendMomentumEvents && !mPagingEnabled && !isScrollPerfLoggingEnabled()) {
     return;
   }
   if (mPostTouchRunnable != null) {
@@ -28,6 +28,7 @@
             ReactScrollViewHelper.emitScrollMomentumEndEvent(ReactHorizontalScrollView.this);
           }
           ReactHorizontalScrollView.this.mPostTouchRunnable=null;
+          disableFpsListener();
         }
  else {
           ReactHorizontalScrollView.this.postOnAnimationDelayed(this,ReactScrollViewHelper.MOMENTUM_DELAY);
