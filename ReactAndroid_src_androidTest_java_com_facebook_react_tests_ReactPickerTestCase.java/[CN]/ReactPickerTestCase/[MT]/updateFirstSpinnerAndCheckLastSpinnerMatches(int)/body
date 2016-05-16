@@ -1,0 +1,13 @@
+{
+  runTestOnUiThread(new Runnable(){
+    @Override public void run(){
+      ReactPicker spinner=getViewAtPath(0,0);
+      spinner.setSelection(indexToSelect);
+    }
+  }
+);
+  getInstrumentation().waitForIdleSync();
+  waitForBridgeAndUIIdle();
+  ReactPicker spinnerInSync=getViewAtPath(0,3);
+  assertEquals("Picker selection was not updated correctly via setState.",indexToSelect,spinnerInSync.getSelectedItemPosition());
+}

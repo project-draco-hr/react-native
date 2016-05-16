@@ -1,0 +1,6 @@
+{
+  updateFirstSpinnerAndCheckLastSpinnerMatches(0);
+  updateFirstSpinnerAndCheckLastSpinnerMatches(2);
+  updateFirstSpinnerAndCheckLastSpinnerMatches(0);
+  updateFirstSpinnerAndCheckLastSpinnerMatches(2);
+}
