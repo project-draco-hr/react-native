@@ -1,6 +1,6 @@
 {
   mShuttingDown=true;
-  mClient.cancel(null);
+  OkHttpCallUtil.cancelTag(mClient,null);
   mCookieHandler.destroy();
-  mClient.setCookieHandler(null);
+  mCookieJarContainer.removeCookieJar();
 }

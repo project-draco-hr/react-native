@@ -1,9 +1,9 @@
 {
   Request request=new Request.Builder().url(createLaunchJSDevtoolsCommandUrl()).build();
   mClient.newCall(request).enqueue(new Callback(){
-    @Override public void onFailure(    Request request,    IOException e){
+    @Override public void onFailure(    Call call,    IOException e){
     }
-    @Override public void onResponse(    Response response) throws IOException {
+    @Override public void onResponse(    Call call,    Response response) throws IOException {
     }
   }
 );

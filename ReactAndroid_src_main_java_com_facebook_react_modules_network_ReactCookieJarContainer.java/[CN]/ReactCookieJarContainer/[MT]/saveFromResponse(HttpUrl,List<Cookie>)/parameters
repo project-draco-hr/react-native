@@ -1,0 +1,2 @@
+HttpUrl url
+List<Cookie> cookies

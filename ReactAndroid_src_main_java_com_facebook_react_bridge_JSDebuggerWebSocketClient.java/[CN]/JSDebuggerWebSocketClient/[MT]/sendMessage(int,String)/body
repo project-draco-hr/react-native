@@ -3,10 +3,8 @@
     triggerRequestFailure(requestID,new IllegalStateException("WebSocket connection no longer valid"));
     return;
   }
-  Buffer messageBuffer=new Buffer();
-  messageBuffer.writeUtf8(message);
   try {
-    mWebSocket.sendMessage(WebSocket.PayloadType.TEXT,messageBuffer);
+    mWebSocket.sendMessage(RequestBody.create(WebSocket.TEXT,message));
   }
  catch (  IOException e) {
     triggerRequestFailure(requestID,e);

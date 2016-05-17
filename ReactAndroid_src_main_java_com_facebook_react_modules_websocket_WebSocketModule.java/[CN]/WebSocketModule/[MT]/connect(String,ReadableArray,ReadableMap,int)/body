@@ -1,8 +1,5 @@
 {
-  OkHttpClient client=new OkHttpClient();
-  client.setConnectTimeout(10,TimeUnit.SECONDS);
-  client.setWriteTimeout(10,TimeUnit.SECONDS);
-  client.setReadTimeout(0,TimeUnit.MINUTES);
+  OkHttpClient client=new OkHttpClient.Builder().connectTimeout(10,TimeUnit.SECONDS).writeTimeout(10,TimeUnit.SECONDS).readTimeout(0,TimeUnit.MINUTES).build();
   Request.Builder builder=new Request.Builder().tag(id).url(url);
   if (headers != null) {
     ReadableMapKeySetIterator iterator=headers.keySetIterator();
@@ -55,14 +52,14 @@
     }
     @Override public void onPong(    Buffer buffer){
     }
-    @Override public void onMessage(    BufferedSource bufferedSource,    WebSocket.PayloadType payloadType){
+    @Override public void onMessage(    ResponseBody response) throws IOException {
       String message;
       try {
-        if (payloadType == WebSocket.PayloadType.BINARY) {
-          message=Base64.encodeToString(bufferedSource.readByteArray(),Base64.NO_WRAP);
+        if (response.contentType() == WebSocket.BINARY) {
+          message=Base64.encodeToString(response.source().readByteArray(),Base64.NO_WRAP);
         }
  else {
-          message=bufferedSource.readUtf8();
+          message=response.source().readUtf8();
         }
       }
  catch (      IOException e) {
@@ -70,7 +67,7 @@
         return;
       }
       try {
-        bufferedSource.close();
+        response.source().close();
       }
  catch (      IOException e) {
         FLog.e(ReactConstants.TAG,"Could not close BufferedSource for WebSocket id " + id,e);
@@ -78,10 +75,10 @@
       WritableMap params=Arguments.createMap();
       params.putInt("id",id);
       params.putString("data",message);
-      params.putString("type",payloadType == WebSocket.PayloadType.BINARY ? "binary" : "text");
+      params.putString("type",response.contentType() == WebSocket.BINARY ? "binary" : "text");
       sendEvent("websocketMessage",params);
     }
   }
 );
-  client.getDispatcher().getExecutorService().shutdown();
+  client.dispatcher().executorService().shutdown();
 }

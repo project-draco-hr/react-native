@@ -1,14 +1,14 @@
 {
-  if (type != WebSocket.PayloadType.TEXT) {
-    FLog.w(TAG,"Websocket received unexpected message with payload of type " + type);
+  if (response.contentType() != WebSocket.TEXT) {
+    FLog.w(TAG,"Websocket received unexpected message with payload of type " + response.contentType());
     return;
   }
   String message=null;
   try {
-    message=payload.readUtf8();
+    message=response.source().readUtf8();
   }
   finally {
-    payload.close();
+    response.close();
   }
   Integer replyID=null;
   try {

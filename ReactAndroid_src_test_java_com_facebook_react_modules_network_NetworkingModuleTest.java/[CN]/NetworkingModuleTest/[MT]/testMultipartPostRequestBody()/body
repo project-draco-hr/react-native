@@ -4,9 +4,9 @@
   when(RequestBodyUtil.getFileInputStream(any(ReactContext.class),any(String.class))).thenReturn(inputStream);
   when(RequestBodyUtil.create(any(MediaType.class),any(InputStream.class))).thenCallRealMethod();
   when(inputStream.available()).thenReturn("imageUri".length());
-  final MultipartBuilder multipartBuilder=mock(MultipartBuilder.class);
-  PowerMockito.whenNew(MultipartBuilder.class).withNoArguments().thenReturn(multipartBuilder);
-  when(multipartBuilder.type(any(MediaType.class))).thenAnswer(new Answer<Object>(){
+  final MultipartBody.Builder multipartBuilder=mock(MultipartBody.Builder.class);
+  PowerMockito.whenNew(MultipartBody.Builder.class).withNoArguments().thenReturn(multipartBuilder);
+  when(multipartBuilder.setType(any(MediaType.class))).thenAnswer(new Answer<Object>(){
     @Override public Object answer(    InvocationOnMock invocation) throws Throwable {
       return multipartBuilder;
     }
@@ -20,7 +20,7 @@
 );
   when(multipartBuilder.build()).thenAnswer(new Answer<Object>(){
     @Override public Object answer(    InvocationOnMock invocation) throws Throwable {
-      return mock(RequestBody.class);
+      return mock(MultipartBody.class);
     }
   }
 );
@@ -51,7 +51,7 @@
   PowerMockito.verifyStatic(times(1));
   RequestBodyUtil.create(MediaType.parse("image/jpg"),inputStream);
   verify(multipartBuilder).build();
-  verify(multipartBuilder).type(MultipartBuilder.FORM);
+  verify(multipartBuilder).setType(MultipartBody.FORM);
   ArgumentCaptor<Headers> headersArgumentCaptor=ArgumentCaptor.forClass(Headers.class);
   ArgumentCaptor<RequestBody> bodyArgumentCaptor=ArgumentCaptor.forClass(RequestBody.class);
   verify(multipartBuilder,times(2)).addPart(headersArgumentCaptor.capture(),bodyArgumentCaptor.capture());

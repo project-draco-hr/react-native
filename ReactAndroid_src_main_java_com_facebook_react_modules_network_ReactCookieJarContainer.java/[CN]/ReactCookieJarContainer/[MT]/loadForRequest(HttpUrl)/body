@@ -1,0 +1,6 @@
+{
+  if (cookieJar != null) {
+    return cookieJar.loadForRequest(url);
+  }
+  return Collections.emptyList();
+}

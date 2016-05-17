@@ -2,7 +2,7 @@
   mOnChangePollingEnabled=false;
   mRestartOnChangePollingHandler.removeCallbacksAndMessages(null);
   if (mOnChangePollingClient != null) {
-    mOnChangePollingClient.cancel(this);
+    OkHttpCallUtil.cancelTag(mOnChangePollingClient,this);
     mOnChangePollingClient=null;
   }
   mOnServerContentChangeListener=null;

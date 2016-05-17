@@ -1,7 +1,7 @@
 {
   new GuardedAsyncTask<Void,Void>(getReactApplicationContext()){
     @Override protected void doInBackgroundGuarded(    Void... params){
-      mClient.cancel(requestId);
+      OkHttpCallUtil.cancelTag(mClient,requestId);
     }
   }
 .execute();

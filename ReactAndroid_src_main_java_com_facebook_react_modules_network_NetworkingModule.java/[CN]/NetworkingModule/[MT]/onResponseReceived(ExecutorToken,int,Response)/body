@@ -4,6 +4,6 @@
   args.pushInt(requestId);
   args.pushInt(response.code());
   args.pushMap(headers);
-  args.pushString(response.request().urlString());
+  args.pushString(response.request().url().toString());
   getEventEmitter(ExecutorToken).emit("didReceiveNetworkResponse",args);
 }

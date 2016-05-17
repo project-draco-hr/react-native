@@ -1,6 +1,6 @@
 {
-  MultipartBuilder multipartBuilder=new MultipartBuilder();
-  multipartBuilder.type(MediaType.parse(contentType));
+  MultipartBody.Builder multipartBuilder=new MultipartBody.Builder();
+  multipartBuilder.setType(MediaType.parse(contentType));
   for (int i=0, size=body.size(); i < size; i++) {
     ReadableMap bodyPart=body.getMap(i);
     ReadableArray headersArray=bodyPart.getArray("headers");

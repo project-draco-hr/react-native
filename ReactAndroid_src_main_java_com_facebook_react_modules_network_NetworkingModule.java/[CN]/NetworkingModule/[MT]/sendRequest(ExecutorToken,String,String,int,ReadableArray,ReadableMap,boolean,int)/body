@@ -4,9 +4,8 @@
     requestBuilder.tag(requestId);
   }
   OkHttpClient client=mClient;
-  if (timeout != mClient.getConnectTimeout()) {
-    client=mClient.clone();
-    client.setReadTimeout(timeout,TimeUnit.MILLISECONDS);
+  if (timeout != mClient.connectTimeoutMillis()) {
+    client=mClient.newBuilder().readTimeout(timeout,TimeUnit.MILLISECONDS).build();
   }
   Headers requestHeaders=extractHeaders(headers,data);
   if (requestHeaders == null) {
@@ -56,7 +55,7 @@
       contentType="multipart/form-data";
     }
     ReadableArray parts=data.getArray(REQUEST_BODY_KEY_FORMDATA);
-    MultipartBuilder multipartBuilder=constructMultipartBody(executorToken,parts,contentType,requestId);
+    MultipartBody.Builder multipartBuilder=constructMultipartBody(executorToken,parts,contentType,requestId);
     if (multipartBuilder == null) {
       return;
     }
@@ -66,13 +65,13 @@
     requestBuilder.method(method,RequestBodyUtil.getEmptyBody(method));
   }
   client.newCall(requestBuilder.build()).enqueue(new Callback(){
-    @Override public void onFailure(    Request request,    IOException e){
+    @Override public void onFailure(    Call call,    IOException e){
       if (mShuttingDown) {
         return;
       }
       onRequestError(executorToken,requestId,e.getMessage(),e);
     }
-    @Override public void onResponse(    Response response) throws IOException {
+    @Override public void onResponse(    Call call,    Response response) throws IOException {
       if (mShuttingDown) {
         return;
       }

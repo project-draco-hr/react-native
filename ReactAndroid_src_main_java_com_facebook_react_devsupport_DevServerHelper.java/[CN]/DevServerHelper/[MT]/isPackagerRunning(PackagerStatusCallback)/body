@@ -2,11 +2,11 @@
   String statusURL=createPackagerStatusURL(getDebugServerHost());
   Request request=new Request.Builder().url(statusURL).build();
   mClient.newCall(request).enqueue(new Callback(){
-    @Override public void onFailure(    Request request,    IOException e){
+    @Override public void onFailure(    Call call,    IOException e){
       FLog.w(ReactConstants.TAG,"The packager does not seem to be running as we got an IOException requesting " + "its status: " + e.getMessage());
       callback.onPackagerStatusFetched(false);
     }
-    @Override public void onResponse(    Response response) throws IOException {
+    @Override public void onResponse(    Call call,    Response response) throws IOException {
       if (!response.isSuccessful()) {
         FLog.e(ReactConstants.TAG,"Got non-success http code from packager when requesting status: " + response.code());
         callback.onPackagerStatusFetched(false);

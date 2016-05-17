@@ -4,7 +4,7 @@
     throw new RuntimeException("Cannot send a message. Unknown WebSocket id " + id);
   }
   try {
-    client.sendMessage(WebSocket.PayloadType.TEXT,new Buffer().writeUtf8(message));
+    client.sendMessage(RequestBody.create(WebSocket.TEXT,message));
   }
  catch (  IOException|IllegalStateException e) {
     notifyWebSocketFailed(id,e.getMessage());

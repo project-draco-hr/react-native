@@ -2,6 +2,6 @@
   ImagePipelineFactory imagePipelineFactory=Fresco.getImagePipelineFactory();
   imagePipelineFactory.getBitmapMemoryCache().removeAll(AndroidPredicates.<CacheKey>True());
   imagePipelineFactory.getEncodedMemoryCache().removeAll(AndroidPredicates.<CacheKey>True());
-  imagePipelineFactory.getMainDiskStorageCache().clearAll();
-  imagePipelineFactory.getSmallImageDiskStorageCache().clearAll();
+  imagePipelineFactory.getMainFileCache().clearAll();
+  imagePipelineFactory.getSmallImageFileCache().clearAll();
 }
