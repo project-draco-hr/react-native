@@ -1,3 +1,4 @@
 {
-  return mHooks;
+  findMethods();
+  return assertNotNull(mHooks);
 }

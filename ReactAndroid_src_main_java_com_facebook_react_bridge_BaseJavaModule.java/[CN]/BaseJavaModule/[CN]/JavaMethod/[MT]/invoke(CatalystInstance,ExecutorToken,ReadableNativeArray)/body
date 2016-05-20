@@ -1,5 +1,5 @@
 {
-  SystraceMessage.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"callJavaModuleMethod").arg("method",mTraceName).flush();
+  SystraceMessage.beginSection(TRACE_TAG_REACT_JAVA_BRIDGE,"callJavaModuleMethod").arg("method",mTraceName).flush();
   try {
     if (mJSArgumentsNeeded != parameters.size()) {
       throw new NativeArgumentsParseException(BaseJavaModule.this.getName() + "." + mMethod.getName()+ " got "+ parameters.size()+ " arguments, expected "+ mJSArgumentsNeeded);
@@ -36,6 +36,6 @@ catch (    InvocationTargetException ite) {
     }
   }
   finally {
-    Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);
+    Systrace.endSection(TRACE_TAG_REACT_JAVA_BRIDGE);
   }
 }

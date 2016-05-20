@@ -1,3 +1,4 @@
 {
-  return mMethods;
+  findMethods();
+  return assertNotNull(mMethods);
 }
