@@ -1,0 +1,5 @@
+{
+  List<NativeModule> modules=new ArrayList<>();
+  modules.add(new SomeExampleModule(reactContext));
+  return modules;
+}
