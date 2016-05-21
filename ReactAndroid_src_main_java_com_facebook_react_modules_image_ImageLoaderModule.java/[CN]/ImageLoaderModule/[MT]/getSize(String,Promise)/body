@@ -1,0 +1,48 @@
+{
+  if (uriString == null || uriString.isEmpty()) {
+    promise.reject(ERROR_INVALID_URI,"Cannot get the size of an image for an empty URI");
+    return;
+  }
+  Uri uri=Uri.parse(uriString);
+  ImageRequest request=ImageRequestBuilder.newBuilderWithSource(uri).build();
+  DataSource<CloseableReference<CloseableImage>> dataSource=Fresco.getImagePipeline().fetchDecodedImage(request,mCallerContext);
+  DataSubscriber<CloseableReference<CloseableImage>> dataSubscriber=new BaseDataSubscriber<CloseableReference<CloseableImage>>(){
+    @Override protected void onNewResultImpl(    DataSource<CloseableReference<CloseableImage>> dataSource){
+      if (!dataSource.isFinished()) {
+        return;
+      }
+      CloseableReference<CloseableImage> ref=dataSource.getResult();
+      if (ref != null) {
+        try {
+          CloseableImage image=ref.get();
+          WritableMap sizes=Arguments.createMap();
+          sizes.putInt("width",image.getWidth());
+          sizes.putInt("height",image.getHeight());
+          image.close();
+          promise.resolve(sizes);
+        }
+ catch (        Exception e) {
+          promise.reject(ERROR_GET_SIZE_FAILURE,e);
+        }
+ finally {
+          CloseableReference.closeSafely(ref);
+          dataSource.close();
+        }
+      }
+ else {
+        dataSource.close();
+        promise.reject(ERROR_GET_SIZE_FAILURE);
+      }
+    }
+    @Override protected void onFailureImpl(    DataSource<CloseableReference<CloseableImage>> dataSource){
+      try {
+        promise.reject(ERROR_GET_SIZE_FAILURE,dataSource.getFailureCause());
+      }
+  finally {
+        dataSource.close();
+      }
+    }
+  }
+;
+  dataSource.subscribe(dataSubscriber,CallerThreadExecutor.getInstance());
+}
