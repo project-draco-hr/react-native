@@ -5,15 +5,12 @@
     MessageQueueThreadRegistry.register(mqt);
   }
  else {
-    final SimpleSettableFuture<Void> registrationFuture=new SimpleSettableFuture<>();
     UiThreadUtil.runOnUiThread(new Runnable(){
       @Override public void run(){
         MessageQueueThreadRegistry.register(mqt);
-        registrationFuture.set(null);
       }
     }
 );
-    registrationFuture.getOrThrow();
   }
   return mqt;
 }
