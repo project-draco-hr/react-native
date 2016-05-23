@@ -1,0 +1,8 @@
+{
+  super.onLayout(changed,left,top,right,bottom);
+  if (!mDidLayout) {
+    mDidLayout=true;
+    setProgressViewOffset(mProgressViewOffset);
+    setRefreshing(mRefreshing);
+  }
+}

@@ -1,0 +1,6 @@
+{
+  mRefreshing=refreshing;
+  if (mDidLayout) {
+    super.setRefreshing(refreshing);
+  }
+}

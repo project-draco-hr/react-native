@@ -1,0 +1,9 @@
+{
+  mProgressViewOffset=offset;
+  if (mDidLayout) {
+    int diameter=getProgressCircleDiameter();
+    int start=Math.round(PixelUtil.toPixelFromDIP(offset)) - diameter;
+    int end=Math.round(PixelUtil.toPixelFromDIP(offset + DEFAULT_CIRCLE_TARGET) - diameter);
+    setProgressViewOffset(false,start,end);
+  }
+}
