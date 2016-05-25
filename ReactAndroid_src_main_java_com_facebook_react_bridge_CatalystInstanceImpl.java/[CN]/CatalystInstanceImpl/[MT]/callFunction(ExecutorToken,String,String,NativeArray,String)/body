@@ -1,4 +1,8 @@
 {
+  if (mIsBeingDestroyed) {
+    FLog.w(ReactConstants.TAG,"Calling JS function after bridge has been destroyed.");
+    return;
+  }
 synchronized (mJavaToJSCallsTeardownLock) {
     if (mDestroyed) {
       FLog.w(ReactConstants.TAG,"Calling JS function after bridge has been destroyed.");

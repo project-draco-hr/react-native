@@ -1,5 +1,6 @@
 {
   UiThreadUtil.assertOnUiThread();
+  mIsBeingDestroyed=true;
 synchronized (mJSToJavaCallsTeardownLock) {
 synchronized (mJavaToJSCallsTeardownLock) {
       if (mDestroyed) {

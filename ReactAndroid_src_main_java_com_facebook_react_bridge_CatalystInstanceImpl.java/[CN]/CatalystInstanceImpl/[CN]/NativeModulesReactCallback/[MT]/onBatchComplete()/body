@@ -1,14 +1,18 @@
 {
   mReactQueueConfiguration.getNativeModulesQueueThread().assertIsOnThread();
+  if (mIsBeingDestroyed) {
+    return;
+  }
 synchronized (mJSToJavaCallsTeardownLock) {
-    if (!mDestroyed) {
-      Systrace.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"onBatchComplete");
-      try {
-        mJavaRegistry.onBatchComplete();
-      }
+    if (mDestroyed) {
+      return;
+    }
+    Systrace.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"onBatchComplete");
+    try {
+      mJavaRegistry.onBatchComplete();
+    }
   finally {
-        Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);
-      }
+      Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);
     }
   }
   decrementPendingJSCalls();
