@@ -5,4 +5,10 @@
   mProgressBar.setIndeterminate(mIndeterminate);
   setColor(mProgressBar);
   mProgressBar.setProgress((int)(mProgress * MAX_PROGRESS));
+  if (mAnimating) {
+    mProgressBar.setVisibility(View.VISIBLE);
+  }
+ else {
+    mProgressBar.setVisibility(View.GONE);
+  }
 }
