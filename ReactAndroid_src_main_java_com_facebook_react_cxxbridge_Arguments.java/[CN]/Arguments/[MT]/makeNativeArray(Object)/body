@@ -1,0 +1,14 @@
+{
+  if (objects == null) {
+    return new WritableNativeArray();
+  }
+  return makeNativeArray(new AbstractList(){
+    public int size(){
+      return Array.getLength(objects);
+    }
+    public Object get(    int index){
+      return Array.get(objects,index);
+    }
+  }
+);
+}

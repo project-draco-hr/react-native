@@ -1,0 +1,5 @@
+{
+  WritableNativeArray array=new WritableNativeArray();
+  array.pushMap(jscConfig);
+  mJSCConfig=array;
+}

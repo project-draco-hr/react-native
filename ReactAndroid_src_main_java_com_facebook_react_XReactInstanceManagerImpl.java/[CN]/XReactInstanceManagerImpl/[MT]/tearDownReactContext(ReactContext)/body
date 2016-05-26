@@ -1,0 +1,12 @@
+{
+  UiThreadUtil.assertOnUiThread();
+  if (mLifecycleState == LifecycleState.RESUMED) {
+    reactContext.onHostPause();
+  }
+  for (  ReactRootView rootView : mAttachedRootViews) {
+    detachViewFromInstance(rootView,reactContext.getCatalystInstance());
+  }
+  reactContext.destroy();
+  mDevSupportManager.onReactInstanceDestroyed(reactContext);
+  mMemoryPressureRouter.removeMemoryPressureListener(reactContext.getCatalystInstance());
+}

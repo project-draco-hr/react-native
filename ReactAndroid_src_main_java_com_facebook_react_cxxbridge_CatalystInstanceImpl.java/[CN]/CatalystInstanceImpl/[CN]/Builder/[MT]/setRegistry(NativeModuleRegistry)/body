@@ -1,0 +1,4 @@
+{
+  mRegistry=registry;
+  return this;
+}

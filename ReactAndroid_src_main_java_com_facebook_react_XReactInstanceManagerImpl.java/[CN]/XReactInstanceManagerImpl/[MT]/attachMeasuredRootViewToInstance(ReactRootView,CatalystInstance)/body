@@ -1,0 +1,14 @@
+{
+  UiThreadUtil.assertOnUiThread();
+  rootView.removeAllViews();
+  rootView.setId(View.NO_ID);
+  UIManagerModule uiManagerModule=catalystInstance.getNativeModule(UIManagerModule.class);
+  int rootTag=uiManagerModule.addMeasuredRootView(rootView);
+  @Nullable Bundle launchOptions=rootView.getLaunchOptions();
+  WritableMap initialProps=Arguments.makeNativeMap(launchOptions);
+  String jsAppModuleName=rootView.getJSModuleName();
+  WritableNativeMap appParams=new WritableNativeMap();
+  appParams.putDouble("rootTag",rootTag);
+  appParams.putMap("initialProps",initialProps);
+  catalystInstance.getJSModule(AppRegistry.class).runApplication(jsAppModuleName,appParams);
+}

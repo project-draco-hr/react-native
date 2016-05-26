@@ -1,0 +1,9 @@
+{
+  UiThreadUtil.assertOnUiThread();
+  mDefaultBackButtonImpl=null;
+  if (mUseDeveloperSupport) {
+    mDevSupportManager.setDevSupportEnabled(false);
+  }
+  moveToBeforeResumeLifecycleState();
+  mCurrentActivity=null;
+}

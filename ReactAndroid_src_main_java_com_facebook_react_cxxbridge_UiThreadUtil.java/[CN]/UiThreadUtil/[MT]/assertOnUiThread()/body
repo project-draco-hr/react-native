@@ -1,0 +1,3 @@
+{
+  SoftAssertions.assertCondition(isOnUiThread(),"Expected to run on UI thread!");
+}

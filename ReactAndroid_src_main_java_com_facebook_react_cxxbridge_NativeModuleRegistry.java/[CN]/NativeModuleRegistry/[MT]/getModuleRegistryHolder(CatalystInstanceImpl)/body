@@ -1,0 +1,16 @@
+{
+  ArrayList<JavaModuleWrapper> javaModules=new ArrayList<>();
+  ArrayList<CxxModuleWrapper> cxxModules=new ArrayList<>();
+  for (  NativeModule module : mModuleInstances.values()) {
+    if (module instanceof BaseJavaModule) {
+      javaModules.add(new JavaModuleWrapper(catalystInstanceImpl,(BaseJavaModule)module));
+    }
+ else     if (module instanceof CxxModuleWrapper) {
+      cxxModules.add((CxxModuleWrapper)module);
+    }
+ else {
+      throw new IllegalArgumentException("Unknown module type " + module.getClass());
+    }
+  }
+  return new ModuleRegistryHolder(catalystInstanceImpl,javaModules,cxxModules);
+}

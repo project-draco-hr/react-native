@@ -1,0 +1,9 @@
+{
+  mModuleInstances=moduleInstances;
+  mBatchCompleteListenerModules=new ArrayList<OnBatchCompleteListener>(mModuleInstances.size());
+  for (  NativeModule module : mModuleInstances.values()) {
+    if (module instanceof OnBatchCompleteListener) {
+      mBatchCompleteListenerModules.add((OnBatchCompleteListener)module);
+    }
+  }
+}

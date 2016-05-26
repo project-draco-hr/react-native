@@ -1,0 +1,10 @@
+{
+  WritableNativeMap nativeMap=new WritableNativeMap();
+  if (bundle == null) {
+    return nativeMap;
+  }
+  for (  String key : bundle.keySet()) {
+    addEntry(nativeMap,key,bundle.get(key));
+  }
+  return nativeMap;
+}

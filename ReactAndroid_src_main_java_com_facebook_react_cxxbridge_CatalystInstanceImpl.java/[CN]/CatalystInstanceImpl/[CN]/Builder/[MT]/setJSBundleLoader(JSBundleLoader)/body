@@ -1,0 +1,4 @@
+{
+  mJSBundleLoader=jsBundleLoader;
+  return this;
+}

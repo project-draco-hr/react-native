@@ -1,0 +1,3 @@
+{
+  return new CatalystInstanceImpl(Assertions.assertNotNull(mReactQueueConfigurationSpec),Assertions.assertNotNull(mJSExecutor),Assertions.assertNotNull(mRegistry),Assertions.assertNotNull(mJSModuleRegistry),Assertions.assertNotNull(mJSBundleLoader),Assertions.assertNotNull(mNativeModuleCallExceptionHandler));
+}

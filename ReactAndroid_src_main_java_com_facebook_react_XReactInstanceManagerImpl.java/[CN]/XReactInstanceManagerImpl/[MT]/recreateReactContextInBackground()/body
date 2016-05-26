@@ -1,0 +1,4 @@
+{
+  Assertions.assertCondition(mHasStartedCreatingInitialContext,"recreateReactContextInBackground should only be called after the initial " + "createReactContextInBackground call.");
+  recreateReactContextInBackgroundInner();
+}

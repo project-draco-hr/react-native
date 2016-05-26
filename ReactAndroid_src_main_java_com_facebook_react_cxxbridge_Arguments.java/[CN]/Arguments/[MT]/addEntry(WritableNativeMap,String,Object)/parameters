@@ -1,0 +1,3 @@
+WritableNativeMap nativeMap
+String key
+Object value

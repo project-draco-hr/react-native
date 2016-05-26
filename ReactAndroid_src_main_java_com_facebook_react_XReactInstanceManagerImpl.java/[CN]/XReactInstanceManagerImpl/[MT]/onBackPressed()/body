@@ -1,0 +1,12 @@
+{
+  UiThreadUtil.assertOnUiThread();
+  ReactContext reactContext=mCurrentReactContext;
+  if (mCurrentReactContext == null) {
+    FLog.w(ReactConstants.TAG,"Instance detached from instance manager");
+    invokeDefaultOnBackPressed();
+  }
+ else {
+    DeviceEventManagerModule deviceEventManagerModule=Assertions.assertNotNull(reactContext).getNativeModule(DeviceEventManagerModule.class);
+    deviceEventManagerModule.emitHardwareBackPressed();
+  }
+}

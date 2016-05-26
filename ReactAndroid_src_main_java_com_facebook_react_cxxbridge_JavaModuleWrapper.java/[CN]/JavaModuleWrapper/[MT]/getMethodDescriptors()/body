@@ -1,0 +1,12 @@
+{
+  ArrayList<MethodDescriptor> descs=new ArrayList<>();
+  for (  Map.Entry<String,BaseJavaModule.NativeMethod> entry : mModule.getMethods().entrySet()) {
+    MethodDescriptor md=new MethodDescriptor();
+    md.name=entry.getKey();
+    md.type=entry.getValue().getType();
+    BaseJavaModule.JavaMethod method=(BaseJavaModule.JavaMethod)entry.getValue();
+    mMethods.add(method);
+    descs.add(md);
+  }
+  return descs;
+}

@@ -1,0 +1,6 @@
+{
+  if (mMethods == null || methodId >= mMethods.size()) {
+    return;
+  }
+  mMethods.get(methodId).invoke(mCatalystInstance,token,parameters);
+}

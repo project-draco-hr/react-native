@@ -1,0 +1,5 @@
+{
+  mCatalystInstance=catalystinstance;
+  mModule=module;
+  mMethods=new ArrayList<BaseJavaModule.JavaMethod>();
+}

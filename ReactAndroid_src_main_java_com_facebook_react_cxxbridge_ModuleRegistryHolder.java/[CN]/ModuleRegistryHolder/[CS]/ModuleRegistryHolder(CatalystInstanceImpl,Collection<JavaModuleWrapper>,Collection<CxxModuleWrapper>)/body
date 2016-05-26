@@ -1,0 +1,3 @@
+{
+  mHybridData=initHybrid(catalystInstanceImpl,javaModules,cxxModules);
+}

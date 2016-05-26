@@ -1,0 +1,27 @@
+{
+  value=makeNativeObject(value);
+  if (value == null) {
+    nativeMap.putNull(key);
+  }
+ else   if (value instanceof Boolean) {
+    nativeMap.putBoolean(key,(Boolean)value);
+  }
+ else   if (value instanceof Integer) {
+    nativeMap.putInt(key,(Integer)value);
+  }
+ else   if (value instanceof Number) {
+    nativeMap.putDouble(key,((Number)value).doubleValue());
+  }
+ else   if (value instanceof String) {
+    nativeMap.putString(key,(String)value);
+  }
+ else   if (value instanceof WritableNativeArray) {
+    nativeMap.putArray(key,(WritableNativeArray)value);
+  }
+ else   if (value instanceof WritableNativeMap) {
+    nativeMap.putMap(key,(WritableNativeMap)value);
+  }
+ else {
+    throw new IllegalArgumentException("Could not convert " + value.getClass());
+  }
+}

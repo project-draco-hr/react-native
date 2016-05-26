@@ -1,0 +1,16 @@
+{
+  UiThreadUtil.assertOnUiThread();
+  if (mDestroyed) {
+    return;
+  }
+  mDestroyed=true;
+  mHybridData.resetNative();
+  mJavaRegistry.notifyCatalystInstanceDestroy();
+  boolean wasIdle=(mPendingJSCalls.getAndSet(0) == 0);
+  if (!wasIdle && !mBridgeIdleListeners.isEmpty()) {
+    for (    NotThreadSafeBridgeIdleDebugListener listener : mBridgeIdleListeners) {
+      listener.onTransitionToBridgeIdle();
+    }
+  }
+  Systrace.unregisterListener(mTraceListener);
+}

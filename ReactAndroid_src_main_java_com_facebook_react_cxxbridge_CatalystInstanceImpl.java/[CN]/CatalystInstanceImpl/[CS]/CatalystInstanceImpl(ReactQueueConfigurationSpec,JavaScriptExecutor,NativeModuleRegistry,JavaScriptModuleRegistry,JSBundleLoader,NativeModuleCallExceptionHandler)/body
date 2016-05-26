@@ -1,0 +1,13 @@
+{
+  FLog.d(ReactConstants.TAG,"Initializing React Xplat Bridge.");
+  mHybridData=initHybrid();
+  mReactQueueConfiguration=ReactQueueConfigurationImpl.create(ReactQueueConfigurationSpec,new NativeExceptionHandler());
+  mBridgeIdleListeners=new CopyOnWriteArrayList<>();
+  mJavaRegistry=registry;
+  mJSModuleRegistry=jsModuleRegistry;
+  mJSBundleLoader=jsBundleLoader;
+  mNativeModuleCallExceptionHandler=nativeModuleCallExceptionHandler;
+  mTraceListener=new JSProfilerTraceListener(this);
+  initializeBridge(new BridgeCallback(this),jsExecutor,mReactQueueConfiguration.getJSQueueThread(),mReactQueueConfiguration.getNativeModulesQueueThread(),mJavaRegistry.getModuleRegistryHolder(this));
+  mMainExecutorToken=getMainExecutorToken();
+}

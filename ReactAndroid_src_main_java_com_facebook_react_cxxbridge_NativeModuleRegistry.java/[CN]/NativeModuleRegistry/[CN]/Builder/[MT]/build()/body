@@ -1,0 +1,7 @@
+{
+  Map<Class<NativeModule>,NativeModule> moduleInstances=new HashMap<>();
+  for (  NativeModule module : mModules.values()) {
+    moduleInstances.put((Class<NativeModule>)module.getClass(),module);
+  }
+  return new NativeModuleRegistry(moduleInstances);
+}

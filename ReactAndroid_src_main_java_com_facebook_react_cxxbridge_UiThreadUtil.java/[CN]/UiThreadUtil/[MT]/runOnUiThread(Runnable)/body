@@ -1,0 +1,8 @@
+{
+synchronized (UiThreadUtil.class) {
+    if (sMainHandler == null) {
+      sMainHandler=new Handler(Looper.getMainLooper());
+    }
+  }
+  sMainHandler.post(runnable);
+}

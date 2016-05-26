@@ -1,0 +1,4 @@
+{
+  SoLoader.loadLibrary(library);
+  mHybridData=initHybrid(SoLoader.unpackLibraryAndDependencies(library).getAbsolutePath(),factory);
+}

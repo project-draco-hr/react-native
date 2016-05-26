@@ -1,0 +1,8 @@
+{
+  if (mCurrentReactContext != null) {
+    if (force || mLifecycleState == LifecycleState.BEFORE_RESUME || mLifecycleState == LifecycleState.BEFORE_CREATE) {
+      mCurrentReactContext.onHostResume(mCurrentActivity);
+    }
+  }
+  mLifecycleState=LifecycleState.RESUMED;
+}

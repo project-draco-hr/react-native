@@ -1,0 +1,4 @@
+{
+  mJsExecutorFactory=Assertions.assertNotNull(jsExecutorFactory);
+  mJsBundleLoader=Assertions.assertNotNull(jsBundleLoader);
+}

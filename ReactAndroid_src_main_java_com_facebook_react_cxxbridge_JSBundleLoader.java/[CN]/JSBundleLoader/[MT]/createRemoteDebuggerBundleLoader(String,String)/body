@@ -1,0 +1,11 @@
+{
+  return new JSBundleLoader(){
+    @Override public void loadScript(    CatalystInstanceImpl instance){
+      instance.loadScriptFromFile(null,proxySourceURL);
+    }
+    @Override public String getSourceUrl(){
+      return realSourceURL;
+    }
+  }
+;
+}

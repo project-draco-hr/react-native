@@ -1,0 +1,5 @@
+ReactCallback callback
+JavaScriptExecutor jsExecutor
+MessageQueueThread jsQueue
+MessageQueueThread moduleQueue
+ModuleRegistryHolder registryHolder

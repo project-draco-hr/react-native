@@ -1,0 +1,6 @@
+{
+  CatalystInstanceImpl impl=mOuter.get();
+  if (impl != null) {
+    impl.mJavaRegistry.onBatchComplete();
+  }
+}

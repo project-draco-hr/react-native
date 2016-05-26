@@ -1,0 +1,6 @@
+{
+  Assertions.assertCondition(!mJSBundleHasLoaded,"JS bundle was already loaded!");
+  mJSBundleHasLoaded=true;
+  mJSBundleLoader.loadScript(CatalystInstanceImpl.this);
+  Systrace.registerListener(mTraceListener);
+}

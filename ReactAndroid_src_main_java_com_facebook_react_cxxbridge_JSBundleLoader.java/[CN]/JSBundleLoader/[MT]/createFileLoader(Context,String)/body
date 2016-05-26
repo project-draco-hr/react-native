@@ -1,0 +1,16 @@
+{
+  return new JSBundleLoader(){
+    @Override public void loadScript(    CatalystInstanceImpl instance){
+      if (fileName.startsWith("assets://")) {
+        instance.loadScriptFromAssets(context.getAssets(),fileName);
+      }
+ else {
+        instance.loadScriptFromFile(fileName,fileName);
+      }
+    }
+    @Override public String getSourceUrl(){
+      return fileName;
+    }
+  }
+;
+}

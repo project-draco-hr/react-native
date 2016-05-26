@@ -1,0 +1,17 @@
+{
+  UiThreadUtil.assertOnUiThread();
+  if (mUseDeveloperSupport) {
+    mDevSupportManager.setDevSupportEnabled(false);
+  }
+  moveToBeforeCreateLifecycleState();
+  if (mReactContextInitAsyncTask != null) {
+    mReactContextInitAsyncTask.cancel(true);
+  }
+  mMemoryPressureRouter.destroy(mApplicationContext);
+  if (mCurrentReactContext != null) {
+    mCurrentReactContext.destroy();
+    mCurrentReactContext=null;
+    mHasStartedCreatingInitialContext=false;
+  }
+  mCurrentActivity=null;
+}

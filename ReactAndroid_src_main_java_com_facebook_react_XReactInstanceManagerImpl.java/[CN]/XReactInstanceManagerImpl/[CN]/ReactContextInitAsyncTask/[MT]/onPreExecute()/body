@@ -1,0 +1,6 @@
+{
+  if (mCurrentReactContext != null) {
+    tearDownReactContext(mCurrentReactContext);
+    mCurrentReactContext=null;
+  }
+}

@@ -1,0 +1,7 @@
+{
+  if (mDestroyed) {
+    FLog.w(ReactConstants.TAG,"Calling JS function after bridge has been destroyed.");
+    return;
+  }
+  callJSFunction(executorToken,module,method,arguments,tracingName);
+}

@@ -1,0 +1,34 @@
+{
+  WritableNativeArray nativeArray=new WritableNativeArray();
+  if (objects == null) {
+    return nativeArray;
+  }
+  for (  Object elem : objects) {
+    elem=makeNativeObject(elem);
+    if (elem == null) {
+      nativeArray.pushNull();
+    }
+ else     if (elem instanceof Boolean) {
+      nativeArray.pushBoolean((Boolean)elem);
+    }
+ else     if (elem instanceof Integer) {
+      nativeArray.pushInt((Integer)elem);
+    }
+ else     if (elem instanceof Double) {
+      nativeArray.pushDouble((Double)elem);
+    }
+ else     if (elem instanceof String) {
+      nativeArray.pushString((String)elem);
+    }
+ else     if (elem instanceof WritableNativeArray) {
+      nativeArray.pushArray((WritableNativeArray)elem);
+    }
+ else     if (elem instanceof WritableNativeMap) {
+      nativeArray.pushMap((WritableNativeMap)elem);
+    }
+ else {
+      throw new IllegalArgumentException("Could not convert " + elem.getClass());
+    }
+  }
+  return nativeArray;
+}
