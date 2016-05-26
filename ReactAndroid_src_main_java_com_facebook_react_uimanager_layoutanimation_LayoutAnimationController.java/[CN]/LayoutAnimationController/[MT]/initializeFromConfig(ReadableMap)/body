@@ -16,4 +16,8 @@
     mLayoutUpdateAnimation.initializeFromConfig(config.getMap(LayoutAnimationType.UPDATE.toString()),globalDuration);
     mShouldAnimateLayout=true;
   }
+  if (config.hasKey(LayoutAnimationType.DELETE.toString())) {
+    mLayoutDeleteAnimation.initializeFromConfig(config.getMap(LayoutAnimationType.DELETE.toString()),globalDuration);
+    mShouldAnimateLayout=true;
+  }
 }

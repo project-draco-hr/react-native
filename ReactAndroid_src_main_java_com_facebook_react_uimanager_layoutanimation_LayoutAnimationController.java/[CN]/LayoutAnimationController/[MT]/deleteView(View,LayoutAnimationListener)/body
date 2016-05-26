@@ -1,0 +1,22 @@
+{
+  UiThreadUtil.assertOnUiThread();
+  AbstractLayoutAnimation layoutAnimation=mLayoutDeleteAnimation;
+  Animation animation=layoutAnimation.createAnimation(view,view.getLeft(),view.getTop(),view.getWidth(),view.getHeight());
+  if (animation != null) {
+    disableUserInteractions(view);
+    animation.setAnimationListener(new Animation.AnimationListener(){
+      @Override public void onAnimationStart(      Animation anim){
+      }
+      @Override public void onAnimationRepeat(      Animation anim){
+      }
+      @Override public void onAnimationEnd(      Animation anim){
+        listener.onAnimationEnd();
+      }
+    }
+);
+    view.startAnimation(animation);
+  }
+ else {
+    listener.onAnimationEnd();
+  }
+}
