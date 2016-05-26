@@ -1,8 +1,11 @@
 {
 switch (level) {
-case MODERATE:
-    handleMemoryPressureModerate();
+case UI_HIDDEN:
+    handleMemoryPressureUiHidden();
   break;
+case MODERATE:
+handleMemoryPressureModerate();
+break;
 case CRITICAL:
 handleMemoryPressureCritical();
 break;
