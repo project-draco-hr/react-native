@@ -1,4 +1,5 @@
 {
+  Systrace.beginSection(TRACE_TAG_REACT_JAVA_BRIDGE,"attachMeasuredRootViewToInstance");
   UiThreadUtil.assertOnUiThread();
   rootView.removeAllViews();
   rootView.setId(View.NO_ID);
@@ -11,4 +12,5 @@
   appParams.putDouble("rootTag",rootTag);
   appParams.putMap("initialProps",initialProps);
   catalystInstance.getJSModule(AppRegistry.class).runApplication(jsAppModuleName,appParams);
+  Systrace.endSection(TRACE_TAG_REACT_JAVA_BRIDGE);
 }

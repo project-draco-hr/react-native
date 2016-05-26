@@ -1,5 +1,5 @@
 {
-  Systrace.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"createAllViewManagers");
+  Systrace.beginSection(TRACE_TAG_REACT_JAVA_BRIDGE,"createAllViewManagers");
   try {
     List<ViewManager> allViewManagers=new ArrayList<>();
     for (    ReactPackage reactPackage : mPackages) {
@@ -8,6 +8,6 @@
     return allViewManagers;
   }
   finally {
-    Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);
+    Systrace.endSection(TRACE_TAG_REACT_JAVA_BRIDGE);
   }
 }

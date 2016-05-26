@@ -1,4 +1,5 @@
 {
+  Systrace.beginSection(TRACE_TAG_REACT_JAVA_BRIDGE,"setupReactContext");
   UiThreadUtil.assertOnUiThread();
   Assertions.assertCondition(mCurrentReactContext == null);
   mCurrentReactContext=Assertions.assertNotNull(reactContext);
@@ -15,4 +16,5 @@
   for (  ReactInstanceEventListener listener : listeners) {
     listener.onReactContextInitialized(reactContext);
   }
+  Systrace.endSection(TRACE_TAG_REACT_JAVA_BRIDGE);
 }
