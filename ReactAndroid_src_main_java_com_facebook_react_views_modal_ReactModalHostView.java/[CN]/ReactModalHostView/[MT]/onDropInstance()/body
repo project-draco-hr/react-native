@@ -1,0 +1,4 @@
+{
+  ((ReactContext)getContext()).removeLifecycleEventListener(this);
+  dismiss();
+}
