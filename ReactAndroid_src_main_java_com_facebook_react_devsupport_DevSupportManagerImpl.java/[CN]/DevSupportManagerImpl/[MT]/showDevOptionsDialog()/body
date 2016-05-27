@@ -9,9 +9,9 @@
     }
   }
 );
-  options.put(mIsUsingJSProxy ? mApplicationContext.getString(R.string.catalyst_debugjs_off) : mApplicationContext.getString(R.string.catalyst_debugjs),new DevOptionHandler(){
+  options.put(mDevSettings.isRemoteJSDebugEnabled() ? mApplicationContext.getString(R.string.catalyst_debugjs_off) : mApplicationContext.getString(R.string.catalyst_debugjs),new DevOptionHandler(){
     @Override public void onOptionSelected(){
-      mIsUsingJSProxy=!mIsUsingJSProxy;
+      mDevSettings.setRemoteJSDebugEnabled(!mDevSettings.isRemoteJSDebugEnabled());
       handleReloadJS();
     }
   }

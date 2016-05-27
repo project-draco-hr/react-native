@@ -1,0 +1,3 @@
+{
+  mPreferences.edit().putBoolean(PREFS_REMOTE_JS_DEBUG_KEY,remoteJSDebugEnabled).apply();
+}

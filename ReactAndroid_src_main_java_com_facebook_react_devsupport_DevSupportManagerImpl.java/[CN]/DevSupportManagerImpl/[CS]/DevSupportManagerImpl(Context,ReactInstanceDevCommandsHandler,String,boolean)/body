@@ -15,11 +15,11 @@
       String action=intent.getAction();
       if (DevServerHelper.getReloadAppAction(context).equals(action)) {
         if (intent.getBooleanExtra(DevServerHelper.RELOAD_APP_EXTRA_JS_PROXY,false)) {
-          mIsUsingJSProxy=true;
+          mDevSettings.setRemoteJSDebugEnabled(true);
           mDevServerHelper.launchJSDevtools();
         }
  else {
-          mIsUsingJSProxy=false;
+          mDevSettings.setRemoteJSDebugEnabled(false);
         }
         handleReloadJS();
       }

@@ -1,0 +1,3 @@
+{
+  return mPreferences.getBoolean(PREFS_REMOTE_JS_DEBUG_KEY,false);
+}

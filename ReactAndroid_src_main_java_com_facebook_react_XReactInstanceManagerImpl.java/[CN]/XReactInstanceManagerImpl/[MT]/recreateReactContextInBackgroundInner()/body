@@ -1,7 +1,8 @@
 {
   UiThreadUtil.assertOnUiThread();
   if (mUseDeveloperSupport && mJSMainModuleName != null) {
-    if (mDevSupportManager.hasUpToDateJSBundleInCache()) {
+    final DeveloperSettings devSettings=mDevSupportManager.getDevSettings();
+    if (mDevSupportManager.hasUpToDateJSBundleInCache() && !devSettings.isRemoteJSDebugEnabled()) {
       onJSBundleLoadedFromServer();
     }
  else     if (mJSBundleFile == null) {
@@ -16,6 +17,7 @@
                 mDevSupportManager.handleReloadJS();
               }
  else {
+                devSettings.setRemoteJSDebugEnabled(false);
                 recreateReactContextInBackgroundFromBundleFile();
               }
             }
