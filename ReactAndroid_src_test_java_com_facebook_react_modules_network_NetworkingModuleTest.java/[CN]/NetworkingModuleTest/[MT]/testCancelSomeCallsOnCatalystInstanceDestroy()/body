@@ -1,0 +1,38 @@
+{
+  PowerMockito.mockStatic(OkHttpCallUtil.class);
+  OkHttpClient httpClient=mock(OkHttpClient.class);
+  final int requests=3;
+  final Call[] calls=new Call[requests];
+  for (int idx=0; idx < requests; idx++) {
+    calls[idx]=mock(Call.class);
+  }
+  when(httpClient.cookieJar()).thenReturn(mock(CookieJarContainer.class));
+  when(httpClient.newCall(any(Request.class))).thenAnswer(new Answer<Object>(){
+    @Override public Object answer(    InvocationOnMock invocation) throws Throwable {
+      Request request=(Request)invocation.getArguments()[0];
+      return calls[(Integer)request.tag() - 1];
+    }
+  }
+);
+  NetworkingModule networkingModule=new NetworkingModule(null,"",httpClient);
+  for (int idx=0; idx < requests; idx++) {
+    networkingModule.sendRequest(mock(ExecutorToken.class),"GET","http://somedomain/foo",idx + 1,JavaOnlyArray.of(),null,true,0);
+  }
+  verify(httpClient,times(3)).newCall(any(Request.class));
+  networkingModule.abortRequest(mock(ExecutorToken.class),requests);
+  PowerMockito.verifyStatic(times(1));
+  ArgumentCaptor<OkHttpClient> clientArguments=ArgumentCaptor.forClass(OkHttpClient.class);
+  ArgumentCaptor<Integer> requestIdArguments=ArgumentCaptor.forClass(Integer.class);
+  OkHttpCallUtil.cancelTag(clientArguments.capture(),requestIdArguments.capture());
+  assertThat(requestIdArguments.getAllValues().size()).isEqualTo(1);
+  assertThat(requestIdArguments.getAllValues().get(0)).isEqualTo(requests);
+  networkingModule.onCatalystInstanceDestroy();
+  PowerMockito.verifyStatic(times(requests));
+  clientArguments=ArgumentCaptor.forClass(OkHttpClient.class);
+  requestIdArguments=ArgumentCaptor.forClass(Integer.class);
+  OkHttpCallUtil.cancelTag(clientArguments.capture(),requestIdArguments.capture());
+  assertThat(requestIdArguments.getAllValues().size()).isEqualTo(requests);
+  for (int idx=0; idx < requests; idx++) {
+    assertThat(requestIdArguments.getAllValues().contains(idx + 1)).isTrue();
+  }
+}

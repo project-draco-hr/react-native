@@ -1,0 +1,6 @@
+{
+  for (  Integer requestId : mRequestIds) {
+    cancelRequest(requestId);
+  }
+  mRequestIds.clear();
+}

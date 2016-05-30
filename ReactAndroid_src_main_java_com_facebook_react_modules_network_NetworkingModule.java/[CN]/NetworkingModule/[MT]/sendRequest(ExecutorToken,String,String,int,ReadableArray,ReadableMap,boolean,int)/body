@@ -64,17 +64,20 @@
  else {
     requestBuilder.method(method,RequestBodyUtil.getEmptyBody(method));
   }
+  addRequest(requestId);
   client.newCall(requestBuilder.build()).enqueue(new Callback(){
     @Override public void onFailure(    Call call,    IOException e){
       if (mShuttingDown) {
         return;
       }
+      removeRequest(requestId);
       onRequestError(executorToken,requestId,e.getMessage(),e);
     }
     @Override public void onResponse(    Call call,    Response response) throws IOException {
       if (mShuttingDown) {
         return;
       }
+      removeRequest(requestId);
       onResponseReceived(executorToken,requestId,response);
       ResponseBody responseBody=response.body();
       try {

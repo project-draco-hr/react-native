@@ -13,4 +13,5 @@
   mCookieJarContainer=(CookieJarContainer)mClient.cookieJar();
   mShuttingDown=false;
   mDefaultUserAgent=defaultUserAgent;
+  mRequestIds=new HashSet<>();
 }
