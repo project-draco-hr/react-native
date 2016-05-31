@@ -1,4 +1,3 @@
 {
-  layout.resetResult();
   LayoutEngine.layoutNode(layoutContext,this,CSSConstants.UNDEFINED,CSSConstants.UNDEFINED,null);
 }

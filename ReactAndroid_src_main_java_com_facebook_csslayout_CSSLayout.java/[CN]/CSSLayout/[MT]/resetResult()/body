@@ -2,4 +2,12 @@
   Arrays.fill(position,0);
   Arrays.fill(dimensions,CSSConstants.UNDEFINED);
   direction=CSSDirection.LTR;
+  flexBasis=0;
+  generationCount=0;
+  lastParentDirection=null;
+  nextCachedMeasurementsIndex=0;
+  measuredDimensions[DIMENSION_WIDTH]=CSSConstants.UNDEFINED;
+  measuredDimensions[DIMENSION_HEIGHT]=CSSConstants.UNDEFINED;
+  cachedLayout.widthMeasureMode=null;
+  cachedLayout.heightMeasureMode=null;
 }

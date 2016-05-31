@@ -1,0 +1,8 @@
+{
+  int mainAxis=resolveAxis(getFlexDirection(node),direction);
+  int crossAxis=getCrossFlexDirection(mainAxis,direction);
+  node.layout.position[leading[mainAxis]]=node.style.margin.getWithFallback(leadingSpacing[mainAxis],leading[mainAxis]) + getRelativePosition(node,mainAxis);
+  node.layout.position[trailing[mainAxis]]=node.style.margin.getWithFallback(trailingSpacing[mainAxis],trailing[mainAxis]) + getRelativePosition(node,mainAxis);
+  node.layout.position[leading[crossAxis]]=node.style.margin.getWithFallback(leadingSpacing[crossAxis],leading[crossAxis]) + getRelativePosition(node,crossAxis);
+  node.layout.position[trailing[crossAxis]]=node.style.margin.getWithFallback(trailingSpacing[crossAxis],trailing[crossAxis]) + getRelativePosition(node,crossAxis);
+}

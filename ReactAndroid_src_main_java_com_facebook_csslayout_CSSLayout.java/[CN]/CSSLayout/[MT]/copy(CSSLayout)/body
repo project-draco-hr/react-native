@@ -1,9 +1,0 @@
-{
-  position[POSITION_LEFT]=layout.position[POSITION_LEFT];
-  position[POSITION_TOP]=layout.position[POSITION_TOP];
-  position[POSITION_RIGHT]=layout.position[POSITION_RIGHT];
-  position[POSITION_BOTTOM]=layout.position[POSITION_BOTTOM];
-  dimensions[DIMENSION_WIDTH]=layout.dimensions[DIMENSION_WIDTH];
-  dimensions[DIMENSION_HEIGHT]=layout.dimensions[DIMENSION_HEIGHT];
-  direction=layout.direction;
-}

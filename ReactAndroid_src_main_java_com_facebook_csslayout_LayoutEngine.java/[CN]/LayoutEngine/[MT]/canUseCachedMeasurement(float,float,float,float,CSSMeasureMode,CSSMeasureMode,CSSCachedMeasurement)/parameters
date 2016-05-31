@@ -1,0 +1,7 @@
+float availableWidth
+float availableHeight
+float marginRow
+float marginColumn
+CSSMeasureMode widthMeasureMode
+CSSMeasureMode heightMeasureMode
+CSSCachedMeasurement cachedLayout

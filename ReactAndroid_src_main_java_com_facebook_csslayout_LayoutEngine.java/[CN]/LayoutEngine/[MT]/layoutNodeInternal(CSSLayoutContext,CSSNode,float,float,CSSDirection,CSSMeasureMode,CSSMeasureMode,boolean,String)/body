@@ -1,0 +1,76 @@
+{
+  CSSLayout layout=node.layout;
+  boolean needToVisitNode=(node.isDirty() && layout.generationCount != layoutContext.currentGenerationCount) || layout.lastParentDirection != parentDirection;
+  if (needToVisitNode) {
+    layout.nextCachedMeasurementsIndex=0;
+    layout.cachedLayout.widthMeasureMode=null;
+    layout.cachedLayout.heightMeasureMode=null;
+  }
+  CSSCachedMeasurement cachedResults=null;
+  if (isMeasureDefined(node)) {
+    float marginAxisRow=node.style.margin.getWithFallback(leadingSpacing[CSS_FLEX_DIRECTION_ROW],leading[CSS_FLEX_DIRECTION_ROW]) + node.style.margin.getWithFallback(trailingSpacing[CSS_FLEX_DIRECTION_ROW],trailing[CSS_FLEX_DIRECTION_ROW]);
+    float marginAxisColumn=node.style.margin.getWithFallback(leadingSpacing[CSS_FLEX_DIRECTION_COLUMN],leading[CSS_FLEX_DIRECTION_COLUMN]) + node.style.margin.getWithFallback(trailingSpacing[CSS_FLEX_DIRECTION_COLUMN],trailing[CSS_FLEX_DIRECTION_COLUMN]);
+    if (canUseCachedMeasurement(availableWidth,availableHeight,marginAxisRow,marginAxisColumn,widthMeasureMode,heightMeasureMode,layout.cachedLayout)) {
+      cachedResults=layout.cachedLayout;
+    }
+ else {
+      for (int i=0; i < layout.nextCachedMeasurementsIndex; i++) {
+        if (canUseCachedMeasurement(availableWidth,availableHeight,marginAxisRow,marginAxisColumn,widthMeasureMode,heightMeasureMode,layout.cachedMeasurements[i])) {
+          cachedResults=layout.cachedMeasurements[i];
+          break;
+        }
+      }
+    }
+  }
+ else   if (performLayout) {
+    if (FloatUtil.floatsEqual(layout.cachedLayout.availableWidth,availableWidth) && FloatUtil.floatsEqual(layout.cachedLayout.availableHeight,availableHeight) && layout.cachedLayout.widthMeasureMode == widthMeasureMode && layout.cachedLayout.heightMeasureMode == heightMeasureMode) {
+      cachedResults=layout.cachedLayout;
+    }
+  }
+ else {
+    for (int i=0; i < layout.nextCachedMeasurementsIndex; i++) {
+      if (FloatUtil.floatsEqual(layout.cachedMeasurements[i].availableWidth,availableWidth) && FloatUtil.floatsEqual(layout.cachedMeasurements[i].availableHeight,availableHeight) && layout.cachedMeasurements[i].widthMeasureMode == widthMeasureMode && layout.cachedMeasurements[i].heightMeasureMode == heightMeasureMode) {
+        cachedResults=layout.cachedMeasurements[i];
+        break;
+      }
+    }
+  }
+  if (!needToVisitNode && cachedResults != null) {
+    layout.measuredDimensions[DIMENSION_WIDTH]=cachedResults.computedWidth;
+    layout.measuredDimensions[DIMENSION_HEIGHT]=cachedResults.computedHeight;
+  }
+ else {
+    layoutNodeImpl(layoutContext,node,availableWidth,availableHeight,parentDirection,widthMeasureMode,heightMeasureMode,performLayout);
+    layout.lastParentDirection=parentDirection;
+    if (cachedResults == null) {
+      if (layout.nextCachedMeasurementsIndex == CSSLayout.MAX_CACHED_RESULT_COUNT) {
+        layout.nextCachedMeasurementsIndex=0;
+      }
+      CSSCachedMeasurement newCacheEntry=null;
+      if (performLayout) {
+        newCacheEntry=layout.cachedLayout;
+      }
+ else {
+        newCacheEntry=layout.cachedMeasurements[layout.nextCachedMeasurementsIndex];
+        if (newCacheEntry == null) {
+          newCacheEntry=new CSSCachedMeasurement();
+          layout.cachedMeasurements[layout.nextCachedMeasurementsIndex]=newCacheEntry;
+        }
+        layout.nextCachedMeasurementsIndex++;
+      }
+      newCacheEntry.availableWidth=availableWidth;
+      newCacheEntry.availableHeight=availableHeight;
+      newCacheEntry.widthMeasureMode=widthMeasureMode;
+      newCacheEntry.heightMeasureMode=heightMeasureMode;
+      newCacheEntry.computedWidth=layout.measuredDimensions[DIMENSION_WIDTH];
+      newCacheEntry.computedHeight=layout.measuredDimensions[DIMENSION_HEIGHT];
+    }
+  }
+  if (performLayout) {
+    node.layout.dimensions[DIMENSION_WIDTH]=node.layout.measuredDimensions[DIMENSION_WIDTH];
+    node.layout.dimensions[DIMENSION_HEIGHT]=node.layout.measuredDimensions[DIMENSION_HEIGHT];
+    node.markHasNewLayout();
+  }
+  layout.generationCount=layoutContext.currentGenerationCount;
+  return (needToVisitNode || cachedResults == null);
+}

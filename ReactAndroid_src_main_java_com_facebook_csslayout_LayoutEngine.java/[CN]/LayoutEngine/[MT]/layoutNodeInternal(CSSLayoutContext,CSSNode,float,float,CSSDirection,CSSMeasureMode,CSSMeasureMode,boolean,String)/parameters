@@ -3,3 +3,7 @@ CSSNode node
 float availableWidth
 float availableHeight
 CSSDirection parentDirection
+CSSMeasureMode widthMeasureMode
+CSSMeasureMode heightMeasureMode
+boolean performLayout
+String reason

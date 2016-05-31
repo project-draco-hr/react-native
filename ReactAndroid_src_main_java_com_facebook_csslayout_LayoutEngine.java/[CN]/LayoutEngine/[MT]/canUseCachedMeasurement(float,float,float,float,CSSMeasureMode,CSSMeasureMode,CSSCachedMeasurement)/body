@@ -1,0 +1,12 @@
+{
+  if (FloatUtil.floatsEqual(cachedLayout.availableWidth,availableWidth) && FloatUtil.floatsEqual(cachedLayout.availableHeight,availableHeight) && cachedLayout.widthMeasureMode == widthMeasureMode && cachedLayout.heightMeasureMode == heightMeasureMode) {
+    return true;
+  }
+  if (FloatUtil.floatsEqual(cachedLayout.availableWidth,availableWidth) && cachedLayout.widthMeasureMode == widthMeasureMode && heightMeasureMode == CSSMeasureMode.EXACTLY && FloatUtil.floatsEqual(availableHeight - marginColumn,cachedLayout.computedHeight)) {
+    return true;
+  }
+  if (FloatUtil.floatsEqual(cachedLayout.availableHeight,availableHeight) && cachedLayout.heightMeasureMode == heightMeasureMode && widthMeasureMode == CSSMeasureMode.EXACTLY && FloatUtil.floatsEqual(availableWidth - marginRow,cachedLayout.computedWidth)) {
+    return true;
+  }
+  return false;
+}
