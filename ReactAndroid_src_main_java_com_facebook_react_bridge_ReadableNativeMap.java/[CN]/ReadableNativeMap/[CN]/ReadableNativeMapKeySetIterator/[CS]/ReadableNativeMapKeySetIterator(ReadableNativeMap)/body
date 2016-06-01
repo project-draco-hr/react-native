@@ -1,4 +1,4 @@
 {
-  mReadableNativeMap=readableNativeMap;
-  initialize(mReadableNativeMap);
+  mMap=readableNativeMap;
+  mHybridData=initHybrid(readableNativeMap);
 }
