@@ -1,0 +1,14 @@
+{
+  mCatalystInstance.getJSModule(TestJSToJavaParametersModule.class).returnArrayWithMaps();
+  waitForBridgeAndUIIdle();
+  List<ReadableArray> calls=mRecordingTestModule.getArrayCalls();
+  assertEquals(1,calls.size());
+  ReadableArray array=calls.get(0);
+  assertEquals(2,array.size());
+  assertFalse(array.isNull(0));
+  ReadableMap m1=array.getMap(0);
+  ReadableMap m2=array.getMap(1);
+  assertEquals("m1v1",m1.getString("m1k1"));
+  assertEquals("m1v2",m1.getString("m1k2"));
+  assertEquals("m2v1",m2.getString("m2k1"));
+}

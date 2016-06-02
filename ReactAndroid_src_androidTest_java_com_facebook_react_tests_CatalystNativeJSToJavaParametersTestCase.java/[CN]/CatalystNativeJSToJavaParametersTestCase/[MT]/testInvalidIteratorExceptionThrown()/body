@@ -1,0 +1,13 @@
+{
+  mCatalystInstance.getJSModule(TestJSToJavaParametersModule.class).returnMapWithBasicTypes();
+  waitForBridgeAndUIIdle();
+  List<ReadableMap> calls=mRecordingTestModule.getMapCalls();
+  assertEquals(1,calls.size());
+  ReadableNativeMap map=(ReadableNativeMap)calls.get(0);
+  assertNotNull(map);
+  ReadableMapKeySetIterator mapIterator=map.keySetIterator();
+  while (mapIterator.hasNextKey()) {
+    mapIterator.nextKey();
+  }
+  assertInvalidIteratorExceptionThrown(mapIterator);
+}

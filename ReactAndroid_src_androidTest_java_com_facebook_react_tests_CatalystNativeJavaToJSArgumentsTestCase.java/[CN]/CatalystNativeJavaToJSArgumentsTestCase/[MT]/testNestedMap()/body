@@ -1,0 +1,9 @@
+{
+  WritableNativeMap map=new WritableNativeMap();
+  WritableNativeMap nestedMap=new WritableNativeMap();
+  nestedMap.putString("animals","foxes");
+  map.putMap("nestedMap",nestedMap);
+  mInstance.getJSModule(TestJavaToJSArgumentsModule.class).receiveNestedMap(map);
+  waitForBridgeAndUIIdle();
+  mAssertModule.verifyAssertsAndReset();
+}

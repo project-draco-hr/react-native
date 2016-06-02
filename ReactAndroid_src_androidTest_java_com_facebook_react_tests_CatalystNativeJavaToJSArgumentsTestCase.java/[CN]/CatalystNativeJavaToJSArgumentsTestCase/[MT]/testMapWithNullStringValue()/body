@@ -1,0 +1,13 @@
+{
+  WritableNativeMap map=new WritableNativeMap();
+  map.putString("string",null);
+  map.putArray("array",null);
+  map.putMap("map",null);
+  WritableNativeArray array=new WritableNativeArray();
+  array.pushString(null);
+  array.pushArray(null);
+  array.pushMap(null);
+  mInstance.getJSModule(TestJavaToJSArgumentsModule.class).receiveMapAndArrayWithNullValues(map,array);
+  waitForBridgeAndUIIdle();
+  mAssertModule.verifyAssertsAndReset();
+}

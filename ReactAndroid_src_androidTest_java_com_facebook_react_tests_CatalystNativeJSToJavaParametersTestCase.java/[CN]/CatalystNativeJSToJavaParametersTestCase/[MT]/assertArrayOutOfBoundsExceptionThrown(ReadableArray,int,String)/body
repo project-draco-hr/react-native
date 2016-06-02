@@ -1,0 +1,10 @@
+{
+  boolean gotException=false;
+  try {
+    arrayGetByType(array,index,typeToAskFor);
+  }
+ catch (  ArrayIndexOutOfBoundsException expected) {
+    gotException=true;
+  }
+  assertTrue(gotException);
+}

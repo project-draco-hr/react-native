@@ -1,0 +1,5 @@
+{
+  mInstance.getJSModule(TestJavaToJSArgumentsModule.class).receiveBasicTypes("foo",3.14,true,null);
+  waitForBridgeAndUIIdle();
+  mAssertModule.verifyAssertsAndReset();
+}

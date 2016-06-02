@@ -1,0 +1,10 @@
+{
+  boolean gotException=false;
+  try {
+    mapGetByType(map,key,typeToAskFor);
+  }
+ catch (  UnexpectedNativeTypeException expected) {
+    gotException=true;
+  }
+  assertTrue(gotException);
+}

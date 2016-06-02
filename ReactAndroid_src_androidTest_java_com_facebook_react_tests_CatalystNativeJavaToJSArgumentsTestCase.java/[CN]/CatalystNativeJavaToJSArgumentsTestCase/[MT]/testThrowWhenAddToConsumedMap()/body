@@ -1,0 +1,53 @@
+{
+  WritableNativeMap map=new WritableNativeMap();
+  WritableNativeArray parent=new WritableNativeArray();
+  parent.pushMap(map);
+  boolean gotException=false;
+  try {
+    map.putNull("key");
+  }
+ catch (  ObjectAlreadyConsumedException e) {
+    gotException=true;
+  }
+  assertTrue(gotException);
+  gotException=false;
+  try {
+    map.putBoolean("key",true);
+  }
+ catch (  ObjectAlreadyConsumedException e) {
+    gotException=true;
+  }
+  assertTrue(gotException);
+  gotException=false;
+  try {
+    map.putDouble("key",1);
+  }
+ catch (  ObjectAlreadyConsumedException e) {
+    gotException=true;
+  }
+  assertTrue(gotException);
+  gotException=false;
+  try {
+    map.putString("key","foo");
+  }
+ catch (  ObjectAlreadyConsumedException e) {
+    gotException=true;
+  }
+  assertTrue(gotException);
+  gotException=false;
+  try {
+    map.putArray("key",new WritableNativeArray());
+  }
+ catch (  ObjectAlreadyConsumedException e) {
+    gotException=true;
+  }
+  assertTrue(gotException);
+  gotException=false;
+  try {
+    map.putMap("key",new WritableNativeMap());
+  }
+ catch (  ObjectAlreadyConsumedException e) {
+    gotException=true;
+  }
+  assertTrue(gotException);
+}

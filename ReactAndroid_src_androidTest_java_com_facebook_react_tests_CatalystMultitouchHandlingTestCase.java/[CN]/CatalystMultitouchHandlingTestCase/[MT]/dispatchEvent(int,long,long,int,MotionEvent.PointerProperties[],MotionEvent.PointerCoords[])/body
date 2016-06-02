@@ -1,0 +1,11 @@
+{
+  getRootView().post(new Runnable(){
+    @Override public void run(){
+      MotionEvent event=MotionEvent.obtain(start,when,action,pointerCount,pointerProps,pointerCoords,0,0,1.0f,1.0f,0,0,0,0);
+      getRootView().dispatchTouchEvent(event);
+      event.recycle();
+    }
+  }
+);
+  getInstrumentation().waitForIdleSync();
+}

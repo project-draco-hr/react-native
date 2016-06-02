@@ -1,0 +1,14 @@
+{
+  super.setUp();
+  List<ViewManager> viewManagers=Arrays.<ViewManager>asList(new ReactViewManager());
+  final UIManagerModule mUIManager=new UIManagerModule(getContext(),viewManagers,new UIImplementation(getContext(),viewManagers));
+  UiThreadUtil.runOnUiThread(new Runnable(){
+    @Override public void run(){
+      mUIManager.onHostResume();
+    }
+  }
+);
+  waitForIdleSync();
+  mAssertModule=new AssertModule();
+  mInstance=ReactTestHelper.catalystInstanceBuilder(this).addNativeModule(mAssertModule).addJSModule(TestJavaToJSArgumentsModule.class).addNativeModule(mUIManager).build();
+}

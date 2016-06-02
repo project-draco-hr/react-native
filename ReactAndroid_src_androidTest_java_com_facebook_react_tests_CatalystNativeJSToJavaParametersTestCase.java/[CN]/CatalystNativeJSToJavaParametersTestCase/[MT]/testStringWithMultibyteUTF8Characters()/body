@@ -1,0 +1,22 @@
+{
+  TestJSToJavaParametersModule jsModule=mCatalystInstance.getJSModule(TestJSToJavaParametersModule.class);
+  jsModule.returnMapWithMultibyteUTF8CharacterString();
+  jsModule.returnArrayWithMultibyteUTF8CharacterString();
+  waitForBridgeAndUIIdle();
+  List<ReadableMap> maps=mRecordingTestModule.getMapCalls();
+  assertEquals(1,maps.size());
+  ReadableMap map=maps.get(0);
+  assertEquals("a",map.getString("one-byte"));
+  assertEquals("\u00A2",map.getString("two-bytes"));
+  assertEquals("\u20AC",map.getString("three-bytes"));
+  assertEquals("\uD83D\uDE1C",map.getString("four-bytes"));
+  assertEquals("\u017C\u00F3\u0142\u0107 g\u0119\u015Bl\u0105 \u6211 \uD83D\uDE0E ja\u017A\u0107",map.getString("mixed"));
+  List<ReadableArray> arrays=mRecordingTestModule.getArrayCalls();
+  assertEquals(1,arrays.size());
+  ReadableArray array=arrays.get(0);
+  assertEquals("a",array.getString(0));
+  assertEquals("\u00A2",array.getString(1));
+  assertEquals("\u20AC",array.getString(2));
+  assertEquals("\uD83D\uDE1C",array.getString(3));
+  assertEquals("\u017C\u00F3\u0142\u0107 g\u0119\u015Bl\u0105 \u6211 \uD83D\uDE0E ja\u017A\u0107",array.getString(4));
+}

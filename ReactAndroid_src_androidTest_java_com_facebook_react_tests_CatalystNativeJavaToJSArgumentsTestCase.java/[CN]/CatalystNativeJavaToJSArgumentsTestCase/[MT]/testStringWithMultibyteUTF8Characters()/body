@@ -1,0 +1,19 @@
+{
+  TestJavaToJSArgumentsModule jsModule=mInstance.getJSModule(TestJavaToJSArgumentsModule.class);
+  WritableNativeMap map=new WritableNativeMap();
+  map.putString("two-bytes","\u00A2");
+  map.putString("three-bytes","\u20AC");
+  map.putString("four-bytes","\uD83D\uDE1C");
+  map.putString("mixed","\u017C\u00F3\u0142\u0107 g\u0119\u015Bl\u0105 \u6211 \uD83D\uDE0E ja\u017A\u0107");
+  jsModule.receiveMapWithMultibyteUTF8CharacterString(map);
+  waitForBridgeAndUIIdle();
+  mAssertModule.verifyAssertsAndReset();
+  WritableArray array=new WritableNativeArray();
+  array.pushString("\u00A2");
+  array.pushString("\u20AC");
+  array.pushString("\uD83D\uDE1C");
+  array.pushString("\u017C\u00F3\u0142\u0107 g\u0119\u015Bl\u0105 \u6211 \uD83D\uDE0E ja\u017A\u0107");
+  jsModule.receiveArrayWithMultibyteUTF8CharacterString(array);
+  waitForBridgeAndUIIdle();
+  mAssertModule.verifyAssertsAndReset();
+}

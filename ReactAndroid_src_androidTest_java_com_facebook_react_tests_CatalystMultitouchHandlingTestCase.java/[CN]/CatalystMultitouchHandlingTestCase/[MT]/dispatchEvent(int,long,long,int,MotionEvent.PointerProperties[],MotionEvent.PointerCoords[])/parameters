@@ -1,0 +1,6 @@
+int action
+long start
+long when
+int pointerCount
+MotionEvent.PointerProperties[] pointerProps
+MotionEvent.PointerCoords[] pointerCoords

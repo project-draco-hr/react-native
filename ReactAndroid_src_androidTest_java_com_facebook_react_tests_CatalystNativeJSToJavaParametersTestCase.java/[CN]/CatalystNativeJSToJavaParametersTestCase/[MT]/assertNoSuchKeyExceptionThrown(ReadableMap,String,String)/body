@@ -1,0 +1,10 @@
+{
+  boolean gotException=false;
+  try {
+    mapGetByType(map,key,typeToAskFor);
+  }
+ catch (  NoSuchKeyException expected) {
+    gotException=true;
+  }
+  assertTrue(gotException);
+}

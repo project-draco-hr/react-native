@@ -1,0 +1,10 @@
+{
+  boolean gotException=false;
+  try {
+    arrayGetByType(array,index,typeToAskFor);
+  }
+ catch (  UnexpectedNativeTypeException expected) {
+    gotException=true;
+  }
+  assertTrue(gotException);
+}

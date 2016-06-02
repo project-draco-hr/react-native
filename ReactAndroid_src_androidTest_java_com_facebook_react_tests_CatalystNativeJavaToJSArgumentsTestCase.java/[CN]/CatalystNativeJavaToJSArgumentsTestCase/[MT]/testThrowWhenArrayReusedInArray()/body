@@ -1,0 +1,14 @@
+{
+  boolean gotException=false;
+  try {
+    WritableNativeArray array1=new WritableNativeArray();
+    WritableNativeArray array2=new WritableNativeArray();
+    WritableNativeArray child=new WritableNativeArray();
+    array1.pushArray(child);
+    array2.pushArray(child);
+  }
+ catch (  ObjectAlreadyConsumedException e) {
+    gotException=true;
+  }
+  assertTrue(gotException);
+}

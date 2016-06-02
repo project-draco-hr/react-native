@@ -1,0 +1,53 @@
+{
+  WritableNativeArray array=new WritableNativeArray();
+  WritableNativeArray parent=new WritableNativeArray();
+  parent.pushArray(array);
+  boolean gotException=false;
+  try {
+    array.pushNull();
+  }
+ catch (  ObjectAlreadyConsumedException e) {
+    gotException=true;
+  }
+  assertTrue(gotException);
+  gotException=false;
+  try {
+    array.pushBoolean(true);
+  }
+ catch (  ObjectAlreadyConsumedException e) {
+    gotException=true;
+  }
+  assertTrue(gotException);
+  gotException=false;
+  try {
+    array.pushDouble(1);
+  }
+ catch (  ObjectAlreadyConsumedException e) {
+    gotException=true;
+  }
+  assertTrue(gotException);
+  gotException=false;
+  try {
+    array.pushString("foo");
+  }
+ catch (  ObjectAlreadyConsumedException e) {
+    gotException=true;
+  }
+  assertTrue(gotException);
+  gotException=false;
+  try {
+    array.pushArray(new WritableNativeArray());
+  }
+ catch (  ObjectAlreadyConsumedException e) {
+    gotException=true;
+  }
+  assertTrue(gotException);
+  gotException=false;
+  try {
+    array.pushMap(new WritableNativeMap());
+  }
+ catch (  ObjectAlreadyConsumedException e) {
+    gotException=true;
+  }
+  assertTrue(gotException);
+}

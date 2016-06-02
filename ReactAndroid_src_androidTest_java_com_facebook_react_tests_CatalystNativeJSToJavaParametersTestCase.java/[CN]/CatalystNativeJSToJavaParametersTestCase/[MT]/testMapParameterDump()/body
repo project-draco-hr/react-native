@@ -1,0 +1,11 @@
+{
+  mCatalystInstance.getJSModule(TestJSToJavaParametersModule.class).returnMapWithBasicTypes();
+  mCatalystInstance.getJSModule(TestJSToJavaParametersModule.class).returnNestedMap();
+  mCatalystInstance.getJSModule(TestJSToJavaParametersModule.class).returnMapWithArrays();
+  waitForBridgeAndUIIdle();
+  List<ReadableMap> calls=mRecordingTestModule.getMapCalls();
+  assertEquals(3,calls.size());
+  assertNotNull(calls.get(0).toString());
+  assertNotNull(calls.get(1).toString());
+  assertNotNull(calls.get(2).toString());
+}

@@ -1,0 +1,13 @@
+{
+  mCatalystInstance.getJSModule(TestJSToJavaParametersModule.class).returnArrayWithStringDoubleIntMapArrayBooleanNull();
+  waitForBridgeAndUIIdle();
+  List<ReadableArray> calls=mRecordingTestModule.getArrayCalls();
+  assertEquals(1,calls.size());
+  ReadableArray array=calls.get(0);
+  assertUnexpectedTypeExceptionThrown(array,0,"boolean");
+  assertUnexpectedTypeExceptionThrown(array,1,"string");
+  assertUnexpectedTypeExceptionThrown(array,2,"array");
+  assertUnexpectedTypeExceptionThrown(array,3,"double");
+  assertUnexpectedTypeExceptionThrown(array,4,"map");
+  assertUnexpectedTypeExceptionThrown(array,5,"array");
+}

@@ -1,0 +1,19 @@
+{
+  mCatalystInstance.getJSModule(TestJSToJavaParametersModule.class).returnArrayWithLargeInts();
+  mCatalystInstance.getJSModule(TestJSToJavaParametersModule.class).returnMapWithLargeInts();
+  waitForBridgeAndUIIdle();
+  assertEquals(1,mRecordingTestModule.getArrayCalls().size());
+  assertEquals(1,mRecordingTestModule.getMapCalls().size());
+  ReadableArray array=mRecordingTestModule.getArrayCalls().get(0);
+  assertNotNull(array);
+  ReadableMap map=mRecordingTestModule.getMapCalls().get(0);
+  assertNotNull(map);
+  assertEquals(ReadableType.Number,array.getType(0));
+  assertUnexpectedTypeExceptionThrown(array,0,"int");
+  assertEquals(ReadableType.Number,array.getType(1));
+  assertUnexpectedTypeExceptionThrown(array,1,"int");
+  assertEquals(ReadableType.Number,map.getType("first"));
+  assertUnexpectedTypeExceptionThrown(map,"first","int");
+  assertEquals(ReadableType.Number,map.getType("second"));
+  assertUnexpectedTypeExceptionThrown(map,"second","int");
+}

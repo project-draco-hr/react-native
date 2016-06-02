@@ -1,0 +1,26 @@
+{
+  mCatalystInstance.getJSModule(TestJSToJavaParametersModule.class).returnMapWithBasicTypes();
+  waitForBridgeAndUIIdle();
+  List<ReadableMap> calls=mRecordingTestModule.getMapCalls();
+  assertEquals(1,calls.size());
+  ReadableMap map=calls.get(0);
+  assertNotNull(map);
+  assertTrue(map.hasKey("stringKey"));
+  assertFalse(map.isNull("stringKey"));
+  assertEquals("stringValue",map.getString("stringKey"));
+  assertTrue(map.hasKey("doubleKey"));
+  assertFalse(map.isNull("doubleKey"));
+  assertTrue(Math.abs(3.14 - map.getDouble("doubleKey")) < .0001);
+  assertTrue(map.hasKey("intKey"));
+  assertFalse(map.isNull("intKey"));
+  assertEquals(-11,map.getInt("intKey"));
+  assertTrue(map.hasKey("booleanKey"));
+  assertFalse(map.isNull("booleanKey"));
+  assertTrue(map.getBoolean("booleanKey"));
+  assertTrue(map.hasKey("nullKey"));
+  assertTrue(map.isNull("nullKey"));
+  assertNull(map.getString("nullKey"));
+  assertNull(map.getMap("nullKey"));
+  assertNull(map.getArray("nullKey"));
+  assertFalse(map.hasKey("nonExistentKey"));
+}

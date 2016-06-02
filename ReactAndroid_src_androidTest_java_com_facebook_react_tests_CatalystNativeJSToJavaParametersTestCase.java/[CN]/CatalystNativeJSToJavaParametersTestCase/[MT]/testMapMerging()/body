@@ -1,0 +1,24 @@
+{
+  mCatalystInstance.getJSModule(TestJSToJavaParametersModule.class).returnMapForMerge1();
+  mCatalystInstance.getJSModule(TestJSToJavaParametersModule.class).returnMapForMerge2();
+  waitForBridgeAndUIIdle();
+  List<ReadableMap> maps=mRecordingTestModule.getMapCalls();
+  assertEquals(2,maps.size());
+  WritableMap dest=new WritableNativeMap();
+  dest.merge(maps.get(0));
+  dest.merge(maps.get(1));
+  assertTrue(dest.hasKey("a"));
+  assertTrue(dest.hasKey("b"));
+  assertTrue(dest.hasKey("c"));
+  assertTrue(dest.hasKey("d"));
+  assertTrue(dest.hasKey("e"));
+  assertTrue(dest.hasKey("f"));
+  assertTrue(dest.hasKey("newkey"));
+  assertEquals("overwrite",dest.getString("a"));
+  assertEquals(41,dest.getInt("b"));
+  assertEquals("string",dest.getString("c"));
+  assertEquals(77,dest.getInt("d"));
+  assertTrue(dest.isNull("e"));
+  assertEquals(3,dest.getArray("f").size());
+  assertEquals("newvalue",dest.getString("newkey"));
+}

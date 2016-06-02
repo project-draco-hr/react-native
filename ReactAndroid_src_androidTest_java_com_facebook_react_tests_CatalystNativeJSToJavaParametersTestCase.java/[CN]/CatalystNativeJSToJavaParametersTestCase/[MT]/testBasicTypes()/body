@@ -1,0 +1,11 @@
+{
+  mCatalystInstance.getJSModule(TestJSToJavaParametersModule.class).returnBasicTypes();
+  waitForBridgeAndUIIdle();
+  List<Object[]> basicTypesCalls=mRecordingTestModule.getBasicTypesCalls();
+  assertEquals(1,basicTypesCalls.size());
+  Object[] args=basicTypesCalls.get(0);
+  assertEquals("foo",args[0]);
+  assertEquals(3.14,args[1]);
+  assertEquals(true,args[2]);
+  assertNull(args[3]);
+}

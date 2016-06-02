@@ -1,0 +1,10 @@
+{
+  WritableNativeArray array=new WritableNativeArray();
+  array.pushString("red panda");
+  array.pushDouble(1.19);
+  array.pushBoolean(true);
+  array.pushNull();
+  mInstance.getJSModule(TestJavaToJSArgumentsModule.class).receiveArrayWithBasicTypes(array);
+  waitForBridgeAndUIIdle();
+  mAssertModule.verifyAssertsAndReset();
+}

@@ -1,0 +1,23 @@
+{
+  if (typeToAskFor.equals("double")) {
+    array.getDouble(index);
+  }
+ else   if (typeToAskFor.equals("int")) {
+    array.getInt(index);
+  }
+ else   if (typeToAskFor.equals("string")) {
+    array.getString(index);
+  }
+ else   if (typeToAskFor.equals("array")) {
+    array.getArray(index);
+  }
+ else   if (typeToAskFor.equals("map")) {
+    array.getMap(index);
+  }
+ else   if (typeToAskFor.equals("boolean")) {
+    array.getBoolean(index);
+  }
+ else {
+    throw new RuntimeException("Unknown type: " + typeToAskFor);
+  }
+}

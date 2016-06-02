@@ -1,0 +1,14 @@
+{
+  mCatalystInstance.getJSModule(TestJSToJavaParametersModule.class).returnMapWithBasicTypes();
+  waitForBridgeAndUIIdle();
+  List<ReadableMap> calls=mRecordingTestModule.getMapCalls();
+  assertEquals(1,calls.size());
+  ReadableMap map=calls.get(0);
+  assertNotNull(map);
+  assertNoSuchKeyExceptionThrown(map,"noSuchKey","double");
+  assertNoSuchKeyExceptionThrown(map,"noSuchKey","int");
+  assertNoSuchKeyExceptionThrown(map,"noSuchKey","map");
+  assertNoSuchKeyExceptionThrown(map,"noSuchKey","array");
+  assertNoSuchKeyExceptionThrown(map,"noSuchKey","boolean");
+  assertNoSuchKeyExceptionThrown(map,"noSuchKey","string");
+}

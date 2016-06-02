@@ -1,0 +1,14 @@
+{
+  boolean gotException=false;
+  try {
+    WritableNativeMap map1=new WritableNativeMap();
+    WritableNativeMap map2=new WritableNativeMap();
+    WritableNativeArray child=new WritableNativeArray();
+    map1.putArray("child",child);
+    map2.putArray("child",child);
+  }
+ catch (  ObjectAlreadyConsumedException e) {
+    gotException=true;
+  }
+  assertTrue(gotException);
+}

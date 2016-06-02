@@ -1,0 +1,10 @@
+{
+  WritableNativeMap map=new WritableNativeMap();
+  map.putString("stringKey","stringValue");
+  map.putDouble("doubleKey",3.14);
+  map.putBoolean("booleanKey",true);
+  map.putNull("nullKey");
+  mInstance.getJSModule(TestJavaToJSArgumentsModule.class).receiveMapWithBasicTypes(map);
+  waitForBridgeAndUIIdle();
+  mAssertModule.verifyAssertsAndReset();
+}

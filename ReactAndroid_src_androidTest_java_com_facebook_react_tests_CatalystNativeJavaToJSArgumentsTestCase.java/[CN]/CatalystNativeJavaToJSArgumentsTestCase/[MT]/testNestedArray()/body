@@ -1,0 +1,13 @@
+{
+  WritableNativeArray level1=new WritableNativeArray();
+  WritableNativeArray level2=new WritableNativeArray();
+  WritableNativeArray level3=new WritableNativeArray();
+  level3.pushString("level3");
+  level2.pushString("level2");
+  level2.pushArray(level3);
+  level1.pushString("level1");
+  level1.pushArray(level2);
+  mInstance.getJSModule(TestJavaToJSArgumentsModule.class).receiveNestedArray(level1);
+  waitForBridgeAndUIIdle();
+  mAssertModule.verifyAssertsAndReset();
+}

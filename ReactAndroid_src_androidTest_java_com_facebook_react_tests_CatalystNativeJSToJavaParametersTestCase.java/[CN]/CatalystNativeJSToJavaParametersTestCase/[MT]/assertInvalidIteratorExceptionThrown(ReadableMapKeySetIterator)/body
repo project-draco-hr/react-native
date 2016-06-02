@@ -1,0 +1,10 @@
+{
+  boolean gotException=false;
+  try {
+    iterator.nextKey();
+  }
+ catch (  InvalidIteratorException expected) {
+    gotException=true;
+  }
+  assertTrue(gotException);
+}

@@ -1,0 +1,6 @@
+{
+  MotionEvent.PointerCoords pointerCoords=new MotionEvent.PointerCoords();
+  pointerCoords.x=x;
+  pointerCoords.y=y;
+  return pointerCoords;
+}

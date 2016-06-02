@@ -1,0 +1,15 @@
+{
+  WritableNativeMap map=new WritableNativeMap();
+  WritableNativeArray a1=new WritableNativeArray();
+  WritableNativeArray a2=new WritableNativeArray();
+  a1.pushDouble(3);
+  a1.pushDouble(1);
+  a1.pushDouble(4);
+  a2.pushDouble(1);
+  a2.pushDouble(9);
+  map.putArray("array1",a1);
+  map.putArray("array2",a2);
+  mInstance.getJSModule(TestJavaToJSArgumentsModule.class).receiveMapWithArrays(map);
+  waitForBridgeAndUIIdle();
+  mAssertModule.verifyAssertsAndReset();
+}

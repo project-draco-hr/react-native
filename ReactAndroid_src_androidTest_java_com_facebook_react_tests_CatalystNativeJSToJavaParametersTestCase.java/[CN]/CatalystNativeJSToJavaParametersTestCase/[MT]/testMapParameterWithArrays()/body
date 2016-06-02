@@ -1,0 +1,28 @@
+{
+  mCatalystInstance.getJSModule(TestJSToJavaParametersModule.class).returnMapWithArrays();
+  waitForBridgeAndUIIdle();
+  List<ReadableMap> calls=mRecordingTestModule.getMapCalls();
+  assertEquals(1,calls.size());
+  ReadableMap map=calls.get(0);
+  assertNotNull(map);
+  ReadableArray arrayParameter;
+  assertTrue(map.hasKey("empty"));
+  arrayParameter=map.getArray("empty");
+  assertNotNull(arrayParameter);
+  assertEquals(0,arrayParameter.size());
+  assertTrue(map.hasKey("ints"));
+  assertFalse(map.isNull("ints"));
+  arrayParameter=map.getArray("ints");
+  assertNotNull(arrayParameter);
+  assertEquals(2,arrayParameter.size());
+  assertEquals(43,arrayParameter.getInt(0));
+  assertEquals(44,arrayParameter.getInt(1));
+  assertTrue(map.hasKey("mixed"));
+  arrayParameter=map.getArray("mixed");
+  assertNotNull(arrayParameter);
+  assertEquals(3,arrayParameter.size());
+  assertEquals(77,arrayParameter.getInt(0));
+  assertEquals("string",arrayParameter.getString(1));
+  ReadableArray nestedArray=arrayParameter.getArray(2);
+  assertEquals(2,nestedArray.size());
+}

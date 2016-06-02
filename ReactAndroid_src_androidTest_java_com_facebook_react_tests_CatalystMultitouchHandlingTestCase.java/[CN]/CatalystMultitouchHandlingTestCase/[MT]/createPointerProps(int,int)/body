@@ -1,0 +1,6 @@
+{
+  MotionEvent.PointerProperties pointerProps=new MotionEvent.PointerProperties();
+  pointerProps.id=id;
+  pointerProps.toolType=toolType;
+  return pointerProps;
+}

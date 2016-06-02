@@ -1,0 +1,21 @@
+{
+  mCatalystInstance.getJSModule(TestJSToJavaParametersModule.class).returnArrayWithBasicTypes();
+  waitForBridgeAndUIIdle();
+  List<ReadableArray> calls=mRecordingTestModule.getArrayCalls();
+  assertEquals(1,calls.size());
+  ReadableArray array=calls.get(0);
+  assertNotNull(array);
+  assertEquals(5,array.size());
+  assertFalse(array.isNull(0));
+  assertEquals("foo",array.getString(0));
+  assertFalse(array.isNull(1));
+  assertEquals(3.14,array.getDouble(1));
+  assertFalse(array.isNull(2));
+  assertEquals(-111,array.getInt(2));
+  assertFalse(array.isNull(3));
+  assertTrue(array.getBoolean(3));
+  assertTrue(array.isNull(4));
+  assertEquals(null,array.getString(4));
+  assertEquals(null,array.getMap(4));
+  assertEquals(null,array.getArray(4));
+}
