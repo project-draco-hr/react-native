@@ -59,7 +59,17 @@
     if (multipartBuilder == null) {
       return;
     }
-    requestBuilder.method(method,multipartBuilder.build());
+    requestBuilder.method(method,RequestBodyUtil.createProgressRequest(multipartBuilder.build(),new ProgressRequestListener(){
+      long last=System.nanoTime();
+      @Override public void onRequestProgress(      long bytesWritten,      long contentLength,      boolean done){
+        long now=System.nanoTime();
+        if (done || shouldDispatch(now,last)) {
+          onDataSend(executorToken,requestId,bytesWritten,contentLength);
+          last=now;
+        }
+      }
+    }
+));
   }
  else {
     requestBuilder.method(method,RequestBodyUtil.getEmptyBody(method));

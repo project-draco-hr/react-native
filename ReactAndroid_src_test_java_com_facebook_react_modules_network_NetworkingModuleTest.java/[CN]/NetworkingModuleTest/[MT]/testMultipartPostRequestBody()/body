@@ -3,6 +3,7 @@
   PowerMockito.mockStatic(RequestBodyUtil.class);
   when(RequestBodyUtil.getFileInputStream(any(ReactContext.class),any(String.class))).thenReturn(inputStream);
   when(RequestBodyUtil.create(any(MediaType.class),any(InputStream.class))).thenCallRealMethod();
+  when(RequestBodyUtil.createProgressRequest(any(RequestBody.class),any(ProgressRequestListener.class))).thenCallRealMethod();
   when(inputStream.available()).thenReturn("imageUri".length());
   final MultipartBody.Builder multipartBuilder=mock(MultipartBody.Builder.class);
   PowerMockito.whenNew(MultipartBody.Builder.class).withNoArguments().thenReturn(multipartBuilder);

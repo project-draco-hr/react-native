@@ -2,6 +2,7 @@
   PowerMockito.mockStatic(RequestBodyUtil.class);
   when(RequestBodyUtil.getFileInputStream(any(ReactContext.class),any(String.class))).thenReturn(mock(InputStream.class));
   when(RequestBodyUtil.create(any(MediaType.class),any(InputStream.class))).thenReturn(mock(RequestBody.class));
+  when(RequestBodyUtil.createProgressRequest(any(RequestBody.class),any(ProgressRequestListener.class))).thenCallRealMethod();
   JavaOnlyMap body=new JavaOnlyMap();
   JavaOnlyArray formData=new JavaOnlyArray();
   JavaOnlyMap bodyPart=new JavaOnlyMap();

@@ -1,0 +1,4 @@
+{
+  mRequestBody=requestBody;
+  mProgressListener=progressListener;
+}

@@ -1,0 +1,7 @@
+{
+  WritableArray args=Arguments.createArray();
+  args.pushInt(requestId);
+  args.pushInt((int)progress);
+  args.pushInt((int)total);
+  getEventEmitter(ExecutorToken).emit("didSendNetworkData",args);
+}

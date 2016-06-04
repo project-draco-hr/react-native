@@ -1,0 +1,15 @@
+{
+  return new ForwardingSink(sink){
+    long bytesWritten=0L;
+    long contentLength=0L;
+    @Override public void write(    Buffer source,    long byteCount) throws IOException {
+      super.write(source,byteCount);
+      if (contentLength == 0) {
+        contentLength=contentLength();
+      }
+      bytesWritten+=byteCount;
+      mProgressListener.onRequestProgress(bytesWritten,contentLength,bytesWritten == contentLength);
+    }
+  }
+;
+}
