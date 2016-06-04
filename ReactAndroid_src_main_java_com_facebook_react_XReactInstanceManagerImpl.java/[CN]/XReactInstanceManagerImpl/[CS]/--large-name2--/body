@@ -1,0 +1,20 @@
+{
+  initializeSoLoaderIfNecessary(applicationContext);
+  ApplicationHolder.setApplication((Application)applicationContext.getApplicationContext());
+  DisplayMetricsHolder.initDisplayMetricsIfNotInitialized(applicationContext);
+  mApplicationContext=applicationContext;
+  mCurrentActivity=currentActivity;
+  mDefaultBackButtonImpl=defaultHardwareBackBtnHandler;
+  mJSBundleFile=jsBundleFile;
+  mJSMainModuleName=jsMainModuleName;
+  mPackages=packages;
+  mUseDeveloperSupport=useDeveloperSupport;
+  mRedBoxHandler=redBoxHandler;
+  mDevSupportManager=DevSupportManagerFactory.create(applicationContext,mDevInterface,mJSMainModuleName,useDeveloperSupport,mRedBoxHandler);
+  mBridgeIdleDebugListener=bridgeIdleDebugListener;
+  mLifecycleState=initialLifecycleState;
+  mUIImplementationProvider=uiImplementationProvider;
+  mMemoryPressureRouter=new MemoryPressureRouter(applicationContext);
+  mNativeModuleCallExceptionHandler=nativeModuleCallExceptionHandler;
+  mJSCConfig=jscConfig;
+}

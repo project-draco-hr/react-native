@@ -1,0 +1,13 @@
+Context applicationContext
+Activity currentActivity
+DefaultHardwareBackBtnHandler defaultHardwareBackBtnHandler
+String jsBundleFile
+String jsMainModuleName
+List<ReactPackage> packages
+boolean useDeveloperSupport
+NotThreadSafeBridgeIdleDebugListener bridgeIdleDebugListener
+LifecycleState initialLifecycleState
+UIImplementationProvider uiImplementationProvider
+NativeModuleCallExceptionHandler nativeModuleCallExceptionHandler
+JSCConfig jscConfig
+RedBoxHandler redBoxHandler

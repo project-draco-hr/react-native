@@ -1,0 +1,5 @@
+Context applicationContext
+ReactInstanceDevCommandsHandler reactInstanceCommandsHandler
+String packagerPathForJSBundleName
+boolean enableOnCreate
+RedBoxHandler redBoxHandler

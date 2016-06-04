@@ -1,0 +1,4 @@
+{
+  this(applicationContext,reactInstanceCommandsHandler,packagerPathForJSBundleName,enableOnCreate);
+  mRedBoxHandler=redBoxHandler;
+}

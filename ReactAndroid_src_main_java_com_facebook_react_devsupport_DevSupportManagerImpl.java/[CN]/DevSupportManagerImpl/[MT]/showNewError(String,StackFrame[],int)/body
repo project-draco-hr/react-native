@@ -10,6 +10,9 @@
       }
       mRedBoxDialog.setExceptionDetails(message,stack);
       mRedBoxDialog.setErrorCookie(errorCookie);
+      if (mRedBoxHandler != null) {
+        mRedBoxHandler.handleRedbox(message,stack);
+      }
       mRedBoxDialog.show();
     }
   }

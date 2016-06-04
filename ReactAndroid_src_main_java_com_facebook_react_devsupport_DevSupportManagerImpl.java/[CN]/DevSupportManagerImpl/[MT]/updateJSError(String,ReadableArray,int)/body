@@ -4,7 +4,12 @@
       if (mRedBoxDialog == null || !mRedBoxDialog.isShowing() || errorCookie != mRedBoxDialog.getErrorCookie()) {
         return;
       }
-      mRedBoxDialog.setExceptionDetails(message,StackTraceHelper.convertJsStackTrace(details));
+      StackFrame[] stack=StackTraceHelper.convertJsStackTrace(details);
+      mRedBoxDialog.setExceptionDetails(message,stack);
+      mRedBoxDialog.setErrorCookie(errorCookie);
+      if (mRedBoxHandler != null) {
+        mRedBoxHandler.handleRedbox(message,stack);
+      }
       mRedBoxDialog.show();
     }
   }

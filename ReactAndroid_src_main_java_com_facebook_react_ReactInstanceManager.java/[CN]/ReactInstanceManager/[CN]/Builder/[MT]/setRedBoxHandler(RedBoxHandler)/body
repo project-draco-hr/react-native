@@ -1,0 +1,4 @@
+{
+  mRedBoxHandler=redBoxHandler;
+  return this;
+}
