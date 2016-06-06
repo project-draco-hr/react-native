@@ -1,0 +1,13 @@
+{
+  if (mCurrentReactContext == null) {
+    FLog.w(ReactConstants.TAG,"Instance detached from instance manager");
+  }
+ else {
+    String action=intent.getAction();
+    Uri uri=intent.getData();
+    if (Intent.ACTION_VIEW.equals(action) && uri != null) {
+      DeviceEventManagerModule deviceEventManagerModule=Assertions.assertNotNull(mCurrentReactContext).getNativeModule(DeviceEventManagerModule.class);
+      deviceEventManagerModule.emitNewIntentReceived(uri);
+    }
+  }
+}

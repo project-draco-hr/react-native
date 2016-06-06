@@ -1,0 +1,8 @@
+{
+  if (mReactInstanceManager != null) {
+    mReactInstanceManager.onNewIntent(intent);
+  }
+ else {
+    super.onNewIntent(intent);
+  }
+}

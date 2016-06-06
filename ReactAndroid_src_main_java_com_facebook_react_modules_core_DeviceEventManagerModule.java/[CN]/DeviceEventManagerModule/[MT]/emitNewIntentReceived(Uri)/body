@@ -1,0 +1,3 @@
+{
+  getReactApplicationContext().getJSModule(RCTDeviceEventEmitter.class).emit("url",uri.toString());
+}
