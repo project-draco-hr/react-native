@@ -1,0 +1,8 @@
+{
+  mTestJSModule.verifyMeasureLayoutRelativeToParentOnViewA();
+  waitForBridgeIdleAndVerifyAsserts();
+  mTestJSModule.verifyMeasureLayoutRelativeToParentOnViewB();
+  waitForBridgeIdleAndVerifyAsserts();
+  mTestJSModule.verifyMeasureLayoutRelativeToParentOnViewC();
+  waitForBridgeIdleAndVerifyAsserts();
+}

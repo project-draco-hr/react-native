@@ -1,0 +1,6 @@
+{
+  mTestJSModule.verifyMeasureOnViewA();
+  waitForBridgeIdleAndVerifyAsserts();
+  mTestJSModule.verifyMeasureOnViewC();
+  waitForBridgeIdleAndVerifyAsserts();
+}

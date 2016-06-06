@@ -1,0 +1,4 @@
+{
+  mTestJSModule.verifyMeasureLayoutRelativeToParentNonExistentTag();
+  waitForBridgeIdleAndVerifyAsserts();
+}

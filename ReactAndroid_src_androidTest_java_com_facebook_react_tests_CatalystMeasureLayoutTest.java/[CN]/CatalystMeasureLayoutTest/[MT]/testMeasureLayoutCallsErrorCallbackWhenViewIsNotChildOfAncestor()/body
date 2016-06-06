@@ -1,0 +1,4 @@
+{
+  mTestJSModule.verifyMeasureLayoutDRelativeToB();
+  waitForBridgeIdleAndVerifyAsserts();
+}

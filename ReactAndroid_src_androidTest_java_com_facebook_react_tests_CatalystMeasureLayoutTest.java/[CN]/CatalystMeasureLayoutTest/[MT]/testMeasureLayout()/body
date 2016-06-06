@@ -1,0 +1,8 @@
+{
+  mTestJSModule.verifyMeasureLayoutCRelativeToA();
+  waitForBridgeIdleAndVerifyAsserts();
+  mTestJSModule.verifyMeasureLayoutCRelativeToB();
+  waitForBridgeIdleAndVerifyAsserts();
+  mTestJSModule.verifyMeasureLayoutCRelativeToSelf();
+  waitForBridgeIdleAndVerifyAsserts();
+}

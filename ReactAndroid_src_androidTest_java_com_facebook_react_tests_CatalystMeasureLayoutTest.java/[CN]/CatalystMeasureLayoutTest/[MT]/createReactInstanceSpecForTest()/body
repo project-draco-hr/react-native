@@ -1,0 +1,4 @@
+{
+  mAssertModule=new AssertModule();
+  return new ReactInstanceSpecForTest().addNativeModule(mAssertModule).addJSModule(MeasureLayoutTestModule.class);
+}

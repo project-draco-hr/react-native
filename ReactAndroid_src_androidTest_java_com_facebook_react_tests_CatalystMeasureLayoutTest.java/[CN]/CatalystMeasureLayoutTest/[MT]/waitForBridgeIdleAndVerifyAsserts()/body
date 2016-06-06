@@ -1,0 +1,4 @@
+{
+  waitForBridgeAndUIIdle();
+  mAssertModule.verifyAssertsAndReset();
+}
