@@ -10,7 +10,7 @@
  catch (    Exception e) {
     }
     if (mUri == null) {
-      mUri=resourceDrawableIdHelper.getResourceDrawableUri(getContext(),source);
+      mUri=mResourceDrawableIdHelper.getResourceDrawableUri(getContext(),source);
       mIsLocalImage=true;
     }
  else {
