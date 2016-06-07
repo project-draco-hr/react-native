@@ -57,28 +57,6 @@
     }
   }
 );
-  if (mCurrentContext != null && mCurrentContext.getCatalystInstance() != null && !mCurrentContext.getCatalystInstance().isDestroyed() && mCurrentContext.getCatalystInstance().supportsProfiling()) {
-    options.put(mApplicationContext.getString(mIsCurrentlyProfiling ? R.string.catalyst_stop_profile : R.string.catalyst_start_profile),new DevOptionHandler(){
-      @Override public void onOptionSelected(){
-        if (mCurrentContext != null && mCurrentContext.hasActiveCatalystInstance()) {
-          String profileName=(Environment.getExternalStorageDirectory().getPath() + "/profile_" + mProfileIndex+ ".json");
-          if (mIsCurrentlyProfiling) {
-            mIsCurrentlyProfiling=false;
-            mProfileIndex++;
-            Debug.stopMethodTracing();
-            mCurrentContext.getCatalystInstance().stopProfiler("profile",profileName);
-            Toast.makeText(mCurrentContext,"Profile output to " + profileName,Toast.LENGTH_LONG).show();
-          }
- else {
-            mIsCurrentlyProfiling=true;
-            mCurrentContext.getCatalystInstance().startProfiler("profile");
-            Debug.startMethodTracingSampling(profileName,JAVA_SAMPLING_PROFILE_MEMORY_BYTES,JAVA_SAMPLING_PROFILE_DELTA_US);
-          }
-        }
-      }
-    }
-);
-  }
   options.put(mApplicationContext.getString(R.string.catalyst_settings),new DevOptionHandler(){
     @Override public void onOptionSelected(){
       Intent intent=new Intent(mApplicationContext,DevSettingsActivity.class);
