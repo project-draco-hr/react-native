@@ -1,4 +1,4 @@
-ExecutorToken ExecutorToken
+RCTDeviceEventEmitter eventEmitter
 int requestId
 String error
 IOException e

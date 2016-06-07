@@ -1,0 +1,3 @@
+RCTDeviceEventEmitter eventEmitter
+int requestId
+String data

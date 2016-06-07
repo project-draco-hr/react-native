@@ -1,3 +1,3 @@
-ExecutorToken executorToken
+RCTDeviceEventEmitter eventEmitter
 int requestId
 ResponseBody responseBody

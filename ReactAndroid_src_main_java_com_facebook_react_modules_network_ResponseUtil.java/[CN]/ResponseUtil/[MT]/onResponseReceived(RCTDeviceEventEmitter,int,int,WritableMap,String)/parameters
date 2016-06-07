@@ -1,0 +1,5 @@
+RCTDeviceEventEmitter eventEmitter
+int requestId
+int statusCode
+WritableMap headers
+String url

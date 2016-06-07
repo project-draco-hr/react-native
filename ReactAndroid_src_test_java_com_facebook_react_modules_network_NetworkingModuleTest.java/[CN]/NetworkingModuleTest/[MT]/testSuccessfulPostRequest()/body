@@ -7,7 +7,7 @@
     }
   }
 );
-  NetworkingModule networkingModule=new NetworkingModule(null,"",httpClient);
+  NetworkingModule networkingModule=new NetworkingModule(mock(ReactApplicationContext.class),"",httpClient);
   JavaOnlyMap body=new JavaOnlyMap();
   body.putString("string","This is request body");
   networkingModule.sendRequest(mock(ExecutorToken.class),"POST","http://somedomain/bar",0,JavaOnlyArray.of(JavaOnlyArray.of("Content-Type","text/plain")),body,true,0);

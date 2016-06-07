@@ -14,7 +14,7 @@
     }
   }
 );
-  NetworkingModule networkingModule=new NetworkingModule(null,"",httpClient);
+  NetworkingModule networkingModule=new NetworkingModule(mock(ReactApplicationContext.class),"",httpClient);
   for (int idx=0; idx < requests; idx++) {
     networkingModule.sendRequest(mock(ExecutorToken.class),"GET","http://somedomain/foo",idx + 1,JavaOnlyArray.of(),null,true,0);
   }

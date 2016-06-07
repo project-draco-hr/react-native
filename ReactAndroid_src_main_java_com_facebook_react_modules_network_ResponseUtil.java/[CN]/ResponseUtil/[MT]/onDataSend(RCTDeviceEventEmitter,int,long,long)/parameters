@@ -1,4 +1,4 @@
-ExecutorToken ExecutorToken
+RCTDeviceEventEmitter eventEmitter
 int requestId
 long progress
 long total

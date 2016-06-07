@@ -4,7 +4,7 @@
     char[] buffer=new char[MAX_CHUNK_SIZE_BETWEEN_FLUSHES];
     int read;
     while ((read=reader.read(buffer)) != -1) {
-      onDataReceived(executorToken,requestId,new String(buffer,0,read));
+      ResponseUtil.onDataReceived(eventEmitter,requestId,new String(buffer,0,read));
     }
   }
   finally {

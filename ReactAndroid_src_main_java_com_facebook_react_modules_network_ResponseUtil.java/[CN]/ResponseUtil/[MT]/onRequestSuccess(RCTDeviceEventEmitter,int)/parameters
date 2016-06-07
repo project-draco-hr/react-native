@@ -1,0 +1,2 @@
+RCTDeviceEventEmitter eventEmitter
+int requestId

@@ -7,7 +7,7 @@
     }
   }
 );
-  NetworkingModule networkingModule=new NetworkingModule(null,"",httpClient);
+  NetworkingModule networkingModule=new NetworkingModule(mock(ReactApplicationContext.class),"",httpClient);
   List<JavaOnlyArray> headers=Arrays.asList(JavaOnlyArray.of("Accept","text/plain"),JavaOnlyArray.of("User-Agent","React test agent/1.0"));
   networkingModule.sendRequest(mock(ExecutorToken.class),"GET","http://someurl/baz",0,JavaOnlyArray.from(headers),null,true,0);
   ArgumentCaptor<Request> argumentCaptor=ArgumentCaptor.forClass(Request.class);

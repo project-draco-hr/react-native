@@ -7,9 +7,10 @@
   if (timeout != mClient.connectTimeoutMillis()) {
     client=mClient.newBuilder().readTimeout(timeout,TimeUnit.MILLISECONDS).build();
   }
+  final RCTDeviceEventEmitter eventEmitter=getEventEmitter(executorToken);
   Headers requestHeaders=extractHeaders(headers,data);
   if (requestHeaders == null) {
-    onRequestError(executorToken,requestId,"Unrecognized headers format",null);
+    ResponseUtil.onRequestError(eventEmitter,requestId,"Unrecognized headers format",null);
     return;
   }
   String contentType=requestHeaders.get(CONTENT_TYPE_HEADER_NAME);
@@ -20,7 +21,7 @@
   }
  else   if (data.hasKey(REQUEST_BODY_KEY_STRING)) {
     if (contentType == null) {
-      onRequestError(executorToken,requestId,"Payload is set but no content-type header specified",null);
+      ResponseUtil.onRequestError(eventEmitter,requestId,"Payload is set but no content-type header specified",null);
       return;
     }
     String body=data.getString(REQUEST_BODY_KEY_STRING);
@@ -28,7 +29,7 @@
     if (RequestBodyUtil.isGzipEncoding(contentEncoding)) {
       RequestBody requestBody=RequestBodyUtil.createGzip(contentMediaType,body);
       if (requestBody == null) {
-        onRequestError(executorToken,requestId,"Failed to gzip request body",null);
+        ResponseUtil.onRequestError(eventEmitter,requestId,"Failed to gzip request body",null);
         return;
       }
       requestBuilder.method(method,requestBody);
@@ -39,13 +40,13 @@
   }
  else   if (data.hasKey(REQUEST_BODY_KEY_URI)) {
     if (contentType == null) {
-      onRequestError(executorToken,requestId,"Payload is set but no content-type header specified",null);
+      ResponseUtil.onRequestError(eventEmitter,requestId,"Payload is set but no content-type header specified",null);
       return;
     }
     String uri=data.getString(REQUEST_BODY_KEY_URI);
     InputStream fileInputStream=RequestBodyUtil.getFileInputStream(getReactApplicationContext(),uri);
     if (fileInputStream == null) {
-      onRequestError(executorToken,requestId,"Could not retrieve file for uri " + uri,null);
+      ResponseUtil.onRequestError(eventEmitter,requestId,"Could not retrieve file for uri " + uri,null);
       return;
     }
     requestBuilder.method(method,RequestBodyUtil.create(MediaType.parse(contentType),fileInputStream));
@@ -64,7 +65,7 @@
       @Override public void onRequestProgress(      long bytesWritten,      long contentLength,      boolean done){
         long now=System.nanoTime();
         if (done || shouldDispatch(now,last)) {
-          onDataSend(executorToken,requestId,bytesWritten,contentLength);
+          ResponseUtil.onDataSend(eventEmitter,requestId,bytesWritten,contentLength);
           last=now;
         }
       }
@@ -81,27 +82,27 @@
         return;
       }
       removeRequest(requestId);
-      onRequestError(executorToken,requestId,e.getMessage(),e);
+      ResponseUtil.onRequestError(eventEmitter,requestId,e.getMessage(),e);
     }
     @Override public void onResponse(    Call call,    Response response) throws IOException {
       if (mShuttingDown) {
         return;
       }
       removeRequest(requestId);
-      onResponseReceived(executorToken,requestId,response);
+      ResponseUtil.onResponseReceived(eventEmitter,requestId,response.code(),translateHeaders(response.headers()),response.request().url().toString());
       ResponseBody responseBody=response.body();
       try {
         if (useIncrementalUpdates) {
-          readWithProgress(executorToken,requestId,responseBody);
-          onRequestSuccess(executorToken,requestId);
+          readWithProgress(eventEmitter,requestId,responseBody);
+          ResponseUtil.onRequestSuccess(eventEmitter,requestId);
         }
  else {
-          onDataReceived(executorToken,requestId,responseBody.string());
-          onRequestSuccess(executorToken,requestId);
+          ResponseUtil.onDataReceived(eventEmitter,requestId,responseBody.string());
+          ResponseUtil.onRequestSuccess(eventEmitter,requestId);
         }
       }
  catch (      IOException e) {
-        onRequestError(executorToken,requestId,e.getMessage(),e);
+        ResponseUtil.onRequestError(eventEmitter,requestId,e.getMessage(),e);
       }
     }
   }

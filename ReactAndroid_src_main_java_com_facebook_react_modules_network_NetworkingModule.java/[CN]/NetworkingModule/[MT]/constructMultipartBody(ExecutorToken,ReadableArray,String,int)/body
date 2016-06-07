@@ -1,4 +1,5 @@
 {
+  RCTDeviceEventEmitter eventEmitter=getEventEmitter(ExecutorToken);
   MultipartBody.Builder multipartBuilder=new MultipartBody.Builder();
   multipartBuilder.setType(MediaType.parse(contentType));
   for (int i=0, size=body.size(); i < size; i++) {
@@ -6,7 +7,7 @@
     ReadableArray headersArray=bodyPart.getArray("headers");
     Headers headers=extractHeaders(headersArray,null);
     if (headers == null) {
-      onRequestError(ExecutorToken,requestId,"Missing or invalid header format for FormData part.",null);
+      ResponseUtil.onRequestError(eventEmitter,requestId,"Missing or invalid header format for FormData part.",null);
       return null;
     }
     MediaType partContentType=null;
@@ -21,19 +22,19 @@
     }
  else     if (bodyPart.hasKey(REQUEST_BODY_KEY_URI)) {
       if (partContentType == null) {
-        onRequestError(ExecutorToken,requestId,"Binary FormData part needs a content-type header.",null);
+        ResponseUtil.onRequestError(eventEmitter,requestId,"Binary FormData part needs a content-type header.",null);
         return null;
       }
       String fileContentUriStr=bodyPart.getString(REQUEST_BODY_KEY_URI);
       InputStream fileInputStream=RequestBodyUtil.getFileInputStream(getReactApplicationContext(),fileContentUriStr);
       if (fileInputStream == null) {
-        onRequestError(ExecutorToken,requestId,"Could not retrieve file for uri " + fileContentUriStr,null);
+        ResponseUtil.onRequestError(eventEmitter,requestId,"Could not retrieve file for uri " + fileContentUriStr,null);
         return null;
       }
       multipartBuilder.addPart(headers,RequestBodyUtil.create(partContentType,fileInputStream));
     }
  else {
-      onRequestError(ExecutorToken,requestId,"Unrecognized FormData part.",null);
+      ResponseUtil.onRequestError(eventEmitter,requestId,"Unrecognized FormData part.",null);
     }
   }
   return multipartBuilder;

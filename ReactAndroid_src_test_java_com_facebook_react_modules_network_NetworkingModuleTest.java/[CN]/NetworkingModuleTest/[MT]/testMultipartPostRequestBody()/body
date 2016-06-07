@@ -45,7 +45,7 @@
     }
   }
 );
-  NetworkingModule networkingModule=new NetworkingModule(null,"",httpClient);
+  NetworkingModule networkingModule=new NetworkingModule(mock(ReactApplicationContext.class),"",httpClient);
   networkingModule.sendRequest(mock(ExecutorToken.class),"POST","http://someurl/uploadFoo",0,JavaOnlyArray.from(headers),body,true,0);
   PowerMockito.verifyStatic(times(1));
   RequestBodyUtil.getFileInputStream(any(ReactContext.class),eq("imageUri"));

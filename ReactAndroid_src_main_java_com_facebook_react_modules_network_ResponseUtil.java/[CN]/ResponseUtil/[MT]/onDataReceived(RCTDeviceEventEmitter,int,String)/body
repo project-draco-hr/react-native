@@ -2,5 +2,5 @@
   WritableArray args=Arguments.createArray();
   args.pushInt(requestId);
   args.pushString(data);
-  getEventEmitter(ExecutorToken).emit("didReceiveNetworkData",args);
+  eventEmitter.emit("didReceiveNetworkData",args);
 }
