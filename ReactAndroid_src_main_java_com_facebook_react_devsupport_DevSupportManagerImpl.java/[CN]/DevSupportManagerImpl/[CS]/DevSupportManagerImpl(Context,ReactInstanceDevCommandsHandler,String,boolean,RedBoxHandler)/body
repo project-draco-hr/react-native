@@ -1,4 +1,33 @@
 {
-  this(applicationContext,reactInstanceCommandsHandler,packagerPathForJSBundleName,enableOnCreate);
+  mReactInstanceCommandsHandler=reactInstanceCommandsHandler;
+  mApplicationContext=applicationContext;
+  mJSAppBundleName=packagerPathForJSBundleName;
+  mDevSettings=new DevInternalSettings(applicationContext,this);
+  mDevServerHelper=new DevServerHelper(mDevSettings);
+  mShakeDetector=new ShakeDetector(new ShakeDetector.ShakeListener(){
+    @Override public void onShake(){
+      showDevOptionsDialog();
+    }
+  }
+);
+  mReloadAppBroadcastReceiver=new BroadcastReceiver(){
+    @Override public void onReceive(    Context context,    Intent intent){
+      String action=intent.getAction();
+      if (DevServerHelper.getReloadAppAction(context).equals(action)) {
+        if (intent.getBooleanExtra(DevServerHelper.RELOAD_APP_EXTRA_JS_PROXY,false)) {
+          mDevSettings.setRemoteJSDebugEnabled(true);
+          mDevServerHelper.launchJSDevtools();
+        }
+ else {
+          mDevSettings.setRemoteJSDebugEnabled(false);
+        }
+        handleReloadJS();
+      }
+    }
+  }
+;
+  mJSBundleTempFile=new File(applicationContext.getFilesDir(),JS_BUNDLE_FILE_NAME);
+  mDefaultNativeModuleCallExceptionHandler=new DefaultNativeModuleCallExceptionHandler();
+  setDevSupportEnabled(enableOnCreate);
   mRedBoxHandler=redBoxHandler;
 }
