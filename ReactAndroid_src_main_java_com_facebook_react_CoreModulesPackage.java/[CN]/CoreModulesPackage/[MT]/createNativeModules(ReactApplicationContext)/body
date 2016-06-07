@@ -8,5 +8,5 @@
   finally {
     Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);
   }
-  return Arrays.<NativeModule>asList(new AnimationsDebugModule(catalystApplicationContext,mReactInstanceManager.getDevSupportManager().getDevSettings()),new AndroidInfoModule(),new DeviceEventManagerModule(catalystApplicationContext,mHardwareBackBtnHandler),new ExceptionsManagerModule(mReactInstanceManager.getDevSupportManager()),new Timing(catalystApplicationContext),new SourceCodeModule(mReactInstanceManager.getSourceUrl(),mReactInstanceManager.getDevSupportManager().getSourceMapUrl()),uiManagerModule,new JSCHeapCapture(catalystApplicationContext),new DebugComponentOwnershipModule(catalystApplicationContext));
+  return Arrays.<NativeModule>asList(new AnimationsDebugModule(catalystApplicationContext,mReactInstanceManager.getDevSupportManager().getDevSettings()),new AndroidInfoModule(),new DeviceEventManagerModule(catalystApplicationContext,mHardwareBackBtnHandler),new ExceptionsManagerModule(mReactInstanceManager.getDevSupportManager()),new Timing(catalystApplicationContext),new SourceCodeModule(mReactInstanceManager.getSourceUrl()),uiManagerModule,new JSCHeapCapture(catalystApplicationContext),new DebugComponentOwnershipModule(catalystApplicationContext));
 }

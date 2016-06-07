@@ -1,5 +1,0 @@
-{
-  WritableMap map=new WritableNativeMap();
-  map.putString("fullSourceMappingURL",mSourceMapUrl);
-  promise.resolve(map);
-}
