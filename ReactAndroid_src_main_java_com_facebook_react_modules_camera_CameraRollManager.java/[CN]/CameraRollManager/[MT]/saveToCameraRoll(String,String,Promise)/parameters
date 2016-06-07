@@ -1,2 +1,3 @@
 String uri
+String type
 Promise promise

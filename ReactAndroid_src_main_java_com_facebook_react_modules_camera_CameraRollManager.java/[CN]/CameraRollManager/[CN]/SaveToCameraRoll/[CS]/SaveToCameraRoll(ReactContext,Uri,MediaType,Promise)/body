@@ -3,4 +3,5 @@
   mContext=context;
   mUri=uri;
   mPromise=promise;
+  mType=type;
 }

@@ -1,0 +1,4 @@
+{
+  MediaType parsedType=type.equals("video") ? MediaType.VIDEO : MediaType.PHOTO;
+  new SaveToCameraRoll(getReactApplicationContext(),Uri.parse(uri),parsedType,promise).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+}

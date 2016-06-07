@@ -2,13 +2,13 @@
   File source=new File(mUri.getPath());
   FileChannel input=null, output=null;
   try {
-    File pictures=Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
-    pictures.mkdirs();
-    if (!pictures.isDirectory()) {
-      mPromise.reject(ERROR_UNABLE_TO_LOAD,"External storage pictures directory not available");
+    File exportDir=(mType == MediaType.PHOTO) ? Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) : Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MOVIES);
+    exportDir.mkdirs();
+    if (!exportDir.isDirectory()) {
+      mPromise.reject(ERROR_UNABLE_TO_LOAD,"External media storage directory not available");
       return;
     }
-    File dest=new File(pictures,source.getName());
+    File dest=new File(exportDir,source.getName());
     int n=0;
     String fullSourceName=source.getName();
     String sourceName, sourceExt;
@@ -21,7 +21,7 @@
       sourceExt="";
     }
     while (!dest.createNewFile()) {
-      dest=new File(pictures,sourceName + "_" + (n++)+ sourceExt);
+      dest=new File(exportDir,sourceName + "_" + (n++)+ sourceExt);
     }
     input=new FileInputStream(source).getChannel();
     output=new FileOutputStream(dest).getChannel();

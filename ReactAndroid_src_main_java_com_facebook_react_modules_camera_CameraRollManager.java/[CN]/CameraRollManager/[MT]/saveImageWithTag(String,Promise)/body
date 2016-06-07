@@ -1,3 +1,0 @@
-{
-  new SaveImageTag(getReactApplicationContext(),Uri.parse(uri),promise).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-}

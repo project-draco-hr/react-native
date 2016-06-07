@@ -1,3 +1,4 @@
 ReactContext context
 Uri uri
+MediaType type
 Promise promise
