@@ -4,5 +4,10 @@
   if (mUIImplementationProvider == null) {
     mUIImplementationProvider=new UIImplementationProvider();
   }
-  return new ReactInstanceManagerImpl(Assertions.assertNotNull(mApplication,"Application property has not been set with this builder"),mCurrentActivity,mDefaultHardwareBackBtnHandler,mJSBundleFile,mJSMainModuleName,mPackages,mUseDeveloperSupport,mBridgeIdleDebugListener,Assertions.assertNotNull(mInitialLifecycleState,"Initial lifecycle state was not set"),mUIImplementationProvider,mNativeModuleCallExceptionHandler,mJSCConfig,mRedBoxHandler);
+  if (mUseNewBridge) {
+    return new XReactInstanceManagerImpl(Assertions.assertNotNull(mApplication,"Application property has not been set with this builder"),mCurrentActivity,mDefaultHardwareBackBtnHandler,mJSBundleFile,mJSMainModuleName,mPackages,mUseDeveloperSupport,mBridgeIdleDebugListener,Assertions.assertNotNull(mInitialLifecycleState,"Initial lifecycle state was not set"),mUIImplementationProvider,mNativeModuleCallExceptionHandler,mJSCConfig,mRedBoxHandler);
+  }
+ else {
+    return new ReactInstanceManagerImpl(Assertions.assertNotNull(mApplication,"Application property has not been set with this builder"),mCurrentActivity,mDefaultHardwareBackBtnHandler,mJSBundleFile,mJSMainModuleName,mPackages,mUseDeveloperSupport,mBridgeIdleDebugListener,Assertions.assertNotNull(mInitialLifecycleState,"Initial lifecycle state was not set"),mUIImplementationProvider,mNativeModuleCallExceptionHandler,mJSCConfig,mRedBoxHandler);
+  }
 }
