@@ -3,6 +3,7 @@
   requestWindowFeature(Window.FEATURE_NO_TITLE);
   setContentView(R.layout.redbox_view);
   mDevSupportManager=devSupportManager;
+  mDoubleTapReloadRecognizer=new DoubleTapReloadRecognizer();
   mStackView=(ListView)findViewById(R.id.rn_redbox_stack);
   mStackView.setOnItemClickListener(this);
   mReloadJs=(Button)findViewById(R.id.rn_redbox_reloadjs);

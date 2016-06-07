@@ -12,4 +12,5 @@
   mReactRootView=createRootView();
   mReactRootView.startReactApplication(mReactInstanceManager,getMainComponentName(),getLaunchOptions());
   setContentView(mReactRootView);
+  mDoubleTapReloadRecognizer=new DoubleTapReloadRecognizer();
 }

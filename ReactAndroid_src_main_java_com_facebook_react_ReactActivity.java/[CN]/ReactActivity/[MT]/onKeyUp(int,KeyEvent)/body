@@ -4,20 +4,8 @@
       mReactInstanceManager.showDevOptionsDialog();
       return true;
     }
-    if (keyCode == KeyEvent.KEYCODE_R && !(getCurrentFocus() instanceof EditText)) {
-      if (mDoRefresh) {
-        mReactInstanceManager.getDevSupportManager().handleReloadJS();
-        mDoRefresh=false;
-      }
- else {
-        mDoRefresh=true;
-        new Handler().postDelayed(new Runnable(){
-          @Override public void run(){
-            mDoRefresh=false;
-          }
-        }
-,200);
-      }
+    if (mDoubleTapReloadRecognizer.didDoubleTapR(keyCode,getCurrentFocus())) {
+      mReactInstanceManager.getDevSupportManager().handleReloadJS();
     }
   }
   return super.onKeyUp(keyCode,event);

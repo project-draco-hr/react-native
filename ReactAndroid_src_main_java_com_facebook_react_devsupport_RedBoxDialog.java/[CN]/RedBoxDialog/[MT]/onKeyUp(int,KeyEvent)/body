@@ -3,5 +3,8 @@
     mDevSupportManager.showDevOptionsDialog();
     return true;
   }
+  if (mDoubleTapReloadRecognizer.didDoubleTapR(keyCode,getCurrentFocus())) {
+    mDevSupportManager.handleReloadJS();
+  }
   return super.onKeyUp(keyCode,event);
 }

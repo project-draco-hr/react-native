@@ -1,0 +1,18 @@
+{
+  if (keyCode == KeyEvent.KEYCODE_R && !(view instanceof EditText)) {
+    if (mDoRefresh) {
+      mDoRefresh=false;
+      return true;
+    }
+ else {
+      mDoRefresh=true;
+      new Handler().postDelayed(new Runnable(){
+        @Override public void run(){
+          mDoRefresh=false;
+        }
+      }
+,DOUBLE_TAP_DELAY);
+    }
+  }
+  return false;
+}
