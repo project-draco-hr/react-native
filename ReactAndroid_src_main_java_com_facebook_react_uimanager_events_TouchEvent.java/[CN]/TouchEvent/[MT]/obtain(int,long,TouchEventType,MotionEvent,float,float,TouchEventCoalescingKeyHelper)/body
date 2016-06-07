@@ -3,6 +3,6 @@
   if (event == null) {
     event=new TouchEvent();
   }
-  event.init(viewTag,timestampMs,touchEventType,motionEventToCopy,viewX,viewY);
+  event.init(viewTag,timestampMs,touchEventType,motionEventToCopy,viewX,viewY,touchEventCoalescingKeyHelper);
   return event;
 }

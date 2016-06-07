@@ -4,3 +4,4 @@ TouchEventType touchEventType
 MotionEvent motionEventToCopy
 float viewX
 float viewY
+TouchEventCoalescingKeyHelper touchEventCoalescingKeyHelper

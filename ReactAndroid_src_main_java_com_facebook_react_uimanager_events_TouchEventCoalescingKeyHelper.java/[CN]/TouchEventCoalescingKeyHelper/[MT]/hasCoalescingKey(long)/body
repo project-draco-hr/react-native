@@ -1,5 +1,5 @@
 {
-  int currentValue=sDownTimeToCoalescingKey.get((int)downTime,-1);
+  int currentValue=mDownTimeToCoalescingKey.get((int)downTime,-1);
   if (currentValue == -1) {
     return false;
   }
