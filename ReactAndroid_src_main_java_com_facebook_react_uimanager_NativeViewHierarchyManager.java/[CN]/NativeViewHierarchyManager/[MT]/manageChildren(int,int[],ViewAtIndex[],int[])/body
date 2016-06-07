@@ -17,7 +17,7 @@
       if (indexToRemove >= lastIndexToRemove) {
         throw new IllegalViewOperationException("Trying to remove an out of order view index:" + indexToRemove + " view tag: "+ tag+ "\n detail: "+ constructManageChildrenErrorMessage(viewToManage,viewManager,indicesToRemove,viewsToAdd,tagsToDelete));
       }
-      View viewToRemove=viewToManage.getChildAt(indexToRemove);
+      View viewToRemove=viewManager.getChildAt(viewToManage,indexToRemove);
       if (mLayoutAnimator.shouldAnimateLayout(viewToRemove) && arrayContains(tagsToDelete,viewToRemove.getId())) {
       }
  else {
