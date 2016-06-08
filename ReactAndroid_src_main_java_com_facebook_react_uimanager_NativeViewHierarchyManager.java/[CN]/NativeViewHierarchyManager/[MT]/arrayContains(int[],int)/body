@@ -1,4 +1,7 @@
 {
+  if (array == null) {
+    return false;
+  }
   for (  int curEle : array) {
     if (curEle == ele) {
       return true;
