@@ -6,11 +6,6 @@
   finally {
     Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);
   }
-synchronized (mDispatchRunnablesLock) {
-    for (int i=0; i < mDispatchUIRunnables.size(); i++) {
-      mDispatchUIRunnables.get(i).run();
-    }
-    mDispatchUIRunnables.clear();
-  }
+  flushPendingBatches();
   ReactChoreographer.getInstance().postFrameCallback(ReactChoreographer.CallbackType.DISPATCH_UI,this);
 }

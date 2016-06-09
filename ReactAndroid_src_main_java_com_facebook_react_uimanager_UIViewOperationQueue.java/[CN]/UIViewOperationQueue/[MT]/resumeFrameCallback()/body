@@ -1,3 +1,4 @@
 {
+  mIsDispatchUIFrameCallbackEnqueued=true;
   ReactChoreographer.getInstance().postFrameCallback(ReactChoreographer.CallbackType.DISPATCH_UI,mDispatchUIFrameCallback);
 }

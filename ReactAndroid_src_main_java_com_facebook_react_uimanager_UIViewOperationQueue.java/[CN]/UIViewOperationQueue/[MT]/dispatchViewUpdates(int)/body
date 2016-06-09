@@ -43,4 +43,12 @@ synchronized (mDispatchRunnablesLock) {
     }
 );
   }
+  if (!mIsDispatchUIFrameCallbackEnqueued) {
+    UiThreadUtil.runOnUiThread(new Runnable(){
+      @Override public void run(){
+        flushPendingBatches();
+      }
+    }
+);
+  }
 }

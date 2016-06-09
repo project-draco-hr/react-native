@@ -1,3 +1,5 @@
 {
+  mIsDispatchUIFrameCallbackEnqueued=false;
   ReactChoreographer.getInstance().removeFrameCallback(ReactChoreographer.CallbackType.DISPATCH_UI,mDispatchUIFrameCallback);
+  flushPendingBatches();
 }
