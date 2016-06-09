@@ -1,0 +1,21 @@
+{
+  View innerButton=getViewByTestId("A");
+  View touchableParent=getViewByTestId("B");
+  SingleTouchGestureGenerator gestureGenerator=createGestureGenerator();
+  gestureGenerator.startGesture(innerButton);
+  waitForBridgeAndUIIdle();
+  gestureGenerator.dragTo(touchableParent,15).endGesture();
+  waitForBridgeAndUIIdle();
+  assertEquals(1,mRecordingModule.getCalls().size());
+  assertEquals("inner",mRecordingModule.getCalls().get(0));
+  mRecordingModule.reset();
+  touchableParent=getViewByTestId("D");
+  innerButton=getViewByTestId("C");
+  gestureGenerator=createGestureGenerator();
+  gestureGenerator.startGesture(innerButton);
+  waitForBridgeAndUIIdle();
+  gestureGenerator.dragTo(touchableParent,15).endGesture();
+  waitForBridgeAndUIIdle();
+  assertEquals(1,mRecordingModule.getCalls().size());
+  assertEquals("outer",mRecordingModule.getCalls().get(0));
+}

@@ -1,0 +1,10 @@
+{
+  View topLevelTouchable=getViewByTestId("C");
+  View innerButton=getViewByTestId("A");
+  SingleTouchGestureGenerator gestureGenerator=createGestureGenerator();
+  gestureGenerator.startGesture(innerButton);
+  waitForBridgeAndUIIdle();
+  gestureGenerator.dragTo(topLevelTouchable,15).endGesture();
+  waitForBridgeAndUIIdle();
+  assertTrue(mRecordingModule.getCalls().isEmpty());
+}

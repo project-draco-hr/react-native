@@ -1,0 +1,10 @@
+{
+  View outsideView=getViewByTestId("E");
+  View innerButton=getViewByTestId("A");
+  SingleTouchGestureGenerator gestureGenerator=createGestureGenerator();
+  gestureGenerator.startGesture(innerButton);
+  waitForBridgeAndUIIdle();
+  gestureGenerator.dragTo(outsideView,15).endGesture();
+  waitForBridgeAndUIIdle();
+  assertTrue(mRecordingModule.getCalls().isEmpty());
+}

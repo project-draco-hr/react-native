@@ -1,0 +1,16 @@
+{
+  mRecordingModule.reset();
+  View innerButton=getViewByTestId("A");
+  assertNotNull(innerButton);
+  createGestureGenerator().startGesture(innerButton).endGesture();
+  waitForBridgeAndUIIdle();
+  assertEquals(1,mRecordingModule.getCalls().size());
+  assertEquals("inner",mRecordingModule.getCalls().get(0));
+  mRecordingModule.reset();
+  innerButton=getViewByTestId("C");
+  assertNotNull(innerButton);
+  createGestureGenerator().startGesture(innerButton).endGesture();
+  waitForBridgeAndUIIdle();
+  assertEquals(1,mRecordingModule.getCalls().size());
+  assertEquals("outer",mRecordingModule.getCalls().get(0));
+}
