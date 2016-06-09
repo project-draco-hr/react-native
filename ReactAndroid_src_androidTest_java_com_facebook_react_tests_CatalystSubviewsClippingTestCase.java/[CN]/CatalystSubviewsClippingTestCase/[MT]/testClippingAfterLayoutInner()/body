@@ -1,0 +1,15 @@
+{
+  SubviewsClippingTestModule subviewsClippingTestModule=getReactContext().getJSModule(SubviewsClippingTestModule.class);
+  mEvents.clear();
+  subviewsClippingTestModule.renderUpdatingSample1(false,false);
+  waitForBridgeAndUIIdle();
+  Assert.assertArrayEquals(new String[]{"Attach_outer","Attach_inner2"},mEvents.toArray());
+  mEvents.clear();
+  subviewsClippingTestModule.renderUpdatingSample1(true,false);
+  waitForBridgeAndUIIdle();
+  Assert.assertArrayEquals(new String[]{"Attach_inner1"},mEvents.toArray());
+  mEvents.clear();
+  subviewsClippingTestModule.renderUpdatingSample1(true,true);
+  waitForBridgeAndUIIdle();
+  Assert.assertArrayEquals(new String[]{"Detach_inner2"},mEvents.toArray());
+}

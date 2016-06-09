@@ -1,0 +1,8 @@
+{
+  getReactContext().getJSModule(SubviewsClippingTestModule.class).renderScrollViewTest();
+  waitForBridgeAndUIIdle();
+  Assert.assertArrayEquals(new String[]{"Attach_0","Attach_1","Attach_2"},mEvents.toArray());
+  mEvents.clear();
+  scrollToDpInUIThread(120);
+  Assert.assertArrayEquals(new String[]{"Detach_0","Attach_3"},mEvents.toArray());
+}

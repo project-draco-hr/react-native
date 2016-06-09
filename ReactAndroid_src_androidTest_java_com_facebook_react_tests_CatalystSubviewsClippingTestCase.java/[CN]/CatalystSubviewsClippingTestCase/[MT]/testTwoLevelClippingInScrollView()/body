@@ -1,0 +1,24 @@
+{
+  getReactContext().getJSModule(SubviewsClippingTestModule.class).renderScrollViewTest();
+  waitForBridgeAndUIIdle();
+  final int complexViewOffset=4 * 120 - 300;
+  scrollToDpInUIThread(complexViewOffset);
+  mEvents.clear();
+  scrollToDpInUIThread(complexViewOffset + 5);
+  Assert.assertArrayEquals(new String[]{"Attach_C0"},mEvents.toArray());
+  mEvents.clear();
+  scrollToDpInUIThread(complexViewOffset + 100);
+  Assert.assertArrayEquals(new String[]{"Detach_1","Attach_C0.1"},mEvents.toArray());
+  mEvents.clear();
+  scrollToDpInUIThread(complexViewOffset + 150);
+  Assert.assertArrayEquals(new String[]{"Attach_C0.2"},mEvents.toArray());
+  mEvents.clear();
+  scrollToDpInUIThread(complexViewOffset + 100);
+  Assert.assertArrayEquals(new String[]{"Detach_C0.2"},mEvents.toArray());
+  mEvents.clear();
+  scrollToDpInUIThread(complexViewOffset + 5);
+  Assert.assertArrayEquals(new String[]{"Attach_1","Detach_C0.1"},mEvents.toArray());
+  mEvents.clear();
+  scrollToDpInUIThread(complexViewOffset);
+  Assert.assertArrayEquals(new String[]{"Detach_C0"},mEvents.toArray());
+}

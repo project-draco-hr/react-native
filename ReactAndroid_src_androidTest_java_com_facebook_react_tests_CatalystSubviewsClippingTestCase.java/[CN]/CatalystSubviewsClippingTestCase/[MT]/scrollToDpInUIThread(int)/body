@@ -1,0 +1,10 @@
+{
+  final ScrollView mainScrollView=getViewByTestId("scroll_view");
+  runTestOnUiThread(new Runnable(){
+    @Override public void run(){
+      mainScrollView.scrollTo(0,(int)PixelUtil.toPixelFromDIP(yPositionInDP));
+    }
+  }
+);
+  waitForBridgeAndUIIdle();
+}

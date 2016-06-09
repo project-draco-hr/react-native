@@ -1,0 +1,4 @@
+{
+  super.onAttachedToWindow();
+  mEvents.add("Attach_" + mClippableViewID);
+}

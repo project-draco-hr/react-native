@@ -1,0 +1,3 @@
+{
+  ((ClippableView)view).setClippableViewID(clippableViewId);
+}

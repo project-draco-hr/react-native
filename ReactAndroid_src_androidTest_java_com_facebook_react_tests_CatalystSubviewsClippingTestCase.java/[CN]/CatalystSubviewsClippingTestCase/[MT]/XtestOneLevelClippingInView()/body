@@ -1,0 +1,6 @@
+{
+  mEvents.clear();
+  getReactContext().getJSModule(SubviewsClippingTestModule.class).renderClippingSample1();
+  waitForBridgeAndUIIdle();
+  Assert.assertArrayEquals(new String[]{"Attach_outer","Attach_inner2"},mEvents.toArray());
+}

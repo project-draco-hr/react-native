@@ -1,0 +1,6 @@
+{
+  ReactInstanceSpecForTest instanceSpec=new ReactInstanceSpecForTest();
+  instanceSpec.addJSModule(SubviewsClippingTestModule.class);
+  instanceSpec.addViewManager(new ClippableViewManager(mEvents));
+  return instanceSpec;
+}
