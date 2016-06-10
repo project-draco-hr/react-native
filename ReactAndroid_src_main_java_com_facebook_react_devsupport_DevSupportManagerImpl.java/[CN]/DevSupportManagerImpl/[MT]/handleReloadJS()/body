@@ -3,17 +3,13 @@
   if (mRedBoxDialog != null) {
     mRedBoxDialog.dismiss();
   }
-  ProgressDialog progressDialog=new ProgressDialog(mApplicationContext);
-  progressDialog.setTitle(R.string.catalyst_jsload_title);
-  progressDialog.setMessage(mApplicationContext.getString(mDevSettings.isRemoteJSDebugEnabled() ? R.string.catalyst_remotedbg_message : R.string.catalyst_jsload_message));
-  progressDialog.setIndeterminate(true);
-  progressDialog.setCancelable(false);
-  progressDialog.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
-  progressDialog.show();
+  AlertDialog dialog=new AlertDialog.Builder(mApplicationContext).setTitle(R.string.catalyst_jsload_title).setMessage(mApplicationContext.getString(mDevSettings.isRemoteJSDebugEnabled() ? R.string.catalyst_remotedbg_message : R.string.catalyst_jsload_message)).create();
+  dialog.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
+  dialog.show();
   if (mDevSettings.isRemoteJSDebugEnabled()) {
-    reloadJSInProxyMode(progressDialog);
+    reloadJSInProxyMode(dialog);
   }
  else {
-    reloadJSFromServer(progressDialog);
+    reloadJSFromServer(dialog);
   }
 }

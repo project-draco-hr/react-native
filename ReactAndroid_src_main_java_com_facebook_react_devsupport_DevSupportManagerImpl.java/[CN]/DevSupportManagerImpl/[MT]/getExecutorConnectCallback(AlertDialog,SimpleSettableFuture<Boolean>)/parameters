@@ -1,2 +1,2 @@
-ProgressDialog progressDialog
+AlertDialog progressDialog
 SimpleSettableFuture<Boolean> future
