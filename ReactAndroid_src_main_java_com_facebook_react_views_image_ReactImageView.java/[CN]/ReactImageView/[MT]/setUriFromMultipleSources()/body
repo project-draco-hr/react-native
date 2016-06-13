@@ -1,0 +1,13 @@
+{
+  final double targetImageSize=getWidth() * getHeight();
+  double bestPrecision=Double.MAX_VALUE;
+  String bestUri=null;
+  for (  Map.Entry<String,Double> source : mSources.entrySet()) {
+    final double precision=Math.abs(1.0 - (source.getValue()) / targetImageSize);
+    if (precision < bestPrecision) {
+      bestPrecision=precision;
+      bestUri=source.getKey();
+    }
+  }
+  setUriFromSingleSource(bestUri);
+}

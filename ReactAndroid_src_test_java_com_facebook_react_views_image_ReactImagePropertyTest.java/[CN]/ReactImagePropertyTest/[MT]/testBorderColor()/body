@@ -1,7 +1,7 @@
 {
   ReactImageManager viewManager=new ReactImageManager();
   ReactImageView view=viewManager.createViewInstance(mThemeContext);
-  viewManager.updateProperties(view,buildStyles("src","http://mysite.com/mypic.jpg"));
+  viewManager.updateProperties(view,buildStyles("src",JavaOnlyArray.of(JavaOnlyMap.of("uri","http://mysite.com/mypic.jpg"))));
   viewManager.updateProperties(view,buildStyles("borderColor",Color.argb(0,0,255,255)));
   int borderColor=view.getHierarchy().getRoundingParams().getBorderColor();
   assertEquals(0,Color.alpha(borderColor));

@@ -1,0 +1,12 @@
+{
+  mUri=null;
+  if (mSources.isEmpty()) {
+    return;
+  }
+  if (hasMultipleSources()) {
+    setUriFromMultipleSources();
+    return;
+  }
+  final String singleSource=mSources.keySet().iterator().next();
+  setUriFromSingleSource(singleSource);
+}

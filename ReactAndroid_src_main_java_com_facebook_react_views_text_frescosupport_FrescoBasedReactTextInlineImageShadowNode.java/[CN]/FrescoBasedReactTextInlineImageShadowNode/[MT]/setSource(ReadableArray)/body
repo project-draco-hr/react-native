@@ -1,4 +1,5 @@
 {
+  final String source=(sources == null || sources.size() == 0) ? null : sources.getMap(0).getString("uri");
   Uri uri=null;
   if (source != null) {
     try {

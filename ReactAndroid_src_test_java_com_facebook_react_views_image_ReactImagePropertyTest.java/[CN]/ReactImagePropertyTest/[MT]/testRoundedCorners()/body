@@ -1,7 +1,7 @@
 {
   ReactImageManager viewManager=new ReactImageManager();
   ReactImageView view=viewManager.createViewInstance(mThemeContext);
-  viewManager.updateProperties(view,buildStyles("src","http://mysite.com/mypic.jpg"));
+  viewManager.updateProperties(view,buildStyles("src",JavaOnlyArray.of(JavaOnlyMap.of("uri","http://mysite.com/mypic.jpg"))));
   viewManager.updateProperties(view,buildStyles("borderRadius",(double)10));
   viewManager.updateProperties(view,buildStyles("borderRadius",(double)0));
   viewManager.updateProperties(view,buildStyles("borderRadius",null));

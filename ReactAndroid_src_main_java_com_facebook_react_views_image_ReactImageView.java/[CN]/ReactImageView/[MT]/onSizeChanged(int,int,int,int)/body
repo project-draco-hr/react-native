@@ -1,6 +1,7 @@
 {
   super.onSizeChanged(w,h,oldw,oldh);
   if (w > 0 && h > 0) {
+    mIsDirty=mIsDirty || hasMultipleSources();
     maybeUpdateView();
   }
 }

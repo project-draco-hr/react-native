@@ -2,6 +2,13 @@
   if (!mIsDirty) {
     return;
   }
+  if (hasMultipleSources() && (getWidth() <= 0 || getHeight() <= 0)) {
+    return;
+  }
+  computeSourceUri();
+  if (mUri == null) {
+    return;
+  }
   boolean doResize=shouldResize(mUri);
   if (doResize && (getWidth() <= 0 || getHeight() <= 0)) {
     return;

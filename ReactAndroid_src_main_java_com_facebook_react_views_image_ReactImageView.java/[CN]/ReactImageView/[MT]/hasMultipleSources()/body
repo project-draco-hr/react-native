@@ -1,0 +1,3 @@
+{
+  return mSources.size() > 1;
+}
