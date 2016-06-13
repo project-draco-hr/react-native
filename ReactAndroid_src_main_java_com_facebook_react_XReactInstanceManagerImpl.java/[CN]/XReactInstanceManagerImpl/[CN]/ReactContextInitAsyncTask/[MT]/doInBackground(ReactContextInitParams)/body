@@ -1,4 +1,5 @@
 {
+  Process.setThreadPriority(Process.THREAD_PRIORITY_DEFAULT);
   Assertions.assertCondition(params != null && params.length > 0 && params[0] != null);
   try {
     JavaScriptExecutor jsExecutor=params[0].getJsExecutorFactory().create();
