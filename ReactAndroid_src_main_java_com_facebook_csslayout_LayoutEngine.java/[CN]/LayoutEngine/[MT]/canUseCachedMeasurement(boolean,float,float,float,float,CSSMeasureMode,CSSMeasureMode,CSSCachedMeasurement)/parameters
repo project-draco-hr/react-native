@@ -1,3 +1,4 @@
+boolean isTextNode
 float availableWidth
 float availableHeight
 float marginRow

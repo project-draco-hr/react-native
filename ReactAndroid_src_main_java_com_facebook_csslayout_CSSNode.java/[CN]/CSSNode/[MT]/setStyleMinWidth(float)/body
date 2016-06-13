@@ -1,0 +1,6 @@
+{
+  if (!valuesEqual(style.minWidth,minWidth)) {
+    style.minWidth=minWidth;
+    dirty();
+  }
+}

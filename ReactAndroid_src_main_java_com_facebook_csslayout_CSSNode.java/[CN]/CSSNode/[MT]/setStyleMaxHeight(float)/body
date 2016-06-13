@@ -1,0 +1,6 @@
+{
+  if (!valuesEqual(style.maxHeight,maxHeight)) {
+    style.maxHeight=maxHeight;
+    dirty();
+  }
+}

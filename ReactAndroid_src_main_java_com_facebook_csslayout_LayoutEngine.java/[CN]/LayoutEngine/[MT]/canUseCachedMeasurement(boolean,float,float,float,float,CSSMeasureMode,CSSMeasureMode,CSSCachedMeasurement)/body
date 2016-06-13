@@ -1,0 +1,36 @@
+{
+  boolean isHeightSame=(cachedLayout.heightMeasureMode == CSSMeasureMode.UNDEFINED && heightMeasureMode == CSSMeasureMode.UNDEFINED) || (cachedLayout.heightMeasureMode == heightMeasureMode && FloatUtil.floatsEqual(cachedLayout.availableHeight,availableHeight));
+  boolean isWidthSame=(cachedLayout.widthMeasureMode == CSSMeasureMode.UNDEFINED && widthMeasureMode == CSSMeasureMode.UNDEFINED) || (cachedLayout.widthMeasureMode == widthMeasureMode && FloatUtil.floatsEqual(cachedLayout.availableWidth,availableWidth));
+  if (isHeightSame && isWidthSame) {
+    return true;
+  }
+  boolean isHeightValid=(cachedLayout.heightMeasureMode == CSSMeasureMode.UNDEFINED && heightMeasureMode == CSSMeasureMode.AT_MOST && cachedLayout.computedHeight <= (availableHeight - marginColumn)) || (heightMeasureMode == CSSMeasureMode.EXACTLY && FloatUtil.floatsEqual(cachedLayout.computedHeight,availableHeight - marginColumn));
+  if (isWidthSame && isHeightValid) {
+    return true;
+  }
+  boolean isWidthValid=(cachedLayout.widthMeasureMode == CSSMeasureMode.UNDEFINED && widthMeasureMode == CSSMeasureMode.AT_MOST && cachedLayout.computedWidth <= (availableWidth - marginRow)) || (widthMeasureMode == CSSMeasureMode.EXACTLY && FloatUtil.floatsEqual(cachedLayout.computedWidth,availableWidth - marginRow));
+  if (isHeightSame && isWidthValid) {
+    return true;
+  }
+  if (isHeightValid && isWidthValid) {
+    return true;
+  }
+  if (isTextNode) {
+    if (isWidthSame) {
+      if (heightMeasureMode == CSSMeasureMode.UNDEFINED) {
+        return true;
+      }
+      if (heightMeasureMode == CSSMeasureMode.AT_MOST && cachedLayout.computedHeight < (availableHeight - marginColumn)) {
+        return true;
+      }
+      cachedLayout.computedHeight=availableHeight - marginColumn;
+      return true;
+    }
+    if (cachedLayout.widthMeasureMode == CSSMeasureMode.UNDEFINED) {
+      if (widthMeasureMode == CSSMeasureMode.UNDEFINED || (widthMeasureMode == CSSMeasureMode.AT_MOST && cachedLayout.computedWidth <= (availableWidth - marginRow))) {
+        return true;
+      }
+    }
+  }
+  return false;
+}

@@ -1,0 +1,6 @@
+{
+  if (!valuesEqual(style.minHeight,minHeight)) {
+    style.minHeight=minHeight;
+    dirty();
+  }
+}

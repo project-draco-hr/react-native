@@ -1,0 +1,6 @@
+{
+  if (!valuesEqual(style.maxWidth,maxWidth)) {
+    style.maxWidth=maxWidth;
+    dirty();
+  }
+}

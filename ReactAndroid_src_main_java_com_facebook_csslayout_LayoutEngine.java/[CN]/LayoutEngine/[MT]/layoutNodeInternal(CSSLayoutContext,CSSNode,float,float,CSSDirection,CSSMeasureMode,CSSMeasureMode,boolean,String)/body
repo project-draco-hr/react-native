@@ -10,12 +10,12 @@
   if (isMeasureDefined(node)) {
     float marginAxisRow=node.style.margin.getWithFallback(leadingSpacing[CSS_FLEX_DIRECTION_ROW],leading[CSS_FLEX_DIRECTION_ROW]) + node.style.margin.getWithFallback(trailingSpacing[CSS_FLEX_DIRECTION_ROW],trailing[CSS_FLEX_DIRECTION_ROW]);
     float marginAxisColumn=node.style.margin.getWithFallback(leadingSpacing[CSS_FLEX_DIRECTION_COLUMN],leading[CSS_FLEX_DIRECTION_COLUMN]) + node.style.margin.getWithFallback(trailingSpacing[CSS_FLEX_DIRECTION_COLUMN],trailing[CSS_FLEX_DIRECTION_COLUMN]);
-    if (canUseCachedMeasurement(availableWidth,availableHeight,marginAxisRow,marginAxisColumn,widthMeasureMode,heightMeasureMode,layout.cachedLayout)) {
+    if (canUseCachedMeasurement(node.isTextNode(),availableWidth,availableHeight,marginAxisRow,marginAxisColumn,widthMeasureMode,heightMeasureMode,layout.cachedLayout)) {
       cachedResults=layout.cachedLayout;
     }
  else {
       for (int i=0; i < layout.nextCachedMeasurementsIndex; i++) {
-        if (canUseCachedMeasurement(availableWidth,availableHeight,marginAxisRow,marginAxisColumn,widthMeasureMode,heightMeasureMode,layout.cachedMeasurements[i])) {
+        if (canUseCachedMeasurement(node.isTextNode(),availableWidth,availableHeight,marginAxisRow,marginAxisColumn,widthMeasureMode,heightMeasureMode,layout.cachedMeasurements[i])) {
           cachedResults=layout.cachedMeasurements[i];
           break;
         }
