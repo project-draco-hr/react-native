@@ -1,0 +1,4 @@
+{
+  SoLoader.loadLibrary(REACT_NATIVE_LIB);
+  SoLoader.loadLibrary(XREACT_NATIVE_LIB);
+}
