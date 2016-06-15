@@ -1,0 +1,4 @@
+{
+  assertEquals(1,mStringRecordingModule.getCalls().size());
+  assertEquals("10,10-100x100",mStringRecordingModule.getCalls().get(0));
+}

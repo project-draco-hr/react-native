@@ -1,0 +1,4 @@
+{
+  mProps=props;
+  mCount++;
+}

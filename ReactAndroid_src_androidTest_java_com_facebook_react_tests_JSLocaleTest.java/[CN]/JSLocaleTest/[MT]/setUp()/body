@@ -1,0 +1,14 @@
+{
+  super.setUp();
+  List<ViewManager> viewManagers=Arrays.<ViewManager>asList(new ReactViewManager());
+  final UIManagerModule mUIManager=new UIManagerModule(getContext(),viewManagers,new UIImplementation(getContext(),viewManagers));
+  UiThreadUtil.runOnUiThread(new Runnable(){
+    @Override public void run(){
+      mUIManager.onHostResume();
+    }
+  }
+);
+  waitForIdleSync();
+  mStringRecordingModule=new StringRecordingModule();
+  mInstance=ReactTestHelper.catalystInstanceBuilder(this).addNativeModule(mStringRecordingModule).addNativeModule(mUIManager).addJSModule(TestJSLocaleModule.class).build();
+}

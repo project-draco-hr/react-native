@@ -1,0 +1,4 @@
+{
+  mStringRecordingModule=new StringRecordingModule();
+  return super.createReactInstanceSpecForTest().addNativeModule(mStringRecordingModule);
+}
