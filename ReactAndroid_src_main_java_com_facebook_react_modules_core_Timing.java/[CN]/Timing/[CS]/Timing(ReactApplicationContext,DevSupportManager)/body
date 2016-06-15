@@ -1,5 +1,6 @@
 {
   super(reactContext);
+  mDevSupportManager=devSupportManager;
   mTimers=new PriorityQueue<Timer>(11,new Comparator<Timer>(){
     @Override public int compare(    Timer lhs,    Timer rhs){
       long diff=lhs.mTargetTime - rhs.mTargetTime;

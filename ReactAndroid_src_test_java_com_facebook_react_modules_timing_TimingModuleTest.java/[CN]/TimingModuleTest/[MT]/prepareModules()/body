@@ -18,7 +18,7 @@
   mCurrentTimeNs=0;
   mPostFrameCallbackHandler=new PostFrameCallbackHandler();
   doAnswer(mPostFrameCallbackHandler).when(mChoreographerMock).postFrameCallback(eq(ReactChoreographer.CallbackType.TIMERS_EVENTS),any(Choreographer.FrameCallback.class));
-  mTiming=new Timing(reactContext);
+  mTiming=new Timing(reactContext,mock(DevSupportManager.class));
   mJSTimersMock=mock(JSTimersExecution.class);
   mExecutorTokenMock=mock(ExecutorToken.class);
   when(reactContext.getJSModule(mExecutorTokenMock,JSTimersExecution.class)).thenReturn(mJSTimersMock);

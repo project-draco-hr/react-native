@@ -2,7 +2,7 @@
   final SimpleSettableFuture<Timing> simpleSettableFuture=new SimpleSettableFuture<Timing>();
   UiThreadUtil.runOnUiThread(new Runnable(){
     @Override public void run(){
-      Timing timing=new Timing(getContext());
+      Timing timing=new Timing(getContext(),mock(DevSupportManager.class));
       simpleSettableFuture.set(timing);
     }
   }

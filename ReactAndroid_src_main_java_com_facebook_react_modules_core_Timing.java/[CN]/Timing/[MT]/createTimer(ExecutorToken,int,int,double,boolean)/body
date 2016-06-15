@@ -1,4 +1,7 @@
 {
+  if (mDevSupportManager.getDevSupportEnabled() && Math.abs(jsSchedulingTime - System.currentTimeMillis()) > 1000) {
+    throw new RuntimeException("System and emulator/device times have drifted. Please correct this by running adb shell \"date `date +%m%d%H%M%Y.%S`\" on your dev machine");
+  }
   long adjustedDuration=(long)Math.max(0,jsSchedulingTime - SystemClock.currentTimeMillis() + duration);
   if (duration == 0 && !repeat) {
     WritableArray timerToCall=Arguments.createArray();
