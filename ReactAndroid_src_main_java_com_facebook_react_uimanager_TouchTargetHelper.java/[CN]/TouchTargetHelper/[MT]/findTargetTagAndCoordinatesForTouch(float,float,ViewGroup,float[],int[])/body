@@ -7,6 +7,9 @@
   if (nativeTargetView != null) {
     View reactTargetView=findClosestReactAncestor(nativeTargetView);
     if (reactTargetView != null) {
+      if (nativeViewTag != null) {
+        nativeViewTag[0]=reactTargetView.getId();
+      }
       targetTag=getTouchTargetForView(reactTargetView,viewCoords[0],viewCoords[1]);
     }
   }
