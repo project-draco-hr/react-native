@@ -1,0 +1,4 @@
+{
+  mPermissionListener=listener;
+  this.requestPermissions(permissions,requestCode);
+}

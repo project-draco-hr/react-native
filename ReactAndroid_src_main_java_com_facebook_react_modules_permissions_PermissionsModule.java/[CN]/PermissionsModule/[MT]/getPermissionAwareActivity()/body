@@ -1,0 +1,10 @@
+{
+  Activity activity=getCurrentActivity();
+  if (activity == null) {
+    throw new IllegalStateException("Tried to use permissions API while not attached to an " + "Activity.");
+  }
+ else   if (!(activity instanceof PermissionAwareActivity)) {
+    throw new IllegalStateException("Tried to use permissions API but the host Activity doesn't" + " implement PermissionAwareActivity.");
+  }
+  return (PermissionAwareActivity)activity;
+}

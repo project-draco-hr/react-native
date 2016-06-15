@@ -1,0 +1,7 @@
+{
+  if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+    successCallback.invoke(permission,false);
+    return;
+  }
+  successCallback.invoke(permission,getPermissionAwareActivity().shouldShowRequestPermissionRationale(permission));
+}

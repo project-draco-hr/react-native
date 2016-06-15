@@ -1,0 +1,5 @@
+{
+  mCallbacks.get(requestCode).invoke(grantResults[0]);
+  mCallbacks.remove(requestCode);
+  return mCallbacks.size() == 0;
+}

@@ -1,0 +1,4 @@
+{
+  super(reactContext);
+  mCallbacks=new SparseArray<Callback>();
+}

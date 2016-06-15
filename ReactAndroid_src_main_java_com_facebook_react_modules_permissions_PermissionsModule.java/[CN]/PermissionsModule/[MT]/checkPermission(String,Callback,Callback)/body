@@ -1,0 +1,8 @@
+{
+  PermissionAwareActivity activity=getPermissionAwareActivity();
+  if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+    successCallback.invoke(permission,activity.checkPermission(permission,Process.myPid(),Process.myUid()) == PackageManager.PERMISSION_GRANTED);
+    return;
+  }
+  successCallback.invoke(permission,activity.checkSelfPermission(permission) == PackageManager.PERMISSION_GRANTED);
+}
