@@ -1,3 +1,5 @@
 {
-  getReactApplicationContext().getJSModule(RCTDeviceEventEmitter.class).emit("url",uri.toString());
+  WritableMap map=Arguments.createMap();
+  map.putString("url",uri.toString());
+  getReactApplicationContext().getJSModule(RCTDeviceEventEmitter.class).emit("url",map);
 }
