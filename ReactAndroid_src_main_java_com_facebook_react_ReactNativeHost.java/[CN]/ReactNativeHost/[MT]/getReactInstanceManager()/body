@@ -1,0 +1,6 @@
+{
+  if (mReactInstanceManager == null) {
+    mReactInstanceManager=createReactInstanceManager();
+  }
+  return mReactInstanceManager;
+}

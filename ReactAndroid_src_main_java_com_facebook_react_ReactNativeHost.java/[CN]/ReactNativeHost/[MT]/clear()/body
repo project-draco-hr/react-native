@@ -1,0 +1,6 @@
+{
+  if (mReactInstanceManager != null) {
+    mReactInstanceManager.destroy();
+    mReactInstanceManager=null;
+  }
+}

@@ -1,7 +1,6 @@
 {
   super.onPause();
-  mLifecycleState=LifecycleState.BEFORE_RESUME;
-  if (mReactInstanceManager != null) {
-    mReactInstanceManager.onHostPause();
+  if (getReactNativeHost().hasInstance()) {
+    getReactNativeHost().getReactInstanceManager().onHostPause();
   }
 }

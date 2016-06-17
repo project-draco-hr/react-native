@@ -1,8 +1,8 @@
 {
   super.onDestroy();
-  mReactRootView.unmountReactApplication();
-  mReactRootView=null;
-  if (mReactInstanceManager != null) {
-    mReactInstanceManager.destroy();
+  if (mReactRootView != null) {
+    mReactRootView.unmountReactApplication();
+    mReactRootView=null;
   }
+  getReactNativeHost().clear();
 }

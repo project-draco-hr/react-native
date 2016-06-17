@@ -1,11 +1,11 @@
 {
-  if (mReactInstanceManager != null && mReactInstanceManager.getDevSupportManager().getDevSupportEnabled()) {
+  if (getReactNativeHost().hasInstance() && getUseDeveloperSupport()) {
     if (keyCode == KeyEvent.KEYCODE_MENU) {
-      mReactInstanceManager.showDevOptionsDialog();
+      getReactNativeHost().getReactInstanceManager().showDevOptionsDialog();
       return true;
     }
     if (mDoubleTapReloadRecognizer.didDoubleTapR(keyCode,getCurrentFocus())) {
-      mReactInstanceManager.getDevSupportManager().handleReloadJS();
+      getReactNativeHost().getReactInstanceManager().getDevSupportManager().handleReloadJS();
     }
   }
   return super.onKeyUp(keyCode,event);

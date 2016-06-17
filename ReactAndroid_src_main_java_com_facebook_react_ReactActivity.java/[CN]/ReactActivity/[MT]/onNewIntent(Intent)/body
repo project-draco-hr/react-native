@@ -1,6 +1,6 @@
 {
-  if (mReactInstanceManager != null) {
-    mReactInstanceManager.onNewIntent(intent);
+  if (getReactNativeHost().hasInstance()) {
+    getReactNativeHost().getReactInstanceManager().onNewIntent(intent);
   }
  else {
     super.onNewIntent(intent);

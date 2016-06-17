@@ -8,9 +8,8 @@
       Toast.makeText(this,REDBOX_PERMISSION_MESSAGE,Toast.LENGTH_LONG).show();
     }
   }
-  mReactInstanceManager=createReactInstanceManager();
   mReactRootView=createRootView();
-  mReactRootView.startReactApplication(mReactInstanceManager,getMainComponentName(),getLaunchOptions());
+  mReactRootView.startReactApplication(getReactNativeHost().getReactInstanceManager(),getMainComponentName(),getLaunchOptions());
   setContentView(mReactRootView);
   mDoubleTapReloadRecognizer=new DoubleTapReloadRecognizer();
 }

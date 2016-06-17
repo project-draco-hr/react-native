@@ -1,6 +1,6 @@
 {
-  if (mReactInstanceManager != null) {
-    mReactInstanceManager.onBackPressed();
+  if (getReactNativeHost().hasInstance()) {
+    getReactNativeHost().getReactInstanceManager().onBackPressed();
   }
  else {
     super.onBackPressed();

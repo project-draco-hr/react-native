@@ -1,3 +1,0 @@
-{
-  return Arrays.<ReactPackage>asList(new MainReactPackage());
-}
