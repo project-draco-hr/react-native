@@ -5,5 +5,5 @@
   mRoundedCornerPostprocessor=new RoundedCornerPostprocessor();
   mCallerContext=callerContext;
   mResourceDrawableIdHelper=resourceDrawableIdHelper;
-  mSources=new HashMap<>();
+  mSources=new LinkedList<>();
 }

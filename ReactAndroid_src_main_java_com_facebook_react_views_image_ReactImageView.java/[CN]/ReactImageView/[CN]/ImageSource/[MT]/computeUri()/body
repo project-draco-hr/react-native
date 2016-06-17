@@ -1,6 +1,6 @@
 {
   try {
-    mUri=Uri.parse(source);
+    mUri=Uri.parse(mSource);
     if (mUri.getScheme() == null) {
       mUri=null;
     }
@@ -8,7 +8,7 @@
  catch (  Exception e) {
   }
   if (mUri == null) {
-    mUri=mResourceDrawableIdHelper.getResourceDrawableUri(getContext(),source);
+    mUri=mResourceDrawableIdHelper.getResourceDrawableUri(getContext(),mSource);
     mIsLocalImage=true;
   }
  else {

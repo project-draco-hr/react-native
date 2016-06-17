@@ -1,0 +1,3 @@
+{
+  return UriUtil.isLocalContentUri(imageSource.getUri()) || UriUtil.isLocalFileUri(imageSource.getUri());
+}

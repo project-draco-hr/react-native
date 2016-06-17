@@ -5,11 +5,11 @@
   if (hasMultipleSources() && (getWidth() <= 0 || getHeight() <= 0)) {
     return;
   }
-  computeSourceUri();
-  if (mUri == null) {
+  setSourceImage();
+  if (mImageSource == null) {
     return;
   }
-  boolean doResize=shouldResize(mUri);
+  boolean doResize=shouldResize(mImageSource);
   if (doResize && (getWidth() <= 0 || getHeight() <= 0)) {
     return;
   }
@@ -35,12 +35,16 @@
     roundingParams.setRoundingMethod(RoundingParams.RoundingMethod.BITMAP_ONLY);
   }
   hierarchy.setRoundingParams(roundingParams);
-  hierarchy.setFadeDuration(mFadeDurationMs >= 0 ? mFadeDurationMs : mIsLocalImage ? 0 : REMOTE_IMAGE_FADE_DURATION_MS);
+  hierarchy.setFadeDuration(mFadeDurationMs >= 0 ? mFadeDurationMs : mImageSource.isLocalImage() ? 0 : REMOTE_IMAGE_FADE_DURATION_MS);
   Postprocessor postprocessor=usePostprocessorScaling ? mRoundedCornerPostprocessor : null;
   ResizeOptions resizeOptions=doResize ? new ResizeOptions(getWidth(),getHeight()) : null;
-  ImageRequest imageRequest=ImageRequestBuilder.newBuilderWithSource(mUri).setPostprocessor(postprocessor).setResizeOptions(resizeOptions).setAutoRotateEnabled(true).setProgressiveRenderingEnabled(mProgressiveRenderingEnabled).build();
+  ImageRequest imageRequest=ImageRequestBuilder.newBuilderWithSource(mImageSource.getUri()).setPostprocessor(postprocessor).setResizeOptions(resizeOptions).setAutoRotateEnabled(true).setProgressiveRenderingEnabled(mProgressiveRenderingEnabled).build();
   mDraweeControllerBuilder.reset();
   mDraweeControllerBuilder.setAutoPlayAnimations(true).setCallerContext(mCallerContext).setOldController(getController()).setImageRequest(imageRequest);
+  if (mCachedImageSource != null) {
+    ImageRequest cachedImageRequest=ImageRequestBuilder.newBuilderWithSource(mCachedImageSource.getUri()).setPostprocessor(postprocessor).setResizeOptions(resizeOptions).setAutoRotateEnabled(true).setProgressiveRenderingEnabled(mProgressiveRenderingEnabled).build();
+    mDraweeControllerBuilder.setLowResImageRequest(cachedImageRequest);
+  }
   if (mControllerListener != null && mControllerForTesting != null) {
     ForwardingControllerListener combinedListener=new ForwardingControllerListener();
     combinedListener.addListener(mControllerListener);

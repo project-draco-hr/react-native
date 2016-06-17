@@ -1,0 +1,4 @@
+{
+  mSource=source;
+  mSize=width * height;
+}

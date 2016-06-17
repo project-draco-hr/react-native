@@ -1,0 +1,11 @@
+{
+  mImageSource=null;
+  if (mSources.isEmpty()) {
+    return;
+  }
+  if (hasMultipleSources()) {
+    setImageSourceFromMultipleSources();
+    return;
+  }
+  mImageSource=mSources.get(0);
+}
