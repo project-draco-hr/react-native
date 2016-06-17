@@ -1,6 +1,10 @@
 {
   mIsInForeground=true;
   FragmentManagerHelper fragmentManagerHelper=getFragmentManagerHelper();
-  Assertions.assertNotNull(fragmentManagerHelper,"Attached DialogModule to host with pending alert but no FragmentManager " + "(not attached to an Activity).");
-  fragmentManagerHelper.showPendingAlert();
+  if (fragmentManagerHelper != null) {
+    fragmentManagerHelper.showPendingAlert();
+  }
+ else {
+    FLog.w(DialogModule.class,"onHostResume called but no FragmentManager found");
+  }
 }
