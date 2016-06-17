@@ -1,8 +1,13 @@
 {
-  if (mDevSupportManager.getDevSupportEnabled() && Math.abs(jsSchedulingTime - System.currentTimeMillis()) > 1000) {
-    throw new RuntimeException("System and emulator/device times have drifted. Please correct this by running adb shell \"date `date +%m%d%H%M%Y.%S`\" on your dev machine");
+  long deviceTime=SystemClock.currentTimeMillis();
+  long remoteTime=(long)jsSchedulingTime;
+  if (mDevSupportManager.getDevSupportEnabled()) {
+    long driftTime=Math.abs(remoteTime - deviceTime);
+    if (driftTime > 60000) {
+      throw new RuntimeException("Debugger and device times have drifted by " + driftTime + "ms. "+ "Please correct this by running adb shell "+ "\"date `date +%m%d%H%M%Y.%S`\" on your debugger machine.\n"+ "Debugger Time = "+ remoteTime+ "\n"+ "Device Time = "+ deviceTime);
+    }
   }
-  long adjustedDuration=(long)Math.max(0,jsSchedulingTime - SystemClock.currentTimeMillis() + duration);
+  long adjustedDuration=Math.max(0,remoteTime - deviceTime + duration);
   if (duration == 0 && !repeat) {
     WritableArray timerToCall=Arguments.createArray();
     timerToCall.pushInt(callbackID);
