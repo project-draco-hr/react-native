@@ -1,3 +1,8 @@
 {
-  FLog.e(ReactConstants.TAG,stackTraceToString(title,details));
+  if (mDevSupportManager.getDevSupportEnabled()) {
+    mDevSupportManager.showNewJSError(title,details,exceptionId);
+  }
+ else {
+    FLog.e(ReactConstants.TAG,stackTraceToString(title,details));
+  }
 }
