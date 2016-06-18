@@ -8,7 +8,7 @@
       mRedBoxDialog.setExceptionDetails(message,stack);
       mRedBoxDialog.setErrorCookie(errorCookie);
       if (mRedBoxHandler != null) {
-        mRedBoxHandler.handleRedbox(message,stack);
+        mRedBoxHandler.handleRedbox(message,stack,RedBoxHandler.ErrorType.JS);
       }
       mRedBoxDialog.show();
     }

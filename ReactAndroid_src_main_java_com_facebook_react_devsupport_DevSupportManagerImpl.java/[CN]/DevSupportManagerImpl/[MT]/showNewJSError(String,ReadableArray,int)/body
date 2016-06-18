@@ -1,3 +1,3 @@
 {
-  showNewError(message,StackTraceHelper.convertJsStackTrace(details),errorCookie);
+  showNewError(message,StackTraceHelper.convertJsStackTrace(details),errorCookie,ErrorType.JS);
 }

@@ -1,3 +1,3 @@
 {
-  showNewError(message,StackTraceHelper.convertJavaStackTrace(e),JAVA_ERROR_COOKIE);
+  showNewError(message,StackTraceHelper.convertJavaStackTrace(e),JAVA_ERROR_COOKIE,ErrorType.NATIVE);
 }
