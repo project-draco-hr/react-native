@@ -1,0 +1,25 @@
+{
+  double qx=q[0], qy=q[1], qz=q[2], qw=q[3];
+  double qw2=qw * qw;
+  double qx2=qx * qx;
+  double qy2=qy * qy;
+  double qz2=qz * qz;
+  double test=qx * qy + qz * qw;
+  double unit=qw2 + qx2 + qy2+ qz2;
+  double conv=180 / Math.PI;
+  if (test > 0.49999 * unit) {
+    result[0]=0;
+    result[1]=2 * Math.atan2(qx,qw) * conv;
+    result[2]=90;
+    return;
+  }
+  if (test < -0.49999 * unit) {
+    result[0]=0;
+    result[1]=-2 * Math.atan2(qx,qw) * conv;
+    result[2]=-90;
+    return;
+  }
+  result[0]=roundTo3Places(Math.atan2(2 * qx * qw - 2 * qy * qz,1 - 2 * qx2 - 2 * qz2) * conv);
+  result[1]=roundTo3Places(Math.atan2(2 * qy * qw - 2 * qx * qz,1 - 2 * qy2 - 2 * qz2) * conv);
+  result[2]=roundTo3Places(Math.asin(2 * qx * qy + 2 * qz * qw) * conv);
+}

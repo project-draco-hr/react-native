@@ -1,0 +1,21 @@
+{
+  MatrixMathHelper.MatrixDecompositionContext ctx=new MatrixMathHelper.MatrixDecompositionContext();
+  MatrixMathHelper.decomposeMatrix(new double[]{1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1},ctx);
+  assertThat(ctx.rotationDegrees).containsSequence(0d,0d,0d);
+  double[] angles=new double[]{30,45,60,75,90,100,115,120,133,167};
+  for (  double angle : angles) {
+    verifyZRotatedMatrix(angle,0d,0d,angle);
+    verifyZRotatedMatrix(-angle,0d,0d,-angle);
+  }
+  verifyZRotatedMatrix(180d,0d,0d,180d);
+  verifyZRotatedMatrix(222,0d,0d,-138d);
+  verifyZRotatedMatrix(270,0d,0d,-90d);
+  verifyZRotatedMatrix(360,0d,0d,0d);
+  verifyZRotatedMatrix(33.33333333,0d,0d,33.333d);
+  verifyZRotatedMatrix(86.75309,0d,0d,86.753d);
+  verifyZRotatedMatrix(42.00000000001,0d,0d,42d);
+  verifyZRotatedMatrix(42.99999999999,0d,0d,43d);
+  verifyZRotatedMatrix(42.99999999999,0d,0d,43d);
+  verifyZRotatedMatrix(42.49999999999,0d,0d,42.5d);
+  verifyZRotatedMatrix(42.55555555555,0d,0d,42.556d);
+}

@@ -1,0 +1,3 @@
+{
+  return Math.round(n * 1000d) * 0.001;
+}

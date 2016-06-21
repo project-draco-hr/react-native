@@ -1,0 +1,90 @@
+{
+  Assertions.assertCondition(transformMatrix.length == 16);
+  final double[] perspective=ctx.perspective;
+  final double[] quaternion=ctx.quaternion;
+  final double[] scale=ctx.scale;
+  final double[] skew=ctx.skew;
+  final double[] translation=ctx.translation;
+  final double[] rotationDegrees=ctx.rotationDegrees;
+  if (isZero(transformMatrix[15])) {
+    return;
+  }
+  double[][] matrix=new double[4][4];
+  double[] perspectiveMatrix=new double[16];
+  for (int i=0; i < 4; i++) {
+    for (int j=0; j < 4; j++) {
+      double value=transformMatrix[(i * 4) + j] / transformMatrix[15];
+      matrix[i][j]=value;
+      perspectiveMatrix[(i * 4) + j]=j == 3 ? 0 : value;
+    }
+  }
+  perspectiveMatrix[15]=1;
+  if (isZero(determinant(perspectiveMatrix))) {
+    return;
+  }
+  if (!isZero(matrix[0][3]) || !isZero(matrix[1][3]) || !isZero(matrix[2][3])) {
+    double[] rightHandSide={matrix[0][3],matrix[1][3],matrix[2][3],matrix[3][3]};
+    double[] inversePerspectiveMatrix=inverse(perspectiveMatrix);
+    double[] transposedInversePerspectiveMatrix=transpose(inversePerspectiveMatrix);
+    multiplyVectorByMatrix(rightHandSide,transposedInversePerspectiveMatrix,perspective);
+  }
+ else {
+    perspective[0]=perspective[1]=perspective[2]=0d;
+    perspective[3]=1d;
+  }
+  for (int i=0; i < 3; i++) {
+    translation[i]=matrix[3][i];
+  }
+  double[][] row=new double[3][3];
+  for (int i=0; i < 3; i++) {
+    row[i][0]=matrix[i][0];
+    row[i][1]=matrix[i][1];
+    row[i][2]=matrix[i][2];
+  }
+  scale[0]=v3Length(row[0]);
+  row[0]=v3Normalize(row[0],scale[0]);
+  skew[0]=v3Dot(row[0],row[1]);
+  row[1]=v3Combine(row[1],row[0],1.0,-skew[0]);
+  skew[0]=v3Dot(row[0],row[1]);
+  row[1]=v3Combine(row[1],row[0],1.0,-skew[0]);
+  scale[1]=v3Length(row[1]);
+  row[1]=v3Normalize(row[1],scale[1]);
+  skew[0]/=scale[1];
+  skew[1]=v3Dot(row[0],row[2]);
+  row[2]=v3Combine(row[2],row[0],1.0,-skew[1]);
+  skew[2]=v3Dot(row[1],row[2]);
+  row[2]=v3Combine(row[2],row[1],1.0,-skew[2]);
+  scale[2]=v3Length(row[2]);
+  row[2]=v3Normalize(row[2],scale[2]);
+  skew[1]/=scale[2];
+  skew[2]/=scale[2];
+  double[] pdum3=v3Cross(row[1],row[2]);
+  if (v3Dot(row[0],pdum3) < 0) {
+    for (int i=0; i < 3; i++) {
+      scale[i]*=-1;
+      row[i][0]*=-1;
+      row[i][1]*=-1;
+      row[i][2]*=-1;
+    }
+  }
+  quaternion[0]=0.5 * Math.sqrt(Math.max(1 + row[0][0] - row[1][1] - row[2][2],0));
+  quaternion[1]=0.5 * Math.sqrt(Math.max(1 - row[0][0] + row[1][1] - row[2][2],0));
+  quaternion[2]=0.5 * Math.sqrt(Math.max(1 - row[0][0] - row[1][1] + row[2][2],0));
+  quaternion[3]=0.5 * Math.sqrt(Math.max(1 + row[0][0] + row[1][1]+ row[2][2],0));
+  if (row[2][1] > row[1][2]) {
+    quaternion[0]=-quaternion[0];
+  }
+  if (row[0][2] > row[2][0]) {
+    quaternion[1]=-quaternion[1];
+  }
+  if (row[1][0] > row[0][1]) {
+    quaternion[2]=-quaternion[2];
+  }
+  if (quaternion[0] < 0.001 && quaternion[0] >= 0 && quaternion[1] < 0.001 && quaternion[1] >= 0) {
+    rotationDegrees[0]=rotationDegrees[1]=0d;
+    rotationDegrees[2]=roundTo3Places(Math.atan2(row[0][1],row[0][0]) * 180 / Math.PI);
+  }
+ else {
+    quaternionToDegreesXYZ(quaternion,rotationDegrees);
+  }
+}

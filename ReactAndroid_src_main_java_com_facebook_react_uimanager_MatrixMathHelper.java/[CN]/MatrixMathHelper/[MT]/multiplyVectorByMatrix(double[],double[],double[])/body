@@ -1,0 +1,7 @@
+{
+  double vx=v[0], vy=v[1], vz=v[2], vw=v[3];
+  result[0]=vx * m[0] + vy * m[4] + vz * m[8] + vw * m[12];
+  result[1]=vx * m[1] + vy * m[5] + vz * m[9] + vw * m[13];
+  result[2]=vx * m[2] + vy * m[6] + vz * m[10] + vw * m[14];
+  result[3]=vx * m[3] + vy * m[7] + vz * m[11] + vw * m[15];
+}

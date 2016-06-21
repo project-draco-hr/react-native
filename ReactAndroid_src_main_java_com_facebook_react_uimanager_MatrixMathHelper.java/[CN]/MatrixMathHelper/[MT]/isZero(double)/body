@@ -1,0 +1,6 @@
+{
+  if (Double.isNaN(d)) {
+    return false;
+  }
+  return Math.abs(d) < EPSILON;
+}

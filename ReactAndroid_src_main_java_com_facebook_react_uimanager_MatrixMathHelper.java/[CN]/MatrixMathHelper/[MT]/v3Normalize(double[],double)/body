@@ -1,0 +1,4 @@
+{
+  double im=1 / (isZero(norm) ? v3Length(vector) : norm);
+  return new double[]{vector[0] * im,vector[1] * im,vector[2] * im};
+}

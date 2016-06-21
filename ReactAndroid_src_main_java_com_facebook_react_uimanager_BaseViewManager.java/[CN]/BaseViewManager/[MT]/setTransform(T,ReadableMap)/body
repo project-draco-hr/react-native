@@ -1,8 +1,0 @@
-{
-  if (decomposedMatrix == null) {
-    resetTransformMatrix(view);
-  }
- else {
-    setTransformMatrix(view,decomposedMatrix);
-  }
-}

@@ -1,0 +1,3 @@
+{
+  return new double[]{aScale * a[0] + bScale * b[0],aScale * a[1] + bScale * b[1],aScale * a[2] + bScale * b[2]};
+}

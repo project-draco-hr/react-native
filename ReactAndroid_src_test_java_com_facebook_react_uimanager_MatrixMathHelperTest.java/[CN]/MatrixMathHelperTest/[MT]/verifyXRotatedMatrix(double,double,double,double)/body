@@ -1,0 +1,6 @@
+{
+  MatrixMathHelper.MatrixDecompositionContext ctx=new MatrixMathHelper.MatrixDecompositionContext();
+  double[] matrix=createRotateX(degreesToRadians(degrees));
+  MatrixMathHelper.decomposeMatrix(matrix,ctx);
+  assertThat(ctx.rotationDegrees).containsSequence(rotX,rotY,rotZ);
+}
