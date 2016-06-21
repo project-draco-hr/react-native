@@ -1,0 +1,3 @@
+{
+  return new DebugServerException(reason + GENERIC_ERROR_MESSAGE + extra,t);
+}

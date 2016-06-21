@@ -1,7 +1,12 @@
 {
   return new JSBundleLoader(){
     @Override public void loadScript(    CatalystInstanceImpl instance){
-      instance.loadScriptFromFile(cachedFileLocation,sourceURL);
+      try {
+        instance.loadScriptFromFile(cachedFileLocation,sourceURL);
+      }
+ catch (      Exception e) {
+        throw DebugServerException.makeGeneric(e.getMessage(),e);
+      }
     }
     @Override public String getSourceUrl(){
       return sourceURL;
