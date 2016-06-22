@@ -9,8 +9,7 @@
   mJSMainModuleName=jsMainModuleName;
   mPackages=packages;
   mUseDeveloperSupport=useDeveloperSupport;
-  mRedBoxHandler=redBoxHandler;
-  mDevSupportManager=DevSupportManagerFactory.create(applicationContext,mDevInterface,mJSMainModuleName,useDeveloperSupport,mRedBoxHandler);
+  mDevSupportManager=DevSupportManagerFactory.create(applicationContext,mDevInterface,mJSMainModuleName,useDeveloperSupport,redBoxHandler);
   mBridgeIdleDebugListener=bridgeIdleDebugListener;
   mLifecycleState=initialLifecycleState;
   mUIImplementationProvider=uiImplementationProvider;
