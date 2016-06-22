@@ -1,0 +1,3 @@
+{
+  mBlock.execute(mNativeViewHierarchyManager);
+}
