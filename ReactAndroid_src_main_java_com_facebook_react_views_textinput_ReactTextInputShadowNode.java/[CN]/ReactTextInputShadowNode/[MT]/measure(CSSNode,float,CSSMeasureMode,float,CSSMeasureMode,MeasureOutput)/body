@@ -6,7 +6,7 @@
   if (mNumberOfLines != UNSET) {
     editText.setLines(mNumberOfLines);
   }
-  editText.measure(getMeasureSpec(width,widthMode),getMeasureSpec(height,heightMode));
+  editText.measure(MeasureUtil.getMeasureSpec(width,widthMode),MeasureUtil.getMeasureSpec(height,heightMode));
   measureOutput.width=editText.getMeasuredWidth();
   measureOutput.height=editText.getMeasuredHeight();
 }
