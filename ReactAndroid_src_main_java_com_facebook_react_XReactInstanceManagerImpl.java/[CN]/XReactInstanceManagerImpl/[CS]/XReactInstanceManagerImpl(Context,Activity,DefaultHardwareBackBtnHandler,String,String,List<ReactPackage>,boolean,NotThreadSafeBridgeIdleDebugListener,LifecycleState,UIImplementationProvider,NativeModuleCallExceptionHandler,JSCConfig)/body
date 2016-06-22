@@ -1,3 +1,0 @@
-{
-  this(applicationContext,currentActivity,defaultHardwareBackBtnHandler,jsBundleFile,jsMainModuleName,packages,useDeveloperSupport,bridgeIdleDebugListener,initialLifecycleState,uiImplementationProvider,nativeModuleCallExceptionHandler,jscConfig,null);
-}
