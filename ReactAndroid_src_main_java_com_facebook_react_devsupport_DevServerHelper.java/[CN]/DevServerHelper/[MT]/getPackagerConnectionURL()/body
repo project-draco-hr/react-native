@@ -1,0 +1,3 @@
+{
+  return String.format(Locale.US,PACKAGER_CONNECTION_URL_FORMAT,getDebugServerHost());
+}

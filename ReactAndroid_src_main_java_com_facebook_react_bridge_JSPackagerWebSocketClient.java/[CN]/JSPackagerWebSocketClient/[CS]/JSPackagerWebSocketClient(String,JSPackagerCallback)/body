@@ -1,0 +1,5 @@
+{
+  super();
+  mUrl=url;
+  mCallback=callback;
+}
