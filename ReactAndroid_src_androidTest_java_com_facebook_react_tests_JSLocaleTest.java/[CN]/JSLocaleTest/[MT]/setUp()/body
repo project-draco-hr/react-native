@@ -10,5 +10,5 @@
 );
   waitForIdleSync();
   mStringRecordingModule=new StringRecordingModule();
-  mInstance=ReactTestHelper.catalystInstanceBuilder(this).addNativeModule(mStringRecordingModule).addNativeModule(mUIManager).addJSModule(TestJSLocaleModule.class).build();
+  mInstance=ReactTestHelper.catalystInstanceBuilder(this).addNativeModule(mStringRecordingModule).addNativeModule(mUIManager).addNativeModule(new FakeWebSocketModule()).addJSModule(TestJSLocaleModule.class).build();
 }

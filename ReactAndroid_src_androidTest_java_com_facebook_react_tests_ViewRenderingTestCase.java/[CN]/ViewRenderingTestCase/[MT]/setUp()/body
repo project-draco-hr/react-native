@@ -9,7 +9,7 @@
   }
 );
   waitForIdleSync();
-  mCatalystInstance=ReactTestHelper.catalystInstanceBuilder(this).addNativeModule(uiManager).addNativeModule(new AndroidInfoModule()).addJSModule(ViewRenderingTestModule.class).build();
+  mCatalystInstance=ReactTestHelper.catalystInstanceBuilder(this).addNativeModule(uiManager).addNativeModule(new AndroidInfoModule()).addNativeModule(new FakeWebSocketModule()).addJSModule(ViewRenderingTestModule.class).build();
   mRootView=new ReactRootView(getContext());
   mRootTag=uiManager.addMeasuredRootView(mRootView);
 }

@@ -10,5 +10,5 @@
 );
   waitForIdleSync();
   mAssertModule=new AssertModule();
-  mInstance=ReactTestHelper.catalystInstanceBuilder(this).addNativeModule(mAssertModule).addJSModule(TestJavaToJSArgumentsModule.class).addNativeModule(mUIManager).build();
+  mInstance=ReactTestHelper.catalystInstanceBuilder(this).addNativeModule(mAssertModule).addNativeModule(new FakeWebSocketModule()).addJSModule(TestJavaToJSArgumentsModule.class).addNativeModule(mUIManager).build();
 }
