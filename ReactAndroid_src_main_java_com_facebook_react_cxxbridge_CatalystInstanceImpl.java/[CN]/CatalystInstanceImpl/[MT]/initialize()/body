@@ -1,6 +1,7 @@
 {
   UiThreadUtil.assertOnUiThread();
   Assertions.assertCondition(!mInitialized,"This catalyst instance has already been initialized");
+  Assertions.assertCondition(mAcceptCalls,"RunJSBundle hasn't completed.");
   mInitialized=true;
   mJavaRegistry.notifyCatalystInstanceInitialized();
 }
