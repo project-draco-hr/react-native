@@ -1,0 +1,7 @@
+{
+  UiThreadUtil.assertOnUiThread();
+  mCurrentActivity=new WeakReference(activity);
+  for (  ActivityEventListener listener : mActivityEventListeners) {
+    listener.onNewIntent(intent);
+  }
+}

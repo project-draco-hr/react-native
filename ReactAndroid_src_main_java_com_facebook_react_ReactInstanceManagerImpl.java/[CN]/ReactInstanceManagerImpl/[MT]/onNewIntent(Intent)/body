@@ -9,5 +9,6 @@
       DeviceEventManagerModule deviceEventManagerModule=Assertions.assertNotNull(mCurrentReactContext).getNativeModule(DeviceEventManagerModule.class);
       deviceEventManagerModule.emitNewIntentReceived(uri);
     }
+    mCurrentReactContext.onNewIntent(mCurrentActivity,intent);
   }
 }
