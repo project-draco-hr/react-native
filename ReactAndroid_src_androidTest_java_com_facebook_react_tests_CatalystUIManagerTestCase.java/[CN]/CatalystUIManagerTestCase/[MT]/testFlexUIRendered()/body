@@ -1,0 +1,16 @@
+{
+  FrameLayout rootView=createRootView();
+  jsModule.renderFlexTestApplication(rootView.getId());
+  waitForBridgeAndUIIdle();
+  assertEquals(1,rootView.getChildCount());
+  ViewGroup container=getViewByTestId(rootView,"container");
+  assertEquals(inPixelRounded(200),container.getWidth());
+  assertEquals(inPixelRounded(200),container.getHeight());
+  assertEquals(2,container.getChildCount());
+  View child0=container.getChildAt(0);
+  assertEquals(inPixelRounded(100),child0.getWidth());
+  assertEquals(inPixelRounded(200),child0.getHeight());
+  View child1=container.getChildAt(1);
+  assertEquals(inPixelRounded(100),child1.getWidth());
+  assertEquals(inPixelRounded(200),child1.getHeight());
+}

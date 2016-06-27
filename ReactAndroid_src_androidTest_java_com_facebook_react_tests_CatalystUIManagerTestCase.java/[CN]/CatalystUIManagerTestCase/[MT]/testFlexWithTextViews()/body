@@ -1,0 +1,22 @@
+{
+  FrameLayout rootView=createRootView();
+  jsModule.renderFlexWithTextApplication(rootView.getId());
+  waitForBridgeAndUIIdle();
+  assertEquals(1,rootView.getChildCount());
+  ViewGroup container=getViewByTestId(rootView,"container");
+  assertEquals(inPixelRounded(300),container.getHeight());
+  assertEquals(1,container.getChildCount());
+  ViewGroup row=(ViewGroup)container.getChildAt(0);
+  assertEquals(inPixelRounded(300),row.getHeight());
+  assertEquals(2,row.getChildCount());
+  float approximateExpectedTextHeight=inPixelRounded(19);
+  View leftText=row.getChildAt(0);
+  assertTrue(isWithinRange(leftText.getHeight(),approximateExpectedTextHeight - PixelUtil.toPixelFromDIP(1),approximateExpectedTextHeight + PixelUtil.toPixelFromDIP(1)));
+  assertEquals(row.getWidth() / 2 - inPixelRounded(20),leftText.getWidth());
+  assertEquals(inPixelRounded(290),(leftText.getTop() + leftText.getHeight()));
+  View rightText=row.getChildAt(1);
+  assertTrue(isWithinRange(rightText.getHeight(),approximateExpectedTextHeight - PixelUtil.toPixelFromDIP(1),approximateExpectedTextHeight + PixelUtil.toPixelFromDIP(1)));
+  assertEquals(leftText.getWidth(),rightText.getWidth());
+  assertEquals(leftText.getTop(),rightText.getTop());
+  assertEquals(leftText.getWidth() + inPixelRounded(30),rightText.getLeft());
+}

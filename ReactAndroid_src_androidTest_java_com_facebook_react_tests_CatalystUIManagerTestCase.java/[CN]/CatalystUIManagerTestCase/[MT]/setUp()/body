@@ -1,0 +1,13 @@
+{
+  super.setUp();
+  List<ViewManager> viewManagers=Arrays.<ViewManager>asList(new ReactViewManager(),new ReactTextViewManager(),new ReactRawTextManager());
+  uiManager=new UIManagerModule(getContext(),viewManagers,new UIImplementation(getContext(),viewManagers));
+  UiThreadUtil.runOnUiThread(new Runnable(){
+    @Override public void run(){
+      uiManager.onHostResume();
+    }
+  }
+);
+  waitForIdleSync();
+  jsModule=ReactTestHelper.catalystInstanceBuilder(this).addNativeModule(uiManager).addNativeModule(new AndroidInfoModule()).addJSModule(UIManagerTestModule.class).build().getJSModule(UIManagerTestModule.class);
+}

@@ -1,0 +1,12 @@
+{
+  ReactRootView rootView=new ReactRootView(getContext());
+  int rootTag=uiManager.addMeasuredRootView(rootView);
+  jsModule.renderCenteredTextViewTestApplication(rootTag,text);
+  waitForBridgeAndUIIdle();
+  TextView textView=getViewByTestId(rootView,"text");
+  String msg="text `" + text + "` is not centered";
+  assertTrue(msg,textView.getLeft() > 0.1);
+  assertTrue(msg,textView.getTop() > 0.1);
+  assertEquals(msg,(int)Math.ceil((inPixelRounded(200) - textView.getWidth()) * 0.5f),textView.getLeft());
+  assertEquals(msg,(int)Math.ceil((inPixelRounded(100) - textView.getHeight()) * 0.5f),textView.getTop());
+}

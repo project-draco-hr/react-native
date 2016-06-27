@@ -1,0 +1,12 @@
+{
+  FrameLayout rootView=createRootView();
+  jsModule.renderAbsolutePositionBottomRightTestApplication(rootView.getId());
+  waitForBridgeAndUIIdle();
+  assertEquals(1,rootView.getChildCount());
+  ViewGroup containerView=getViewByTestId(rootView,"container");
+  View absoluteView=containerView.getChildAt(0);
+  assertEquals(inPixelRounded(50),absoluteView.getWidth());
+  assertEquals(inPixelRounded(60),absoluteView.getHeight());
+  assertEquals(inPixelRounded(100 - 50 - 10),Math.round(absoluteView.getLeft()));
+  assertEquals(inPixelRounded(100 - 60 - 15),Math.round(absoluteView.getTop()));
+}

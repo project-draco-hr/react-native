@@ -1,0 +1,23 @@
+{
+  FrameLayout rootView=createRootView();
+  jsModule.renderUpdatePositionInListTestApplication(rootView.getId());
+  waitForBridgeAndUIIdle();
+  ViewGroup containerView=getViewByTestId(rootView,"container");
+  View c0=containerView.getChildAt(0);
+  View c1=containerView.getChildAt(1);
+  View c2=containerView.getChildAt(2);
+  assertEquals(inPixelRounded(10),c0.getHeight());
+  assertEquals(inPixelRounded(0),c0.getTop());
+  assertEquals(inPixelRounded(10),c1.getHeight());
+  assertEquals(inPixelRounded(10),c1.getTop());
+  assertEquals(inPixelRounded(10),c2.getHeight());
+  assertEquals(inPixelRounded(20),c2.getTop());
+  jsModule.flushUpdatePositionInList();
+  waitForBridgeAndUIIdle();
+  assertEquals(inPixelRounded(10),c0.getHeight());
+  assertEquals(inPixelRounded(0),c0.getTop());
+  assertEquals(inPixelRounded(50),c1.getHeight());
+  assertEquals(inPixelRounded(10),c1.getTop());
+  assertEquals(inPixelRounded(10),c2.getHeight());
+  assertEquals(inPixelRounded(60),c2.getTop());
+}

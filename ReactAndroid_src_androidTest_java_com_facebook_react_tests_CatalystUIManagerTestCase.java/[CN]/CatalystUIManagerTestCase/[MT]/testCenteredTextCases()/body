@@ -1,0 +1,6 @@
+{
+  String[] cases=new String[]{"test","with whitespace"};
+  for (  String text : cases) {
+    _testCenteredText(text);
+  }
+}

@@ -1,0 +1,8 @@
+{
+  ReactRootView rootView=new ReactRootView(getContext());
+  final DisplayMetrics metrics=getContext().getResources().getDisplayMetrics();
+  rootView.setLayoutParams(new FrameLayout.LayoutParams(metrics.widthPixels,metrics.heightPixels));
+  uiManager.addMeasuredRootView(rootView);
+  waitForIdleSync();
+  return rootView;
+}

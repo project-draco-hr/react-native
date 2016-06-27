@@ -1,0 +1,11 @@
+{
+  FrameLayout rootView=createRootView();
+  jsModule.renderAbsolutePositionTestApplication(rootView.getId());
+  waitForBridgeAndUIIdle();
+  assertEquals(1,rootView.getChildCount());
+  View absoluteView=getViewByTestId(rootView,"absolute");
+  assertEquals(inPixelRounded(50),absoluteView.getWidth());
+  assertEquals(inPixelRounded(60),absoluteView.getHeight());
+  assertEquals(inPixelRounded(10),absoluteView.getLeft());
+  assertEquals(inPixelRounded(15),absoluteView.getTop());
+}
