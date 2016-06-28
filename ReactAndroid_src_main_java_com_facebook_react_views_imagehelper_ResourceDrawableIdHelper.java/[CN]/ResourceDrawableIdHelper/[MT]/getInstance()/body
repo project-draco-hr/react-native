@@ -1,0 +1,6 @@
+{
+  if (sResourceDrawableIdHelper == null) {
+    sResourceDrawableIdHelper=new ResourceDrawableIdHelper();
+  }
+  return sResourceDrawableIdHelper;
+}

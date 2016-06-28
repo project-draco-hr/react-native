@@ -1,5 +1,5 @@
 {
-  Drawable drawable=mResourceDrawableIdHelper.getResourceDrawable(getContext(),name);
+  Drawable drawable=ResourceDrawableIdHelper.getInstance().getResourceDrawable(getContext(),name);
   mLoadingImageDrawable=drawable != null ? (Drawable)new AutoRotateDrawable(drawable,1000) : null;
   mIsDirty=true;
 }
