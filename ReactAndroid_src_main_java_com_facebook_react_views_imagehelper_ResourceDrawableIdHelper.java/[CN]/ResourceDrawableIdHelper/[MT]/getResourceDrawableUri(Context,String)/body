@@ -1,7 +1,4 @@
 {
-  if (name == null || name.isEmpty()) {
-    return null;
-  }
-  int resId=ResourceDrawableIdHelper.getInstance().getResourceDrawableId(context,name);
-  return new Uri.Builder().scheme(ContentResolver.SCHEME_ANDROID_RESOURCE).authority(context.getPackageName()).path(String.valueOf(resId)).build();
+  int resId=getResourceDrawableId(context,name);
+  return resId > 0 ? new Uri.Builder().scheme(LOCAL_RESOURCE_SCHEME).path(String.valueOf(resId)).build() : Uri.EMPTY;
 }
