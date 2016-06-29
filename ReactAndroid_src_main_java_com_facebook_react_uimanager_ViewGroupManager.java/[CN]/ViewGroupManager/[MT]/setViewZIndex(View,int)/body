@@ -1,0 +1,7 @@
+{
+  mZIndexHash.put(view,zIndex);
+  ViewGroup parent=(ViewGroup)view.getParent();
+  if (parent != null) {
+    reorderChildrenByZIndex(parent);
+  }
+}

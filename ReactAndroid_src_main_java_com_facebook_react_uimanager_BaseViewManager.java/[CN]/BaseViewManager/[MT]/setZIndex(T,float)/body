@@ -1,0 +1,4 @@
+{
+  int integerZIndex=Math.round(zIndex);
+  ViewGroupManager.setViewZIndex(view,integerZIndex);
+}

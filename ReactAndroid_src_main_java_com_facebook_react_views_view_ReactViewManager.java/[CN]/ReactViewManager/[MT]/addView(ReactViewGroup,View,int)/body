@@ -6,4 +6,5 @@
  else {
     parent.addView(child,index);
   }
+  reorderChildrenByZIndex(parent);
 }
