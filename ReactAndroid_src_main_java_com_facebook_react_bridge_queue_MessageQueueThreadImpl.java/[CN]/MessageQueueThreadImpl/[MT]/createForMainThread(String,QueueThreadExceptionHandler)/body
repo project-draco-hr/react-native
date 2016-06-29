@@ -2,11 +2,13 @@
   Looper mainLooper=Looper.getMainLooper();
   final MessageQueueThreadImpl mqt=new MessageQueueThreadImpl(name,mainLooper,exceptionHandler);
   if (UiThreadUtil.isOnUiThread()) {
+    Process.setThreadPriority(Process.THREAD_PRIORITY_DISPLAY);
     MessageQueueThreadRegistry.register(mqt);
   }
  else {
     UiThreadUtil.runOnUiThread(new Runnable(){
       @Override public void run(){
+        Process.setThreadPriority(Process.THREAD_PRIORITY_DISPLAY);
         MessageQueueThreadRegistry.register(mqt);
       }
     }
