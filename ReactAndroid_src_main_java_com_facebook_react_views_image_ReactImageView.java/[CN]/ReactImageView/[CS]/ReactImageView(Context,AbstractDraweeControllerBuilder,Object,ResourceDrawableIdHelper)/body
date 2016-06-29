@@ -4,5 +4,6 @@
   mDraweeControllerBuilder=draweeControllerBuilder;
   mRoundedCornerPostprocessor=new RoundedCornerPostprocessor();
   mCallerContext=callerContext;
+  mResourceDrawableIdHelper=resourceDrawableIdHelper;
   mSources=new LinkedList<>();
 }

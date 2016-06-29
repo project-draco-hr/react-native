@@ -1,3 +1,4 @@
 Context context
 AbstractDraweeControllerBuilder draweeControllerBuilder
 Object callerContext
+ResourceDrawableIdHelper resourceDrawableIdHelper

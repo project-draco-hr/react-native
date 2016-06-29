@@ -1,4 +1,4 @@
 {
-  int id=ResourceDrawableIdHelper.getInstance().getResourceDrawableId(view.getContext(),resource);
+  int id=0;
   view.setCompoundDrawablesWithIntrinsicBounds(id,0,0,0);
 }
