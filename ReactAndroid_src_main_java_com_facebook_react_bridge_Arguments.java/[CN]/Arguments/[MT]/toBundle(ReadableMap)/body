@@ -3,9 +3,6 @@
     return null;
   }
   ReadableMapKeySetIterator iterator=readableMap.keySetIterator();
-  if (!iterator.hasNextKey()) {
-    return null;
-  }
   Bundle bundle=new Bundle();
   while (iterator.hasNextKey()) {
     String key=iterator.nextKey();
