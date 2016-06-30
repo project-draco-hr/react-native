@@ -1,4 +1,5 @@
 {
+  mThreadAsserter.assertNow();
   if (mRootTags.get(tag)) {
     throw new IllegalViewOperationException("Trying to remove root node " + tag + " without using removeRootNode!");
   }

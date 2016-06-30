@@ -1,4 +1,5 @@
 {
   mTagsToCSSNodes=new SparseArray<>();
   mRootTags=new SparseBooleanArray();
+  mThreadAsserter=new SingleThreadAsserter();
 }

@@ -1,4 +1,5 @@
 {
+  mThreadAsserter.assertNow();
   if (!mRootTags.get(tag)) {
     throw new IllegalViewOperationException("View with tag " + tag + " is not registered as a root view");
   }

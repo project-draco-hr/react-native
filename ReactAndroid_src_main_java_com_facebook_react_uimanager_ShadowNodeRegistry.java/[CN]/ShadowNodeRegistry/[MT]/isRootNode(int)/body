@@ -1,3 +1,4 @@
 {
+  mThreadAsserter.assertNow();
   return mRootTags.get(tag);
 }

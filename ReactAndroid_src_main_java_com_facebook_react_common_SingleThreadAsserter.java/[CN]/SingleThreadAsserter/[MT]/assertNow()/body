@@ -1,0 +1,7 @@
+{
+  Thread current=Thread.currentThread();
+  if (mThread == null) {
+    mThread=current;
+  }
+  Assertions.assertCondition(mThread == current);
+}
