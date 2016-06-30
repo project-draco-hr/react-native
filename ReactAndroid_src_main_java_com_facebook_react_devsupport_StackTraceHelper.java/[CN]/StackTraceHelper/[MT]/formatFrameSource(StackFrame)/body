@@ -1,0 +1,7 @@
+{
+  String lineInfo="";
+  final int column=frame.getColumn();
+  final String columnString=column <= 0 ? "" : ":" + column;
+  lineInfo+=frame.getFileName() + ":" + frame.getLine()+ columnString;
+  return lineInfo;
+}

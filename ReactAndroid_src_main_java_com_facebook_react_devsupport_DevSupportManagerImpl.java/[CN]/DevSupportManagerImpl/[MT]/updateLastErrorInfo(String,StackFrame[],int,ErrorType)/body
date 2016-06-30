@@ -1,0 +1,6 @@
+{
+  mLastErrorTitle=message;
+  mLastErrorStack=stack;
+  mLastErrorCookie=errorCookie;
+  mLastErrorType=errorType;
+}

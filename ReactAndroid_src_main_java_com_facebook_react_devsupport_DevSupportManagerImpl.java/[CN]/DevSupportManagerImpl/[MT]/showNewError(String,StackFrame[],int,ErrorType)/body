@@ -9,7 +9,7 @@
         return;
       }
       mRedBoxDialog.setExceptionDetails(message,stack);
-      mRedBoxDialog.setErrorCookie(errorCookie);
+      updateLastErrorInfo(message,stack,errorCookie,errorType);
       if (mRedBoxHandler != null && errorType == ErrorType.NATIVE) {
         mRedBoxHandler.handleRedbox(message,stack,RedBoxHandler.ErrorType.NATIVE);
       }

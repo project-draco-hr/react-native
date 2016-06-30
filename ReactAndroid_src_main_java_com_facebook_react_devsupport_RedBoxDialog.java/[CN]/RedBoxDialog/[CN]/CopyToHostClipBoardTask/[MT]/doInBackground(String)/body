@@ -1,0 +1,15 @@
+{
+  try {
+    String sendClipBoardUrl=Uri.parse(mDevSupportManager.getSourceUrl()).buildUpon().path("/copy-to-clipboard").query(null).build().toString();
+    for (    String string : clipBoardString) {
+      OkHttpClient client=new OkHttpClient();
+      RequestBody body=RequestBody.create(null,string);
+      Request request=new Request.Builder().url(sendClipBoardUrl).post(body).build();
+      client.newCall(request).execute();
+    }
+  }
+ catch (  Exception e) {
+    FLog.e(ReactConstants.TAG,"Could not copy to the host clipboard",e);
+  }
+  return null;
+}

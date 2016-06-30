@@ -1,12 +1,12 @@
 {
   UiThreadUtil.runOnUiThread(new Runnable(){
     @Override public void run(){
-      if (mRedBoxDialog == null || !mRedBoxDialog.isShowing() || errorCookie != mRedBoxDialog.getErrorCookie()) {
+      if (mRedBoxDialog == null || !mRedBoxDialog.isShowing() || errorCookie != mLastErrorCookie) {
         return;
       }
       StackFrame[] stack=StackTraceHelper.convertJsStackTrace(details);
       mRedBoxDialog.setExceptionDetails(message,stack);
-      mRedBoxDialog.setErrorCookie(errorCookie);
+      updateLastErrorInfo(message,stack,errorCookie,ErrorType.JS);
       if (mRedBoxHandler != null) {
         mRedBoxHandler.handleRedbox(message,stack,RedBoxHandler.ErrorType.JS);
       }

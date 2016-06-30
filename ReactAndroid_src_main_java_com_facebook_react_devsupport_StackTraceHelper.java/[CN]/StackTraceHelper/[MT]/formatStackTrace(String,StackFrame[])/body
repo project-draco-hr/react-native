@@ -1,0 +1,8 @@
+{
+  StringBuilder stackTrace=new StringBuilder();
+  stackTrace.append(title).append("\n");
+  for (  StackFrame frame : stack) {
+    stackTrace.append(frame.getMethod()).append("\n").append("    ").append(formatFrameSource(frame)).append("\n");
+  }
+  return stackTrace.toString();
+}
