@@ -4,7 +4,9 @@
     return;
   }
   if (hasMultipleSources()) {
-    setImageSourceFromMultipleSources();
+    MultiSourceResult multiSource=MultiSourceHelper.getBestSourceForSize(getWidth(),getHeight(),mSources);
+    mImageSource=multiSource.getBestResult();
+    mCachedImageSource=multiSource.getBestResultInCache();
     return;
   }
   mImageSource=mSources.get(0);

@@ -1,0 +1,4 @@
+{
+  this.bestResult=bestResult;
+  this.bestResultInCache=bestResultInCache;
+}
