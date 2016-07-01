@@ -1,4 +1,7 @@
 {
   mContainsImages=update.containsImages();
+  if (getLayoutParams() == null) {
+    setLayoutParams(EMPTY_LAYOUT_PARAMS);
+  }
   setText(update.getText());
 }
