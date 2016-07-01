@@ -1,4 +1,0 @@
-{
-  mUseNewBridge=true;
-  return this;
-}
