@@ -1,32 +1,3 @@
 {
-  if (sources.isEmpty()) {
-    return new MultiSourceResult(null,null);
-  }
-  if (sources.size() == 1) {
-    return new MultiSourceResult(sources.get(0),null);
-  }
-  if (width <= 0 || height <= 0) {
-    return new MultiSourceResult(null,null);
-  }
-  ImagePipeline imagePipeline=ImagePipelineFactory.getInstance().getImagePipeline();
-  ImageSource best=null;
-  ImageSource bestCached=null;
-  final double viewArea=width * height;
-  double bestPrecision=Double.MAX_VALUE;
-  double bestCachePrecision=Double.MAX_VALUE;
-  for (  ImageSource source : sources) {
-    double precision=Math.abs(1.0 - source.getSize() / viewArea);
-    if (precision < bestPrecision) {
-      bestPrecision=precision;
-      best=source;
-    }
-    if (precision < bestCachePrecision && (imagePipeline.isInBitmapMemoryCache(source.getUri()) || imagePipeline.isInDiskCacheSync(source.getUri()))) {
-      bestCachePrecision=precision;
-      bestCached=source;
-    }
-  }
-  if (bestCached != null && best != null && bestCached.getSource().equals(best.getSource())) {
-    bestCached=null;
-  }
-  return new MultiSourceResult(best,bestCached);
+  return getBestSourceForSize(width,height,sources,1.0d);
 }

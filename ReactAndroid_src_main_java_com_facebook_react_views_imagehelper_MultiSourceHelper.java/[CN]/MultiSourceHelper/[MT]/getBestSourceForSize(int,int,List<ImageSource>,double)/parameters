@@ -1,0 +1,4 @@
+int width
+int height
+List<ImageSource> sources
+double multiplier
