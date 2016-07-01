@@ -1,0 +1,9 @@
+{
+  try {
+    Uri uri=Uri.parse(mSource);
+    return uri.getScheme() == null ? computeLocalUri(context) : uri;
+  }
+ catch (  Exception e) {
+    return computeLocalUri(context);
+  }
+}

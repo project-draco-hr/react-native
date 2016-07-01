@@ -1,6 +1,0 @@
-{
-  if (mUri == null) {
-    computeUri();
-  }
-  return mIsLocalImage;
-}

@@ -1,0 +1,4 @@
+{
+  isResource=true;
+  return ResourceDrawableIdHelper.getInstance().getResourceDrawableUri(context,mSource);
+}

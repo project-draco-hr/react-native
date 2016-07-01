@@ -1,4 +1,5 @@
 {
   mSource=source;
   mSize=width * height;
+  mUri=computeUri(context);
 }
