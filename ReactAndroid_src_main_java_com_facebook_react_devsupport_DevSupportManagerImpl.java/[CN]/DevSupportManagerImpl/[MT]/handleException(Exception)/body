@@ -1,7 +1,12 @@
 {
   if (mIsDevSupportEnabled) {
     FLog.e(ReactConstants.TAG,"Exception in native call from JS",e);
-    showNewJavaError(e.getMessage(),e);
+    if (e instanceof JSException) {
+      showNewError(e.getMessage() + "\n\n" + ((JSException)e).getStack(),new StackFrame[]{},JSEXCEPTION_ERROR_COOKIE,ErrorType.JS);
+    }
+ else {
+      showNewJavaError(e.getMessage(),e);
+    }
   }
  else {
     mDefaultNativeModuleCallExceptionHandler.handleException(e);
