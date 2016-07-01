@@ -8,7 +8,7 @@
  catch (  Exception e) {
   }
   if (mUri == null) {
-    mUri=mResourceDrawableIdHelper.getResourceDrawableUri(getContext(),mSource);
+    mUri=ResourceDrawableIdHelper.getInstance().getResourceDrawableUri(getContext(),mSource);
     mIsLocalImage=true;
   }
  else {
