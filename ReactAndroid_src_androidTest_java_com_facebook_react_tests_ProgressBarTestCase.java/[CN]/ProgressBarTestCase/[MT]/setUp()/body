@@ -9,7 +9,7 @@
   }
 );
   waitForIdleSync();
-  mInstance=ReactTestHelper.catalystInstanceBuilder(this).addNativeModule(mUIManager).addNativeModule(new AndroidInfoModule()).addJSModule(ProgressBarTestModule.class).build();
+  mInstance=ReactTestHelper.catalystInstanceBuilder(this).addNativeModule(mUIManager).addNativeModule(new AndroidInfoModule()).addNativeModule(new FakeWebSocketModule()).addJSModule(ProgressBarTestModule.class).build();
   mRootView=new ReactRootView(getContext());
   DisplayMetrics metrics=getContext().getResources().getDisplayMetrics();
   mRootView.setLayoutParams(new FrameLayout.LayoutParams(metrics.widthPixels,metrics.heightPixels));

@@ -3,6 +3,7 @@
   runTestOnUiThread(new Runnable(){
     @Override public void run(){
       ReactInstanceSpecForTest catalystInstanceSpec=new ReactInstanceSpecForTest();
+      catalystInstanceSpec.addNativeModule(new FakeWebSocketModule());
       catalystInstanceSpec.addNativeModule(mRecordingModule);
       Bundle props=new Bundle();
       props.putString("key1","string");

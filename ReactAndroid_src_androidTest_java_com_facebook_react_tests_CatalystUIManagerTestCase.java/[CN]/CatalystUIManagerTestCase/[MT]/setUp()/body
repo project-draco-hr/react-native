@@ -9,5 +9,5 @@
   }
 );
   waitForIdleSync();
-  jsModule=ReactTestHelper.catalystInstanceBuilder(this).addNativeModule(uiManager).addNativeModule(new AndroidInfoModule()).addJSModule(UIManagerTestModule.class).build().getJSModule(UIManagerTestModule.class);
+  jsModule=ReactTestHelper.catalystInstanceBuilder(this).addNativeModule(uiManager).addNativeModule(new AndroidInfoModule()).addNativeModule(new FakeWebSocketModule()).addJSModule(UIManagerTestModule.class).build().getJSModule(UIManagerTestModule.class);
 }
