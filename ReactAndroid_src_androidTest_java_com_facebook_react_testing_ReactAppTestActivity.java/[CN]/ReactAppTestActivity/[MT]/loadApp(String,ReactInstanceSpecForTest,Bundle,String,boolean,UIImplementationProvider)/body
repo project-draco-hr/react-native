@@ -1,7 +1,7 @@
 {
   final CountDownLatch currentLayoutEvent=mLayoutEvent=new CountDownLatch(1);
   mBridgeIdleSignaler=new ReactBridgeIdleSignaler();
-  ReactInstanceManager.Builder builder=ReactTestHelper.getReactTestFactory().getReactInstanceManagerBuilder().setApplication(getApplication()).setBundleAssetName(bundleName).addPackage(spec.getAlternativeReactPackageForTest() != null ? spec.getAlternativeReactPackageForTest() : new MainReactPackage()).addPackage(new InstanceSpecForTestPackage(spec)).setUseDeveloperSupport(useDevSupport).setBridgeIdleDebugListener(mBridgeIdleSignaler).setInitialLifecycleState(mLifecycleState).setUIImplementationProvider(uiImplementationProvider);
+  ReactInstanceManager.Builder builder=ReactTestHelper.getReactTestFactory().getReactInstanceManagerBuilder().setApplication(getApplication()).setUseOldBridge(true).setBundleAssetName(bundleName).addPackage(spec.getAlternativeReactPackageForTest() != null ? spec.getAlternativeReactPackageForTest() : new MainReactPackage()).addPackage(new InstanceSpecForTestPackage(spec)).setUseDeveloperSupport(useDevSupport).setBridgeIdleDebugListener(mBridgeIdleSignaler).setInitialLifecycleState(mLifecycleState).setUIImplementationProvider(uiImplementationProvider);
   mReactInstanceManager=builder.build();
   mReactInstanceManager.onHostResume(this,this);
   Assertions.assertNotNull(mReactRootView).getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener(){
