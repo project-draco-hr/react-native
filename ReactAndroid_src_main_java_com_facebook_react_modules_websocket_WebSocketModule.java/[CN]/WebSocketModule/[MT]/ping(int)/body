@@ -1,0 +1,13 @@
+{
+  WebSocket client=mWebSocketConnections.get(id);
+  if (client == null) {
+    throw new RuntimeException("Cannot send a message. Unknown WebSocket id " + id);
+  }
+  try {
+    Buffer buffer=new Buffer();
+    client.sendPing(buffer);
+  }
+ catch (  IOException|IllegalStateException e) {
+    notifyWebSocketFailed(id,e.getMessage());
+  }
+}
