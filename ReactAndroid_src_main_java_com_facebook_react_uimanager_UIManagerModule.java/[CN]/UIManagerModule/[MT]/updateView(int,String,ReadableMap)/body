@@ -1,3 +1,6 @@
 {
+  if (DEBUG) {
+    FLog.d(ReactConstants.TAG,"(UIManager.updateView) tag: " + tag + ", class: "+ className+ ", props: "+ props);
+  }
   mUIImplementation.updateView(tag,className,props);
 }

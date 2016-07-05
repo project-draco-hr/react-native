@@ -1,3 +1,4 @@
 {
+  FLog.d(ReactConstants.TAG,"(UIManager.setChildren) tag: " + viewTag + ", children: "+ childrenTags);
   mUIImplementation.setChildren(viewTag,childrenTags);
 }

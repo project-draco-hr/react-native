@@ -1,3 +1,6 @@
 {
+  if (DEBUG) {
+    FLog.d(ReactConstants.TAG,"(UIManager.manageChildren) tag: " + viewTag + ", moveFrom: "+ moveFrom+ ", moveTo: "+ moveTo+ ", addTags: "+ addChildTags+ ", atIndices: "+ addAtIndices+ ", removeFrom: "+ removeFrom);
+  }
   mUIImplementation.manageChildren(viewTag,moveFrom,moveTo,addChildTags,addAtIndices,removeFrom);
 }
