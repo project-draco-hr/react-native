@@ -1,0 +1,13 @@
+{
+  if (mIterator.hasNext()) {
+    Map.Entry entry=mIterator.next();
+    mKey=entry.getKey();
+    mValue=entry.getValue();
+    return true;
+  }
+ else {
+    mKey=null;
+    mValue=null;
+    return false;
+  }
+}

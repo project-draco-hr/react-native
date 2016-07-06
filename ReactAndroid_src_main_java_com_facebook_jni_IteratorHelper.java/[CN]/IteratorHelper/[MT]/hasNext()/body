@@ -1,0 +1,10 @@
+{
+  if (mIterator.hasNext()) {
+    mElement=mIterator.next();
+    return true;
+  }
+ else {
+    mElement=null;
+    return false;
+  }
+}

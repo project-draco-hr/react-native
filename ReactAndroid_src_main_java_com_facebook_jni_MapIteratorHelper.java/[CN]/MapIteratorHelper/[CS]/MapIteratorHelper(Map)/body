@@ -1,0 +1,3 @@
+{
+  mIterator=map.entrySet().iterator();
+}
