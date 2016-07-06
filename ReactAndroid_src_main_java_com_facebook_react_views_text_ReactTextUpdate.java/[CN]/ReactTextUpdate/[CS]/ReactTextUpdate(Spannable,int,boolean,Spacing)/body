@@ -2,5 +2,8 @@
   mText=text;
   mJsEventCounter=jsEventCounter;
   mContainsImages=containsImages;
-  mPadding=padding;
+  mPaddingLeft=padding.get(Spacing.LEFT);
+  mPaddingTop=padding.get(Spacing.TOP);
+  mPaddingRight=padding.get(Spacing.RIGHT);
+  mPaddingBottom=padding.get(Spacing.BOTTOM);
 }
