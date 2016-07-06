@@ -4,4 +4,6 @@
     setLayoutParams(EMPTY_LAYOUT_PARAMS);
   }
   setText(update.getText());
+  Spacing padding=update.getPadding();
+  setPadding((int)Math.ceil(padding.get(Spacing.LEFT)),(int)Math.ceil(padding.get(Spacing.TOP)),(int)Math.ceil(padding.get(Spacing.RIGHT)),(int)Math.ceil(padding.get(Spacing.BOTTOM)));
 }
