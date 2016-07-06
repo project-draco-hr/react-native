@@ -3,7 +3,7 @@
   ReactContextInitParams initParams=new ReactContextInitParams(jsExecutorFactory,jsBundleLoader);
   if (mReactContextInitAsyncTask == null) {
     mReactContextInitAsyncTask=new ReactContextInitAsyncTask();
-    mReactContextInitAsyncTask.execute(initParams);
+    mReactContextInitAsyncTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,initParams);
   }
  else {
     mPendingReactContextInitParams=initParams;
