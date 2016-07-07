@@ -2,4 +2,5 @@
   super();
   mUrl=url;
   mCallback=callback;
+  mHandler=new Handler(Looper.getMainLooper());
 }

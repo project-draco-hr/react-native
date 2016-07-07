@@ -1,4 +1,6 @@
 {
-  abort("Websocket exception",e);
+  if (mWebSocket != null) {
+    abort("Websocket exception",e);
+  }
   reconnect();
 }

@@ -1,8 +1,12 @@
 {
-  new Timer().schedule(new TimerTask(){
+  if (!mSuppressConnectionErrors) {
+    FLog.w(TAG,"Couldn't connect to packager, will silently retry");
+    mSuppressConnectionErrors=true;
+  }
+  mHandler.postDelayed(new Runnable(){
     @Override public void run(){
       connect();
     }
   }
-,2000);
+,RECONNECT_DELAY_MS);
 }
