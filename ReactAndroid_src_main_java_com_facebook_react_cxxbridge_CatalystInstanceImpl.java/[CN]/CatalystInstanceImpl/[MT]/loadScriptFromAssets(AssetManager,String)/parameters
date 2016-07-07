@@ -1,3 +1,2 @@
 AssetManager assetManager
 String assetURL
-boolean useLazyBundle
