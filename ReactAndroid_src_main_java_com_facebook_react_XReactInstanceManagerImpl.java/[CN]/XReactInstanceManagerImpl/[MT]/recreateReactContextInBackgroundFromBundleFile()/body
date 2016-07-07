@@ -1,3 +1,4 @@
 {
-  recreateReactContextInBackground(new JSCJavaScriptExecutor.Factory(mJSCConfig.getConfigMap()),JSBundleLoader.createFileLoader(mApplicationContext,mJSBundleFile));
+  boolean useLazyBundle=mJSCConfig.getConfigMap().hasKey("useLazyBundle") ? mJSCConfig.getConfigMap().getBoolean("useLazyBundle") : false;
+  recreateReactContextInBackground(new JSCJavaScriptExecutor.Factory(mJSCConfig.getConfigMap()),JSBundleLoader.createFileLoader(mApplicationContext,mJSBundleFile,useLazyBundle));
 }
