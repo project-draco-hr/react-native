@@ -1,4 +1,4 @@
 {
   super.doUpdateVisitedHistory(webView,url,isReload);
-  dispatchEvent(webView,new TopLoadingStartEvent(webView.getId(),SystemClock.elapsedRealtime(),createWebViewEvent(webView,url)));
+  dispatchEvent(webView,new TopLoadingStartEvent(webView.getId(),SystemClock.nanoTime(),createWebViewEvent(webView,url)));
 }

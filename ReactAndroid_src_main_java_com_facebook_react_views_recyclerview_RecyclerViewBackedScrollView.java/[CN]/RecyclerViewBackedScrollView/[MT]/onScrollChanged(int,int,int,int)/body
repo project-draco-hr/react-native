@@ -1,4 +1,4 @@
 {
   super.onScrollChanged(l,t,oldl,oldt);
-  ((ReactContext)getContext()).getNativeModule(UIManagerModule.class).getEventDispatcher().dispatchEvent(ScrollEvent.obtain(getId(),SystemClock.elapsedRealtime(),ScrollEventType.SCROLL,0,calculateAbsoluteOffset(),getWidth(),((ReactListAdapter)getAdapter()).getTotalChildrenHeight(),getWidth(),getHeight()));
+  ((ReactContext)getContext()).getNativeModule(UIManagerModule.class).getEventDispatcher().dispatchEvent(ScrollEvent.obtain(getId(),SystemClock.nanoTime(),ScrollEventType.SCROLL,0,calculateAbsoluteOffset(),getWidth(),((ReactListAdapter)getAdapter()).getTotalChildrenHeight(),getWidth(),getHeight()));
 }

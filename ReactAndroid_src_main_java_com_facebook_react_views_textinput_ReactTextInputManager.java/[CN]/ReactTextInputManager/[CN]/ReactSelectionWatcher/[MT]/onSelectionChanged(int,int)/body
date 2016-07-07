@@ -1,6 +1,6 @@
 {
   if (mPreviousSelectionStart != start || mPreviousSelectionEnd != end) {
-    mEventDispatcher.dispatchEvent(new ReactTextInputSelectionEvent(mReactEditText.getId(),SystemClock.elapsedRealtime(),start,end));
+    mEventDispatcher.dispatchEvent(new ReactTextInputSelectionEvent(mReactEditText.getId(),SystemClock.nanoTime(),start,end));
     mPreviousSelectionStart=start;
     mPreviousSelectionEnd=end;
   }

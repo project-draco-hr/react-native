@@ -14,6 +14,6 @@
     contentWidth=mEditText.getCompoundPaddingLeft() + mEditText.getLayout().getWidth() + mEditText.getCompoundPaddingRight();
     contentHeight=mEditText.getCompoundPaddingTop() + mEditText.getLayout().getHeight() + mEditText.getCompoundPaddingTop();
   }
-  mEventDispatcher.dispatchEvent(new ReactTextChangedEvent(mEditText.getId(),SystemClock.elapsedRealtime(),s.toString(),(int)PixelUtil.toDIPFromPixel(contentWidth),(int)PixelUtil.toDIPFromPixel(contentHeight),mEditText.incrementAndGetEventCounter()));
-  mEventDispatcher.dispatchEvent(new ReactTextInputEvent(mEditText.getId(),SystemClock.elapsedRealtime(),newText,oldText,start,start + before));
+  mEventDispatcher.dispatchEvent(new ReactTextChangedEvent(mEditText.getId(),SystemClock.nanoTime(),s.toString(),(int)PixelUtil.toDIPFromPixel(contentWidth),(int)PixelUtil.toDIPFromPixel(contentHeight),mEditText.incrementAndGetEventCounter()));
+  mEventDispatcher.dispatchEvent(new ReactTextInputEvent(mEditText.getId(),SystemClock.nanoTime(),newText,oldText,start,start + before));
 }

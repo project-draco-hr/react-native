@@ -2,13 +2,13 @@
   final EventDispatcher mEventDispatcher=reactContext.getNativeModule(UIManagerModule.class).getEventDispatcher();
   view.setNavigationOnClickListener(new View.OnClickListener(){
     @Override public void onClick(    View v){
-      mEventDispatcher.dispatchEvent(new ToolbarClickEvent(view.getId(),SystemClock.elapsedRealtime(),-1));
+      mEventDispatcher.dispatchEvent(new ToolbarClickEvent(view.getId(),SystemClock.nanoTime(),-1));
     }
   }
 );
   view.setOnMenuItemClickListener(new ReactToolbar.OnMenuItemClickListener(){
     @Override public boolean onMenuItemClick(    MenuItem menuItem){
-      mEventDispatcher.dispatchEvent(new ToolbarClickEvent(view.getId(),SystemClock.elapsedRealtime(),menuItem.getOrder()));
+      mEventDispatcher.dispatchEvent(new ToolbarClickEvent(view.getId(),SystemClock.nanoTime(),menuItem.getOrder()));
       return true;
     }
   }
