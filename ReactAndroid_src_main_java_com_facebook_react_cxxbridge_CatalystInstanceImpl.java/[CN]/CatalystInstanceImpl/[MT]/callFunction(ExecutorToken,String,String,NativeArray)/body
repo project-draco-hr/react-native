@@ -6,5 +6,5 @@
   if (!mAcceptCalls) {
     throw new RuntimeException("Attempt to call JS function before JS bundle is loaded.");
   }
-  callJSFunction(executorToken,module,method,arguments,tracingName);
+  callJSFunction(executorToken,module,method,arguments);
 }

@@ -1,6 +1,5 @@
 {
   mModuleInterface=moduleInterface;
-  mMethodsToTracingNames=new HashMap<>();
   if (ReactBuildConfig.DEBUG) {
     Set<String> methodNames=new LinkedHashSet<>();
     for (    Method method : mModuleInterface.getDeclaredMethods()) {

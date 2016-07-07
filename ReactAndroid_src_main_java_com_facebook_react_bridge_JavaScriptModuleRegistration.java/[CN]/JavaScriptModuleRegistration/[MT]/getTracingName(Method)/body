@@ -1,8 +1,0 @@
-{
-  String name=mMethodsToTracingNames.get(method);
-  if (name == null) {
-    name="JSCall__" + getName() + "_"+ method.getName();
-    mMethodsToTracingNames.put(method,name);
-  }
-  return name;
-}
