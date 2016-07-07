@@ -1,0 +1,8 @@
+{
+  if (onContentSizeChange) {
+    view.setContentSizeWatcher(new ReactContentSizeWatcher(view));
+  }
+ else {
+    view.setContentSizeWatcher(null);
+  }
+}

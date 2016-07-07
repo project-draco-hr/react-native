@@ -1,6 +1,6 @@
 {
   if (!mIsSettingTextFromJS && mListeners != null) {
-    for (    android.text.TextWatcher listener : mListeners) {
+    for (    TextWatcher listener : mListeners) {
       listener.afterTextChanged(s);
     }
   }

@@ -1,3 +1,8 @@
 {
-  return false;
+  if (mContentSizeWatcher != null) {
+    return isMultiline();
+  }
+ else {
+    return false;
+  }
 }

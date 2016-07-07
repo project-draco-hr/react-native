@@ -1,0 +1,5 @@
+{
+  mEditText=editText;
+  ReactContext reactContext=(ReactContext)editText.getContext();
+  mEventDispatcher=reactContext.getNativeModule(UIManagerModule.class).getEventDispatcher();
+}

@@ -1,0 +1,4 @@
+int viewId
+long timestampMs
+int contentSizeWidth
+int contentSizeHeight

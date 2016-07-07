@@ -1,0 +1,9 @@
+{
+  WritableMap eventData=Arguments.createMap();
+  WritableMap contentSize=Arguments.createMap();
+  contentSize.putDouble("width",mContentWidth);
+  contentSize.putDouble("height",mContentHeight);
+  eventData.putMap("contentSize",contentSize);
+  eventData.putInt("target",getViewTag());
+  return eventData;
+}

@@ -1,0 +1,3 @@
+{
+  return (getInputType() & InputType.TYPE_TEXT_FLAG_MULTI_LINE) != 0;
+}

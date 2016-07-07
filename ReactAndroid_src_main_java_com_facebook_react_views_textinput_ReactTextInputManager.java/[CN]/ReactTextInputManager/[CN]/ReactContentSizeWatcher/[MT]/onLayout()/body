@@ -1,0 +1,13 @@
+{
+  int contentWidth=mEditText.getWidth();
+  int contentHeight=mEditText.getHeight();
+  if (mEditText.getLayout() != null) {
+    contentWidth=mEditText.getCompoundPaddingLeft() + mEditText.getLayout().getWidth() + mEditText.getCompoundPaddingRight();
+    contentHeight=mEditText.getCompoundPaddingTop() + mEditText.getLayout().getHeight() + mEditText.getCompoundPaddingTop();
+  }
+  if (contentWidth != mPreviousContentWidth || contentHeight != mPreviousContentHeight) {
+    mPreviousContentHeight=contentHeight;
+    mPreviousContentWidth=contentWidth;
+    mEventDispatcher.dispatchEvent(new ReactContentSizeChangedEvent(mEditText.getId(),SystemClock.nanoTime(),(int)PixelUtil.toDIPFromPixel(contentWidth),(int)PixelUtil.toDIPFromPixel(contentHeight)));
+  }
+}
