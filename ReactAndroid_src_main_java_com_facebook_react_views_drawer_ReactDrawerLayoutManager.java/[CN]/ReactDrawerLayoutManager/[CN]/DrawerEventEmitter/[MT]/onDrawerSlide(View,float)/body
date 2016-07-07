@@ -1,3 +1,3 @@
 {
-  mEventDispatcher.dispatchEvent(new DrawerSlideEvent(mDrawerLayout.getId(),SystemClock.nanoTime(),v));
+  mEventDispatcher.dispatchEvent(new DrawerSlideEvent(mDrawerLayout.getId(),SystemClock.elapsedRealtime(),v));
 }

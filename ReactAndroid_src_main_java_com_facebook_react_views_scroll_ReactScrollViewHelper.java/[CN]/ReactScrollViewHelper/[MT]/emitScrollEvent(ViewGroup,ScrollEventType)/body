@@ -4,5 +4,5 @@
     return;
   }
   ReactContext reactContext=(ReactContext)scrollView.getContext();
-  reactContext.getNativeModule(UIManagerModule.class).getEventDispatcher().dispatchEvent(ScrollEvent.obtain(scrollView.getId(),SystemClock.nanoTime(),scrollEventType,scrollView.getScrollX(),scrollView.getScrollY(),contentView.getWidth(),contentView.getHeight(),scrollView.getWidth(),scrollView.getHeight()));
+  reactContext.getNativeModule(UIManagerModule.class).getEventDispatcher().dispatchEvent(ScrollEvent.obtain(scrollView.getId(),SystemClock.elapsedRealtime(),scrollEventType,scrollView.getScrollX(),scrollView.getScrollY(),contentView.getWidth(),contentView.getHeight(),scrollView.getWidth(),scrollView.getHeight()));
 }

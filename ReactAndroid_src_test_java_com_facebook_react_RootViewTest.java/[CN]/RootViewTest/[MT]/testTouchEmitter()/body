@@ -11,7 +11,7 @@
   rootView.setId(rootViewId);
   rootView.startReactApplication(instanceManager,"");
   rootView.simulateAttachForTesting();
-  long ts=SystemClock.nanoTime();
+  long ts=SystemClock.elapsedRealtime();
   rootView.onTouchEvent(MotionEvent.obtain(100,ts,MotionEvent.ACTION_DOWN,0,0,0));
   ArgumentCaptor<Event> downEventCaptor=ArgumentCaptor.forClass(Event.class);
   verify(eventDispatcher).dispatchEvent(downEventCaptor.capture());

@@ -14,7 +14,7 @@
     getReactApplicationContext().getJSModule(executorToken,JSTimersExecution.class).callTimers(timerToCall);
     return;
   }
-  long initialTargetTime=SystemClock.nanoTime() / 1000000 + adjustedDuration;
+  long initialTargetTime=SystemClock.elapsedRealtime() + adjustedDuration;
   Timer timer=new Timer(executorToken,callbackID,initialTargetTime,duration,repeat);
 synchronized (mTimerGuard) {
     mTimers.add(timer);

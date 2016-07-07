@@ -6,7 +6,7 @@
     }
     mChildIsHandlingNativeGesture=false;
     mTargetTag=TouchTargetHelper.findTargetTagAndCoordinatesForTouch(ev.getX(),ev.getY(),mRootViewGroup,mTargetCoordinates,null);
-    eventDispatcher.dispatchEvent(TouchEvent.obtain(mTargetTag,SystemClock.nanoTime(),TouchEventType.START,ev,mTargetCoordinates[0],mTargetCoordinates[1],mTouchEventCoalescingKeyHelper));
+    eventDispatcher.dispatchEvent(TouchEvent.obtain(mTargetTag,SystemClock.elapsedRealtime(),TouchEventType.START,ev,mTargetCoordinates[0],mTargetCoordinates[1],mTouchEventCoalescingKeyHelper));
   }
  else   if (mChildIsHandlingNativeGesture) {
     return;
@@ -15,17 +15,17 @@
     FLog.e(ReactConstants.TAG,"Unexpected state: received touch event but didn't get starting ACTION_DOWN for this " + "gesture before");
   }
  else   if (action == MotionEvent.ACTION_UP) {
-    eventDispatcher.dispatchEvent(TouchEvent.obtain(mTargetTag,SystemClock.nanoTime(),TouchEventType.END,ev,mTargetCoordinates[0],mTargetCoordinates[1],mTouchEventCoalescingKeyHelper));
+    eventDispatcher.dispatchEvent(TouchEvent.obtain(mTargetTag,SystemClock.elapsedRealtime(),TouchEventType.END,ev,mTargetCoordinates[0],mTargetCoordinates[1],mTouchEventCoalescingKeyHelper));
     mTargetTag=-1;
   }
  else   if (action == MotionEvent.ACTION_MOVE) {
-    eventDispatcher.dispatchEvent(TouchEvent.obtain(mTargetTag,SystemClock.nanoTime(),TouchEventType.MOVE,ev,mTargetCoordinates[0],mTargetCoordinates[1],mTouchEventCoalescingKeyHelper));
+    eventDispatcher.dispatchEvent(TouchEvent.obtain(mTargetTag,SystemClock.elapsedRealtime(),TouchEventType.MOVE,ev,mTargetCoordinates[0],mTargetCoordinates[1],mTouchEventCoalescingKeyHelper));
   }
  else   if (action == MotionEvent.ACTION_POINTER_DOWN) {
-    eventDispatcher.dispatchEvent(TouchEvent.obtain(mTargetTag,SystemClock.nanoTime(),TouchEventType.START,ev,mTargetCoordinates[0],mTargetCoordinates[1],mTouchEventCoalescingKeyHelper));
+    eventDispatcher.dispatchEvent(TouchEvent.obtain(mTargetTag,SystemClock.elapsedRealtime(),TouchEventType.START,ev,mTargetCoordinates[0],mTargetCoordinates[1],mTouchEventCoalescingKeyHelper));
   }
  else   if (action == MotionEvent.ACTION_POINTER_UP) {
-    eventDispatcher.dispatchEvent(TouchEvent.obtain(mTargetTag,SystemClock.nanoTime(),TouchEventType.END,ev,mTargetCoordinates[0],mTargetCoordinates[1],mTouchEventCoalescingKeyHelper));
+    eventDispatcher.dispatchEvent(TouchEvent.obtain(mTargetTag,SystemClock.elapsedRealtime(),TouchEventType.END,ev,mTargetCoordinates[0],mTargetCoordinates[1],mTouchEventCoalescingKeyHelper));
   }
  else   if (action == MotionEvent.ACTION_CANCEL) {
     if (mTouchEventCoalescingKeyHelper.hasCoalescingKey(ev.getDownTime())) {

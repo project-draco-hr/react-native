@@ -6,8 +6,8 @@
   int contentHeight=reactEditText.getHeight();
   int start=0;
   int count=newText.length();
-  eventDispatcher.dispatchEvent(new ReactTextChangedEvent(reactEditText.getId(),SystemClock.nanoTime(),newText.toString(),(int)PixelUtil.toDIPFromPixel(contentWidth),(int)PixelUtil.toDIPFromPixel(contentHeight),reactEditText.incrementAndGetEventCounter()));
-  eventDispatcher.dispatchEvent(new ReactTextInputEvent(reactEditText.getId(),SystemClock.nanoTime(),newText.toString(),"",start,start + count - 1));
+  eventDispatcher.dispatchEvent(new ReactTextChangedEvent(reactEditText.getId(),SystemClock.elapsedRealtime(),newText.toString(),(int)PixelUtil.toDIPFromPixel(contentWidth),(int)PixelUtil.toDIPFromPixel(contentHeight),reactEditText.incrementAndGetEventCounter()));
+  eventDispatcher.dispatchEvent(new ReactTextInputEvent(reactEditText.getId(),SystemClock.elapsedRealtime(),newText.toString(),"",start,start + count - 1));
   waitForBridgeAndUIIdle();
   ForegroundColorSpan[] spans=reactEditText.getText().getSpans(0,reactEditText.getText().length(),ForegroundColorSpan.class);
   assertEquals(2,spans.length);
@@ -21,8 +21,8 @@
   newText+=moreText;
   count=moreText.length();
   start=previousText.length();
-  eventDispatcher.dispatchEvent(new ReactTextChangedEvent(reactEditText.getId(),SystemClock.nanoTime(),newText.toString(),(int)PixelUtil.toDIPFromPixel(contentWidth),(int)PixelUtil.toDIPFromPixel(contentHeight),reactEditText.incrementAndGetEventCounter()));
-  eventDispatcher.dispatchEvent(new ReactTextInputEvent(reactEditText.getId(),SystemClock.nanoTime(),moreText,"",start,start + count - 1));
+  eventDispatcher.dispatchEvent(new ReactTextChangedEvent(reactEditText.getId(),SystemClock.elapsedRealtime(),newText.toString(),(int)PixelUtil.toDIPFromPixel(contentWidth),(int)PixelUtil.toDIPFromPixel(contentHeight),reactEditText.incrementAndGetEventCounter()));
+  eventDispatcher.dispatchEvent(new ReactTextInputEvent(reactEditText.getId(),SystemClock.elapsedRealtime(),moreText,"",start,start + count - 1));
   waitForBridgeAndUIIdle();
   spans=reactEditText.getText().getSpans(0,reactEditText.getText().length(),ForegroundColorSpan.class);
   assertEquals(2,spans.length);
@@ -36,8 +36,8 @@
   newText+=moreText;
   count=moreText.length();
   start=previousText.length();
-  eventDispatcher.dispatchEvent(new ReactTextChangedEvent(reactEditText.getId(),SystemClock.nanoTime(),newText.toString(),(int)PixelUtil.toDIPFromPixel(contentWidth),(int)PixelUtil.toDIPFromPixel(contentHeight),reactEditText.incrementAndGetEventCounter()));
-  eventDispatcher.dispatchEvent(new ReactTextInputEvent(reactEditText.getId(),SystemClock.nanoTime(),moreText,"",start,start + count - 1));
+  eventDispatcher.dispatchEvent(new ReactTextChangedEvent(reactEditText.getId(),SystemClock.elapsedRealtime(),newText.toString(),(int)PixelUtil.toDIPFromPixel(contentWidth),(int)PixelUtil.toDIPFromPixel(contentHeight),reactEditText.incrementAndGetEventCounter()));
+  eventDispatcher.dispatchEvent(new ReactTextInputEvent(reactEditText.getId(),SystemClock.elapsedRealtime(),moreText,"",start,start + count - 1));
   waitForBridgeAndUIIdle();
   spans=reactEditText.getText().getSpans(0,reactEditText.getText().length(),ForegroundColorSpan.class);
   assertEquals(spans[0].getForegroundColor(),spans[1].getForegroundColor());

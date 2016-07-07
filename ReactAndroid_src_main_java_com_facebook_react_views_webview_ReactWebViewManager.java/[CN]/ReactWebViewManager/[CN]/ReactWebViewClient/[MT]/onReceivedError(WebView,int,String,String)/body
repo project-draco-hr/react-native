@@ -5,5 +5,5 @@
   WritableMap eventData=createWebViewEvent(webView,failingUrl);
   eventData.putDouble("code",errorCode);
   eventData.putString("description",description);
-  dispatchEvent(webView,new TopLoadingErrorEvent(webView.getId(),SystemClock.nanoTime(),eventData));
+  dispatchEvent(webView,new TopLoadingErrorEvent(webView.getId(),SystemClock.elapsedRealtime(),eventData));
 }

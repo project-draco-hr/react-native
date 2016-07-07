@@ -1,5 +1,5 @@
 {
-  super.init(viewTag,SystemClock.nanoTime());
+  super.init(viewTag,SystemClock.elapsedRealtime());
   mX=x;
   mY=y;
   mWidth=width;
