@@ -1,4 +1,0 @@
-{
-  File lockFile=new File(context.getApplicationInfo().dataDir,"libs-dir-lock");
-  return FileLocker.lock(lockFile);
-}

@@ -1,7 +1,0 @@
-{
-  File libsDirectory=getLibsDirectory(context);
-  if (!libsDirectory.isDirectory() && !libsDirectory.mkdirs()) {
-    throw new RuntimeException("could not create libs directory");
-  }
-  return libsDirectory;
-}

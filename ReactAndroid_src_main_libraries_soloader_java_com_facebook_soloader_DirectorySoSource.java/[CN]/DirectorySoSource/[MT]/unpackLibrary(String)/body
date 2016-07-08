@@ -1,7 +1,0 @@
-{
-  File soFile=new File(soDirectory,soName);
-  if (soFile.exists()) {
-    return soFile;
-  }
-  return null;
-}

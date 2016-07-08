@@ -1,3 +1,0 @@
-{
-  return Build.SUPPORTED_32_BIT_ABIS;
-}

@@ -1,9 +1,0 @@
-{
-  for (int i=0; i < sSoSources.length; ++i) {
-    File unpacked=sSoSources[i].unpackLibrary(soName);
-    if (unpacked != null) {
-      return unpacked;
-    }
-  }
-  throw new FileNotFoundException(soName);
-}

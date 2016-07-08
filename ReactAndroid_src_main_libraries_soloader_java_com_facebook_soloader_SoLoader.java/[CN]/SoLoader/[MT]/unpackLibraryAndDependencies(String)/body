@@ -1,9 +1,0 @@
-{
-  assertInitialized();
-  try {
-    return unpackLibraryBySoName(System.mapLibraryName(shortName));
-  }
- catch (  IOException ex) {
-    throw new RuntimeException(ex);
-  }
-}

@@ -1,8 +1,0 @@
-{
-  if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-    return new String[]{Build.CPU_ABI,Build.CPU_ABI2};
-  }
- else {
-    return LollipopSysdeps.getSupportedAbis();
-  }
-}

@@ -1,8 +1,0 @@
-{
-  StringBuilder sb=new StringBuilder();
-  short b;
-  while ((b=getu8(fc,bb,offset++)) != 0) {
-    sb.append((char)b);
-  }
-  return sb.toString();
-}

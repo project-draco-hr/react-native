@@ -1,3 +1,0 @@
-{
-  return new File(context.getApplicationInfo().dataDir,"app_libs");
-}

@@ -1,5 +1,0 @@
-{
-  if (!file.delete()) {
-    throw new IOException("could not delete file " + file);
-  }
-}

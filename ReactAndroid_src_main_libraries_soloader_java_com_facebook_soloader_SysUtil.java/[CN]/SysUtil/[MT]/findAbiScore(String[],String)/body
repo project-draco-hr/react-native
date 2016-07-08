@@ -1,8 +1,0 @@
-{
-  for (int i=0; i < supportedAbis.length; ++i) {
-    if (supportedAbis[i] != null && abi.equals(supportedAbis[i])) {
-      return i;
-    }
-  }
-  return -1;
-}

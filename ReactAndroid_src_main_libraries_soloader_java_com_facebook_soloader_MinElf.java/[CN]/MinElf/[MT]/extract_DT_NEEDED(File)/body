@@ -1,9 +1,0 @@
-{
-  FileInputStream is=new FileInputStream(elfFile);
-  try {
-    return extract_DT_NEEDED(is.getChannel());
-  }
-  finally {
-    is.close();
-  }
-}
