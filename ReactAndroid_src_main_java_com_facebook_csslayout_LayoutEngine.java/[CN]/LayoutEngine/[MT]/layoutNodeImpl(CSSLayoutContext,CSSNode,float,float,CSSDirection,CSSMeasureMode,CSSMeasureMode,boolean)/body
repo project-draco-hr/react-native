@@ -108,31 +108,55 @@
         childHeight=CSSConstants.UNDEFINED;
         childWidthMeasureMode=CSSMeasureMode.UNDEFINED;
         childHeightMeasureMode=CSSMeasureMode.UNDEFINED;
-        if ((child.style.dimensions[dim[CSS_FLEX_DIRECTION_ROW]] >= 0.0)) {
-          childWidth=child.style.dimensions[DIMENSION_WIDTH] + (child.style.margin.getWithFallback(leadingSpacing[CSS_FLEX_DIRECTION_ROW],leading[CSS_FLEX_DIRECTION_ROW]) + child.style.margin.getWithFallback(trailingSpacing[CSS_FLEX_DIRECTION_ROW],trailing[CSS_FLEX_DIRECTION_ROW]));
-          childWidthMeasureMode=CSSMeasureMode.EXACTLY;
+        if (isMainAxisRow) {
+          if (widthMeasureMode == CSSMeasureMode.UNDEFINED || Float.isNaN(availableInnerMainDim)) {
+            childWidth=CSSConstants.UNDEFINED;
+            childWidthMeasureMode=CSSMeasureMode.UNDEFINED;
+          }
+ else {
+            childWidth=availableInnerMainDim;
+            childWidthMeasureMode=CSSMeasureMode.AT_MOST;
+          }
         }
-        if ((child.style.dimensions[dim[CSS_FLEX_DIRECTION_COLUMN]] >= 0.0)) {
-          childHeight=child.style.dimensions[DIMENSION_HEIGHT] + (child.style.margin.getWithFallback(leadingSpacing[CSS_FLEX_DIRECTION_COLUMN],leading[CSS_FLEX_DIRECTION_COLUMN]) + child.style.margin.getWithFallback(trailingSpacing[CSS_FLEX_DIRECTION_COLUMN],trailing[CSS_FLEX_DIRECTION_COLUMN]));
-          childHeightMeasureMode=CSSMeasureMode.EXACTLY;
-        }
-        if (!isMainAxisRow && Float.isNaN(childWidth) && !Float.isNaN(availableInnerWidth)) {
-          childWidth=availableInnerWidth;
-          childWidthMeasureMode=CSSMeasureMode.AT_MOST;
-        }
-        if (node.style.overflow == CSSOverflow.HIDDEN) {
-          if (isMainAxisRow && Float.isNaN(childHeight) && !Float.isNaN(availableInnerHeight)) {
-            childHeight=availableInnerHeight;
+ else         if (node.style.overflow == CSSOverflow.HIDDEN) {
+          if (heightMeasureMode == CSSMeasureMode.UNDEFINED || Float.isNaN(availableInnerMainDim)) {
+            childHeight=CSSConstants.UNDEFINED;
+            childHeightMeasureMode=CSSMeasureMode.UNDEFINED;
+          }
+ else {
+            childHeight=availableInnerMainDim;
             childHeightMeasureMode=CSSMeasureMode.AT_MOST;
           }
         }
-        if (!isMainAxisRow && !Float.isNaN(availableInnerWidth) && !(child.style.dimensions[dim[CSS_FLEX_DIRECTION_ROW]] >= 0.0)&& widthMeasureMode == CSSMeasureMode.EXACTLY && getAlignItem(node,child) == CSSAlign.STRETCH) {
-          childWidth=availableInnerWidth;
-          childWidthMeasureMode=CSSMeasureMode.EXACTLY;
+        if (isMainAxisRow) {
+          if (node.style.overflow == CSSOverflow.HIDDEN) {
+            if (!Float.isNaN(availableInnerCrossDim) && !(child.style.dimensions[dim[CSS_FLEX_DIRECTION_COLUMN]] >= 0.0) && heightMeasureMode == CSSMeasureMode.EXACTLY && getAlignItem(node,child) == CSSAlign.STRETCH) {
+              childHeight=availableInnerCrossDim;
+              childHeightMeasureMode=CSSMeasureMode.EXACTLY;
+            }
+ else             if (!(child.style.dimensions[dim[CSS_FLEX_DIRECTION_COLUMN]] >= 0.0)) {
+              childHeight=availableInnerCrossDim;
+              childHeightMeasureMode=Float.isNaN(childHeight) ? CSSMeasureMode.UNDEFINED : CSSMeasureMode.AT_MOST;
+            }
+ else {
+              childHeight=child.style.dimensions[DIMENSION_HEIGHT] + (child.style.margin.getWithFallback(leadingSpacing[CSS_FLEX_DIRECTION_COLUMN],leading[CSS_FLEX_DIRECTION_COLUMN]) + child.style.margin.getWithFallback(trailingSpacing[CSS_FLEX_DIRECTION_COLUMN],trailing[CSS_FLEX_DIRECTION_COLUMN]));
+              childHeightMeasureMode=CSSMeasureMode.EXACTLY;
+            }
+          }
         }
-        if (isMainAxisRow && !Float.isNaN(availableInnerHeight) && !(child.style.dimensions[dim[CSS_FLEX_DIRECTION_COLUMN]] >= 0.0)&& heightMeasureMode == CSSMeasureMode.EXACTLY && getAlignItem(node,child) == CSSAlign.STRETCH) {
-          childHeight=availableInnerHeight;
-          childHeightMeasureMode=CSSMeasureMode.EXACTLY;
+ else {
+          if (!Float.isNaN(availableInnerCrossDim) && !(child.style.dimensions[dim[CSS_FLEX_DIRECTION_ROW]] >= 0.0) && widthMeasureMode == CSSMeasureMode.EXACTLY && getAlignItem(node,child) == CSSAlign.STRETCH) {
+            childWidth=availableInnerCrossDim;
+            childWidthMeasureMode=CSSMeasureMode.EXACTLY;
+          }
+ else           if (!(child.style.dimensions[dim[CSS_FLEX_DIRECTION_ROW]] >= 0.0)) {
+            childWidth=availableInnerCrossDim;
+            childWidthMeasureMode=Float.isNaN(childWidth) ? CSSMeasureMode.UNDEFINED : CSSMeasureMode.AT_MOST;
+          }
+ else {
+            childWidth=child.style.dimensions[DIMENSION_WIDTH] + (child.style.margin.getWithFallback(leadingSpacing[CSS_FLEX_DIRECTION_ROW],leading[CSS_FLEX_DIRECTION_ROW]) + child.style.margin.getWithFallback(trailingSpacing[CSS_FLEX_DIRECTION_ROW],trailing[CSS_FLEX_DIRECTION_ROW]));
+            childWidthMeasureMode=CSSMeasureMode.EXACTLY;
+          }
         }
         layoutNodeInternal(layoutContext,child,childWidth,childHeight,direction,childWidthMeasureMode,childHeightMeasureMode,false,"measure");
         child.layout.flexBasis=Math.max(isMainAxisRow ? child.layout.measuredDimensions[DIMENSION_WIDTH] : child.layout.measuredDimensions[DIMENSION_HEIGHT],((child.style.padding.getWithFallback(leadingSpacing[mainAxis],leading[mainAxis]) + child.style.border.getWithFallback(leadingSpacing[mainAxis],leading[mainAxis])) + (child.style.padding.getWithFallback(trailingSpacing[mainAxis],trailing[mainAxis]) + child.style.border.getWithFallback(trailingSpacing[mainAxis],trailing[mainAxis]))));
