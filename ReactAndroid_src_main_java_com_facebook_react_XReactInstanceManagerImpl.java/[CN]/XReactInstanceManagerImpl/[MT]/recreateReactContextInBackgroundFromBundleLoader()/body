@@ -1,0 +1,3 @@
+{
+  recreateReactContextInBackground(new JSCJavaScriptExecutor.Factory(mJSCConfig.getConfigMap()),mBundleLoader);
+}

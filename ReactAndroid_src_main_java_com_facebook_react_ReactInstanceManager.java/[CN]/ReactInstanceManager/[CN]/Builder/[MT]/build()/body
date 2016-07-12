@@ -1,13 +1,15 @@
 {
-  Assertions.assertCondition(mUseDeveloperSupport || mJSBundleFile != null,"JS Bundle File has to be provided when dev support is disabled");
-  Assertions.assertCondition(mJSMainModuleName != null || mJSBundleFile != null,"Either MainModuleName or JS Bundle File needs to be provided");
+  Assertions.assertNotNull(mApplication,"Application property has not been set with this builder");
+  Assertions.assertCondition(mJSBundleLoader == null || !mUseOldBridge,"JSBundleLoader can't be used with the old bridge");
+  Assertions.assertCondition(mUseDeveloperSupport || mJSBundleFile != null || mJSBundleLoader != null,"JS Bundle File has to be provided when dev support is disabled");
+  Assertions.assertCondition(mJSMainModuleName != null || mJSBundleFile != null || mJSBundleLoader != null,"Either MainModuleName or JS Bundle File needs to be provided");
   if (mUIImplementationProvider == null) {
     mUIImplementationProvider=new UIImplementationProvider();
   }
   if (mUseOldBridge) {
-    return new ReactInstanceManagerImpl(Assertions.assertNotNull(mApplication,"Application property has not been set with this builder"),mCurrentActivity,mDefaultHardwareBackBtnHandler,mJSBundleFile,mJSMainModuleName,mPackages,mUseDeveloperSupport,mBridgeIdleDebugListener,Assertions.assertNotNull(mInitialLifecycleState,"Initial lifecycle state was not set"),mUIImplementationProvider,mNativeModuleCallExceptionHandler,mJSCConfig,mRedBoxHandler);
+    return new ReactInstanceManagerImpl(mApplication,mCurrentActivity,mDefaultHardwareBackBtnHandler,mJSBundleFile,mJSMainModuleName,mPackages,mUseDeveloperSupport,mBridgeIdleDebugListener,Assertions.assertNotNull(mInitialLifecycleState,"Initial lifecycle state was not set"),mUIImplementationProvider,mNativeModuleCallExceptionHandler,mJSCConfig,mRedBoxHandler);
   }
  else {
-    return new XReactInstanceManagerImpl(Assertions.assertNotNull(mApplication,"Application property has not been set with this builder"),mCurrentActivity,mDefaultHardwareBackBtnHandler,mJSBundleFile,mJSMainModuleName,mPackages,mUseDeveloperSupport,mBridgeIdleDebugListener,Assertions.assertNotNull(mInitialLifecycleState,"Initial lifecycle state was not set"),mUIImplementationProvider,mNativeModuleCallExceptionHandler,mJSCConfig,mRedBoxHandler);
+    return new XReactInstanceManagerImpl(mApplication,mCurrentActivity,mDefaultHardwareBackBtnHandler,(mJSBundleLoader == null && mJSBundleFile != null) ? JSBundleLoader.createFileLoader(mApplication,mJSBundleFile) : mJSBundleLoader,mJSMainModuleName,mPackages,mUseDeveloperSupport,mBridgeIdleDebugListener,Assertions.assertNotNull(mInitialLifecycleState,"Initial lifecycle state was not set"),mUIImplementationProvider,mNativeModuleCallExceptionHandler,mJSCConfig,mRedBoxHandler);
   }
 }

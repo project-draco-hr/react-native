@@ -5,7 +5,7 @@
     if (mDevSupportManager.hasUpToDateJSBundleInCache() && !devSettings.isRemoteJSDebugEnabled()) {
       onJSBundleLoadedFromServer();
     }
- else     if (mJSBundleFile == null) {
+ else     if (mBundleLoader == null) {
       mDevSupportManager.handleReloadJS();
     }
  else {
@@ -18,7 +18,7 @@
               }
  else {
                 devSettings.setRemoteJSDebugEnabled(false);
-                recreateReactContextInBackgroundFromBundleFile();
+                recreateReactContextInBackgroundFromBundleLoader();
               }
             }
           }
@@ -29,5 +29,5 @@
     }
     return;
   }
-  recreateReactContextInBackgroundFromBundleFile();
+  recreateReactContextInBackgroundFromBundleLoader();
 }

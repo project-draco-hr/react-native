@@ -1,7 +1,7 @@
 Context applicationContext
 Activity currentActivity
 DefaultHardwareBackBtnHandler defaultHardwareBackBtnHandler
-String jsBundleFile
+JSBundleLoader bundleLoader
 String jsMainModuleName
 List<ReactPackage> packages
 boolean useDeveloperSupport

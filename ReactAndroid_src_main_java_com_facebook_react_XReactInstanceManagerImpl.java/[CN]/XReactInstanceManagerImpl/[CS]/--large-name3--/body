@@ -5,7 +5,7 @@
   mApplicationContext=applicationContext;
   mCurrentActivity=currentActivity;
   mDefaultBackButtonImpl=defaultHardwareBackBtnHandler;
-  mJSBundleFile=jsBundleFile;
+  mBundleLoader=bundleLoader;
   mJSMainModuleName=jsMainModuleName;
   mPackages=packages;
   mUseDeveloperSupport=useDeveloperSupport;
