@@ -1,0 +1,6 @@
+{
+  mockStatic(UnpackingJSBundleLoader.class);
+  mUnpacker.unpack(mContext,mIOBuffer);
+  verifyStatic(times(1));
+  UnpackingJSBundleLoader.fsync(mDestinationPath);
+}

@@ -1,0 +1,5 @@
+{
+  ByteArrayOutputStream baos=new ByteArrayOutputStream();
+  copyBytes(baos,is,ioBuffer,maxSize);
+  return baos.toByteArray();
+}

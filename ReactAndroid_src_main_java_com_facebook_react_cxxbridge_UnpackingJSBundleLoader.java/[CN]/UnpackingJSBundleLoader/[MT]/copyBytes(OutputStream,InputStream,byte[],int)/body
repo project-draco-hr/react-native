@@ -1,0 +1,12 @@
+{
+  int totalSize=0;
+  while (totalSize < maxSize) {
+    int rc=is.read(ioBuffer,0,Math.min(maxSize - totalSize,ioBuffer.length));
+    if (rc == -1) {
+      break;
+    }
+    os.write(ioBuffer,0,rc);
+    totalSize+=rc;
+  }
+  return totalSize;
+}

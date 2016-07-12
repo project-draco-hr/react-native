@@ -1,0 +1,4 @@
+{
+  prepare();
+  instance.loadScriptFromFile(new File(mDirectoryPath,"bundle.js").getPath(),mSourceURL);
+}

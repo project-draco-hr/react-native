@@ -1,0 +1,7 @@
+{
+  try (FileOutputStream fos=new FileOutputStream(mDestinationPath)){
+    fos.write(ASSET_DATA,0,ASSET_DATA.length - 1);
+    fos.write((byte)(ASSET_DATA[ASSET_DATA.length - 1] + 1));
+  }
+   assertTrue(mUnpacker.shouldReconstructDir(mContext,mIOBuffer));
+}

@@ -1,0 +1,8 @@
+{
+  AssetManager am=context.getAssets();
+  try (InputStream is=am.open(mNameInApk,AssetManager.ACCESS_STREAMING)){
+    try (FileOutputStream fileOutputStream=new FileOutputStream(Assertions.assertNotNull(mDestinationFilePath))){
+      copyBytes(fileOutputStream,is,ioBuffer,Integer.MAX_VALUE);
+    }
+   }
+ }

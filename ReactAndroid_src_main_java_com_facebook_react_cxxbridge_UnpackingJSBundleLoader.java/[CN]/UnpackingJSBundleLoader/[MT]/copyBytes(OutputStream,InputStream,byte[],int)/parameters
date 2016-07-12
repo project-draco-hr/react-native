@@ -1,0 +1,4 @@
+OutputStream os
+InputStream is
+byte[] ioBuffer
+int maxSize

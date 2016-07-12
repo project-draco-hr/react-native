@@ -1,0 +1,4 @@
+{
+  mBuilder.build().prepare();
+  assertTrue(new File(mDestinationPath,UnpackingJSBundleLoader.DOT_UNPACKED_FILE).exists());
+}

@@ -1,0 +1,4 @@
+{
+  mBuilder.build().prepare();
+  assertTrue(new File(mFilesPath,UnpackingJSBundleLoader.LOCK_FILE).exists());
+}

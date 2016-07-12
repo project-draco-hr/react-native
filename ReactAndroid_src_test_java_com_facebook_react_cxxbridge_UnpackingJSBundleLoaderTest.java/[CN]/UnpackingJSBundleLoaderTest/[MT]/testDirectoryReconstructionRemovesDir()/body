@@ -1,0 +1,9 @@
+{
+  mBuilder.build().prepare();
+  final File aFile=new File(mDestinationPath,"a_file");
+  aFile.createNewFile();
+  when(mMockUnpackers[0].shouldReconstructDir(same(mContext),any(byte[].class))).thenReturn(true);
+  addUnpackers();
+  mBuilder.build().prepare();
+  assertFalse(aFile.exists());
+}

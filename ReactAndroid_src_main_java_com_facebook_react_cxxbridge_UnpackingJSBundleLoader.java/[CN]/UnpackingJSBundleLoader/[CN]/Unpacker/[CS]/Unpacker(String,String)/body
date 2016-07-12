@@ -1,0 +1,4 @@
+{
+  mNameInApk=nameInApk;
+  mFileName=fileName;
+}

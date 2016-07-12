@@ -1,0 +1,12 @@
+{
+  mDestinationPath=folder.newFolder("destination");
+  mFilesPath=folder.newFolder("files");
+  mContext=mock(Context.class);
+  when(mContext.getFilesDir()).thenReturn(mFilesPath);
+  mCatalystInstanceImpl=mock(CatalystInstanceImpl.class);
+  mBuilder=UnpackingJSBundleLoader.newBuilder().setDestinationPath(mDestinationPath).setSourceURL(URL).setContext(mContext);
+  mMockUnpackers=new UnpackingJSBundleLoader.Unpacker[MOCK_UNPACKERS_NUM];
+  for (int i=0; i < mMockUnpackers.length; ++i) {
+    mMockUnpackers[i]=mock(UnpackingJSBundleLoader.Unpacker.class);
+  }
+}

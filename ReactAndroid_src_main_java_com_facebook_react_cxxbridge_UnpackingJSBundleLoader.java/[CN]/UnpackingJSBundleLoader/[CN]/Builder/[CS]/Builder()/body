@@ -1,0 +1,6 @@
+{
+  this.unpackers=new ArrayList<Unpacker>();
+  context=null;
+  destinationPath=null;
+  sourceURL=null;
+}

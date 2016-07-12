@@ -1,0 +1,15 @@
+{
+  if (!Assertions.assertNotNull(mDestinationFilePath).exists()) {
+    return true;
+  }
+  AssetManager am=context.getAssets();
+  final byte[] assetContent;
+  try (InputStream assetStream=am.open(mNameInApk,AssetManager.ACCESS_STREAMING)){
+    assetContent=readBytes(assetStream,ioBuffer,Integer.MAX_VALUE);
+  }
+   final byte[] fileContent;
+  try (InputStream fileStream=new FileInputStream(Assertions.assertNotNull(mDestinationFilePath))){
+    fileContent=readBytes(fileStream,ioBuffer,assetContent.length + 1);
+  }
+   return !Arrays.equals(assetContent,fileContent);
+}

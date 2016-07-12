@@ -1,0 +1,3 @@
+{
+  return UnpackingJSBundleLoader.newBuilder().setContext(context).setSourceURL(sourceURL).setDestinationPath(new File(context.getFilesDir(),"optimized-bundle")).checkAndUnpackFile(bundleName + ".meta","bundle.meta").unpackFile(bundleName,"bundle.js").build();
+}

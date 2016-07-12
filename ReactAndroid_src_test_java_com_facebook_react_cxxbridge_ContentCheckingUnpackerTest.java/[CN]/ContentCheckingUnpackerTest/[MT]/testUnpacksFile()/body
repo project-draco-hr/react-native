@@ -1,0 +1,8 @@
+{
+  mUnpacker.unpack(mContext,mIOBuffer);
+  assertTrue(mDestinationPath.exists());
+  try (InputStream is=new FileInputStream(mDestinationPath)){
+    byte[] storedData=UnpackingJSBundleLoader.readBytes(is,mIOBuffer,Integer.MAX_VALUE);
+    assertArrayEquals(ASSET_DATA,storedData);
+  }
+ }

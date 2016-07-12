@@ -1,0 +1,4 @@
+{
+  mDestinationPath.createNewFile();
+  assertFalse(mUnpacker.shouldReconstructDir(mContext,mIOBuffer));
+}

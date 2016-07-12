@@ -1,0 +1,9 @@
+{
+  doThrow(new IOException("An expected IOException")).when(mMockUnpackers[0]).unpack(same(mContext),any(byte[].class));
+  try {
+    mBuilder.addUnpacker(mMockUnpackers[0]).build().prepare();
+  }
+  finally {
+    assertFalse(mDestinationPath.exists());
+  }
+}

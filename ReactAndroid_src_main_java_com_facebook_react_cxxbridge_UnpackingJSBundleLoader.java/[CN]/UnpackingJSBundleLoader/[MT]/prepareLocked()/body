@@ -1,0 +1,30 @@
+{
+  final File dotFinishedFilePath=new File(mDirectoryPath,DOT_UNPACKED_FILE);
+  boolean shouldReconstruct=!mDirectoryPath.exists() || !dotFinishedFilePath.exists();
+  byte[] buffer=new byte[IO_BUFFER_SIZE];
+  for (int i=0; i < mUnpackers.length && !shouldReconstruct; ++i) {
+    shouldReconstruct=mUnpackers[i].shouldReconstructDir(mContext,buffer);
+  }
+  if (!shouldReconstruct) {
+    return;
+  }
+  boolean succeeded=false;
+  try {
+    SysUtil.dumbDeleteRecursive(mDirectoryPath);
+    if (!mDirectoryPath.mkdirs()) {
+      throw new IOException("Coult not create the destination directory");
+    }
+    for (    Unpacker unpacker : mUnpackers) {
+      unpacker.unpack(mContext,buffer);
+    }
+    if (!dotFinishedFilePath.createNewFile()) {
+      throw new IOException("Could not create .unpacked file");
+    }
+    succeeded=true;
+  }
+  finally {
+    if (!succeeded) {
+      SysUtil.dumbDeleteRecursive(mDirectoryPath);
+    }
+  }
+}

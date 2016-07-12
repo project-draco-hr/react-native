@@ -1,0 +1,5 @@
+{
+  super.setUp();
+  mUnpacker=new UnpackingJSBundleLoader.ContentCheckingUnpacker(NAME_IN_APK,DESTINATION_NAME);
+  mUnpacker.setDestinationDirectory(folder.getRoot());
+}

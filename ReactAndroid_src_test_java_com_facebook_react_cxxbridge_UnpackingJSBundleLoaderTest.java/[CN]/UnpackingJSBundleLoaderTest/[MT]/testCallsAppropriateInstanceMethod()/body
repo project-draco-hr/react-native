@@ -1,0 +1,5 @@
+{
+  mBuilder.build().loadScript(mCatalystInstanceImpl);
+  verify(mCatalystInstanceImpl).loadScriptFromFile(eq(new File(mDestinationPath,"bundle.js").getPath()),eq(URL));
+  verifyNoMoreInteractions(mCatalystInstanceImpl);
+}

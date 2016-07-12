@@ -1,0 +1,4 @@
+{
+  this.destinationPath=destinationPath;
+  return this;
+}

@@ -1,0 +1,6 @@
+{
+  try (FileOutputStream fos=new FileOutputStream(mDestinationPath)){
+    fos.write(ASSET_DATA);
+  }
+   assertFalse(mUnpacker.shouldReconstructDir(mContext,mIOBuffer));
+}

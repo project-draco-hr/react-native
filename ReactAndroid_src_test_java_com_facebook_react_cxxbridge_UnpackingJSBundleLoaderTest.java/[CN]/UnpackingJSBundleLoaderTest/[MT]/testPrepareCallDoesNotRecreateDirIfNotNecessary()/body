@@ -1,0 +1,10 @@
+{
+  mBuilder.build().prepare();
+  addUnpackers();
+  mBuilder.build().prepare();
+  for (  UnpackingJSBundleLoader.Unpacker unpacker : mMockUnpackers) {
+    verify(unpacker).setDestinationDirectory(mDestinationPath);
+    verify(unpacker).shouldReconstructDir(same(mContext),any(byte[].class));
+    verifyNoMoreInteractions(unpacker);
+  }
+}

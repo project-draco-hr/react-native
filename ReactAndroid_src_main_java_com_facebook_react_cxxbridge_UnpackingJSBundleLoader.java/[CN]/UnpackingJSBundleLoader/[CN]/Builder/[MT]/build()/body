@@ -1,0 +1,7 @@
+{
+  Assertions.assertNotNull(destinationPath);
+  for (int i=0; i < unpackers.size(); ++i) {
+    unpackers.get(i).setDestinationDirectory(destinationPath);
+  }
+  return new UnpackingJSBundleLoader(this);
+}

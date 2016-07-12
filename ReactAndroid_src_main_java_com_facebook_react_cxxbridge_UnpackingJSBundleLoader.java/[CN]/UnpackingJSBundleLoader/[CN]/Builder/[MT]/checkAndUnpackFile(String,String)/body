@@ -1,0 +1,4 @@
+{
+  unpackers.add(new ContentCheckingUnpacker(nameInApk,destFileName));
+  return this;
+}

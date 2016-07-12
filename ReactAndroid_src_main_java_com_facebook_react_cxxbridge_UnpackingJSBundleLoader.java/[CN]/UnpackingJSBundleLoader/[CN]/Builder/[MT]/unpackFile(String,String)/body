@@ -1,0 +1,4 @@
+{
+  unpackers.add(new ExistenceCheckingUnpacker(nameInApk,destFileName));
+  return this;
+}
