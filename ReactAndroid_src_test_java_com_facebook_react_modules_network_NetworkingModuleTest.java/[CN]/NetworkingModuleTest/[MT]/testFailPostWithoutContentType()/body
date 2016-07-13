@@ -3,10 +3,13 @@
   ReactApplicationContext context=mock(ReactApplicationContext.class);
   when(context.getJSModule(any(ExecutorToken.class),any(Class.class))).thenReturn(emitter);
   OkHttpClient httpClient=mock(OkHttpClient.class);
+  OkHttpClient.Builder clientBuilder=mock(OkHttpClient.Builder.class);
+  when(clientBuilder.build()).thenReturn(httpClient);
+  when(httpClient.newBuilder()).thenReturn(clientBuilder);
   NetworkingModule networkingModule=new NetworkingModule(context,"",httpClient);
   JavaOnlyMap body=new JavaOnlyMap();
   body.putString("string","This is request body");
   mockEvents();
-  networkingModule.sendRequest(mock(ExecutorToken.class),"POST","http://somedomain/bar",0,JavaOnlyArray.of(),body,true,0);
+  networkingModule.sendRequest(mock(ExecutorToken.class),"POST","http://somedomain/bar",0,JavaOnlyArray.of(),body,"text",true,0);
   verifyErrorEmit(emitter,0);
 }

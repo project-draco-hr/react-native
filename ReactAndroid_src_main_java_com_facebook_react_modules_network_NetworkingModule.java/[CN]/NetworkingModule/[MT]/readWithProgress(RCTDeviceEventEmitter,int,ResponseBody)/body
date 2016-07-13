@@ -1,10 +1,19 @@
 {
+  long totalBytesRead=-1;
+  long contentLength=-1;
+  try {
+    ProgressResponseBody progressResponseBody=(ProgressResponseBody)responseBody;
+    totalBytesRead=progressResponseBody.totalBytesRead();
+    contentLength=progressResponseBody.contentLength();
+  }
+ catch (  ClassCastException e) {
+  }
   Reader reader=responseBody.charStream();
   try {
     char[] buffer=new char[MAX_CHUNK_SIZE_BETWEEN_FLUSHES];
     int read;
     while ((read=reader.read(buffer)) != -1) {
-      ResponseUtil.onDataReceived(eventEmitter,requestId,new String(buffer,0,read));
+      ResponseUtil.onIncrementalDataReceived(eventEmitter,requestId,new String(buffer,0,read),totalBytesRead,contentLength);
     }
   }
   finally {

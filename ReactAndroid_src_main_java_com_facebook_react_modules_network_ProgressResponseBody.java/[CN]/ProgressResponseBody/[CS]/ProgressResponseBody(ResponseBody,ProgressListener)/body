@@ -1,0 +1,5 @@
+{
+  this.mResponseBody=responseBody;
+  this.mProgressListener=progressListener;
+  mTotalBytesRead=0L;
+}

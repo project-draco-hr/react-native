@@ -14,10 +14,13 @@
     }
   }
 );
+  OkHttpClient.Builder clientBuilder=mock(OkHttpClient.Builder.class);
+  when(clientBuilder.build()).thenReturn(httpClient);
+  when(httpClient.newBuilder()).thenReturn(clientBuilder);
   NetworkingModule networkingModule=new NetworkingModule(mock(ReactApplicationContext.class),"",httpClient);
   networkingModule.initialize();
   for (int idx=0; idx < requests; idx++) {
-    networkingModule.sendRequest(mock(ExecutorToken.class),"GET","http://somedomain/foo",idx + 1,JavaOnlyArray.of(),null,true,0);
+    networkingModule.sendRequest(mock(ExecutorToken.class),"GET","http://somedomain/foo",idx + 1,JavaOnlyArray.of(),null,"text",true,0);
   }
   verify(httpClient,times(3)).newCall(any(Request.class));
   networkingModule.onCatalystInstanceDestroy();

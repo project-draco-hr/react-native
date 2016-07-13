@@ -2,7 +2,7 @@
   PowerMockito.mockStatic(RequestBodyUtil.class);
   when(RequestBodyUtil.getFileInputStream(any(ReactContext.class),any(String.class))).thenReturn(mock(InputStream.class));
   when(RequestBodyUtil.create(any(MediaType.class),any(InputStream.class))).thenReturn(mock(RequestBody.class));
-  when(RequestBodyUtil.createProgressRequest(any(RequestBody.class),any(ProgressRequestListener.class))).thenCallRealMethod();
+  when(RequestBodyUtil.createProgressRequest(any(RequestBody.class),any(ProgressListener.class))).thenCallRealMethod();
   JavaOnlyMap body=new JavaOnlyMap();
   JavaOnlyArray formData=new JavaOnlyArray();
   JavaOnlyMap bodyPart=new JavaOnlyMap();
@@ -18,8 +18,11 @@
     }
   }
 );
+  OkHttpClient.Builder clientBuilder=mock(OkHttpClient.Builder.class);
+  when(clientBuilder.build()).thenReturn(httpClient);
+  when(httpClient.newBuilder()).thenReturn(clientBuilder);
   NetworkingModule networkingModule=new NetworkingModule(mock(ReactApplicationContext.class),"",httpClient);
-  networkingModule.sendRequest(mock(ExecutorToken.class),"POST","http://someurl/uploadFoo",0,new JavaOnlyArray(),body,true,0);
+  networkingModule.sendRequest(mock(ExecutorToken.class),"POST","http://someurl/uploadFoo",0,new JavaOnlyArray(),body,"text",true,0);
   ArgumentCaptor<Request> argumentCaptor=ArgumentCaptor.forClass(Request.class);
   verify(httpClient).newCall(argumentCaptor.capture());
   assertThat(argumentCaptor.getValue().url().toString()).isEqualTo("http://someurl/uploadFoo");

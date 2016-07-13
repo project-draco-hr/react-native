@@ -3,7 +3,7 @@
   PowerMockito.mockStatic(RequestBodyUtil.class);
   when(RequestBodyUtil.getFileInputStream(any(ReactContext.class),any(String.class))).thenReturn(inputStream);
   when(RequestBodyUtil.create(any(MediaType.class),any(InputStream.class))).thenCallRealMethod();
-  when(RequestBodyUtil.createProgressRequest(any(RequestBody.class),any(ProgressRequestListener.class))).thenCallRealMethod();
+  when(RequestBodyUtil.createProgressRequest(any(RequestBody.class),any(ProgressListener.class))).thenCallRealMethod();
   when(inputStream.available()).thenReturn("imageUri".length());
   final MultipartBody.Builder multipartBuilder=mock(MultipartBody.Builder.class);
   PowerMockito.whenNew(MultipartBody.Builder.class).withNoArguments().thenReturn(multipartBuilder);
@@ -45,8 +45,11 @@
     }
   }
 );
+  OkHttpClient.Builder clientBuilder=mock(OkHttpClient.Builder.class);
+  when(clientBuilder.build()).thenReturn(httpClient);
+  when(httpClient.newBuilder()).thenReturn(clientBuilder);
   NetworkingModule networkingModule=new NetworkingModule(mock(ReactApplicationContext.class),"",httpClient);
-  networkingModule.sendRequest(mock(ExecutorToken.class),"POST","http://someurl/uploadFoo",0,JavaOnlyArray.from(headers),body,true,0);
+  networkingModule.sendRequest(mock(ExecutorToken.class),"POST","http://someurl/uploadFoo",0,JavaOnlyArray.from(headers),body,"text",true,0);
   PowerMockito.verifyStatic(times(1));
   RequestBodyUtil.getFileInputStream(any(ReactContext.class),eq("imageUri"));
   PowerMockito.verifyStatic(times(1));

@@ -3,9 +3,12 @@
   ReactApplicationContext context=mock(ReactApplicationContext.class);
   when(context.getJSModule(any(ExecutorToken.class),any(Class.class))).thenReturn(emitter);
   OkHttpClient httpClient=mock(OkHttpClient.class);
+  OkHttpClient.Builder clientBuilder=mock(OkHttpClient.Builder.class);
+  when(clientBuilder.build()).thenReturn(httpClient);
+  when(httpClient.newBuilder()).thenReturn(clientBuilder);
   NetworkingModule networkingModule=new NetworkingModule(context,"",httpClient);
   List<JavaOnlyArray> invalidHeaders=Arrays.asList(JavaOnlyArray.of("foo"));
   mockEvents();
-  networkingModule.sendRequest(mock(ExecutorToken.class),"GET","http://somedoman/foo",0,JavaOnlyArray.from(invalidHeaders),null,true,0);
+  networkingModule.sendRequest(mock(ExecutorToken.class),"GET","http://somedoman/foo",0,JavaOnlyArray.from(invalidHeaders),null,"text",true,0);
   verifyErrorEmit(emitter,0);
 }

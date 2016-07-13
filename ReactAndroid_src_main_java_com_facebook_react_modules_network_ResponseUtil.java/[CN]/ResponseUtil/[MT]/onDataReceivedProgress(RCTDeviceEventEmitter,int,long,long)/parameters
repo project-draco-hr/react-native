@@ -1,0 +1,4 @@
+RCTDeviceEventEmitter eventEmitter
+int requestId
+long progress
+long total

@@ -8,7 +8,7 @@
         contentLength=contentLength();
       }
       bytesWritten+=byteCount;
-      mProgressListener.onRequestProgress(bytesWritten,contentLength,bytesWritten == contentLength);
+      mProgressListener.onProgress(bytesWritten,contentLength,bytesWritten == contentLength);
     }
   }
 ;

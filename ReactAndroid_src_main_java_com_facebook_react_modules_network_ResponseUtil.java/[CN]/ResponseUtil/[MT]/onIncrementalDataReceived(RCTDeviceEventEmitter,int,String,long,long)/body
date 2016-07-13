@@ -1,0 +1,8 @@
+{
+  WritableArray args=Arguments.createArray();
+  args.pushInt(requestId);
+  args.pushString(data);
+  args.pushInt((int)progress);
+  args.pushInt((int)total);
+  eventEmitter.emit("didReceiveNetworkIncrementalData",args);
+}

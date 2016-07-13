@@ -3,11 +3,36 @@
   if (requestId != 0) {
     requestBuilder.tag(requestId);
   }
-  OkHttpClient client=mClient;
-  if (timeout != mClient.connectTimeoutMillis()) {
-    client=mClient.newBuilder().readTimeout(timeout,TimeUnit.MILLISECONDS).build();
-  }
   final RCTDeviceEventEmitter eventEmitter=getEventEmitter(executorToken);
+  OkHttpClient.Builder clientBuilder=mClient.newBuilder();
+  if (useIncrementalUpdates) {
+    clientBuilder.addNetworkInterceptor(new Interceptor(){
+      @Override public Response intercept(      Interceptor.Chain chain) throws IOException {
+        Response originalResponse=chain.proceed(chain.request());
+        ProgressResponseBody responseBody=new ProgressResponseBody(originalResponse.body(),new ProgressListener(){
+          long last=System.nanoTime();
+          @Override public void onProgress(          long bytesWritten,          long contentLength,          boolean done){
+            long now=System.nanoTime();
+            if (!done && !shouldDispatch(now,last)) {
+              return;
+            }
+            if (responseType.equals("text")) {
+              return;
+            }
+            ResponseUtil.onDataReceivedProgress(eventEmitter,requestId,bytesWritten,contentLength);
+            last=now;
+          }
+        }
+);
+        return originalResponse.newBuilder().body(responseBody).build();
+      }
+    }
+);
+  }
+  if (timeout != mClient.connectTimeoutMillis()) {
+    clientBuilder.readTimeout(timeout,TimeUnit.MILLISECONDS);
+  }
+  OkHttpClient client=clientBuilder.build();
   Headers requestHeaders=extractHeaders(headers,data);
   if (requestHeaders == null) {
     ResponseUtil.onRequestError(eventEmitter,requestId,"Unrecognized headers format",null);
@@ -60,9 +85,9 @@
     if (multipartBuilder == null) {
       return;
     }
-    requestBuilder.method(method,RequestBodyUtil.createProgressRequest(multipartBuilder.build(),new ProgressRequestListener(){
+    requestBuilder.method(method,RequestBodyUtil.createProgressRequest(multipartBuilder.build(),new ProgressListener(){
       long last=System.nanoTime();
-      @Override public void onRequestProgress(      long bytesWritten,      long contentLength,      boolean done){
+      @Override public void onProgress(      long bytesWritten,      long contentLength,      boolean done){
         long now=System.nanoTime();
         if (done || shouldDispatch(now,last)) {
           ResponseUtil.onDataSend(eventEmitter,requestId,bytesWritten,contentLength);
@@ -92,14 +117,20 @@
       ResponseUtil.onResponseReceived(eventEmitter,requestId,response.code(),translateHeaders(response.headers()),response.request().url().toString());
       ResponseBody responseBody=response.body();
       try {
-        if (useIncrementalUpdates) {
+        if (useIncrementalUpdates && responseType.equals("text")) {
           readWithProgress(eventEmitter,requestId,responseBody);
           ResponseUtil.onRequestSuccess(eventEmitter,requestId);
+          return;
         }
- else {
-          ResponseUtil.onDataReceived(eventEmitter,requestId,responseBody.string());
-          ResponseUtil.onRequestSuccess(eventEmitter,requestId);
+        String responseString="";
+        if (responseType.equals("text")) {
+          responseString=responseBody.string();
         }
+ else         if (responseType.equals("base64")) {
+          responseString=Base64.encodeToString(responseBody.bytes(),Base64.NO_WRAP);
+        }
+        ResponseUtil.onDataReceived(eventEmitter,requestId,responseString);
+        ResponseUtil.onRequestSuccess(eventEmitter,requestId);
       }
  catch (      IOException e) {
         ResponseUtil.onRequestError(eventEmitter,requestId,e.getMessage(),e);

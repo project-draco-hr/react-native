@@ -1,0 +1,6 @@
+{
+  if (mBufferedSource == null) {
+    mBufferedSource=Okio.buffer(source(mResponseBody.source()));
+  }
+  return mBufferedSource;
+}

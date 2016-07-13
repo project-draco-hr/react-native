@@ -4,5 +4,6 @@ String url
 int requestId
 ReadableArray headers
 ReadableMap data
+String responseType
 boolean useIncrementalUpdates
 int timeout

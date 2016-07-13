@@ -1,0 +1,11 @@
+{
+  return new ForwardingSource(source){
+    @Override public long read(    Buffer sink,    long byteCount) throws IOException {
+      long bytesRead=super.read(sink,byteCount);
+      mTotalBytesRead+=bytesRead != -1 ? bytesRead : 0;
+      mProgressListener.onProgress(mTotalBytesRead,mResponseBody.contentLength(),bytesRead == -1);
+      return bytesRead;
+    }
+  }
+;
+}
