@@ -1,0 +1,11 @@
+{
+  if (isPaused.get()) {
+    return;
+  }
+  if (mCurrentIdleCallbackRunnable != null) {
+    mCurrentIdleCallbackRunnable.cancel();
+  }
+  mCurrentIdleCallbackRunnable=new IdleCallbackRunnable(frameTimeNanos);
+  getReactApplicationContext().runOnJSQueueThread(mCurrentIdleCallbackRunnable);
+  Assertions.assertNotNull(mReactChoreographer).postFrameCallback(ReactChoreographer.CallbackType.IDLE_EVENT,this);
+}

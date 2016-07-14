@@ -1,7 +1,12 @@
 {
   Choreographer.FrameCallback callback=mPostFrameCallbackHandler.getAndResetFrameCallback();
+  Choreographer.FrameCallback idleCallback=mIdlePostFrameCallbackHandler.getAndResetFrameCallback();
   mCurrentTimeNs+=FRAME_TIME_NS;
+  when(SystemClock.uptimeMillis()).thenReturn(mCurrentTimeNs / 1000000);
   if (callback != null) {
     callback.doFrame(mCurrentTimeNs);
+  }
+  if (idleCallback != null) {
+    idleCallback.doFrame(mCurrentTimeNs);
   }
 }

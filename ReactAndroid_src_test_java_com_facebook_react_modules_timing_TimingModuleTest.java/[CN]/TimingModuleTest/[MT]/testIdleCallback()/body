@@ -1,0 +1,6 @@
+{
+  mTiming.onHostResume();
+  mTiming.setSendIdleEvents(mExecutorTokenMock,true);
+  stepChoreographerFrame();
+  verify(mJSTimersMock).callIdleCallbacks(SystemClock.currentTimeMillis());
+}

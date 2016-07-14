@@ -1,4 +1,9 @@
 {
   isPaused.set(false);
   setChoreographerCallback();
+synchronized (mIdleCallbackGuard) {
+    if (mSendIdleEventsExecutorTokens.size() > 0) {
+      setChoreographerIdleCallback();
+    }
+  }
 }

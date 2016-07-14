@@ -1,4 +1,5 @@
 {
   isPaused.set(true);
   clearChoreographerCallback();
+  clearChoreographerIdleCallback();
 }

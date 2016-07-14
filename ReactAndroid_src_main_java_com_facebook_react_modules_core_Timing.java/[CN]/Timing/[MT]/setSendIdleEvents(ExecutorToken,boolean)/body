@@ -1,0 +1,23 @@
+{
+synchronized (mIdleCallbackGuard) {
+    if (sendIdleEvents) {
+      mSendIdleEventsExecutorTokens.add(executorToken);
+    }
+ else {
+      mSendIdleEventsExecutorTokens.remove(executorToken);
+    }
+  }
+  UiThreadUtil.runOnUiThread(new Runnable(){
+    @Override public void run(){
+synchronized (mIdleCallbackGuard) {
+        if (mSendIdleEventsExecutorTokens.size() > 0) {
+          setChoreographerIdleCallback();
+        }
+ else {
+          clearChoreographerIdleCallback();
+        }
+      }
+    }
+  }
+);
+}

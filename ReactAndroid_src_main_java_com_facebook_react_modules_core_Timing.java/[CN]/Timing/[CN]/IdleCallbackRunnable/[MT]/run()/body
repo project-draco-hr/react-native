@@ -1,0 +1,21 @@
+{
+  if (mCancelled) {
+    return;
+  }
+  long frameTimeMillis=mFrameStartTime / 1000000;
+  long timeSinceBoot=SystemClock.uptimeMillis();
+  long frameTimeElapsed=timeSinceBoot - frameTimeMillis;
+  long time=SystemClock.currentTimeMillis();
+  long absoluteFrameStartTime=time - frameTimeElapsed;
+  if (FRAME_DURATION_MS - (float)frameTimeElapsed < IDLE_CALLBACK_FRAME_DEADLINE_MS) {
+    return;
+  }
+  mIdleCallbackContextsToCall.clear();
+synchronized (mIdleCallbackGuard) {
+    mIdleCallbackContextsToCall.addAll(mSendIdleEventsExecutorTokens);
+  }
+  for (  ExecutorToken context : mIdleCallbackContextsToCall) {
+    getReactApplicationContext().getJSModule(context,JSTimersExecution.class).callIdleCallbacks(absoluteFrameStartTime);
+  }
+  mCurrentIdleCallbackRunnable=null;
+}

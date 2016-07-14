@@ -9,4 +9,7 @@ synchronized (mTimerGuard) {
       mTimers.remove(timer);
     }
   }
+synchronized (mIdleCallbackGuard) {
+    mSendIdleEventsExecutorTokens.remove(executorToken);
+  }
 }

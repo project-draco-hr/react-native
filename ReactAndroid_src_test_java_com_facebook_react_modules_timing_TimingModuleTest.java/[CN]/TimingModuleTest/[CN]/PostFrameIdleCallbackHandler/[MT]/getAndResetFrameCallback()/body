@@ -1,0 +1,5 @@
+{
+  Choreographer.FrameCallback callback=mFrameCallback;
+  mFrameCallback=null;
+  return callback;
+}

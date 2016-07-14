@@ -7,20 +7,30 @@
   }
 );
   PowerMockito.mockStatic(SystemClock.class);
+  when(SystemClock.uptimeMillis()).thenReturn(mCurrentTimeNs / 1000000);
   when(SystemClock.currentTimeMillis()).thenReturn(mCurrentTimeNs / 1000000);
   when(SystemClock.nanoTime()).thenReturn(mCurrentTimeNs);
-  mChoreographerMock=mock(ReactChoreographer.class);
+  mReactChoreographerMock=mock(ReactChoreographer.class);
   PowerMockito.mockStatic(ReactChoreographer.class);
-  when(ReactChoreographer.getInstance()).thenReturn(mChoreographerMock);
+  when(ReactChoreographer.getInstance()).thenReturn(mReactChoreographerMock);
   CatalystInstance reactInstance=mock(CatalystInstance.class);
   ReactApplicationContext reactContext=mock(ReactApplicationContext.class);
   when(reactContext.getCatalystInstance()).thenReturn(reactInstance);
   mCurrentTimeNs=0;
   mPostFrameCallbackHandler=new PostFrameCallbackHandler();
-  doAnswer(mPostFrameCallbackHandler).when(mChoreographerMock).postFrameCallback(eq(ReactChoreographer.CallbackType.TIMERS_EVENTS),any(Choreographer.FrameCallback.class));
+  mIdlePostFrameCallbackHandler=new PostFrameIdleCallbackHandler();
+  doAnswer(mPostFrameCallbackHandler).when(mReactChoreographerMock).postFrameCallback(eq(ReactChoreographer.CallbackType.TIMERS_EVENTS),any(Choreographer.FrameCallback.class));
+  doAnswer(mIdlePostFrameCallbackHandler).when(mReactChoreographerMock).postFrameCallback(eq(ReactChoreographer.CallbackType.IDLE_EVENT),any(Choreographer.FrameCallback.class));
   mTiming=new Timing(reactContext,mock(DevSupportManager.class));
   mJSTimersMock=mock(JSTimersExecution.class);
   mExecutorTokenMock=mock(ExecutorToken.class);
   when(reactContext.getJSModule(mExecutorTokenMock,JSTimersExecution.class)).thenReturn(mJSTimersMock);
+  doAnswer(new Answer(){
+    @Override public Object answer(    InvocationOnMock invocation) throws Throwable {
+      ((Runnable)invocation.getArguments()[0]).run();
+      return null;
+    }
+  }
+).when(reactContext).runOnJSQueueThread(any(Runnable.class));
   mTiming.initialize();
 }

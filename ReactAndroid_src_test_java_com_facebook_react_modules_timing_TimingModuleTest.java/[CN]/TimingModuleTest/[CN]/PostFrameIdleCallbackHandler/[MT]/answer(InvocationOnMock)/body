@@ -1,0 +1,5 @@
+{
+  Object[] args=invocation.getArguments();
+  mFrameCallback=(Choreographer.FrameCallback)args[1];
+  return null;
+}

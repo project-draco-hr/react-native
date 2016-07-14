@@ -1,0 +1,6 @@
+{
+  if (!mFrameIdleCallbackPosted) {
+    Assertions.assertNotNull(mReactChoreographer).postFrameCallback(ReactChoreographer.CallbackType.IDLE_EVENT,mIdleFrameCallback);
+    mFrameIdleCallbackPosted=true;
+  }
+}

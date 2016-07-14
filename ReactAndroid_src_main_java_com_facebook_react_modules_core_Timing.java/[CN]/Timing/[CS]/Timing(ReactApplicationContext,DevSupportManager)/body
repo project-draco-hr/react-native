@@ -17,4 +17,6 @@
   }
 );
   mTimerIdsToTimers=new HashMap<>();
+  mSendIdleEventsExecutorTokens=new HashSet<>();
+  mIdleCallbackContextsToCall=new ArrayList<>();
 }
