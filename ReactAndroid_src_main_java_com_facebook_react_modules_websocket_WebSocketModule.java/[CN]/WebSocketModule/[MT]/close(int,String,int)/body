@@ -1,7 +1,6 @@
 {
   WebSocket client=mWebSocketConnections.get(id);
   if (client == null) {
-    FLog.w(ReactConstants.TAG,"Cannot close WebSocket. Unknown WebSocket id " + id);
     return;
   }
   try {
