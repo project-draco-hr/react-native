@@ -1,0 +1,3 @@
+{
+  return mViews.contains(object) ? mViews.indexOf(object) : POSITION_NONE;
+}
