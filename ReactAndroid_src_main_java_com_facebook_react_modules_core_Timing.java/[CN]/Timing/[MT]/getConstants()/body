@@ -1,3 +1,0 @@
-{
-  return MapBuilder.<String,Object>of("frameDuration",FRAME_DURATION_MS,"idleCallbackFrameDeadline",IDLE_CALLBACK_FRAME_DEADLINE_MS);
-}
