@@ -1,0 +1,7 @@
+{
+synchronized (mEnqueuedRequestMonitor) {
+    DataSource<Void> request=mEnqueuedRequests.get(requestId);
+    mEnqueuedRequests.remove(requestId);
+    return request;
+  }
+}

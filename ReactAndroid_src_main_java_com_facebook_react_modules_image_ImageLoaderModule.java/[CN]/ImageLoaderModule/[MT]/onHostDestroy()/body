@@ -1,0 +1,11 @@
+{
+synchronized (mEnqueuedRequestMonitor) {
+    for (int i=0, size=mEnqueuedRequests.size(); i < size; i++) {
+      @Nullable DataSource<Void> enqueuedRequest=mEnqueuedRequests.valueAt(i);
+      if (enqueuedRequest != null) {
+        enqueuedRequest.close();
+      }
+    }
+    mEnqueuedRequests.clear();
+  }
+}

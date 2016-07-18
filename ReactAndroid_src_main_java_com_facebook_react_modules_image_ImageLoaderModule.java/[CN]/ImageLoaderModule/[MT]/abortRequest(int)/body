@@ -1,0 +1,6 @@
+{
+  DataSource<Void> request=removeRequest(requestId);
+  if (request != null) {
+    request.close();
+  }
+}

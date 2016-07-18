@@ -12,6 +12,7 @@
         return;
       }
       try {
+        removeRequest(requestId);
         promise.resolve(true);
       }
   finally {
@@ -20,6 +21,7 @@
     }
     @Override protected void onFailureImpl(    DataSource<Void> dataSource){
       try {
+        removeRequest(requestId);
         promise.reject(ERROR_PREFETCH_FAILURE,dataSource.getFailureCause());
       }
   finally {
@@ -28,5 +30,6 @@
     }
   }
 ;
+  registerRequest(requestId,prefetchSource);
   prefetchSource.subscribe(prefetchSubscriber,CallerThreadExecutor.getInstance());
 }
