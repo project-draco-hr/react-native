@@ -1,0 +1,6 @@
+{
+  if (mBundleLoader == null) {
+    return null;
+  }
+  return mBundleLoader.getSourceUrl();
+}
