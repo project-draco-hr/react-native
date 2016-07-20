@@ -8,8 +8,7 @@
     mDrawable.setCallback(mTextView);
   }
   canvas.save();
-  int transY=bottom - mDrawable.getBounds().bottom;
-  transY-=paint.getFontMetricsInt().descent;
+  int transY=y - mDrawable.getBounds().bottom;
   canvas.translate(x,transY);
   mDrawable.draw(canvas);
   canvas.restore();

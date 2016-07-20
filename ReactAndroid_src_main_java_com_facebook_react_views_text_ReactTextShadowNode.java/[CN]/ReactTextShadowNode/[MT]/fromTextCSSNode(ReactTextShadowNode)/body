@@ -6,10 +6,15 @@
     sb.setSpan(new AbsoluteSizeSpan((int)Math.ceil(PixelUtil.toPixelFromSP(ViewDefaults.FONT_SIZE_SP))),0,sb.length(),Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
   }
   textCSSNode.mContainsImages=false;
+  textCSSNode.mHeightOfTallestInlineImage=Float.NaN;
   for (int i=ops.size() - 1; i >= 0; i--) {
     SetSpanOperation op=ops.get(i);
     if (op.what instanceof TextInlineImageSpan) {
+      int height=((TextInlineImageSpan)op.what).getHeight();
       textCSSNode.mContainsImages=true;
+      if (Float.isNaN(textCSSNode.mHeightOfTallestInlineImage) || height > textCSSNode.mHeightOfTallestInlineImage) {
+        textCSSNode.mHeightOfTallestInlineImage=height;
+      }
     }
     op.execute(sb);
   }

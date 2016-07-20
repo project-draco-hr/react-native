@@ -2,3 +2,4 @@ Spannable text
 int jsEventCounter
 boolean containsImages
 Spacing padding
+float lineHeight

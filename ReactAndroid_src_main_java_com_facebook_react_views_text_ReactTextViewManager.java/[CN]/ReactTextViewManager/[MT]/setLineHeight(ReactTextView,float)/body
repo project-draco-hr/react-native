@@ -1,8 +1,0 @@
-{
-  if (Float.isNaN(lineHeight)) {
-    view.setLineSpacing(0,1);
-  }
- else {
-    view.setLineSpacing(PixelUtil.toPixelFromSP(lineHeight),0);
-  }
-}

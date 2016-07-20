@@ -4,7 +4,7 @@
   }
   super.onCollectExtraUpdates(uiViewOperationQueue);
   if (mPreparedSpannableText != null) {
-    ReactTextUpdate reactTextUpdate=new ReactTextUpdate(mPreparedSpannableText,UNSET,mContainsImages,getPadding());
+    ReactTextUpdate reactTextUpdate=new ReactTextUpdate(mPreparedSpannableText,UNSET,mContainsImages,getPadding(),getEffectiveLineHeight());
     uiViewOperationQueue.enqueueUpdateExtraData(getReactTag(),reactTextUpdate);
   }
 }

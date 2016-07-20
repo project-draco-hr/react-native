@@ -6,7 +6,7 @@
   }
   if (mJsEventCount != UNSET) {
     Spannable preparedSpannableText=fromTextCSSNode(this);
-    ReactTextUpdate reactTextUpdate=new ReactTextUpdate(preparedSpannableText,mJsEventCount,mContainsImages,getPadding());
+    ReactTextUpdate reactTextUpdate=new ReactTextUpdate(preparedSpannableText,mJsEventCount,mContainsImages,getPadding(),getEffectiveLineHeight());
     uiViewOperationQueue.enqueueUpdateExtraData(getReactTag(),reactTextUpdate);
   }
 }

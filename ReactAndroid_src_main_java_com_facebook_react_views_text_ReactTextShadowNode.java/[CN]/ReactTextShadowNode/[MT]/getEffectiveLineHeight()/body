@@ -1,0 +1,4 @@
+{
+  boolean useInlineViewHeight=!Float.isNaN(mLineHeight) && !Float.isNaN(mHeightOfTallestInlineImage) && mHeightOfTallestInlineImage > mLineHeight;
+  return useInlineViewHeight ? mHeightOfTallestInlineImage : mLineHeight;
+}

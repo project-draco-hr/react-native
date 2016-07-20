@@ -6,4 +6,5 @@
   mPaddingTop=padding.get(Spacing.TOP);
   mPaddingRight=padding.get(Spacing.RIGHT);
   mPaddingBottom=padding.get(Spacing.BOTTOM);
+  mLineHeight=lineHeight;
 }

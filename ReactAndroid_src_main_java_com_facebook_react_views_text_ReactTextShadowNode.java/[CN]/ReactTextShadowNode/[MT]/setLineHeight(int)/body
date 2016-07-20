@@ -1,4 +1,4 @@
 {
-  mLineHeight=lineHeight;
+  mLineHeight=lineHeight == UNSET ? Float.NaN : PixelUtil.toPixelFromSP(lineHeight);
   markUpdated();
 }
