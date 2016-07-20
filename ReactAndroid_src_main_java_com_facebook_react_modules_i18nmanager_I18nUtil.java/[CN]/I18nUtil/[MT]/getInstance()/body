@@ -1,0 +1,6 @@
+{
+  if (sharedI18nUtilInstance == null) {
+    sharedI18nUtilInstance=new I18nUtil();
+  }
+  return sharedI18nUtilInstance;
+}

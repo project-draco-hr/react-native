@@ -1,0 +1,5 @@
+{
+  final Map<String,Object> constants=MapBuilder.newHashMap();
+  constants.put("isRTL",sharedI18nUtilInstance.isRTL(getReactApplicationContext()));
+  return constants;
+}
