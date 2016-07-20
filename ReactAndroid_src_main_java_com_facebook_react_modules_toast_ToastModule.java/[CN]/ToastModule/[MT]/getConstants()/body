@@ -2,5 +2,8 @@
   final Map<String,Object> constants=MapBuilder.newHashMap();
   constants.put(DURATION_SHORT_KEY,Toast.LENGTH_SHORT);
   constants.put(DURATION_LONG_KEY,Toast.LENGTH_LONG);
+  constants.put(GRAVITY_TOP_KEY,Gravity.TOP | Gravity.CENTER_HORIZONTAL);
+  constants.put(GRAVITY_BOTTOM_KEY,Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL);
+  constants.put(GRAVITY_CENTER,Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL);
   return constants;
 }

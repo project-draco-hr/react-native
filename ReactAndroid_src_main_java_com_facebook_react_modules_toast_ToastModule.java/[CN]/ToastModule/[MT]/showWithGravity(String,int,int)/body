@@ -1,0 +1,10 @@
+{
+  UiThreadUtil.runOnUiThread(new Runnable(){
+    @Override public void run(){
+      Toast toast=Toast.makeText(getReactApplicationContext(),message,duration);
+      toast.setGravity(gravity,0,0);
+      toast.show();
+    }
+  }
+);
+}
