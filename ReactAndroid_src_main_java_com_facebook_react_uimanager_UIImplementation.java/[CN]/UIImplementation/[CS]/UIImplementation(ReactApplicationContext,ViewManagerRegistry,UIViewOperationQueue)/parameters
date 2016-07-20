@@ -1,2 +1,3 @@
+ReactApplicationContext reactContext
 ViewManagerRegistry viewManagers
 UIViewOperationQueue operationsQueue
