@@ -1,17 +1,17 @@
 {
   int indexInNativeChildren=parent.getNativeOffsetForChild(parent.getChildAt(index));
-  boolean parentIsLayoutOnly=parent.isLayoutOnly();
-  boolean childIsLayoutOnly=child.isLayoutOnly();
-  if (!parentIsLayoutOnly && !childIsLayoutOnly) {
-    addNonLayoutNodeToNonLayoutNode(parent,child,indexInNativeChildren);
+  if (parent.isLayoutOnly()) {
+    NodeIndexPair result=walkUpUntilNonLayoutOnly(parent,indexInNativeChildren);
+    if (result == null) {
+      return;
+    }
+    parent=result.node;
+    indexInNativeChildren=result.index;
   }
- else   if (!childIsLayoutOnly) {
-    addNonLayoutOnlyNodeToLayoutOnlyNode(parent,child,indexInNativeChildren);
-  }
- else   if (!parentIsLayoutOnly) {
-    addLayoutOnlyNodeToNonLayoutOnlyNode(parent,child,indexInNativeChildren);
+  if (!child.isLayoutOnly()) {
+    addNonLayoutNode(parent,child,indexInNativeChildren);
   }
  else {
-    addLayoutOnlyNodeToLayoutOnlyNode(parent,child,indexInNativeChildren);
+    addLayoutOnlyNode(parent,child,indexInNativeChildren);
   }
 }

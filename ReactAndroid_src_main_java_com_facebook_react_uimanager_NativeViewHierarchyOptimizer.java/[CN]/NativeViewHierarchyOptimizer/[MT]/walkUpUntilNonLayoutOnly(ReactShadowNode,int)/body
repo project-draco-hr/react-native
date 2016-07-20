@@ -1,0 +1,11 @@
+{
+  while (node.isLayoutOnly()) {
+    ReactShadowNode parent=node.getParent();
+    if (parent == null) {
+      return null;
+    }
+    indexInNativeChildren=indexInNativeChildren + parent.getNativeOffsetForChild(node);
+    node=parent;
+  }
+  return new NodeIndexPair(node,indexInNativeChildren);
+}

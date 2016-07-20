@@ -1,0 +1,18 @@
+{
+  Assertions.assertCondition(!nativeParent.isLayoutOnly());
+  int currentIndex=index;
+  for (int i=0; i < child.getChildCount(); i++) {
+    ReactShadowNode grandchild=child.getChildAt(i);
+    Assertions.assertCondition(grandchild.getNativeParent() == null);
+    if (grandchild.isLayoutOnly()) {
+      int grandchildCountBefore=nativeParent.getNativeChildCount();
+      addLayoutOnlyNode(nativeParent,grandchild,currentIndex);
+      int grandchildCountAfter=nativeParent.getNativeChildCount();
+      currentIndex+=grandchildCountAfter - grandchildCountBefore;
+    }
+ else {
+      addNonLayoutNode(nativeParent,grandchild,currentIndex);
+      currentIndex++;
+    }
+  }
+}
