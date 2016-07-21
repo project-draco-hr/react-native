@@ -1,5 +1,5 @@
 {
   super.onPageStarted(webView,url,favicon);
   mLastLoadFailed=false;
-  dispatchEvent(webView,new TopLoadingStartEvent(webView.getId(),SystemClock.nanoTime(),createWebViewEvent(webView,url)));
+  dispatchEvent(webView,new TopLoadingStartEvent(webView.getId(),createWebViewEvent(webView,url)));
 }

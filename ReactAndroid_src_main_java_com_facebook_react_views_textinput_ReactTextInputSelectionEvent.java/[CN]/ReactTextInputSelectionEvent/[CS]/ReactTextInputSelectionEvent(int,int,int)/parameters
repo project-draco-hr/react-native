@@ -1,0 +1,3 @@
+int viewId
+int selectionStart
+int selectionEnd

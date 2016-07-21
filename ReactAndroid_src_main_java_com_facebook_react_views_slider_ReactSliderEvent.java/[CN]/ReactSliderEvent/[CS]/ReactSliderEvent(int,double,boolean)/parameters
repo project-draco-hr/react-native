@@ -1,0 +1,3 @@
+int viewId
+double value
+boolean fromUser

@@ -1,3 +1,0 @@
-int viewId
-long timestampMs
-boolean isChecked

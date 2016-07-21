@@ -8,6 +8,6 @@
   if (contentWidth != mPreviousContentWidth || contentHeight != mPreviousContentHeight) {
     mPreviousContentHeight=contentHeight;
     mPreviousContentWidth=contentWidth;
-    mEventDispatcher.dispatchEvent(new ReactContentSizeChangedEvent(mEditText.getId(),SystemClock.nanoTime(),(int)PixelUtil.toDIPFromPixel(contentWidth),(int)PixelUtil.toDIPFromPixel(contentHeight)));
+    mEventDispatcher.dispatchEvent(new ReactContentSizeChangedEvent(mEditText.getId(),(int)PixelUtil.toDIPFromPixel(contentWidth),(int)PixelUtil.toDIPFromPixel(contentHeight)));
   }
 }

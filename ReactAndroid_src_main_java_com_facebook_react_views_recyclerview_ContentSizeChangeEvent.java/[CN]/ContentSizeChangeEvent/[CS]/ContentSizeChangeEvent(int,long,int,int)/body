@@ -1,5 +1,0 @@
-{
-  super(viewTag,timestampMs);
-  mWidth=width;
-  mHeight=height;
-}

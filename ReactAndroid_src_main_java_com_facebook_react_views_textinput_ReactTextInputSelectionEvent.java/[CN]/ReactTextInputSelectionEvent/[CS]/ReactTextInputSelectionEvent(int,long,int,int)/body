@@ -1,5 +1,0 @@
-{
-  super(viewId,timestampMs);
-  mSelectionStart=selectionStart;
-  mSelectionEnd=selectionEnd;
-}

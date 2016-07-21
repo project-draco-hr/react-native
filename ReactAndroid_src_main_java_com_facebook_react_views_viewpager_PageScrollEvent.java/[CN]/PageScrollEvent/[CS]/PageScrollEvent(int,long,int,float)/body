@@ -1,5 +1,0 @@
-{
-  super(viewTag,timestampMs);
-  mPosition=position;
-  mOffset=offset;
-}

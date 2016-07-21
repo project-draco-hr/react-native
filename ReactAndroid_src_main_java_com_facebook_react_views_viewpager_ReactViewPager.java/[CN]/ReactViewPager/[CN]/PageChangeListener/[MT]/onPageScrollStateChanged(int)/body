@@ -13,5 +13,5 @@ break;
 default :
 throw new IllegalStateException("Unsupported pageScrollState");
 }
-mEventDispatcher.dispatchEvent(new PageScrollStateChangedEvent(getId(),SystemClock.nanoTime(),pageScrollState));
+mEventDispatcher.dispatchEvent(new PageScrollStateChangedEvent(getId(),pageScrollState));
 }

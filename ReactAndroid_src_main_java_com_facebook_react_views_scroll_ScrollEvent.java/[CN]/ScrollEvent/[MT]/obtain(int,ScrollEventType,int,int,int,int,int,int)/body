@@ -1,0 +1,8 @@
+{
+  ScrollEvent event=EVENTS_POOL.acquire();
+  if (event == null) {
+    event=new ScrollEvent();
+  }
+  event.init(viewTag,scrollEventType,scrollX,scrollY,contentWidth,contentHeight,scrollViewWidth,scrollViewHeight);
+  return event;
+}

@@ -1,0 +1,10 @@
+{
+  super.init(viewTag);
+  mScrollEventType=scrollEventType;
+  mScrollX=scrollX;
+  mScrollY=scrollY;
+  mContentWidth=contentWidth;
+  mContentHeight=contentHeight;
+  mScrollViewWidth=scrollViewWidth;
+  mScrollViewHeight=scrollViewHeight;
+}

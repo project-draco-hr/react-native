@@ -1,0 +1,5 @@
+{
+  super(viewTag);
+  mWidth=width;
+  mHeight=height;
+}

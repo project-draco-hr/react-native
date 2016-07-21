@@ -1,4 +1,0 @@
-int viewTag
-long timestampMs
-int position
-float offset

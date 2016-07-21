@@ -1,7 +1,7 @@
 {
   view.setOnRefreshListener(new OnRefreshListener(){
     @Override public void onRefresh(){
-      reactContext.getNativeModule(UIManagerModule.class).getEventDispatcher().dispatchEvent(new RefreshEvent(view.getId(),SystemClock.nanoTime()));
+      reactContext.getNativeModule(UIManagerModule.class).getEventDispatcher().dispatchEvent(new RefreshEvent(view.getId()));
     }
   }
 );

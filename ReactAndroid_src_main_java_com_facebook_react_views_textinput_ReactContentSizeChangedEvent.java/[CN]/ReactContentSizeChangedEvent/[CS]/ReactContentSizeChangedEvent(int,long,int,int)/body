@@ -1,5 +1,0 @@
-{
-  super(viewId,timestampMs);
-  mContentWidth=contentSizeWidth;
-  mContentHeight=contentSizeHeight;
-}

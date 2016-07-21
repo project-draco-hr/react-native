@@ -1,0 +1,7 @@
+{
+  super(viewId);
+  mText=text;
+  mContentWidth=contentSizeWidth;
+  mContentHeight=contentSizeHeight;
+  mEventCount=eventCount;
+}

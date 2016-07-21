@@ -1,4 +1,0 @@
-{
-  super(viewId,timestampMs);
-  mOffset=offset;
-}

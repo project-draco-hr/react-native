@@ -1,5 +1,5 @@
 {
   if (!mIsCurrentItemFromJs) {
-    mEventDispatcher.dispatchEvent(new PageSelectedEvent(getId(),SystemClock.nanoTime(),position));
+    mEventDispatcher.dispatchEvent(new PageSelectedEvent(getId(),position));
   }
 }

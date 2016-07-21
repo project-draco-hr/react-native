@@ -1,0 +1,8 @@
+{
+  TouchEvent event=EVENTS_POOL.acquire();
+  if (event == null) {
+    event=new TouchEvent();
+  }
+  event.init(viewTag,touchEventType,motionEventToCopy,viewX,viewY,touchEventCoalescingKeyHelper);
+  return event;
+}

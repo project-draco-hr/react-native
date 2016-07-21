@@ -1,0 +1,7 @@
+{
+  super(viewId);
+  mText=text;
+  mPreviousText=previousText;
+  mRangeStart=rangeStart;
+  mRangeEnd=rangeEnd;
+}

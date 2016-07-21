@@ -1,0 +1,3 @@
+int viewId
+int eventType
+String imageUri
