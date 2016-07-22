@@ -1,0 +1,5 @@
+{
+  mViews.clear();
+  pager.removeAllViews();
+  mIsViewPagerInIntentionallyInconsistentState=true;
+}

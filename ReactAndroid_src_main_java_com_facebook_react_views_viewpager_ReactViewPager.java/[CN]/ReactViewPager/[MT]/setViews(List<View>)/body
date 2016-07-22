@@ -1,0 +1,3 @@
+{
+  getAdapter().setViews(views);
+}

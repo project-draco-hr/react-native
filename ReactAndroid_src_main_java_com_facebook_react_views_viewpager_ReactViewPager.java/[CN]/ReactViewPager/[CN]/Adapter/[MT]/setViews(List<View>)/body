@@ -1,0 +1,6 @@
+{
+  mViews.clear();
+  mViews.addAll(views);
+  notifyDataSetChanged();
+  mIsViewPagerInIntentionallyInconsistentState=false;
+}
