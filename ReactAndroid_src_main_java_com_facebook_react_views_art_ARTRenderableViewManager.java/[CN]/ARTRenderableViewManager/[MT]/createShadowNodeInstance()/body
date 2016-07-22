@@ -1,11 +1,11 @@
 {
-  if (mClassName == CLASS_GROUP) {
+  if (CLASS_GROUP.equals(mClassName)) {
     return new ARTGroupShadowNode();
   }
- else   if (mClassName == CLASS_SHAPE) {
+ else   if (CLASS_SHAPE.equals(mClassName)) {
     return new ARTShapeShadowNode();
   }
- else   if (mClassName == CLASS_TEXT) {
+ else   if (CLASS_TEXT.equals(mClassName)) {
     return new ARTTextShadowNode();
   }
  else {

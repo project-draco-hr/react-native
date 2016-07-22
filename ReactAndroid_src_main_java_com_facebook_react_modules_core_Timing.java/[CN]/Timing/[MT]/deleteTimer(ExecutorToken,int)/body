@@ -8,7 +8,7 @@ synchronized (mTimerGuard) {
     if (timer == null) {
       return;
     }
-    mTimerIdsToTimers.remove(timerId);
+    mTimerIdsToTimers.remove(executorToken);
     mTimers.remove(timer);
   }
 }

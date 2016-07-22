@@ -17,7 +17,7 @@ synchronized (mTimerGuard) {
         mTimers.add(timer);
       }
  else {
-        mTimerIdsToTimers.remove(timer.mCallbackID);
+        mTimerIdsToTimers.remove(timer.mExecutorToken);
       }
     }
   }
