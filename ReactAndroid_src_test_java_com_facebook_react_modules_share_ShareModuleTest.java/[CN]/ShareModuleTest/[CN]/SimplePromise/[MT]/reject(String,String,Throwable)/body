@@ -1,0 +1,5 @@
+{
+  mRejected++;
+  mErrorCode=code;
+  mErrorMessage=message;
+}

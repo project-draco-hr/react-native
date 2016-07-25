@@ -1,0 +1,10 @@
+{
+  PowerMockito.mockStatic(Arguments.class);
+  Mockito.when(Arguments.createMap()).thenAnswer(new Answer<Object>(){
+    @Override public Object answer(    InvocationOnMock invocation) throws Throwable {
+      return new JavaOnlyMap();
+    }
+  }
+);
+  mShareModule=new ShareModule(ReactTestHelper.createCatalystContextForTest());
+}

@@ -1,0 +1,7 @@
+{
+  final String dialogTitle="Dialog Title";
+  final SimplePromise promise=new SimplePromise();
+  mShareModule.share(null,dialogTitle,promise);
+  assertEquals(1,promise.getRejected());
+  assertEquals(ShareModule.ERROR_INVALID_CONTENT,promise.getErrorCode());
+}

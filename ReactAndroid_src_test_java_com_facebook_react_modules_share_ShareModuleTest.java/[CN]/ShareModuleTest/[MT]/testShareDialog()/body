@@ -1,0 +1,20 @@
+{
+  final String title="Title";
+  final String message="Message";
+  final String dialogTitle="Dialog Title";
+  JavaOnlyMap content=new JavaOnlyMap();
+  content.putString("title",title);
+  content.putString("message",message);
+  final SimplePromise promise=new SimplePromise();
+  mShareModule.share(content,dialogTitle,promise);
+  final Intent chooserIntent=((ShadowApplication)ShadowExtractor.extract(RuntimeEnvironment.application)).getNextStartedActivity();
+  assertNotNull("Dialog was not displayed",chooserIntent);
+  assertEquals(Intent.ACTION_CHOOSER,chooserIntent.getAction());
+  assertEquals(dialogTitle,chooserIntent.getExtras().get(Intent.EXTRA_TITLE));
+  final Intent contentIntent=(Intent)chooserIntent.getExtras().get(Intent.EXTRA_INTENT);
+  assertNotNull("Intent was not built correctly",contentIntent);
+  assertEquals(Intent.ACTION_SEND,contentIntent.getAction());
+  assertEquals(title,contentIntent.getExtras().get(Intent.EXTRA_SUBJECT));
+  assertEquals(message,contentIntent.getExtras().get(Intent.EXTRA_TEXT));
+  assertEquals(1,promise.getResolved());
+}

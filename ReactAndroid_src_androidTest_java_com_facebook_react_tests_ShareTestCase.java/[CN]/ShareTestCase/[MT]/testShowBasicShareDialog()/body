@@ -1,0 +1,14 @@
+{
+  final WritableMap content=new WritableNativeMap();
+  content.putString("message","Hello, ReactNative!");
+  final WritableMap options=new WritableNativeMap();
+  IntentFilter intentFilter=new IntentFilter(Intent.ACTION_CHOOSER);
+  intentFilter.addCategory(Intent.CATEGORY_DEFAULT);
+  ActivityMonitor monitor=getInstrumentation().addMonitor(intentFilter,null,true);
+  getTestModule().showShareDialog(content,options);
+  waitForBridgeAndUIIdle();
+  getInstrumentation().waitForIdleSync();
+  assertEquals(1,monitor.getHits());
+  assertEquals(1,mRecordingModule.getOpened());
+  assertEquals(0,mRecordingModule.getErrors());
+}

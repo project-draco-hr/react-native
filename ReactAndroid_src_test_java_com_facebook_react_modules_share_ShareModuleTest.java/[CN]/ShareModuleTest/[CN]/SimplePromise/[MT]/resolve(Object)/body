@@ -1,0 +1,4 @@
+{
+  mResolved++;
+  mValue=value;
+}
