@@ -1,2 +1,2 @@
 ReactTextView view
-String lineBreakMode
+String ellipsizeMode
