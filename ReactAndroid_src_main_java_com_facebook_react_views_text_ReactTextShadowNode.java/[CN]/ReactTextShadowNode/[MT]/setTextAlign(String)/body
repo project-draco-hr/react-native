@@ -1,20 +1,21 @@
 {
   if (textAlign == null || "auto".equals(textAlign)) {
-    view.setGravityHorizontal(Gravity.NO_GRAVITY);
+    mTextAlign=Gravity.NO_GRAVITY;
   }
  else   if ("left".equals(textAlign)) {
-    view.setGravityHorizontal(Gravity.LEFT);
+    mTextAlign=Gravity.LEFT;
   }
  else   if ("right".equals(textAlign)) {
-    view.setGravityHorizontal(Gravity.RIGHT);
+    mTextAlign=Gravity.RIGHT;
   }
  else   if ("center".equals(textAlign)) {
-    view.setGravityHorizontal(Gravity.CENTER_HORIZONTAL);
+    mTextAlign=Gravity.CENTER_HORIZONTAL;
   }
  else   if ("justify".equals(textAlign)) {
-    view.setGravityHorizontal(Gravity.LEFT);
+    mTextAlign=Gravity.LEFT;
   }
  else {
     throw new JSApplicationIllegalArgumentException("Invalid textAlign: " + textAlign);
   }
+  markUpdated();
 }

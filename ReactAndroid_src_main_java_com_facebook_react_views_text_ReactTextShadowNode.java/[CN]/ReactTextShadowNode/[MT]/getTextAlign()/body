@@ -1,0 +1,12 @@
+{
+  int textAlign=mTextAlign;
+  if (getLayoutDirection() == CSSDirection.RTL) {
+    if (textAlign == Gravity.RIGHT) {
+      textAlign=Gravity.LEFT;
+    }
+ else     if (textAlign == Gravity.LEFT) {
+      textAlign=Gravity.RIGHT;
+    }
+  }
+  return textAlign;
+}

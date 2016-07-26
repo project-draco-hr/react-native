@@ -3,3 +3,4 @@ int jsEventCounter
 boolean containsImages
 Spacing padding
 float lineHeight
+int textAlign
