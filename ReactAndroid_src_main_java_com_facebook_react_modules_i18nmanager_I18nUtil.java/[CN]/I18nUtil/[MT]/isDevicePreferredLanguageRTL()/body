@@ -1,0 +1,4 @@
+{
+  final int directionality=TextUtilsCompat.getLayoutDirectionFromLocale(Locale.getDefault());
+  return directionality == ViewCompat.LAYOUT_DIRECTION_RTL;
+}

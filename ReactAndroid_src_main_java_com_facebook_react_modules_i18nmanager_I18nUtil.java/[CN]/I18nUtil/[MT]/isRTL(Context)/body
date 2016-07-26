@@ -1,3 +1,3 @@
 {
-  return allowRTL(context);
+  return allowRTL(context) && isDevicePreferredLanguageRTL();
 }
