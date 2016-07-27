@@ -10,6 +10,7 @@
   mWebViewConfig.configWebView(webView);
   webView.getSettings().setBuiltInZoomControls(true);
   webView.getSettings().setDisplayZoomControls(false);
+  webView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT));
   if (ReactBuildConfig.DEBUG && Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
     WebView.setWebContentsDebuggingEnabled(true);
   }
