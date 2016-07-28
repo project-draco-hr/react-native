@@ -1,6 +1,5 @@
 {
-  if (!valuesEqual(style.position[POSITION_BOTTOM],positionBottom)) {
-    style.position[POSITION_BOTTOM]=positionBottom;
+  if (style.position.set(BOTTOM,positionBottom)) {
     dirty();
   }
 }

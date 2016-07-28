@@ -1,8 +1,8 @@
 {
-  float lead=node.style.position[leading[axis]];
+  float lead=node.style.position.getWithFallback(leadingSpacing[axis],leading[axis]);
   if (!Float.isNaN(lead)) {
     return lead;
   }
-  float trailingPos=node.style.position[trailing[axis]];
+  float trailingPos=node.style.position.getWithFallback(trailingSpacing[axis],trailing[axis]);
   return Float.isNaN(trailingPos) ? 0 : -trailingPos;
 }

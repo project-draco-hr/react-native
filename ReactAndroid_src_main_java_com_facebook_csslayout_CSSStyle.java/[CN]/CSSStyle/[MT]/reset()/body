@@ -10,10 +10,15 @@
   overflow=CSSOverflow.VISIBLE;
   flex=0f;
   margin.reset();
-  ;
   padding.reset();
   border.reset();
-  Arrays.fill(position,CSSConstants.UNDEFINED);
+  position.reset();
+  position.setDefault(Spacing.LEFT,CSSConstants.UNDEFINED);
+  position.setDefault(Spacing.RIGHT,CSSConstants.UNDEFINED);
+  position.setDefault(Spacing.TOP,CSSConstants.UNDEFINED);
+  position.setDefault(Spacing.BOTTOM,CSSConstants.UNDEFINED);
+  position.setDefault(Spacing.START,CSSConstants.UNDEFINED);
+  position.setDefault(Spacing.END,CSSConstants.UNDEFINED);
   Arrays.fill(dimensions,CSSConstants.UNDEFINED);
   minWidth=CSSConstants.UNDEFINED;
   minHeight=CSSConstants.UNDEFINED;

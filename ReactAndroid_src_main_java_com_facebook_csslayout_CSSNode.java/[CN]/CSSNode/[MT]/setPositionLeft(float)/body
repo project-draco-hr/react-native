@@ -1,6 +1,5 @@
 {
-  if (!valuesEqual(style.position[POSITION_LEFT],positionLeft)) {
-    style.position[POSITION_LEFT]=positionLeft;
+  if (style.position.set(LEFT,positionLeft)) {
     dirty();
   }
 }

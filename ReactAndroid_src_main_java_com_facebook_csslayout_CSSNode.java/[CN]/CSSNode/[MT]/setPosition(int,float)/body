@@ -1,0 +1,5 @@
+{
+  if (style.position.set(spacingType,position)) {
+    dirty();
+  }
+}
