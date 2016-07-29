@@ -4,6 +4,7 @@
   rootView.setId(View.NO_ID);
   UIManagerModule uiManagerModule=catalystInstance.getNativeModule(UIManagerModule.class);
   int rootTag=uiManagerModule.addMeasuredRootView(rootView);
+  rootView.setRootViewTag(rootTag);
   @Nullable Bundle launchOptions=rootView.getLaunchOptions();
   WritableMap initialProps=launchOptions != null ? Arguments.fromBundle(launchOptions) : Arguments.createMap();
   String jsAppModuleName=rootView.getJSModuleName();
