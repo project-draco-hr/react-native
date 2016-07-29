@@ -1,3 +1,0 @@
-{
-  setPositionRight(CSSConstants.isUndefined(right) ? right : PixelUtil.toPixelFromDIP(right));
-}

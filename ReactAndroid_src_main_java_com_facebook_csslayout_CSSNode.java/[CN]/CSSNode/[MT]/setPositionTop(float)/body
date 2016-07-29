@@ -1,5 +1,3 @@
 {
-  if (style.position.set(TOP,positionTop)) {
-    dirty();
-  }
+  setPositionValue(TOP,positionTop);
 }

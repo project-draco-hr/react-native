@@ -1,3 +1,0 @@
-{
-  setPositionLeft(CSSConstants.isUndefined(left) ? left : PixelUtil.toPixelFromDIP(left));
-}

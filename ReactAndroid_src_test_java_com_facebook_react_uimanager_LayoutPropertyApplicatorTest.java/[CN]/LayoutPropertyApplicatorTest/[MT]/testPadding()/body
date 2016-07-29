@@ -27,12 +27,12 @@
   reactShadowNode=spy(new LayoutShadowNode());
   map=spy(buildStyles("paddingLeft",10.0));
   reactShadowNode.updateProperties(map);
-  verify(reactShadowNode).setPadding(eq(Spacing.LEFT),anyFloat());
+  verify(reactShadowNode).setPadding(eq(Spacing.START),anyFloat());
   verify(map).getFloat("paddingLeft",CSSConstants.UNDEFINED);
   reactShadowNode=spy(new LayoutShadowNode());
   map=spy(buildStyles("paddingRight",10.0));
   reactShadowNode.updateProperties(map);
-  verify(reactShadowNode).setPadding(eq(Spacing.RIGHT),anyFloat());
+  verify(reactShadowNode).setPadding(eq(Spacing.END),anyFloat());
   verify(map).getFloat("paddingRight",CSSConstants.UNDEFINED);
   reactShadowNode=spy(new LayoutShadowNode());
   map=spy(buildStyles());

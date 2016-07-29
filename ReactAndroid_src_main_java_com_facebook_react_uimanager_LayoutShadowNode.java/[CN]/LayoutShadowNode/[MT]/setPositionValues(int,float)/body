@@ -1,0 +1,3 @@
+{
+  setPositionValue(ViewProps.POSITION_SPACING_TYPES[index],CSSConstants.isUndefined(position) ? position : PixelUtil.toPixelFromDIP(position));
+}

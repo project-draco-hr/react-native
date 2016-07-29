@@ -27,12 +27,12 @@
   reactShadowNode=spy(new LayoutShadowNode());
   map=spy(buildStyles("marginLeft",10.0));
   reactShadowNode.updateProperties(map);
-  verify(reactShadowNode).setMargin(eq(Spacing.LEFT),anyFloat());
+  verify(reactShadowNode).setMargin(eq(Spacing.START),anyFloat());
   verify(map).getFloat("marginLeft",CSSConstants.UNDEFINED);
   reactShadowNode=spy(new LayoutShadowNode());
   map=spy(buildStyles("marginRight",10.0));
   reactShadowNode.updateProperties(map);
-  verify(reactShadowNode).setMargin(eq(Spacing.RIGHT),anyFloat());
+  verify(reactShadowNode).setMargin(eq(Spacing.END),anyFloat());
   verify(map).getFloat("marginRight",CSSConstants.UNDEFINED);
   reactShadowNode=spy(new LayoutShadowNode());
   map=spy(buildStyles());

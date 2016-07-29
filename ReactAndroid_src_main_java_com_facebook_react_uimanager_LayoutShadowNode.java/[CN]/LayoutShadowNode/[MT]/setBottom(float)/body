@@ -1,3 +1,0 @@
-{
-  setPositionBottom(CSSConstants.isUndefined(bottom) ? bottom : PixelUtil.toPixelFromDIP(bottom));
-}

@@ -1,5 +1,3 @@
 {
-  if (style.position.set(RIGHT,positionRight)) {
-    dirty();
-  }
+  setPositionValue(RIGHT,positionRight);
 }

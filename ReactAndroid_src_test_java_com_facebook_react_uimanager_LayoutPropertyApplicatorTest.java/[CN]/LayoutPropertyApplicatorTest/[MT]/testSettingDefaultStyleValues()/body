@@ -10,9 +10,9 @@
   LayoutShadowNode[] nodes=new LayoutShadowNode[7];
   for (int idx=0; idx < nodes.length; idx++) {
     nodes[idx]=new LayoutShadowNode();
-    nodes[idx].setDefaultPadding(Spacing.LEFT,15);
+    nodes[idx].setDefaultPadding(Spacing.START,15);
     nodes[idx].setDefaultPadding(Spacing.TOP,25);
-    nodes[idx].setDefaultPadding(Spacing.RIGHT,35);
+    nodes[idx].setDefaultPadding(Spacing.END,35);
     nodes[idx].setDefaultPadding(Spacing.BOTTOM,45);
   }
   ReactStylesDiffMap[] mapNodes=new ReactStylesDiffMap[7];
@@ -26,32 +26,32 @@
   for (int idx=0; idx < nodes.length; idx++) {
     nodes[idx].updateProperties(mapNodes[idx]);
   }
-  assertEquals(10.0,nodes[0].getPadding().get(Spacing.LEFT),.0001);
+  assertEquals(10.0,nodes[0].getPadding().get(Spacing.START),.0001);
   assertEquals(25.0,nodes[0].getPadding().get(Spacing.TOP),.0001);
-  assertEquals(5.0,nodes[0].getPadding().get(Spacing.RIGHT),.0001);
+  assertEquals(5.0,nodes[0].getPadding().get(Spacing.END),.0001);
   assertEquals(45.0,nodes[0].getPadding().get(Spacing.BOTTOM),.0001);
-  assertEquals(10.0,nodes[1].getPadding().get(Spacing.LEFT),.0001);
+  assertEquals(10.0,nodes[1].getPadding().get(Spacing.START),.0001);
   assertEquals(5.0,nodes[1].getPadding().get(Spacing.TOP),.0001);
-  assertEquals(10.0,nodes[1].getPadding().get(Spacing.RIGHT),.0001);
+  assertEquals(10.0,nodes[1].getPadding().get(Spacing.END),.0001);
   assertEquals(10.0,nodes[1].getPadding().get(Spacing.BOTTOM),.0001);
-  assertEquals(10.0,nodes[2].getPadding().get(Spacing.LEFT),.0001);
+  assertEquals(10.0,nodes[2].getPadding().get(Spacing.START),.0001);
   assertEquals(5.0,nodes[2].getPadding().get(Spacing.TOP),.0001);
-  assertEquals(35.0,nodes[2].getPadding().get(Spacing.RIGHT),.0001);
+  assertEquals(35.0,nodes[2].getPadding().get(Spacing.END),.0001);
   assertEquals(5.0,nodes[2].getPadding().get(Spacing.BOTTOM),.0001);
-  assertEquals(5.0,nodes[3].getPadding().get(Spacing.LEFT),.0001);
+  assertEquals(5.0,nodes[3].getPadding().get(Spacing.START),.0001);
   assertEquals(25.0,nodes[3].getPadding().get(Spacing.TOP),.0001);
-  assertEquals(5.0,nodes[3].getPadding().get(Spacing.RIGHT),.0001);
+  assertEquals(5.0,nodes[3].getPadding().get(Spacing.END),.0001);
   assertEquals(10.0,nodes[3].getPadding().get(Spacing.BOTTOM),.0001);
-  assertEquals(15.0,nodes[4].getPadding().get(Spacing.LEFT),.0001);
+  assertEquals(15.0,nodes[4].getPadding().get(Spacing.START),.0001);
   assertEquals(5.0,nodes[4].getPadding().get(Spacing.TOP),.0001);
-  assertEquals(35.0,nodes[4].getPadding().get(Spacing.RIGHT),.0001);
+  assertEquals(35.0,nodes[4].getPadding().get(Spacing.END),.0001);
   assertEquals(45.0,nodes[4].getPadding().get(Spacing.BOTTOM),.0001);
-  assertEquals(15.0,nodes[5].getPadding().get(Spacing.LEFT),.0001);
+  assertEquals(15.0,nodes[5].getPadding().get(Spacing.START),.0001);
   assertEquals(7.0,nodes[5].getPadding().get(Spacing.TOP),.0001);
-  assertEquals(10.0,nodes[5].getPadding().get(Spacing.RIGHT),.0001);
+  assertEquals(10.0,nodes[5].getPadding().get(Spacing.END),.0001);
   assertEquals(7.0,nodes[5].getPadding().get(Spacing.BOTTOM),.0001);
-  assertEquals(15.0,nodes[6].getPadding().get(Spacing.LEFT),.0001);
+  assertEquals(15.0,nodes[6].getPadding().get(Spacing.START),.0001);
   assertEquals(25.0,nodes[6].getPadding().get(Spacing.TOP),.0001);
-  assertEquals(35.0,nodes[6].getPadding().get(Spacing.RIGHT),.0001);
+  assertEquals(35.0,nodes[6].getPadding().get(Spacing.END),.0001);
   assertEquals(45.0,nodes[6].getPadding().get(Spacing.BOTTOM),.0001);
 }
