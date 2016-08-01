@@ -1,0 +1,11 @@
+{
+  if (mRedBoxHandler == null || !mRedBoxHandler.isReportEnabled()) {
+    return;
+  }
+  isReporting=false;
+  Assertions.assertNotNull(mReportTextView).setVisibility(View.GONE);
+  Assertions.assertNotNull(mLoadingIndicator).setVisibility(View.GONE);
+  Assertions.assertNotNull(mLineSeparator).setVisibility(View.GONE);
+  Assertions.assertNotNull(mReportButton).setVisibility(enabled ? View.VISIBLE : View.GONE);
+  Assertions.assertNotNull(mReportButton).setEnabled(true);
+}

@@ -1,0 +1,44 @@
+{
+  super(context,R.style.Theme_Catalyst_RedBox);
+  requestWindowFeature(Window.FEATURE_NO_TITLE);
+  setContentView(R.layout.redbox_view);
+  mDevSupportManager=devSupportManager;
+  mDoubleTapReloadRecognizer=new DoubleTapReloadRecognizer();
+  mRedBoxHandler=redBoxHandler;
+  mStackView=(ListView)findViewById(R.id.rn_redbox_stack);
+  mStackView.setOnItemClickListener(this);
+  mReloadJsButton=(Button)findViewById(R.id.rn_redbox_reload_button);
+  mReloadJsButton.setOnClickListener(new View.OnClickListener(){
+    @Override public void onClick(    View v){
+      mDevSupportManager.handleReloadJS();
+    }
+  }
+);
+  mDismissButton=(Button)findViewById(R.id.rn_redbox_dismiss_button);
+  mDismissButton.setOnClickListener(new View.OnClickListener(){
+    @Override public void onClick(    View v){
+      dismiss();
+    }
+  }
+);
+  mCopyToClipboardButton=(Button)findViewById(R.id.rn_redbox_copy_button);
+  mCopyToClipboardButton.setOnClickListener(new View.OnClickListener(){
+    @Override public void onClick(    View v){
+      String title=mDevSupportManager.getLastErrorTitle();
+      StackFrame[] stack=mDevSupportManager.getLastErrorStack();
+      Assertions.assertNotNull(title);
+      Assertions.assertNotNull(stack);
+      new CopyToHostClipBoardTask(mDevSupportManager).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,StackTraceHelper.formatStackTrace(title,stack));
+    }
+  }
+);
+  if (mRedBoxHandler != null && mRedBoxHandler.isReportEnabled()) {
+    mLoadingIndicator=(ProgressBar)findViewById(R.id.rn_redbox_loading_indicator);
+    mLineSeparator=(View)findViewById(R.id.rn_redbox_line_separator);
+    mReportTextView=(TextView)findViewById(R.id.rn_redbox_report_label);
+    mReportTextView.setMovementMethod(LinkMovementMethod.getInstance());
+    mReportTextView.setHighlightColor(Color.TRANSPARENT);
+    mReportButton=(Button)findViewById(R.id.rn_redbox_report_button);
+    mReportButton.setOnClickListener(mReportButtonOnClickListener);
+  }
+}

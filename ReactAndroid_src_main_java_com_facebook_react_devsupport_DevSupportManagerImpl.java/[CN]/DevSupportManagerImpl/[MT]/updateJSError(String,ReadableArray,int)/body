@@ -9,6 +9,7 @@
       updateLastErrorInfo(message,stack,errorCookie,ErrorType.JS);
       if (mRedBoxHandler != null) {
         mRedBoxHandler.handleRedbox(message,stack,RedBoxHandler.ErrorType.JS);
+        mRedBoxDialog.resetReporting(true);
       }
       mRedBoxDialog.show();
     }

@@ -1,2 +1,3 @@
 Context context
 DevSupportManager devSupportManager
+RedBoxHandler redBoxHandler
