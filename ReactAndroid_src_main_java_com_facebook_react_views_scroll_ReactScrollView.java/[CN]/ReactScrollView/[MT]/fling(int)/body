@@ -1,5 +1,12 @@
 {
-  super.fling(velocityY);
+  if (mScroller != null) {
+    int scrollWindowHeight=getHeight() - getPaddingBottom() - getPaddingTop();
+    mScroller.fling(getScrollX(),getScrollY(),0,velocityY,0,0,0,Integer.MAX_VALUE,0,scrollWindowHeight / 2);
+    postInvalidateOnAnimation();
+  }
+ else {
+    super.fling(velocityY);
+  }
   if (mSendMomentumEvents || isScrollPerfLoggingEnabled()) {
     mFlinging=true;
     enableFpsListener();

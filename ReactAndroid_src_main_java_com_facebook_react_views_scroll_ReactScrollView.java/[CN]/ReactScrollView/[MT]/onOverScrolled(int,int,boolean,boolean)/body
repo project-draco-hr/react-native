@@ -1,0 +1,11 @@
+{
+  if (mScroller != null) {
+    if (!mScroller.isFinished() && mScroller.getCurrY() != mScroller.getFinalY()) {
+      int scrollRange=Math.max(0,getChildAt(0).getHeight() - (getHeight() - getPaddingBottom() - getPaddingTop()));
+      if (scrollY >= scrollRange) {
+        mScroller.abortAnimation();
+      }
+    }
+  }
+  super.onOverScrolled(scrollX,scrollY,clampedX,clampedY);
+}

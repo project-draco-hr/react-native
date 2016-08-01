@@ -1,4 +1,25 @@
 {
   super(context);
   mFpsListener=fpsListener;
+  if (!sTriedToGetScrollerField) {
+    sTriedToGetScrollerField=true;
+    try {
+      sScrollerField=ScrollView.class.getDeclaredField("mScroller");
+      sScrollerField.setAccessible(true);
+    }
+ catch (    NoSuchFieldException e) {
+      Log.w(ReactConstants.TAG,"Failed to get mScroller field for ScrollView! " + "This app will exhibit the bounce-back scrolling bug :(");
+    }
+  }
+  if (sScrollerField != null) {
+    try {
+      mScroller=(OverScroller)sScrollerField.get(this);
+    }
+ catch (    IllegalAccessException e) {
+      throw new RuntimeException("Failed to get mScroller from ScrollView!",e);
+    }
+  }
+ else {
+    mScroller=null;
+  }
 }
