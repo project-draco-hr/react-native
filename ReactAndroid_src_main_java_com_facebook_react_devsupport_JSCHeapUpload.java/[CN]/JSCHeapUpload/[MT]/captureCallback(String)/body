@@ -1,0 +1,27 @@
+{
+  return new JSCHeapCapture.CaptureCallback(){
+    @Override public void onComplete(    List<File> captures,    List<JSCHeapCapture.CaptureException> failures){
+      for (      JSCHeapCapture.CaptureException e : failures) {
+        Log.e("JSCHeapCapture",e.getMessage());
+      }
+      OkHttpClient httpClient=new OkHttpClient.Builder().build();
+      for (      File path : captures) {
+        RequestBody body=RequestBody.create(MediaType.parse("application/json"),path);
+        Request request=new Request.Builder().url(uploadUrl).method("POST",body).build();
+        Call call=httpClient.newCall(request);
+        call.enqueue(new Callback(){
+          @Override public void onFailure(          Call call,          IOException e){
+            Log.e("JSCHeapCapture","Upload of heap capture failed: " + e.toString());
+          }
+          @Override public void onResponse(          Call call,          Response response) throws IOException {
+            if (!response.isSuccessful()) {
+              Log.e("JSCHeapCapture","Upload of heap capture failed with code: " + Integer.toString(response.code()));
+            }
+          }
+        }
+);
+      }
+    }
+  }
+;
+}

@@ -1,0 +1,3 @@
+{
+  return String.format(Locale.US,HEAP_CAPTURE_UPLOAD_URL_FORMAT,getDebugServerHost());
+}

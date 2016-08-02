@@ -1,7 +1,5 @@
 {
   super(reactContext);
   mHeapCapture=null;
-  mOperationInProgress=false;
-  mOperationToken=0;
-  mOperationError=null;
+  mCaptureInProgress=null;
 }

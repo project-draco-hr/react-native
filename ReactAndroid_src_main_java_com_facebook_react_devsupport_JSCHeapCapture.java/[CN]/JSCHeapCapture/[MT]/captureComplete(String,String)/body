@@ -1,0 +1,11 @@
+{
+  if (mCaptureInProgress != null) {
+    if (error == null) {
+      mCaptureInProgress.onSuccess(new File(path));
+    }
+ else {
+      mCaptureInProgress.onFailure(new CaptureException(error));
+    }
+    mCaptureInProgress=null;
+  }
+}

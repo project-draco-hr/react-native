@@ -1,0 +1,12 @@
+{
+  if (mHeapCapture == null) {
+    callback.onFailure(new CaptureException("HeapCapture.js module not connected"));
+    return;
+  }
+  if (mCaptureInProgress != null) {
+    callback.onFailure(new CaptureException("Heap capture already in progress"));
+    return;
+  }
+  mCaptureInProgress=callback;
+  mHeapCapture.captureHeap(file.getPath());
+}

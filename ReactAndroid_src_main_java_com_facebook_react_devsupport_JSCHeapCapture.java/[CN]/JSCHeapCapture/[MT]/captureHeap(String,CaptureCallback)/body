@@ -1,0 +1,35 @@
+{
+  final LinkedList<File> captureFiles=new LinkedList<>();
+  final LinkedList<CaptureException> captureFailures=new LinkedList<>();
+  if (sRegisteredDumpers.isEmpty()) {
+    captureFailures.add(new CaptureException("No JSC registered"));
+    callback.onComplete(captureFiles,captureFailures);
+    return;
+  }
+  int disambiguate=0;
+  File f=new File(path + "/capture" + Integer.toString(disambiguate)+ ".json");
+  while (f.delete()) {
+    disambiguate++;
+    f=new File(path + "/capture" + Integer.toString(disambiguate)+ ".json");
+  }
+  final int numRegisteredDumpers=sRegisteredDumpers.size();
+  disambiguate=0;
+  for (  JSCHeapCapture dumper : sRegisteredDumpers) {
+    File file=new File(path + "/capture" + Integer.toString(disambiguate)+ ".json");
+    dumper.captureHeapHelper(file,new PerCaptureCallback(){
+      @Override public void onSuccess(      File capture){
+        captureFiles.add(capture);
+        if (captureFiles.size() + captureFailures.size() == numRegisteredDumpers) {
+          callback.onComplete(captureFiles,captureFailures);
+        }
+      }
+      @Override public void onFailure(      CaptureException cause){
+        captureFailures.add(cause);
+        if (captureFiles.size() + captureFailures.size() == numRegisteredDumpers) {
+          callback.onComplete(captureFiles,captureFailures);
+        }
+      }
+    }
+);
+  }
+}

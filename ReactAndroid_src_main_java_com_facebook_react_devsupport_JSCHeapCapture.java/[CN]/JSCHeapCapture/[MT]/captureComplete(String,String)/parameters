@@ -1,2 +1,2 @@
-int token
+String path
 String error
