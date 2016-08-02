@@ -54,6 +54,9 @@
         List<String> pokeResults=JSCSamplingProfiler.poke(60000);
         for (        String result : pokeResults) {
           Toast.makeText(mCurrentContext,result == null ? "Started JSC Sampling Profiler" : "Stopped JSC Sampling Profiler",Toast.LENGTH_LONG).show();
+          if (result != null) {
+            new JscProfileTask(getSourceUrl()).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,result);
+          }
         }
       }
  catch (      JSCSamplingProfiler.ProfilerException e) {

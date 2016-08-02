@@ -1,0 +1,15 @@
+{
+  try {
+    String jscProfileUrl=Uri.parse(mSourceUrl).buildUpon().path("/jsc-profile").query(null).build().toString();
+    OkHttpClient client=new OkHttpClient();
+    for (    String json : jsonData) {
+      RequestBody body=RequestBody.create(JSON,json);
+      Request request=new Request.Builder().url(jscProfileUrl).post(body).build();
+      client.newCall(request).execute();
+    }
+  }
+ catch (  IOException e) {
+    FLog.e(ReactConstants.TAG,"Failed not talk to server",e);
+  }
+  return null;
+}
