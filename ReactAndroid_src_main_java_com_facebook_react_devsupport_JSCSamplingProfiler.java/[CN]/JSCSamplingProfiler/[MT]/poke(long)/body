@@ -1,0 +1,11 @@
+{
+  LinkedList<String> results=new LinkedList<>();
+  if (sRegisteredDumpers.isEmpty()) {
+    throw new ProfilerException("No JSC registered");
+  }
+  for (  JSCSamplingProfiler dumper : sRegisteredDumpers) {
+    dumper.pokeHelper(timeout);
+    results.add(dumper.mSamplingProfilerResult);
+  }
+  return results;
+}

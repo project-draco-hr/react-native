@@ -1,0 +1,6 @@
+{
+  if (sRegisteredDumpers.contains(dumper)) {
+    throw new RuntimeException("a JSCSamplingProfiler registered more than once");
+  }
+  sRegisteredDumpers.add(dumper);
+}

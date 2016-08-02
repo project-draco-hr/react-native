@@ -1,0 +1,5 @@
+{
+  super.onCatalystInstanceDestroy();
+  unregisterSamplingProfiler(this);
+  mSamplingProfiler=null;
+}

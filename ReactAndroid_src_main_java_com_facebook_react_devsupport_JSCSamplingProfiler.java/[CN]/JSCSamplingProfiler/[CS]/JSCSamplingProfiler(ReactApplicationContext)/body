@@ -1,0 +1,8 @@
+{
+  super(reactContext);
+  mSamplingProfiler=null;
+  mOperationInProgress=false;
+  mOperationToken=0;
+  mOperationError=null;
+  mSamplingProfilerResult=null;
+}

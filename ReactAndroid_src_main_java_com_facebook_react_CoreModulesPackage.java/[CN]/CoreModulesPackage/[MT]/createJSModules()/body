@@ -1,5 +1,5 @@
 {
-  List<Class<? extends JavaScriptModule>> jsModules=new ArrayList<>(Arrays.asList(DeviceEventManagerModule.RCTDeviceEventEmitter.class,JSTimersExecution.class,RCTEventEmitter.class,RCTNativeAppEventEmitter.class,AppRegistry.class,com.facebook.react.bridge.Systrace.class,HMRClient.class,DebugComponentOwnershipModule.RCTDebugComponentOwnership.class));
+  List<Class<? extends JavaScriptModule>> jsModules=new ArrayList<>(Arrays.asList(DeviceEventManagerModule.RCTDeviceEventEmitter.class,JSTimersExecution.class,RCTEventEmitter.class,RCTNativeAppEventEmitter.class,AppRegistry.class,com.facebook.react.bridge.Systrace.class,HMRClient.class,JSCSamplingProfiler.SamplingProfiler.class,DebugComponentOwnershipModule.RCTDebugComponentOwnership.class));
   if (ReactBuildConfig.DEBUG) {
     jsModules.add(JSCHeapCapture.HeapCapture.class);
   }

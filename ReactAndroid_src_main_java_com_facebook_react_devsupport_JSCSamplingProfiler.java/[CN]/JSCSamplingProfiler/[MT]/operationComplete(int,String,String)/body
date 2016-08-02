@@ -1,0 +1,11 @@
+{
+  if (token == mOperationToken) {
+    mOperationInProgress=false;
+    mSamplingProfilerResult=result;
+    mOperationError=error;
+    this.notify();
+  }
+ else {
+    throw new RuntimeException("Completed operation is not in progress.");
+  }
+}

@@ -1,0 +1,7 @@
+{
+  if (mSamplingProfiler == null) {
+    throw new ProfilerException("SamplingProfiler.js module not connected");
+  }
+  mSamplingProfiler.poke(getOperationToken());
+  waitForOperation(timeout);
+}

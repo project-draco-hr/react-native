@@ -1,0 +1,5 @@
+{
+  super.initialize();
+  mSamplingProfiler=getReactApplicationContext().getJSModule(SamplingProfiler.class);
+  registerSamplingProfiler(this);
+}
