@@ -1,4 +1,0 @@
-{
-  mNativeModuleCallExceptionHandler=handler;
-  return this;
-}

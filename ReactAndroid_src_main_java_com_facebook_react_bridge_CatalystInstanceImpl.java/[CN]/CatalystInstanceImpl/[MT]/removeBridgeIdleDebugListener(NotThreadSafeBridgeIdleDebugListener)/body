@@ -1,3 +1,0 @@
-{
-  mBridgeIdleListeners.remove(listener);
-}

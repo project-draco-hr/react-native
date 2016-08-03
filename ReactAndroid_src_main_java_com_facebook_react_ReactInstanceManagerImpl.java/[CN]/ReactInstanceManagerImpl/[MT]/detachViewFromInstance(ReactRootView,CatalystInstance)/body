@@ -1,4 +1,0 @@
-{
-  UiThreadUtil.assertOnUiThread();
-  catalystInstance.getJSModule(AppRegistry.class).unmountApplicationComponentAtRootTag(rootView.getId());
-}

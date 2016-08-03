@@ -1,4 +1,0 @@
-{
-  mJSExecutor=jsExecutor;
-  return this;
-}

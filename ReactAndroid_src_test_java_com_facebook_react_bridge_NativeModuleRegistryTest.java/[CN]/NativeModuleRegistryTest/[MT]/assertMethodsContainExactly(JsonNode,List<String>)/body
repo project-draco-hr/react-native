@@ -1,9 +1,0 @@
-{
-  ArrayList<String> actual=new ArrayList();
-  Iterator<Map.Entry<String,JsonNode>> fields=methodsObject.fields();
-  while (fields.hasNext()) {
-    String name=fields.next().getKey();
-    actual.add(name);
-  }
-  assertThat(actual).hasSize(methodNames.size()).containsAll(methodNames);
-}

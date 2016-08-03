@@ -1,3 +1,0 @@
-{
-  mBridge.setGlobalVariable(propName,jsonValue);
-}

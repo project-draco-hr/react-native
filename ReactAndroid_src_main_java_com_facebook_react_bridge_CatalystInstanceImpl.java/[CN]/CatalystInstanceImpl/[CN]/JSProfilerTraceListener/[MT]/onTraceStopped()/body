@@ -1,3 +1,0 @@
-{
-  getJSModule(Assertions.assertNotNull(mMainExecutorToken),com.facebook.react.bridge.Systrace.class).setEnabled(false);
-}

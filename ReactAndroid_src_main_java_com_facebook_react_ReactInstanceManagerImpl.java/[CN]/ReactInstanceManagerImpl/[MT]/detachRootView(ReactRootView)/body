@@ -1,8 +1,0 @@
-{
-  UiThreadUtil.assertOnUiThread();
-  if (mAttachedRootViews.remove(rootView)) {
-    if (mCurrentReactContext != null && mCurrentReactContext.hasActiveCatalystInstance()) {
-      detachViewFromInstance(rootView,mCurrentReactContext.getCatalystInstance());
-    }
-  }
-}

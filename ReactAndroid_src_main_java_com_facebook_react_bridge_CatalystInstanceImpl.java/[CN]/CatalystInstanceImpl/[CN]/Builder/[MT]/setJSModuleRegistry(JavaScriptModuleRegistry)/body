@@ -1,4 +1,0 @@
-{
-  mJSModuleRegistry=jsModuleRegistry;
-  return this;
-}

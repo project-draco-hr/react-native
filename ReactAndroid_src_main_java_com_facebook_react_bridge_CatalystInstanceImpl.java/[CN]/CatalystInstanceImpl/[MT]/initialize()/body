@@ -1,6 +1,0 @@
-{
-  UiThreadUtil.assertOnUiThread();
-  Assertions.assertCondition(!mInitialized,"This catalyst instance has already been initialized");
-  mInitialized=true;
-  mJavaRegistry.notifyCatalystInstanceInitialized();
-}

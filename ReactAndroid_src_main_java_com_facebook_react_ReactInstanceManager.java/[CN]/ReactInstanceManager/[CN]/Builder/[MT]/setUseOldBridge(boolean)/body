@@ -1,4 +1,0 @@
-{
-  mUseOldBridge=enable;
-  return this;
-}

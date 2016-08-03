@@ -1,4 +1,0 @@
-{
-  mReactQueueConfigurationSpec=ReactQueueConfigurationSpec;
-  return this;
-}

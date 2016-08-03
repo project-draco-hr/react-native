@@ -1,2 +1,0 @@
-List<ModuleDefinition> moduleTable
-Map<Class<? extends NativeModule>,NativeModule> moduleInstances

@@ -1,5 +1,0 @@
-{
-  if (mCurrentReactContext != null) {
-    mCurrentReactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit("toggleElementInspector",null);
-  }
-}

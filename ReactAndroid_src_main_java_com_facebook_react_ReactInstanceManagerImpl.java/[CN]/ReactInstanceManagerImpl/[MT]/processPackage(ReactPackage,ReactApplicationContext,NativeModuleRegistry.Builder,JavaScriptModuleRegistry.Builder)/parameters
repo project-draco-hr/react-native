@@ -1,4 +1,0 @@
-ReactPackage reactPackage
-ReactApplicationContext reactContext
-NativeModuleRegistry.Builder nativeRegistryBuilder
-JavaScriptModuleRegistry.Builder jsModulesBuilder

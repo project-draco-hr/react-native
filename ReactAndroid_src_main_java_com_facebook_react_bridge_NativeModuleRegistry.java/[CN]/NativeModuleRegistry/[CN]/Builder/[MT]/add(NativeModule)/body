@@ -1,8 +1,0 @@
-{
-  NativeModule existing=mModules.get(module.getName());
-  if (existing != null && !module.canOverrideExistingModule()) {
-    throw new IllegalStateException("Native module " + module.getClass().getSimpleName() + " tried to override "+ existing.getClass().getSimpleName()+ " for module name "+ module.getName()+ ". If this was your intention, return true from "+ module.getClass().getSimpleName()+ "#canOverrideExistingModule()");
-  }
-  mModules.put(module.getName(),module);
-  return this;
-}

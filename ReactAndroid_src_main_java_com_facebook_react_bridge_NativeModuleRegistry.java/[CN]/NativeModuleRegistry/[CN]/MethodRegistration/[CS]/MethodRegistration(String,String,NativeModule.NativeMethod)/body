@@ -1,5 +1,0 @@
-{
-  this.name=name;
-  this.tracingName=tracingName;
-  this.method=method;
-}

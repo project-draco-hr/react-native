@@ -1,8 +1,0 @@
-{
-  UiThreadUtil.assertOnUiThread();
-  if (mUseDeveloperSupport) {
-    mDevSupportManager.setDevSupportEnabled(false);
-  }
-  moveToBeforeCreateLifecycleState();
-  mCurrentActivity=null;
-}

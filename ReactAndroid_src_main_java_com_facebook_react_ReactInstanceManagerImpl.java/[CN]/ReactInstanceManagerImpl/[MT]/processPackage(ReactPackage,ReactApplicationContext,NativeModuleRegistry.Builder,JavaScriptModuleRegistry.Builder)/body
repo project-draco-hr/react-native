@@ -1,8 +1,0 @@
-{
-  for (  NativeModule nativeModule : reactPackage.createNativeModules(reactContext)) {
-    nativeRegistryBuilder.add(nativeModule);
-  }
-  for (  Class<? extends JavaScriptModule> jsModuleClass : reactPackage.createJSModules()) {
-    jsModulesBuilder.add(jsModuleClass);
-  }
-}

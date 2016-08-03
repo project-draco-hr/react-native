@@ -1,6 +1,0 @@
-{
-  if (mJavaJSExecutor != null) {
-    mJavaJSExecutor.close();
-    mJavaJSExecutor=null;
-  }
-}

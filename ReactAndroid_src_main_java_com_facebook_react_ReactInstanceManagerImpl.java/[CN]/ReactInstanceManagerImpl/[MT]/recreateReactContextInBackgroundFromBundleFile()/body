@@ -1,3 +1,0 @@
-{
-  recreateReactContextInBackground(new JSCJavaScriptExecutor.Factory(),JSBundleLoader.createFileLoader(mApplicationContext,mJSBundleFile));
-}

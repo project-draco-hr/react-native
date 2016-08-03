@@ -1,6 +1,0 @@
-{
-  UiThreadUtil.assertOnUiThread();
-  if (mDefaultBackButtonImpl != null) {
-    mDefaultBackButtonImpl.invokeDefaultOnBackPressed();
-  }
-}

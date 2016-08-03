@@ -1,9 +1,0 @@
-{
-  this.id=id;
-  this.name=name;
-  this.target=target;
-  this.methods=new ArrayList<MethodRegistration>();
-  for (  Map.Entry<String,NativeModule.NativeMethod> entry : target.getMethods().entrySet()) {
-    this.methods.add(new MethodRegistration(entry.getKey(),"NativeCall__" + target.getName() + "_"+ entry.getKey(),entry.getValue()));
-  }
-}

@@ -1,7 +1,0 @@
-{
-  StringWriter stringWriter=new StringWriter();
-  JsonWriter writer=new JsonWriter(stringWriter);
-  registry.writeModuleDescriptions(writer);
-  writer.close();
-  return stringWriter.getBuffer().toString();
-}

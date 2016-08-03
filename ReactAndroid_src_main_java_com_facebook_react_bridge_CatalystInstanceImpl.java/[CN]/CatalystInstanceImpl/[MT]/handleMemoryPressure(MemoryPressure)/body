@@ -1,8 +1,0 @@
-{
-  mReactQueueConfiguration.getJSQueueThread().runOnQueue(new Runnable(){
-    @Override public void run(){
-      Assertions.assertNotNull(mBridge).handleMemoryPressure(level);
-    }
-  }
-);
-}

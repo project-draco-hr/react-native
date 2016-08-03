@@ -1,3 +1,0 @@
-{
-  return Assertions.assertNotNull(mJSModuleRegistry).getJavaScriptModule(this,executorToken,jsInterface);
-}

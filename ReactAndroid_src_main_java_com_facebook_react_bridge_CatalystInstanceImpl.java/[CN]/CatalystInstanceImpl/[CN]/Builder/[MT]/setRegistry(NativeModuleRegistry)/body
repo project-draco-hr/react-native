@@ -1,4 +1,0 @@
-{
-  mRegistry=registry;
-  return this;
-}

@@ -1,9 +1,0 @@
-{
-  NativeModuleRegistry registry=new NativeModuleRegistry.Builder().add(new MethodsModule()).build();
-  String json=getModuleDescriptions(registry);
-  JsonNode node=parse(json);
-  JsonNode asyncMethodData=node.get("TestModule").get("methods").get("saveData");
-  assertThat(asyncMethodData.get("type")).isEqualTo(new TextNode("remoteAsync"));
-  JsonNode regularMethodData=node.get("TestModule").get("methods").get("doSomething");
-  assertThat(regularMethodData.get("type")).isNotEqualTo(new TextNode("remoteAsync"));
-}

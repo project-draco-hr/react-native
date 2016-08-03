@@ -1,5 +1,0 @@
-{
-  if (mLifecycleState == LifecycleState.RESUMED) {
-    moveToResumedLifecycleState(true);
-  }
-}
