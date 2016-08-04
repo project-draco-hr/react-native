@@ -1,3 +1,0 @@
-{
-  return BaseJavaModule.METHOD_TYPE_REMOTE;
-}
