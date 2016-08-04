@@ -1,0 +1,4 @@
+{
+  mBuilder.setLoadFlags(UnpackingJSBundleLoader.UNPACKED_JS_SOURCE).build().loadScript(mCatalystInstanceImpl);
+  verify(mCatalystInstanceImpl).loadScriptFromOptimizedBundle(eq(mDestinationPath.getPath()),eq(URL),eq(UnpackingJSBundleLoader.UNPACKED_JS_SOURCE));
+}

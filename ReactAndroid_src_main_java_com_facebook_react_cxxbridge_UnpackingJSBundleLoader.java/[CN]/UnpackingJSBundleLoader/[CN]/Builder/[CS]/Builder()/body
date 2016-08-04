@@ -3,4 +3,5 @@
   context=null;
   destinationPath=null;
   sourceURL=null;
+  loadFlags=0;
 }

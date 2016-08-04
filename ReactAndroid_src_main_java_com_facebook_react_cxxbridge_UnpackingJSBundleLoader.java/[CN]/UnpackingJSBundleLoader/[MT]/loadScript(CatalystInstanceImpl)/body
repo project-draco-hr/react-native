@@ -1,4 +1,4 @@
 {
   prepare();
-  instance.loadScriptFromOptimizedBundle(mDirectoryPath.getPath(),mSourceURL,UNPACKED_JS_SOURCE);
+  instance.loadScriptFromOptimizedBundle(mDirectoryPath.getPath(),mSourceURL,mLoadFlags);
 }
