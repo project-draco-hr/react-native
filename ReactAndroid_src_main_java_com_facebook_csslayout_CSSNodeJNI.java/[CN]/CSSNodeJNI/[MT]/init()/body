@@ -1,0 +1,7 @@
+{
+  if (mNativePointer != 0) {
+    throw new IllegalStateException("Allready initialized node");
+  }
+  mNativePointer=jni_CSSNodeNew();
+  mChildren=new ArrayList<>(4);
+}

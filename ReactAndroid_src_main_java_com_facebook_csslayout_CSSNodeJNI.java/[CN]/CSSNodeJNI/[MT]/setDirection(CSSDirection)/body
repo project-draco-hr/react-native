@@ -1,0 +1,4 @@
+{
+  assertNativeInstance();
+  jni_CSSNodeStyleSetDirection(mNativePointer,direction.ordinal());
+}

@@ -1,0 +1,41 @@
+{
+  assertNativeInstance();
+switch (spacingType) {
+case Spacing.LEFT:
+    jni_CSSNodeStyleSetMarginLeft(mNativePointer,margin);
+  break;
+case Spacing.TOP:
+jni_CSSNodeStyleSetMarginTop(mNativePointer,margin);
+break;
+case Spacing.RIGHT:
+jni_CSSNodeStyleSetMarginRight(mNativePointer,margin);
+break;
+case Spacing.BOTTOM:
+jni_CSSNodeStyleSetMarginBottom(mNativePointer,margin);
+break;
+case Spacing.START:
+jni_CSSNodeStyleSetMarginStart(mNativePointer,margin);
+break;
+case Spacing.END:
+jni_CSSNodeStyleSetMarginEnd(mNativePointer,margin);
+break;
+case Spacing.HORIZONTAL:
+jni_CSSNodeStyleSetMarginLeft(mNativePointer,margin);
+jni_CSSNodeStyleSetMarginRight(mNativePointer,margin);
+jni_CSSNodeStyleSetMarginStart(mNativePointer,margin);
+jni_CSSNodeStyleSetMarginEnd(mNativePointer,margin);
+break;
+case Spacing.VERTICAL:
+jni_CSSNodeStyleSetMarginTop(mNativePointer,margin);
+jni_CSSNodeStyleSetMarginBottom(mNativePointer,margin);
+break;
+case Spacing.ALL:
+jni_CSSNodeStyleSetMarginLeft(mNativePointer,margin);
+jni_CSSNodeStyleSetMarginRight(mNativePointer,margin);
+jni_CSSNodeStyleSetMarginStart(mNativePointer,margin);
+jni_CSSNodeStyleSetMarginEnd(mNativePointer,margin);
+jni_CSSNodeStyleSetMarginTop(mNativePointer,margin);
+jni_CSSNodeStyleSetMarginBottom(mNativePointer,margin);
+break;
+}
+}

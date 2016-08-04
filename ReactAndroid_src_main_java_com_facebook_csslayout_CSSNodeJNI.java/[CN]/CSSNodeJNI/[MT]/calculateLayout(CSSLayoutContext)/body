@@ -1,0 +1,4 @@
+{
+  assertNativeInstance();
+  jni_CSSNodeCalculateLayout(mNativePointer);
+}

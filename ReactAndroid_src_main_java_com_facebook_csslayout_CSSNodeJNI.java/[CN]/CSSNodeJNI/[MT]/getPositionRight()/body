@@ -1,0 +1,4 @@
+{
+  assertNativeInstance();
+  return jni_CSSNodeStyleGetPositionRight(mNativePointer);
+}

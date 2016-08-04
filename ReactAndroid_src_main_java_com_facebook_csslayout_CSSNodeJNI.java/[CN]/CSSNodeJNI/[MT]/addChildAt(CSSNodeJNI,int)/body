@@ -1,0 +1,6 @@
+{
+  assertNativeInstance();
+  mChildren.add(i,child);
+  child.mParent=this;
+  jni_CSSNodeInsertChild(mNativePointer,child.mNativePointer,i);
+}

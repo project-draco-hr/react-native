@@ -1,0 +1,11 @@
+{
+  assertNativeInstance();
+  Spacing border=new Spacing();
+  border.set(Spacing.LEFT,jni_CSSNodeStyleGetBorderLeft(mNativePointer));
+  border.set(Spacing.TOP,jni_CSSNodeStyleGetBorderTop(mNativePointer));
+  border.set(Spacing.RIGHT,jni_CSSNodeStyleGetBorderRight(mNativePointer));
+  border.set(Spacing.BOTTOM,jni_CSSNodeStyleGetBorderBottom(mNativePointer));
+  border.set(Spacing.START,jni_CSSNodeStyleGetBorderStart(mNativePointer));
+  border.set(Spacing.END,jni_CSSNodeStyleGetBorderEnd(mNativePointer));
+  return border;
+}

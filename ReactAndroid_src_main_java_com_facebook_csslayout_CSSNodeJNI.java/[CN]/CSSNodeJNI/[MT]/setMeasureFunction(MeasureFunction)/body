@@ -1,0 +1,5 @@
+{
+  assertNativeInstance();
+  mMeasureFunction=measureFunction;
+  jni_CSSNodeSetHasMeasureFunc(mNativePointer,measureFunction != null);
+}

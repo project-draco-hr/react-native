@@ -1,0 +1,7 @@
+{
+  assertNativeInstance();
+  final CSSNodeJNI child=mChildren.remove(i);
+  child.mParent=null;
+  jni_CSSNodeRemoveChild(mNativePointer,child.mNativePointer);
+  return child;
+}

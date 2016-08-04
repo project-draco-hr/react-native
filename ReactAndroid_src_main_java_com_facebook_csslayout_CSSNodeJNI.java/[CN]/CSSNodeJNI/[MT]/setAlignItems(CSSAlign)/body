@@ -1,0 +1,4 @@
+{
+  assertNativeInstance();
+  jni_CSSNodeStyleSetAlignItems(mNativePointer,alignItems.ordinal());
+}

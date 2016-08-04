@@ -1,0 +1,11 @@
+{
+  assertNativeInstance();
+  Spacing margin=new Spacing();
+  margin.set(Spacing.LEFT,jni_CSSNodeStyleGetMarginLeft(mNativePointer));
+  margin.set(Spacing.TOP,jni_CSSNodeStyleGetMarginTop(mNativePointer));
+  margin.set(Spacing.RIGHT,jni_CSSNodeStyleGetMarginRight(mNativePointer));
+  margin.set(Spacing.BOTTOM,jni_CSSNodeStyleGetMarginBottom(mNativePointer));
+  margin.set(Spacing.START,jni_CSSNodeStyleGetMarginStart(mNativePointer));
+  margin.set(Spacing.END,jni_CSSNodeStyleGetMarginEnd(mNativePointer));
+  return margin;
+}

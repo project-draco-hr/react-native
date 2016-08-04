@@ -1,0 +1,4 @@
+{
+  assertNativeInstance();
+  return CSSDirection.values()[jni_CSSNodeStyleGetDirection(mNativePointer)];
+}

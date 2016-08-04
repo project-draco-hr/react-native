@@ -1,0 +1,4 @@
+{
+  assertNativeInstance();
+  return CSSFlexDirection.values()[jni_CSSNodeStyleGetFlexDirection(mNativePointer)];
+}

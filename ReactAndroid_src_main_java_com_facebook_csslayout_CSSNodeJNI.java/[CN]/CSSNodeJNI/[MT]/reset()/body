@@ -1,0 +1,8 @@
+{
+  assertNativeInstance();
+  jni_CSSNodeFree(mNativePointer);
+  mNativePointer=0;
+  mChildren=null;
+  mParent=null;
+  mMeasureFunction=null;
+}

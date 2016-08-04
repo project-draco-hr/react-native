@@ -1,0 +1,4 @@
+{
+  assertNativeInstance();
+  jni_CSSNodeStyleSetFlex(mNativePointer,flex);
+}

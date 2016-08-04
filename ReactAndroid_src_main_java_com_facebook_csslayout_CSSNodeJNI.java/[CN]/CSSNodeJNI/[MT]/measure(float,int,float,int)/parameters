@@ -1,0 +1,4 @@
+float width
+int widthMode
+float height
+int heightMode

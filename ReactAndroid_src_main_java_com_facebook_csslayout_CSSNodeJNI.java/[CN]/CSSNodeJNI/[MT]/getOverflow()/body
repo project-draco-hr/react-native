@@ -1,0 +1,4 @@
+{
+  assertNativeInstance();
+  return CSSOverflow.values()[jni_CSSNodeStyleGetOverflow(mNativePointer)];
+}

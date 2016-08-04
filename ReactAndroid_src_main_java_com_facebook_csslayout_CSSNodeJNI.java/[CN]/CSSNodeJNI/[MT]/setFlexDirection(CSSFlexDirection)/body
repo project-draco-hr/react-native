@@ -1,0 +1,4 @@
+{
+  assertNativeInstance();
+  jni_CSSNodeStyleSetFlexDirection(mNativePointer,flexDirection.ordinal());
+}

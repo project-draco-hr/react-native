@@ -1,0 +1,16 @@
+{
+switch (spacingType) {
+case Spacing.LEFT:
+    setPositionLeft(position);
+  break;
+case Spacing.TOP:
+setPositionTop(position);
+break;
+case Spacing.RIGHT:
+setPositionRight(position);
+break;
+case Spacing.BOTTOM:
+setPositionBottom(position);
+break;
+}
+}

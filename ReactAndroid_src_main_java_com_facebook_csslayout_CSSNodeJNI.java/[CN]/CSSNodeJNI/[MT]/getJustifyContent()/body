@@ -1,0 +1,4 @@
+{
+  assertNativeInstance();
+  return CSSJustify.values()[jni_CSSNodeStyleGetJustifyContent(mNativePointer)];
+}

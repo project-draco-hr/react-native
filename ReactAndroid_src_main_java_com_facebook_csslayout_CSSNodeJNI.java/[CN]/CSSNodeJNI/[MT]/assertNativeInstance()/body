@@ -1,0 +1,5 @@
+{
+  if (mNativePointer == 0) {
+    throw new IllegalStateException("Null native pointer");
+  }
+}

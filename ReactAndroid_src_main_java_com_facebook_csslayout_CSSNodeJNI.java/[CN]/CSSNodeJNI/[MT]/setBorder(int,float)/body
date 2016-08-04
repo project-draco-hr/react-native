@@ -1,0 +1,41 @@
+{
+  assertNativeInstance();
+switch (spacingType) {
+case Spacing.LEFT:
+    jni_CSSNodeStyleSetBorderLeft(mNativePointer,border);
+  break;
+case Spacing.TOP:
+jni_CSSNodeStyleSetBorderTop(mNativePointer,border);
+break;
+case Spacing.RIGHT:
+jni_CSSNodeStyleSetBorderRight(mNativePointer,border);
+break;
+case Spacing.BOTTOM:
+jni_CSSNodeStyleSetBorderBottom(mNativePointer,border);
+break;
+case Spacing.START:
+jni_CSSNodeStyleSetBorderStart(mNativePointer,border);
+break;
+case Spacing.END:
+jni_CSSNodeStyleSetBorderEnd(mNativePointer,border);
+break;
+case Spacing.HORIZONTAL:
+jni_CSSNodeStyleSetBorderLeft(mNativePointer,border);
+jni_CSSNodeStyleSetBorderRight(mNativePointer,border);
+jni_CSSNodeStyleSetBorderStart(mNativePointer,border);
+jni_CSSNodeStyleSetBorderEnd(mNativePointer,border);
+break;
+case Spacing.VERTICAL:
+jni_CSSNodeStyleSetBorderTop(mNativePointer,border);
+jni_CSSNodeStyleSetBorderBottom(mNativePointer,border);
+break;
+case Spacing.ALL:
+jni_CSSNodeStyleSetBorderLeft(mNativePointer,border);
+jni_CSSNodeStyleSetBorderRight(mNativePointer,border);
+jni_CSSNodeStyleSetBorderStart(mNativePointer,border);
+jni_CSSNodeStyleSetBorderEnd(mNativePointer,border);
+jni_CSSNodeStyleSetBorderTop(mNativePointer,border);
+jni_CSSNodeStyleSetBorderBottom(mNativePointer,border);
+break;
+}
+}
