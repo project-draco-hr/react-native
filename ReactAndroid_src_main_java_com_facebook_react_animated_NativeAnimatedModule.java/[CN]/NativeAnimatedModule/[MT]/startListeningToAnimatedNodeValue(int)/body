@@ -1,0 +1,17 @@
+{
+  final AnimatedNodeValueListener listener=new AnimatedNodeValueListener(){
+    public void onValueUpdate(    double value){
+      WritableMap onAnimatedValueData=Arguments.createMap();
+      onAnimatedValueData.putInt("tag",tag);
+      onAnimatedValueData.putDouble("value",value);
+      getReactApplicationContext().getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit("onAnimatedValueUpdate",onAnimatedValueData);
+    }
+  }
+;
+  mOperations.add(new UIThreadOperation(){
+    @Override public void execute(    NativeAnimatedNodesManager animatedNodesManager){
+      animatedNodesManager.startListeningToAnimatedNodeValue(tag,listener);
+    }
+  }
+);
+}

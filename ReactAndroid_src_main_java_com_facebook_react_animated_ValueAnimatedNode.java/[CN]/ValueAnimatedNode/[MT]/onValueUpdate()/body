@@ -1,0 +1,6 @@
+{
+  if (mValueListener == null) {
+    return;
+  }
+  mValueListener.onValueUpdate(mValue);
+}
