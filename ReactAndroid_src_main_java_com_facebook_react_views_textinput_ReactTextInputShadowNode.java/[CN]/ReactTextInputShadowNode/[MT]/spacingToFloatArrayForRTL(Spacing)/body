@@ -1,0 +1,3 @@
+{
+  return new float[]{spacing.get(Spacing.END),spacing.get(Spacing.TOP),spacing.get(Spacing.START),spacing.get(Spacing.BOTTOM)};
+}

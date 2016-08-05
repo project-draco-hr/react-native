@@ -1,7 +1,11 @@
 {
   super.onCollectExtraUpdates(uiViewOperationQueue);
   if (mComputedPadding != null) {
-    uiViewOperationQueue.enqueueUpdateExtraData(getReactTag(),mComputedPadding);
+    float[] updatedPadding=mComputedPadding;
+    if (getLayoutDirection() == CSSDirection.RTL) {
+      updatedPadding=spacingToFloatArrayForRTL(getPadding());
+    }
+    uiViewOperationQueue.enqueueUpdateExtraData(getReactTag(),updatedPadding);
     mComputedPadding=null;
   }
   if (mJsEventCount != UNSET) {

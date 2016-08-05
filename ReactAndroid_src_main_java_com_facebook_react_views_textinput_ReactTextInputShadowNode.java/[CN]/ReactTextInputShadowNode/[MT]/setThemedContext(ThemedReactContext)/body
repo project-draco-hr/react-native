@@ -2,9 +2,9 @@
   super.setThemedContext(themedContext);
   mEditText=new EditText(getThemedContext());
   mEditText.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT));
-  setDefaultPadding(Spacing.LEFT,mEditText.getPaddingLeft());
+  setDefaultPadding(Spacing.START,mEditText.getPaddingStart());
   setDefaultPadding(Spacing.TOP,mEditText.getPaddingTop());
-  setDefaultPadding(Spacing.RIGHT,mEditText.getPaddingRight());
+  setDefaultPadding(Spacing.END,mEditText.getPaddingEnd());
   setDefaultPadding(Spacing.BOTTOM,mEditText.getPaddingBottom());
   mComputedPadding=spacingToFloatArray(getPadding());
 }
