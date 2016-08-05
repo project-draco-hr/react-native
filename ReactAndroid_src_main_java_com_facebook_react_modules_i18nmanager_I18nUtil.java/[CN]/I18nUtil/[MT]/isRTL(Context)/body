@@ -1,3 +1,6 @@
 {
-  return allowRTL(context) && isDevicePreferredLanguageRTL();
+  if (isRTLForced(context)) {
+    return true;
+  }
+  return isRTLAllowed(context) && isDevicePreferredLanguageRTL();
 }
