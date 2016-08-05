@@ -1,0 +1,3 @@
+{
+  return mSpringTension > 0 && ((mStartValue < mEndValue && mCurrentState.position > mEndValue) || (mStartValue > mEndValue && mCurrentState.position < mEndValue));
+}

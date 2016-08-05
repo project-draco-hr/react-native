@@ -1,0 +1,9 @@
+{
+  mSpringFriction=config.getDouble("friction");
+  mSpringTension=config.getDouble("tension");
+  mCurrentState.velocity=config.getDouble("initialVelocity");
+  mEndValue=config.getDouble("toValue");
+  mRestSpeedThreshold=config.getDouble("restSpeedThreshold");
+  mDisplacementFromRestThreshold=config.getDouble("restDisplacementThreshold");
+  mOvershootClampingEnabled=config.getBoolean("overshootClamping");
+}

@@ -1,0 +1,12 @@
+{
+  long frameTimeMillis=frameTimeNanos / 1000000;
+  if (!mSpringStarted) {
+    mStartValue=mCurrentState.position=mAnimatedValue.mValue;
+    mLastTime=frameTimeMillis;
+    mSpringStarted=true;
+  }
+  advance((frameTimeMillis - mLastTime) / 1000.0);
+  mLastTime=frameTimeMillis;
+  mAnimatedValue.mValue=mCurrentState.position;
+  mHasFinished=isAtRest();
+}
