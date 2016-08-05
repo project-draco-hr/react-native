@@ -1,8 +1,8 @@
 {
   if (matrix == null) {
-    resetTransformMatrix(view);
+    resetTransformProperty(view);
   }
  else {
-    setTransformMatrix(view,matrix);
+    setTransformProperty(view,matrix);
   }
 }

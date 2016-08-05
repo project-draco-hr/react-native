@@ -1,0 +1,6 @@
+{
+  m[0]=Math.cos(radians);
+  m[1]=Math.sin(radians);
+  m[4]=-Math.sin(radians);
+  m[5]=Math.cos(radians);
+}

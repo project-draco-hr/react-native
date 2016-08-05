@@ -1,5 +1,5 @@
 {
-  double[] mat=createIdentityMatrix();
+  double[] mat=MatrixMathHelper.createIdentityMatrix();
   mat[0]=Math.cos(radians);
   mat[1]=Math.sin(radians);
   mat[4]=-Math.sin(radians);

@@ -1,0 +1,5 @@
+{
+  double[] res=new double[16];
+  resetIdentityMatrix(res);
+  return res;
+}
