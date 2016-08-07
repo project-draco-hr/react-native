@@ -1,0 +1,22 @@
+{
+  ReadableArray transforms=config.getArray("transforms");
+  mTransformConfigs=new ArrayList<>(transforms.size());
+  for (int i=0; i < transforms.size(); i++) {
+    ReadableMap transformConfigMap=transforms.getMap(i);
+    String property=transformConfigMap.getString("property");
+    String type=transformConfigMap.getString("type");
+    if (type.equals("animated")) {
+      AnimatedTransformConfig transformConfig=new AnimatedTransformConfig();
+      transformConfig.mProperty=property;
+      transformConfig.mNodeTag=transformConfigMap.getInt("nodeTag");
+      mTransformConfigs.add(transformConfig);
+    }
+ else {
+      StaticTransformConfig transformConfig=new StaticTransformConfig();
+      transformConfig.mProperty=property;
+      transformConfig.mValue=transformConfigMap.getDouble("value");
+      mTransformConfigs.add(transformConfig);
+    }
+  }
+  mNativeAnimatedNodesManager=nativeAnimatedNodesManager;
+}
