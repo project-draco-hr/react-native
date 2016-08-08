@@ -1,0 +1,5 @@
+{
+  if (getReactNativeHost().hasInstance()) {
+    getReactNativeHost().getReactInstanceManager().onHostResume(getPlainActivity(),(DefaultHardwareBackBtnHandler)getPlainActivity());
+  }
+}

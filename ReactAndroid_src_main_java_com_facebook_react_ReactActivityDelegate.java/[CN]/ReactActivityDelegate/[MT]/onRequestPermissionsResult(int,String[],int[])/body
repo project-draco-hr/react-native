@@ -1,0 +1,5 @@
+{
+  if (mPermissionListener != null && mPermissionListener.onRequestPermissionsResult(requestCode,permissions,grantResults)) {
+    mPermissionListener=null;
+  }
+}

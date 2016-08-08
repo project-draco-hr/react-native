@@ -1,0 +1,7 @@
+{
+  if (getReactNativeHost().hasInstance()) {
+    getReactNativeHost().getReactInstanceManager().onNewIntent(intent);
+    return true;
+  }
+  return false;
+}

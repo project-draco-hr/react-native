@@ -1,0 +1,5 @@
+{
+  mFragmentActivity=fragmentActivity;
+  mMainComponentName=mainComponentName;
+  mActivity=null;
+}

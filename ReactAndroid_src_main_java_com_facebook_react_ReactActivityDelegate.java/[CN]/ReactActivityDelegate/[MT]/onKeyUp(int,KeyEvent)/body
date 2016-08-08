@@ -1,0 +1,14 @@
+{
+  if (getReactNativeHost().hasInstance() && getReactNativeHost().getUseDeveloperSupport()) {
+    if (keyCode == KeyEvent.KEYCODE_MENU) {
+      getReactNativeHost().getReactInstanceManager().showDevOptionsDialog();
+      return true;
+    }
+    boolean didDoubleTapR=Assertions.assertNotNull(mDoubleTapReloadRecognizer).didDoubleTapR(keyCode,getPlainActivity().getCurrentFocus());
+    if (didDoubleTapR) {
+      getReactNativeHost().getReactInstanceManager().getDevSupportManager().handleReloadJS();
+      return true;
+    }
+  }
+  return false;
+}

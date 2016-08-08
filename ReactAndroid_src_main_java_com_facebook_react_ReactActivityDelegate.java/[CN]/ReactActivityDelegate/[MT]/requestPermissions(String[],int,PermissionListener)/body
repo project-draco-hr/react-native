@@ -1,0 +1,4 @@
+{
+  mPermissionListener=listener;
+  getPlainActivity().requestPermissions(permissions,requestCode);
+}

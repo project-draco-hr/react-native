@@ -1,0 +1,14 @@
+{
+  if (getReactNativeHost().getUseDeveloperSupport() && Build.VERSION.SDK_INT >= 23) {
+    if (!Settings.canDrawOverlays(getContext())) {
+      Intent serviceIntent=new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION);
+      getContext().startActivity(serviceIntent);
+      FLog.w(ReactConstants.TAG,REDBOX_PERMISSION_MESSAGE);
+      Toast.makeText(getContext(),REDBOX_PERMISSION_MESSAGE,Toast.LENGTH_LONG).show();
+    }
+  }
+  mReactRootView=createRootView();
+  mReactRootView.startReactApplication(getReactNativeHost().getReactInstanceManager(),mMainComponentName,getLaunchOptions());
+  getPlainActivity().setContentView(mReactRootView);
+  mDoubleTapReloadRecognizer=new DoubleTapReloadRecognizer();
+}

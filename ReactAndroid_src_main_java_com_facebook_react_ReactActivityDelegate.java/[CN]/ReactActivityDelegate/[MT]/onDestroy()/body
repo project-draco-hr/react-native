@@ -1,0 +1,9 @@
+{
+  if (mReactRootView != null) {
+    mReactRootView.unmountReactApplication();
+    mReactRootView=null;
+  }
+  if (getReactNativeHost().hasInstance()) {
+    getReactNativeHost().getReactInstanceManager().onHostDestroy(getPlainActivity());
+  }
+}

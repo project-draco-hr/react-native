@@ -1,0 +1,6 @@
+{
+  if (mActivity != null) {
+    return mActivity;
+  }
+  return Assertions.assertNotNull(mFragmentActivity);
+}

@@ -1,0 +1,7 @@
+{
+  if (getReactNativeHost().hasInstance()) {
+    getReactNativeHost().getReactInstanceManager().onBackPressed();
+    return true;
+  }
+  return false;
+}
