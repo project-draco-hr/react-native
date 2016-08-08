@@ -5,5 +5,4 @@
     mDevSupportManager.setDevSupportEnabled(false);
   }
   moveToBeforeResumeLifecycleState();
-  mCurrentActivity=null;
 }
