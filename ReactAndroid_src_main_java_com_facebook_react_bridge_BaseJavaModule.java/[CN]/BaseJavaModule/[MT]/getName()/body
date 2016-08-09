@@ -1,0 +1,7 @@
+{
+  ReactModule module=getClass().getAnnotation(ReactModule.class);
+  if (module == null) {
+    throw new IllegalStateException(getClass().getSimpleName() + "module must have @ReactModule annotation or override getName()");
+  }
+  return module.name();
+}
