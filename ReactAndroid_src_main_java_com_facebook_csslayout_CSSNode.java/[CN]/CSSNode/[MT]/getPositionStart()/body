@@ -1,0 +1,3 @@
+{
+  return style.position.get(START);
+}
