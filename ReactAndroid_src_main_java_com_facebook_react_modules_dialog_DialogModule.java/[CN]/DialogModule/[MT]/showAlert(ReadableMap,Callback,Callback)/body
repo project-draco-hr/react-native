@@ -28,5 +28,8 @@
     }
     args.putCharSequenceArray(AlertFragment.ARG_ITEMS,itemsArray);
   }
+  if (options.hasKey(KEY_CANCELABLE)) {
+    args.putBoolean(KEY_CANCELABLE,options.getBoolean(KEY_CANCELABLE));
+  }
   fragmentManagerHelper.showNewAlert(mIsInForeground,args,actionCallback);
 }
