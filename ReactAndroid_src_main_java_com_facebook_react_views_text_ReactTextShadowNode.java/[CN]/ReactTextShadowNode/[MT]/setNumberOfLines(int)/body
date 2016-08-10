@@ -1,4 +1,4 @@
 {
-  mNumberOfLines=numberOfLines;
+  mNumberOfLines=numberOfLines == 0 ? UNSET : numberOfLines;
   markUpdated();
 }
