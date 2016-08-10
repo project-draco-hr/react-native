@@ -1,0 +1,4 @@
+{
+  SharedPreferences prefs=context.getSharedPreferences(SHARED_PREFS_NAME,Context.MODE_PRIVATE);
+  return prefs.getBoolean(key,defaultValue);
+}

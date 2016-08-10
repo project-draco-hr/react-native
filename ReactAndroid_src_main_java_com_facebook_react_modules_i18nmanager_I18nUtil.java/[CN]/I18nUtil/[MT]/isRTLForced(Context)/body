@@ -1,4 +1,3 @@
 {
-  SharedPreferences prefs=context.getSharedPreferences(MY_PREFS_NAME,Context.MODE_PRIVATE);
-  return prefs.getBoolean(KEY_FOR_PREFS_FORCERTL,false);
+  return isPrefSet(context,KEY_FOR_PREFS_FORCERTL,false);
 }

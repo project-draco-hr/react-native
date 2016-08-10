@@ -1,2 +1,2 @@
 Context context
-boolean allowRTL
+boolean forceRTL
