@@ -1,8 +1,0 @@
-{
-  Spacing position=new Spacing();
-  position.set(Spacing.LEFT,getPositionLeft());
-  position.set(Spacing.TOP,getPositionTop());
-  position.set(Spacing.RIGHT,getPositionRight());
-  position.set(Spacing.BOTTOM,getPositionBottom());
-  return position;
-}

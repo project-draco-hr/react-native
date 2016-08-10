@@ -1,4 +1,0 @@
-{
-  assertNativeInstance();
-  jni_CSSNodeStyleSetPositionLeft(mNativePointer,positionLeft);
-}

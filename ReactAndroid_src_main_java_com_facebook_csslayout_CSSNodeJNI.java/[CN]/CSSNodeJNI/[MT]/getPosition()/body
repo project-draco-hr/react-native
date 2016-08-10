@@ -1,0 +1,10 @@
+{
+  Spacing position=new Spacing();
+  position.set(Spacing.LEFT,jni_CSSNodeStyleGetPositionLeft(mNativePointer));
+  position.set(Spacing.TOP,jni_CSSNodeStyleGetPositionTop(mNativePointer));
+  position.set(Spacing.RIGHT,jni_CSSNodeStyleGetPositionRight(mNativePointer));
+  position.set(Spacing.BOTTOM,jni_CSSNodeStyleGetPositionBottom(mNativePointer));
+  position.set(Spacing.START,jni_CSSNodeStyleGetPositionStart(mNativePointer));
+  position.set(Spacing.END,jni_CSSNodeStyleGetPositionEnd(mNativePointer));
+  return position;
+}

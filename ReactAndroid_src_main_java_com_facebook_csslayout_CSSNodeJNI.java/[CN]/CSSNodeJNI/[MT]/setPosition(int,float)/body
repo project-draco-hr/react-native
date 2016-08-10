@@ -1,0 +1,40 @@
+{
+switch (spacingType) {
+case Spacing.LEFT:
+    jni_CSSNodeStyleSetPositionLeft(mNativePointer,position);
+  break;
+case Spacing.TOP:
+jni_CSSNodeStyleSetPositionTop(mNativePointer,position);
+break;
+case Spacing.RIGHT:
+jni_CSSNodeStyleSetPositionRight(mNativePointer,position);
+break;
+case Spacing.BOTTOM:
+jni_CSSNodeStyleSetPositionBottom(mNativePointer,position);
+break;
+case Spacing.START:
+jni_CSSNodeStyleSetPositionStart(mNativePointer,position);
+break;
+case Spacing.END:
+jni_CSSNodeStyleSetPositionEnd(mNativePointer,position);
+break;
+case Spacing.HORIZONTAL:
+jni_CSSNodeStyleSetPositionLeft(mNativePointer,position);
+jni_CSSNodeStyleSetPositionRight(mNativePointer,position);
+jni_CSSNodeStyleSetPositionStart(mNativePointer,position);
+jni_CSSNodeStyleSetPositionEnd(mNativePointer,position);
+break;
+case Spacing.VERTICAL:
+jni_CSSNodeStyleSetPositionTop(mNativePointer,position);
+jni_CSSNodeStyleSetPositionBottom(mNativePointer,position);
+break;
+case Spacing.ALL:
+jni_CSSNodeStyleSetPositionLeft(mNativePointer,position);
+jni_CSSNodeStyleSetPositionRight(mNativePointer,position);
+jni_CSSNodeStyleSetPositionStart(mNativePointer,position);
+jni_CSSNodeStyleSetPositionEnd(mNativePointer,position);
+jni_CSSNodeStyleSetPositionTop(mNativePointer,position);
+jni_CSSNodeStyleSetPositionBottom(mNativePointer,position);
+break;
+}
+}

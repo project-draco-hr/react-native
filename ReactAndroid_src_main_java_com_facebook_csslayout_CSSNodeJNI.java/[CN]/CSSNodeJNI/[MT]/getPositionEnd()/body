@@ -1,4 +1,0 @@
-{
-  assertNativeInstance();
-  return jni_CSSNodeStyleGetPositionEnd(mNativePointer);
-}
