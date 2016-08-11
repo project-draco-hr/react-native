@@ -1,0 +1,4 @@
+{
+  super(activity,mainComponentName);
+  this.mActivity=activity;
+}
