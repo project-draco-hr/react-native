@@ -1,0 +1,10 @@
+{
+  if (ReactBuildConfig.DEBUG) {
+    try {
+      mConstructor=getConstructor(type,signature);
+    }
+ catch (    NoSuchMethodException e) {
+      throw new IllegalArgumentException("No such constructor",e);
+    }
+  }
+}

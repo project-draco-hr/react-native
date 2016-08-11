@@ -1,0 +1,5 @@
+{
+  Whitebox.setInternalState(ReactBuildConfig.class,"DEBUG",false);
+  ModuleSpec spec=ModuleSpec.simple(ComplexModule.class,mock(ReactApplicationContext.class));
+  spec.getProvider().get();
+}

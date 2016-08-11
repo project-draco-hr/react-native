@@ -1,0 +1,8 @@
+{
+  if (mConstructor != null) {
+    return mConstructor;
+  }
+ else {
+    return mType.getConstructor(signature);
+  }
+}

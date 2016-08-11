@@ -1,0 +1,9 @@
+{
+  Whitebox.setInternalState(ReactBuildConfig.class,"DEBUG",true);
+  ReactApplicationContext context=mock(ReactApplicationContext.class);
+  ModuleSpec spec=ModuleSpec.simple(SimpleContextModule.class,context);
+  NativeModule module=spec.getProvider().get();
+  assertThat(module).isInstanceOf(SimpleContextModule.class);
+  SimpleContextModule contextModule=(SimpleContextModule)module;
+  assertThat(contextModule.getReactApplicationContext()).isSameAs(context);
+}

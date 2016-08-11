@@ -1,0 +1,5 @@
+{
+  Whitebox.setInternalState(ReactBuildConfig.class,"DEBUG",true);
+  ModuleSpec spec=ModuleSpec.simple(SimpleModule.class);
+  assertThat(spec.getProvider().get()).isInstanceOf(SimpleModule.class);
+}

@@ -1,0 +1,2 @@
+Class<? extends NativeModule> mType
+Class[] signature

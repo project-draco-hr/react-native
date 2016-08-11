@@ -1,0 +1,9 @@
+{
+  final Map<String,ViewManager> viewManagerMap=new HashMap<>();
+  for (  ReactPackage reactPackage : mChildReactPackages) {
+    for (    ViewManager viewManager : reactPackage.createViewManagers(reactContext)) {
+      viewManagerMap.put(viewManager.getName(),viewManager);
+    }
+  }
+  return new ArrayList(viewManagerMap.values());
+}

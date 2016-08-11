@@ -1,0 +1,13 @@
+{
+  return new ModuleSpec(type,new ConstructorProvider(type,EMPTY_SIGNATURE){
+    @Override public NativeModule get(){
+      try {
+        return getConstructor(type,EMPTY_SIGNATURE).newInstance();
+      }
+ catch (      Exception e) {
+        throw new RuntimeException(e);
+      }
+    }
+  }
+);
+}
