@@ -5,7 +5,7 @@
         return getConstructor(type,CONTEXT_SIGNATURE).newInstance(context);
       }
  catch (      Exception e) {
-        throw new RuntimeException(e);
+        throw new RuntimeException("ModuleSpec with class: " + type.getName(),e);
       }
     }
   }
