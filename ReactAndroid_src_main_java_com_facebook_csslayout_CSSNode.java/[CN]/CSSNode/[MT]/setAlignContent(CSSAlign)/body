@@ -1,0 +1,6 @@
+{
+  if (style.alignContent != alignContent) {
+    style.alignContent=alignContent;
+    dirty();
+  }
+}
