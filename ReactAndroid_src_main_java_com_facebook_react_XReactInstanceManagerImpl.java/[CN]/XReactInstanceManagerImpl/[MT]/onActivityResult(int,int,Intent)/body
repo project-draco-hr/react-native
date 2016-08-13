@@ -1,5 +1,0 @@
-{
-  if (mCurrentReactContext != null) {
-    mCurrentReactContext.onActivityResult(requestCode,resultCode,data);
-  }
-}

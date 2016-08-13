@@ -1,5 +1,5 @@
 {
   if (getReactNativeHost().hasInstance()) {
-    getReactNativeHost().getReactInstanceManager().onActivityResult(requestCode,resultCode,data);
+    getReactNativeHost().getReactInstanceManager().onActivityResult(getPlainActivity(),requestCode,resultCode,data);
   }
 }
