@@ -1,41 +1,4 @@
 {
   assertNativeInstance();
-switch (spacingType) {
-case Spacing.LEFT:
-    jni_CSSNodeStyleSetPaddingLeft(mNativePointer,padding);
-  break;
-case Spacing.TOP:
-jni_CSSNodeStyleSetPaddingTop(mNativePointer,padding);
-break;
-case Spacing.RIGHT:
-jni_CSSNodeStyleSetPaddingRight(mNativePointer,padding);
-break;
-case Spacing.BOTTOM:
-jni_CSSNodeStyleSetPaddingBottom(mNativePointer,padding);
-break;
-case Spacing.START:
-jni_CSSNodeStyleSetPaddingStart(mNativePointer,padding);
-break;
-case Spacing.END:
-jni_CSSNodeStyleSetPaddingEnd(mNativePointer,padding);
-break;
-case Spacing.HORIZONTAL:
-jni_CSSNodeStyleSetPaddingLeft(mNativePointer,padding);
-jni_CSSNodeStyleSetPaddingRight(mNativePointer,padding);
-jni_CSSNodeStyleSetPaddingStart(mNativePointer,padding);
-jni_CSSNodeStyleSetPaddingEnd(mNativePointer,padding);
-break;
-case Spacing.VERTICAL:
-jni_CSSNodeStyleSetPaddingTop(mNativePointer,padding);
-jni_CSSNodeStyleSetPaddingBottom(mNativePointer,padding);
-break;
-case Spacing.ALL:
-jni_CSSNodeStyleSetPaddingLeft(mNativePointer,padding);
-jni_CSSNodeStyleSetPaddingRight(mNativePointer,padding);
-jni_CSSNodeStyleSetPaddingStart(mNativePointer,padding);
-jni_CSSNodeStyleSetPaddingEnd(mNativePointer,padding);
-jni_CSSNodeStyleSetPaddingTop(mNativePointer,padding);
-jni_CSSNodeStyleSetPaddingBottom(mNativePointer,padding);
-break;
-}
+  jni_CSSNodeStyleSetPadding(mNativePointer,spacingType,padding);
 }

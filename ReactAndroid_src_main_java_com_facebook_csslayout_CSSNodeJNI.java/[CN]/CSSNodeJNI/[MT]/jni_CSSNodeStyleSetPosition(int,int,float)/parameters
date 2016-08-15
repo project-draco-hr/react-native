@@ -1,0 +1,3 @@
+int nativePointer
+int edge
+float position
