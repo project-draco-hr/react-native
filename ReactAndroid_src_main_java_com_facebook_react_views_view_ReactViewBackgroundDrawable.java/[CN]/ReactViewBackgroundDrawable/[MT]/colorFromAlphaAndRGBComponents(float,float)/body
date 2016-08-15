@@ -1,0 +1,5 @@
+{
+  int rgbComponent=0x00FFFFFF & (int)rgb;
+  int alphaComponent=0xFF000000 & ((int)alpha) << 24;
+  return rgbComponent | alphaComponent;
+}

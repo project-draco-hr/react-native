@@ -1,3 +1,5 @@
 {
-  return (mBorderColor != null && !CSSConstants.isUndefined(mBorderColor.getRaw(Spacing.ALL))) ? (int)(long)mBorderColor.getRaw(Spacing.ALL) : DEFAULT_BORDER_COLOR;
+  float rgb=(mBorderRGB != null && !CSSConstants.isUndefined(mBorderRGB.getRaw(Spacing.ALL))) ? mBorderRGB.getRaw(Spacing.ALL) : DEFAULT_BORDER_RGB;
+  float alpha=(mBorderAlpha != null && !CSSConstants.isUndefined(mBorderAlpha.getRaw(Spacing.ALL))) ? mBorderAlpha.getRaw(Spacing.ALL) : DEFAULT_BORDER_ALPHA;
+  return ReactViewBackgroundDrawable.colorFromAlphaAndRGBComponents(alpha,rgb);
 }

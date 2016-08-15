@@ -1,2 +1,2 @@
 int position
-float color
+float alpha

@@ -1,0 +1,13 @@
+{
+  if (mBorderRGB == null) {
+    mBorderRGB=new Spacing();
+    mBorderRGB.setDefault(Spacing.LEFT,DEFAULT_BORDER_RGB);
+    mBorderRGB.setDefault(Spacing.TOP,DEFAULT_BORDER_RGB);
+    mBorderRGB.setDefault(Spacing.RIGHT,DEFAULT_BORDER_RGB);
+    mBorderRGB.setDefault(Spacing.BOTTOM,DEFAULT_BORDER_RGB);
+  }
+  if (!FloatUtil.floatsEqual(mBorderRGB.getRaw(position),rgb)) {
+    mBorderRGB.set(position,rgb);
+    invalidateSelf();
+  }
+}

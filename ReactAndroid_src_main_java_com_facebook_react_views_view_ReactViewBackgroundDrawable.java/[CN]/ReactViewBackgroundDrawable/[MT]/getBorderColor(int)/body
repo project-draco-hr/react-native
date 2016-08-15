@@ -1,3 +1,5 @@
 {
-  return mBorderColor != null ? (int)(long)mBorderColor.get(position) : DEFAULT_BORDER_COLOR;
+  float rgb=mBorderRGB != null ? mBorderRGB.get(position) : DEFAULT_BORDER_RGB;
+  float alpha=mBorderAlpha != null ? mBorderAlpha.get(position) : DEFAULT_BORDER_ALPHA;
+  return ReactViewBackgroundDrawable.colorFromAlphaAndRGBComponents(alpha,rgb);
 }
