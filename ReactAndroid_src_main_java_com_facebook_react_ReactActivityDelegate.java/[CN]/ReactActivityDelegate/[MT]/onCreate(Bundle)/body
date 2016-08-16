@@ -7,8 +7,8 @@
       Toast.makeText(getContext(),REDBOX_PERMISSION_MESSAGE,Toast.LENGTH_LONG).show();
     }
   }
-  mReactRootView=createRootView();
-  mReactRootView.startReactApplication(getReactNativeHost().getReactInstanceManager(),mMainComponentName,getLaunchOptions());
-  getPlainActivity().setContentView(mReactRootView);
+  if (mMainComponentName != null) {
+    loadApp(mMainComponentName);
+  }
   mDoubleTapReloadRecognizer=new DoubleTapReloadRecognizer();
 }

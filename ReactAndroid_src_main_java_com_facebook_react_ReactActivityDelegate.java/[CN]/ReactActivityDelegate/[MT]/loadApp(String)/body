@@ -1,0 +1,8 @@
+{
+  if (mReactRootView != null) {
+    throw new IllegalStateException("Cannot loadApp while app is already running.");
+  }
+  mReactRootView=createRootView();
+  mReactRootView.startReactApplication(getReactNativeHost().getReactInstanceManager(),appKey,getLaunchOptions());
+  getPlainActivity().setContentView(mReactRootView);
+}
