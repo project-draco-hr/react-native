@@ -1,11 +1,11 @@
 {
   assertNativeInstance();
   Spacing padding=new Spacing();
-  padding.set(Spacing.LEFT,jni_CSSNodeStyleGetPadding(Spacing.LEFT,mNativePointer));
-  padding.set(Spacing.TOP,jni_CSSNodeStyleGetPadding(Spacing.TOP,mNativePointer));
-  padding.set(Spacing.RIGHT,jni_CSSNodeStyleGetPadding(Spacing.RIGHT,mNativePointer));
-  padding.set(Spacing.BOTTOM,jni_CSSNodeStyleGetPadding(Spacing.BOTTOM,mNativePointer));
-  padding.set(Spacing.START,jni_CSSNodeStyleGetPadding(Spacing.START,mNativePointer));
-  padding.set(Spacing.END,jni_CSSNodeStyleGetPadding(Spacing.END,mNativePointer));
+  padding.set(Spacing.LEFT,jni_CSSNodeStyleGetPadding(mNativePointer,Spacing.LEFT));
+  padding.set(Spacing.TOP,jni_CSSNodeStyleGetPadding(mNativePointer,Spacing.TOP));
+  padding.set(Spacing.RIGHT,jni_CSSNodeStyleGetPadding(mNativePointer,Spacing.RIGHT));
+  padding.set(Spacing.BOTTOM,jni_CSSNodeStyleGetPadding(mNativePointer,Spacing.BOTTOM));
+  padding.set(Spacing.START,jni_CSSNodeStyleGetPadding(mNativePointer,Spacing.START));
+  padding.set(Spacing.END,jni_CSSNodeStyleGetPadding(mNativePointer,Spacing.END));
   return padding;
 }
