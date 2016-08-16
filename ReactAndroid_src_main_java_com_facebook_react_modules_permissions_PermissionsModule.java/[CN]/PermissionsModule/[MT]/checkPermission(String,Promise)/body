@@ -1,0 +1,8 @@
+{
+  PermissionAwareActivity activity=getPermissionAwareActivity();
+  if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+    promise.resolve(activity.checkPermission(permission,Process.myPid(),Process.myUid()) == PackageManager.PERMISSION_GRANTED);
+    return;
+  }
+  promise.resolve(activity.checkSelfPermission(permission) == PackageManager.PERMISSION_GRANTED);
+}

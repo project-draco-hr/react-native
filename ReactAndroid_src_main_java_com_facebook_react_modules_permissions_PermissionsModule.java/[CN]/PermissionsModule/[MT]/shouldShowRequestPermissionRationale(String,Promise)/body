@@ -1,0 +1,7 @@
+{
+  if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+    promise.resolve(false);
+    return;
+  }
+  promise.resolve(getPermissionAwareActivity().shouldShowRequestPermissionRationale(permission));
+}

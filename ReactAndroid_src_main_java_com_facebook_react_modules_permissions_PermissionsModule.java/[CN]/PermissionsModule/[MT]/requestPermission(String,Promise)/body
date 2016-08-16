@@ -1,16 +1,16 @@
 {
   PermissionAwareActivity activity=getPermissionAwareActivity();
   if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-    successCallback.invoke(permission,activity.checkPermission(permission,Process.myPid(),Process.myUid()) == PackageManager.PERMISSION_GRANTED);
+    promise.resolve(activity.checkPermission(permission,Process.myPid(),Process.myUid()) == PackageManager.PERMISSION_GRANTED);
     return;
   }
   if (activity.checkSelfPermission(permission) == PackageManager.PERMISSION_GRANTED) {
-    successCallback.invoke(permission,true);
+    promise.resolve(true);
     return;
   }
   mCallbacks.put(mRequestCode,new Callback(){
     @Override public void invoke(    Object... args){
-      successCallback.invoke(permission,args[0].equals(PackageManager.PERMISSION_GRANTED));
+      promise.resolve(args[0].equals(PackageManager.PERMISSION_GRANTED));
     }
   }
 );
