@@ -1,5 +1,8 @@
 {
+  final Context context=getReactApplicationContext().getBaseContext();
+  final Locale locale=context.getResources().getConfiguration().locale;
   final Map<String,Object> constants=MapBuilder.newHashMap();
   constants.put("isRTL",sharedI18nUtilInstance.isRTL(getReactApplicationContext()));
+  constants.put("localeIdentifier",locale.toString());
   return constants;
 }
