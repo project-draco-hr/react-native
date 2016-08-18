@@ -1,0 +1,28 @@
+{
+  for (int spacingType=Spacing.LEFT; spacingType <= Spacing.ALL; spacingType++) {
+    if (spacingType == Spacing.LEFT || spacingType == Spacing.RIGHT || spacingType == Spacing.START || spacingType == Spacing.END) {
+      if (CSSConstants.isUndefined(mPadding.getRaw(spacingType)) && CSSConstants.isUndefined(mPadding.getRaw(Spacing.HORIZONTAL)) && CSSConstants.isUndefined(mPadding.getRaw(Spacing.ALL))) {
+        super.setPadding(spacingType,mDefaultPadding.getRaw(spacingType));
+      }
+ else {
+        super.setPadding(spacingType,mPadding.getRaw(spacingType));
+      }
+    }
+ else     if (spacingType == Spacing.TOP || spacingType == Spacing.BOTTOM) {
+      if (CSSConstants.isUndefined(mPadding.getRaw(spacingType)) && CSSConstants.isUndefined(mPadding.getRaw(Spacing.VERTICAL)) && CSSConstants.isUndefined(mPadding.getRaw(Spacing.ALL))) {
+        super.setPadding(spacingType,mDefaultPadding.getRaw(spacingType));
+      }
+ else {
+        super.setPadding(spacingType,mPadding.getRaw(spacingType));
+      }
+    }
+ else {
+      if (CSSConstants.isUndefined(mPadding.getRaw(spacingType))) {
+        super.setPadding(spacingType,mDefaultPadding.getRaw(spacingType));
+      }
+ else {
+        super.setPadding(spacingType,mPadding.getRaw(spacingType));
+      }
+    }
+  }
+}

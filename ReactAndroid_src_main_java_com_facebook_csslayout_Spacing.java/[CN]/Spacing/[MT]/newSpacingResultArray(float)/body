@@ -1,3 +1,0 @@
-{
-  return new float[]{defaultValue,defaultValue,defaultValue,defaultValue,CSSConstants.UNDEFINED,CSSConstants.UNDEFINED,defaultValue,defaultValue,defaultValue};
-}

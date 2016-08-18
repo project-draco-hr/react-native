@@ -1,6 +1,5 @@
 {
   Arrays.fill(mSpacing,CSSConstants.UNDEFINED);
-  mDefaultSpacing=null;
   mHasAliasesSet=false;
   mValueFlags=0;
 }

@@ -1,0 +1,4 @@
+{
+  mPadding.set(spacingType,padding);
+  updatePadding();
+}

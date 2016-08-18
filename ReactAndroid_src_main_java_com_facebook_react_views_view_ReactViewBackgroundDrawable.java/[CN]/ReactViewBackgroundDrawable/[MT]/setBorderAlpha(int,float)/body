@@ -1,10 +1,10 @@
 {
   if (mBorderAlpha == null) {
     mBorderAlpha=new Spacing();
-    mBorderAlpha.setDefault(Spacing.LEFT,DEFAULT_BORDER_ALPHA);
-    mBorderAlpha.setDefault(Spacing.TOP,DEFAULT_BORDER_ALPHA);
-    mBorderAlpha.setDefault(Spacing.RIGHT,DEFAULT_BORDER_ALPHA);
-    mBorderAlpha.setDefault(Spacing.BOTTOM,DEFAULT_BORDER_ALPHA);
+    mBorderAlpha.set(Spacing.LEFT,DEFAULT_BORDER_ALPHA);
+    mBorderAlpha.set(Spacing.TOP,DEFAULT_BORDER_ALPHA);
+    mBorderAlpha.set(Spacing.RIGHT,DEFAULT_BORDER_ALPHA);
+    mBorderAlpha.set(Spacing.BOTTOM,DEFAULT_BORDER_ALPHA);
   }
   if (!FloatUtil.floatsEqual(mBorderAlpha.getRaw(position),alpha)) {
     mBorderAlpha.set(position,alpha);

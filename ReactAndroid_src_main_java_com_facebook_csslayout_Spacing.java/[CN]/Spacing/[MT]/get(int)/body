@@ -1,5 +1,5 @@
 {
-  float defaultValue=(mDefaultSpacing != null) ? mDefaultSpacing[spacingType] : (spacingType == START || spacingType == END ? CSSConstants.UNDEFINED : 0);
+  float defaultValue=(spacingType == START || spacingType == END ? CSSConstants.UNDEFINED : mDefaultValue);
   if (mValueFlags == 0) {
     return defaultValue;
   }
