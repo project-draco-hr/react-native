@@ -1,10 +1,6 @@
 {
   if (mBorderRGB == null) {
-    mBorderRGB=new Spacing();
-    mBorderRGB.set(Spacing.LEFT,DEFAULT_BORDER_RGB);
-    mBorderRGB.set(Spacing.TOP,DEFAULT_BORDER_RGB);
-    mBorderRGB.set(Spacing.RIGHT,DEFAULT_BORDER_RGB);
-    mBorderRGB.set(Spacing.BOTTOM,DEFAULT_BORDER_RGB);
+    mBorderRGB=new Spacing(DEFAULT_BORDER_RGB);
   }
   if (!FloatUtil.floatsEqual(mBorderRGB.getRaw(position),rgb)) {
     mBorderRGB.set(position,rgb);
