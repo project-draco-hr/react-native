@@ -1,7 +1,7 @@
 {
   if (mIsDevSupportEnabled) {
-    FLog.e(ReactConstants.TAG,"Exception in native call from JS",e);
     if (e instanceof JSException) {
+      FLog.e(ReactConstants.TAG,"Exception in native call from JS",e);
       showNewError(e.getMessage() + "\n\n" + ((JSException)e).getStack(),new StackFrame[]{},JSEXCEPTION_ERROR_COOKIE,ErrorType.JS);
     }
  else {

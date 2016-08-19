@@ -1,3 +1,4 @@
 {
+  FLog.e(ReactConstants.TAG,"Exception in native call",e);
   showNewError(message,StackTraceHelper.convertJavaStackTrace(e),JAVA_ERROR_COOKIE,ErrorType.NATIVE);
 }
