@@ -1,7 +1,13 @@
 {
   List<NativeModule> modules=new ArrayList<>();
   for (  ModuleSpec holder : getNativeModules(reactContext)) {
-    modules.add(holder.getProvider().get());
+    SystraceMessage.beginSection(TRACE_TAG_REACT_JAVA_BRIDGE,"createNativeModule").arg("module",holder.getType()).flush();
+    try {
+      modules.add(holder.getProvider().get());
+    }
+  finally {
+      Systrace.endSection(TRACE_TAG_REACT_JAVA_BRIDGE);
+    }
   }
   return modules;
 }

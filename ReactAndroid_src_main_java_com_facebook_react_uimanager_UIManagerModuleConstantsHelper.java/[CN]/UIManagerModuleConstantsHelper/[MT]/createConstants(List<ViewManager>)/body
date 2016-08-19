@@ -3,29 +3,35 @@
   Map bubblingEventTypesConstants=UIManagerModuleConstants.getBubblingEventTypeConstants();
   Map directEventTypesConstants=UIManagerModuleConstants.getDirectEventTypeConstants();
   for (  ViewManager viewManager : viewManagers) {
-    Map viewManagerBubblingEvents=viewManager.getExportedCustomBubblingEventTypeConstants();
-    if (viewManagerBubblingEvents != null) {
-      recursiveMerge(bubblingEventTypesConstants,viewManagerBubblingEvents);
+    SystraceMessage.beginSection(TRACE_TAG_REACT_JAVA_BRIDGE,"constants for ViewManager").arg("ViewManager",viewManager.getName()).flush();
+    try {
+      Map viewManagerBubblingEvents=viewManager.getExportedCustomBubblingEventTypeConstants();
+      if (viewManagerBubblingEvents != null) {
+        recursiveMerge(bubblingEventTypesConstants,viewManagerBubblingEvents);
+      }
+      Map viewManagerDirectEvents=viewManager.getExportedCustomDirectEventTypeConstants();
+      if (viewManagerDirectEvents != null) {
+        recursiveMerge(directEventTypesConstants,viewManagerDirectEvents);
+      }
+      Map viewManagerConstants=MapBuilder.newHashMap();
+      Map customViewConstants=viewManager.getExportedViewConstants();
+      if (customViewConstants != null) {
+        viewManagerConstants.put("Constants",customViewConstants);
+      }
+      Map viewManagerCommands=viewManager.getCommandsMap();
+      if (viewManagerCommands != null) {
+        viewManagerConstants.put("Commands",viewManagerCommands);
+      }
+      Map<String,String> viewManagerNativeProps=viewManager.getNativeProps();
+      if (!viewManagerNativeProps.isEmpty()) {
+        viewManagerConstants.put("NativeProps",viewManagerNativeProps);
+      }
+      if (!viewManagerConstants.isEmpty()) {
+        constants.put(viewManager.getName(),viewManagerConstants);
+      }
     }
-    Map viewManagerDirectEvents=viewManager.getExportedCustomDirectEventTypeConstants();
-    if (viewManagerDirectEvents != null) {
-      recursiveMerge(directEventTypesConstants,viewManagerDirectEvents);
-    }
-    Map viewManagerConstants=MapBuilder.newHashMap();
-    Map customViewConstants=viewManager.getExportedViewConstants();
-    if (customViewConstants != null) {
-      viewManagerConstants.put("Constants",customViewConstants);
-    }
-    Map viewManagerCommands=viewManager.getCommandsMap();
-    if (viewManagerCommands != null) {
-      viewManagerConstants.put("Commands",viewManagerCommands);
-    }
-    Map<String,String> viewManagerNativeProps=viewManager.getNativeProps();
-    if (!viewManagerNativeProps.isEmpty()) {
-      viewManagerConstants.put("NativeProps",viewManagerNativeProps);
-    }
-    if (!viewManagerConstants.isEmpty()) {
-      constants.put(viewManager.getName(),viewManagerConstants);
+  finally {
+      Systrace.endSection(TRACE_TAG_REACT_JAVA_BRIDGE);
     }
   }
   constants.put(CUSTOM_BUBBLING_EVENT_TYPES_KEY,bubblingEventTypesConstants);
