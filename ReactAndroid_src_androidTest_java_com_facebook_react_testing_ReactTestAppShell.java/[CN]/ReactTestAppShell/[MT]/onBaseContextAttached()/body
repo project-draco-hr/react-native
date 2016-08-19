@@ -1,0 +1,3 @@
+{
+  SoLoader.init(this,(ReactBuildConfig.EXOPACKAGE_FLAGS & 2) != 0);
+}
