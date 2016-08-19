@@ -1,0 +1,32 @@
+{
+  createSimpleAnimatedViewWithOpacity(1000,0d);
+  Callback animationCallback=mock(Callback.class);
+  mNativeAnimatedNodesManager.startAnimatingNode(1,1,JavaOnlyMap.of("type","decay","velocity",0.5d,"deceleration",0.998d),animationCallback);
+  ArgumentCaptor<ReactStylesDiffMap> stylesCaptor=ArgumentCaptor.forClass(ReactStylesDiffMap.class);
+  reset(mUIImplementationMock);
+  mNativeAnimatedNodesManager.runUpdates(nextFrameTime());
+  verify(mUIImplementationMock,atMost(1)).synchronouslyUpdateViewOnUIThread(eq(1000),stylesCaptor.capture());
+  double previousValue=stylesCaptor.getValue().getDouble("opacity",Double.NaN);
+  double previousDiff=Double.POSITIVE_INFINITY;
+  for (int i=0; i < 3 * 60; i++) {
+    reset(mUIImplementationMock);
+    mNativeAnimatedNodesManager.runUpdates(nextFrameTime());
+    verify(mUIImplementationMock,atMost(1)).synchronouslyUpdateViewOnUIThread(eq(1000),stylesCaptor.capture());
+    double currentValue=stylesCaptor.getValue().getDouble("opacity",Double.NaN);
+    double currentDiff=currentValue - previousValue;
+    assertThat(currentValue).as("on frame " + i).isGreaterThanOrEqualTo(previousValue);
+    if (i > 3) {
+      if (i % 3 != 0) {
+        assertThat(currentDiff).as("on frame " + i).isLessThanOrEqualTo(previousDiff);
+      }
+ else {
+        assertThat(currentDiff).as("on frame " + i).isGreaterThanOrEqualTo(previousDiff);
+      }
+    }
+    previousValue=currentValue;
+    previousDiff=currentDiff;
+  }
+  reset(mUIImplementationMock);
+  mNativeAnimatedNodesManager.runUpdates(nextFrameTime());
+  verifyNoMoreInteractions(mUIImplementationMock);
+}

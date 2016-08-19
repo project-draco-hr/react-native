@@ -1,0 +1,15 @@
+{
+  long frameTimeMillis=frameTimeNanos / 1000000;
+  if (mStartFrameTimeMillis == -1) {
+    mStartFrameTimeMillis=frameTimeMillis - 16;
+    mFromValue=mAnimatedValue.mValue;
+    mLastValue=mAnimatedValue.mValue;
+  }
+  final double value=mFromValue + (mVelocity / (1 - mDeceleration)) * (1 - Math.exp(-(1 - mDeceleration) * (frameTimeMillis - mStartFrameTimeMillis)));
+  if (Math.abs(mLastValue - value) < 0.1) {
+    mHasFinished=true;
+    return;
+  }
+  mLastValue=value;
+  mAnimatedValue.mValue=value;
+}

@@ -1,0 +1,4 @@
+{
+  mVelocity=config.getDouble("velocity");
+  mDeceleration=config.getDouble("deceleration");
+}
