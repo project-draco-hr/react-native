@@ -1,0 +1,6 @@
+{
+  if (!valuesEqual(style.flexShrink,flexShrink)) {
+    style.flexShrink=flexShrink;
+    dirty();
+  }
+}

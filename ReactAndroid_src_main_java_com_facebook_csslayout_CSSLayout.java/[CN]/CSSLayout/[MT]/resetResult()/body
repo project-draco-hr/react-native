@@ -2,7 +2,7 @@
   Arrays.fill(position,0);
   Arrays.fill(dimensions,CSSConstants.UNDEFINED);
   direction=CSSDirection.LTR;
-  flexBasis=0;
+  computedFlexBasis=0;
   generationCount=0;
   lastParentDirection=null;
   nextCachedMeasurementsIndex=0;

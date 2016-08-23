@@ -1,6 +1,17 @@
 {
-  if (!valuesEqual(style.flex,flex)) {
-    style.flex=flex;
-    dirty();
+  if (CSSConstants.isUndefined(flex) || flex == 0) {
+    setFlexGrow(0);
+    setFlexShrink(0);
+    setFlexBasis(CSSConstants.UNDEFINED);
+  }
+ else   if (flex > 0) {
+    setFlexGrow(flex);
+    setFlexShrink(0);
+    setFlexBasis(0);
+  }
+ else {
+    setFlexGrow(0);
+    setFlexShrink(-flex);
+    setFlexBasis(CSSConstants.UNDEFINED);
   }
 }

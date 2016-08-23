@@ -1,0 +1,6 @@
+{
+  if (!valuesEqual(style.flexBasis,flexBasis)) {
+    style.flexBasis=flexBasis;
+    dirty();
+  }
+}

@@ -1,3 +1,9 @@
 {
-  return style.flex;
+  if (style.flexGrow > 0) {
+    return style.flexGrow;
+  }
+ else   if (style.flexShrink > 0) {
+    return -style.flexShrink;
+  }
+  return 0;
 }

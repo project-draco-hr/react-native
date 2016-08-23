@@ -95,13 +95,13 @@
     }
  else {
       if (isMainAxisRow && (child.style.dimensions[dim[CSS_FLEX_DIRECTION_ROW]] >= 0.0)) {
-        child.layout.flexBasis=Math.max(child.style.dimensions[DIMENSION_WIDTH],((child.style.padding.getWithFallback(leadingSpacing[CSS_FLEX_DIRECTION_ROW],leading[CSS_FLEX_DIRECTION_ROW]) + child.style.border.getWithFallback(leadingSpacing[CSS_FLEX_DIRECTION_ROW],leading[CSS_FLEX_DIRECTION_ROW])) + (child.style.padding.getWithFallback(trailingSpacing[CSS_FLEX_DIRECTION_ROW],trailing[CSS_FLEX_DIRECTION_ROW]) + child.style.border.getWithFallback(trailingSpacing[CSS_FLEX_DIRECTION_ROW],trailing[CSS_FLEX_DIRECTION_ROW]))));
+        child.layout.computedFlexBasis=Math.max(child.style.dimensions[DIMENSION_WIDTH],((child.style.padding.getWithFallback(leadingSpacing[CSS_FLEX_DIRECTION_ROW],leading[CSS_FLEX_DIRECTION_ROW]) + child.style.border.getWithFallback(leadingSpacing[CSS_FLEX_DIRECTION_ROW],leading[CSS_FLEX_DIRECTION_ROW])) + (child.style.padding.getWithFallback(trailingSpacing[CSS_FLEX_DIRECTION_ROW],trailing[CSS_FLEX_DIRECTION_ROW]) + child.style.border.getWithFallback(trailingSpacing[CSS_FLEX_DIRECTION_ROW],trailing[CSS_FLEX_DIRECTION_ROW]))));
       }
  else       if (!isMainAxisRow && (child.style.dimensions[dim[CSS_FLEX_DIRECTION_COLUMN]] >= 0.0)) {
-        child.layout.flexBasis=Math.max(child.style.dimensions[DIMENSION_HEIGHT],((child.style.padding.getWithFallback(leadingSpacing[CSS_FLEX_DIRECTION_COLUMN],leading[CSS_FLEX_DIRECTION_COLUMN]) + child.style.border.getWithFallback(leadingSpacing[CSS_FLEX_DIRECTION_COLUMN],leading[CSS_FLEX_DIRECTION_COLUMN])) + (child.style.padding.getWithFallback(trailingSpacing[CSS_FLEX_DIRECTION_COLUMN],trailing[CSS_FLEX_DIRECTION_COLUMN]) + child.style.border.getWithFallback(trailingSpacing[CSS_FLEX_DIRECTION_COLUMN],trailing[CSS_FLEX_DIRECTION_COLUMN]))));
+        child.layout.computedFlexBasis=Math.max(child.style.dimensions[DIMENSION_HEIGHT],((child.style.padding.getWithFallback(leadingSpacing[CSS_FLEX_DIRECTION_COLUMN],leading[CSS_FLEX_DIRECTION_COLUMN]) + child.style.border.getWithFallback(leadingSpacing[CSS_FLEX_DIRECTION_COLUMN],leading[CSS_FLEX_DIRECTION_COLUMN])) + (child.style.padding.getWithFallback(trailingSpacing[CSS_FLEX_DIRECTION_COLUMN],trailing[CSS_FLEX_DIRECTION_COLUMN]) + child.style.border.getWithFallback(trailingSpacing[CSS_FLEX_DIRECTION_COLUMN],trailing[CSS_FLEX_DIRECTION_COLUMN]))));
       }
  else       if (!isFlexBasisAuto(child) && !Float.isNaN(availableInnerMainDim)) {
-        child.layout.flexBasis=Math.max(0,((child.style.padding.getWithFallback(leadingSpacing[mainAxis],leading[mainAxis]) + child.style.border.getWithFallback(leadingSpacing[mainAxis],leading[mainAxis])) + (child.style.padding.getWithFallback(trailingSpacing[mainAxis],trailing[mainAxis]) + child.style.border.getWithFallback(trailingSpacing[mainAxis],trailing[mainAxis]))));
+        child.layout.computedFlexBasis=Math.max(child.style.flexBasis,((child.style.padding.getWithFallback(leadingSpacing[mainAxis],leading[mainAxis]) + child.style.border.getWithFallback(leadingSpacing[mainAxis],leading[mainAxis])) + (child.style.padding.getWithFallback(trailingSpacing[mainAxis],trailing[mainAxis]) + child.style.border.getWithFallback(trailingSpacing[mainAxis],trailing[mainAxis]))));
       }
  else {
         childWidth=CSSConstants.UNDEFINED;
@@ -135,7 +135,7 @@
           childHeightMeasureMode=CSSMeasureMode.EXACTLY;
         }
         layoutNodeInternal(layoutContext,child,childWidth,childHeight,direction,childWidthMeasureMode,childHeightMeasureMode,false,"measure");
-        child.layout.flexBasis=Math.max(isMainAxisRow ? child.layout.measuredDimensions[DIMENSION_WIDTH] : child.layout.measuredDimensions[DIMENSION_HEIGHT],((child.style.padding.getWithFallback(leadingSpacing[mainAxis],leading[mainAxis]) + child.style.border.getWithFallback(leadingSpacing[mainAxis],leading[mainAxis])) + (child.style.padding.getWithFallback(trailingSpacing[mainAxis],trailing[mainAxis]) + child.style.border.getWithFallback(trailingSpacing[mainAxis],trailing[mainAxis]))));
+        child.layout.computedFlexBasis=Math.max(isMainAxisRow ? child.layout.measuredDimensions[DIMENSION_WIDTH] : child.layout.measuredDimensions[DIMENSION_HEIGHT],((child.style.padding.getWithFallback(leadingSpacing[mainAxis],leading[mainAxis]) + child.style.border.getWithFallback(leadingSpacing[mainAxis],leading[mainAxis])) + (child.style.padding.getWithFallback(trailingSpacing[mainAxis],trailing[mainAxis]) + child.style.border.getWithFallback(trailingSpacing[mainAxis],trailing[mainAxis]))));
       }
     }
   }
@@ -156,15 +156,15 @@
       child=node.getChildAt(i);
       child.lineIndex=lineCount;
       if (child.style.positionType != CSSPositionType.ABSOLUTE) {
-        float outerFlexBasis=child.layout.flexBasis + (child.style.margin.getWithFallback(leadingSpacing[mainAxis],leading[mainAxis]) + child.style.margin.getWithFallback(trailingSpacing[mainAxis],trailing[mainAxis]));
+        float outerFlexBasis=child.layout.computedFlexBasis + (child.style.margin.getWithFallback(leadingSpacing[mainAxis],leading[mainAxis]) + child.style.margin.getWithFallback(trailingSpacing[mainAxis],trailing[mainAxis]));
         if (sizeConsumedOnCurrentLine + outerFlexBasis > availableInnerMainDim && isNodeFlexWrap && itemsOnLine > 0) {
           break;
         }
         sizeConsumedOnCurrentLine+=outerFlexBasis;
         itemsOnLine++;
-        if ((child.style.positionType == CSSPositionType.RELATIVE && child.style.flex != 0)) {
+        if ((child.style.positionType == CSSPositionType.RELATIVE && (child.style.flexGrow != 0 || child.style.flexShrink != 0))) {
           totalFlexGrowFactors+=getFlexGrowFactor(child);
-          totalFlexShrinkScaledFactors+=getFlexShrinkFactor(child) * child.layout.flexBasis;
+          totalFlexShrinkScaledFactors+=getFlexShrinkFactor(child) * child.layout.computedFlexBasis;
         }
         if (firstRelativeChild == null) {
           firstRelativeChild=child;
@@ -200,7 +200,7 @@
       float deltaFlexGrowFactors=0;
       currentRelativeChild=firstRelativeChild;
       while (currentRelativeChild != null) {
-        childFlexBasis=currentRelativeChild.layout.flexBasis;
+        childFlexBasis=currentRelativeChild.layout.computedFlexBasis;
         if (remainingFreeSpace < 0) {
           flexShrinkScaledFactor=getFlexShrinkFactor(currentRelativeChild) * childFlexBasis;
           if (flexShrinkScaledFactor != 0) {
@@ -231,7 +231,7 @@
       deltaFreeSpace=0;
       currentRelativeChild=firstRelativeChild;
       while (currentRelativeChild != null) {
-        childFlexBasis=currentRelativeChild.layout.flexBasis;
+        childFlexBasis=currentRelativeChild.layout.computedFlexBasis;
         float updatedMainSize=childFlexBasis;
         if (remainingFreeSpace < 0) {
           flexShrinkScaledFactor=getFlexShrinkFactor(currentRelativeChild) * childFlexBasis;
@@ -323,7 +323,7 @@
         }
         if (child.style.positionType == CSSPositionType.RELATIVE) {
           if (canSkipFlex) {
-            mainDim+=betweenMainDim + (child.style.margin.getWithFallback(leadingSpacing[mainAxis],leading[mainAxis]) + child.style.margin.getWithFallback(trailingSpacing[mainAxis],trailing[mainAxis])) + child.layout.flexBasis;
+            mainDim+=betweenMainDim + (child.style.margin.getWithFallback(leadingSpacing[mainAxis],leading[mainAxis]) + child.style.margin.getWithFallback(trailingSpacing[mainAxis],trailing[mainAxis])) + child.layout.computedFlexBasis;
             crossDim=availableInnerCrossDim;
           }
  else {

@@ -1,0 +1,6 @@
+{
+  if (!valuesEqual(style.flexGrow,flexGrow)) {
+    style.flexGrow=flexGrow;
+    dirty();
+  }
+}

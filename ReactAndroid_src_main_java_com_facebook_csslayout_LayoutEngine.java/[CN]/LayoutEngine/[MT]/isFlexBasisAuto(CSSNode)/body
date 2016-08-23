@@ -1,8 +1,3 @@
 {
-  if (POSITIVE_FLEX_IS_AUTO) {
-    return true;
-  }
- else {
-    return node.style.flex <= 0;
-  }
+  return CSSConstants.isUndefined(node.style.flexBasis);
 }

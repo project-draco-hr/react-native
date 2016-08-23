@@ -1,6 +1,3 @@
 {
-  if (node.style.flex > 0) {
-    return node.style.flex;
-  }
-  return 0;
+  return node.style.flexGrow;
 }
