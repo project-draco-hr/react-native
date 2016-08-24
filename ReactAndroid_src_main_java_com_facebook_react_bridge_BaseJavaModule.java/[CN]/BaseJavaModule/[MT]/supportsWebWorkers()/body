@@ -1,7 +1,3 @@
 {
-  ReactModule module=getClass().getAnnotation(ReactModule.class);
-  if (module == null) {
-    return false;
-  }
-  return module.supportsWebWorkers();
+  return false;
 }
