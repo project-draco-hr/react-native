@@ -40,6 +40,9 @@
     if (textCSSNode.mTextShadowOffsetDx != 0 || textCSSNode.mTextShadowOffsetDy != 0) {
       ops.add(new SetSpanOperation(start,end,new ShadowStyleSpan(textCSSNode.mTextShadowOffsetDx,textCSSNode.mTextShadowOffsetDy,textCSSNode.mTextShadowRadius,textCSSNode.mTextShadowColor)));
     }
+    if (!Float.isNaN(textCSSNode.getEffectiveLineHeight())) {
+      ops.add(new SetSpanOperation(start,end,new CustomLineHeightSpan(textCSSNode.getEffectiveLineHeight())));
+    }
     ops.add(new SetSpanOperation(start,end,new ReactTagSpan(textCSSNode.getReactTag())));
   }
 }
