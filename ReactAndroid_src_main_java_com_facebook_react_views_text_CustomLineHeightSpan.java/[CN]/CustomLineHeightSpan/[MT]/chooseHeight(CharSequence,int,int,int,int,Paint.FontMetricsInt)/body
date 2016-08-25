@@ -1,4 +1,0 @@
-{
-  fm.ascent=fm.top=0;
-  fm.descent=fm.bottom=(int)Math.ceil(mHeight);
-}
