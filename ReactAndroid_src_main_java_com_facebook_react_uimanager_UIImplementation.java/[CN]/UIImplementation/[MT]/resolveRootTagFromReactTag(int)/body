@@ -1,0 +1,14 @@
+{
+  if (mShadowNodeRegistry.isRootNode(reactTag)) {
+    return reactTag;
+  }
+  ReactShadowNode node=resolveShadowNode(reactTag);
+  int rootTag=0;
+  if (node != null) {
+    rootTag=node.getRootNode().getReactTag();
+  }
+ else {
+    FLog.w(ReactConstants.TAG,"Warning : attempted to resolve a non-existent react shadow node. reactTag=" + reactTag);
+  }
+  return rootTag;
+}
