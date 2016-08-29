@@ -1,0 +1,8 @@
+{
+  if (sendContentSizeChangeEvents) {
+    view.setPictureListener(getPictureListener());
+  }
+ else {
+    view.setPictureListener(null);
+  }
+}

@@ -1,0 +1,11 @@
+{
+  if (mPictureListener == null) {
+    mPictureListener=new WebView.PictureListener(){
+      @Override public void onNewPicture(      WebView webView,      Picture picture){
+        dispatchEvent(webView,new ContentSizeChangeEvent(webView.getId(),webView.getWidth(),webView.getContentHeight()));
+      }
+    }
+;
+  }
+  return mPictureListener;
+}
