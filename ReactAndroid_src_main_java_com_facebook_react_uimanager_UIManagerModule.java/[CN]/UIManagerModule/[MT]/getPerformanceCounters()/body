@@ -1,0 +1,6 @@
+{
+  Map<String,Double> perfMap=new HashMap<>();
+  perfMap.put("LayoutCount",mUIImplementation.getLayoutCount());
+  perfMap.put("LayoutTimer",mUIImplementation.getLayoutTimer());
+  return perfMap;
+}

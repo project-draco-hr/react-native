@@ -1,0 +1,12 @@
+{
+  Map<String,Map<String,Double>> totalPerfMap=new HashMap<>();
+  if (mCatalystInstance != null) {
+    for (    NativeModule nativeModule : mCatalystInstance.getNativeModules()) {
+      if (nativeModule instanceof PerformanceCounter) {
+        PerformanceCounter perfCounterModule=(PerformanceCounter)nativeModule;
+        totalPerfMap.put(nativeModule.getName(),perfCounterModule.getPerformanceCounters());
+      }
+    }
+  }
+  return totalPerfMap;
+}

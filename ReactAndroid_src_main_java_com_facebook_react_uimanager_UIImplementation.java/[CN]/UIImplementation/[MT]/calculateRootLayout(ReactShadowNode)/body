@@ -1,9 +1,12 @@
 {
   SystraceMessage.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"cssRoot.calculateLayout").arg("rootTag",cssRoot.getReactTag()).flush();
+  double startTime=(double)System.nanoTime();
   try {
     cssRoot.calculateLayout(mLayoutContext);
   }
   finally {
     Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);
+    mLayoutTimer=mLayoutTimer + ((double)System.nanoTime() - startTime) / 1000000000.0;
+    mLayoutCount=mLayoutCount + 1;
   }
 }
