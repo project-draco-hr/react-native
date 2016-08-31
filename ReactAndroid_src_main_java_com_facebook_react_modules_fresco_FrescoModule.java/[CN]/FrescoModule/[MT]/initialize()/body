@@ -1,7 +1,16 @@
 {
   super.initialize();
-  SoLoaderShim.setHandler(new FrescoHandler());
-  Context context=getReactApplicationContext().getApplicationContext();
-  Fresco.initialize(context,mConfig);
+  if (!hasBeenInitialized()) {
+    SoLoaderShim.setHandler(new FrescoHandler());
+    if (mConfig == null) {
+      mConfig=getDefaultConfig(getReactApplicationContext());
+    }
+    Context context=getReactApplicationContext().getApplicationContext();
+    Fresco.initialize(context,mConfig);
+    sHasBeenInitialized=true;
+  }
+ else   if (mConfig != null) {
+    FLog.w(ReactConstants.TAG,"Fresco has already been initialized with a different config. " + "The new Fresco configuration will be ignored!");
+  }
   mConfig=null;
 }

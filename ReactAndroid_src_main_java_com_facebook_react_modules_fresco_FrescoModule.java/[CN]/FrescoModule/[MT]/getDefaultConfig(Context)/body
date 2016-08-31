@@ -1,0 +1,5 @@
+{
+  HashSet<RequestListener> requestListeners=new HashSet<>();
+  requestListeners.add(new SystraceRequestListener());
+  return OkHttpImagePipelineConfigFactory.newBuilder(context.getApplicationContext(),OkHttpClientProvider.getOkHttpClient()).setDownsampleEnabled(false).setRequestListeners(requestListeners).build();
+}

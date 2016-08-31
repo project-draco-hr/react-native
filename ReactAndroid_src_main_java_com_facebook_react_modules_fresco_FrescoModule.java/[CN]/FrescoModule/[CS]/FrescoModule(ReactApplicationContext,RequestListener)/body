@@ -1,3 +1,0 @@
-{
-  this(reactContext,getDefaultConfig(reactContext,listener,null));
-}

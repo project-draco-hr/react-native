@@ -1,3 +1,3 @@
 {
-  this(reactContext,getDefaultConfig(reactContext,null,null));
+  this(reactContext,null);
 }
