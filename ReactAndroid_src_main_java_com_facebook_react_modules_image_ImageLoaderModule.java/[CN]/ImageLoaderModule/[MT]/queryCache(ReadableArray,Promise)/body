@@ -1,0 +1,20 @@
+{
+  new GuardedAsyncTask<Void,Void>(getReactApplicationContext()){
+    @Override protected void doInBackgroundGuarded(    Void... params){
+      WritableMap result=Arguments.createMap();
+      ImagePipeline imagePipeline=Fresco.getImagePipeline();
+      for (int i=0; i < uris.size(); i++) {
+        String uriString=uris.getString(i);
+        final Uri uri=Uri.parse(uriString);
+        if (imagePipeline.isInBitmapMemoryCache(uri)) {
+          result.putString(uriString,"memory");
+        }
+ else         if (imagePipeline.isInDiskCacheSync(uri)) {
+          result.putString(uriString,"disk");
+        }
+      }
+      promise.resolve(result);
+    }
+  }
+.executeOnExecutor(GuardedAsyncTask.THREAD_POOL_EXECUTOR);
+}
