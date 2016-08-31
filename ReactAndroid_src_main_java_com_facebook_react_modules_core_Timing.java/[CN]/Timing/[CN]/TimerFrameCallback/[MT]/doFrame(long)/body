@@ -17,7 +17,13 @@ synchronized (mTimerGuard) {
         mTimers.add(timer);
       }
  else {
-        mTimerIdsToTimers.remove(timer.mExecutorToken);
+        SparseArray<Timer> timers=mTimerIdsToTimers.get(timer.mExecutorToken);
+        if (timers != null) {
+          timers.remove(timer.mCallbackID);
+          if (timers.size() == 0) {
+            mTimerIdsToTimers.remove(timer.mExecutorToken);
+          }
+        }
       }
     }
   }

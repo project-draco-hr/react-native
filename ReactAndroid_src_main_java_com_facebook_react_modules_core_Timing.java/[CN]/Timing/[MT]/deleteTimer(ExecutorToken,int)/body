@@ -8,7 +8,10 @@ synchronized (mTimerGuard) {
     if (timer == null) {
       return;
     }
-    mTimerIdsToTimers.remove(executorToken);
+    timersForContext.remove(timerId);
+    if (timersForContext.size() == 0) {
+      mTimerIdsToTimers.remove(executorToken);
+    }
     mTimers.remove(timer);
   }
 }
