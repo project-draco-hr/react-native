@@ -1,0 +1,5 @@
+int viewId
+int eventType
+String imageUri
+int width
+int height

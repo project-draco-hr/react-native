@@ -1,0 +1,7 @@
+{
+  super(viewId);
+  mEventType=eventType;
+  mImageUri=imageUri;
+  mWidth=width;
+  mHeight=height;
+}

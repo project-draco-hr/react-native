@@ -10,7 +10,7 @@
       }
       @Override public void onFinalImageSet(      String id,      @Nullable final ImageInfo imageInfo,      @Nullable Animatable animatable){
         if (imageInfo != null) {
-          mEventDispatcher.dispatchEvent(new ImageLoadEvent(getId(),ImageLoadEvent.ON_LOAD));
+          mEventDispatcher.dispatchEvent(new ImageLoadEvent(getId(),ImageLoadEvent.ON_LOAD,mImageSource.getSource(),imageInfo.getWidth(),imageInfo.getHeight()));
           mEventDispatcher.dispatchEvent(new ImageLoadEvent(getId(),ImageLoadEvent.ON_LOAD_END));
         }
       }

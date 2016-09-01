@@ -1,5 +1,3 @@
 {
-  super(viewId);
-  mEventType=eventType;
-  mImageUri=imageUri;
+  this(viewId,eventType,imageUri,0,0);
 }
