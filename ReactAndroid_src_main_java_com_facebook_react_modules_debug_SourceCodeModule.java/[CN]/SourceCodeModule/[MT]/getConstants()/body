@@ -1,5 +1,5 @@
 {
-  HashMap<String,Object> constants=new HashMap<String,Object>();
+  HashMap<String,Object> constants=new HashMap<>();
   constants.put("scriptURL",mSourceUrl);
   return constants;
 }

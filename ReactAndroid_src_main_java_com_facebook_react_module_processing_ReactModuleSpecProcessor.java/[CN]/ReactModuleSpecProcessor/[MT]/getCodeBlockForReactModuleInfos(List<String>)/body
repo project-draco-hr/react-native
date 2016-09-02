@@ -4,6 +4,9 @@
     String keyString=nativeModule + ".class";
     TypeElement typeElement=mElements.getTypeElement(nativeModule);
     ReactModule reactModule=typeElement.getAnnotation(ReactModule.class);
+    if (reactModule == null) {
+      throw new ReactModuleSpecException(keyString + " not found.");
+    }
     String valueString=new StringBuilder().append("new ReactModuleInfo(").append("\"").append(reactModule.name()).append("\"").append(", ").append(reactModule.canOverrideExistingModule()).append(", ").append(reactModule.supportsWebWorkers()).append(", ").append(reactModule.needsEagerInit()).append(")").toString();
     builder.addStatement("map.put(" + keyString + ", "+ valueString+ ")");
   }
