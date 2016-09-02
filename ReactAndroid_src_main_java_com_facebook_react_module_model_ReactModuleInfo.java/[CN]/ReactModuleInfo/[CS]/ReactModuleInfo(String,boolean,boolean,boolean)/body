@@ -1,0 +1,6 @@
+{
+  mName=name;
+  mCanOverrideExistingModule=canOverrideExistingModule;
+  mSupportsWebWorkers=supportsWebWorkers;
+  mNeedsEagerInit=needsEagerInit;
+}

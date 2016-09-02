@@ -1,0 +1,12 @@
+{
+  CodeBlock.Builder builder=CodeBlock.builder().addStatement("$T map = new $T()",MAP_TYPE,INSTANTIATED_MAP_TYPE);
+  for (  String nativeModule : nativeModules) {
+    String keyString=nativeModule + ".class";
+    TypeElement typeElement=mElements.getTypeElement(nativeModule);
+    ReactModule reactModule=typeElement.getAnnotation(ReactModule.class);
+    String valueString=new StringBuilder().append("new ReactModuleInfo(").append("\"").append(reactModule.name()).append("\"").append(", ").append(reactModule.canOverrideExistingModule()).append(", ").append(reactModule.supportsWebWorkers()).append(", ").append(reactModule.needsEagerInit()).append(")").toString();
+    builder.addStatement("map.put(" + keyString + ", "+ valueString+ ")");
+  }
+  builder.addStatement("return map");
+  return builder.build();
+}
