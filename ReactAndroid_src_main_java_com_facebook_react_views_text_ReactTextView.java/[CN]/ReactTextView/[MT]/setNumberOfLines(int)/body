@@ -1,0 +1,4 @@
+{
+  mNumberOfLines=numberOfLines == 0 ? ViewDefaults.NUMBER_OF_LINES : numberOfLines;
+  setMaxLines(mNumberOfLines);
+}

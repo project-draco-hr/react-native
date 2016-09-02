@@ -1,0 +1,14 @@
+{
+  if (ellipsizeMode == null || ellipsizeMode.equals("tail")) {
+    view.setEllipsizeLocation(TextUtils.TruncateAt.END);
+  }
+ else   if (ellipsizeMode.equals("head")) {
+    view.setEllipsizeLocation(TextUtils.TruncateAt.START);
+  }
+ else   if (ellipsizeMode.equals("middle")) {
+    view.setEllipsizeLocation(TextUtils.TruncateAt.MIDDLE);
+  }
+ else {
+    throw new JSApplicationIllegalArgumentException("Invalid ellipsizeMode: " + ellipsizeMode);
+  }
+}
