@@ -1,5 +1,5 @@
 {
-  List<ModuleSpec> moduleSpecList=new ArrayList();
+  List<ModuleSpec> moduleSpecList=new ArrayList<>();
   moduleSpecList.add(new ModuleSpec(AnimationsDebugModule.class,new Provider<NativeModule>(){
     @Override public NativeModule get(){
       return new AnimationsDebugModule(reactContext,mReactInstanceManager.getDevSupportManager().getDevSettings());
