@@ -1,0 +1,8 @@
+{
+  if (selection == null) {
+    return;
+  }
+  if (selection.hasKey("start") && selection.hasKey("end")) {
+    view.setSelection(selection.getInt("start"),selection.getInt("end"));
+  }
+}

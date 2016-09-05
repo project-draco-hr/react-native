@@ -1,0 +1,6 @@
+{
+  if (mMostRecentEventCount < mNativeEventCount) {
+    return;
+  }
+  super.setSelection(start,end);
+}

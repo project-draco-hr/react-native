@@ -1,5 +1,6 @@
 {
-  if (reactTextUpdate.getJsEventCounter() < mNativeEventCount) {
+  mMostRecentEventCount=reactTextUpdate.getJsEventCounter();
+  if (mMostRecentEventCount < mNativeEventCount) {
     return;
   }
   SpannableStringBuilder spannableStringBuilder=new SpannableStringBuilder(reactTextUpdate.getText());

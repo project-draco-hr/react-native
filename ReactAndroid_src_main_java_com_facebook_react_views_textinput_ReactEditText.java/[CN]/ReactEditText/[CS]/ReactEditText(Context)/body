@@ -5,6 +5,7 @@
   mDefaultGravityHorizontal=getGravity() & (Gravity.HORIZONTAL_GRAVITY_MASK | Gravity.RELATIVE_HORIZONTAL_GRAVITY_MASK);
   mDefaultGravityVertical=getGravity() & Gravity.VERTICAL_GRAVITY_MASK;
   mNativeEventCount=0;
+  mMostRecentEventCount=0;
   mIsSettingTextFromJS=false;
   mIsJSSettingFocus=false;
   mBlurOnSubmit=true;
