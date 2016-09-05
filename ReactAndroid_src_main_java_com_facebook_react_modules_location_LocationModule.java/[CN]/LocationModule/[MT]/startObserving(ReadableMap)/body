@@ -7,7 +7,7 @@
     LocationManager locationManager=(LocationManager)getReactApplicationContext().getSystemService(Context.LOCATION_SERVICE);
     String provider=getValidProvider(locationManager,locationOptions.highAccuracy);
     if (provider == null) {
-      emitError("No location provider available.");
+      emitError(PositionError.PERMISSION_DENIED,"No location provider available.");
       return;
     }
     if (!provider.equals(mWatchedProvider)) {

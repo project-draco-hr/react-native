@@ -1,0 +1,3 @@
+{
+  getReactApplicationContext().getJSModule(RCTDeviceEventEmitter.class).emit("geolocationError",PositionError.buildError(code,message));
+}

@@ -1,0 +1,8 @@
+{
+  WritableMap error=Arguments.createMap();
+  error.putInt("code",code);
+  if (message != null) {
+    error.putString("message",message);
+  }
+  return error;
+}
