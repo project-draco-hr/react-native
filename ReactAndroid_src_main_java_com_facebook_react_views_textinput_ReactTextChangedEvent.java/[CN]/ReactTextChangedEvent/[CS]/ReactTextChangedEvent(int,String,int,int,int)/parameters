@@ -1,5 +1,0 @@
-int viewId
-String text
-int contentSizeWidth
-int contentSizeHeight
-int eventCount
