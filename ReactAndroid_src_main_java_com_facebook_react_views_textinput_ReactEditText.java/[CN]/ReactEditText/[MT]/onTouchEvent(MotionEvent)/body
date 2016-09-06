@@ -1,0 +1,17 @@
+{
+switch (ev.getAction()) {
+case MotionEvent.ACTION_DOWN:
+    mDetectScrollMovement=true;
+  this.getParent().requestDisallowInterceptTouchEvent(true);
+break;
+case MotionEvent.ACTION_MOVE:
+if (mDetectScrollMovement) {
+if (!canScrollVertically(-1) && !canScrollVertically(1) && !canScrollHorizontally(-1)&& !canScrollHorizontally(1)) {
+  this.getParent().requestDisallowInterceptTouchEvent(false);
+}
+mDetectScrollMovement=false;
+}
+break;
+}
+return super.onTouchEvent(ev);
+}

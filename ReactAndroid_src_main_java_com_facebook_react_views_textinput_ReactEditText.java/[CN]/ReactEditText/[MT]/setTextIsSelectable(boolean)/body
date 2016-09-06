@@ -1,4 +1,0 @@
-{
-  mTextIsSelectable=selectable;
-  super.setTextIsSelectable(selectable);
-}
