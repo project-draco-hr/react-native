@@ -1,0 +1,6 @@
+{
+  double value=getInputNodeValue();
+  double diff=value - mLastValue;
+  mLastValue=value;
+  mValue=Math.min(Math.max(mValue + diff,mMin),mMax);
+}

@@ -1,0 +1,7 @@
+{
+  mNativeAnimatedNodesManager=nativeAnimatedNodesManager;
+  mInputNodeTag=config.getInt("input");
+  mMin=config.getDouble("min");
+  mMax=config.getDouble("max");
+  mValue=mLastValue=getInputNodeValue();
+}
