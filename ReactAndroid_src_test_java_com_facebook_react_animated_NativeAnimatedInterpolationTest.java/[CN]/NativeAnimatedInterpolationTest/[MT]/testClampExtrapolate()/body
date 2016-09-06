@@ -1,0 +1,6 @@
+{
+  double[] input=new double[]{10d,20d};
+  double[] output=new double[]{0d,1d};
+  assertThat(InterpolationAnimatedNode.interpolate(30d,input,output,InterpolationAnimatedNode.EXTRAPOLATE_TYPE_CLAMP,InterpolationAnimatedNode.EXTRAPOLATE_TYPE_CLAMP)).isEqualTo(1);
+  assertThat(InterpolationAnimatedNode.interpolate(5d,input,output,InterpolationAnimatedNode.EXTRAPOLATE_TYPE_CLAMP,InterpolationAnimatedNode.EXTRAPOLATE_TYPE_CLAMP)).isEqualTo(0);
+}

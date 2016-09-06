@@ -1,6 +1,0 @@
-{
-  double[] input=new double[]{10d,20d};
-  double[] output=new double[]{0d,1d};
-  assertThat(InterpolationAnimatedNode.interpolate(30d,input,output)).isEqualTo(2);
-  assertThat(InterpolationAnimatedNode.interpolate(5d,input,output)).isEqualTo(-0.5);
-}

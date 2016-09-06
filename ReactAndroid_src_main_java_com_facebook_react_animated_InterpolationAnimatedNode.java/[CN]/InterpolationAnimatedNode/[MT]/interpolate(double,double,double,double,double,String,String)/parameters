@@ -3,3 +3,5 @@ double inputMin
 double inputMax
 double outputMin
 double outputMax
+String extrapolateLeft
+String extrapolateRight

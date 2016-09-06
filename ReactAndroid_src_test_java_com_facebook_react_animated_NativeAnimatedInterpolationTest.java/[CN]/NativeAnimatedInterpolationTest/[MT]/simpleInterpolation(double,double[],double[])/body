@@ -1,0 +1,3 @@
+{
+  return InterpolationAnimatedNode.interpolate(value,input,output,InterpolationAnimatedNode.EXTRAPOLATE_TYPE_EXTEND,InterpolationAnimatedNode.EXTRAPOLATE_TYPE_EXTEND);
+}

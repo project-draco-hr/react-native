@@ -1,6 +1,6 @@
 {
   mNativeAnimatedNodesManager.createAnimatedNode(1,JavaOnlyMap.of("type","value","value",10d));
-  mNativeAnimatedNodesManager.createAnimatedNode(2,JavaOnlyMap.of("type","interpolation","inputRange",JavaOnlyArray.of(10d,20d),"outputRange",JavaOnlyArray.of(0d,1d)));
+  mNativeAnimatedNodesManager.createAnimatedNode(2,JavaOnlyMap.of("type","interpolation","inputRange",JavaOnlyArray.of(10d,20d),"outputRange",JavaOnlyArray.of(0d,1d),"extrapolateLeft","extend","extrapolateRight","extend"));
   mNativeAnimatedNodesManager.createAnimatedNode(3,JavaOnlyMap.of("type","style","style",JavaOnlyMap.of("opacity",2)));
   mNativeAnimatedNodesManager.createAnimatedNode(4,JavaOnlyMap.of("type","props","props",JavaOnlyMap.of("style",3)));
   mNativeAnimatedNodesManager.connectAnimatedNodes(1,2);

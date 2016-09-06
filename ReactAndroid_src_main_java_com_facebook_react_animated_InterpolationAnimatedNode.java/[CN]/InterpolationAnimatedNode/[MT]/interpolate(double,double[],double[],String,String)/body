@@ -1,0 +1,4 @@
+{
+  int rangeIndex=findRangeIndex(value,inputRange);
+  return interpolate(value,inputRange[rangeIndex],inputRange[rangeIndex + 1],outputRange[rangeIndex],outputRange[rangeIndex + 1],extrapolateLeft,extrapolateRight);
+}

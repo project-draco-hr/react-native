@@ -1,3 +1,0 @@
-{
-  return outputMin + (outputMax - outputMin) * (value - inputMin) / (inputMax - inputMin);
-}

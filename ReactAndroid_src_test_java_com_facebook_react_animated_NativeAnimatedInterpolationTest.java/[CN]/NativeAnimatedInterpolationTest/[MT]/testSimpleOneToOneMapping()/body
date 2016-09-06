@@ -1,8 +1,8 @@
 {
   double[] input=new double[]{0d,1d};
   double[] output=new double[]{0d,1d};
-  assertThat(InterpolationAnimatedNode.interpolate(0,input,output)).isEqualTo(0);
-  assertThat(InterpolationAnimatedNode.interpolate(0.5,input,output)).isEqualTo(0.5);
-  assertThat(InterpolationAnimatedNode.interpolate(0.8,input,output)).isEqualTo(0.8);
-  assertThat(InterpolationAnimatedNode.interpolate(1,input,output)).isEqualTo(1);
+  assertThat(simpleInterpolation(0,input,output)).isEqualTo(0);
+  assertThat(simpleInterpolation(0.5,input,output)).isEqualTo(0.5);
+  assertThat(simpleInterpolation(0.8,input,output)).isEqualTo(0.8);
+  assertThat(simpleInterpolation(1,input,output)).isEqualTo(1);
 }

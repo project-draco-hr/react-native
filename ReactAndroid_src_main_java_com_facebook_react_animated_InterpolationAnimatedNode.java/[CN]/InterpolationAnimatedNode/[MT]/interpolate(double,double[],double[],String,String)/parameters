@@ -1,3 +1,5 @@
 double value
 double[] inputRange
 double[] outputRange
+String extrapolateLeft
+String extrapolateRight

@@ -1,0 +1,30 @@
+{
+  double result=value;
+  if (result < inputMin) {
+switch (extrapolateLeft) {
+case EXTRAPOLATE_TYPE_IDENTITY:
+      return result;
+case EXTRAPOLATE_TYPE_CLAMP:
+    result=inputMin;
+  break;
+case EXTRAPOLATE_TYPE_EXTEND:
+break;
+default :
+throw new JSApplicationIllegalArgumentException("Invalid extrapolation type " + extrapolateLeft + "for left extrapolation");
+}
+}
+if (result > inputMax) {
+switch (extrapolateRight) {
+case EXTRAPOLATE_TYPE_IDENTITY:
+return result;
+case EXTRAPOLATE_TYPE_CLAMP:
+result=inputMax;
+break;
+case EXTRAPOLATE_TYPE_EXTEND:
+break;
+default :
+throw new JSApplicationIllegalArgumentException("Invalid extrapolation type " + extrapolateRight + "for right extrapolation");
+}
+}
+return outputMin + (outputMax - outputMin) * (result - inputMin) / (inputMax - inputMin);
+}
