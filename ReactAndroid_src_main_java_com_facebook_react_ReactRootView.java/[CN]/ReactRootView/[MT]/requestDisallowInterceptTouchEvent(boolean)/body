@@ -1,2 +1,5 @@
 {
+  if (getParent() != null) {
+    getParent().requestDisallowInterceptTouchEvent(disallowIntercept);
+  }
 }
