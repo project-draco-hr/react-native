@@ -1,5 +1,5 @@
 {
   mViewTag=viewTag;
-  mTimestampMs=SystemClock.nanoTime();
+  mTimestampMs=SystemClock.uptimeMillis();
   mInitialized=true;
 }
