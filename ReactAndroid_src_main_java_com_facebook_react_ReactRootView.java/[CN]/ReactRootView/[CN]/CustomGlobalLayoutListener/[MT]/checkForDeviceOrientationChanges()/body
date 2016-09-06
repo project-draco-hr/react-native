@@ -4,5 +4,7 @@
     return;
   }
   mDeviceRotation=rotation;
+  DisplayMetricsHolder.initDisplayMetrics(getContext());
+  emitUpdateDimensionsEvent();
   emitOrientationChanged(rotation);
 }
