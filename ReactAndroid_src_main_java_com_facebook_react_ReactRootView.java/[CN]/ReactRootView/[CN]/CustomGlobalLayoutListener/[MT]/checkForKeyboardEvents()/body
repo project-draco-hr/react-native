@@ -1,8 +1,4 @@
 {
-  if (mReactInstanceManager == null || !mIsAttachedToInstance || mReactInstanceManager.getCurrentReactContext() == null) {
-    FLog.w(ReactConstants.TAG,"Unable to dispatch keyboard events in JS as the react instance has not been attached");
-    return;
-  }
   getRootView().getWindowVisibleDisplayFrame(mVisibleViewArea);
   final int heightDiff=DisplayMetricsHolder.getWindowDisplayMetrics().heightPixels - mVisibleViewArea.bottom;
   if (mKeyboardHeight != heightDiff && heightDiff > mMinKeyboardHeightDetected) {

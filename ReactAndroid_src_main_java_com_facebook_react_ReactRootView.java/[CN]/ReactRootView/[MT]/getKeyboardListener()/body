@@ -1,6 +1,0 @@
-{
-  if (mKeyboardListener == null) {
-    mKeyboardListener=new KeyboardListener();
-  }
-  return mKeyboardListener;
-}

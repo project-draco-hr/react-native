@@ -1,0 +1,6 @@
+{
+  if (mCustomGlobalLayoutListener == null) {
+    mCustomGlobalLayoutListener=new CustomGlobalLayoutListener();
+  }
+  return mCustomGlobalLayoutListener;
+}

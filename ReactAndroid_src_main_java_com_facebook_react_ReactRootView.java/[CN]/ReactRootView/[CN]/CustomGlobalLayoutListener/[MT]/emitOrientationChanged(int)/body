@@ -1,0 +1,32 @@
+{
+  String name;
+  double rotationDegrees;
+  boolean isLandscape=false;
+switch (newRotation) {
+case Surface.ROTATION_0:
+    name="portrait-primary";
+  rotationDegrees=0.0;
+break;
+case Surface.ROTATION_90:
+name="landscape-primary";
+rotationDegrees=-90.0;
+isLandscape=true;
+break;
+case Surface.ROTATION_180:
+name="portrait-secondary";
+rotationDegrees=180.0;
+break;
+case Surface.ROTATION_270:
+name="landscape-secondary";
+rotationDegrees=90.0;
+isLandscape=true;
+break;
+default :
+return;
+}
+WritableMap map=Arguments.createMap();
+map.putString("name",name);
+map.putDouble("rotationDegrees",rotationDegrees);
+map.putBoolean("isLandscape",isLandscape);
+sendEvent("namedOrientationDidChange",map);
+}

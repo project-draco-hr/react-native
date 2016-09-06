@@ -1,0 +1,8 @@
+{
+  final int rotation=((WindowManager)getContext().getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getRotation();
+  if (mDeviceRotation == rotation) {
+    return;
+  }
+  mDeviceRotation=rotation;
+  emitOrientationChanged(rotation);
+}

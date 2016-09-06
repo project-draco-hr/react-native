@@ -1,0 +1,7 @@
+{
+  if (mReactInstanceManager == null || !mIsAttachedToInstance || mReactInstanceManager.getCurrentReactContext() == null) {
+    return;
+  }
+  checkForKeyboardEvents();
+  checkForDeviceOrientationChanges();
+}

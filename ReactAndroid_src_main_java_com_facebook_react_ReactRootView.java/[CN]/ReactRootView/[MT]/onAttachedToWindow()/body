@@ -1,6 +1,6 @@
 {
   super.onAttachedToWindow();
   if (mIsAttachedToInstance) {
-    getViewTreeObserver().addOnGlobalLayoutListener(getKeyboardListener());
+    getViewTreeObserver().addOnGlobalLayoutListener(getCustomGlobalLayoutListener());
   }
 }
