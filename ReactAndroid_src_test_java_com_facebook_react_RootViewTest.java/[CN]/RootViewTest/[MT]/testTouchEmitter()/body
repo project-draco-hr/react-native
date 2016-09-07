@@ -21,7 +21,7 @@
   verify(eventEmitterModuleMock).receiveTouches(eq("topTouchStart"),downActionTouchesArgCaptor.capture(),any(JavaOnlyArray.class));
   verifyNoMoreInteractions(eventEmitterModuleMock);
   assertThat(downActionTouchesArgCaptor.getValue().size()).isEqualTo(1);
-  assertThat(downActionTouchesArgCaptor.getValue().getMap(0)).isEqualTo(JavaOnlyMap.of("pageX",0.,"pageY",0.,"locationX",0.,"locationY",0.,"target",rootViewId,"timeStamp",(double)ts,"identifier",0.));
+  assertThat(downActionTouchesArgCaptor.getValue().getMap(0)).isEqualTo(JavaOnlyMap.of("pageX",0.,"pageY",0.,"locationX",0.,"locationY",0.,"target",rootViewId,"timestamp",(double)ts,"identifier",0.));
   reset(eventEmitterModuleMock,eventDispatcher);
   ArgumentCaptor<Event> upEventCaptor=ArgumentCaptor.forClass(Event.class);
   ArgumentCaptor<JavaOnlyArray> upActionTouchesArgCaptor=ArgumentCaptor.forClass(JavaOnlyArray.class);
@@ -32,7 +32,7 @@
   verify(eventEmitterModuleMock).receiveTouches(eq("topTouchEnd"),upActionTouchesArgCaptor.capture(),any(WritableArray.class));
   verifyNoMoreInteractions(eventEmitterModuleMock);
   assertThat(upActionTouchesArgCaptor.getValue().size()).isEqualTo(1);
-  assertThat(upActionTouchesArgCaptor.getValue().getMap(0)).isEqualTo(JavaOnlyMap.of("pageX",0.,"pageY",0.,"locationX",0.,"locationY",0.,"target",rootViewId,"timeStamp",(double)ts,"identifier",0.));
+  assertThat(upActionTouchesArgCaptor.getValue().getMap(0)).isEqualTo(JavaOnlyMap.of("pageX",0.,"pageY",0.,"locationX",0.,"locationY",0.,"target",rootViewId,"timestamp",(double)ts,"identifier",0.));
   reset(eventDispatcher);
   rootView.onTouchEvent(MotionEvent.obtain(50,new Date().getTime(),MotionEvent.ACTION_HOVER_MOVE,0,0,0));
   verifyNoMoreInteractions(eventDispatcher);
