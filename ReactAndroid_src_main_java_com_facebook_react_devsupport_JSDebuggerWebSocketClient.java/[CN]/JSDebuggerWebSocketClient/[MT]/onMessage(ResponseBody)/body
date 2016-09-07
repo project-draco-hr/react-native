@@ -24,6 +24,11 @@
         parser.nextToken();
         result=parser.getText();
       }
+ else       if ("error".equals(field)) {
+        parser.nextToken();
+        String error=parser.getText();
+        abort(error,new JavascriptException(error));
+      }
     }
     if (replyID != null) {
       triggerRequestSuccess(replyID,result);
