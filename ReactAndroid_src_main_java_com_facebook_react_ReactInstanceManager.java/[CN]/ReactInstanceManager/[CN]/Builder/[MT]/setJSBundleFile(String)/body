@@ -1,5 +1,8 @@
 {
-  mJSBundleFile=jsBundleFile;
-  mJSBundleLoader=null;
-  return this;
+  if (jsBundleFile.startsWith("assets://")) {
+    mJSBundleAssetUrl=jsBundleFile;
+    mJSBundleLoader=null;
+    return this;
+  }
+  return setJSBundleLoader(JSBundleLoader.createFileLoader(jsBundleFile));
 }

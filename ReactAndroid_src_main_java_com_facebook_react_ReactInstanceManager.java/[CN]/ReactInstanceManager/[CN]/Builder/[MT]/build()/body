@@ -1,9 +1,9 @@
 {
   Assertions.assertNotNull(mApplication,"Application property has not been set with this builder");
-  Assertions.assertCondition(mUseDeveloperSupport || mJSBundleFile != null || mJSBundleLoader != null,"JS Bundle File has to be provided when dev support is disabled");
-  Assertions.assertCondition(mJSMainModuleName != null || mJSBundleFile != null || mJSBundleLoader != null,"Either MainModuleName or JS Bundle File needs to be provided");
+  Assertions.assertCondition(mUseDeveloperSupport || mJSBundleAssetUrl != null || mJSBundleLoader != null,"JS Bundle File or Asset URL has to be provided when dev support is disabled");
+  Assertions.assertCondition(mJSMainModuleName != null || mJSBundleAssetUrl != null || mJSBundleLoader != null,"Either MainModuleName or JS Bundle File needs to be provided");
   if (mUIImplementationProvider == null) {
     mUIImplementationProvider=new UIImplementationProvider();
   }
-  return new XReactInstanceManagerImpl(mApplication,mCurrentActivity,mDefaultHardwareBackBtnHandler,(mJSBundleLoader == null && mJSBundleFile != null) ? JSBundleLoader.createFileLoader(mApplication,mJSBundleFile) : mJSBundleLoader,mJSMainModuleName,mPackages,mUseDeveloperSupport,mBridgeIdleDebugListener,Assertions.assertNotNull(mInitialLifecycleState,"Initial lifecycle state was not set"),mUIImplementationProvider,mNativeModuleCallExceptionHandler,mJSCConfig,mRedBoxHandler);
+  return new XReactInstanceManagerImpl(mApplication,mCurrentActivity,mDefaultHardwareBackBtnHandler,(mJSBundleLoader == null && mJSBundleAssetUrl != null) ? JSBundleLoader.createAssetLoader(mApplication,mJSBundleAssetUrl) : mJSBundleLoader,mJSMainModuleName,mPackages,mUseDeveloperSupport,mBridgeIdleDebugListener,Assertions.assertNotNull(mInitialLifecycleState,"Initial lifecycle state was not set"),mUIImplementationProvider,mNativeModuleCallExceptionHandler,mJSCConfig,mRedBoxHandler);
 }

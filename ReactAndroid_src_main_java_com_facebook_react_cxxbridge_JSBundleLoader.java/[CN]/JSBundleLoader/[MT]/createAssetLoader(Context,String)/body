@@ -1,0 +1,11 @@
+{
+  return new JSBundleLoader(){
+    @Override public void loadScript(    CatalystInstanceImpl instance){
+      instance.loadScriptFromAssets(context.getAssets(),assetUrl);
+    }
+    @Override public String getSourceUrl(){
+      return assetUrl;
+    }
+  }
+;
+}

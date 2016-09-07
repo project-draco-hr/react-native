@@ -1,5 +1,5 @@
 {
   mJSBundleLoader=jsBundleLoader;
-  mJSBundleFile=null;
+  mJSBundleAssetUrl=null;
   return this;
 }

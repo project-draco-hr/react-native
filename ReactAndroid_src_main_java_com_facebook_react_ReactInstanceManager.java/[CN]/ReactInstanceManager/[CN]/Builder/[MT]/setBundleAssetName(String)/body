@@ -1,3 +1,5 @@
 {
-  return this.setJSBundleFile(bundleAssetName == null ? null : "assets://" + bundleAssetName);
+  mJSBundleAssetUrl=(bundleAssetName == null ? null : "assets://" + bundleAssetName);
+  mJSBundleLoader=null;
+  return this;
 }
