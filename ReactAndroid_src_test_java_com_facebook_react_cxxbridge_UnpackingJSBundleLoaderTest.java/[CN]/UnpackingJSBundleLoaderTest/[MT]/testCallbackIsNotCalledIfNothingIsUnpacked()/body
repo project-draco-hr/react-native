@@ -1,0 +1,5 @@
+{
+  mBuilder.build().prepare();
+  mBuilder.setOnUnpackedCallback(mCallback).build().prepare();
+  verifyNoMoreInteractions(mCallback);
+}

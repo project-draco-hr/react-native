@@ -1,0 +1,4 @@
+{
+  mBuilder.setOnUnpackedCallback(mCallback).build().prepare();
+  verify(mCallback).run();
+}

@@ -9,4 +9,5 @@
   for (int i=0; i < mMockUnpackers.length; ++i) {
     mMockUnpackers[i]=mock(UnpackingJSBundleLoader.Unpacker.class);
   }
+  mCallback=mock(Runnable.class);
 }

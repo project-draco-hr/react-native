@@ -1,0 +1,4 @@
+{
+  this.callback=callback;
+  return this;
+}

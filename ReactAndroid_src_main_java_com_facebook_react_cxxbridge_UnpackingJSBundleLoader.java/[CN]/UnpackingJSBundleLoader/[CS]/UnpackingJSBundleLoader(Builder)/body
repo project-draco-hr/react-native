@@ -4,4 +4,5 @@
   mSourceURL=Assertions.assertNotNull(builder.sourceURL);
   mUnpackers=builder.unpackers.toArray(new Unpacker[builder.unpackers.size()]);
   mLoadFlags=builder.loadFlags;
+  mOnUnpackedCallback=builder.callback;
 }

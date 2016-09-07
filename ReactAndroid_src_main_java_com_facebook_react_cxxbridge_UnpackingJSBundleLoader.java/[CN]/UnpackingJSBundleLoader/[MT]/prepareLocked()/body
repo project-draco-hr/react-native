@@ -6,7 +6,7 @@
     shouldReconstruct=mUnpackers[i].shouldReconstructDir(mContext,buffer);
   }
   if (!shouldReconstruct) {
-    return;
+    return false;
   }
   boolean succeeded=false;
   try {
@@ -27,4 +27,5 @@
       SysUtil.dumbDeleteRecursive(mDirectoryPath);
     }
   }
+  return true;
 }

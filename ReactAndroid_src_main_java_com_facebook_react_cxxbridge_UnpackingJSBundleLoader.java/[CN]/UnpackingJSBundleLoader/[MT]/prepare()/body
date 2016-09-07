@@ -1,13 +1,17 @@
 {
+  boolean unpacked=false;
   final File lockFilePath=new File(mContext.getFilesDir(),LOCK_FILE);
   Systrace.beginSection(TRACE_TAG_REACT_JAVA_BRIDGE,"UnpackingJSBundleLoader.prepare");
   try (FileLocker lock=FileLocker.lock(lockFilePath)){
-    prepareLocked();
+    unpacked=prepareLocked();
   }
  catch (  IOException ioe) {
     throw new RuntimeException(ioe);
   }
  finally {
     Systrace.endSection(TRACE_TAG_REACT_JAVA_BRIDGE);
+  }
+  if (unpacked && mOnUnpackedCallback != null) {
+    mOnUnpackedCallback.run();
   }
 }

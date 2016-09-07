@@ -4,4 +4,5 @@
   destinationPath=null;
   sourceURL=null;
   loadFlags=0;
+  callback=null;
 }
