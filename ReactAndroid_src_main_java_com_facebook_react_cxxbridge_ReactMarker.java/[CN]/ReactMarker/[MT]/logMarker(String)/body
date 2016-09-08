@@ -1,5 +1,0 @@
-{
-  if (sMarkerListener != null) {
-    sMarkerListener.logMarker(name);
-  }
-}
