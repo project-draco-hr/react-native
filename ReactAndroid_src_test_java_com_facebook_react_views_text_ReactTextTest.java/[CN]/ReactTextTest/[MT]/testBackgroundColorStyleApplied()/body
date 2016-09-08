@@ -2,5 +2,5 @@
   UIManagerModule uiManager=getUIManagerModule();
   ReactRootView rootView=createText(uiManager,JavaOnlyMap.of(ViewProps.BACKGROUND_COLOR,Color.BLUE),JavaOnlyMap.of(ReactTextShadowNode.PROP_TEXT,"test text"));
   Drawable backgroundDrawable=((TextView)rootView.getChildAt(0)).getBackground();
-  assertThat(((ColorDrawable)backgroundDrawable).getColor()).isEqualTo(Color.BLUE);
+  assertThat(((ReactViewBackgroundDrawable)backgroundDrawable).getColor()).isEqualTo(Color.BLUE);
 }

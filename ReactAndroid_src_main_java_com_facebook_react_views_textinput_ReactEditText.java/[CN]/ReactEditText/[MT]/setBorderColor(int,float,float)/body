@@ -1,0 +1,3 @@
+{
+  getOrCreateReactViewBackground().setBorderColor(position,color,alpha);
+}

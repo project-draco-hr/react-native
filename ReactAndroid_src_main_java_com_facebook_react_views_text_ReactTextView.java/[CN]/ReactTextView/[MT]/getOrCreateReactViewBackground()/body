@@ -1,0 +1,15 @@
+{
+  if (mReactBackgroundDrawable == null) {
+    mReactBackgroundDrawable=new ReactViewBackgroundDrawable();
+    Drawable backgroundDrawable=getBackground();
+    super.setBackground(null);
+    if (backgroundDrawable == null) {
+      super.setBackground(mReactBackgroundDrawable);
+    }
+ else {
+      LayerDrawable layerDrawable=new LayerDrawable(new Drawable[]{mReactBackgroundDrawable,backgroundDrawable});
+      super.setBackground(layerDrawable);
+    }
+  }
+  return mReactBackgroundDrawable;
+}

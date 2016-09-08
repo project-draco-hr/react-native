@@ -1,0 +1,5 @@
+{
+  float rgbComponent=color == null ? CSSConstants.UNDEFINED : (float)((int)color & 0x00FFFFFF);
+  float alphaComponent=color == null ? CSSConstants.UNDEFINED : (float)((int)color >>> 24);
+  view.setBorderColor(SPACING_TYPES[index],rgbComponent,alphaComponent);
+}

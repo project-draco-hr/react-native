@@ -1,0 +1,7 @@
+{
+  if (color == Color.TRANSPARENT && mReactBackgroundDrawable == null) {
+  }
+ else {
+    getOrCreateReactViewBackground().setColor(color);
+  }
+}
