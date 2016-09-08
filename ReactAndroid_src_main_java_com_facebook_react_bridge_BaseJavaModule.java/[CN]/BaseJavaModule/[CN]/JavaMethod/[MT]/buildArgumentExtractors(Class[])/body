@@ -31,7 +31,7 @@
  else     if (argumentClass == Promise.class) {
       argumentExtractors[i]=ARGUMENT_EXTRACTOR_PROMISE;
       Assertions.assertCondition(paramIndex == paramTypes.length - 1,"Promise must be used as last parameter only");
-      mType=METHOD_TYPE_REMOTE_ASYNC;
+      mType=METHOD_TYPE_PROMISE;
     }
  else     if (argumentClass == ReadableMap.class) {
       argumentExtractors[i]=ARGUMENT_EXTRACTOR_MAP;

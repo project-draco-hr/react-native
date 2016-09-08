@@ -10,7 +10,7 @@
     }
  else     if (paramClass == Promise.class) {
       Assertions.assertCondition(i == paramTypes.length - 1,"Promise must be used as last parameter only");
-      mType=METHOD_TYPE_REMOTE_ASYNC;
+      mType=METHOD_TYPE_PROMISE;
     }
     builder.append(paramTypeToChar(paramClass));
   }
