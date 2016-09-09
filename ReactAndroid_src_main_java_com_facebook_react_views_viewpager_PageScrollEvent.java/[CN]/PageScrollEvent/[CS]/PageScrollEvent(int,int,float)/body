@@ -1,5 +1,5 @@
 {
   super(viewTag);
   mPosition=position;
-  mOffset=offset;
+  mOffset=(Float.isInfinite(offset) || Float.isNaN(offset)) ? 0.0f : offset;
 }
