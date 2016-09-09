@@ -1,0 +1,4 @@
+{
+  mResizeMethod=resizeMethod;
+  mIsDirty=true;
+}

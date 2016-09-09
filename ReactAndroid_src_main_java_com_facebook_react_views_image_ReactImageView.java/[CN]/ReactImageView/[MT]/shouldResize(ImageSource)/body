@@ -1,3 +1,11 @@
 {
-  return UriUtil.isLocalContentUri(imageSource.getUri()) || UriUtil.isLocalFileUri(imageSource.getUri());
+  if (mResizeMethod == ImageResizeMethod.AUTO) {
+    return UriUtil.isLocalContentUri(imageSource.getUri()) || UriUtil.isLocalFileUri(imageSource.getUri());
+  }
+ else   if (mResizeMethod == ImageResizeMethod.RESIZE) {
+    return true;
+  }
+ else {
+    return false;
+  }
 }

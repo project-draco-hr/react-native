@@ -1,0 +1,14 @@
+{
+  if (resizeMethod == null || "auto".equals(resizeMethod)) {
+    view.setResizeMethod(ImageResizeMethod.AUTO);
+  }
+ else   if ("resize".equals(resizeMethod)) {
+    view.setResizeMethod(ImageResizeMethod.RESIZE);
+  }
+ else   if ("scale".equals(resizeMethod)) {
+    view.setResizeMethod(ImageResizeMethod.SCALE);
+  }
+ else {
+    throw new JSApplicationIllegalArgumentException("Invalid resize method: '" + resizeMethod + "'");
+  }
+}
