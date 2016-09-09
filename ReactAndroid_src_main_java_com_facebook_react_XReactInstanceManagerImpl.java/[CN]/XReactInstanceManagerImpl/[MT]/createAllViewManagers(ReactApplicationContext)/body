@@ -1,4 +1,5 @@
 {
+  ReactMarker.logMarker(CREATE_VIEW_MANAGERS_START);
   Systrace.beginSection(TRACE_TAG_REACT_JAVA_BRIDGE,"createAllViewManagers");
   try {
     List<ViewManager> allViewManagers=new ArrayList<>();
@@ -9,5 +10,6 @@
   }
   finally {
     Systrace.endSection(TRACE_TAG_REACT_JAVA_BRIDGE);
+    ReactMarker.logMarker(CREATE_VIEW_MANAGERS_END);
   }
 }

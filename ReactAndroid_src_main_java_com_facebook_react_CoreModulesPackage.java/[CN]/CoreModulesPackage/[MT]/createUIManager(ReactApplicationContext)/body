@@ -1,4 +1,5 @@
 {
+  ReactMarker.logMarker(CREATE_UI_MANAGER_MODULE_START);
   Systrace.beginSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,"createUIManagerModule");
   try {
     List<ViewManager> viewManagersList=mReactInstanceManager.createAllViewManagers(reactContext);
@@ -6,5 +7,6 @@
   }
   finally {
     Systrace.endSection(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE);
+    ReactMarker.logMarker(CREATE_UI_MANAGER_MODULE_END);
   }
 }

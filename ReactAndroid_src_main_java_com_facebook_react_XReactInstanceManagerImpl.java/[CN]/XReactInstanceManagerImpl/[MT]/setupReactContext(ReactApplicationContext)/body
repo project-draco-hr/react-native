@@ -1,4 +1,5 @@
 {
+  ReactMarker.logMarker(SETUP_REACT_CONTEXT_START);
   Systrace.beginSection(TRACE_TAG_REACT_JAVA_BRIDGE,"setupReactContext");
   UiThreadUtil.assertOnUiThread();
   Assertions.assertCondition(mCurrentReactContext == null);
@@ -17,4 +18,5 @@
     listener.onReactContextInitialized(reactContext);
   }
   Systrace.endSection(TRACE_TAG_REACT_JAVA_BRIDGE);
+  ReactMarker.logMarker(SETUP_REACT_CONTEXT_END);
 }
