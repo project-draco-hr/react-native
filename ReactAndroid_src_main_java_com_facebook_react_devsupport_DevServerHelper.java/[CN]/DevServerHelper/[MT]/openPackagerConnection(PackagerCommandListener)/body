@@ -1,11 +1,12 @@
 {
-  mSettings=settings;
-  mClient=new OkHttpClient.Builder().connectTimeout(HTTP_CONNECT_TIMEOUT_MS,TimeUnit.MILLISECONDS).readTimeout(0,TimeUnit.MILLISECONDS).writeTimeout(0,TimeUnit.MILLISECONDS).build();
-  mRestartOnChangePollingHandler=new Handler();
+  if (mPackagerConnection != null) {
+    FLog.w(ReactConstants.TAG,"Packager connection already open, nooping.");
+    return;
+  }
   mPackagerConnection=new JSPackagerWebSocketClient(getPackagerConnectionURL(),new JSPackagerWebSocketClient.JSPackagerCallback(){
     @Override public void onMessage(    String target,    String action){
       if (commandListener != null && "bridge".equals(target) && "reload".equals(action)) {
-        commandListener.onReload();
+        commandListener.onPackagerReloadCommand();
       }
     }
   }

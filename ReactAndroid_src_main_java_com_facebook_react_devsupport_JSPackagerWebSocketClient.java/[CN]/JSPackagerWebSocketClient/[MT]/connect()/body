@@ -1,4 +1,7 @@
 {
+  if (mClosed) {
+    throw new IllegalStateException("Can't connect closed client");
+  }
   OkHttpClient httpClient=new OkHttpClient.Builder().connectTimeout(10,TimeUnit.SECONDS).writeTimeout(10,TimeUnit.SECONDS).readTimeout(0,TimeUnit.MINUTES).build();
   Request request=new Request.Builder().url(mUrl).build();
   WebSocketCall call=WebSocketCall.create(httpClient,request);

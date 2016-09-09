@@ -1,4 +1,6 @@
 {
   mWebSocket=null;
-  reconnect();
+  if (!mClosed) {
+    reconnect();
+  }
 }
