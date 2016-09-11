@@ -3,7 +3,17 @@
   mApplicationContext=applicationContext;
   mJSAppBundleName=packagerPathForJSBundleName;
   mDevSettings=new DevInternalSettings(applicationContext,this);
-  mDevServerHelper=new DevServerHelper(mDevSettings);
+  mDevServerHelper=new DevServerHelper(mDevSettings,new DevServerHelper.PackagerCommandListener(){
+    @Override public void onReload(){
+      UiThreadUtil.runOnUiThread(new Runnable(){
+        @Override public void run(){
+          handleReloadJS();
+        }
+      }
+);
+    }
+  }
+);
   mShakeDetector=new ShakeDetector(new ShakeDetector.ShakeListener(){
     @Override public void onShake(){
       showDevOptionsDialog();

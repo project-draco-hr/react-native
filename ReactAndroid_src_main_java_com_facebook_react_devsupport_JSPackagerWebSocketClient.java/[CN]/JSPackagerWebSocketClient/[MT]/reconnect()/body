@@ -1,16 +1,11 @@
 {
-  if (mClosed) {
-    throw new IllegalStateException("Can't reconnect closed client");
-  }
   if (!mSuppressConnectionErrors) {
     FLog.w(TAG,"Couldn't connect to packager, will silently retry");
     mSuppressConnectionErrors=true;
   }
   mHandler.postDelayed(new Runnable(){
     @Override public void run(){
-      if (!mClosed) {
-        connect();
-      }
+      connect();
     }
   }
 ,RECONNECT_DELAY_MS);

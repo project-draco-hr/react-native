@@ -1,4 +1,4 @@
 {
   FLog.e(TAG,"Error occurred, shutting down websocket connection: " + message,cause);
-  closeWebSocketQuietly();
+  closeQuietly();
 }

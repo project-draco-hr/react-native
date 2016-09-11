@@ -13,7 +13,6 @@
       mApplicationContext.registerReceiver(mReloadAppBroadcastReceiver,filter);
       mIsReceiverRegistered=true;
     }
-    mDevServerHelper.openPackagerConnection(this);
     if (mDevSettings.isReloadOnJSChangeEnabled()) {
       mDevServerHelper.startPollingOnChangeEndpoint(new DevServerHelper.OnServerContentChangeListener(){
         @Override public void onServerContentChanged(){
@@ -44,7 +43,6 @@
     if (mDevOptionsDialog != null) {
       mDevOptionsDialog.dismiss();
     }
-    mDevServerHelper.closePackagerConnection();
     mDevServerHelper.stopPollingOnChangeEndpoint();
   }
 }

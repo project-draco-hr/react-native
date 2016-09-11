@@ -1,4 +1,10 @@
 {
-  mClosed=true;
-  closeWebSocketQuietly();
+  if (mWebSocket != null) {
+    try {
+      mWebSocket.close(1000,"End of session");
+    }
+ catch (    IOException e) {
+    }
+    mWebSocket=null;
+  }
 }

@@ -1,6 +1,0 @@
-{
-  if (mPackagerConnection != null) {
-    mPackagerConnection.closeQuietly();
-    mPackagerConnection=null;
-  }
-}
