@@ -1,0 +1,22 @@
+{
+  if (-fm.ascent > mHeight) {
+    fm.top=fm.ascent=-mHeight;
+    fm.bottom=fm.descent=0;
+  }
+ else   if (-fm.ascent + fm.descent > mHeight) {
+    fm.top=fm.ascent;
+    fm.bottom=fm.descent=mHeight + fm.ascent;
+  }
+ else   if (-fm.ascent + fm.bottom > mHeight) {
+    fm.top=fm.ascent;
+    fm.bottom=fm.ascent + mHeight;
+  }
+ else   if (-fm.top + fm.bottom > mHeight) {
+    fm.top=fm.bottom - mHeight;
+  }
+ else {
+    final int additional=mHeight - (-fm.top + fm.bottom);
+    fm.top-=additional;
+    fm.ascent-=additional;
+  }
+}

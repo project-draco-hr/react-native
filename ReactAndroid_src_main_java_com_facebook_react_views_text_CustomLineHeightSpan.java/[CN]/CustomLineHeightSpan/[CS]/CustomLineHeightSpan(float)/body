@@ -1,0 +1,3 @@
+{
+  this.mHeight=(int)Math.ceil(height);
+}
