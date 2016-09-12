@@ -1,0 +1,12 @@
+{
+  new AsyncTask<Void,Void,Void>(){
+    @Override protected Void doInBackground(    Void... params){
+      if (mPackagerConnection != null) {
+        mPackagerConnection.closeQuietly();
+        mPackagerConnection=null;
+      }
+      return null;
+    }
+  }
+.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+}

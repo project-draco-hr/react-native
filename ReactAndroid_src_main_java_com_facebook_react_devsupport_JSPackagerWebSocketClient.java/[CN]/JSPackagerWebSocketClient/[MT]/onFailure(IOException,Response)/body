@@ -2,5 +2,7 @@
   if (mWebSocket != null) {
     abort("Websocket exception",e);
   }
-  reconnect();
+  if (!mClosed) {
+    reconnect();
+  }
 }

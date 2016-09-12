@@ -1,0 +1,8 @@
+{
+  UiThreadUtil.runOnUiThread(new Runnable(){
+    @Override public void run(){
+      handleReloadJS();
+    }
+  }
+);
+}

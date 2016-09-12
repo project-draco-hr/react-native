@@ -1,0 +1,21 @@
+{
+  if (mPackagerConnection != null) {
+    FLog.w(ReactConstants.TAG,"Packager connection already open, nooping.");
+    return;
+  }
+  new AsyncTask<Void,Void,Void>(){
+    @Override protected Void doInBackground(    Void... params){
+      mPackagerConnection=new JSPackagerWebSocketClient(getPackagerConnectionURL(),new JSPackagerWebSocketClient.JSPackagerCallback(){
+        @Override public void onMessage(        String target,        String action){
+          if (commandListener != null && "bridge".equals(target) && "reload".equals(action)) {
+            commandListener.onPackagerReloadCommand();
+          }
+        }
+      }
+);
+      mPackagerConnection.connect();
+      return null;
+    }
+  }
+.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+}
