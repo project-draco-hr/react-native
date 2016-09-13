@@ -1,0 +1,11 @@
+{
+  super.onSizeChanged(w,h,oldw,oldh);
+  if (getChildCount() > 0) {
+    ((ReactContext)getContext()).runOnNativeModulesQueueThread(new Runnable(){
+      @Override public void run(){
+        ((ReactContext)getContext()).getNativeModule(UIManagerModule.class).updateNodeSize(getChildAt(0).getId(),w,h);
+      }
+    }
+);
+  }
+}

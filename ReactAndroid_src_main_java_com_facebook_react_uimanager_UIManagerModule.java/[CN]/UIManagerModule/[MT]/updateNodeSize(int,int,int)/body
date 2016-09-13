@@ -1,0 +1,4 @@
+{
+  getReactApplicationContext().assertOnNativeModulesQueueThread();
+  mUIImplementation.updateNodeSize(nodeViewTag,newWidth,newHeight,mEventDispatcher);
+}

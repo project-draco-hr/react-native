@@ -1,0 +1,8 @@
+{
+  ReactShadowNode cssNode=mShadowNodeRegistry.getNode(nodeViewTag);
+  cssNode.setStyleWidth(newWidth);
+  cssNode.setStyleHeight(newHeight);
+  if (mOperationsQueue.isEmpty()) {
+    dispatchViewUpdates(eventDispatcher,-1);
+  }
+}

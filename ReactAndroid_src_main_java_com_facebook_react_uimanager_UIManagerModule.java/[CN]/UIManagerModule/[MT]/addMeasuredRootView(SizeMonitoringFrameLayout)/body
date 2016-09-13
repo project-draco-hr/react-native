@@ -17,7 +17,7 @@
     @Override public void onSizeChanged(    final int width,    final int height,    int oldW,    int oldH){
       getReactApplicationContext().runOnNativeModulesQueueThread(new Runnable(){
         @Override public void run(){
-          updateRootNodeSize(tag,width,height);
+          updateNodeSize(tag,width,height);
         }
       }
 );

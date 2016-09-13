@@ -1,4 +1,4 @@
-int rootViewTag
+int nodeViewTag
 int newWidth
 int newHeight
 EventDispatcher eventDispatcher
