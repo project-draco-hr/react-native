@@ -18,8 +18,8 @@
     needUpdateClippingRecursive=true;
   }
   if (needUpdateClippingRecursive) {
-    if (child instanceof ReactClippingViewGroup) {
-      ReactClippingViewGroup clippingChild=(ReactClippingViewGroup)child;
+    if (child instanceof com.facebook.react.uimanager.ReactClippingViewGroup) {
+      com.facebook.react.uimanager.ReactClippingViewGroup clippingChild=(com.facebook.react.uimanager.ReactClippingViewGroup)child;
       if (clippingChild.getRemoveClippedSubviews()) {
         clippingChild.updateClippingRect();
       }

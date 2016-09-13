@@ -5,7 +5,7 @@
   mRemoveClippedSubviews=removeClippedSubviews;
   if (removeClippedSubviews) {
     mClippingRect=new Rect();
-    ReactClippingViewGroupHelper.calculateClippingRect(this,mClippingRect);
+    com.facebook.react.uimanager.ReactClippingViewGroupHelper.calculateClippingRect(this,mClippingRect);
     mAllChildrenCount=getChildCount();
     int initialSize=Math.max(12,mAllChildrenCount);
     mAllChildren=new View[initialSize];
