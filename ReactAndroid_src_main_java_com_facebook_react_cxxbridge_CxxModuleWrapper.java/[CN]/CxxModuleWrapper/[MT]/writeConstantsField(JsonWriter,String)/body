@@ -1,7 +1,0 @@
-{
-  String constants=getConstantsJson();
-  if (constants == null || constants.isEmpty()) {
-    return;
-  }
-  writer.name(fieldName).rawValue(constants);
-}
