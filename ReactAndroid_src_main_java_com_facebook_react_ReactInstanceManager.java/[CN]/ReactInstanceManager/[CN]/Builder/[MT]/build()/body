@@ -5,5 +5,5 @@
   if (mUIImplementationProvider == null) {
     mUIImplementationProvider=new UIImplementationProvider();
   }
-  return new XReactInstanceManagerImpl(mApplication,mCurrentActivity,mDefaultHardwareBackBtnHandler,(mJSBundleLoader == null && mJSBundleAssetUrl != null) ? JSBundleLoader.createAssetLoader(mApplication,mJSBundleAssetUrl) : mJSBundleLoader,mJSMainModuleName,mPackages,mUseDeveloperSupport,mBridgeIdleDebugListener,Assertions.assertNotNull(mInitialLifecycleState,"Initial lifecycle state was not set"),mUIImplementationProvider,mNativeModuleCallExceptionHandler,mJSCConfig,mRedBoxHandler);
+  return new XReactInstanceManagerImpl(mApplication,mCurrentActivity,mDefaultHardwareBackBtnHandler,(mJSBundleLoader == null && mJSBundleAssetUrl != null) ? JSBundleLoader.createAssetLoader(mApplication,mJSBundleAssetUrl) : mJSBundleLoader,mJSMainModuleName,mPackages,mUseDeveloperSupport,mBridgeIdleDebugListener,Assertions.assertNotNull(mInitialLifecycleState,"Initial lifecycle state was not set"),mUIImplementationProvider,mNativeModuleCallExceptionHandler,mJSCConfig,mRedBoxHandler,mLazyNativeModulesEnabled);
 }

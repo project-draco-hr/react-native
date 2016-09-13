@@ -11,3 +11,4 @@ UIImplementationProvider uiImplementationProvider
 NativeModuleCallExceptionHandler nativeModuleCallExceptionHandler
 JSCConfig jscConfig
 RedBoxHandler redBoxHandler
+boolean lazyNativeModulesEnabled

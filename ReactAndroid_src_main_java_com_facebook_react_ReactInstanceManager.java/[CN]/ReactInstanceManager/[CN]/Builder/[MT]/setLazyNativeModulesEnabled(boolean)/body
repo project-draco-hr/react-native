@@ -1,0 +1,4 @@
+{
+  mLazyNativeModulesEnabled=lazyNativeModulesEnabled;
+  return this;
+}
