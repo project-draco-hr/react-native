@@ -1,0 +1,3 @@
+{
+  setOverflow(overflow == null ? CSSOverflow.VISIBLE : CSSOverflow.valueOf(overflow.toUpperCase(Locale.US).replace("-","_")));
+}
