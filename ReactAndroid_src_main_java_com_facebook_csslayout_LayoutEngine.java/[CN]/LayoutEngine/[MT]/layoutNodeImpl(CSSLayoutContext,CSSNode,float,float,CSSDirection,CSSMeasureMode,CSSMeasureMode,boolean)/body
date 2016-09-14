@@ -116,14 +116,12 @@
           childHeight=child.style.dimensions[DIMENSION_HEIGHT] + (child.style.margin.getWithFallback(leadingSpacing[CSS_FLEX_DIRECTION_COLUMN],leading[CSS_FLEX_DIRECTION_COLUMN]) + child.style.margin.getWithFallback(trailingSpacing[CSS_FLEX_DIRECTION_COLUMN],trailing[CSS_FLEX_DIRECTION_COLUMN]));
           childHeightMeasureMode=CSSMeasureMode.EXACTLY;
         }
-        if ((!isMainAxisRow && node.style.overflow == CSSOverflow.SCROLL) || node.style.overflow != CSSOverflow.SCROLL) {
-          if (Float.isNaN(childWidth) && !Float.isNaN(availableInnerWidth)) {
-            childWidth=availableInnerWidth;
-            childWidthMeasureMode=CSSMeasureMode.AT_MOST;
-          }
+        if (!isMainAxisRow && Float.isNaN(childWidth) && !Float.isNaN(availableInnerWidth)) {
+          childWidth=availableInnerWidth;
+          childWidthMeasureMode=CSSMeasureMode.AT_MOST;
         }
-        if ((isMainAxisRow && node.style.overflow == CSSOverflow.SCROLL) || node.style.overflow != CSSOverflow.SCROLL) {
-          if (Float.isNaN(childHeight) && !Float.isNaN(availableInnerHeight)) {
+        if (node.style.overflow == CSSOverflow.HIDDEN) {
+          if (isMainAxisRow && Float.isNaN(childHeight) && !Float.isNaN(availableInnerHeight)) {
             childHeight=availableInnerHeight;
             childHeightMeasureMode=CSSMeasureMode.AT_MOST;
           }
