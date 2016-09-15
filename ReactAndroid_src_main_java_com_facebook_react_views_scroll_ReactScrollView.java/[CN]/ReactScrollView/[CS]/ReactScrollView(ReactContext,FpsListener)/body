@@ -1,7 +1,7 @@
 {
   super(context);
   UIManagerModule uiManager=context.getNativeModule(UIManagerModule.class);
-  mViewManager=(ReactViewManager)uiManager.getUIImplementation().getViewManager(ReactViewManager.REACT_CLASS);
+  mViewManager=(ViewGroupManager)uiManager.getUIImplementation().getViewManager(ReactViewManager.REACT_CLASS);
   mFpsListener=fpsListener;
   if (!sTriedToGetScrollerField) {
     sTriedToGetScrollerField=true;

@@ -5,6 +5,14 @@
   View previousHeader=null;
   View currentHeader=null;
   View nextHeader=null;
+  View firstChild=getChildAt(0);
+  if (!(firstChild instanceof ReactViewGroup)) {
+    if (!sHasWarnedAboutStickyHeaders) {
+      FLog.w(ReactConstants.TAG,"'stickyHeaderIndices' isn't a supported prop type for this UIImplementation (nodes). " + "It'd be awesome if you could help us support it by sending a diff or PR :)");
+      sHasWarnedAboutStickyHeaders=true;
+    }
+    return;
+  }
   ReactViewGroup contentView=(ReactViewGroup)getChildAt(0);
   if (contentView == null) {
     return;
