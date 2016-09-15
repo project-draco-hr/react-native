@@ -1,4 +1,0 @@
-{
-  setChildrenDrawingOrderEnabled(delegate != null);
-  mChildDrawingOrderDelegate=delegate;
-}

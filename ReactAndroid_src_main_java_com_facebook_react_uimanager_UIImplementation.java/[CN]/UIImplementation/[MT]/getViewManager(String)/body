@@ -1,3 +1,0 @@
-{
-  return mViewManagers.get(name);
-}

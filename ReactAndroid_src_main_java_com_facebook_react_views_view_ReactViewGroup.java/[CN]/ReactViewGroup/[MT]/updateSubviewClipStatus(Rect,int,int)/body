@@ -1,11 +1,7 @@
 {
   View child=Assertions.assertNotNull(mAllChildren)[idx];
   sHelperRect.set(child.getLeft(),child.getTop(),child.getRight(),child.getBottom());
-  Matrix matrix=child.getMatrix();
-  if (!matrix.isIdentity()) {
-    matrix.mapRect(sHelperRect);
-  }
-  boolean intersects=clippingRect.intersects((int)sHelperRect.left,(int)sHelperRect.top,(int)Math.ceil(sHelperRect.right),(int)Math.ceil(sHelperRect.bottom));
+  boolean intersects=clippingRect.intersects(sHelperRect.left,sHelperRect.top,sHelperRect.right,sHelperRect.bottom);
   boolean needUpdateClippingRecursive=false;
   Animation animation=child.getAnimation();
   boolean isAnimating=animation != null && !animation.hasEnded();

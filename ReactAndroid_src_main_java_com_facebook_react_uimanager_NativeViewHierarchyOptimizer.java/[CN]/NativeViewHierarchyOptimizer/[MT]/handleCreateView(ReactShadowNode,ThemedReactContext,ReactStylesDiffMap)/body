@@ -4,8 +4,7 @@
     mUIViewOperationQueue.enqueueCreateView(themedContext,tag,node.getViewClass(),initialProps);
     return;
   }
-  node.setShouldCollapseChildren(shouldCollapseChildren(initialProps));
-  boolean isLayoutOnly=node.getViewClass().equals(ViewProps.VIEW_CLASS_NAME) && isLayoutOnlyAndCollapsable(initialProps) && (node.getParent() == null || node.getParent().shouldCollapseChildren());
+  boolean isLayoutOnly=node.getViewClass().equals(ViewProps.VIEW_CLASS_NAME) && isLayoutOnlyAndCollapsable(initialProps);
   node.setIsLayoutOnly(isLayoutOnly);
   if (!isLayoutOnly) {
     mUIViewOperationQueue.enqueueCreateView(themedContext,node.getReactTag(),node.getViewClass(),initialProps);

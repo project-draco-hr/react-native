@@ -5,11 +5,7 @@
   Assertions.assertNotNull(mClippingRect);
   Assertions.assertNotNull(mAllChildren);
   sHelperRect.set(subview.getLeft(),subview.getTop(),subview.getRight(),subview.getBottom());
-  Matrix matrix=subview.getMatrix();
-  if (!matrix.isIdentity()) {
-    matrix.mapRect(sHelperRect);
-  }
-  boolean intersects=mClippingRect.intersects((int)sHelperRect.left,(int)sHelperRect.top,(int)Math.ceil(sHelperRect.right),(int)Math.ceil(sHelperRect.bottom));
+  boolean intersects=mClippingRect.intersects(sHelperRect.left,sHelperRect.top,sHelperRect.right,sHelperRect.bottom);
   boolean oldIntersects=(subview.getParent() != null);
   if (intersects != oldIntersects) {
     int clippedSoFar=0;
