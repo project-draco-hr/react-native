@@ -1,0 +1,6 @@
+{
+  ViewParent parent=view.getParent();
+  if (parent instanceof ReactClippingViewGroup) {
+    ((ReactClippingViewGroup)parent).updateClippingRect();
+  }
+}

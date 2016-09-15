@@ -1,3 +1,4 @@
 {
   view.setScaleY(scaleY);
+  updateClipping(view);
 }

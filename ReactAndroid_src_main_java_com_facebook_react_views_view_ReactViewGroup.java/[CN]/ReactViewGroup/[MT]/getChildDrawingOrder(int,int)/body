@@ -1,0 +1,8 @@
+{
+  if (mChildDrawingOrderDelegate == null) {
+    return super.getChildDrawingOrder(childCount,i);
+  }
+ else {
+    return mChildDrawingOrderDelegate.getChildDrawingOrder(this,i);
+  }
+}

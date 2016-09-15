@@ -2,7 +2,7 @@
   if (props == null) {
     return true;
   }
-  if (props.hasKey(ViewProps.COLLAPSABLE) && !props.getBoolean(ViewProps.COLLAPSABLE,true)) {
+  if (!isCollapsable(props) || !shouldCollapseChildren(props)) {
     return false;
   }
   ReadableMapKeySetIterator keyIterator=props.mBackingMap.keySetIterator();

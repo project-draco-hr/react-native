@@ -1,0 +1,9 @@
+{
+  if (props == null) {
+    return true;
+  }
+  if (props.hasKey(ViewProps.COLLAPSE_CHILDREN) && !props.getBoolean(ViewProps.COLLAPSE_CHILDREN,true)) {
+    return false;
+  }
+  return true;
+}

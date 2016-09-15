@@ -1,0 +1,9 @@
+{
+  if (props == null) {
+    return true;
+  }
+  if (props.hasKey(ViewProps.COLLAPSABLE) && !props.getBoolean(ViewProps.COLLAPSABLE,true)) {
+    return false;
+  }
+  return true;
+}

@@ -1,3 +1,4 @@
 {
   view.setTranslationX(PixelUtil.toPixelFromDIP(translateX));
+  updateClipping(view);
 }

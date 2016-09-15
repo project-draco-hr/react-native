@@ -1,6 +1,7 @@
 {
   super.onScrollChanged(x,y,oldX,oldY);
   if (mOnScrollDispatchHelper.onScrollChanged(x,y)) {
+    dockClosestSectionHeader();
     if (mRemoveClippedSubviews) {
       updateClippingRect();
     }
