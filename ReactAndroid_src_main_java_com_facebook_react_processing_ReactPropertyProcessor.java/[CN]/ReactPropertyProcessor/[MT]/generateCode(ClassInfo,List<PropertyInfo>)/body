@@ -1,5 +1,5 @@
 {
-  MethodSpec getMethods=MethodSpec.methodBuilder("getProperties").addModifiers(PUBLIC).addAnnotation(Override.class).returns(PROPERTY_MAP_TYPE).addCode(generateGetProperties(properties)).build();
+  MethodSpec getMethods=MethodSpec.methodBuilder("getProperties").addModifiers(PUBLIC).addAnnotation(Override.class).addParameter(PROPERTY_MAP_TYPE,"props").returns(TypeName.VOID).addCode(generateGetProperties(properties)).build();
   TypeName superType=getSuperType(classInfo);
   ClassName className=classInfo.mClassName;
   String holderClassName=getClassName((TypeElement)classInfo.mElement,className.packageName()) + "$$PropsSetter";

@@ -1,8 +1,5 @@
 {
-  if (properties.isEmpty()) {
-    return CodeBlock.builder().addStatement("return $T.emptyMap()",Collections.class).build();
-  }
-  CodeBlock.Builder builder=CodeBlock.builder().addStatement("$T props = new $T($L)",PROPERTY_MAP_TYPE,CONCRETE_PROPERTY_MAP_TYPE,properties.size());
+  CodeBlock.Builder builder=CodeBlock.builder();
   for (  PropertyInfo propertyInfo : properties) {
     try {
       String typeName=getPropertypTypeName(propertyInfo.mProperty,propertyInfo.propertyType);
@@ -12,5 +9,5 @@
       throw new ReactPropertyException(e.getMessage(),propertyInfo);
     }
   }
-  return builder.addStatement("return props").build();
+  return builder.build();
 }

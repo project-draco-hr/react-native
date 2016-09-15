@@ -1,0 +1,5 @@
+{
+  for (  ViewManagersPropertyCache.PropSetter setter : mPropSetters.values()) {
+    props.put(setter.getPropName(),setter.getPropType());
+  }
+}

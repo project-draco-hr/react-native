@@ -1,6 +1,6 @@
 {
   Map<String,String> props=new HashMap<>();
-  props.putAll(findManagerSetter(viewManagerTopClass).getProperties());
-  props.putAll(findNodeSetter(shadowNodeTopClass).getProperties());
+  findManagerSetter(viewManagerTopClass).getProperties(props);
+  findNodeSetter(shadowNodeTopClass).getProperties(props);
   return props;
 }
