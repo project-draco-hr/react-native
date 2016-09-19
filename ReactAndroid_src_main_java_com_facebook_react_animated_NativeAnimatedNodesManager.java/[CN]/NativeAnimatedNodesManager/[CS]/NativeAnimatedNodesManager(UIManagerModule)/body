@@ -1,0 +1,6 @@
+{
+  mUIImplementation=uiManager.getUIImplementation();
+  uiManager.getEventDispatcher().addListener(this);
+  Object customEventTypes=Assertions.assertNotNull(uiManager.getConstants()).get("customDirectEventTypes");
+  mCustomEventTypes=(Map<String,Map<String,String>>)customEventTypes;
+}

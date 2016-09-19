@@ -1,0 +1,12 @@
+{
+  int viewTag=1000;
+  createSimpleAnimatedViewWithOpacity(viewTag,0d);
+  mNativeAnimatedNodesManager.addAnimatedEventToView(viewTag,"otherEvent",JavaOnlyMap.of("animatedValueTag",1,"nativeEventPath",JavaOnlyArray.of("contentOffset","y")));
+  mNativeAnimatedNodesManager.addAnimatedEventToView(999,"topScroll",JavaOnlyMap.of("animatedValueTag",1,"nativeEventPath",JavaOnlyArray.of("contentOffset","y")));
+  mNativeAnimatedNodesManager.onEventDispatch(createScrollEvent(viewTag,10));
+  ArgumentCaptor<ReactStylesDiffMap> stylesCaptor=ArgumentCaptor.forClass(ReactStylesDiffMap.class);
+  reset(mUIImplementationMock);
+  mNativeAnimatedNodesManager.runUpdates(nextFrameTime());
+  verify(mUIImplementationMock).synchronouslyUpdateViewOnUIThread(eq(viewTag),stylesCaptor.capture());
+  assertThat(stylesCaptor.getValue().getDouble("opacity",Double.NaN)).isEqualTo(0);
+}

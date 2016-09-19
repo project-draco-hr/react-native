@@ -1,5 +1,14 @@
 {
   Assertions.assertCondition(event.isInitialized(),"Dispatched event hasn't been initialized");
+  boolean eventHandled=false;
+  for (  EventDispatcherListener listener : mListeners) {
+    if (listener.onEventDispatch(event)) {
+      eventHandled=true;
+    }
+  }
+  if (eventHandled) {
+    return;
+  }
 synchronized (mEventsStagingLock) {
     mEventStaging.add(event);
     Systrace.startAsyncFlow(Systrace.TRACE_TAG_REACT_JAVA_BRIDGE,event.getEventName(),event.getUniqueID());

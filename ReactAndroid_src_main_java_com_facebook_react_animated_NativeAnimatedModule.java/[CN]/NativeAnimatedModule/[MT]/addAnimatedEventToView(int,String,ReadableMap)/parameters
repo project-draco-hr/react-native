@@ -1,0 +1,3 @@
+int viewTag
+String eventName
+ReadableMap eventMapping

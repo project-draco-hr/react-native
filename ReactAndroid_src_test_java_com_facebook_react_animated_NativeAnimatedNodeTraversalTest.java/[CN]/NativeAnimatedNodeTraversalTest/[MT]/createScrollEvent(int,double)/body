@@ -1,0 +1,11 @@
+{
+  return new Event(tag){
+    @Override public String getEventName(){
+      return "topScroll";
+    }
+    @Override public void dispatch(    RCTEventEmitter rctEventEmitter){
+      rctEventEmitter.receiveEvent(tag,"topScroll",JavaOnlyMap.of("contentOffset",JavaOnlyMap.of("y",value)));
+    }
+  }
+;
+}

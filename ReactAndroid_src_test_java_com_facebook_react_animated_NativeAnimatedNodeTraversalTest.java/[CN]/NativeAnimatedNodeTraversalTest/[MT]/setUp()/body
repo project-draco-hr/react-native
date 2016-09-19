@@ -13,6 +13,26 @@
   }
 );
   mFrameTimeNanos=INITIAL_FRAME_TIME_NANOS;
+  mUIManagerMock=mock(UIManagerModule.class);
   mUIImplementationMock=mock(UIImplementation.class);
-  mNativeAnimatedNodesManager=new NativeAnimatedNodesManager(mUIImplementationMock);
+  mEventDispatcherMock=mock(EventDispatcher.class);
+  PowerMockito.when(mUIManagerMock.getUIImplementation()).thenAnswer(new Answer<UIImplementation>(){
+    @Override public UIImplementation answer(    InvocationOnMock invocation) throws Throwable {
+      return mUIImplementationMock;
+    }
+  }
+);
+  PowerMockito.when(mUIManagerMock.getEventDispatcher()).thenAnswer(new Answer<EventDispatcher>(){
+    @Override public EventDispatcher answer(    InvocationOnMock invocation) throws Throwable {
+      return mEventDispatcherMock;
+    }
+  }
+);
+  PowerMockito.when(mUIManagerMock.getConstants()).thenAnswer(new Answer<Object>(){
+    @Override public Object answer(    InvocationOnMock invocation) throws Throwable {
+      return MapBuilder.of("customDirectEventTypes",MapBuilder.newHashMap());
+    }
+  }
+);
+  mNativeAnimatedNodesManager=new NativeAnimatedNodesManager(mUIManagerMock);
 }

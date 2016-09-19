@@ -1,0 +1,3 @@
+int targetTag
+String eventName
+WritableMap event

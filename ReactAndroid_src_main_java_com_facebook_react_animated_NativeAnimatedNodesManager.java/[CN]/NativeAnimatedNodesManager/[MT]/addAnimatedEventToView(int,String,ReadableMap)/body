@@ -1,0 +1,17 @@
+{
+  int nodeTag=eventMapping.getInt("animatedValueTag");
+  AnimatedNode node=mAnimatedNodes.get(nodeTag);
+  if (node == null) {
+    throw new JSApplicationIllegalArgumentException("Animated node with tag " + nodeTag + " does not exists");
+  }
+  if (!(node instanceof ValueAnimatedNode)) {
+    throw new JSApplicationIllegalArgumentException("Animated node connected to event should be" + "of type " + ValueAnimatedNode.class.getName());
+  }
+  ReadableArray path=eventMapping.getArray("nativeEventPath");
+  List<String> pathList=new ArrayList<>(path.size());
+  for (int i=0; i < path.size(); i++) {
+    pathList.add(path.getString(i));
+  }
+  EventAnimationDriver event=new EventAnimationDriver(pathList,(ValueAnimatedNode)node);
+  mEventDrivers.put(viewTag + eventName,event);
+}

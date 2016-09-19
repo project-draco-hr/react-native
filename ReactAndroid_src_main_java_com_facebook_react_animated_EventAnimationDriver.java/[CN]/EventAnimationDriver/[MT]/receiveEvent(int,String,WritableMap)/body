@@ -1,0 +1,10 @@
+{
+  if (event == null) {
+    throw new IllegalArgumentException("Native animated events must have event data.");
+  }
+  ReadableMap curMap=event;
+  for (int i=0; i < mEventPath.size() - 1; i++) {
+    curMap=curMap.getMap(mEventPath.get(i));
+  }
+  mValueNode.mValue=curMap.getDouble(mEventPath.get(mEventPath.size() - 1));
+}

@@ -1,0 +1,8 @@
+{
+  mOperations.add(new UIThreadOperation(){
+    @Override public void execute(    NativeAnimatedNodesManager animatedNodesManager){
+      animatedNodesManager.removeAnimatedEventFromView(viewTag,eventName);
+    }
+  }
+);
+}

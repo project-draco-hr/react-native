@@ -1,0 +1,19 @@
+{
+  if (!UiThreadUtil.isOnUiThread()) {
+    return false;
+  }
+  if (!mEventDrivers.isEmpty()) {
+    String eventName=event.getEventName();
+    Map<String,String> customEventType=mCustomEventTypes.get(eventName);
+    if (customEventType != null) {
+      eventName=customEventType.get("registrationName");
+    }
+    EventAnimationDriver eventDriver=mEventDrivers.get(event.getViewTag() + eventName);
+    if (eventDriver != null) {
+      event.dispatch(eventDriver);
+      mUpdatedNodes.add(eventDriver.mValueNode);
+      return true;
+    }
+  }
+  return false;
+}

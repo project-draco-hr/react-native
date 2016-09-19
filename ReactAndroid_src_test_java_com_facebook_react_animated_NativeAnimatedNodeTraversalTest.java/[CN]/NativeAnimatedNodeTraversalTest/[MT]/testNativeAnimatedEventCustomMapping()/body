@@ -1,0 +1,18 @@
+{
+  int viewTag=1000;
+  PowerMockito.when(mUIManagerMock.getConstants()).thenAnswer(new Answer<Object>(){
+    @Override public Object answer(    InvocationOnMock invocation) throws Throwable {
+      return MapBuilder.of("customDirectEventTypes",MapBuilder.of("topScroll",MapBuilder.of("registrationName","onScroll")));
+    }
+  }
+);
+  mNativeAnimatedNodesManager=new NativeAnimatedNodesManager(mUIManagerMock);
+  createSimpleAnimatedViewWithOpacity(viewTag,0d);
+  mNativeAnimatedNodesManager.addAnimatedEventToView(viewTag,"onScroll",JavaOnlyMap.of("animatedValueTag",1,"nativeEventPath",JavaOnlyArray.of("contentOffset","y")));
+  mNativeAnimatedNodesManager.onEventDispatch(createScrollEvent(viewTag,10));
+  ArgumentCaptor<ReactStylesDiffMap> stylesCaptor=ArgumentCaptor.forClass(ReactStylesDiffMap.class);
+  reset(mUIImplementationMock);
+  mNativeAnimatedNodesManager.runUpdates(nextFrameTime());
+  verify(mUIImplementationMock).synchronouslyUpdateViewOnUIThread(eq(viewTag),stylesCaptor.capture());
+  assertThat(stylesCaptor.getValue().getDouble("opacity",Double.NaN)).isEqualTo(10);
+}

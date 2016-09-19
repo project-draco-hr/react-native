@@ -1,0 +1,3 @@
+{
+  mEventDrivers.remove(viewTag + eventName);
+}
