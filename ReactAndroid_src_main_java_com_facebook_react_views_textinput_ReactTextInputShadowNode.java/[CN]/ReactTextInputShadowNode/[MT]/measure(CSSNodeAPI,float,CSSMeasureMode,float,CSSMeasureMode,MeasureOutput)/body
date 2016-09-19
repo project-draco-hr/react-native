@@ -2,7 +2,7 @@
   EditText editText=Assertions.assertNotNull(mEditText);
   editText.setTextSize(TypedValue.COMPLEX_UNIT_PX,mFontSize == UNSET ? (int)Math.ceil(PixelUtil.toPixelFromSP(ViewDefaults.FONT_SIZE_SP)) : mFontSize);
   mComputedPadding=spacingToFloatArray(getPadding());
-  editText.setPadding((int)Math.ceil(getPadding().get(Spacing.START)),(int)Math.ceil(getPadding().get(Spacing.TOP)),(int)Math.ceil(getPadding().get(Spacing.END)),(int)Math.ceil(getPadding().get(Spacing.BOTTOM)));
+  editText.setPadding((int)Math.floor(getPadding().get(Spacing.START)),(int)Math.floor(getPadding().get(Spacing.TOP)),(int)Math.floor(getPadding().get(Spacing.END)),(int)Math.floor(getPadding().get(Spacing.BOTTOM)));
   if (mNumberOfLines != UNSET) {
     editText.setLines(mNumberOfLines);
   }
