@@ -3,7 +3,21 @@
   if (getChildCount() > 0) {
     ((ReactContext)getContext()).runOnNativeModulesQueueThread(new Runnable(){
       @Override public void run(){
-        ((ReactContext)getContext()).getNativeModule(UIManagerModule.class).updateNodeSize(getChildAt(0).getId(),w,h);
+        Context context=getContext();
+        WindowManager wm=(WindowManager)context.getSystemService(Context.WINDOW_SERVICE);
+        Display display=Assertions.assertNotNull(wm.getDefaultDisplay());
+        display.getCurrentSizeRange(mMinPoint,mMaxPoint);
+        int width, height;
+        int rotation=display.getRotation();
+        if (rotation == Surface.ROTATION_0 || rotation == Surface.ROTATION_180) {
+          width=mMinPoint.x;
+          height=mMaxPoint.y;
+        }
+ else {
+          width=mMaxPoint.x;
+          height=mMinPoint.y;
+        }
+        ((ReactContext)getContext()).getNativeModule(UIManagerModule.class).updateNodeSize(getChildAt(0).getId(),width,height);
       }
     }
 );
